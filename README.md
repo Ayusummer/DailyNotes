@@ -1,17 +1,22 @@
 <!--
  * @Author: 咸鱼型233
  * @Date: 2021-01-21 22:57:37
- * @LastEditTime: 2021-01-22 00:56:16
+ * @LastEditTime: 2021-01-22 09:10:21
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \DailyNotes\README.md
 -->
 # DailyNotes概述
 - 普通的日常学习记录以用于区别课程笔记
+- 用于保存类纯文本格式的笔记,本库中最常使用Markdown,其中使用的图片资源为相对链接引用的另一个Gitee库中的图片
+- 另一个Gitee中的res库中除了本库的图片资源还有各种非纯文本格式的笔记,如JupyterLab笔记本,OneNote笔记本等
+  - 单个的笔记本文件无法直接预览也无法进行增量更新确实不如人意,不过图文在同一个文件里倒是方便了查阅
+  - 不用OneNote的共享功能是因为国内同步速度较慢还容易出问题
 
 ---
 # 项目部署指南
 - 本项目为一个笔记整理型项目,主要工作在本地`VSCode`编辑器中完成,并通过`GitHub Desktop`来快捷提交并推送以及拉取仓库
+- 配合[此处](https://gitee.com/ayusummer233/res_-daily-notes)的Gitee库构成一个整体,两个库都clone下来后将Gitee库放到本仓库的根目录下(.gitignore文件已添加根目录下Gitee库的文件夹名,不会被Github同步)
 
 ---
 ### 本地环境配置
@@ -80,6 +85,7 @@
   - `pull`
     - 将远程仓库的更新拉取到本地
     - ![](res_-daily-notes/img/README/Fetch.png)
+  > 不需要修改仅仅是为了查阅的话会`pull`即可 
 
 ---
 ## 本项目使用到的软件
