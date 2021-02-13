@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-01-21 23:01:29
- * @LastEditTime: 2021-01-22 00:33:35
+ * @LastEditTime: 2021-02-13 17:40:33
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \DailyNotes\社区相关\Github.md
@@ -110,3 +110,6 @@
 - push一次提交
   - 这时候就会有钉~的提醒啦
 
+# 开源许可证选择
+![开源许可证选择](https://images.gitee.com/uploads/images/2021/0213/173905_ce78c29a_7703072.png "屏幕截图.png")
+> [from 阮一峰-2011.5.2](http://www.ruanyifeng.com/blog/2011/05/how_to_choose_free_software_licenses.html)
