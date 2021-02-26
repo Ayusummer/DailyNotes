@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-01-21 23:01:29
- * @LastEditTime: 2021-02-13 17:40:33
+ * @LastEditTime: 2021-02-26 11:59:47
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \DailyNotes\社区相关\Github.md
@@ -54,6 +54,15 @@
     ```
   > 如若你得到的ip并非`199.232.96.133`则只需把上面代码中的`199.232.96.133`利用查找替换替换为你得到的ip即可(当再次无法看到头像时可以试着重查一次ip然后替换掉原ip)
 
+---
+## .git过大
+- 初用git时有时会错把资源文件传到源码仓库里去,这样下来仓库本身就会变得特别大,即使是后来删掉了资源文件也会导致`.git`文件过大从而直接`clone`的时候可能会因为仓库过大而失败
+- 提交次数过多也会让`.git`越来越大
+- **解决方法[@Ever-Lose](https://www.cnblogs.com/everlose/p/12826025.html)**:如果确定之前的提交对现在已经没有用了,那么在`clone`仓库的时候在最后加上`--depth 1`只克隆最后一次`commit`
+
+
+
+----
 # Issues
 
 
