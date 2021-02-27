@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-01-21 23:01:29
- * @LastEditTime: 2021-02-26 11:59:47
+ * @LastEditTime: 2021-02-27 16:23:42
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \DailyNotes\社区相关\Github.md
@@ -61,6 +61,45 @@
 - **解决方法[@Ever-Lose](https://www.cnblogs.com/everlose/p/12826025.html)**:如果确定之前的提交对现在已经没有用了,那么在`clone`仓库的时候在最后加上`--depth 1`只克隆最后一次`commit`
 
 
+---
+## github连接超时问题
+- 使用腾讯云北京的轻量应用服务器推送更新时总是连接超时,最终找到了有效的如下[解决方案](https://cloud.tencent.com/developer/article/1704705)
+- 打开ipaddress.com,查询github.com域名，记录下其对应的ip(IP Address项内容)
+- 修改并保存`/etc/hosts`:末尾加上 
+  ```
+  查询到的域名 github.com
+  ```
+
+
+
+
+
+
+
+---
+# Git配置
+- 设置用户名
+  ```
+  git config --global user.name "GitHub用户名"
+  ```
+  - 用户名随个人喜好即可,并非必须要Github的用户名,可以起一个能够代表当前修改环境的名字
+- 设置用户邮箱
+  ```
+  git config --global user.email "GitHub绑定邮箱"
+  ```
+  - GitHub绑定邮箱请根据自己注册的账号邮箱填写
+- 查看当前配置项列表
+  ```
+  git config --list
+  ```
+- 删除某个配置项(以`user.name`为例)
+  ```
+  git config --global --unset user.name
+  ```
+- 编辑某个配置项
+  ```
+  git config --global --edit user.name '用户名'
+  ```
 
 ----
 # Issues
