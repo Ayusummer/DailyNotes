@@ -1,7 +1,7 @@
 <!--
  * @Author: 咸鱼型233
  * @Date: 2021-01-21 22:57:37
- * @LastEditTime: 2021-01-22 09:10:21
+ * @LastEditTime: 2021-02-27 15:52:32
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \DailyNotes\README.md
@@ -32,7 +32,7 @@
       git config --global user.name "GitHub用户名"
       ```
       - GitHub绑定邮箱请根据自己注册的账号邮箱填写
-      - 用户名随个人喜好即可
+      - 用户名随个人喜好即可,并非必须要Github的用户名,可以起一个能够代表当前修改环境的名字
     > 请务必使用GitHub登录Gitee或者在Gitee的`设置`页面绑定GitHub账号 ,否则你将无法使用你本地的GitHub账号配置藉由`GitHub Desktop`对仓库进行任何操作
   - [GitHub Desktop](https://central.github.com/deployments/desktop/desktop/latest/win32)
     - 下载安装好后打开登录你的GitHub账户
