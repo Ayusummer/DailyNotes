@@ -64,7 +64,7 @@
 ---
 ## github连接超时问题
 - 使用腾讯云北京的轻量应用服务器推送更新时总是连接超时,最终找到了有效的如下[解决方案](https://cloud.tencent.com/developer/article/1704705)
-- 打开ipaddress.com,查询github.com域名，记录下其对应的ip(IP Address项内容)
+- 打开 ipaddress.com,查询github.com域名，记录下其对应的ip(IP Address项内容)
 - 修改并保存`/etc/hosts`:末尾加上 
   ```
   查询到的域名 github.com
