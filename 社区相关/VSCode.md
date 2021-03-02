@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-02-27 17:22:36
- * @LastEditTime: 2021-02-27 18:37:20
+ * @LastEditTime: 2021-03-02 17:36:55
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \DailyNotes\社区相关\VSCode.md
@@ -19,3 +19,12 @@
 ---
 ## Python-autopep8
 - 自动按照pep8规范格式化python代码
+
+---
+## Terminal
+- 命令行终端  
+  ![Terminal](https://images.gitee.com/uploads/images/2021/0302/173330_e0cd5e6b_7703072.png "屏幕截图.png")
+- 安装之后点击有效较的`Terminal`图标进行使用  
+  ![Terminal图标](https://images.gitee.com/uploads/images/2021/0302/173555_2cc6665a_7703072.png "屏幕截图.png")  
+  点开之后默认采用当前项目的根目录
+  ![输入图片说明](https://images.gitee.com/uploads/images/2021/0302/173623_407de49c_7703072.png "屏幕截图.png")
