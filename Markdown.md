@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-01-22 00:43:47
- * @LastEditTime: 2021-03-09 12:23:19
+ * @LastEditTime: 2021-03-09 12:26:24
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \DailyNotes\Markdown.md
@@ -22,7 +22,8 @@
 # 个人图床(七牛云+阿里云域名+picgo)
 - [七牛云+阿里云域名+PicGo](https://blog.csdn.net/qq_45807032/article/details/113772697)
 - ![VSCode PicGo插件配置](http:qpokg4i30.hn-bkt.clouddn.com/img/20210309122224.png)
-
+- 使用说明  
+  ![具体使用](http:qpokg4i30.hn-bkt.clouddn.com/img/20210309122603.png)
 
 
 ---
