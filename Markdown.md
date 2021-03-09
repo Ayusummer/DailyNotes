@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-01-22 00:43:47
- * @LastEditTime: 2021-03-09 12:26:24
+ * @LastEditTime: 2021-03-09 12:36:36
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \DailyNotes\Markdown.md
@@ -12,9 +12,9 @@
   - Markdown All in One
   - Markdown Converter
 - markdown文件的后缀名为`md`
-  ![](../JuniorLessons_beta/res/img/README/markdown打开.png)
+  ![](res_-daily-notes/img/README/markdown打开.png)
 - 使用大纲快速索引章节位置
-  ![](../JuniorLessons_beta/res/img/README/markdown大纲.png)
+  ![](res_-daily-notes/img/README/markdown大纲.png)
 
 
 
