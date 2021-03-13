@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-01-22 00:35:37
- * @LastEditTime: 2021-03-13 19:57:34
+ * @LastEditTime: 2021-03-13 19:59:10
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \DailyNotes\LeetCode\LeetCodeNote.md
@@ -111,3 +111,6 @@ class Solution:
         return head.next
 ```
 
+---
+## 解析指路
+- [五分钟学算法](https://www.cxyxiaowu.com/6843.html)
