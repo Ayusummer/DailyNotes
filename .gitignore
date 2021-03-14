@@ -17,3 +17,12 @@ DailyNotes.wiki
 # 常用于测试的脚本文件
 社区相关/LeetCode/globalTest.py
 爬虫/GlobalTest.py
+
+# python练习题输出及资源文件
+BigDataMicroMajor/Python/DailyHomework/Lesson9_stepWiseTask/out
+BigDataMicroMajor/Python/DailyHomework/Lesson9_stepWiseTask/res
+BigDataMicroMajor/Python/DailyHomework/Lesson11_numpy/res
+BigDataMicroMajor/Python/DailyHomework/Lesson12_Matplotlib/res
+BigDataMicroMajor/Python/DailyHomework/Lesson13_Matplotlib_visible/output
+BigDataMicroMajor/Python/res
+BigDataMicroMajor/Python/TestOnClass/res
