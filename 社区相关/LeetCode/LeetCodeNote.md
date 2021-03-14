@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-01-22 00:35:37
- * @LastEditTime: 2021-03-13 19:59:10
+ * @LastEditTime: 2021-03-14 21:25:16
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \DailyNotes\LeetCode\LeetCodeNote.md
@@ -114,3 +114,76 @@ class Solution:
 ---
 ## 解析指路
 - [五分钟学算法](https://www.cxyxiaowu.com/6843.html)
+
+
+---
+# 3.14 无重复的最长字符串
+- 给定一个字符串，请你找出其中不含有重复字符的 最长子串 的长度。
+- 示例 1:
+  ```
+  输入: s = "abcabcbb"
+  输出: 3 
+  解释: 因为无重复字符的最长子串是 "abc"，所以其长度为 3。
+  ```
+
+---
+## 思路
+- 滑动窗口解题
+- [五分钟学算法](https://www.cxyxiaowu.com/6845.html)
+
+---
+## 自己的粪码
+```python
+class Solution:
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        ans = 0
+        lst = []
+        left = right = -1
+        while right != len(s)-1:
+            if s[right+1] not in lst:
+                lst.append(s[right+1])
+                right += 1
+                ans = right-left if ans < right-left else ans 
+            else:
+                left += 1
+                lst.pop(0)
+        return ans
+```
+- 987/987 cases passed (184 ms)
+- Your runtime beats 18.15 % of python3 submissions
+- Your memory usage beats 68.32 % of python3 submissions (14.9 MB)
+- 估计大部分时间都花在判断数字是否在列表里了,改进的话打算用字典
+
+---
+## 力扣加加
+- 能自动生成默认值的字典
+
+```python
+class Solution:
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        l = 0
+        ans = 0
+        counter = defaultdict(lambda: 0)
+
+        for r in range(len(s)):
+            while counter.get(s[r], 0) != 0:
+                counter[s[l]] = counter.get(s[l], 0) - 1
+                l += 1
+            counter[s[r]] += 1
+            ans = max(ans, r - l + 1)
+
+        return ans
+```
+- 987/987 cases passed (92 ms)
+- Your runtime beats 34.48 % of python3 submissions
+- Your memory usage beats 49.33 % of python3 submissions (15 MB)
+  ---
+- ```python
+  defaultdict(lambda: 0)
+  ```
+  - 若执行后面语句时有对不在字典值内的数据进行判断的情况,则默认生成一个索引为该值,值为0的项
+  ---
+- ```python
+  counter.get(s[l], 0)
+  ```
+  取s[l]的值,若没有则返回0
