@@ -138,7 +138,7 @@ print(h.heap())
       > 我这里是`C:\Users\233\.jupyter\jupyter_notebook_config.py` 
       - 记得保存文件
   - 再次在`Home`里`Launch`启动`JupyterLab`确认配置情况
-    ![成功](../../res/img/BigDataMicroMajor/Python/成功配置JupyterLab启动路径.png)
+    ![20210401094701](http:cdn.ayusummer233.top/img/20210401094701.png)
 
 ---
 ## 插件
