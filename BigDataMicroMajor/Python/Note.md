@@ -10,11 +10,6 @@
   - 没有特殊声明的情况下都是UTF-8
 
 ---
-# 作业相关
-- 作业上传至 服务器：
-  - ftp://211.65.95.251
-  - 登陆用户名：student_wll
-  - 密码：student_wll
 # 换源操作
 - [参考文档](https://github.com/winrey/EasyConnectedInChina)
 ```python
