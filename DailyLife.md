@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-01-22 00:42:58
- * @LastEditTime: 2021-04-03 11:44:29
+ * @LastEditTime: 2021-04-05 19:52:51
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \DailyNotes\DailyLife.md
@@ -105,3 +105,37 @@ asklib.com
 - [参考视频](https://www.bilibili.com/video/BV1T64y1u7Z5)
 > 自己懒得搭了(  配合本地OneDriveBusiness当同步分享盘了  
 > ![20210403114429](http:cdn.ayusummer233.top/img/20210403114429.png)
+
+
+---
+## 将云盘挂载到本地(RaiDrive)
+- 云盘支持
+  - `Personal` : GoogleDrive, `OneDrive`, Dropbox, Box, MEGA, PCloud, YandexDisk, Mail.ru.Cloud, GooglePhotos
+    > 基本都要挂代理,OneDrive看个人情况,我这边是无法直连的
+  - `Business` : Google Shared drives, `OneDrive`, `DropBox`, `SharePoint`
+  - `Enterprise` : AWS S3, Azure Storage, Google Cloud Storage, Naver Object Storage, `Alibaba Object Storage`, Wasabi Object Storage, IBM Object Storage
+  - `NAS` : `WebDAV`, `SFTP`, `FTP`, `Nextcloud`, `Synology(群晖)`, `ASUSTOR(华硕)`, `QNAP(威联通)`, ipTIME
+
+  ---
+- 效果:
+  - ![20210404202719](http:cdn.ayusummer233.top/img/20210404202719.png)
+- 下载[RaiDrive](https://ayusummer-my.sharepoint.com/:u:/g/personal/233_ayusummer_onmicrosoft_com/EY5FYay5Go1En2aduguGoIsBErdJ8QCQT_r4BwxspAB7qw?e=VFsSSc)并安装到自定义位置后打卡软件,可以自行更新到最新版本(本就是官网有提供的free版)  
+  ![20210404203117](http:cdn.ayusummer233.top/img/20210404203117.png)
+> 如果安装的时候出现问题可以选择忽略,这样依然装好了,运行桌面上的快捷方式,在设置里面检查更新到最新版本安装的时候基本不会报错
+> 也可以直接在[官网](https://www.raidrive.com/)下载(可能需要一些魔法)
+
+  ---
+- 安装完后点击工具栏中的`添加`按钮进行添加,点击确定后会弹出登录界面,按照你要挂载云盘的账号登录并授权即可  
+  ![20210405192941](http:cdn.ayusummer233.top/img/20210405192941.png)
+> 我这里用的是E5开发者订阅里的OneDrive Business,墙内是可以直连的,不用挂代理;
+
+
+  ---
+> - 最初找这个只是为了能让[PotPlayer](https://ayusummer-my.sharepoint.com/:u:/g/personal/233_ayusummer_onmicrosoft_com/EdWtKYYX0yRMrz5J8JLHEhMBRUPM_9xJu00VVpxWUCc_Uw?e=i8cZt2)能更方便地访问云盘中的视频资源从而在本地倍速播放云端的视频;
+> ![20210405195251](http:cdn.ayusummer233.top/img/20210405195251.png)
+
+
+
+---
+## 微软商店中的iCloud
+- 有点糟心,Microsoft Store里下载的iCloud只能装在系统盘,并且没有找到有效的方法能够将其移到非系统盘
