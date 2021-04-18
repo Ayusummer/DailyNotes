@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-01-22 00:42:58
- * @LastEditTime: 2021-04-05 19:52:51
+ * @LastEditTime: 2021-04-07 15:08:42
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \DailyNotes\DailyLife.md
@@ -139,3 +139,13 @@ asklib.com
 ---
 ## 微软商店中的iCloud
 - 有点糟心,Microsoft Store里下载的iCloud只能装在系统盘,并且没有找到有效的方法能够将其移到非系统盘
+
+---
+# Microsoft
+
+---
+## Edge
+
+---
+### 扩展
+- 默认安装目录 : `C:\Users\用户名\AppData\Local\Microsoft\Edge\User Data\Default\Extensions`
