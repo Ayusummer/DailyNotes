@@ -197,7 +197,7 @@ class Solution:
 - 进阶：
   - 你可以在 O(n log n) 时间复杂度和常数级空间复杂度下，对链表进行排序吗？
 - **示例1**：
-  - ![20210315084827](http:qpokg4i30.hn-bkt.clouddn.com/img/20210315084827.png)
+  - ![20210315084827](http:cdn.ayusummer233.top/img/20210315084827.png)
   ```
   输入：head = [4,2,1,3]
   输出：[1,2,3,4]
@@ -210,7 +210,7 @@ class Solution:
 ---
 ## 归并排序(递归)
 - [源自@Krahets](https://leetcode-cn.com/problems/sort-list/solution/sort-list-gui-bing-pai-xu-lian-biao-by-jyd/)
-- ![20210315085242](http:qpokg4i30.hn-bkt.clouddn.com/img/20210315085242.png)
+- ![20210315085242](http:cdn.ayusummer233.top/img/20210315085242.png)
 
 ```python
 class Solution:
