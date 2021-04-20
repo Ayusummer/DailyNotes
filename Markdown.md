@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-01-22 00:43:47
- * @LastEditTime: 2021-04-10 16:46:38
+ * @LastEditTime: 2021-04-18 22:49:55
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \DailyNotes\Markdown.md
@@ -73,6 +73,13 @@
   - [希腊字母表](https://blog.csdn.net/krone_/article/details/99710062)
 
 ---
+## 分页符
+```
+<div STYLE="page-break-after: always;"></div>
+```
+
+
+---
 # 字体大小
 - 使用html标签解决
   - ```html
@@ -81,3 +88,4 @@
     - 预览
       - <font size = 5>示例</font>
 
+---
