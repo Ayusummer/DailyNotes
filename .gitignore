@@ -1,23 +1,32 @@
 # 资源文件
 res_-daily-notes
+
 # 临时工
 大三临时工.md
+
 # wiki文件
 DailyNotes.wiki
+
 # VSCode文件
 .vscode/settings.json
+
 # IDEA(Pycharm)文件
 社区相关/LeetCode/.idea
 BigDataMicroMajor/Python/DailyHomework/.idea
+.idea
+
 # WPS表格临时文件
 ~$时间树(伪).xlsx
+
 # 未测试完成的脚本文件
 健康打卡-auto.py
 健康打卡-private.py
 健康打卡.py
+
 # 常用于测试的脚本文件
 社区相关/LeetCode/globalTest.py
 爬虫/GlobalTest.py
+
 # 用于对比版本更新的markdown文件
 TMP.MD
 
