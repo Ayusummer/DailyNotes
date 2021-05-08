@@ -3597,3 +3597,4 @@ plt.show()
 - 程序**结尾**加上:`turtle.done()` 或 `turtle.mainloop()`
   绘图结束,需手动关闭窗口
 
+

@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-01-22 00:42:58
- * @LastEditTime: 2021-04-07 15:08:42
+ * @LastEditTime: 2021-05-08 07:45:44
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \DailyNotes\DailyLife.md
@@ -149,3 +149,10 @@ asklib.com
 ---
 ### 扩展
 - 默认安装目录 : `C:\Users\用户名\AppData\Local\Microsoft\Edge\User Data\Default\Extensions`
+
+
+----
+# 学习工作生活小技能?
+
+----
+## 图片OCR->表格
