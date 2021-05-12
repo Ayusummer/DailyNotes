@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-01-22 00:43:47
- * @LastEditTime: 2021-04-18 22:49:55
+ * @LastEditTime: 2021-05-09 16:46:23
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \DailyNotes\Markdown.md
@@ -77,6 +77,17 @@
 ```
 <div STYLE="page-break-after: always;"></div>
 ```
+
+-----
+## 文字排版
+- markdown兼容html
+- <center>文字居中</center>
+
+----
+## 字体格式
+- <font face="黑体">使用黑体</font>
+- <font face="黑体" size=10>我是黑体10号字</font>
+- <font color=red>红色</font>
 
 
 ---
