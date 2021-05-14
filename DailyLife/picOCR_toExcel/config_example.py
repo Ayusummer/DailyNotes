@@ -7,8 +7,13 @@
 #            使用时请删除文件的_example后缀
 # @ChangeLog
 
-# 待识别图片路径
-path_image = "***************"
 # 阿里云表格文字识别API的APPCODE
 # #购买链接 : https://market.aliyun.com/products/57124001/cmapi024968.html
 APPCODE = "****************"
+
+
+# 待识别图片路径
+path_image = "***************"
+
+# 表格地址
+path_xlsx = "*************"
