@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-01-22 00:43:47
- * @LastEditTime: 2021-05-09 16:46:23
+ * @LastEditTime: 2021-05-14 11:17:10
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \DailyNotes\Markdown.md
@@ -79,9 +79,12 @@
 ```
 
 -----
-## 文字排版
+## 排版
 - markdown兼容html
 - <center>文字居中</center>
+- 图像居中显示
+  <div align=center><img src="http:cdn.ayusummer233.top/img/20210514111630.png" width="  "></div>
+
 
 ----
 ## 字体格式
