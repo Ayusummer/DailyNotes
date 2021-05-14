@@ -54,4 +54,3 @@ def OCR_to_Excel_aliyunAPI(img_path):
         print(e)
 
 
-OCR_to_Excel_aliyunAPI(path_image)
