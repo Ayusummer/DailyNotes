@@ -367,6 +367,55 @@ print(h.heap())
   - 当前程序根目录右键->“Mark Directory as”->“Sources Root”
 
 
+-----
+# `code2flow` ---- 根据 python 代码生成流程图
+- [code2flow 仓库](https://github.com/scottrogowski/code2flow)
+
+---
+## 概述(摘自项目README)
+Code2flow generates [call graphs](https://en.wikipedia.org/wiki/Call_graph) for dynamic programming language. Currently, code2flow supports Python and Javascript.
+
+The basic algorithm is simple:
+
+1. Find function definitions in your project's source code.
+2. Determine where those functions are called.
+3. Connect the dots. 
+
+Code2flow is useful for:
+- Untangling spaghetti code.
+- Identifying orphaned functions.
+- Getting new developers up to speed.
+
+
+---
+## 安装
+- `clone` [code2flow 仓库](https://github.com/scottrogowski/code2flow) 或者 `download Zip` 或者在[此处](https://ayusummer-my.sharepoint.com/:u:/g/personal/233_ayusummer_onmicrosoft_com/EXHs_Hyw3vBNoUs_PsAzebgBfFa00F5uVD8my_3JzA7uXg?e=rApDfa)获取我下好的仓库压缩包 (`2021.5.22`) 并解压
+- 在[此处](https://graphviz.org/download/)选择系统相应版本的软件进行下载;或者在[此处](https://ayusummer-my.sharepoint.com/:u:/g/personal/233_ayusummer_onmicrosoft_com/EfQ51KEi5_5DglXJeA3Ann0BVL4gOMQh06OD0r3Uyg3zLA?e=ZkaLYU)获取我下好的版本 (`Windows 10 (64-bit) v-2.47.1`); 下载完后运行并安装此软件(安装过程中记得勾选添加环境变量)
+- 选择一个自己趁手的 `python 环境管理工具`(这里我用的 `anaconda`) 在一个 `python 环境` 下打开命令行(我直接用的 Pycharm 打开项目 然后选择一个 conda 环境作为项目的python解释器之后在Pycharm的终端命令行中执行的)  
+  - 在项目根目录执行  
+    ```
+    python setup.py install
+    ```
+    ![20210522162039](http:cdn.ayusummer233.top/img/20210522162039.png)
+  - 成功安装后在当前 python 环境的根目录下的 `Scripts` 目录下可以看到一个 `code2flow` 文件  
+    ![20210522162413](http:cdn.ayusummer233.top/img/20210522162413.png)
+
+----
+## 使用
+- 不支持中文,注释也不行,因此第一步就是要给待会要作为基底生成流程图的python文件去中文注释
+- 由于 `VSCode` 的查询功能有正则匹配的模式,所以想到使用 `VSCode` 直接去除整个文档的注释
+  - 记得备份原文档(直接使用拷贝文档就是了)
+  - (`^#.*` 匹配以#开头后接任意个任意字符的语句来去掉注释行)[PS : `.` 不会匹配 `\n` (换行)] 匹配行首注释
+  - `#.*` 匹配行尾注释
+  ![20210522163436](http:cdn.ayusummer233.top/img/20210522163436.png)
+- 将去除注释的文件和 安装过程中最后指出的 `Scripts` 目录下的 `code2flow` 文件拷贝到同一文件目录下并用已经安装好 `code2flow` 的 `python环境` 打开该文件夹并打开命令行执行
+  ```
+  python code2flow mypythonfile.py
+  ```
+  ![20210522164300](http:cdn.ayusummer233.top/img/20210522164300.png)
+  ![20210522164321](http:cdn.ayusummer233.top/img/20210522164321.png)
+
+
 --- 
 # 基础杂项
 ## 深浅拷贝
