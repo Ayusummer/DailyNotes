@@ -368,7 +368,7 @@ print(h.heap())
 
 
 -----
-# `code2flow` ---- 根据 python 代码生成流程图
+# `code2flow` ---- 根据 python 代码生成项目结构及函数调用图
 - [code2flow 仓库](https://github.com/scottrogowski/code2flow)
 
 ---
