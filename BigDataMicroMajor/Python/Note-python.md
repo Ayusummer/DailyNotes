@@ -3930,6 +3930,11 @@ print(stu)
 ---
 # turtle
 
+----
+## 画圆
+- 画圆之前要搞清楚海龟的朝向,画圆时圆心在海龟正左方距离为 radius 处
+
+
 ---
 ## turtle.speed(speed=None)
 - `speed` : 一个 [0,10] 范围内的整型数或速度字符串
@@ -3968,6 +3973,9 @@ print(stu)
 
 
 ----
+
+
+
 # json
 - [参考链接@CSDN:滴滴滴'cv](https://blog.csdn.net/weixin_38842821/article/details/108359551)
 
