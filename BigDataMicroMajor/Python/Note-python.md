@@ -2031,7 +2031,7 @@ a.H 返回自身的共轭转置
 
 ---
 - 某工厂生产三种产品,费用支出见表1,生产量见表2
-![](../../res/img/BigDataMicroMajor/Python/矩阵相乘实例分析表1.png)  
+![](https://codimd.s3.shivering-isles.com/demo/uploads/upload_e2ceb36eb9f9f825c773f116563541fb.png)  
 
   [表1备用链接](https://codimd.s3.shivering-isles.com/demo/uploads/upload_e2ceb36eb9f9f825c773f116563541fb.png)
 
