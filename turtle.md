@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-05-23 13:43:44
- * @LastEditTime: 2021-05-23 13:58:12
+ * @LastEditTime: 2021-05-29 10:51:51
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \DailyNotes\turtle.md
@@ -83,5 +83,13 @@
 
 
 ----
-
-
+## 颜色填充
+- 绘制图形前调用
+  ```python
+  turtle.begin_fill()
+  ```
+- 绘图结束后调用
+  ```python
+  turtle.end_fill()
+  ```
+- 即可在绘制的图形中填充绘制时的画笔颜色
