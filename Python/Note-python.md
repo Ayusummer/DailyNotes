@@ -86,7 +86,7 @@ print(h.heap())
 - 使用
   ```python
   import memory_profiler
-
+  
   @memory_profiler.profile
   def 函数名():
     你要测试内存占用的代码
@@ -122,7 +122,7 @@ print(h.heap())
   - `Anaconda`的`Environments`界面用`Terminal`打开默认的Python环境(也即默认安装的JupyterLab的依赖环境)
     ![](../../res/img/BigDataMicroMajor/Python/JupyterLab-打开依赖环境.png) 
   - 安装`zmq`
-    ```
+  ```
     pip install -i https://mirrors.aliyun.com/pypi/simple/ zmq
     ``` 
   - 生成配置文件
@@ -366,6 +366,9 @@ print(h.heap())
      -  勾选"Add source roots to PYTHONPAT"
   - 当前程序根目录右键->“Mark Directory as”->“Sources Root”
 
+----
+## PEP8 代码规范检查
+- [Python PEP8 代码规范常见问题及解决方法](https://blog.csdn.net/qq_36759224/article/details/89304878)
 
 -----
 # `code2flow` ---- 根据 python 代码生成项目结构及函数调用图
@@ -416,7 +419,7 @@ Code2flow is useful for:
   ![20210522164321](http:cdn.ayusummer233.top/img/20210522164321.png)
 
 
---- 
+---
 # 基础杂项
 ## 深浅拷贝
 - [该部分来源](https://www.runoob.com/w3cnote/python-understanding-dict-copy-shallow-or-deep.html)
@@ -486,9 +489,9 @@ Code2flow is useful for:
 - %p 指针(用十六进制打印值的内存地址)
 - %n 存储输出字符的数量放进参数列表的下一个变量中
 #### %格式化符也可用于字典，可用%(name)引用字典中的元素进行格式化输出。
-   
+
 - 负号指时数字应该是左对齐的，“0”告诉Python用前导0填充数字，正号指时数字总是显示它的正负(+，-)符号，即使数字是正数也不例外。
-        
+  
 - 可指定最小的字段宽度，如："%5d" % 2。
 - 也可用句点符指定附加的精度，如："%.3d" % 3。
 ```python
@@ -946,7 +949,15 @@ filter(function, iterable)
 ---
 ## str 
 字符串
-### replace()
+
+---
+### 修饰符
+- [python中 r'', b'', u'', f'' 的含义](https://blog.csdn.net/qq_35290785/article/details/90634344)
+
+- 使用 f 修饰符可以在字符串内支持大括号内的 python 表达式
+
+----
+
 Python replace() 方法把字符串中的 old（旧字符串） 替换成 new(新字符串)，如果指定第三个参数max，则替换不超过 max 次。
 #### 用法
 ```python
@@ -1017,7 +1028,6 @@ str.strip([chars]);
 ```
 - chars -- 移除字符串头尾指定的字符序列。
 - 返回移除字符串头尾指定的字符生成的新字符串。
-  
 ```python
 # 用法
 str_t = "00000003210Runoob01230000000"
@@ -1433,10 +1443,10 @@ Wed
     except ExceptionName2:
 	    异常处理代码2
     ……
-
+    
     ```
 
----- 
+----
 #### try语句
 - 指定捕获异常的范围，由try所限定的代码块中的语句在执行过程中，可能会生成异常对象并抛出。
 
@@ -1454,7 +1464,7 @@ Wed
         print("异常信息：除数不能为0")
     except ValueError:
         print("异常信息：输入数据必须是阿拉伯数字")
-
+  
   # 运行结果:
   请输入数据0
   异常信息：除数不能为0
@@ -1563,19 +1573,19 @@ finally:
       a = np.array([(1, 2), (3.4, 5)]) 
       print(a) 
       print(a.ndim)
-
+      
       # 运行结果
       [[1.  2. ]
       [3.4 5. ]]
       2
-      ``` 
+      ```
 - 习惯上我们会将numpy重命名为np并进行使用。
   - 创建二维数组就使用Python中“列表的列表”这种结构，
   - 如果创建三维数组就是使用“列表中的列表中的列表”的结构。
   - 有时为了方便，我们也会使 用一些手段快速创建数组，可参考下面的代码：
     ```python
     import numpy as np
-
+    
     a = np.arange(15).reshape(3, 5)
     b = np.arange(1, 30, 5)
     c = np.arange(0, 1, 0.2)
@@ -1597,7 +1607,7 @@ finally:
     e =  [[0.89648206 0.56055272]
     [0.65490962 0.13706445]
     [0.54199453 0.8091704 ]]
-    ``` 
+    ```
     - 使用np.arange()的方式与Python的range()类似，
       - 会生成一个ndarray类型的数组，
         - 只不过ndarray类型的reshape()方法会将原始的一维数组改变为一个二维数组，
@@ -1732,7 +1742,7 @@ plt.show()
 - 在了解了如何使用Numpy创建数组之后，再来看看如何查看数组的各项属性，参考下面的代码
   ```Python
   import numpy as np
-
+  
   a = np.arange(15).reshape(3, 5)
   print('a ', '=', a)
   print('a.ndim ', '=', a.ndim)
@@ -1741,7 +1751,7 @@ plt.show()
   print('a.itemsize ', '=', a.itemsize)
   print('a.size ', '=', a.size)
   print('type(a) ', '=', type(a))
-
+  
   # 运行结果
   a  = [[ 0  1  2  3  4]
         [ 5  6  7  8  9]
@@ -1762,9 +1772,9 @@ plt.show()
     - 不仅如此，当数组非常大以至于不能够完整地显示出来的时候，numpy还会缩略打印结果，可参考 如下代码：
       ```Python
       import numpy as np
-
+      
       print(np.arange(10000).reshape(100, 100))
-
+      
       # 运行结果
       [[   0    1    2 ...   97   98   99]
       [ 100  101  102 ...  197  198  199]
@@ -1779,14 +1789,14 @@ plt.show()
 - Numpy还可以快速地创建一些特定的数组，参考下面的代码：
   ```Python
   import numpy as np
-
+  
   a = np.zeros((3, 4))
   b = np.ones((2, 3, 4), dtype=np.int64)
   c = np.empty((4, 5))
   print('zeros\n', a)
   print('ones \n', b)
   print('empty\n', c)
-
+  
   # 运行结果
   zeros
   [[0. 0. 0. 0.]
@@ -1796,7 +1806,7 @@ plt.show()
   [[[1 1 1 1]
     [1 1 1 1]
     [1 1 1 1]]
-
+  
     [[1 1 1 1]
     [1 1 1 1]
     [1 1 1 1]]]
@@ -2002,13 +2012,13 @@ a.H 返回自身的共轭转置
 
     ```python
     import numpy as np
-
+    
     A = np.mat([(1, 2, -1), (3, 1, 0), (-1, 0, -2)])
     C = np.mat([[1, 2], [3, 4], [5, 6]])
     D = np.mat([[11, 22, 33], [44, 55, 66], [77, 88, 99]])
     print("A×3:\n{0}".format(A*3))
     print("A+D:\n{0}\nA*C:\n{1}\n".format(A+D, A*C))
-
+    
     # 运行结果
     A×3:
     [[ 3  6 -3]
@@ -2022,7 +2032,7 @@ a.H 返回自身的共轭转置
     [[  2   4]
     [  6  10]
     [-11 -14]]
-
+    
     ```
 
 ---
@@ -2031,7 +2041,7 @@ a.H 返回自身的共轭转置
 
 ---
 - 某工厂生产三种产品,费用支出见表1,生产量见表2
-![](https://codimd.s3.shivering-isles.com/demo/uploads/upload_e2ceb36eb9f9f825c773f116563541fb.png)  
+  ![](https://codimd.s3.shivering-isles.com/demo/uploads/upload_e2ceb36eb9f9f825c773f116563541fb.png)  
 
   [表1备用链接](https://codimd.s3.shivering-isles.com/demo/uploads/upload_e2ceb36eb9f9f825c773f116563541fb.png)
 
@@ -2095,7 +2105,7 @@ print("四个季度每类成本的总数量为:\n{0}".format(MN.sum(axis=1)))
 [矩阵乘法示意备用链接](https://codimd.s3.shivering-isles.com/demo/uploads/upload_6c85db63360e553a9c0941e471b8d768.png)
 
 - 求解线性方程组
-![](../../res/img/BigDataMicroMajor/Python/线性方程组.png)
+  ![](../../res/img/BigDataMicroMajor/Python/线性方程组.png)
 
   [线性方程组备用链接](https://codimd.s3.shivering-isles.com/demo/uploads/upload_152824e62907db7878dcc4f1454c01be.png)
   - 可以写成矩阵相乘的形式:
@@ -2117,7 +2127,7 @@ print("四个季度每类成本的总数量为:\n{0}".format(MN.sum(axis=1)))
     - [求矩阵的逆矩阵](https://numpy.org/devdocs/reference/generated/numpy.linalg.inv.html#numpy.linalg.inv)
       - ```python
         linalg.inv(a)
-        ``` 
+        ```
     - [矩阵的特征值](https://www.numpy.org.cn/reference/routines/linalg.html#%E7%9F%A9%E9%98%B5%E7%89%B9%E5%BE%81%E5%80%BC)
     - [解线性方程组](https://www.numpy.org.cn/reference/routines/linalg.html#%E8%A7%A3%E6%96%B9%E7%A8%8B%E5%92%8C%E9%80%86%E7%9F%A9%E9%98%B5)
     - 求行列式等
@@ -2164,7 +2174,6 @@ a与其逆矩阵的乘积为:
 某地区居民连续几年的年底储蓄总金额如表所示:
 - (1)计算y关于t的回归方程$\hat{y} = kt + b$的斜率与截距
 - (2)用所求的回归方程预测该地区第6年的年底储蓄总金额
-  
 | 年份 | 2015 | 2016 | 2017 | 2018 | 2019 | 2020 |
 | - | - | - | - | - | - | - |
 | 第t年 | 1 | 2 | 3 | 4 | 5 | 6 |
@@ -2461,7 +2470,7 @@ plt.show()
 
 ```
 - 运行结果
-![](../../res/img/BigDataMicroMajor/Python/新建画布.png)
+  ![](../../res/img/BigDataMicroMajor/Python/新建画布.png)
 
   [新建画布备用链接](https://codimd.s3.shivering-isles.com/demo/uploads/upload_dcc66c8cc53de5a90af45842a9ac6f6c.png)
 
@@ -2593,12 +2602,12 @@ plt.show()
 - 配置rc参数 
     ```python
     rcParams['axes.unicode_minus']=False #修改y轴的名称（标题）
-    ```  
+    ```
 
   ```python 
   import matplotlib.pyplot as plt
   import numpy as np
-
+  
   plt.rcParams['font.family'] = ['simhei']
   plt.rcParams['axes.unicode_minus'] = False
   a1 = np.linspace(0, 2 * np.pi)
@@ -2613,7 +2622,7 @@ plt.show()
             )
   plt.plot(a1, b1)  # 画折线图
   plt.show()
-
+  
   ```
   - 运行结果
     ![sin(x)纵坐标旋转](../../res/img/BigDataMicroMajor/Python/sin(x)纵坐标旋转.png) 
@@ -2790,8 +2799,8 @@ plt.show()
 - 已知某商场2019年每个月份的营业额如下所示。绘制折线图对该烧烤店全年营业额进行可视化。 
 
 | 月份 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 |
-| - |- |- |- |- |- |- |- |- |- |- |- |- |- | 
-| 营业额（万元）  | 5.2 | 4 | 3.7 | 5.2 | 4.9 | 3.6 | 5.8 | 3.8 | 6.7 | 6.1 | 4.5 | 5.7 | 
+| - |- |- |- |- |- |- |- |- |- |- |- |- |- |
+| 营业额（万元）  | 5.2 | 4 | 3.7 | 5.2 | 4.9 | 3.6 | 5.8 | 3.8 | 6.7 | 6.1 | 4.5 | 5.7 |
 
 
 ```python 
@@ -3882,7 +3891,7 @@ print(stu)
 王工   97    67  56
 才一   56    73  78
 于旧   92    75  34
-``` 
+```
 
 ---
 #### 导入`xlsx`
@@ -3949,7 +3958,7 @@ print(stu)
 - `radius` : 一个数值
 - `extent` : 一个数值 (或 None)
 - `steps` : 一个整型数 (或 None)
-    
+  
     ---
 - 绘制一个 radius 指定半径的圆。圆心在海龟左边 radius 个单位；extent 为一个夹角，用来决定绘制圆的一部分。如未指定 extent*则绘制整个圆。如果 *extent 不是完整圆周，则以当前画笔位置为一个端点绘制圆弧。如果 radius 为正值则朝逆时针方向绘制圆弧，否则朝顺时针方向。最终海龟的朝向会依据 extent 的值而改变。
 - 圆实际是以其内切正多边形来近似表示的，其边的数量由 steps 指定。如果未指定边数则会自动确定。此方法也可用来绘制正多边形。
@@ -3985,7 +3994,7 @@ print(stu)
 | json.dumps() | 将python对象编码成Json字符串 |
 | json.loads() | 将Json字符串解码成python对象 |
 | json.dump() |  将python中的对象转化成json储存到文件中 |
-| json.load() | 将文件中的json的格式转化成python对象提取出来 | 
+| json.load() | 将文件中的json的格式转化成python对象提取出来 |
 
 ---
 ## dumps
@@ -4035,8 +4044,8 @@ print(stu)
   - 个人使用清华的源安装 `TensorFlow` 时经常超时,可以使用阿里的源
   ```
   pip install TensorFlow --user --no-warn-script-location -i https://mirrors.aliyun.com/pypi/simple/
-  ``` 
-    ---
+  ```
+  ---
 - `TensorFlow` 与 `keras` 以及 `python` 版本要相匹配
   - [表格参考](https://docs.floydhub.com/guides/environments/)
   - 最新版本的 `TensorFlow2.2.0` 适配 `keras2.3.1` + `python3.7.` 
@@ -4082,3 +4091,4 @@ pip install matplotlib -i https://mirrors.aliyun.com/pypi/simple/
 pip install Pillow -i https://mirrors.aliyun.com/pypi/simple/
 
 ```
+
