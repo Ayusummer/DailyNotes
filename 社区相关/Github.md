@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-01-21 23:01:29
- * @LastEditTime: 2021-02-27 16:23:42
+ * @LastEditTime: 2021-06-14 07:25:40
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \DailyNotes\社区相关\Github.md
@@ -70,7 +70,9 @@
   查询到的域名 github.com
   ```
 
-
+---
+## Branch
+- 多分支适用于开发环境, 签出多个分支以同时推进多个任务, 提高开发效率
 
 
 
