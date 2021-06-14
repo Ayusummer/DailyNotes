@@ -29,6 +29,7 @@ DailyLife/picOCR_toExcel/__pycache__
 社区相关/LeetCode/globalTest.py
 爬虫/GlobalTest.py
 DailyLife/GlobalTest.py
+Python/GlobalTest.py
 
 # 用于对比版本更新的markdown文件
 TMP.MD
@@ -46,7 +47,3 @@ BigDataMicroMajor/Python/DailyHomework/Lesson12_Matplotlib/res
 BigDataMicroMajor/Python/DailyHomework/Lesson13_Matplotlib_visible/output
 BigDataMicroMajor/Python/res
 BigDataMicroMajor/Python/TestOnClass/res
-
-
-
-
