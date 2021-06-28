@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-01-22 00:43:47
- * @LastEditTime: 2021-06-14 07:57:47
+ * @LastEditTime: 2021-06-28 10:23:25
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \DailyNotes\Markdown.md
@@ -65,7 +65,7 @@
         ./ 当前目录
         ../ 上1层目录
         ../../ 上2层目录
-        ``` 
+        ```
         - 以当前文件为例`./`表示本仓库的根目录,如图
           ![](./res_-daily-notes/img/README/本仓库的根目录.png)
     - 网络绝对地址
@@ -96,7 +96,8 @@
 - markdown兼容html
 - <center>文字居中</center>
 - 图像居中显示
-  <div align=center><img src="http:cdn.ayusummer233.top/img/20210514111630.png" width="  "></div>
+  
+  <div align=center><img src="http://cdn.ayusummer233.top/img/20210514111630.png" width="  "></div>
 
 
 ----
@@ -107,7 +108,7 @@
 
 
 ---
-# 字体大小
+## 字体大小
 - 使用html标签解决
   - ```html
     <font size = 5>示例</font>
@@ -115,11 +116,19 @@
     - 预览
       - <font size = 5>示例</font>
 
+----
+## 公式
+
+---
+### 公式内部打空格
+- [怎么在LaTeX,Markdown和知乎上写数学公式时打出空格 - 知乎 (zhihu.com)
+- [![img](http://cdn.ayusummer233.top/img/20210628102451.jpeg)](https://zhuanlan.zhihu.com/p/265517357)
+
+
 ---
 # something interesting
 
 ## 徽章
 - [repo链接](https://github.com/RimoChan/unv-shield)   
 - ![](https://unv-shield.librian.net/api/unv_shield?code=1&url=https://avatars.githubusercontent.com/u/59549826&scale=2&txt=好!&border=4&barradius=999)
-
 
