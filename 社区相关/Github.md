@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-01-21 23:01:29
- * @LastEditTime: 2021-06-14 07:25:40
+ * @LastEditTime: 2021-06-28 11:19:07
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \DailyNotes\社区相关\Github.md
@@ -23,7 +23,7 @@
     # GitHub Start(更新于2021.1.22) 
     140.82.113.3      github.com
     140.82.114.20     gist.github.com
-
+  
     199.232.96.133    assets-cdn.github.com
     199.232.96.133    raw.githubusercontent.com
     199.232.96.133    gist.githubusercontent.com
@@ -49,7 +49,7 @@
     199.232.68.133     avatars7.githubusercontent.com
     199.232.96.133    avatars8.githubusercontent.com
     199.232.68.133     avatars8.githubusercontent.com
-
+  
     # GitHub End
     ```
   > 如若你得到的ip并非`199.232.96.133`则只需把上面代码中的`199.232.96.133`利用查找替换替换为你得到的ip即可(当再次无法看到头像时可以试着重查一次ip然后替换掉原ip)
@@ -102,6 +102,20 @@
   ```
   git config --global --edit user.name '用户名'
   ```
+
+----
+# Commit
+- 提交代码
+
+---
+## 规范
+
+[UvDream/git-commit-lint-vscode: vscode一款git 规范化提交插件 (github.com)](https://github.com/UvDream/git-commit-lint-vscode)
+
+参照 `Angular` 社区的提交规范并结合 emoji, 上面参考链接里这位老哥开发了一款 `VSCode` git 规范化提交插件 `git-commit-lint-vscode`, 提交的时候可视化选择类型然后再手打详细信息
+
+![image-20210628112317321](http://cdn.ayusummer233.top/img/20210628112317.png)
+
 
 ----
 # Issues
