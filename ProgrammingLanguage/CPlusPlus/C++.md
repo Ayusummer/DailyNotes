@@ -1,11 +1,28 @@
 <!--
  * @Author: 咸鱼型233
  * @Date: 2021-06-28 18:38:31
- * @LastEditTime: 2021-06-28 18:39:16
+ * @LastEditTime: 2021-06-30 20:24:50
  * @LastEditors: Please set LastEditors
  * @Description: C++ 学习随笔
  * @FilePath: \DailyNotes\ProgrammingLanguage\CPlusPlus\C++.md
 -->
+# 目录
+- [目录](#目录)
+- [VisualStudio2019 相关](#visualstudio2019-相关)
+  - [为什么VS中会建议宏转换为constexpr？](#为什么vs中会建议宏转换为constexpr)
+    - [constexpr](#constexpr)
+      - [应该使用 constexpr 的场景](#应该使用-constexpr-的场景)
+      - [不应该使用 constexpr 的场景](#不应该使用-constexpr-的场景)
+    - [auto](#auto)
+  - [C4996](#c4996)
+    - [strcpy_s](#strcpy_s)
+- [实用工具](#实用工具)
+  - [快捷生成函数调用关系图](#快捷生成函数调用关系图)
+    - [callgraph](#callgraph)
+      - [Ubuntu](#ubuntu)
+    - [tceetree + cscope + Graphviz](#tceetree--cscope--graphviz)
+    - [VisualStudio Code Graph 扩展](#visualstudio-code-graph-扩展)
+    - [CppDepend](#cppdepend)
 
 # VisualStudio2019 相关
 
@@ -531,7 +548,7 @@
 
 - 个人使用体验确实不错, 只可惜 FreeTrial 只有 14 天试用, 个人付费又不是很合算, 中文互联网上相关信息又比较少, 不过这基本上算是给了我一个思路->代码分析工具, 那么就可以找寻相应国产或者中文互联网主流的代码分析工具试着看看有没有类似的功能可以为我所用
 
-
+> 检索能力有限, 最终还是决定先用着 CppDepend, 它确实很对我胃口🤣
 
 -----
 
