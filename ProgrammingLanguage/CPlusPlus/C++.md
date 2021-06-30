@@ -488,5 +488,54 @@
 
       
 
+-----
+
+### tceetree + cscope + Graphviz
+
+- 远古命令行操作, 貌似很旧了, 个人复现完成了但是没有完全完成, 所以只附个索引在这里(主要还是操作繁琐而且基本都是命令行操作, 我认为应该存在更有效的替代方式)
+- [官网Wiki: tceetree / Wiki / Home (sourceforge.net)](https://sourceforge.net/p/tceetree/wiki/Home/)
+
+> cscope 的 win 版本需要访问 Google Code
+
+
+
+-----
+
+### VisualStudio Code Graph 扩展
+
+直接在 VS 扩展管理中搜索安装即可
+
+![image-20210630163504231](http://cdn.ayusummer233.top/img/20210630163511.png)
+
+貌似不错的样子, 但是结点要自行拉取, 所以我也只是浅尝辄止
+
+![image-20210630163553198](http://cdn.ayusummer233.top/img/20210630163553.png)
+
+[官方教程: Code Graph - Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=YaobinOuyang.CodeAtlas)
+
+
+
+----
+
+### CppDepend
+
+- 安装按成后才发现是一款代码分析软件, 还挺新的, 有 [2021 的 FreeTrial 版本](https://www.cppdepend.com/thank-you-for-downloading-cppdepend?os=win_exe&email=1369661643@qq.com)
+
+> 安装过程需要从国际互联网拉取更新
+
+![image-20210630164031212](http://cdn.ayusummer233.top/img/20210630164031.png)
+
+![image-20210630164107941](http://cdn.ayusummer233.top/img/20210630164108.png)
+
+![image-20210630164122764](http://cdn.ayusummer233.top/img/20210630164122.png)
+
+- 个人使用体验确实不错, 只可惜 FreeTrial 只有 14 天试用, 个人付费又不是很合算, 中文互联网上相关信息又比较少, 不过这基本上算是给了我一个思路->代码分析工具, 那么就可以找寻相应国产或者中文互联网主流的代码分析工具试着看看有没有类似的功能可以为我所用
+
+
+
+-----
+
+
+
 
 
