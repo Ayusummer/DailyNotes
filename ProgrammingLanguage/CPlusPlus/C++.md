@@ -682,9 +682,125 @@ json 文件内容如下:
 
 > 检索能力有限, 最终还是决定先用着 CppDepend, 它确实很对我胃口🤣
 
------
+---
+
+# 数据结构
+
+---
+
+## 结构体
+
+---
+
+### 初始化
+
+[c++结构体几种初始化方法_skywf的博客-CSDN博客_c++ 结构体初始化](https://blog.csdn.net/weixin_43914889/article/details/107869575)
+
+---
+
+#### 构造函数使用 `:` 快捷赋值
+
+`结构体名（形参）： 成员变量1（形参1），成员变量2（形参2）{}；`
+
+```C++
+#include <iostream>
+using namespace std;
+
+struct test_struct{
+    int a;
+    char b;
+    test_struct(int a=0, char b='b'): a(a), b(b){}
+};
+
+int main(){
+    test_struct tmp1;
+    test_struct tmp2(3,'a');
+    cout<<tmp1.a<<" "<<tmp1.b<<endl;
+    cout<<tmp2.a<<" "<<tmp2.b<<endl;
+    return 0;
+}
+```
 
 
 
+![image-20210701221440259](http://cdn.ayusummer233.top/img/20210701221440.png)
 
+---
+
+#### 实例化时使用 {} 赋值初始化
+
+```C++
+#include <iostream>
+using namespace std;
+
+struct test_struct{
+    int a;
+    char b;
+};
+
+int main(){
+    test_struct tmp3 = {4, 'd'};
+    cout<<tmp3.a<<" "<<tmp3.b<<endl;
+    return 0;
+}
+```
+
+
+
+![image-20210701221836704](http://cdn.ayusummer233.top/img/20210701221836.png)
+
+---
+
+#### 老老实实写构造函数初始化
+
+```C++
+#include <iostream>
+using namespace std;
+
+struct test_struct{
+    int a;
+    char b;
+    test_struct(int a, char b){
+        this->a = a;
+        this->b = b;
+    }
+};
+
+int main(){
+    test_struct tmp4(5,'a');
+    test_struct tmp5 = {6, 'e'};
+    cout<<tmp4.a<<" "<<tmp4.b<<endl;
+    cout<<tmp5.a<<" "<<tmp5.b<<endl;
+    return 0;
+}
+```
+
+![image-20210701222356252](http://cdn.ayusummer233.top/img/20210701222356.png)
+
+----
+
+#### 支持将定义结构体和实例化结构体写在一起
+
+```C++
+#include <iostream>
+using namespace std;
+
+struct test_struct{
+    int a;
+    char b;
+    test_struct(int a, char b){
+        this->a = a;
+        this->b = b;
+    }
+}tmp6 = {7, 'k'};
+
+int main(){
+    cout<<tmp6.a<<" "<<tmp6.b<<endl;
+    return 0;
+}
+```
+
+![image-20210701224738657](http://cdn.ayusummer233.top/img/20210701224738.png)
+
+----
 
