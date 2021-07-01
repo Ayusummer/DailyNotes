@@ -1,7 +1,7 @@
 <!--
  * @Author: 咸鱼型233
  * @Date: 2021-06-28 18:38:31
- * @LastEditTime: 2021-06-30 20:24:50
+ * @LastEditTime: 2021-07-01 21:56:16
  * @LastEditors: Please set LastEditors
  * @Description: C++ 学习随笔
  * @FilePath: \DailyNotes\ProgrammingLanguage\CPlusPlus\C++.md
@@ -16,6 +16,9 @@
     - [auto](#auto)
   - [C4996](#c4996)
     - [strcpy_s](#strcpy_s)
+  - [#pragma once](#pragma-once)
+- [VSCode](#vscode)
+  - [在 VSCode 中使用 VS 的 cl.exe 来调试 C++](#在-vscode-中使用-vs-的-clexe-来调试-c)
 - [实用工具](#实用工具)
   - [快捷生成函数调用关系图](#快捷生成函数调用关系图)
     - [callgraph](#callgraph)
@@ -24,6 +27,7 @@
     - [VisualStudio Code Graph 扩展](#visualstudio-code-graph-扩展)
     - [CppDepend](#cppdepend)
 
+----
 # VisualStudio2019 相关
 
 ---
@@ -98,6 +102,134 @@
 ### strcpy_s
 
 ` strcpy_s(str, strlen(str1)+1, str1);`
+
+
+
+---
+
+## #pragma once
+
+- [once pragma | Microsoft Docs](https://docs.microsoft.com/en-us/cpp/preprocessor/once?view=msvc-160)
+
+- 用 VS 新建 .h 头文件时会自动在首行生成一个 `#pragma once` 
+
+> pragma: 编译指示, 杂注
+
+- 使用 `#pragma once` 可以减少 `build` 次数, 因为编译器会在该文件第一次被 `#include` 时打开并读取该文件并且之后不再重读读取
+
+
+
+---
+
+# VSCode
+
+---
+
+## 在 VSCode 中使用 VS 的 cl.exe 来调试 C++
+
+[VS Code：使用VS的cl.exe编译运行C/C++程序_北冥有鱼wyh的博客-CSDN博客](https://blog.csdn.net/qq_34801642/article/details/105453161)
+
+[VS：在windows上调用cl.exe编译运行C/C++程序 - 简书 (jianshu.com)](https://www.jianshu.com/p/c313b1dd9cf3)
+
+---
+
+从 VS 的 `工具 -> 获取工具和功能` 唤醒 `Visual Studio Installer` 
+
+![image-20210701211753367](http://cdn.ayusummer233.top/img/20210701211800.png)
+
+查看自己的 VS 的安装目录
+
+![image-20210701211946680](http://cdn.ayusummer233.top/img/20210701211946.png)
+
+> 我这里的路径是: `C:\Program Files (x86)\Microsoft Visual Studio\2019\Community` 下面配置环境变量要用到
+
+打开 `此电脑 -> 属性 -> 高级系统设置 -> 环境变量` 并按照如下所示修改 `系统变量` 
+
+```
+// 编辑 Path 变量, 添加如下路径, 注意这里的 VS 目录就是上一步找到的目录
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30037\bin\Hostx86\x86
+
+// 新建 INCLUDE 变量并加入如下配置(每条配置间用;隔开)(其实输完第一条配置且加了;并回车确定后再编辑该环境变量就会有编辑弹窗可以一条条新建了); 需要留意的是如果你的 VS 是装在 C:\Program Files 里的那么这里的 Windows Kits 文件夹可能就在 C:\Program Files 目录中
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30037\include
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.17763.0\shared
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.17763.0\ucrt
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.17763.0\um
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.17763.0\winrt
+
+// 新建 LIB 变量并加入如下配置
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30037\lib\x86
+C:\Program Files (x86)\Windows Kits\10\Lib\10.0.17763.0\um\x86
+C:\Program Files (x86)\Windows Kits\10\Lib\10.0.17763.0\ucrt\x86
+```
+
+修改完这些变量后依次按确定关闭打开的窗口以保存修改
+
+`win + R -> cmd` 并回车打开命令行窗口, 输入 cl 并回车, 如下所示查看是否配置成功
+
+![image-20210701213410915](http://cdn.ayusummer233.top/img/20210701213411.png)
+
+重启 VSCode 以加载新的环境变量
+
+新建一个目录并使用 VSCode 打开(因为会在 VSCode 当前打开文件夹的根目录下自动生成配置文件, 所以这里先新建一个干净的目录再用 VSCode 打开以免污染外围环境)
+
+新建一个测试用的 cpp 文件如 test.cpp 并将编码调为 GBK (这个我没找到适配 UTF-8 的适配方案, 是一个从我用 VS 来就存在的严重问题.....)
+
+```C++
+#include <iostream>
+using namespace std;
+
+int main(){
+    cout << "这是一个测试" << endl;
+    return 0;
+}
+```
+
+![image-20210701214403048](http://cdn.ayusummer233.top/img/20210701214403.png)
+
+使用 `Ctrl + Shift + B` 快捷键会唤起该窗口, 选择该项则会在侧边生成编译链接文件
+
+![image-20210701214625695](http://cdn.ayusummer233.top/img/20210701214625.png)
+
+![image-20210701214703681](http://cdn.ayusummer233.top/img/20210701214703.png)
+
+使用 `F5` 快捷键唤起该窗口并选择 `C++ Windows -> cl.exe` 会在当前 VSCode 打开的文件夹的根目录下生成一个含有 `launch.json` 文件 的 `.vscode` 文件夹 
+
+![image-20210701214754797](http://cdn.ayusummer233.top/img/20210701214754.png)
+
+![image-20210701214828640](http://cdn.ayusummer233.top/img/20210701214828.png)
+
+![image-20210701215021311](http://cdn.ayusummer233.top/img/20210701215021.png)
+
+json 文件内容如下:
+
+```json
+{
+    // 使用 IntelliSense 了解相关属性。 
+    // 悬停以查看现有属性的描述。
+    // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "cl.exe - 生成和调试活动文件",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "program": "${fileDirname}\\${fileBasenameNoExtension}.exe",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${fileDirname}",
+            "environment": [],
+            "console": "externalTerminal",
+            "preLaunchTask": "C/C++: cl.exe 生成活动文件"
+        }
+    ]
+}
+```
+
+将标签页切换回 `test.cpp` 并再次按 `F5` 以执行生成的可执行文件
+
+![image-20210701215244986](http://cdn.ayusummer233.top/img/20210701215245.png)
+
+![image-20210701215303198](http://cdn.ayusummer233.top/img/20210701215303.png)
 
 
 
