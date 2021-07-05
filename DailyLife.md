@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-01-22 00:42:58
- * @LastEditTime: 2021-06-11 18:12:09
+ * @LastEditTime: 2021-07-05 20:21:08
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \DailyNotes\DailyLife.md
@@ -14,6 +14,20 @@
 - 复制`aria2`下载命令
 - 在本地你想下载到的位置，按住 `Shift` 右键点击空白处，选择在此打开命令行窗口(`Powershell`)
 - 将刚才复制的命令粘贴（鼠标右键点击即可，不要按 ctrl-V）;回车，然后等待下载完成
+
+---
+## 超星相关
+
+---
+### 没有下载选项的 PDF
+- [参考链接](https://www.zhihu.com/question/448827791/answer/1783365679)
+- `F12` 找到 `objectid` 然后替换下面的 `[objectid]` 并打开链接   
+  `https://mooc1-1.chaoxing.com/ananas/status/[objectid]?flag=normal`
+- 打开之后是个响应页, 找到 `pdf` 字样, 后面跟着的就是直链
+
+---
+- 或者使用[这个插件](https://chrome.google.com/webstore/detail/%E8%B6%85%E6%98%9F%E5%AD%A6%E4%B9%A0%E9%80%9A%E8%BE%85%E5%8A%A9%E6%8F%92%E4%BB%B6/kejppjboemkbampcomibgpenbmdpimol/related)
+- 
 
 # 搜题目解析
 - 油猴插件:`AC-baidu-重定向优化百度搜狗谷歌必应搜索`
