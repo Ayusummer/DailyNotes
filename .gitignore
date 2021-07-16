@@ -4,6 +4,7 @@ DailyLife/picOCR_toExcel/res
 
 # 临时工
 大三临时工.md
+DailyLife/picOCR_toExcel/test.xlsx
 
 # wiki文件
 DailyNotes.wiki
@@ -37,6 +38,7 @@ TMP.MD
 # 配置文件
 ## 阿里云表格OCR配置
 DailyLife/picOCR_toExcel/config.py
+.vscode
 
 
 # python练习题输出及资源文件
