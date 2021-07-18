@@ -1,3 +1,204 @@
+# 目录
+- [目录](#目录)
+- [前言](#前言)
+  - [实验环境](#实验环境)
+- [换源操作](#换源操作)
+  - [`Anaconda`换源](#anaconda换源)
+- [程序性能分析](#程序性能分析)
+  - [执行时间](#执行时间)
+    - [使用datetime判断](#使用datetime判断)
+  - [内存占用](#内存占用)
+    - [guppy3](#guppy3)
+    - [使用memory_profiler查看](#使用memory_profiler查看)
+- [JupyterLab](#jupyterlab)
+  - [简介](#简介)
+  - [使用](#使用)
+    - [深度拷贝需要引入 copy 模块：](#深度拷贝需要引入-copy-模块)
+    - [解析](#解析)
+  - [逻辑符号](#逻辑符号)
+  - [随手记](#随手记)
+  - [输出](#输出)
+  - [- print函数的参数end表示分隔参数(默认为回车)](#--print函数的参数end表示分隔参数默认为回车)
+    - [Python格式化输出 %s %d %f](#python格式化输出-s-d-f)
+      - [%格式化符也可用于字典，可用%(name)引用字典中的元素进行格式化输出。](#格式化符也可用于字典可用name引用字典中的元素进行格式化输出)
+      - [格式化操作符辅助指令](#格式化操作符辅助指令)
+      - [符号 作用](#符号-作用)
+  - [random](#random)
+    - [randint用于生成正数类型随机数](#randint用于生成正数类型随机数)
+  - [时间](#时间)
+    - [time.localtime()](#timelocaltime)
+- [函数](#函数)
+  - [返回函数参数表及参数数目](#返回函数参数表及参数数目)
+  - [lamda函数:定义匿名函数](#lamda函数定义匿名函数)
+  - [函数注释](#函数注释)
+  - [*args,**kwargs](#argskwargs)
+    - [*args的用法](#args的用法)
+    - [**kwargs的用法](#kwargs的用法)
+- [可迭代序列](#可迭代序列)
+  - [- 第5节课](#--第5节课)
+  - [切片操作](#切片操作)
+  - [ASCII码](#ascii码)
+    - [chr()函数](#chr函数)
+  - [List](#list)
+    - [index()](#index)
+      - [用法](#用法)
+    - [删除列表中某个元素的3种方法](#删除列表中某个元素的3种方法)
+  - [- remove、pop、del：](#--removepopdel)
+      - [1.remove](#1remove)
+      - [2.pop](#2pop)
+      - [3.del](#3del)
+      - [补充: 删除元素的变相方法](#补充-删除元素的变相方法)
+    - [sort()](#sort)
+      - [用法](#用法-1)
+    - [map()](#map)
+      - [用法](#用法-2)
+  - [- Python 3.x 返回迭代器。](#--python-3x-返回迭代器)
+      - [示例:](#示例)
+      - [注意点:map对象只能访问一次](#注意点map对象只能访问一次)
+      - [示例](#示例-1)
+      - [问题示例](#问题示例)
+    - [filter](#filter)
+  - [str](#str)
+    - [修饰符](#修饰符)
+      - [用法](#用法-3)
+    - [split()](#split)
+      - [用法](#用法-4)
+    - [join()](#join)
+      - [用法](#用法-5)
+    - [strip()](#strip)
+      - [用法](#用法-6)
+    - [lower()](#lower)
+      - [用法](#用法-7)
+    - [string 模块](#string-模块)
+  - [dict](#dict)
+    - [访问字典里的值](#访问字典里的值)
+      - [items](#items)
+    - [修改字典](#修改字典)
+    - [删除字典元素](#删除字典元素)
+    - [字典键的特性](#字典键的特性)
+- [文件操作](#文件操作)
+  - [- 了解扩展库python-docx、openpyxl、python-pptx对Office文档的操作](#--了解扩展库python-docxopenpyxlpython-pptx对office文档的操作)
+  - [文件与文件类型](#文件与文件类型)
+    - [csv文件](#csv文件)
+  - [字符编码](#字符编码)
+  - [文件操作基础](#文件操作基础)
+    - [内置函数open()](#内置函数open)
+    - [文件对象常用方法](#文件对象常用方法)
+    - [上下文管理语句with](#上下文管理语句with)
+  - [文件的打开或创建的访问模式](#文件的打开或创建的访问模式)
+  - [CSV文件](#csv文件-1)
+    - [csv库](#csv库)
+      - [向CSV文件中写入和读取数据](#向csv文件中写入和读取数据)
+- [异常处理](#异常处理)
+  - [异常的概念](#异常的概念)
+  - [示例](#示例-2)
+  - [异常类型](#异常类型)
+  - [异常处理机制](#异常处理机制)
+    - [try-except语句](#try-except语句)
+      - [try语句](#try语句)
+      - [except语句](#except语句)
+    - [else语句和finally语句](#else语句和finally语句)
+      - [else语句](#else语句)
+      - [finally语句](#finally语句)
+      - [示例](#示例-3)
+- [numpy](#numpy)
+  - [numpy基础](#numpy基础)
+    - [np.linspace](#nplinspace)
+      - [See Also](#see-also)
+      - [Examples](#examples)
+      - [参数](#参数)
+    - [查看数组各项属性](#查看数组各项属性)
+    - [创建特定数组](#创建特定数组)
+  - [矩阵(matrix)](#矩阵matrix)
+    - [转置矩阵](#转置矩阵)
+    - [生成矩阵](#生成矩阵)
+      - [matrix()](#matrix)
+      - [mat()](#mat)
+      - [bmat()](#bmat)
+    - [矩阵特有属性](#矩阵特有属性)
+    - [矩阵的运算](#矩阵的运算)
+      - [矩阵相乘实例分析](#矩阵相乘实例分析)
+      - [矩阵乘法及其应用](#矩阵乘法及其应用)
+  - [linalg线代模块](#linalg线代模块)
+    - [实例分析](#实例分析)
+  - [### 一元线性回归分析是最基本的回归模型](#-一元线性回归分析是最基本的回归模型)
+      - [概念](#概念)
+      - [分析](#分析)
+  - [numpy进行数据统计分析时常用的方法](#numpy进行数据统计分析时常用的方法)
+    - [去重](#去重)
+  - [numpy中的数据常用保存与读取方法](#numpy中的数据常用保存与读取方法)
+  - [# Matplotlib](#-matplotlib)
+  - [pyplot](#pyplot)
+    - [pyplot绘图的基本操作](#pyplot绘图的基本操作)
+      - [创建画布与创建子图](#创建画布与创建子图)
+      - [添加图的基本要素](#添加图的基本要素)
+      - [rcParams参数](#rcparams参数)
+      - [正常显示中文和负号](#正常显示中文和负号)
+        - [例子:绘制$sin(x)$](#例子绘制sinx)
+          - [1.使用字体管理器font_manager](#1使用字体管理器font_manager)
+          - [为不同标题(图、坐标轴)设置不同的字体，大小，采用字体管理器](#为不同标题图坐标轴设置不同的字体大小采用字体管理器)
+          - [显示图中的负号](#显示图中的负号)
+          - [绘制sin(x)，cos(x)](#绘制sinxcosx)
+        - [例题:烧烤店营业额折线图](#例题烧烤店营业额折线图)
+      - [legend.loc参数](#legendloc参数)
+      - [设置图例](#设置图例)
+        - [例1:给三角函数图加图例](#例1给三角函数图加图例)
+        - [给四个子图分别添加图例](#给四个子图分别添加图例)
+      - [保存与显示图](#保存与显示图)
+        - [保存：](#保存)
+          - [实例](#实例)
+        - [显示](#显示)
+      - [例1 商场优惠](#例1-商场优惠)
+        - [修改线的形状](#修改线的形状)
+    - [散点图实战](#散点图实战)
+      - [例1:折线图重绘为散点图](#例1折线图重绘为散点图)
+      - [例2:商场信号强度](#例2商场信号强度)
+      - [例3:商场优惠折线图散点图结合](#例3商场优惠折线图散点图结合)
+        - [标注数字](#标注数字)
+  - [Matplotlib数据可视化](#matplotlib数据可视化)
+    - [数据可视化的误区](#数据可视化的误区)
+    - [可视化方式](#可视化方式)
+      - [趋势](#趋势)
+        - [示例:商场部门业绩](#示例商场部门业绩)
+      - [对比](#对比)
+        - [示例:商场男女装销售对比](#示例商场男女装销售对比)
+          - [图形美化-"倒影"柱状图](#图形美化-倒影柱状图)
+          - [美化-并列柱状图](#美化-并列柱状图)
+          - [美化:添加注释文字](#美化添加注释文字)
+          - [转化:条形图:barh()](#转化条形图barh)
+      - [结构](#结构)
+        - [示例1:成绩分段](#示例1成绩分段)
+- [Pandas](#pandas)
+  - [Pandas数据分析](#pandas数据分析)
+  - [pandas数据结构](#pandas数据结构)
+    - [Series](#series)
+      - [常用创建方法](#常用创建方法)
+      - [常用运算](#常用运算)
+      - [values的访问与修改](#values的访问与修改)
+    - [DataFrame](#dataframe)
+  - [数据的导入与导出](#数据的导入与导出)
+    - [数据的导入参数](#数据的导入参数)
+      - [导入`xlsx`](#导入xlsx)
+    - [数据的导出参数](#数据的导出参数)
+- [turtle](#turtle)
+  - [重置](#重置)
+  - [画圆](#画圆)
+  - [turtle.speed(speed=None)](#turtlespeedspeednone)
+  - [turtle.circle(radius, extent=None, steps=None)](#turtlecircleradius-extentnone-stepsnone)
+  - [turtle.colormode(255)](#turtlecolormode255)
+  - [绘图完成后不自动退出](#绘图完成后不自动退出)
+  - [颜色填充](#颜色填充)
+- [json](#json)
+  - [dumps](#dumps)
+- [TensorFlow](#tensorflow)
+  - [安装](#安装)
+  - [安装报错记录](#安装报错记录)
+    - [`ModuleNotFoundError: No module named 'numpy.core._multiarray_umath'`](#modulenotfounderror-no-module-named-numpycore_multiarray_umath)
+    - [`ImportError: cannot import name '_ccallback_c'`](#importerror-cannot-import-name-_ccallback_c)
+    - [接收的某个项目的依赖安装记录](#接收的某个项目的依赖安装记录)
+
+
+---
 # 前言
 - 含有运行代码及结果的代码可复制粘贴在本文档同目录下的globalTest.py运行
 
@@ -3938,10 +4139,35 @@ print(stu)
 
 ---
 # turtle
+- 基本上都是照抄[官方文档](https://docs.python.org/zh-cn/3.9/library/turtle.html#module-turtle)的
+
+---
+## 重置
+- 观感上讲调用此函数之前的海龟绘图在调用该函数后都消失了(清屏)
+- `turtle.reset()`
+- `turtle.resetscreen()`
+- 重置屏幕上的所有海龟为其初始状态。
+> 注解 此 TurtleScreen 方法作为全局函数时只有一个名字 resetscreen。全局函数 reset 所对应的是 Turtle 方法 reset。
+
 
 ----
 ## 画圆
 - 画圆之前要搞清楚海龟的朝向,画圆时圆心在海龟正左方距离为 radius 处
+- `turtle.setheading(to_angle)`
+- `turtle.seth(to_angle)`
+- `to_angle` -- 一个数值 (整型或浮点型)
+- 设置海龟的朝向为 to_angle。以下是以角度表示的几个常用方向：
+![20210523134615](http:cdn.ayusummer233.top/img/20210523134615.png)
+
+```python
+>>> turtle.setheading(90)
+>>> turtle.heading()
+90.0
+```
+
+
+---
+
 
 
 ---
@@ -3952,6 +4178,13 @@ print(stu)
   - `normal`: 6 正常
   - `slow`: 3 慢
   - `slowest`: 1 最慢
+
+- 此外,隐藏海龟可以显著提升绘制速度
+    - `turtle.hideturtle()`
+    - `turtle.ht()`
+
+
+
 
 ---
 ## turtle.circle(radius, extent=None, steps=None)
@@ -3979,6 +4212,20 @@ print(stu)
   绘图完成后点一下绘图界面则绘图窗口关闭
 - 程序**结尾**加上:`turtle.done()` 或 `turtle.mainloop()`
   绘图结束,需手动关闭窗口
+
+
+----
+## 颜色填充
+- 绘制图形前调用
+  ```python
+  turtle.begin_fill()
+  ```
+- 绘图结束后调用
+  ```python
+  turtle.end_fill()
+  ```
+- 即可在绘制的图形中填充绘制时的画笔颜色
+
 
 
 ----
