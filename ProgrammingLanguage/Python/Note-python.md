@@ -2708,9 +2708,9 @@ plt.show()
 
 ```
 - 运行结果
-  ![](../../res/img/BigDataMicroMajor/Python/新建画布.png)
+  ![](https://codimd.s3.shivering-isles.com/demo/uploads/upload_dcc66c8cc53de5a90af45842a9ac6f6c.png)
 
-  [新建画布备用链接](https://codimd.s3.shivering-isles.com/demo/uploads/upload_dcc66c8cc53de5a90af45842a9ac6f6c.png)
+  
 
 
 ---
