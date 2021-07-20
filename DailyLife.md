@@ -113,6 +113,7 @@ asklib.com
 ---
 ### 续期
 - 理论上只需要调用Office365的API,可以部署OneIndex或者Cloudreve
+- 绑定 Github 账号并保持活跃
 
 ---
 #### OneIndex
@@ -153,6 +154,7 @@ asklib.com
 ---
 ## 微软商店中的iCloud
 - 有点糟心,Microsoft Store里下载的iCloud只能装在系统盘,并且没有找到有效的方法能够将其移到非系统盘
+> 后记: 建议放弃在非apple设备上使用iCloud
 
 ---
 # Microsoft
