@@ -76,6 +76,9 @@ asklib.com
 
 ---
 ## OneDrive
+- 多次同步,挂起,取消链接账户可能会导致 Explorer 左栏快捷访问中存在多个指向相同的 OneDrive 快捷访问  
+  [删除OneDrive for Bussiness导航栏快捷方式_根号负一的博客-CSDN博客](https://blog.csdn.net/u014389786/article/details/54095019)
+
 
 ---
 ## E5
@@ -154,7 +157,9 @@ asklib.com
 ---
 ## 微软商店中的iCloud
 - 有点糟心,Microsoft Store里下载的iCloud只能装在系统盘,并且没有找到有效的方法能够将其移到非系统盘
-> 后记: 建议放弃在非apple设备上使用iCloud
+> 后记: 建议放弃在非apple设备上使用iCloud  
+> 有一说一,真的烂(  
+> [删除win10 删除icloud后资源管理器icloud图标无法删除？ - 知乎 (zhihu.com)](https://www.zhihu.com/question/393865503/answer/1307730087)
 
 ---
 # Microsoft
