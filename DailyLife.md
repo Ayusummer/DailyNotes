@@ -27,7 +27,6 @@
 
 ---
 - 或者使用[这个插件](https://chrome.google.com/webstore/detail/%E8%B6%85%E6%98%9F%E5%AD%A6%E4%B9%A0%E9%80%9A%E8%BE%85%E5%8A%A9%E6%8F%92%E4%BB%B6/kejppjboemkbampcomibgpenbmdpimol/related)
-- 
 
 # 搜题目解析
 - 油猴插件:`AC-baidu-重定向优化百度搜狗谷歌必应搜索`
@@ -129,11 +128,12 @@ asklib.com
 ## 将云盘挂载到本地(RaiDrive)
 - 云盘支持
   - `Personal` : GoogleDrive, `OneDrive`, Dropbox, Box, MEGA, PCloud, YandexDisk, Mail.ru.Cloud, GooglePhotos
+    
     > 基本都要挂代理,OneDrive看个人情况,我这边是无法直连的
   - `Business` : Google Shared drives, `OneDrive`, `DropBox`, `SharePoint`
   - `Enterprise` : AWS S3, Azure Storage, Google Cloud Storage, Naver Object Storage, `Alibaba Object Storage`, Wasabi Object Storage, IBM Object Storage
   - `NAS` : `WebDAV`, `SFTP`, `FTP`, `Nextcloud`, `Synology(群晖)`, `ASUSTOR(华硕)`, `QNAP(威联通)`, ipTIME
-
+  
   ---
 - 效果:
   - ![20210404202719](http:cdn.ayusummer233.top/img/20210404202719.png)
@@ -142,13 +142,13 @@ asklib.com
 > 如果安装的时候出现问题可以选择忽略,这样依然装好了,运行桌面上的快捷方式,在设置里面检查更新到最新版本安装的时候基本不会报错
 > 也可以直接在[官网](https://www.raidrive.com/)下载(可能需要一些魔法)
 
-  ---
+---
 - 安装完后点击工具栏中的`添加`按钮进行添加,点击确定后会弹出登录界面,按照你要挂载云盘的账号登录并授权即可  
   ![20210405192941](http:cdn.ayusummer233.top/img/20210405192941.png)
 > 我这里用的是E5开发者订阅里的OneDrive Business,墙内是可以直连的,不用挂代理;
 
 
-  ---
+---
 > - 最初找这个只是为了能让[PotPlayer](https://ayusummer-my.sharepoint.com/:u:/g/personal/233_ayusummer_onmicrosoft_com/EdWtKYYX0yRMrz5J8JLHEhMBRUPM_9xJu00VVpxWUCc_Uw?e=i8cZt2)能更方便地访问云盘中的视频资源从而在本地倍速播放云端的视频;
 > ![20210405195251](http:cdn.ayusummer233.top/img/20210405195251.png)
 
@@ -200,8 +200,41 @@ asklib.com
      - 如果显示`vmware-hosted.exe`占用443端口那么打开VMWare  
        ![输入图片说明](https://images.gitee.com/uploads/images/2021/0302/102428_6dfb9294_7703072.png "屏幕截图.png")
 
+---
+
+# 服务器
 
 ---
-- PC 云端 VSCode 更改测试
-- iPad 云端 VSCode 更改测试
-- Test2
+
+## 腾讯云服务器
+
+---
+
+[云产品首单秒杀_云服务器秒杀_云数据库秒杀 - 腾讯云 (tencent.com)](https://cloud.tencent.com/act/new?from=14615)[PS: 2C4G轻量首年74]
+
+---
+
+### remote-SSH
+
+先在控制台生成并绑定密钥(本地密钥妥善保管), 然后再重置 root 密码
+
+> [轻量应用服务器 重置密码 - 操作指南 - 文档中心 - 腾讯云 (tencent.com)](https://cloud.tencent.com/document/product/1207/44575)
+
+打开 VSCode Remote-SSH 插件配置项
+
+```shell
+Host Ubuntu
+    HostName 公网ip
+    User ubuntu
+    IdentityFile "本地密钥路径"
+
+Host CentOS
+    HostName 公网ip
+    User root
+    IdentityFile "本地密钥路径"
+```
+
+> 腾讯云轻量的 ubuntu 默认禁用 root 用户名通过密码方式登录实例, 如需开启[请参考 Ubuntu 系统如何使用 root 用户登录实例？](https://cloud.tencent.com/document/product/1207/44569#ubuntu-.E7.B3.BB.E7.BB.9F.E5.A6.82.E4.BD.95.E4.BD.BF.E7.94.A8-root-.E7.94.A8.E6.88.B7.E7.99.BB.E5.BD.95.E5.AE.9E.E4.BE.8B.EF.BC.9F)
+>
+> CentOS 的话直接使用 root 和 密钥 的配置就可以自动登录到 root 账户
+
