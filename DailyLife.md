@@ -206,7 +206,7 @@ asklib.com
 
 ---
 
-## 腾讯云服务器
+## 腾讯云轻量
 
 ---
 
@@ -237,4 +237,30 @@ Host CentOS
 > 腾讯云轻量的 ubuntu 默认禁用 root 用户名通过密码方式登录实例, 如需开启[请参考 Ubuntu 系统如何使用 root 用户登录实例？](https://cloud.tencent.com/document/product/1207/44569#ubuntu-.E7.B3.BB.E7.BB.9F.E5.A6.82.E4.BD.95.E4.BD.BF.E7.94.A8-root-.E7.94.A8.E6.88.B7.E7.99.BB.E5.BD.95.E5.AE.9E.E4.BE.8B.EF.BC.9F)
 >
 > CentOS 的话直接使用 root 和 密钥 的配置就可以自动登录到 root 账户
+
+---
+
+### 内网 DNS
+
+- yum 命令报错: `Could not resolve host: mirrors.tencentyun.com; Unknown error`
+
+  [Could not resolve host: mirrors.tencentyun.com_user2025的博客-CSDN博客](https://blog.csdn.net/user2025/article/details/107733068)
+
+  原因：腾讯云服务器内网 yum 源的域名 mirrors.tencentyun.com 需要有内网的 DNS 才能访问，但是实际情况下，我们会根据需要修改 DNS，为了使用腾讯云内网快速稳定的内网源，我们需要把 DNS 恢复为内网 DNS，下面为各地区服务器 DNS 地址
+  解决办法：
+  （1）修改服务器的 DNS 配置文件：`/etc/resolv.conf` ，请参阅如下文档添加对应地区的内网 DNS 服务器
+
+  ​          [云服务器 内网服务 - 产品简介 - 文档中心 - 腾讯云 (tencent.com)](https://cloud.tencent.com/document/product/213/5225)
+  
+  > 我用的上海地域的轻量, 配上海或者上海金融的 DNS 都不对, 最后无奈重置实例才发现原来应该配最后一个所有地域的那个 DNS
+  >
+  > ![image-20210916203841882](http://cdn.ayusummer233.top/img/202109162038974.png)
+  
+  （2）重启网络服务
+  
+  ```shell
+  # 重启方式1：
+  /etc/init.d/network restart
+  #重启方式2：
+  systemctl restart network
 
