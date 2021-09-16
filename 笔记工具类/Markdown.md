@@ -148,6 +148,51 @@
 
   > 不管是跳转到几级标题, `()` 内都只需要用 1 个 `#`, 不过要注意所有的标题不要有重名
 
+----
+
+## 内嵌 HTML
+
+markdown 支持内嵌 HTML
+
+---
+
+### markdownlint 取消部分 html 标签警告
+
+> [vscode markdownlint插件让你的markdown更加规范 -- Rules规则提示信息 一介布衣 (yijiebuyi.com)](https://yijiebuyi.com/blog/79347d0e8c1739bd1f9d9d7c1dcbcccf.html#md012---multiple-consecutive-blank-lines)
+>
+> [markdownlint取消部分html标签警告_sbwww的博客-CSDN博客](https://blog.csdn.net/qq_44926567/article/details/109167394)
+
+- 问题
+
+  在 vscode 中使用 markdownlint 插件进行代码分析，当使用了 html 标签时，插件会给出 `MD033/no-inline-html` 警告,
+
+  > 如果整篇 markdown 很长且遍布这种错误时该插件会导致 VSCode 十分卡顿
+
+- 原因 
+
+  插件作者的意图是为了使 markdown 文件是纯 markdown 的，避免在使用 html 以外的方式渲染时出错。
+
+  > [markdownlint/Rules.md at v0.21.0 · DavidAnson/markdownlint (github.com)](https://github.com/DavidAnson/markdownlint/blob/v0.21.0/doc/Rules.md#md033)
+
+- 解决方案
+
+  > [markdownlint取消部分html标签警告_sbwww的博客-CSDN博客](https://blog.csdn.net/qq_44926567/article/details/109167394)
+  
+  打开 VSCode 设置 json 文件, 添加如下配置:
+  
+  ```json
+        "markdownlint.config": {
+          "default": true,
+          "MD033": {
+            "allowed_elements": [ "font", "li", "table", "tr", "td", "br" ]
+          }
+        },
+  ```
+  
+  其中 `"allowed_elements"` 的列表中填入不想提出警告的 html 标签, 保存修改后，markdownlint 将不再对 `"allowed_elements"` 中的 html 标签提出警告
+  
+  
+
 
 ---
 # something interesting
