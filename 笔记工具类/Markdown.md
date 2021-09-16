@@ -124,6 +124,30 @@
 - [怎么在LaTeX,Markdown和知乎上写数学公式时打出空格 - 知乎 (zhihu.com)
 - [![img](http://cdn.ayusummer233.top/img/20210628102451.jpeg)](https://zhuanlan.zhihu.com/p/265517357)
 
+---
+
+## 链接
+
+- 常规链接写法
+
+  ```markdown
+  [百度](http://www.baidu.com)
+  ```
+
+  [百度](http://www.baidu.com)
+
+- 文内标题链接写法
+
+  ```markdown
+  [->编辑软件](#编辑软件)
+  [->Typora](#Typora)
+  ```
+
+  [->编辑软件](#编辑软件)
+  [->Typora](#Typora)
+
+  > 不管是跳转到几级标题, `()` 内都只需要用 1 个 `#`, 不过要注意所有的标题不要有重名
+
 
 ---
 # something interesting
