@@ -6,7 +6,9 @@
  * @Description: In User Settings Edit
  * @FilePath: \DailyNotes\README.md
 -->
+
+[![wakatime](https://wakatime.com/badge/github/Ayusummer/DailyNotes.svg)](https://wakatime.com/badge/github/Ayusummer/DailyNotes)
 # DailyNotes概述
-- 普通的日常学习记录以用于区别课程笔记
+- 普通的日常学习记录以用于区别课程笔记  
 
 
