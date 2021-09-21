@@ -264,3 +264,51 @@ Host CentOS
   #重启方式2：
   systemctl restart network
 
+---
+# WSL2
+
+---
+## VSCode-ssh-remote
+
+使用 SSH-remote 插件连上 WSL 后如果不是以 root 用户登入的话,会在一些系统目录(如 `/etc`, `/dev`, `/root` 等)被限制编辑与增删, 不过在用户目录(如 `/ubuntu`, `/mnt`)的权限是足够的
+
+如果想要登入后可以编辑系统目录文件的话就要使用 `root` 用户登录, 但是 remote-ssh 虽然对于 `SSH Targets` 有配置文件可以编辑登入用户, 但是没有关于 `WSL Targets` 的配置, 那么这就需要在更高的层级编辑默认以 `root` 身份登入 `WSL`
+
+> [Change vscode user in remote-WSL · Issue #3631 · microsoft/vscode-remote-release (github.com)](https://github.com/microsoft/vscode-remote-release/issues/3631)  
+> 
+> [Manage Linux Distributions - Change the default user for a distribution | Microsoft Docs](https://docs.microsoft.com/en-us/windows/wsl/wsl-config#change-the-default-user-for-a-distribution)  
+>   
+> [Ubuntu : 无法将“Ubuntu”项识别为 cmdlet、函数、脚本文件或可运行程序的名称。请检查名称的拼写，如果包括路径，请确保路径 正确，然后再试一次。 - z_zhiro - 博客园 (cnblogs.com)](https://www.cnblogs.com/Hiro666/p/14119763.html)
+
+- 首先查看下当前出问题的 `WSL Distribution` 版本    
+  `win+x` 打开 `Windows Terminal`, 输入如下命令查看所有的 `WSL Distribution`:
+  ```shell
+  wsl --list --all
+  ```
+  
+  ![image-20210921163044694](http://cdn.ayusummer233.top/img/202109211630793.png)
+  
+  其实在 `Remote-ssh - WSL Targets` 目录下就可以看到当前的 `WSL Distribution`
+  
+  ![image-20210921163322476](http://cdn.ayusummer233.top/img/202109211633562.png)
+  
+- 确认当前的 `WSL Distribution` 后在 `Windows Terminal` 中输入
+
+  ```shell
+  <DistributionName> config --default-user <Username>
+  ```
+
+  就可以将 `WSL Distribution` 为 `DistributionName` 的 `WSL` 的默认登录用户切换为 `Username`, 如:
+
+  ![image-20210921163536793](http://cdn.ayusummer233.top/img/202109211635853.png)
+
+  > 需要注意的是, 虽然看到的 `Distribution` 为 `Ubuntu-20.04`, 但是输入命令时要写成 `ubuntu2004`
+
+- 再打开相应 `WSL` 时就可以看到用户已经切换到相应设置的用户了
+
+  ![image-20210921163927558](http://cdn.ayusummer233.top/img/202109211639773.png)
+  
+  再用 VSCode-SSH-remote 连接 WSL 时可以看到登入用户已经切换成刚才配置的用户了, 当切换的是 root 用户时, 此时就可以使用 VSCode 新建及编辑系统目录下的文件了
+  
+  ![image-20210921164444924](http://cdn.ayusummer233.top/img/202109211644088.png)
+
