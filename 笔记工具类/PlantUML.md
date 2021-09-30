@@ -6,7 +6,7 @@
 - [官方教程](https://plantuml.com/zh/wbs-diagram)
 > WBS diagram are still in beta: the syntax may change without notice.
 
-  ---
+---
 ## OrgMode syntax
 - This syntax is compatible with OrgMode
 
@@ -26,3 +26,4 @@
 @endwbs
 ```
 - 基本的 * 的书目代表层级的结构
+
