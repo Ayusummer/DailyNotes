@@ -19,7 +19,7 @@ DailyNotes.wiki
 .vscode/settings.json
 
 # IDEA(Pycharm)文件
-社区相关/LeetCode/.idea
+研究方向/算法/LeetCode/.idea
 BigDataMicroMajor/Python/DailyHomework/.idea
 .idea
 DailyLife/picOCR_toExcel/__pycache__
