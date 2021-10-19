@@ -10,5 +10,3 @@
 [![wakatime](https://wakatime.com/badge/github/Ayusummer/DailyNotes.svg)](https://wakatime.com/badge/github/Ayusummer/DailyNotes)
 # DailyNotes概述
 - 普通的日常学习记录以用于区别课程笔记  
-
-
