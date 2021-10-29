@@ -312,3 +312,22 @@ Host CentOS
   
   ![image-20210921164444924](http://cdn.ayusummer233.top/img/202109211644088.png)
 
+---
+
+## `ssh: connect to host localhost port 22: Connection refused`
+
+> [wsl 的 ssh server 无法启动 （ssh localhost 时报错ssh: connect to host localhost port 22: Connection refused）_hxc2101的博客-CSDN博客](https://blog.csdn.net/hxc2101/article/details/113617870)
+
+打开 `/etc/ssh/sshd_config` 将监听地址 localhost 取消注释:
+
+![image-20211026214222894](http://cdn.ayusummer233.top/img/202110262142078.png)
+
+ 然后重启 `ssh 服务` 
+
+```shell
+service ssh restart
+```
+
+**mark 下这句 ssh 服务重启指令**, ssh localhost 能够正常运行后如果 WSL2 关闭重启了再 `ssh localhost` 可能还会 `Connection refused`, 这时只要再 `service ssh restart` 然后 `ssh localhost` 就可以了
+
+![image-20211026214857109](http://cdn.ayusummer233.top/img/202110262148965.png)
