@@ -97,7 +97,43 @@ Host CentOS
 > CentOS 的话直接使用 `root` 和 `密钥` 的配置就可以自动登录到 `root 账户`   
 > `阿里云` 和 `UCLOUD` 默认是支持 `root +  密钥`登录的
 
+---
 
+## 文件下载
+
+- `VSCode` 连接到服务器确实可以在左栏 `资源管理器` 处选择文件(夹)右键下载, 不过服务器带宽小的话很容易断连
+- `Xshell + Xftp` 正版要付费且没必要为了下载个文件就多装一个软件专门做这件事
+- 所以考虑直接使用 `Linux scp 命令` 进行下载
+
+`scp` 命令无法识别 `Windows 目录`, 所以要采用一些方式来将 `Windows 目录` 转化成 `Linux 目录`,`WSL` 可以做到这点
+
+`Windows + X` 打开 `Windows 终端`, 随便选择安装了的一个 `ubuntu 发行版` 进入后可以看到当前命令行所在目录 `/mnt/c/Users/233`, 对应 `Windows` 的  `C:/Users/233 目录`
+
+![image-20211101103247697](http://cdn.ayusummer233.top/img/202111011032910.png)
+
+ 然后使用如下命令将服务器文件下载到本地:
+
+```shell
+scp [user]@[ip]:[Linux 服务器上目标文件的路径] [指定下载到windows本地的路径]
+```
+
+![image-20211101104310152](http://cdn.ayusummer233.top/img/202111011043258.png)
+
+![image-20211101104334687](http://cdn.ayusummer233.top/img/202111011043774.png)
+
+下载文件夹:
+
+```shell
+scp -r [user]@[ip]:[Linux 服务器上目标文件的路径] [指定下载到windows本地的路径]
+```
+
+![image-20211101104510504](http://cdn.ayusummer233.top/img/202111011045617.png)
+
+![image-20211101104630367](http://cdn.ayusummer233.top/img/202111011046461.png)
+
+> [一说 git bash 可以](https://blog.csdn.net/fakerswe/article/details/103178542), 不过我拿 `git bash` 用 `ssh 命令` 连接服务器总是被拒绝连接
+
+---
 
 ## 腾讯云轻量
 
