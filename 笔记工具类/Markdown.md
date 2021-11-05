@@ -150,6 +150,31 @@
 
 ----
 
+## 矩阵
+
+> [如何在 markdown 中表示矩阵？ - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/269245898)
+
+```markdown
+$$\begin{matrix}
+0&1&1\\
+1&1&0\\
+1&0&1\\
+\end{matrix}$$
+```
+
+> 中括号边框: `bmatrix`
+
+$$\begin{matrix}
+0&1&1\\
+1&1&0\\
+1&0&1\\
+\end{matrix}$$
+
+
+
+
+----
+
 ## 内嵌 HTML
 
 markdown 支持内嵌 HTML
