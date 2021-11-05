@@ -13,6 +13,8 @@
   - [结点内文字换行](#结点内文字换行)
   - [限制流程图大小](#限制流程图大小)
 - [显示支持](#显示支持)
+  - [绘图](#绘图)
+  - [甘特图](#甘特图)
 
 
 ----
@@ -44,4 +46,22 @@ a-->b[2<br>3<br>3]
 - VSCode 需要安装扩展-Markdown Preview Mermaid Support 以预览 Mermaid 图像
 
 ----
+
+## 绘图
+
+## 甘特图
+
+```mermaid
+gantt
+dateFormat  YYYY-MM-DD
+title 甘特图
+excludes weekdays 2014-01-10
+
+Completed task  : des1, 2014-01-06,2014-01-08
+Active task     : des2, 2014-01-09, 2d
+Future task     : des3, after des2, 5d
+Future task2    : des4, after des3, 5d
+```
+
+
 
