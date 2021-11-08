@@ -537,3 +537,165 @@ const app = Vue.createApp({
 
 ![image-20211107224015454](http://cdn.ayusummer233.top/img/202111072240733.png)
 
+---
+
+### 处理 Vue.js 中的数据和事件
+
+#### 动态数据和事件概述
+
+用户通常使用窗体修改 Web 应用程序中的数据。 由于 Vue.js 与使用动态数据有关，因此它具有将数据绑定到窗体的强大机制。 你还可以管理事件，在用户选择按钮或与页面交互时执行不同的操作。 甚至可以添加动态计算得出的值，从而最大程度地减少重复的代码量。
+
+学习目标
+
+- 将模型数据绑定到窗体。
+- 添加事件处理程序。
+- 创建计算值。
+
+---
+
+#### 使用窗体
+
+Vue 应用或组件中的 `data()` 函数所返回的数据一般称为“状态”。 状态是应用程序执行必要的操作所需跟踪的任何信息。 用户通常通过 HTML 窗体修改状态。 Vue.js 允许将数据绑定到窗体，以便用户可以更新状态。
+
+---
+
+**v-model**
+
+`v-model` 指令在 HTML 控件和关联的数据之间创建双向绑定。 因此，当窗体中的值更新时，应用程序状态中的值也会更新。 `v-model` 指令支持绑定到任何窗体控件，包括复选框、文本框和下拉列表。
+
+> `v-bind` 指令用于创建单向绑定。 因此，用户在窗体中所做的任何更改都不会存储在状态中。
+
+```js
+Vue.createApp({
+    data() {
+        return {
+            name: 'Cheryl',
+            status: -1,
+            active: true,
+            benefitsSelected: 'yes',
+            statusList: [
+                'full-time',
+                'part-time',
+                'contractor'
+            ]
+        }
+    }
+})
+```
+
+---
+
+**绑定到文本框**
+
+```html
+<input type="text" v-model="name" />
+```
+
+> 每当文本框值发生更改，`name` 属性就会更新。 如果要改为使用 `textarea`，则语法相同；你可以像以前一样使用 `v-model="name"`。
+
+> ![image-20211108165936693](http://cdn.ayusummer233.top/img/202111081659858.png)
+
+---
+
+**绑定到复选框**
+
+通常情况下，布尔值可绑定到复选框。 复选框允许切换选项。 若要绑定 `active` 选项，可以使用之前所用的 `v-model`。
+
+```html
+<input type="checkbox" v-model="active" /> Is active
+```
+
+> ![image-20211108170022039](http://cdn.ayusummer233.top/img/202111081700221.png)
+
+有时，切换不是布尔值。 相反，你可能有两种选择，如“是”和“否”。 在这种情况下，可以使用 `true-value` 和 `false-value` 来指示所选 (true) 或未选 (false) 复选框的关联值。
+
+```html
+<input type="checkbox" v-model="benefitsSelected" true-value="yes" false-value="no"> Benefits selected: {{ benefitsSelected }}
+```
+
+> ![image-20211108170153693](http://cdn.ayusummer233.top/img/202111081701888.png)
+
+---
+
+**下拉列表**
+
+在 HTML 中，分两部分创建下拉列表。 使用 `select` 创建列表，使用 `option` 添加选项。 `select` 标记存储下拉列表的选定值，因此可以使用它来绑定到模型。
+
+在 Vue 中，需执行以下操作：
+
+- **创建选项列表**。 若要创建 `option` 列表元素，请使用 `v-for` 循环遍历并为数组中的各项创建一个 option 元素。
+- **标识值**。 需要为创建的各选项标识值。 例如，如果列表只是一个字符串数组，则应将字符串或所选索引存储为值。 下面是一个示例：
+
+```html
+        <select v-model="selectedIndex">
+            <option v-for="(stringItem, index) in statusList" 
+            :value="index"> 
+            {{stringItem}}
+            </option>
+         </select>
+```
+
+`vue.js` 相应的加上一个下拉列表索引变量
+
+```js
+const app = Vue.createApp({
+    data() {
+        return {
+            name: 'Cheryl',
+            status: -1,
+            active: true,
+            benefitsSelected: 'yes',
+            statusList: [
+                'full-time',
+                'part-time',
+                'contractor'
+            ],
+            // 下拉列表索引
+            selectedIndex:'0',
+        }
+    }
+});
+```
+
+> ![image-20211108173041422](http://cdn.ayusummer233.top/img/202111081730702.png)
+>
+> ![image-20211108182222900](http://cdn.ayusummer233.top/img/202111081822077.png)
+>
+> ![image-20211108182251476](http://cdn.ayusummer233.top/img/202111081822633.png)
+
+如果列表存储由对象构成的数组，请指出显示属性以及值所在的位置。
+
+```js
+        <select v-model="selectedValue">
+            <option v-for="item in items" :value="item.value">
+            {{ item.displayProperty }}
+            </option>
+        </select>
+```
+
+> ![image-20211108203830423](http://cdn.ayusummer233.top/img/202111082038689.png)
+>
+> ![image-20211108203914882](http://cdn.ayusummer233.top/img/202111082039110.png)
+>
+> ![image-20211108203208179](http://cdn.ayusummer233.top/img/202111082032339.png)
+
+- **跟踪选定的值**。 可使用 `v-model` 将所选值绑定到 `select` 标记。 这样便可跟踪项的索引或值。 这由您自己决定。
+
+若要创建选项列表，请使用 `v-for` 遍历列表。 然后选择将值设置为数组中项的索引。 使用 `v-for(status, index) in statusList` 为每个项提供索引。 然后将每个选项的 `:value` 设置为 `index`，并将 `status` 显示为用户的选项。
+
+```js
+        <select v-model="statusIndex">
+            <!-- Create a message to select one -->
+            <option disabled value="">Please select one</option>
+            <!-- Use v-for to create the list of options -->
+            <option v-for="(status, index) in statusList" :value="index">
+                {{ status }}
+            </option>
+        </select>
+```
+
+> ![image-20211108204746566](http://cdn.ayusummer233.top/img/202111082047895.png)
+>
+> ![image-20211108204912684](http://cdn.ayusummer233.top/img/202111082049849.png)
+
+最后，添加 `v-model="statusIndex"` 以确保用户选择某项时，`statusIndex` data 属性的值将更新为所选索引。
