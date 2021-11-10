@@ -551,6 +551,8 @@ const app = Vue.createApp({
 - 添加事件处理程序。
 - 创建计算值。
 
+在本模块中，你需要了解如何实现用户与 Vue 数据的交互。 首先创建窗体，然后将数据绑定到窗体。 然后，设置一个事件处理程序并对其进行配置，以便通过按钮选择调用它。 最后，添加计算属性以最大程度地减少 HTML 中所需的 JavaScript 代码量。
+
 ---
 
 #### 使用窗体
@@ -699,3 +701,113 @@ const app = Vue.createApp({
 > ![image-20211108204912684](http://cdn.ayusummer233.top/img/202111082049849.png)
 
 最后，添加 `v-model="statusIndex"` 以确保用户选择某项时，`statusIndex` data 属性的值将更新为所选索引。
+
+---
+
+#### 处理事件
+
+在应用程序中，事件是可能发生的操作，但你不一定知道何时发生。 例如，如果页面上有一个按钮，你知道用户可能会选择该按钮。 但不知道何时选择。
+
+创建任何 Web 应用程序都需要了解如何处理事件。 在此，你将了解如何使用 Vue.js 管理事件。
+
+---
+
+**v-on 指令和 @**
+
+Vue.js 提供了一个名为 `v-on` 的指令，你可以将其绑定到任何事件，例如 `v-on:click`。 由于处理事件是一项核心任务，Vue.js 还提供了一个 `@` 快捷方式来处理任何事件。 因此，若要绑定 click 事件，可以使用 `@click` 快捷方式。
+
+---
+
+**事件处理程序**
+
+可通过将函数添加到 Vue 应用程序或组件中的 `methods` 字段来创建事件处理程序。 `methods` 字段类似于 `data()`，但它不返回状态对象，而是保留应用程序的可用函数的列表。 可以采用与引用其他 JavaScript 函数相同的方式在 HTML 中引用这些函数。
+
+> 向 `methods` 字段添加函数的主要原因是函数可以访问任何已注册的数据。
+
+向 Vue 应用或组件添加方法时，`this` 将指向活动实例。 可从 `this` 访问可用于活动实例的任何数据，如以下示例中的 `name` 所示。
+
+---
+
+**创建事件处理程序**
+
+若要创建在调用 `name` data 属性时显示其值的方法，可按照以下示例操作：
+
+```js
+const app = Vue.createApp({
+    data() {
+        return {
+            name: 'Cheryl'
+        }
+    },
+
+    methods: {
+        displayName() {
+            console.log(this.name);
+        }
+    }
+});
+```
+
+由于 `displayName()` 已添加到 `methods` 属性中，因此它可由模板访问，并可绑定到事件。
+
+---
+
+**将事件处理程序绑定到事件**
+
+可使用 `@click` 速记将 `displayName()` 函数绑定到 `click` 事件。 当用户选择该按钮时，将调用 `displayName()` 函数。
+
+```html
+<button type="button" @click="displayName">Display name</button>
+```
+
+> ![image-20211109222253632](http://cdn.ayusummer233.top/img/202111092223813.png)
+>
+> ![image-20211109222337364](http://cdn.ayusummer233.top/img/202111092223445.png)
+
+---
+
+#### 了解计算属性
+
+通过使用 handlebars 语法 (`{{ }}`)，可以显示值并将 JavaScript 注入到 HTML 中。 此语法非常强大，但可能导致代码混乱或重复。 可使用 Vue 中的计算属性来卸载计算和其他形式的动态字符串。
+
+---
+
+**创建计算属性**
+
+与在 `methods` 字段下添加方法类似，计算属性将添加到 `computed` 字段中。 计算属性是返回值的函数。 与方法类似，计算属性可使用 `this` 访问 Vue 的活动实例。
+
+你可使用计算属性将 `firstName` 和 `lastName` 合并为 `fullName` 属性，在数组中执行查找以返回正确的值，或执行其他动态任务。
+
+而且，计算属性是响应式的。 如果计算属性中的任何值发生更改，则会更新计算属性以反映所做的更改。
+
+以下示例创建了一个 `fullName`。
+
+```js
+const app = Vue.createApp({
+    data() {
+        return {
+            firstName: 'Cheryl',
+            lastName: 'Smith',
+        }
+    },
+    computed: {
+        fullName(){
+            return `${this.lastName} ${this.firstName}`
+        }
+    }
+});
+
+```
+
+字符串字面量将连接 `lastName` 和 `firstName` 字段。
+
+> ![image-20211110080918519](http://cdn.ayusummer233.top/img/202111100809759.png)
+>
+> ![image-20211110082205487](http://cdn.ayusummer233.top/img/202111100822795.png)
+
+---
+
+### Vue.js 中的 Vue CLI 和单文件组件入门
+
+虽然可以仅使用 JavaScript 来创建 Vue.js 应用程序，但大多数开发人员都需要更多的功能和灵活性。 使用 Vue CLI 和单文件组件，你可以利用更可靠的工具增强开发体验。 我们将了解如何使用 Vue CLI 启动应用程序，以及如何在 Vue 中创建可重用组件。
+
