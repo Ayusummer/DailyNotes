@@ -168,3 +168,11 @@ scp -r [user]@[ip]:[Linux 服务器上目标文件的路径] [指定下载到win
   systemctl restart network
 
 ---
+### 使用密钥登录到 root 账户
+> [腾讯云 密钥直接登录root_Xav Pun的博客-CSDN博客](https://blog.csdn.net/weixin_39591031/article/details/118700963)
+
+- 腾讯云的 `ubuntu` 系统, 生成密钥后绑定服务器默认会绑定在 `ubuntu` 用户下, 若要通过密钥登录到 `root` 用户则需要将 `ubuntu` 用户下的密钥复制到 `root` 用户下:
+  ```sh
+  cat /home/ubuntu/.ssh/authorized_keys > /root/.ssh/authorized_keys
+  ```  
+  然后就可以使用密钥登录到 `root` 用户了
