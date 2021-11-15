@@ -174,5 +174,85 @@ scp -r [user]@[ip]:[Linux 服务器上目标文件的路径] [指定下载到win
 - 腾讯云的 `ubuntu` 系统, 生成密钥后绑定服务器默认会绑定在 `ubuntu` 用户下, 若要通过密钥登录到 `root` 用户则需要将 `ubuntu` 用户下的密钥复制到 `root` 用户下:
   ```sh
   cat /home/ubuntu/.ssh/authorized_keys > /root/.ssh/authorized_keys
-  ```  
+  ```
   然后就可以使用密钥登录到 `root` 用户了
+
+---
+
+# python
+
+## Pipenv
+
+> [如何开始使用 Pipenv？ | w3c笔记 (w3cschool.cn)](https://www.w3cschool.cn/article/94449206.html)
+>
+> [WSL Ubuntu 18.04上使用pipenv的4个关键点 | 老梅笔记 (laomeinote.com)](https://laomeinote.com/4-points-need-to-be-noticed-about-pipenv-usage-in-wsl-ubuntu-18.04)
+>
+> [Pipenv: Python Dev Workflow for Humans — pipenv 2021.11.9 documentation (pypa.io)](https://pipenv.pypa.io/en/latest/)
+>
+> [12. Virtual Environments and Packages — Python 3.10.0 documentation](https://docs.python.org/3/tutorial/venv.html)
+
+[Pipenv](https://pipenv.pypa.io/en/latest/) 是 Python 的 Python 打包工具，是对使用 [Pip](https://pip.pypa.io/en/stable/)、[Venv](https://docs.python.org/3/library/venv.html) 和 requirements.txt的升级。Pipenv 是将包管理与虚拟环境相结合的好方法。
+
+虚拟环境是一个自包含的目录树，其中包含针对特定 Python 版本的 Python 安装，以及许多其他包。
+
+
+安装 `pipenv` 模块:
+
+```sh
+apt install pipenv
+pip insatll pipenv
+```
+
+使用 `cd` 命令切换到需要安装虚拟环境的目录安装虚拟环境(如果当前目录下没有 `Pipfile` 则会先生成 `Pipfile`, 如果有的话便会继续安装虚拟环境):
+
+```sh
+pipenv install
+```
+
+> `Pipfile` 中将 `[[source]]` 区域下的 `url` 改为国内的源
+>
+> ```sh
+> # 华为镜像
+> https://repo.huaweicloud.com/repository/pypi/simple
+> # 阿里镜像
+> https://mirrors.aliyun.com/pypi/simple
+> # 官方源
+> https://pypi.python.org/simple
+> ```
+>
+> ![image-20211114221709756](http://cdn.ayusummer233.top/img/202111142217965.png)
+>
+> 如果默认生成的 `Pipfile` 中的包特别多, 那么这条命令会执行很长时间且没有 log, 这将会是一个很折磨的过程(
+
+启动虚拟环境
+
+```sh
+pipenv shell
+```
+
+可以通过 `exit` 退出虚拟环境
+
+----
+
+## 生成环境依赖
+
+> [python 项目自动生成环境配置文件requirements.txt_凝眸伏笔的博客-CSDN博客](https://blog.csdn.net/pearl8899/article/details/113877334)
+
+---
+
+- 生成整个当前环境的依赖
+
+    ```bash
+    pip freeze > requirements.txt
+    ```
+
+> 如果对项目使用了虚拟环境那么这会是一个生成项目依赖的不错的方法
+
+- 生成当前项目的依赖
+
+  ```bash
+  pip install pipreqs
+  pipreqs .
+  ```
+
+  
