@@ -1770,3 +1770,136 @@ methods: {
 
 ![image-20211110221819293](http://cdn.ayusummer233.top/img/202111102218514.png)
 
+---
+
+## 安装
+
+> [安装 | Vue.js (vuejs.org)](https://v3.cn.vuejs.org/guide/installation.html#发布版本说明)
+
+将 `Vue.js` 添加到项目中主要有四种方式：
+
+1. 在页面上以 [CDN 包](https://v3.cn.vuejs.org/guide/installation.html#cdn) 的形式导入。
+2. 下载 JavaScript 文件并 [自行托管](https://v3.cn.vuejs.org/guide/installation.html#下载并自托管)。
+3. 使用 [npm](https://v3.cn.vuejs.org/guide/installation.html#npm) 安装它。
+4. 使用官方的 [CLI](https://v3.cn.vuejs.org/guide/installation.html#命令行工具-cli) 来构建一个项目，它为现代前端工作流程提供了功能齐备的构建设置 (例如，热重载、保存时的提示等等)。
+
+---
+
+### pnpm
+
+```bash
+# 最新稳定版
+pnpm install vue@next
+```
+
+大多数情况下，我们更倾向于使用 Vue CLI 来创建一个配置最小化的 webpack 构建版本
+
+> 本质上，*webpack* 是一个现代 JavaScript 应用程序的 *静态模块打包器(module bundler)*。当 webpack 处理应用程序时，它会递归地构建一个*依赖关系图(dependency graph)*，其中包含应用程序需要的每个模块，然后将所有这些模块打包成一个或多个 *bundle*。
+>
+> [概念 | webpack 中文网 (webpackjs.com)](https://www.webpackjs.com/concepts/)
+
+---
+
+### 命令行工具(CLI)
+
+Vue 提供了一个[官方的 CLI](https://github.com/vuejs/vue-cli)，为单页面应用 (SPA) 快速搭建繁杂的脚手架。它为现代前端工作流提供了功能齐备的构建设置。只需要几分钟的时间就可以运行起来并带有热重载、保存时 lint 校验，以及生产环境可用的构建版本。更多详情可查阅 [Vue CLI 的文档](https://cli.vuejs.org/)。
+
+> CLI 工具假定用户对 Node.js 和相关构建工具有一定程度的了解。如果你是新手，我们强烈建议先在不用构建工具的情况下通读[指南](https://v3.cn.vuejs.org/guide/introduction.html)，在熟悉 Vue 本身之后再使用 CLI。
+
+对于 Vue 3，你应该使用 `pnpm` 上可用的 `Vue CLI v4.5` 作为 `@vue/cli`。要升级，你应该需要全局重新安装最新版本的 `@vue/cli`：
+
+```bash
+pnpm install -g @vue/cli
+```
+
+> 使用 `@vue/cli` 可视化创建 Vue 项目
+>
+> ```bash
+> vue ui
+> ```
+>
+> ![image-20211116191439270](http://cdn.ayusummer233.top/img/202111161914501.png)
+>
+> 选择 `创建` 后根据界面提示完成项目的创建
+>
+> > [pnpm安装以及安装@vue/cli_cxrlover的博客-CSDN博客_安装pnpm](https://blog.csdn.net/weixin_43852058/article/details/113752494)
+
+然后在 Vue 项目中运行
+
+```bash
+vue upgrade --next
+```
+
+---
+
+## 工具
+
+### TypeScript 支持
+
+> [Vue CLI](https://cli.vuejs.org/) 提供内置的 TypeScript 工具支持。
+
+---
+
+###  NPM 包中的官方声明
+
+随着应用的增长，静态类型系统可以帮助防止许多潜在的运行时错误，这就是为什么 Vue 3 是用 TypeScript 编写的。这意味着在 Vue 中使用 TypeScript 不需要任何其他工具——它具有一等公民支持。
+
+---
+
+### 推荐配置
+
+```json
+// tsconfig.json
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "esnext",
+    // 这样就可以对 `this` 上的数据属性进行更严格的推断
+    "strict": true,
+    "jsx": "preserve",
+    "moduleResolution": "node"
+  }
+}
+```
+
+请注意，必须包含 `strict: true` (或至少包含 `noImplicitThis: true`，它是 `strict` 标志的一部分) 才能在组件方法中利用 `this` 的类型检查，否则它总是被视为 `any` 类型。
+
+参见 [TypeScript 编译选项文档](https://www.typescriptlang.org/docs/handbook/compiler-options.html) 查看更多细节。
+
+---
+
+### 开发工具
+
+#### 项目创建
+
+[Vue CLI](https://github.com/vuejs/vue-cli) 可以生成使用 TypeScript 的新项目，开始：
+
+```sh
+# 1. Install Vue CLI, 如果尚未安装
+pnpm install --global @vue/cli@next
+
+# 2. 创建一个新项目, 选择 "Manually select features" 选项
+vue create my-project-name
+
+# 3. 如果已经有一个不存在TypeScript的 Vue CLI项目，请添加适当的 Vue CLI插件：
+vue add typescript
+```
+
+请确保组件的 `script` 部分已将语言设置为 TypeScript：
+
+```html
+<script lang="ts">
+  ...
+</script>
+```
+
+或者，如果你想将 TypeScript 与 [JSX `render` 函数](https://v3.cn.vuejs.org/guide/render-function.html#jsx)结合起来：
+
+```html
+<script lang="tsx">
+  ...
+</script>
+```
+
+
+
