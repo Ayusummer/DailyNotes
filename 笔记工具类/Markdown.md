@@ -226,3 +226,30 @@ markdown 支持内嵌 HTML
 - [repo链接](https://github.com/RimoChan/unv-shield)   
 - ![](https://unv-shield.librian.net/api/unv_shield?code=1&url=https://avatars.githubusercontent.com/u/59549826&scale=2&txt=好!&border=4&barradius=999)
 
+---
+# 工具
+
+## Markdown Preview Enhanced
+
+![20211117085220](http://cdn.ayusummer233.top/img/20211117085220.png)
+
+> [报错 Error: spawn pandoc ENOENT · Issue #429 · shd101wyy/markdown-preview-enhanced (github.com)](https://github.com/shd101wyy/markdown-preview-enhanced/issues/429)
+>
+> [How to compile to pdf from a markdown doc?! · Issue #421 · shd101wyy/markdown-preview-enhanced (github.com)](https://github.com/shd101wyy/markdown-preview-enhanced/issues/421)
+
+[安装 Pandoc](#Pandoc) 再重启 VSCode 即可
+
+
+
+
+
+---
+
+## Pandoc
+
+> [安装和使用Pandoc | typora中文网](https://www.typora.net/1193.html)
+>
+> [Pandoc 2.16.1-windows-x86_64.msi - OneDrive Share](https://ayusummer-my.sharepoint.com/:u:/g/personal/233_ayusummer_onmicrosoft_com/EfwTtm_9ifpOmU-DP6dVdT8BPsdarssrIctgWWs_cyv1zA?e=yT8wBM)
+
+Pandoc 是通用文档文本转换器。Typora 使用它来支持几种文件类型的文件导入/导出功能。
+
