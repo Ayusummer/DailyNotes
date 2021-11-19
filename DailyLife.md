@@ -6,6 +6,33 @@
  * @Description: In User Settings Edit
  * @FilePath: \DailyNotes\DailyLife.md
 -->
+# 目录
+- [目录](#目录)
+- [下载](#下载)
+  - [aria2](#aria2)
+  - [超星相关](#超星相关)
+    - [没有下载选项的 PDF](#没有下载选项的-pdf)
+- [搜题目解析](#搜题目解析)
+- [SQLite](#sqlite)
+- [云盘](#云盘)
+  - [OneDrive](#onedrive)
+  - [E5](#e5)
+    - [申请流程](#申请流程)
+    - [续期](#续期)
+      - [OneIndex](#oneindex)
+  - [将云盘挂载到本地(RaiDrive)](#将云盘挂载到本地raidrive)
+  - [微软商店中的iCloud](#微软商店中的icloud)
+- [Microsoft](#microsoft)
+  - [Edge](#edge)
+    - [扩展](#扩展)
+- [学习工作生活小技能?](#学习工作生活小技能)
+  - [图片OCR->表格](#图片ocr-表格)
+- [Game](#game)
+  - [Steam](#steam)
+    - [steam工具箱](#steam工具箱)
+
+
+
 # 下载
 
 ---
