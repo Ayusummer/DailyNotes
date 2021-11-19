@@ -8,6 +8,24 @@
 -->
 > 用于记录 VSCode 使用的一些随笔
 
+# VSCode 下载
+> [VsCode下载，使用国内镜像秒下载_bielaiwuyang1999的博客-CSDN博客](https://blog.csdn.net/bielaiwuyang1999/article/details/117814237)
+
+官网下载 VSCode 速度比较慢, 可以在下载时将直链替换国内镜像地址, 以达到更快的下载速度.  
+
+[VSCode 官网下载地址](https://code.visualstudio.com/Download)  
+
+点击下载后开始下载会获得一个 URL  
+
+![20211119092740](http:cdn.ayusummer233.top/img/20211119092740.png)  
+
+复制该 URL 然后将 /stable 前的地址替换为国内镜像地址再进行下载即可, 如:  
+
+- 原地址: `https://az764295.vo.msecnd.net/stable/ccbaa2d27e38e5afa3e5c21c1c7bef4657064247/VSCodeUserSetup-x64-1.62.3.exe`  
+  将 `az764295.vo.msecnd.net` 替换为 `vscode.cdn.azure.cn` 得到新地址:  
+  新地址: `https://vscode.cdn.azure.cn/stable/ccbaa2d27e38e5afa3e5c21c1c7bef4657064247/VSCodeUserSetup-x64-1.62.3.exe`  
+  然后通过这个新地址下载即可
+
 # 插件食用记录
 
 ## open
