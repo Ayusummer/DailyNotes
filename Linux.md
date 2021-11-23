@@ -117,7 +117,22 @@ Host CentOS
     cat /home/ubuntu/.ssh/authorized_keys > /root/.ssh/authorized_keys
     ```
     > [腾讯云 密钥直接登录root_Xav Pun的博客-CSDN博客](https://blog.csdn.net/weixin_39591031/article/details/118700963)
+  
 - `阿里云` 和 `UCLOUD` 默认是支持 `root +  密钥`登录的
+
+> [每天一个linux命令（10）：cat 命令 - peida - 博客园 (cnblogs.com)](https://www.cnblogs.com/peida/archive/2012/10/30/2746968.html)
+>
+> - 显示文件内容 `cat [filename]`
+>
+>   ![image-20211123110321948](http://cdn.ayusummer233.top/img/202111231103098.png)
+>
+> - 创建一个文件 `cat > [filename]`
+>
+>   ![image-20211123111154541](http://cdn.ayusummer233.top/img/202111231111636.png)
+>
+> - 将若干个文件合并为一个文件: `cat file1 file2 > file`
+>
+>   ![image-20211123111347216](http://cdn.ayusummer233.top/img/202111231113303.png)
 
 ---
 
