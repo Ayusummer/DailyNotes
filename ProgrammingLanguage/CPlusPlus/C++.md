@@ -18,7 +18,9 @@
     - [strcpy_s](#strcpy_s)
   - [#pragma once](#pragma-once)
 - [VSCode](#vscode)
-  - [在 VSCode 中使用 VS 的 cl.exe 来调试 C++](#在-vscode-中使用-vs-的-clexe-来调试-c)
+  - [在 VSCode 中调试 C++ 程序](#在-vscode-中调试-c-程序)
+    - [使用 VS 的 cl.exe](#使用-vs-的-clexe)
+    - [使用 gcc](#使用-gcc)
 - [实用工具](#实用工具)
   - [快捷生成函数调用关系图](#快捷生成函数调用关系图)
     - [callgraph](#callgraph)
@@ -139,7 +141,9 @@
 
 ---
 
-## 在 VSCode 中使用 VS 的 cl.exe 来调试 C++
+## 在 VSCode 中调试 C++ 程序
+
+### 使用 VS 的 cl.exe
 
 [VS Code：使用VS的cl.exe编译运行C/C++程序_北冥有鱼wyh的博客-CSDN博客](https://blog.csdn.net/qq_34801642/article/details/105453161)
 
@@ -245,7 +249,101 @@ json 文件内容如下:
 
 ![image-20210701215303198](http://cdn.ayusummer233.top/img/20210701215303.png)
 
+---
+### 使用 gcc
+> [配置VSCode中调试C/C++环境 | LeoJhon.Song's Blog (leojhonsong.github.io)](https://leojhonsong.github.io/zh-CN/2018/12/30/配置VSCode中调试C-C-环境/)  
+> [Get Started with C++ and Mingw-w64 in Visual Studio Code](https://code.visualstudio.com/docs/cpp/config-mingw)  
+> [C++ programming with Visual Studio Code](https://code.visualstudio.com/docs/languages/cpp)
+>
+> PS: 一般按照上面第三个链接可以较为快捷地完成配置并运行 C++ 程序, 但是有时候配置项可能会出些问题, 所以下面简单描述下
 
+- 检查 `gcc`, `gdb`
+  ```bash
+  gcc --version
+  gdb --version
+  ```
+  
+  如果没有返回版本信息则说明未安装或配置其环境变量, 参阅 [C++ programming with Visual Studio Code-example-install-mingwx64](https://code.visualstudio.com/docs/languages/cpp#_example-install-mingwx64)  完成其安装及环境变量的配置
+  
+- 安装 C++ 扩展
+
+  ![Search for c++ in the Extensions view](http://cdn.ayusummer233.top/img/202111250933328.png)
+
+- 使用 VSCode 打开一个文件夹作为 C++ 工作区, 新建并编辑一个 cpp 文件, 程序编写完成后使用 `Ctrl + Shift + B` 快捷键调出 `build task` 窗口
+
+  - 如果看到的是这样的窗口那么直接选择 g++ 那项即可
+
+    ![Select g++.exe task](http://cdn.ayusummer233.top/img/202111250936260.png)
+
+  - 如果没有看到检测到的项目而是让自定义配置文件的话那么可以参考 [配置VSCode中调试C/C++环境 | LeoJhon.Song's Blog (leojhonsong.github.io)](https://leojhonsong.github.io/zh-CN/2018/12/30/配置VSCode中调试C-C-环境/) 中的配置项
+
+
+
+配置备份:
+- `tasks.json`
+  ```json
+  {
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Compile",
+            "type": "shell",
+            "command": "gcc",
+            "args": [
+                "${file}",
+                "-o",
+                "${fileDirname}/${fileBasenameNoExtension}.exe",
+                "-g",
+                "-Wall",
+                "-std=c++17",
+                "-lstdc++"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        }
+    ]
+  }
+  ```
+- `launch.json`
+  ```json
+  {
+      // Use IntelliSense to learn about possible attributes.
+      // Hover to view descriptions of existing attributes.
+      // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+      "version": "0.2.0",
+      "configurations": [
+          {
+              "name": "(gdb) Launch",
+              "type": "cppdbg",
+              "request": "launch",
+              "program": "${workspaceFolder}/${fileBasenameNoExtension}.exe",
+              "args": [],
+              "stopAtEntry": false,
+              "cwd": "${workspaceFolder}",
+              "environment": [],
+              "externalConsole": false,
+              "MIMode": "gdb",
+              "miDebuggerPath": "gdb.exe",
+              "miDebuggerArgs": "-q",
+              "setupCommands": [
+                  {
+                      "description": "Enable pretty-printing for gdb",
+                      "text": "-enable-pretty-printing",
+                      "ignoreFailures": true
+                  }
+              ],
+              "preLaunchTask": "Compile"
+          }
+      ]
+  }
+  ```
+
+
+> gcc std 报错: [c++ - undefined reference to 'std::cout' - Stack Overflow](https://stackoverflow.com/questions/28236870/undefined-reference-to-stdcout)
 
 ----
 
