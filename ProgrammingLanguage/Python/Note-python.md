@@ -2279,13 +2279,13 @@ a.H 返回自身的共轭转置
 
 ---
 - 某工厂生产三种产品,费用支出见表1,生产量见表2
-  ![](https://codimd.s3.shivering-isles.com/demo/uploads/upload_e2ceb36eb9f9f825c773f116563541fb.png)  
+  <!-- ![](https://codimd.s3.shivering-isles.com/demo/uploads/upload_e2ceb36eb9f9f825c773f116563541fb.png)   -->
 
-  [表1备用链接](https://codimd.s3.shivering-isles.com/demo/uploads/upload_e2ceb36eb9f9f825c773f116563541fb.png)
+  ![表1备用链接](https://codimd.s3.shivering-isles.com/demo/uploads/upload_e2ceb36eb9f9f825c773f116563541fb.png)
 
-  ![矩阵相乘实例分析表2](../../res/img/BigDataMicroMajor/Python/矩阵相乘实例分析表2.png)
+  <!-- ![矩阵相乘实例分析表2](../../res/img/BigDataMicroMajor/Python/矩阵相乘实例分析表2.png) -->
 
-  [矩阵相乘实例分析表2备用链接](https://codimd.s3.shivering-isles.com/demo/uploads/upload_a8fbeb28aebf1c6936ac9673a0ddc539.png)
+  ![矩阵相乘实例分析表2备用链接](https://codimd.s3.shivering-isles.com/demo/uploads/upload_a8fbeb28aebf1c6936ac9673a0ddc539.png)
 - 计算如下数据:
   - 每一季度中每一类成本的数量
     - 设$M =$
@@ -2338,14 +2338,14 @@ print("四个季度每类成本的总数量为:\n{0}".format(MN.sum(axis=1)))
 
 ---
 #### 矩阵乘法及其应用
-![](../../res/img/BigDataMicroMajor/Python/矩阵乘法示意.png)
+<!-- ![](../../res/img/BigDataMicroMajor/Python/矩阵乘法示意.png) -->
 
-[矩阵乘法示意备用链接](https://codimd.s3.shivering-isles.com/demo/uploads/upload_6c85db63360e553a9c0941e471b8d768.png)
+![矩阵乘法示意备用链接](https://codimd.s3.shivering-isles.com/demo/uploads/upload_6c85db63360e553a9c0941e471b8d768.png)
 
 - 求解线性方程组
-  ![](../../res/img/BigDataMicroMajor/Python/线性方程组.png)
+  <!-- ![](../../res/img/BigDataMicroMajor/Python/线性方程组.png) -->
 
-  [线性方程组备用链接](https://codimd.s3.shivering-isles.com/demo/uploads/upload_152824e62907db7878dcc4f1454c01be.png)
+  ![线性方程组备用链接](https://codimd.s3.shivering-isles.com/demo/uploads/upload_152824e62907db7878dcc4f1454c01be.png)
   - 可以写成矩阵相乘的形式:
     - $ax = b$
     - 解方程求x
@@ -2648,9 +2648,7 @@ print("E_M:\n{0}"
 ---
 ### pyplot绘图的基本操作
 
-![pyplot绘图的基本操作](../../res/img/BigDataMicroMajor/Python/pyplot绘图基本操作.png)
-
-[pyplot绘图的基本操作备用链接](https://codimd.s3.shivering-isles.com/demo/uploads/upload_aa6ca071f9d619b0c934dcf9bd737568.png)
+![pyplot绘图的基本操作备用链接](https://codimd.s3.shivering-isles.com/demo/uploads/upload_aa6ca071f9d619b0c934dcf9bd737568.png)
 
 ---
 #### 创建画布与创建子图
@@ -2809,9 +2807,8 @@ plt.show()
 
 ```
 - 运行结果
-  ![使用fontmanager绘制sin(x)](../../res/img/BigDataMicroMajor/Python/使用fontmanager绘制sin(x).png)
 
-  [使用fontmanager绘制sin(x)备用链接](https://codimd.s3.shivering-isles.com/demo/uploads/upload_13dae5dc395d4b8e084abbc6312e927a.png)
+  ![使用fontmanager绘制sin(x)备用链接](https://codimd.s3.shivering-isles.com/demo/uploads/upload_13dae5dc395d4b8e084abbc6312e927a.png)
 
 ---
 ###### 为不同标题(图、坐标轴)设置不同的字体，大小，采用字体管理器 
@@ -2830,9 +2827,8 @@ plt.show()
 
   ```
   - 运行结果
-    ![sin(x)采用多种字体](../../res/img/BigDataMicroMajor/Python/sin(x)采用多种字体.png)
 
-    [sin(x)采用多种字体备用链接](https://codimd.s3.shivering-isles.com/demo/uploads/upload_409fdda16adf62e809a2655eede7d387.png)
+    ![sin(x)采用多种字体备用链接](https://codimd.s3.shivering-isles.com/demo/uploads/upload_409fdda16adf62e809a2655eede7d387.png)
 
 ---
 ###### 显示图中的负号
@@ -2863,9 +2859,8 @@ plt.show()
   
   ```
   - 运行结果
-    ![sin(x)纵坐标旋转](../../res/img/BigDataMicroMajor/Python/sin(x)纵坐标旋转.png) 
 
-    [sin(x)纵坐标旋转备用链接](https://codimd.s3.shivering-isles.com/demo/uploads/upload_1636f9321d75ba33b05eb07922a51076.png)
+    ![sin(x)纵坐标旋转备用链接](https://codimd.s3.shivering-isles.com/demo/uploads/upload_1636f9321d75ba33b05eb07922a51076.png)
 
 ---
 - 使用matplotlib的rcParams属性
@@ -2914,9 +2909,8 @@ plt.show()
 
 ```
 - 运行结果
-  ![同图二线](../../res/img/BigDataMicroMajor/Python/同图二线.png)
 
-  [同图二线备用链接](https://codimd.s3.shivering-isles.com/demo/uploads/upload_196560d2c52b06d240d2f432a9705f59.png)
+  ![同图二线备用链接](https://codimd.s3.shivering-isles.com/demo/uploads/upload_196560d2c52b06d240d2f432a9705f59.png)
 
 ---
 - 方案二：在一张图figure上画多个小图subplot 
@@ -2950,9 +2944,8 @@ plt.show()
 ```
 
 - 运行结果
-  ![绘制子图](../../res/img/BigDataMicroMajor/Python/绘制子图.png)
 
-  [绘制子图备用链接](https://codimd.s3.shivering-isles.com/demo/uploads/upload_b01bb91975e606844d6a7654a24fa05c.png)
+  ![绘制子图备用链接](https://codimd.s3.shivering-isles.com/demo/uploads/upload_b01bb91975e606844d6a7654a24fa05c.png)
 
 ----
 - 添加子图标题
@@ -2983,9 +2976,8 @@ plt.show()
 
 ```
 - 运行结果
-  ![给子图加标题](../../res/img/BigDataMicroMajor/Python/给子图加标题.png)
 
-  [给子图加标题备用链接](https://codimd.s3.shivering-isles.com/demo/uploads/upload_e0b86349b199a291ed8d7c5adb3b2fbc.png)
+  ![给子图加标题备用链接](https://codimd.s3.shivering-isles.com/demo/uploads/upload_e0b86349b199a291ed8d7c5adb3b2fbc.png)
 
 ---
 - 子图的位置分布
@@ -3058,9 +3050,8 @@ plt.show()
 
 ```
 - 运行结果
-  ![烧烤店营业额](../../res/img/BigDataMicroMajor/Python/烧烤店营业额.png)
 
-  [烧烤店营业额备用链接](https://codimd.s3.shivering-isles.com/demo/uploads/upload_3c8191fee8c201d31117c42ea9fcab56.png)
+  ![烧烤店营业额备用链接](https://codimd.s3.shivering-isles.com/demo/uploads/upload_3c8191fee8c201d31117c42ea9fcab56.png)
 
 ---
 #### legend.loc参数
