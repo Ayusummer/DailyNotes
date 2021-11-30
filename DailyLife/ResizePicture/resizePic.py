@@ -2,8 +2,6 @@
 from PIL import Image
 import os
 import os.path
-import math
-import time
 import tkinter as tk
 from tkinter import filedialog, messagebox
 
