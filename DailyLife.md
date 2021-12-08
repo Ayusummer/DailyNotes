@@ -30,6 +30,8 @@
 - [Game](#game)
   - [Steam](#steam)
     - [steam工具箱](#steam工具箱)
+  - [手游模拟器](#手游模拟器)
+    - [蓝叠模拟器 5(支持 Hyper-V)](#蓝叠模拟器-5支持-hyper-v)
 
 
 
@@ -228,3 +230,15 @@ asklib.com
        ![输入图片说明](https://images.gitee.com/uploads/images/2021/0302/102428_6dfb9294_7703072.png "屏幕截图.png")
 
 ---
+## 手游模拟器
+
+### 蓝叠模拟器 5(支持 Hyper-V)
+
+[如何在 Windows 上為 BlueStacks 5 開啟 Hyper-V](https://support.bluestacks.com/hc/zh-tw/articles/4412148150157-%E5%A6%82%E4%BD%95%E5%9C%A8-Windows-%E4%B8%8A%E7%82%BA-BlueStacks-5-%E9%96%8B%E5%95%9F-Hyper-V)
+
+需要注意的是模拟器启动程序务必使用管理员模式启动
+
+![20211208145623](http:cdn.ayusummer233.top/img/20211208145623.png)
+> [如何從您的電腦上完全移除BlueStacks 5](https://support.bluestacks.com/hc/zh-tw/articles/360057724751)  
+> [Bluestacks 5 Cannot Start BlueStacks on Win11 (any 64Bit instance version)](https://www.reddit.com/r/BlueStacks/comments/r7hvkw/bluestacks_5_cannot_start_bluestacks_on_win11_any/)
+
