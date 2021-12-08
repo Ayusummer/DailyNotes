@@ -12,6 +12,12 @@
 - [python](#python)
   - [Pipenv](#pipenv)
   - [生成环境依赖](#生成环境依赖)
+- [nodejs](#nodejs)
+  - [安装](#安装)
+    - [从 NodeSource 中安装 Node.js 和 npm](#从-nodesource-中安装-nodejs-和-npm)
+- [Go](#go)
+  - [安装](#安装-1)
+  - [代理](#代理)
 
 # WSL2
 
@@ -292,4 +298,70 @@ pipenv shell
   pipreqs .
   ```
 
-  
+---
+# nodejs
+
+## 安装
+
+### 从 NodeSource 中安装 Node.js 和 npm
+> > [如何在 Ubuntu 20.04 上安装 Node.js 和 npm-阿里云开发者社区 (aliyun.com)](https://developer.aliyun.com/article/760687)
+
+- 以 sudo 身份运行此命令，下载并执行 NodeSource 安装脚本
+  ```bash
+  curl -sL https://deb.nodesource.com/setup_16.x | sudo -E bash -
+  ```  
+  这个脚本将会添加 NodeSource 的签名 key 到你的系统，创建一个 apt 源文件，安装必备的软件包，并且刷新 apt 缓存。
+- NodeSource 源启用成功后，安装 Node.js 和 npm:
+  ```bash
+  sudo apt install nodejs
+  ```
+- 想要从 npm 编译本地扩展，则需要安装开发工具：
+  ```bash
+  sudo apt install build-essential
+  ```
+
+---
+# Go
+
+## 安装
+- 拉取官网最新的 release
+  ```bash
+  wget https://golang.google.cn/dl/go1.17.4.linux-amd64.tar.gz
+  ```
+- 解压到 /usr/local/go
+  ```bash
+  sudo tar -C /usr/local -xzf go1.17.4.linux-amd64.tar.gz
+  ```
+  > 如果之前安装了其他版本的 go 那么可以备份后先移除该版本目录再运行上面的命令
+  > ```bash
+  > sudo rm -rf /usr/local/go
+  > ```
+- 创建环境变量
+  ```bash
+  export PATH=$PATH:/usr/local/go/bin
+  ```
+  > 添加完环境变量后若想立即生效则需要重启计算机或者执行下面的 shell 命令
+  > ```bash
+  > source $HOME/.profile
+  > ```
+- 验证
+  ```bash
+  go version
+  ```
+
+---
+## 代理
+
+> [goproxy.cn/README.zh-CN.md at master · goproxy/goproxy.cn (github.com)](https://github.com/goproxy/goproxy.cn/blob/master/README.zh-CN.md)
+
+用法:
+- 在终端中执行:
+  ```bash
+  go env -w GO111MODULE=on
+  go env -w GOPROXY=https://goproxy.cn,direct
+  ```
+- macOS 或 Linux
+  ```bash
+  export GO111MODULE=on
+  export GOPROXY=https://goproxy.cn
+  ```
