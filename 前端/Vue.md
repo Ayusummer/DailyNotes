@@ -1901,5 +1901,53 @@ vue add typescript
 </script>
 ```
 
+---
+## Vite
+
+> [开始 | Vite 官方中文文档 (vitejs.dev)](https://cn.vitejs.dev/guide/)
+>
+> Vite 是一种新型前端构建工具，能够显著提升前端开发体验。它主要由两部分组成：
+>
+> - 一个开发服务器，它基于 [原生 ES 模块](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules) 提供了 [丰富的内建功能](https://cn.vitejs.dev/guide/features.html)，如速度快到惊人的 [模块热更新（HMR）](https://cn.vitejs.dev/guide/features.html#hot-module-replacement)。
+> - 一套构建指令，它使用 [Rollup](https://rollupjs.org/) 打包你的代码，并且它是预配置的，可输出用于生产环境的高度优化过的静态资源。
+>
+> Vite 意在提供开箱即用的配置，同时它的 [插件 API](https://cn.vitejs.dev/guide/api-plugin.html) 和 [JavaScript API](https://cn.vitejs.dev/guide/api-javascript.html) 带来了高度的可扩展性，并有完整的类型支持。
+>
+> 你可以在 [为什么选 Vite](https://cn.vitejs.dev/guide/why.html) 中了解更多关于项目的设计初衷。
 
 
+
+---
+
+## Router
+
+> [介绍 | Vue Router (vuejs.org)](https://next.router.vuejs.org/zh/introduction.html)
+>
+> Vue Router 是 [Vue.js](http://v3.vuejs.org/) 的官方路由。它与 Vue.js 核心深度集成，让用 Vue.js 构建单页应用变得轻而易举。功能包括：
+>
+> - 嵌套路由映射
+> - 动态路由选择
+> - 模块化、基于组件的路由配置
+> - 路由参数、查询、通配符
+> - 展示由 Vue.js 的过渡系统提供的过渡效果
+> - 细致的导航控制
+> - 自动激活 CSS 类的链接
+> - HTML5 history 模式或 hash 模式
+> - 可定制的滚动行为
+> - URL 的正确编码
+
+
+
+---
+
+## Vuex
+
+> Vuex 是一个专为 Vue.js 应用程序开发的 **状态管理模式 + 库**。它采用集中式存储管理应用的所有组件的状态，并以相应的规则保证状态以一种可预测的方式发生变化。
+>
+> ### 什么情况下我应该使用 Vuex？
+>
+> Vuex 可以帮助我们管理共享状态，并附带了更多的概念和框架。这需要对短期和长期效益进行权衡。
+>
+> 如果您不打算开发大型单页应用，使用 Vuex 可能是繁琐冗余的。确实是如此——如果您的应用够简单，您最好不要使用 Vuex。一个简单的 [store 模式](https://v3.cn.vuejs.org/guide/state-management.html#从零打造简单状态管理)就足够您所需了。但是，如果您需要构建一个中大型单页应用，您很可能会考虑如何更好地在组件外部管理状态，Vuex 将会成为自然而然的选择。引用 Redux 的作者 Dan Abramov 的话说就是：
+>
+> > Flux 架构就像眼镜：您自会知道什么时候需要它。
