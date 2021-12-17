@@ -282,6 +282,13 @@ pip install -i https://pypi.tuna.tsinghua.edu.cn/simple --upgrade pip
   conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/msys2/
   ```
 
+> `Anaconda Navigator` 升级:
+> ```bash
+> conda update conda
+> conda update anaconda
+> conda update anaconda-navigator
+> ```
+
 ----=
 
 # 程序性能分析
