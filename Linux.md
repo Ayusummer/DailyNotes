@@ -1,5 +1,7 @@
 # 目录
 - [目录](#目录)
+- [通识](#通识)
+  - [SHELL](#shell)
 - [WSL2](#wsl2)
   - [VSCode-ssh-remote](#vscode-ssh-remote)
   - [`ssh: connect to host localhost port 22: Connection refused`](#ssh-connect-to-host-localhost-port-22-connection-refused)
@@ -11,6 +13,7 @@
     - [内网 DNS](#内网-dns)
 - [python](#python)
   - [Pipenv](#pipenv)
+  - [Anaconda](#anaconda)
   - [生成环境依赖](#生成环境依赖)
 - [nodejs](#nodejs)
   - [安装](#安装)
@@ -19,6 +22,31 @@
   - [安装](#安装-1)
   - [代理](#代理)
 
+
+---
+# 通识
+
+## SHELL
+
+> [Bash编程入门-1：Shell与Bash - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/56532223)
+
+shell 是运行在终端中的文本互动程序，bash（GNU Bourne-Again Shell）是最常用的一种 shell。是当前大多数 Linux 发行版的默认 Shell。
+
+其他的 shell 还有：sh、bash、ksh、rsh、csh等。Ubuntu 系统常用的是 bash，Bio-linux 系统是基于 ubuntu 定制的，但是却使用了zsh。
+
+sh 的全名是 Bourne Shell。名字中的玻恩就是这个 Shell 的作者。
+
+而 bash 的全名是 Bourne Again Shell。最开始在 Unix 系统中流行的是 sh，而 bash 作为 sh 的改进版本，提供了更加丰富的功能。一般来说，都推荐使用 bash 作为默认的 Shell。
+
+查看当前系统中 shell 的类型:  
+```shell
+echo $SHELL
+```
+
+![20211219065045](http:cdn.ayusummer233.top/img/20211219065045.png)
+
+
+---
 # WSL2
 
 ## VSCode-ssh-remote
@@ -276,7 +304,85 @@ pipenv shell
 可以通过 `exit` 退出虚拟环境
 
 ----
+## Anaconda
 
+> [如何在 Ubuntu 20.04 上安装 Anaconda - 云+社区 - 腾讯云 (tencent.com)](https://cloud.tencent.com/developer/article/1649008)  
+> [Anaconda conda常用命令：从入门到精通_chenxy_bwave的专栏-CSDN博客_conda常用命令](https://blog.csdn.net/chenxy_bwave/article/details/119996001)
+
+```sh
+# 安装 Anaconda
+wget https://repo.anaconda.com/archive/Anaconda3-2021.11-Linux-x86_64.sh
+bash Anaconda3-2021.11-Linux-x86_64.sh
+```
+
+![20211219065157](http:cdn.ayusummer233.top/img/20211219065157.png)
+
+长按 ENTER 阅读完条款
+
+![20211219065309](http:cdn.ayusummer233.top/img/20211219065309.png)
+
+yes
+
+![20211219065431](http:cdn.ayusummer233.top/img/20211219065431.png)
+
+选择安装路径, 默认为 `/root/anaconda3`, 这个过程会比较长
+
+![20211219065943](http:cdn.ayusummer233.top/img/20211219065943.png)
+
+yes, 执行初始化, 这将会将命令行工具 conda 添加到系统的 PATH 环境变量中。  
+不过想要激活 Anaconda，还需要关闭并且重新打开你的 shell 或者在当前 shell 会话中输入下面的命令，来重新加载 PATH 环境变量：   
+```shell
+source ~/.bashrc
+```
+
+可以使用 `conda --version` 查看 Anaconda 版本
+
+![20211219070617](http:cdn.ayusummer233.top/img/20211219070617.png)
+
+设置国内镜像
+
+```shell
+#设置清华镜像
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge/
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/bioconda/
+#设置bioconda
+conda config --add channels bioconda
+conda config --add channels conda-forge
+#设置搜索时显示通道地址
+conda config --set show_channel_urls yes
+```
+
+创建一个名为 `BigData`, python 版本为 3.9 的虚拟环境
+
+```shell
+conda create -n BigData python=3.9
+```
+
+激活 `BigData` 虚拟环境
+
+```shell
+conda activate BigData
+```
+
+![20211219072053](http:cdn.ayusummer233.top/img/20211219072053.png)
+
+退出当前虚拟环境
+```shell
+conda deactivate
+```
+
+> [Conda clean 净化Anaconda - 简书 (jianshu.com)](https://www.jianshu.com/p/f14ac62bef99)  
+> [Anaconda conda常用命令：从入门到精通_chenxy_bwave的专栏-CSDN博客_conda常用命令](https://blog.csdn.net/chenxy_bwave/article/details/119996001)  
+> [Anaconda 官网](https://www.anaconda.com/products/individual)  
+> 可在此处获取其他版本的安装包
+
+
+
+
+
+---
 ## 生成环境依赖
 
 > [python 项目自动生成环境配置文件requirements.txt_凝眸伏笔的博客-CSDN博客](https://blog.csdn.net/pearl8899/article/details/113877334)
