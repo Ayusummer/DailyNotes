@@ -25,6 +25,9 @@
 - [Microsoft](#microsoft)
   - [Edge](#edge)
     - [扩展](#扩展)
+  - [Windows](#windows)
+    - [内核隔离](#内核隔离)
+      - [WSL2 DNS 服务异常](#wsl2-dns-服务异常)
 - [学习工作生活小技能?](#学习工作生活小技能)
   - [图片OCR->表格](#图片ocr-表格)
 - [Game](#game)
@@ -200,6 +203,162 @@ asklib.com
 ### 扩展
 - 默认安装目录 : `C:\Users\用户名\AppData\Local\Microsoft\Edge\User Data\Default\Extensions`
 
+---
+## Windows
+
+### 内核隔离
+
+> [Windows 10中的核心隔离和内存完整性是什么？ | MOS86](https://mos86.com/95722.html)
+
+![20211218173047-内核隔离警告](http:cdn.ayusummer233.top/img/20211218173047.png)
+
+![20211218173109-不兼容驱动](http:cdn.ayusummer233.top/img/20211218173109.png)
+
+![20211218180744-不兼容驱动详细信息](http:cdn.ayusummer233.top/img/20211218180744.png)
+
+> 解决方案: [Windows 10 Core Isolation: Remove incompatible drivers - Administrator](https://administrator.pro/tutorial/windows-10-core-isolation-remove-incompatible-drivers-769558697.html)  
+> [Core Isolation - Memory Integrity Not Turning On - Driver - Microsoft Community](https://answers.microsoft.com/en-us/windows/forum/all/core-isolation-memory-integrity-not-turning-on/d49ca385-77a8-4390-a4e1-b96224ba3fee?auth=1)  
+> [PnPUtil 命令语法 - Windows drivers | Microsoft Docs](https://docs.microsoft.com/zh-cn/windows-hardware/drivers/devtest/pnputil-command-syntax)  
+> [PnPUtil 示例 - Windows drivers | Microsoft Docs](https://docs.microsoft.com/zh-cn/windows-hardware/drivers/devtest/pnputil-examples)
+
+mark 下上面每个不兼容驱动的 `发布名称`
+
+管理员模式打开 `powershell`, 可以先查看下驱动列表
+
+```bash
+pnputil /enum-drivers
+```
+
+筛下不兼容驱动的相关信息
+
+```bash
+发布名称:     oem61.inf
+原始名称:      ew_usbccgpfilter.inf
+提供程序名称:      Huawei
+类名:         USB
+类 GUID:         {36fc9e60-c465-11cf-8056-444553540000}
+驱动程序版本:     05/18/2016 1.0.9.0
+签名者姓名:        Microsoft Windows Hardware Compatibility Publisher
+
+发布名称:     oem91.inf
+原始名称:      hw_cdcacm.inf
+提供程序名称:      HUAWEI Technologies CO.,LTD
+类名:         Ports
+类 GUID:         {4d36e978-e325-11ce-bfc1-08002be10318}
+驱动程序版本:     05/18/2016 1.0.26.0
+签名者姓名:        Microsoft Windows Hardware Compatibility Publisher
+
+发布名称:     oem62.inf
+原始名称:      hw_quser.inf
+提供程序名称:      Huawei Incorporated
+类名:         Ports
+类 GUID:         {4d36e978-e325-11ce-bfc1-08002be10318}
+驱动程序版本:     11/28/2016 2.0.6.725
+签名者姓名:        Microsoft Windows Hardware Compatibility Publisher
+
+发布名称:     oem34.inf
+原始名称:      hw_usbdev.inf
+提供程序名称:      Huawei Incorporated
+类名:         Ports
+类 GUID:         {4d36e978-e325-11ce-bfc1-08002be10318}
+驱动程序版本:     04/20/2012 1.3.0.0
+签名者姓名:        Microsoft Windows Hardware Compatibility Publisher
+
+发布名称:     oem116.inf
+原始名称:      hw_cdcmdm.inf
+提供程序名称:      HUAWEI Technologies Co.,LTD
+类名:         Modem
+类 GUID:         {4d36e96d-e325-11ce-bfc1-08002be10318}
+驱动程序版本:     11/28/2016 1.0.26.0
+签名者姓名:        Microsoft Windows Hardware Compatibility Publisher
+
+发布名称:     oem110.inf
+原始名称:      hw_qumdm.inf
+提供程序名称:      Huawei Incorporated
+类名:         Modem
+类 GUID:         {4d36e96d-e325-11ce-bfc1-08002be10318}
+驱动程序版本:     05/18/2016 2.0.6.725
+签名者姓名:        Microsoft Windows Hardware Compatibility Publisher
+```
+
+
+执行如下命令删除相应驱动程序包
+
+```bash
+pnputil /delete-driver oem61.inf
+pnputil /delete-driver oem91.inf
+pnputil /delete-driver oem62.inf
+pnputil /delete-driver oem34.inf
+pnputil /delete-driver oem116.inf
+pnputil /delete-driver oem110.inf
+```
+
+![20211218181950-删除不兼容驱动](http:cdn.ayusummer233.top/img/20211218181950.png)
+
+重新扫描
+
+![20211218182035](http:cdn.ayusummer233.top/img/20211218182035.png)
+
+![20211218182146](http:cdn.ayusummer233.top/img/20211218182146.png)
+
+这两个驱动实在找不到(, 驱动检测里没有, `C:\Windows\System32\DriverStore\FileRepository` 也没有
+
+> 解决方案: [如何在卸载游戏后完全删除TP？ - (qq.com)](https://dnf.gamebbs.qq.com/thread-1362897-1-1.html)
+
+打开 `C:\Windows\System32\drivers` 可以找到 `TesMon.sys`
+
+![20211218182922-TesMon.sys](http:cdn.ayusummer233.top/img/20211218182922.png)
+
+删除 `TesMon.sys` 然后重新重新扫描
+
+![20211218190522-UniFairySys.sys](http:cdn.ayusummer233.top/img/20211218190522.png)
+
+![20211218192308-UniFairySys.sys-搜索结果](http:cdn.ayusummer233.top/img/20211218192308.png)
+
+![20211218192422-UniFairySys.sys-属性](http:cdn.ayusummer233.top/img/20211218192422.png)
+
+![20211218192556-UniFairySys.sys-数字签名](http:cdn.ayusummer233.top/img/20211218192556.png)
+
+![20211218192739-UniFairySys.sys-位置](http:cdn.ayusummer233.top/img/20211218192739.png)
+
+在 `C:\Windows\System32` 目录下, `everything` 检索结果中的另一个也出现在了其属性中的 "原始名称"字段中, 且检索资料时也有说这个文件导致崩崩崩游戏蓝屏之类, 所以将此文件剪切到其他目录再重新扫描试试, 后面如果有关于此文件的报错再将其放回去
+
+![20211218193109](http:cdn.ayusummer233.top/img/20211218193109.png)
+
+> [Windows 10中的核心隔离和内存完整性是什么？ | MOS86](https://mos86.com/95722.html)  
+> 查阅资料中发现这个功能可能会导致虚拟机运行异常, 不过遇见这种问题时再把功能关掉就是了(
+
+重启计算机, 检查下是否有虚拟机运行异常
+
+> ![20211218194344](http:cdn.ayusummer233.top/img/20211218194344.png)  
+> 基于 Hyper-V 的 BlueStacks 模拟器运行正常  
+> **WSL2 异常** 
+
+---
+#### WSL2 DNS 服务异常
+
+无法正确解析域名, 直接 ping ip 可以 ping 通, 排查了一圈发现主网也 ping 不通
+
+> 解决方案: [WSL 2 自定义安装目录和网络配置_daihaoxin的专栏-CSDN博客_wsl2目录](https://blog.csdn.net/daihaoxin/article/details/115978662)
+
+![20211218213224](http:cdn.ayusummer233.top/img/20211218213224.png)
+- 网络: 172.22.0.0, 20 位掩码
+
+配置主网防火墙入站规则
+- 规则类型: 自定义
+- 程序: 所有程序
+- 协议和端口: 默认值不做改动
+- 作用域: 此规则适用于哪些本地 IP 地址?: 下列 IP 地址 -> 添加 -> 此 ip 地址或子网: `172.22.0.0/20` 
+- 操作: 允许连接
+- 配置文件: 全选
+- 名称自定义
+
+然后在 WSL2 里重新 ping 主网又能 ping 通了, DNS 也正常了, 可以 ping 同其他域名了
+
+> 缺点在于计算机重启后 WSL2 主网地址可能会变(   
+> 需要再配下防火墙  
+> 挺秃然的, 没有完全搞清楚原理, 无法一劳永逸地解决这个问题  
+> TODO: 计网的复习该提上日程了(
 
 ----
 # 学习工作生活小技能?
