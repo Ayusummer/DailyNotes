@@ -5,6 +5,9 @@ DailyLife/picOCR_toExcel/res
 研究方向/机器学习/MicrosoftLearn/训练和评估回归模型/export
 BigDataMicroMajor/大数据应用/library.db
 
+# CLion
+CS/foundation/C/cmake-build-debug
+CS/foundation/C/.idea
 
 # 模型
 研究方向/机器学习/MicrosoftLearn/训练和评估分类模型/diabetes_model.pkl
