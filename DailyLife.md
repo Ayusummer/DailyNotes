@@ -8,6 +8,8 @@
 -->
 # 目录
 - [目录](#目录)
+- [Programming](#programming)
+  - [行尾序列](#行尾序列)
 - [下载](#下载)
   - [aria2](#aria2)
   - [超星相关](#超星相关)
@@ -37,6 +39,24 @@
     - [蓝叠模拟器 5(支持 Hyper-V)](#蓝叠模拟器-5支持-hyper-v)
 
 
+# Programming
+
+## 行尾序列
+
+- `LF` - 换行 - Unix/macOS(\n)
+- `CR` 回车 - Classic MacOS(\r)
+- `CRLF` 回车换行 - Windows(\r\n)
+
+CLion 编辑代码保存时会自动替换行尾为当前行尾序列。
+
+![20211221092252](http:cdn.ayusummer233.top/img/20211221092252.png)  
+在 Windows 下使用 CLion, 使用回车换行作为行尾可以正常编译运行代码
+
+![20211221092905](http:cdn.ayusummer233.top/img/20211221092905.png)  
+
+![20211221092951](http:cdn.ayusummer233.top/img/20211221092951.png)
+
+单独使用回车或换行作为行尾时会编译出错
 
 # 下载
 
