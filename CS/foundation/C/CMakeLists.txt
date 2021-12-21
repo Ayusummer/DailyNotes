@@ -4,6 +4,7 @@ project(C)
 set(CMAKE_C_STANDARD 99)
 
 add_executable(C
-        20211220_ArmstrongNumbers/armstrong_numbers.h
-        20211220_ArmstrongNumbers/armstrong_numbers.c
-        20211220_ArmstrongNumbers/test_armstrong_numbers.c)
+        20211221_ResistorColor/test_resistor_color.c
+        20211221_ResistorColor/resistor_color.h
+        20211221_ResistorColor/resistor_color.c
+        )
