@@ -4,7 +4,7 @@ project(C)
 set(CMAKE_C_STANDARD 99)
 
 add_executable(C
-        20211221_ResistorColor/test_resistor_color.c
-        20211221_ResistorColor/resistor_color.h
-        20211221_ResistorColor/resistor_color.c
+        20211222_Isogram/isogram.c
+        20211222_Isogram/isogram.h
+        20211222_Isogram/test_isogram.c
         )
