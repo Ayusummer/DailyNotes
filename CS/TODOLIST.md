@@ -8,9 +8,9 @@
   - [ ] [MissingSemester-Lecture 1: Course Overview + The Shell(2020)-48:16](https://www.youtube.com/watch?v=Z56Jmr9Z34Q&list=PLyzOVJj3bHQuloKGG59rS43e29ro7I57J&index=1&t=378s)  
         [课程网站](https://missing.csail.mit.edu/2020/course-shell/)
   - C
-    - [ ] [Easy-Armstrong Numbers](https://exercism.org/tracks/c/exercises/armstrong-numbers)
-    - [ ] [Easy-Resistor Color](https://exercism.org/tracks/c/exercises/resistor-color)
-    - [ ] [Easy-Isogram](https://exercism.org/tracks/c/exercises/isogram)
+    - [x] [Easy-Armstrong Numbers](https://exercism.org/tracks/c/exercises/armstrong-numbers)
+    - [x] [Easy-Resistor Color](https://exercism.org/tracks/c/exercises/resistor-color)
+    - [x] [Easy-Isogram](https://exercism.org/tracks/c/exercises/isogram)
     - [ ] [Easy-Hamming](https://exercism.org/tracks/c/exercises/hamming)
     - [ ] [Easy-Grains](https://exercism.org/tracks/c/exercises/grains)
     - [ ] [Medium-Square Root](https://exercism.org/tracks/c/exercises/square-root)

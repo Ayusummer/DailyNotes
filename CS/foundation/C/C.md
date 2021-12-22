@@ -118,3 +118,53 @@ Mnemonics map the colors to the numbers, that, when stored as an array, happen t
 
 > [C语言--enum，typedef enum 枚举类型详解 - 哈哈呵h - 博客园 (cnblogs.com)](https://www.cnblogs.com/yaowen/p/4785342.html)
 
+---
+## [2021-12-22-Isogram](https://exercism.org/tracks/c/exercises/isogram)
+
+---
+### Instructions
+
+> [Heterogram (literature)](https://en.wikipedia.org/wiki/Isogram)
+
+Determine if a word or phrase is an isogram.  
+
+
+An isogram (also known as a "nonpattern word") is a word or phrase without a repeating letter, however spaces and hyphens are allowed to appear multiple times.
+
+Examples of isograms:
+- lumberjacks
+- background
+- downstream
+- six-year-old
+
+The word isograms, however, is not an isogram, because the s repeats.
+
+> hyphens - 连字符
+
+---
+### 解题思路
+
+新建一个长度为 26 默认值为 0 的整型数组, 遍历 const 字符数组, 定义一个 char ch 接收遍历到的字符, 若 ch 为大写字母则转换为小写字母, 若 ch 并非字母则继续下一步遍历, 将 ch 作为哈希表的键访问对应值, 若为 0 则说明该字符尚未出现过并将其置 1, 若为 1 则说明该字母已经出现过一次, 返回 false
+
+也可以定义一个哈希表, 捏合上面的操作为一个哈希函数
+
+[isogram.c](./20211222_Isogram/isogram.c)
+
+---
+### Tips
+
+#### `Exercism Segmentation fault (core dumped)`
+
+> [Core Dump (Segmentation fault) in C/C++ - GeeksforGeeks](https://www.geeksforgeeks.org/core-dump-segmentation-fault-c-cpp/)
+
+通常情况该这是由于访问了不该访问的内存导致的, 可以通过 `valgrind` 来检查
+
+具体情况可能是数组下标越界, 或者是指针指向的内存已被释放或其他原因
+
+在做此题的过程中检查了半天问题, 最终发现是 TestCase 中有 NULL, 我忘记考虑 NULL 的情况了
+
+---
+#### 散点
+
+- 大写字母和小写字母可以通过 `- 'A'` 和 `- 'a'` 获取其在字母表中的相对位置
+- 字符串以 '\0' 结尾, 可借此遍历字符数组
