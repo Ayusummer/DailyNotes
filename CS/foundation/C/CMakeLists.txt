@@ -4,7 +4,7 @@ project(C)
 set(CMAKE_C_STANDARD 99)
 
 add_executable(C
-        20211222_Isogram/isogram.c
-        20211222_Isogram/isogram.h
-        20211222_Isogram/test_isogram.c
+        20211223_Hamming/Hamming.h
+        20211223_Hamming/Hamming.c
+        20211223_Hamming/test_hamming.c
         )

@@ -11,7 +11,7 @@
     - [x] [Easy-Armstrong Numbers](https://exercism.org/tracks/c/exercises/armstrong-numbers)
     - [x] [Easy-Resistor Color](https://exercism.org/tracks/c/exercises/resistor-color)
     - [x] [Easy-Isogram](https://exercism.org/tracks/c/exercises/isogram)
-    - [ ] [Easy-Hamming](https://exercism.org/tracks/c/exercises/hamming)
+    - [x] [Easy-Hamming](https://exercism.org/tracks/c/exercises/hamming)
     - [ ] [Easy-Grains](https://exercism.org/tracks/c/exercises/grains)
     - [ ] [Medium-Square Root](https://exercism.org/tracks/c/exercises/square-root)
     - [ ] [Medium-Rational Numbers](https://exercism.org/tracks/c/exercises/rational-numbers)

@@ -168,3 +168,128 @@ The word isograms, however, is not an isogram, because the s repeats.
 
 - 大写字母和小写字母可以通过 `- 'A'` 和 `- 'a'` 获取其在字母表中的相对位置
 - 字符串以 '\0' 结尾, 可借此遍历字符数组
+
+---
+## [2021-12-23-Hamming](https://exercism.org/tracks/c/exercises/hamming)
+
+> hamming distance 汉明间距；代码间距；汉娩距  
+> hamming code 汉明码（误差检验及纠正码）
+
+### Instructions
+
+[The Calculating Point Mutations problem at Rosalind](https://rosalind.info/problems/hamm/)
+
+Calculate the Hamming Distance between two DNA strands.  
+计算两个 DNA 片段的汉明间距
+
+Your body is made up of cells that contain DNA. Those cells regularly wear out and need replacing, which they achieve by dividing into daughter cells. In fact, the average human body experiences about 10 quadrillion cell divisions in a lifetime!  
+身体由细胞组成, 细胞内含 DNA. 细胞每天都会衰老, 需要代谢, 它们通过分裂来完成代谢. 实际上, 人类的身体在一生中经历了 10 千万亿次细胞分裂.
+
+When cells divide, their DNA replicates too. Sometimes during this process mistakes happen and single pieces of DNA get encoded with the incorrect information. If we compare two strands of DNA and count the differences between them we can see how many mistakes occurred. This is known as the "Hamming Distance".  
+细胞分裂时, DNA 也会复制. 有时候会发生错误, 有些 DNA 片段会被编码为错误的信息. 如果我们比较两个 DNA 片段, 并计算两个片段之间的不同, 我们可以看到产生了多少错误. 这称为 "汉明距".
+
+We read DNA using the letters C,A,G and T. Two strands might look like this:
+
+```
+GAGCCTACTAACGGGAT
+CATCGTAATGACGGCCT
+^ ^ ^  ^ ^    ^^
+```
+
+They have 7 differences, and therefore the Hamming Distance is 7.
+
+The Hamming Distance is useful for lots of things in science, not just biology, so it's a nice phrase to be familiar with :)
+
+The Hamming distance is only defined for sequences of equal length, so an attempt to calculate it between sequences of different lengths should not work. The general handling of this situation (e.g., raising an exception vs returning a special value) may differ between languages.
+
+---
+### 解题思路
+
+- `hamming.h`
+  ```C
+  #ifndef HAMMING_H
+  #define HAMMING_H
+
+  int compute(const char *lhs, const char *rhs);
+
+  #endif
+  ```  
+  就只有一个计算函数
+- Tests
+  ```C
+  #include "test-framework/unity.h"
+  #include "hamming.h"
+  void setUp(void)
+  {
+  }
+  void tearDown(void)
+  {
+  }
+  static void test_empty_strands(void)
+  {
+    TEST_ASSERT_EQUAL(0, compute("", ""));
+  }
+  static void test_single_identical_strands(void)
+  {
+    TEST_IGNORE();   // delete this line to run test
+    TEST_ASSERT_EQUAL(0, compute("A", "A"));
+  }
+  static void test_single_letter_different_strands(void)
+  {
+    TEST_IGNORE();
+    TEST_ASSERT_EQUAL(1, compute("G", "T"));
+  }
+  static void test_long_identical_strands(void)
+  {
+    TEST_IGNORE();
+    TEST_ASSERT_EQUAL(0, compute("GGACTGAAATCTG", "GGACTGAAATCTG"));
+  }
+  static void test_long_different_strands(void)
+  {
+    TEST_IGNORE();
+    TEST_ASSERT_EQUAL(9, compute("GGACGGATTCTG", "AGGACGGATTCT"));
+  }
+  static void test_disallow_first_strand_when_longer(void)
+  {
+    TEST_IGNORE();
+    TEST_ASSERT_EQUAL(-1, compute("AATG", "AAA"));
+  }
+  static void test_disallow_second_strand_when_longer(void)
+  {
+    TEST_IGNORE();
+    TEST_ASSERT_EQUAL(-1, compute("ATA", "AGTG"));
+  }
+  static void test_disallow_empty_first_strand(void)
+  {
+    TEST_IGNORE();
+    TEST_ASSERT_EQUAL(-1, compute("", "G"));
+  }
+  static void test_disallow_empty_second_strand(void)
+  {
+    TEST_IGNORE();
+    TEST_ASSERT_EQUAL(-1, compute("G", ""));
+  }
+  int main(void)
+  {
+    UnityBegin("test_hamming.c");
+    RUN_TEST(test_empty_strands);
+    RUN_TEST(test_single_identical_strands);
+    RUN_TEST(test_single_letter_different_strands);
+    RUN_TEST(test_long_identical_strands);
+    RUN_TEST(test_long_different_strands);
+    RUN_TEST(test_disallow_first_strand_when_longer);
+    RUN_TEST(test_disallow_second_strand_when_longer);
+    RUN_TEST(test_disallow_empty_first_strand);
+    RUN_TEST(test_disallow_empty_second_strand);
+    return UnityEnd();
+  }
+  ```  
+  观察测试用例可以发现, 当两字符串长度不同时返回 -1  
+  当两字符串长度相同时且两字符串完全一致时,返回 0, 否则返回不同的字符数
+
+那这就没什么难度了, 用 `string.h` 中的 `strlen` 函数来计算字符串长度, 不同则返回 -1  
+否则定义并初始化计数器, 遍历字符串找出不同字符数目即可
+
+> [Hamming.c](./20211223_Hamming/Hamming.c)
+
+---
