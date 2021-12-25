@@ -428,6 +428,9 @@ pnputil /delete-driver oem110.inf
 
 ## Win11 下 QQ 调起文件资源管理器 C:\WINDOWS\SYSTEM32\ntdll.dll 报错
 
+> [ntdll.dll故障_a874045的博客-CSDN博客_ntdll.dll错误](https://blog.csdn.net/a874045/article/details/105579478)  
+> [如何在Windows 10使用sfc /scannow命令？ - 都叫兽软件 | 都叫兽软件 (reneelab.com.cn)](https://www.reneelab.com.cn/windows-10-sfc-scannow.html)
+
 ![image-20211225082416864](http://cdn.ayusummer233.top/img/202112250824048.png)
 
 管理员权限打开 powershell 后输入
