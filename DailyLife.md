@@ -37,6 +37,8 @@
     - [steam工具箱](#steam工具箱)
   - [手游模拟器](#手游模拟器)
     - [蓝叠模拟器 5(支持 Hyper-V)](#蓝叠模拟器-5支持-hyper-v)
+- [零散报错](#零散报错)
+  - [Win11 下 QQ 调起文件资源管理器 C:\WINDOWS\SYSTEM32\ntdll.dll 报错](#win11-下-qq-调起文件资源管理器-cwindowssystem32ntdlldll-报错)
 
 
 # Programming
@@ -421,3 +423,36 @@ pnputil /delete-driver oem110.inf
 > [如何從您的電腦上完全移除BlueStacks 5](https://support.bluestacks.com/hc/zh-tw/articles/360057724751)  
 > [Bluestacks 5 Cannot Start BlueStacks on Win11 (any 64Bit instance version)](https://www.reddit.com/r/BlueStacks/comments/r7hvkw/bluestacks_5_cannot_start_bluestacks_on_win11_any/)
 
+---
+# 零散报错
+
+## Win11 下 QQ 调起文件资源管理器 C:\WINDOWS\SYSTEM32\ntdll.dll 报错
+
+![image-20211225082416864](http://cdn.ayusummer233.top/img/202112250824048.png)
+
+管理员权限打开 powershell 后输入
+```shell
+sfc /SCANNOW  
+```
+- `sfc/scannow` 是 sfc(系统文件检查器)的一条运行命令，运行该命令时可以扫描所有受保护的系统文件的完整性，并自动修复出现问题的系统文件。
+  > 扫描过程会比较长
+- `SFC`
+  - `sfc /scannow`：扫描所有受保护系统文件的完整性，并尽可能修复有问题的文件
+  - `sfc /verifyonly`：扫描所有受保护系统文件的完整性，不会执行修复操作
+  - `sfc /scanfile`：扫描引用的文件的完整性，如果找到问题，则修复文件(需指定完整路径)
+  - `sfc /verifyfile`：验证带有完整路径的文件的完整性，但不会执行修复操作
+  - `sfc /offbootdir`：对于脱机修复，指定脱机启动目录的位置
+  - `sfc /offwindir`：对于脱机修复，指定脱机Windows目录的位置
+  - `sfc /logfile`：对于脱机修复，通过指定日志文件路径选择性地启用记录
+
+![20211225083521](http://cdn.ayusummer233.top/img/20211225083521.png)  
+扫描完成, 未发现异常, 那可能是我注册表出了问题  
+
+以管理员权限打开`CMD`, 执行以下命令把  `%systemroot%\system32` 下所有的 dll 文件重新注册一遍
+```shell
+for %1 in (%windir%\system32\*.dll) do regsvr32.exe /s %1
+```
+
+重启 QQ 后, 可以正常调起 Explorer 了
+
+可能是之前用 CCleaner 清注册表的时候误删了
