@@ -16,6 +16,8 @@
   - [Java,Kotlin@xiaoye-bot](https://github.com/xiaoye-bot/qq-official-bot-sdk)
     ![](https://unv-shield.librian.net/api/unv_shield?repo=xiaoye-bot/qq-official-bot-sdk&url=https://avatars.githubusercontent.com/u//95488113&scale=2)
   - Python
+    - [adapter-qqguild@Nonebot](https://github.com/nonebot/adapter-qqguild)
+      ![](https://unv-shield.librian.net/api/unv_shield?repo=nonebot/adapter-qqguild&url=https://avatars.githubusercontent.com/u//63496654&scale=3)
     - [@NGWORKS](https://github.com/NGWORKS/qq_guild_bot)
       ![](https://unv-shield.librian.net/api/unv_shield?repo=NGWORKS/qq_guild_bot&url=https://avatars.githubusercontent.com/u//58591924&scale=2)
     - [@foxwhite25](https://github.com/foxwhite25/qq.py)
