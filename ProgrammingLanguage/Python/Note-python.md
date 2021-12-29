@@ -284,9 +284,9 @@ pip install -i https://pypi.tuna.tsinghua.edu.cn/simple --upgrade pip
 
 > `Anaconda Navigator` 升级:
 > ```bash
-> conda update conda
-> conda update anaconda
-> conda update anaconda-navigator
+> conda update conda -y
+> conda update anaconda -y
+> conda update anaconda-navigator -y
 > ```
 
 ----=
