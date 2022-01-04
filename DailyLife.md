@@ -22,6 +22,7 @@
     - [申请流程](#申请流程)
     - [续期](#续期)
       - [OneIndex](#oneindex)
+    - [同步目录空格路径解决](#同步目录空格路径解决)
   - [将云盘挂载到本地(RaiDrive)](#将云盘挂载到本地raidrive)
   - [微软商店中的iCloud](#微软商店中的icloud)
 - [Microsoft](#microsoft)
@@ -177,6 +178,17 @@ asklib.com
 > 自己懒得搭了(  配合本地OneDriveBusiness当同步分享盘了  
 > ![20210403114429](http:cdn.ayusummer233.top/img/20210403114429.png)
 
+---
+### 同步目录空格路径解决
+
+默认情况下 OneDrive 的同步目录根目录所在文件夹名称是 `OneDrive - 组织名称` 的形式, 中间是有两个空格的, 这可太不优雅了, 可以通过创建符号链接的形式来解决这个问题  
+管理员模式打开 `CMD` 执行如下指令:
+
+```shell
+# 创建符号链接 E:\OneDriveE5\Pro 指向 E:\OneDriveE5\mixon\OneDrive - ayusummer
+mklink /J OneDriveE5\mix "E:\OneDriveE5\mixon\OneDrive - ayusummer"
+```
+- `OneDriveE5\mix` 目录在执行完命令后会自动创建
 
 ---
 ## 将云盘挂载到本地(RaiDrive)
