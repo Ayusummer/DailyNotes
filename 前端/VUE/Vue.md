@@ -1902,6 +1902,22 @@ vue add typescript
 ```
 
 ---
+
+#### DevTools
+
+##### DevTools 无法加载源映射
+
+> [DevTools 无法加载 SourceMap：XXXX.map 的内容:HTTP 错误: 状态代码 404，net::ERR_UNKNOWN_URL_SCHEM_caesarding07-CSDN博客_devtools 无法加载源映射](https://blog.csdn.net/qq_44628595/article/details/116061062)
+
+![image-20220107101932334](http://cdn.ayusummer233.top/img/202201071019476.png)
+
+扩展加载错误, 根据扩展 id 可以查到是这个:
+
+![image-20220107102054923](http://cdn.ayusummer233.top/img/202201071020000.png)
+
+关掉就好了
+
+---
 ## Vite
 
 > [开始 | Vite 官方中文文档 (vitejs.dev)](https://cn.vitejs.dev/guide/)
