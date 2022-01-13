@@ -63,6 +63,14 @@ Anaconda + VSCode + jupyter插件 + Python相关插件
 
   ![image-20220113133332281](http://cdn.ayusummer233.top/img/202201131333467.png)
 
+- 命令行插件 Terminal
+
+  ![image-20220113134443536](http://cdn.ayusummer233.top/img/202201131344681.png)
+
+  用于在 VSCode 中打开 powershell 执行命令
+
+  ![image-20220113134623777](http://cdn.ayusummer233.top/img/202201131346049.png)
+
 ----
 
 ## Matplotlib
