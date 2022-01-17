@@ -33,6 +33,7 @@
       - [WSL2 DNS 服务异常](#wsl2-dns-服务异常)
 - [学习工作生活小技能?](#学习工作生活小技能)
   - [图片OCR->表格](#图片ocr-表格)
+  - [背单词](#背单词)
 - [Game](#game)
   - [Steam](#steam)
     - [steam工具箱](#steam工具箱)
@@ -400,6 +401,10 @@ pnputil /delete-driver oem110.inf
 ----
 ## 图片OCR->表格
 
+[白描](https://web.baimiaoapp.com/image-to-excel)
+
+---
+## 背单词
 
 
 
