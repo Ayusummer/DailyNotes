@@ -33,7 +33,8 @@
       - [WSL2 DNS 服务异常](#wsl2-dns-服务异常)
 - [学习工作生活小技能?](#学习工作生活小技能)
   - [图片OCR->表格](#图片ocr-表格)
-  - [背单词](#背单词)
+  - [英语学习](#英语学习)
+    - [背单词](#背单词)
 - [Game](#game)
   - [Steam](#steam)
     - [steam工具箱](#steam工具箱)
@@ -404,9 +405,16 @@ pnputil /delete-driver oem110.inf
 [白描](https://web.baimiaoapp.com/image-to-excel)
 
 ---
-## 背单词
+## 英语学习
 
+### 背单词
 
+[沙拉查词](https://saladict.crimx.com/download.html)
+- [使用文档](https://saladict.crimx.com/manual.html)
+- [初次使用注意事项](https://saladict.crimx.com/notice.html)
+- [配合Anki使用](https://saladict.crimx.com/anki.html)
+- 也支持欧路词典, 扇贝单词和 WebDAV 方式同步
+  ![20220117225152](http:cdn.ayusummer233.top/img/20220117225152.png)
 
 ----
 # Game
