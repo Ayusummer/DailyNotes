@@ -263,3 +263,29 @@ markdown 支持内嵌 HTML
 
 Pandoc 是通用文档文本转换器。Typora 使用它来支持几种文件类型的文件导入/导出功能。
 
+---
+## reveal-md
+
+像演示 PPT 一样演示 markdown
+
+`安装`:
+
+执行如下命令进行全局安装 reveal-md
+
+```shell
+npm install -g reveal-md
+```
+
+> 没装 nodejs 的话需要先装 nodejs
+
+`使用`:
+
+执行如下命令以使用 reveal-md 演示 markdown 文件
+
+```shell
+reveal-md path_markdown_file
+```
+
+如:
+
+![20220120231927](http://cdn.ayusummer233.top/img/20220120231927.png)
