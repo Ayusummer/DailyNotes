@@ -266,6 +266,8 @@ Pandoc 是通用文档文本转换器。Typora 使用它来支持几种文件类
 ---
 ## reveal-md
 
+> [markdown写ppt （史上最全） - 疯狂创客圈 - 博客园 (cnblogs.com)](https://www.cnblogs.com/crazymakercircle/p/14372042.html)
+
 像演示 PPT 一样演示 markdown
 
 `安装`:
