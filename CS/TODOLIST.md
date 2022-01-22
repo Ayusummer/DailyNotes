@@ -28,8 +28,6 @@
   - [ ] [MissingSemester-Lecture-2: Shell Tools and Scripting-](https://missing.csail.mit.edu/2020/shell-tools/)
   - [ ] LeetCode
 
-
-
 ---
 - 第 3 周(1.3-1.9)
   - [ ] [SICP-Lec3a-Escher的例子](https://www.bilibili.com/video/BV1Xx41117tr?p=5)
@@ -78,3 +76,9 @@
     - [ ] [11-Vue组件的定义和注册 | 千古前端图文教程 (qianguyihao.com)](https://web.qianguyihao.com/12-Vue基础/11-Vue组件的定义和注册.html)
     - [ ] [12-Vue组件之间的传值 | 千古前端图文教程 (qianguyihao.com)](https://web.qianguyihao.com/12-Vue基础/12-Vue组件之间的传值.html)
     - [ ] [13-Vue-router路由 | 千古前端图文教程 (qianguyihao.com)](https://web.qianguyihao.com/12-Vue基础/13-Vue-router路由.html)
+    - [ ] [Web/Vue-router路由.md at master · qianguyihao/Web (github.com)](https://github.com/qianguyihao/Web/blob/master/12-Vue基础/Vue-router路由.md)
+    - [ ] [Web/Vue.js在开发中的常见写法积累.md at master · qianguyihao/Web (github.com)](https://github.com/qianguyihao/Web/blob/master/12-Vue基础/Vue.js在开发中的常见写法积累.md)
+    - [ ] [Web/Vue开发积累.md at master · qianguyihao/Web (github.com)](https://github.com/qianguyihao/Web/blob/master/12-Vue基础/Vue开发积累.md)
+    - [ ] [Web/Vue组件.md at master · qianguyihao/Web (github.com)](https://github.com/qianguyihao/Web/blob/master/12-Vue基础/Vue组件.md)
+    
+    
