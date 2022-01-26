@@ -13,9 +13,9 @@
     - [x] [Easy-Isogram](https://exercism.org/tracks/c/exercises/isogram)
     - [x] [Easy-Hamming](https://exercism.org/tracks/c/exercises/hamming)
   - LeetCode
-    - [ ] [简单-704.二分查找](https://leetcode-cn.com/problems/binary-search/)
-    - [ ] [简单-278.第一个错误的版本](https://leetcode-cn.com/problems/first-bad-version/)
-    - [ ] [简单-35.搜索插入位置](https://leetcode-cn.com/problems/search-insert-position/)
+    - [x] [简单-704.二分查找](https://leetcode-cn.com/problems/binary-search/)
+    - [x] [简单-278.第一个错误的版本](https://leetcode-cn.com/problems/first-bad-version/)
+    - [x] [简单-35.搜索插入位置](https://leetcode-cn.com/problems/search-insert-position/)
 
 > 考试周, 结果是寄了, 考试周连着实训,  solo小组作业, 任务安排拉满我大半个月, 寄!  
 > 后面 C 语言练习出于收益考量替换为 LeetCode 习题, 从第 5 周开始往前嗯补  
@@ -26,17 +26,34 @@
   - [ ] [SICP-Lec2a-高阶过程-1:01:20](https://www.bilibili.com/video/BV1Xx41117tr?p=3)
   - [ ] [SICP-Lec2b-符合数据-1:16:48](https://www.bilibili.com/video/BV1Xx41117tr?p=4)
   - [ ] [MissingSemester-Lecture-2: Shell Tools and Scripting-](https://missing.csail.mit.edu/2020/shell-tools/)
-  - [ ] LeetCode
+  
+- LeetCode
+
+  - [x] [简单-977. 有序数组的平方 - 力扣（LeetCode） (leetcode-cn.com)](https://leetcode-cn.com/problems/squares-of-a-sorted-array/)
+  - [ ] [中等-189. 轮转数组 - 力扣（LeetCode） (leetcode-cn.com)](https://leetcode-cn.com/problems/rotate-array/)
+  - [ ] [简单-283. 移动零 - 力扣（LeetCode） (leetcode-cn.com)](https://leetcode-cn.com/problems/move-zeroes/)
+  - [ ] [简单-167. 两数之和 II - 输入有序数组 - 力扣（LeetCode） (leetcode-cn.com)](https://leetcode-cn.com/problems/two-sum-ii-input-array-is-sorted/)
+  - [ ] [简单-344. 反转字符串 - 力扣（LeetCode） (leetcode-cn.com)](https://leetcode-cn.com/problems/reverse-string/)
+  - [ ] [简单557. 反转字符串中的单词 III - 力扣（LeetCode） (leetcode-cn.com)](https://leetcode-cn.com/problems/reverse-words-in-a-string-iii/)
+  - [ ] [中等-567. 字符串的排列 - 力扣（LeetCode） (leetcode-cn.com)](https://leetcode-cn.com/problems/permutation-in-string/)
 
 ---
 - 第 3 周(1.3-1.9)
   - [ ] [SICP-Lec3a-Escher的例子](https://www.bilibili.com/video/BV1Xx41117tr?p=5)
+  
   - [ ] [SICP-Lec3b-符号化求导程序](https://www.bilibili.com/video/BV1Xx41117tr?p=6)
+  
   - [ ] [MissingSemester-Lecture-3:Editors (Vim)](https://missing.csail.mit.edu/2020/editors/)
+  
   - LeetCode
-
-
-
+  
+    - [ ]  [中等-3. 无重复字符的最长子串 - 力扣（LeetCode） (leetcode-cn.com)](https://leetcode-cn.com/problems/longest-substring-without-repeating-characters/)
+    - [ ]  [中等-19. 删除链表的倒数第 N 个结点 - 力扣（LeetCode） (leetcode-cn.com)](https://leetcode-cn.com/problems/remove-nth-node-from-end-of-list/)
+    - [ ]  [简单-876. 链表的中间结点 - 力扣（LeetCode） (leetcode-cn.com)](https://leetcode-cn.com/problems/middle-of-the-linked-list/)
+    - [ ]  [简单-733. 图像渲染 - 力扣（LeetCode） (leetcode-cn.com)](https://leetcode-cn.com/problems/flood-fill/)
+    - [ ]  [中等-695. 岛屿的最大面积 - 力扣（LeetCode） (leetcode-cn.com)](https://leetcode-cn.com/problems/max-area-of-island/)
+    - [ ]  [简单-617. 合并二叉树 - 力扣（LeetCode） (leetcode-cn.com)](https://leetcode-cn.com/problems/merge-two-binary-trees/)
+    - [ ]  [中等-116. 填充每个节点的下一个右侧节点指针 - 力扣（LeetCode） (leetcode-cn.com)](https://leetcode-cn.com/problems/populating-next-right-pointers-in-each-node/)
 
 ---
 - 第 4 周(1.10-1.16)
@@ -46,8 +63,19 @@
     - [ ] [P7~10-第2章](https://www.bilibili.com/video/BV12t411p7uz?p=7)
     - [ ] [P11~16-第3章](https://www.bilibili.com/video/BV12t411p7uz?p=11)
     - [ ] [P17~21-第4章](https://www.bilibili.com/video/BV12t411p7uz?p=17)
+    
   - [ ] [MissingSemester-Lecture-4-Data Wrangling](https://missing.csail.mit.edu/2020/data-wrangling/)
+  
   - LeetCode
+    - [ ] [中等-542. 01 矩阵 - 力扣（LeetCode） (leetcode-cn.com)](https://leetcode-cn.com/problems/01-matrix/)
+    
+    - [ ] [中等-994. 腐烂的橘子 - 力扣（LeetCode） (leetcode-cn.com)](https://leetcode-cn.com/problems/rotting-oranges/)
+    
+    - [ ] [简单-21. 合并两个有序链表 - 力扣（LeetCode） (leetcode-cn.com)](https://leetcode-cn.com/problems/merge-two-sorted-lists/)
+    
+    - [ ] [简单-206. 反转链表 - 力扣（LeetCode） (leetcode-cn.com)](https://leetcode-cn.com/problems/reverse-linked-list/)
+    
+      
 
 ---
 
