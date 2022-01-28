@@ -31,7 +31,7 @@
 
   - [x] [简单-977. 有序数组的平方 - 力扣（LeetCode） (leetcode-cn.com)](https://leetcode-cn.com/problems/squares-of-a-sorted-array/)
   - [x] [中等-189. 轮转数组 - 力扣（LeetCode） (leetcode-cn.com)](https://leetcode-cn.com/problems/rotate-array/)
-  - [ ] [简单-283. 移动零 - 力扣（LeetCode） (leetcode-cn.com)](https://leetcode-cn.com/problems/move-zeroes/)
+  - [x] [简单-283. 移动零 - 力扣（LeetCode） (leetcode-cn.com)](https://leetcode-cn.com/problems/move-zeroes/)
   - [x] [简单-167. 两数之和 II - 输入有序数组 - 力扣（LeetCode） (leetcode-cn.com)](https://leetcode-cn.com/problems/two-sum-ii-input-array-is-sorted/)
   - [ ] [简单-344. 反转字符串 - 力扣（LeetCode） (leetcode-cn.com)](https://leetcode-cn.com/problems/reverse-string/)
   - [ ] [简单557. 反转字符串中的单词 III - 力扣（LeetCode） (leetcode-cn.com)](https://leetcode-cn.com/problems/reverse-words-in-a-string-iii/)
