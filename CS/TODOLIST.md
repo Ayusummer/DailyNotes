@@ -33,7 +33,7 @@
   - [x] [中等-189. 轮转数组 - 力扣（LeetCode） (leetcode-cn.com)](https://leetcode-cn.com/problems/rotate-array/)
   - [x] [简单-283. 移动零 - 力扣（LeetCode） (leetcode-cn.com)](https://leetcode-cn.com/problems/move-zeroes/)
   - [x] [简单-167. 两数之和 II - 输入有序数组 - 力扣（LeetCode） (leetcode-cn.com)](https://leetcode-cn.com/problems/two-sum-ii-input-array-is-sorted/)
-  - [ ] [简单-344. 反转字符串 - 力扣（LeetCode） (leetcode-cn.com)](https://leetcode-cn.com/problems/reverse-string/)
+  - [x] [简单-344. 反转字符串 - 力扣（LeetCode） (leetcode-cn.com)](https://leetcode-cn.com/problems/reverse-string/)
   - [ ] [简单557. 反转字符串中的单词 III - 力扣（LeetCode） (leetcode-cn.com)](https://leetcode-cn.com/problems/reverse-words-in-a-string-iii/)
   - [ ] [中等-567. 字符串的排列 - 力扣（LeetCode） (leetcode-cn.com)](https://leetcode-cn.com/problems/permutation-in-string/)
 
