@@ -50,7 +50,7 @@
   
     - [ ]  [中等-3. 无重复字符的最长子串 - 力扣（LeetCode） (leetcode-cn.com)](https://leetcode-cn.com/problems/longest-substring-without-repeating-characters/)
     - [ ]  [中等-19. 删除链表的倒数第 N 个结点 - 力扣（LeetCode） (leetcode-cn.com)](https://leetcode-cn.com/problems/remove-nth-node-from-end-of-list/)
-    - [ ]  [简单-876. 链表的中间结点 - 力扣（LeetCode） (leetcode-cn.com)](https://leetcode-cn.com/problems/middle-of-the-linked-list/)
+    - [x]  [简单-876. 链表的中间结点 - 力扣（LeetCode） (leetcode-cn.com)](https://leetcode-cn.com/problems/middle-of-the-linked-list/)
     - [ ]  [简单-733. 图像渲染 - 力扣（LeetCode） (leetcode-cn.com)](https://leetcode-cn.com/problems/flood-fill/)
     - [ ]  [中等-695. 岛屿的最大面积 - 力扣（LeetCode） (leetcode-cn.com)](https://leetcode-cn.com/problems/max-area-of-island/)
     - [ ]  [简单-617. 合并二叉树 - 力扣（LeetCode） (leetcode-cn.com)](https://leetcode-cn.com/problems/merge-two-binary-trees/)
@@ -58,6 +58,7 @@
 
 ---
 ### 第 4 周(1.10-1.16)
+
   - CS 61A SICP-1~4讲-1-21P
     - [ ] [P1-引言](https://www.bilibili.com/video/BV12t411p7uz?p=1)
     - [ ] [P2~6-第1章](https://www.bilibili.com/video/BV12t411p7uz?p=2)
