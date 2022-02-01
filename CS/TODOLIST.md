@@ -75,7 +75,7 @@
     
     - [ ] [简单-21. 合并两个有序链表 - 力扣（LeetCode） (leetcode-cn.com)](https://leetcode-cn.com/problems/merge-two-sorted-lists/)
     
-    - [ ] [简单-206. 反转链表 - 力扣（LeetCode） (leetcode-cn.com)](https://leetcode-cn.com/problems/reverse-linked-list/)
+    - [x] [简单-206. 反转链表 - 力扣（LeetCode） (leetcode-cn.com)](https://leetcode-cn.com/problems/reverse-linked-list/)
     
     - [x] [中等-77. 组合 - 力扣（LeetCode） (leetcode-cn.com)](https://leetcode-cn.com/problems/combinations/)
     
