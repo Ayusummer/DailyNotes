@@ -59,7 +59,7 @@
 ---
 ### 第 4 周(1.10-1.16)
 
-  - CS 61A SICP-1~4讲-1-21P
+  - `CS 61A SICP-1~4讲-1-21P`
     - [ ] [P1-引言](https://www.bilibili.com/video/BV12t411p7uz?p=1)
     - [ ] [P2~6-第1章](https://www.bilibili.com/video/BV12t411p7uz?p=2)
     - [ ] [P7~10-第2章](https://www.bilibili.com/video/BV12t411p7uz?p=7)
@@ -77,7 +77,7 @@
     
     - [ ] [简单-206. 反转链表 - 力扣（LeetCode） (leetcode-cn.com)](https://leetcode-cn.com/problems/reverse-linked-list/)
     
-    - [ ] [中等-77. 组合 - 力扣（LeetCode） (leetcode-cn.com)](https://leetcode-cn.com/problems/combinations/)
+    - [x] [中等-77. 组合 - 力扣（LeetCode） (leetcode-cn.com)](https://leetcode-cn.com/problems/combinations/)
     
     - [ ] [中等-46. 全排列 - 力扣（LeetCode） (leetcode-cn.com)](https://leetcode-cn.com/problems/permutations/)
     
@@ -88,20 +88,20 @@
 ---
 
 ### 第 5 周(1.17-1.23)
-  - CS 61A SICP-5~8讲-P22~40
+  - `CS 61A SICP-5~8讲-P22~40`
     - [ ] [P22~26-第5章](https://www.bilibili.com/video/BV12t411p7uz?p=22)
     - [ ] [P27~29-第6章](https://www.bilibili.com/video/BV12t411p7uz?p=27)
     - [ ] [P30~35-第7章](https://www.bilibili.com/video/BV12t411p7uz?p=30)
     - [ ] [P36~40-第8章](https://www.bilibili.com/video/BV12t411p7uz?p=36)
-    
   - [ ] [MissingSemester-Lecture-5-Command-line Environment](https://missing.csail.mit.edu/2020/command-line/)
-  
   - LeetCode
-  
-  - [ ] [简单-70. 爬楼梯 - 力扣（LeetCode） (leetcode-cn.com)](https://leetcode-cn.com/problems/climbing-stairs/)
-  - [ ] [中等-198. 打家劫舍 - 力扣（LeetCode） (leetcode-cn.com)](https://leetcode-cn.com/problems/house-robber/)
-  - [ ] [中等-120. 三角形最小路径和 - 力扣（LeetCode） (leetcode-cn.com)](https://leetcode-cn.com/problems/triangle/)
-  
+    - [ ] [简单-70. 爬楼梯 - 力扣（LeetCode） (leetcode-cn.com)](https://leetcode-cn.com/problems/climbing-stairs/)
+    - [ ] [中等-198. 打家劫舍 - 力扣（LeetCode） (leetcode-cn.com)](https://leetcode-cn.com/problems/house-robber/)
+    - [ ] [中等-120. 三角形最小路径和 - 力扣（LeetCode） (leetcode-cn.com)](https://leetcode-cn.com/problems/triangle/)
+    - [ ] [中等-34. 在排序数组中查找元素的第一个和最后一个位置 - 力扣（LeetCode） (leetcode-cn.com)](https://leetcode-cn.com/problems/find-first-and-last-position-of-element-in-sorted-array/)
+    - [ ] [中等-33. 搜索旋转排序数组 - 力扣（LeetCode） (leetcode-cn.com)](https://leetcode-cn.com/problems/search-in-rotated-sorted-array/)
+    - [ ] [中等-74. 搜索二维矩阵 - 力扣（LeetCode） (leetcode-cn.com)](https://leetcode-cn.com/problems/search-a-2d-matrix/)
+    - [ ] [简单-1763. 最长的美好子字符串 - 力扣（LeetCode） (leetcode-cn.com)](https://leetcode-cn.com/problems/longest-nice-substring/)
   - VUE
     - [ ] [01-Vue的介绍和vue-cli | 千古前端图文教程 (qianguyihao.com)](https://web.qianguyihao.com/12-Vue基础/01-Vue的介绍和vue-cli.html#mvvm模式)
     - [ ] [02-Vue的系统指令 | 千古前端图文教程 (qianguyihao.com)](https://web.qianguyihao.com/12-Vue基础/02-Vue的系统指令.html)
@@ -121,4 +121,26 @@
     - [ ] [Web/Vue开发积累.md at master · qianguyihao/Web (github.com)](https://github.com/qianguyihao/Web/blob/master/12-Vue基础/Vue开发积累.md)
     - [ ] [Web/Vue组件.md at master · qianguyihao/Web (github.com)](https://github.com/qianguyihao/Web/blob/master/12-Vue基础/Vue组件.md)
     
-    
+
+---
+
+### 第 6 周(1.24-1.30)
+
+- `CS 61A SICP-9~12讲-P41~P66`
+  - [ ] [P41~P46-第9章](https://www.bilibili.com/video/BV12t411p7uz?p=41)
+  - [ ] [P47~P51-第10章](https://www.bilibili.com/video/BV12t411p7uz?p=47)
+  - [ ] [P52~P59-第11章](https://www.bilibili.com/video/BV12t411p7uz?p=52)
+  - [ ] [P60~P66-第12章](https://www.bilibili.com/video/BV12t411p7uz?p=60)
+- [ ] [Version Control (Git) · the missing semester of your cs education (mit.edu)](https://missing.csail.mit.edu/2020/version-control/)
+
+- LeetCode
+  - [ ] [233](2)
+
+
+
+---
+
+### 第 7 周(1.31-2.6)
+
+
+
