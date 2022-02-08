@@ -8,6 +8,70 @@
 
 ---
 
+### MVC
+
+`MVC` 是 `模型(Model)`、`视图(View)`、`控制器(Controller)` 的简写，是一种软件设计规范。
+
+是将业务逻辑、数据、显示分离的方法来组织代码。
+
+MVC 主要作用是降低了视图与业务逻辑间的双向偶合。
+
+MVC 不是一种设计模式，MVC 是一种架构模式，不同的MVC存在差异。
+
+- `Model（模型)`: 数据模型，提供要展示的数据，因此包含数据和行为，可以认为是领域模型或 JavaBean 组件（包含数据和行为)，不过现在一般都分离开来:Value Object（数据Dao）和服务层（行为Service)。也就是模型提供了模型数据查询和模型数据的状态更新等功能，包括数据和业务。
+
+- `View（视图)`: 负责进行模型的展示，一般就是我们见到的用户界面，客户想看到的东西。
+
+- `Controller（控制器）`: 接收用户请求，委托给模型进行处理（状态改变），处理完毕后把返回的模型数据返回给视图，由视图负责展示也就是说控制器做了个调度员的工作
+
+  ![img](http://cdn.ayusummer233.top/img/202201241033369.png)
+
+---
+
+### MV*
+
+> [01-Vue的介绍和vue-cli | 千古前端图文教程 (qianguyihao.com)](https://web.qianguyihao.com/12-Vue基础/01-Vue的介绍和vue-cli.html#介绍)
+
+![img](http://cdn.ayusummer233.top/img/202201241034343.png)
+
+- Model：负责数据存储
+- View：负责页面展示
+- View Model：负责业务逻辑处理（比如Ajax请求等），对数据进行加工后交给视图展示
+
+![img](http://cdn.ayusummer233.top/img/202201241033942.png)
+
+Vue框架中，没有控制器。
+
+Vue 本身并不是一个框架，Vue结合周边生态构成一个灵活的、渐进式的框架。
+
+Vue 以及大型 Vue 项目所需的周边技术，构成了生态。
+
+渐进式框架图：
+
+![img](http://cdn.ayusummer233.top/img/202201241112260.png)
+
+### Vue框架的特点
+
+> [01-Vue的介绍和vue-cli | 千古前端图文教程 (qianguyihao.com)](https://web.qianguyihao.com/12-Vue基础/01-Vue的介绍和vue-cli.html#vue框架的特点)
+
+- 模板渲染：基于 html 的模板语法，学习成本低。
+- 响应式的更新机制：数据改变之后，视图会自动刷新。【重要】
+- 渐进式框架
+- 组件化/模块化
+- 轻量：开启 gzip压缩后，可以达到 20kb 大小。（React 达到 35kb，AngularJS 达到 60kb）。
+
+### 常见的插件
+
+- Webpack：代码模块化构建打包工具。
+- Gulp：基于流的自动化构建工具。
+- Babel：使用最新的 规范来编写 js。
+- Vue：构建数据驱动的Web界面的渐进式框架
+- Express：基于 Node.js 平台，快速、开放、极简的 Web 开发框架。
+
+以上这些包，都可以通过 NPM 这个包管理工具来安装。
+
+---
+
 ## Microsoft Learn | 开始使用 Vue.js
 
 > [开始使用 Vue.js - Learn | Microsoft Docs](https://docs.microsoft.com/zh-cn/learn/paths/vue-first-steps/)
@@ -134,6 +198,7 @@ const App = Vue.createApp({
     // Registering and mounting our app
     App.mount('#app');
 </script>
+
 ```
 
 在运行时，`id= 'app'` 元素的内容将替换为 Vue.js 应用程序的内容。
@@ -1931,7 +1996,23 @@ vue add typescript
 >
 > 你可以在 [为什么选 Vite](https://cn.vitejs.dev/guide/why.html) 中了解更多关于项目的设计初衷。
 
+---
 
+### 报错收集
+
+#### `listen EACCES: permission denied 127.0.0.1:3000`
+
+![image-20220208142918215](http://cdn.ayusummer233.top/img/202202081429374.png)
+
+> [Too many reserved port for Hyper-V · Issue #5514 · microsoft/WSL (github.com)](https://github.com/microsoft/WSL/issues/5514)
+>
+> [windows subsystem for linux - How to fix `listen EACCES: permission denied` on any port - Super User](https://superuser.com/questions/1437780/how-to-fix-listen-eacces-permission-denied-on-any-port?newreg=cfbe3fc8d90b48579e87202a58f8679c)
+>
+> [Unable to bind ports: Docker-for-Windows & Hyper-V excluding but not using important port ranges · Issue #3171 · docker/for-win (github.com)](https://github.com/docker/for-win/issues/3171#issuecomment-554587817)
+>
+> [The default dynamic port range for TCP/IP has changed in Windows Vista and in Windows Server 2008 - Windows Server | Microsoft Docs](https://docs.microsoft.com/en-US/troubleshoot/windows-server/networking/default-dynamic-port-range-tcpip-chang)
+
+![image-20220208164408408](http://cdn.ayusummer233.top/img/202202081644610.png)
 
 ---
 
