@@ -73,7 +73,7 @@
     
     - [ ] [中等-994. 腐烂的橘子 - 力扣（LeetCode） (leetcode-cn.com)](https://leetcode-cn.com/problems/rotting-oranges/)
     
-    - [ ] [简单-21. 合并两个有序链表 - 力扣（LeetCode） (leetcode-cn.com)](https://leetcode-cn.com/problems/merge-two-sorted-lists/)
+    - [x] [简单-21. 合并两个有序链表 - 力扣（LeetCode） (leetcode-cn.com)](https://leetcode-cn.com/problems/merge-two-sorted-lists/)
     
     - [x] [简单-206. 反转链表 - 力扣（LeetCode） (leetcode-cn.com)](https://leetcode-cn.com/problems/reverse-linked-list/)
     
@@ -83,7 +83,6 @@
     
     - [ ] [中等-784. 字母大小写全排列 - 力扣（LeetCode） (leetcode-cn.com)](https://leetcode-cn.com/problems/letter-case-permutation/)
     
-      
 
 ---
 
@@ -103,7 +102,7 @@
     - [ ] [中等-74. 搜索二维矩阵 - 力扣（LeetCode） (leetcode-cn.com)](https://leetcode-cn.com/problems/search-a-2d-matrix/)
     - [ ] [简单-1763. 最长的美好子字符串 - 力扣（LeetCode） (leetcode-cn.com)](https://leetcode-cn.com/problems/longest-nice-substring/)
   - VUE
-    - [ ] [01-Vue的介绍和vue-cli | 千古前端图文教程 (qianguyihao.com)](https://web.qianguyihao.com/12-Vue基础/01-Vue的介绍和vue-cli.html#mvvm模式)
+    - [x] [01-Vue的介绍和vue-cli | 千古前端图文教程 (qianguyihao.com)](https://web.qianguyihao.com/12-Vue基础/01-Vue的介绍和vue-cli.html#mvvm模式)
     - [ ] [02-Vue的系统指令 | 千古前端图文教程 (qianguyihao.com)](https://web.qianguyihao.com/12-Vue基础/02-Vue的系统指令.html)
     - [ ] [03-v-on的事件修饰符 | 千古前端图文教程 (qianguyihao.com)](https://web.qianguyihao.com/12-Vue基础/03-v-on的事件修饰符.html)
     - [ ] [Web/04-Vue的系统指令(二).md at master · qianguyihao/Web (github.com)](https://github.com/qianguyihao/Web/blob/master/12-Vue基础/04-Vue的系统指令(二).md)
@@ -131,16 +130,52 @@
   - [ ] [P47~P51-第10章](https://www.bilibili.com/video/BV12t411p7uz?p=47)
   - [ ] [P52~P59-第11章](https://www.bilibili.com/video/BV12t411p7uz?p=52)
   - [ ] [P60~P66-第12章](https://www.bilibili.com/video/BV12t411p7uz?p=60)
+  
 - [ ] [Version Control (Git) · the missing semester of your cs education (mit.edu)](https://missing.csail.mit.edu/2020/version-control/)
 
 - LeetCode
-  - [ ] [233](2)
+  - [ ] [中等-153. 寻找旋转排序数组中的最小值 - 力扣（LeetCode） (leetcode-cn.com)](https://leetcode-cn.com/problems/find-minimum-in-rotated-sorted-array/)
+  - [ ] [中等-162. 寻找峰值 - 力扣（LeetCode） (leetcode-cn.com)](https://leetcode-cn.com/problems/find-peak-element/)
+  - [ ] [中等-82. 删除排序链表中的重复元素 II - 力扣（LeetCode） (leetcode-cn.com)](https://leetcode-cn.com/problems/remove-duplicates-from-sorted-list-ii/)
+  - [ ] [中等-15. 三数之和 - 力扣（LeetCode） (leetcode-cn.com)](https://leetcode-cn.com/problems/3sum/)
+  - [ ] [简单-844. 比较含退格的字符串 - 力扣（LeetCode） (leetcode-cn.com)](https://leetcode-cn.com/problems/backspace-string-compare/)
+  - [ ] [中等-986. 区间列表的交集 - 力扣（LeetCode） (leetcode-cn.com)](https://leetcode-cn.com/problems/interval-list-intersections/)
+  - [ ] [中等-11. 盛最多水的容器 - 力扣（LeetCode） (leetcode-cn.com)](https://leetcode-cn.com/problems/container-with-most-water/)
+  
+  
 
 
 
 ---
 
 ### 第 7 周(1.31-2.6)
+
+
+
+- LeetCode
+  - [ ] [简单-1725. 可以形成最大正方形的矩形数目 - 力扣（LeetCode） (leetcode-cn.com)](https://leetcode-cn.com/problems/number-of-rectangles-that-can-form-the-largest-square/)
+  - [ ] [困难-4. 寻找两个正序数组的中位数 - 力扣（LeetCode） (leetcode-cn.com)](https://leetcode-cn.com/problems/median-of-two-sorted-arrays/)
+  - [ ] [中等-5. 最长回文子串 - 力扣（LeetCode） (leetcode-cn.com)](https://leetcode-cn.com/problems/longest-palindromic-substring/)
+  - [ ] [中等-6. Z 字形变换 - 力扣（LeetCode） (leetcode-cn.com)](https://leetcode-cn.com/problems/zigzag-conversion/)
+  - [ ] [中等-7. 整数反转 - 力扣（LeetCode） (leetcode-cn.com)](https://leetcode-cn.com/problems/reverse-integer/)
+  - [ ] [中等-8. 字符串转换整数 (atoi) - 力扣（LeetCode） (leetcode-cn.com)](https://leetcode-cn.com/problems/string-to-integer-atoi/)
+  - [ ] [简单-9. 回文数 - 力扣（LeetCode） (leetcode-cn.com)](https://leetcode-cn.com/problems/palindrome-number/)
+
+
+
+---
+
+### 第 8 周(2.7-2.13)
+
+
+
+- LeetCode
+  - [ ] [困难-10. 正则表达式匹配 - 力扣（LeetCode） (leetcode-cn.com)](https://leetcode-cn.com/problems/regular-expression-matching/)
+  - [ ] 
+
+
+
+
 
 
 
