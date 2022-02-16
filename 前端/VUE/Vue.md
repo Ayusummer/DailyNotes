@@ -1998,6 +1998,14 @@ vue add typescript
 
 ---
 
+### 单页面应用与多页面应用
+
+> [前端：你要懂的单页面应用和多页面应用 - 掘金 (juejin.cn)](https://juejin.cn/post/6844903512107663368)
+
+![image-20220209225014834](http://cdn.ayusummer233.top/img/202202092250005.png)
+
+---
+
 ### 报错收集
 
 #### `listen EACCES: permission denied 127.0.0.1:3000`
@@ -2013,6 +2021,40 @@ vue add typescript
 > [The default dynamic port range for TCP/IP has changed in Windows Vista and in Windows Server 2008 - Windows Server | Microsoft Docs](https://docs.microsoft.com/en-US/troubleshoot/windows-server/networking/default-dynamic-port-range-tcpip-chang)
 
 ![image-20220208164408408](http://cdn.ayusummer233.top/img/202202081644610.png)
+
+---
+
+#### `找不到模块“vue”或其相应的类型声明。ts(2307)`
+
+> [vue3 报错解决：找不到模块‘xxx.vue’或其相应的类型声明。（Vue 3 can not find module） - 小船二 - 博客园 (cnblogs.com)](https://www.cnblogs.com/JasmineHan/p/13673560.html)
+
+使用 vite 构建 vue-ts 项目时发现该报错
+
+![image-20220212003136197](http://cdn.ayusummer233.top/img/202202120031251.png)
+
+原因在于 typescript 只能理解 .ts 文件，无法理解 .vue文件
+
+解决方案: 在项目根目录或 `src` 文件夹下创建一个后缀为 `.d.ts` 的文件，并写入以下内容：
+
+```typescript
+declare module '*.vue' {
+  import { ComponentOptions } from 'vue'
+  const componentOptions: ComponentOptions
+  export default componentOptions
+}
+```
+
+然后发现本来就已经有了(
+
+![image-20220212004458873](http://cdn.ayusummer233.top/img/202202120044180.png)
+
+重启窗口后再看 `HelloWorld.vue`, 报错消失了😅
+
+![image-20220212004613823](http://cdn.ayusummer233.top/img/202202120046085.png)
+
+> PS: `App.vue` 里的错误是 `vuter` 报的, 使用 vue3 开发的话可以禁用 `vuter`, 使用 `volar`
+>
+> > [Volar - vue终极开发神器！ - 掘金 (juejin.cn)](https://juejin.cn/post/6966106927990308872)
 
 ---
 
@@ -2048,3 +2090,167 @@ vue add typescript
 > 如果您不打算开发大型单页应用，使用 Vuex 可能是繁琐冗余的。确实是如此——如果您的应用够简单，您最好不要使用 Vuex。一个简单的 [store 模式](https://v3.cn.vuejs.org/guide/state-management.html#从零打造简单状态管理)就足够您所需了。但是，如果您需要构建一个中大型单页应用，您很可能会考虑如何更好地在组件外部管理状态，Vuex 将会成为自然而然的选择。引用 Redux 的作者 Dan Abramov 的话说就是：
 >
 > > Flux 架构就像眼镜：您自会知道什么时候需要它。
+
+---
+
+## Pinia
+
+
+
+---
+
+## 组件系统
+
+> [介绍 | Vue.js (vuejs.org)-组件化应用构建](https://v3.cn.vuejs.org/guide/introduction.html#组件化应用构建)
+
+组件系统是 Vue 的另一个重要概念，因为它是一种抽象，允许我们使用小型、独立和通常可复用的组件构建大型应用。仔细想想，几乎任意类型的应用界面都可以抽象为一个组件树：
+
+![image-20220209222312257](http://cdn.ayusummer233.top/img/202202092223441.png)
+
+> 例如:
+>
+> 在组件 `App.vue` 中通过 `Prop` 传数据给 `msg` 调用 `HelloWorld.vue` 组件
+>
+> > [组件基础-通过 Prop 向子组件传递数据 | Vue.js (vuejs.org)](https://v3.cn.vuejs.org/guide/component-basics.html#通过-prop-向子组件传递数据)
+>
+> ![image-20220214183148443](http://cdn.ayusummer233.top/img/202202141831137.png)
+>
+> ![image-20220214183318826](http://cdn.ayusummer233.top/img/202202141833363.png)
+>
+> 
+
+
+
+ 
+
+---
+
+## 模板语法
+
+
+
+---
+
+## API
+
+> [API | Vue.js (vuejs.org)](https://v3.cn.vuejs.org/api/)
+
+---
+
+### 响应性 API
+
+#### 响应性基础 API
+
+##### reactive
+
+> [响应性基础 API-reactive | Vue.js (vuejs.org)](https://v3.cn.vuejs.org/api/basic-reactivity.html#reactive)
+
+返回对象的响应式副本
+
+```js
+const obj = reactive({ count: 0 })
+```
+
+响应式转换是“深层”的——它影响所有嵌套 property。在基于 [ES2015 Proxy](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Proxy) 的实现中，返回的 proxy 是**不**等于原始对象的。建议只使用响应式 proxy，避免依赖原始对象。
+
+**类型声明：**
+
+```typescript
+function reactive<T extends object>(target: T): UnwrapNestedRefs<T>
+```
+
+> 提示: 
+>
+> `reactive` 将解包所有深层的 [refs](https://v3.cn.vuejs.org/api/refs-api.html#ref)，同时维持 ref 的响应性。
+>
+> ```typescript
+> const count = ref(1)
+> const obj = reactive({ count })
+> 
+> // ref 会被解包
+> console.log(obj.count === count.value) // true
+> 
+> // 它会更新 `obj.count`
+> count.value++
+> console.log(count.value) // 2
+> console.log(obj.count) // 2
+> 
+> // 它也会更新 `count` ref
+> obj.count++
+> console.log(obj.count) // 3
+> console.log(count.value) // 3
+> ```
+>
+> ---
+>
+> **重要**
+>
+> 重要
+>
+> 当将 [ref](https://v3.cn.vuejs.org/api/refs-api.html#ref) 分配给 `reactive` property 时，ref 将被自动解包。
+>
+> ```typescript
+> const count = ref(1)
+> const obj = reactive({})
+> 
+> obj.count = count
+> 
+> console.log(obj.count) // 1
+> console.log(obj.count === count.value) // true
+> ```
+
+
+
+---
+
+#### Refs
+
+##### ref
+
+> [Refs | Vue.js (vuejs.org)](https://v3.cn.vuejs.org/api/refs-api.html#ref)
+
+接受一个内部值并返回一个响应式且可变的 ref 对象。ref 对象仅有一个 `.value` property，指向该内部值。
+
+`示例`:
+
+```js
+const count = ref(0)
+console.log(count.value) // 0
+
+count.value++
+console.log(count.value) // 1
+```
+
+![image-20220214182536248](http://cdn.ayusummer233.top/img/202202141825974.png)
+
+![image-20220214182603068](http://cdn.ayusummer233.top/img/202202141826424.png)
+
+如果将对象分配为 ref 值，则它将被 [reactive](https://v3.cn.vuejs.org/api/basic-reactivity.html#reactive) 函数处理为深层的响应式对象。
+
+**类型声明：**
+
+```ts
+interface Ref<T> {
+  value: T
+}
+
+function ref<T>(value: T): Ref<T>
+```
+
+有时我们可能需要为 ref 的内部值指定复杂类型。可以在调用 `ref` 时传递一个泛型参数以覆盖默认推断，从而简洁地做到这一点：
+
+```ts
+const foo = ref<string | number>('foo') // foo 的类型：Ref<string | number>
+
+foo.value = 123 // ok!
+```
+
+如果泛型的类型未知，则建议将 `ref` 转换为 `Ref<T>`：
+
+```ts
+function useState<State extends string>(initial: State) {
+  const state = ref(initial) as Ref<State> // state.value -> State extends string
+  return state
+}
+```
+
