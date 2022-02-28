@@ -3,8 +3,14 @@
 ## 简介
 
 > [介绍 — Vue.js (vuejs.org)](https://cn.vuejs.org/v2/guide/)
+>
+> [学习Vue3 第一章_qq1195566313的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/122768533)
 
 `Vue` 是一套用于构建用户界面的**渐进式框架**。与其它大型框架不同的是，Vue 被设计为可以自底向上逐层应用。Vue 的核心库只关注视图层，不仅易于上手，还便于与第三方库或既有项目整合。另一方面，当与[现代化的工具链](https://cn.vuejs.org/v2/guide/single-file-components.html)以及各种[支持类库](https://github.com/vuejs/awesome-vue#libraries--plugins)结合使用时，Vue 也完全能够为复杂的单页应用提供驱动。
+
+![img](http://cdn.ayusummer233.top/img/202202281517242.png)
+
+
 
 ---
 
@@ -69,6 +75,26 @@ Vue 以及大型 Vue 项目所需的周边技术，构成了生态。
 - Express：基于 Node.js 平台，快速、开放、极简的 Web 开发框架。
 
 以上这些包，都可以通过 NPM 这个包管理工具来安装。
+
+---
+
+### 与 Vue2 对比
+
+#### Options API 与 Composition API
+
+> [Options API 和 Composition API 的对比 - 调皮小妮 - 博客园 (cnblogs.com)](https://www.cnblogs.com/loving0606/p/14128712.html)
+
+- `Options API`
+
+  `在vue2中`，我们会在一个vue文件中methods，computed，watch，data中等等定义属性和方法，共同处理页面逻辑，我们称这种方式为Options API
+
+  `缺点`： 一个功能往往需要在不同的vue配置项中定义属性和方法，`比较分散`，项目小还好，清晰明了，但是`项目大了后，一个methods中可能包含很多个方法`，你往往分不清哪个方法对应着哪个功能
+
+- `Composition API`
+
+  在 `vue3 Composition API` 中，我们的代码是根据逻辑功能来组织的，`一个功能所定义的所有api会放在一起（更加的高内聚，低耦合）`，这样做，即时项目很大，功能很多，我们都能`快速的定位到这个功能所用到的所有API`，而不像vue2 Options API 中一个功能所用到的API都是分散的，需要改动功能，到处找API的过程是很费劲的
+
+
 
 ---
 
@@ -1996,6 +2022,34 @@ vue add typescript
 >
 > 你可以在 [为什么选 Vite](https://cn.vitejs.dev/guide/why.html) 中了解更多关于项目的设计初衷。
 
+> [学习Vue3 第二章（配置环境）_qq1195566313的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/122769982)
+
+- `vite` 的优势
+
+  `冷服务`:  默认的构建目标浏览器是能 [在 script 标签上支持原生 ESM](https://caniuse.com/es6-module) 和 [原生 ESM 动态导入](https://caniuse.com/es6-module-dynamic-import)
+
+  HMR 速度快到惊人的 [模块热更新（HMR）](https://vitejs.cn/guide/features.html#hot-module-replacement)
+
+  Rollup打包 它使用 [Rollup](https://rollupjs.org/) 打包你的代码，并且它是预配置的 并且支持大部分rollup插件
+
+```powershell
+pnpm create v
+```
+
+---
+
+### 目录结构
+
+> [学习Vue3 第三章（Vite目录 & Vue单文件组件）_qq1195566313的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/122771007)
+
+- `public` - 不会被编译, 放置静态资源
+- `assets` - 存放可编译的静态资源
+- `components` - 存放组件
+- `App.vue` - 全局组件
+- `main.ts` - 全局 ts 文件
+- `index.html` - 非常重要的入口文件**（webpack，rollup 他们的入口文件都是enrty input 是一个 js文件 而 Vite 的入口文件是一个 html 文件，他刚开始不会编译这些js文件 只有当你用到的时候 如script src="xxxxx.js" 会发起一个请求被vite拦截这时候才会解析js文件）**
+- `vite.config.ts` - vite 配置项
+
 ---
 
 ### 单页面应用与多页面应用
@@ -2119,7 +2173,56 @@ declare module '*.vue' {
 >
 > 
 
+---
 
+## 单文件组件SFC(Single File Component)
+
+> [学习Vue3 第三章（Vite目录 & Vue单文件组件）_qq1195566313的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/122771007)
+>
+> [单文件组件  | Vue.js (vuejs.org)](https://v3.cn.vuejs.org/api/sfc-script-setup.html)
+
+`<script setup>` 是在单文件组件 (SFC) 中使用组合式 API 的编译时语法糖。相比于普通的 `<script>` 语法，它具有更多优势：
+
+- 更少的样板内容，更简洁的代码。
+- 能够使用纯 Typescript 声明 props 和抛出事件。
+- 更好的运行时性能 (其模板会被编译成与其同一作用域的渲染函数，没有任何的中间代理)。
+- 更好的 IDE 类型推断性能 (减少语言服务器从代码中抽离类型的工作)。
+
+---
+
+`*.vue` 组件都由三种类型的顶层语法块所组成：`<template>`、`<script>`、`<style>`
+
+- `<template>`
+  - 每个 `*.vue` 文件最多可同时包含一个顶层 `<template>` 块。
+  - 其中的内容会被提取出来并传递给 `@vue/compiler-dom`，预编译为 JavaScript 的渲染函数，并附属到导出的组件上作为其 `render` 选项。
+  
+- `<script>`
+  - 每一个 `*.vue` 文件最多可同时包含一个 `<script>` 块(不包括`<script setup>`)
+  - 该脚本将作为 ES Module 来执行。
+  - 其**默认导出**的内容应该是 Vue 组件选项对象，它要么是一个普通的对象，要么是 [defineComponent](https://v3.cn.vuejs.org/api/global-api.html#definecomponent) 的返回值。
+  
+- `<script setup>`
+  - 每个 `*.vue` 文件最多可同时包含一个 `<script setup>` 块 (不包括常规的 `<script>`)
+  - 该脚本会被预处理并作为组件的 `setup()` 函数使用，也就是说它会在每个组件实例中执行。`<script setup>` 的顶层绑定会自动暴露给模板。更多详情请查看[单文件组件  | Vue.js (vuejs.org)](https://v3.cn.vuejs.org/api/sfc-script-setup)
+  
+- `<style>`
+
+  > [单文件组件样式特性 | Vue.js (vuejs.org)](https://v3.cn.vuejs.org/api/sfc-style.html)
+
+  - 一个 `*.vue` 文件可以包含多个 `<style>` 标签。
+  - `<style>` 标签可以通过 scoped 或 module attribute 将样式封装在当前组件内。多个不同封装模式的 `<style>` 标签可以在同一个组件中混
+
+---
+
+### 基本语法
+
+```vue
+<script setup>
+console.log('hello script setup')
+</script>
+```
+
+里面的代码会被编译成组件 `setup()` 函数的内容。这意味着与普通的 `<script>` 只在组件被首次引入的时候执行一次不同，`<script setup>` 中的代码会在**每次组件实例被创建的时候执行**
 
  
 
@@ -2127,7 +2230,138 @@ declare module '*.vue' {
 
 ## 模板语法
 
+### `v-on`
 
+> [Web/03-v-on的事件修饰符.md at master · qianguyihao/Web (github.com)](https://github.com/qianguyihao/web/blob/master/12-Vue基础/03-v-on的事件修饰符.md)
+>
+> [JS事件冒泡 (biancheng.net)](http://c.biancheng.net/view/8245.html)
+>
+> [指令 | Vue.js (vuejs.org)](https://v3.cn.vuejs.org/api/directives.html#v-on)
+
+- 修饰符
+
+  - `.stop` 阻止冒泡。调用 `event.stopPropagation()`。
+
+  - `.prevent` 阻止默认事件（默认行为）。本质是调用 event.preventDefault()。
+
+  - `.capture` 添加事件监听器时，使用捕获的方式（也就是说，事件采用捕获的方式，而不是采用冒泡的方式）。
+
+  - `.self` 只有当事件在该元素本身（比如不是子元素）触发时，才会触发回调。
+
+  - `.once` 事件只触发一次。
+
+  - `.{keyCode | keyAlias}` 只当事件是从侦听器绑定的元素本身触发时，才触发回调。
+
+  - `.native` 监听组件根元素的原生事件。
+
+> PS：一个事件，允许同时使用多个事件修饰符。
+
+---
+
+### `.stop`
+
+![image-20220224092027021](http://cdn.ayusummer233.top/img/202202240920741.png)
+
+此代码冲存在冒泡现象, 当点击字标签(绿色区域)时父标签也被触发, 如果不想让字标签的点击事件冒泡到父标签可以给字标签添加一个事件修饰符 `.stop` 阻止冒泡
+
+> 事件冒泡：当一个元素接收到事件时，会把它接收到的事件逐级向上传播给它的祖先元素，一直传到顶层的 window 对象（关于最后传播到的顶层对象，不同浏览器有可能不同，例如 IE9 及其以上的 IE、FireFox、Chrome、Safari 等浏览器，事件冒泡的顶层对象为 window 对象，而 IE7/8 顶层对象则为 document对象）。
+>
+> 例如，在 Chrome 浏览器中，当用户单击了<div>元素，click 事件将按照 <div>→<body>→<html>→document→window 的顺序进行传播，如图 1 所示。事件冒泡可以形象地比喻为把一块石头投入水中，泡泡会一直从水底冒出水面，也就是说从下向上开始传播。
+>
+> ![image-20220224092651971](http://cdn.ayusummer233.top/img/202202240926187.png)
+>
+> 事件冒泡对所有浏览器都是默认存在的，且由元素的 HTML 结构决定，而不是由元素在页面中的位置决定，所以即便使用定位或浮动使元素脱离父元素的范围，单击元素时，其依然存在冒泡现象。
+
+![image-20220224094027373](http://cdn.ayusummer233.top/img/202202240940558.png)
+
+> 只是不想触发父组件的单击事件时也可以使用 `.self` 将父组件的单击事件设置为仅当自己被点击时触发 
+>
+> ![image-20220224095055036](http://cdn.ayusummer233.top/img/202202240950223.png)
+
+---
+
+### `v-model`
+
+- `v-bind` 可以实现数据的**单向**绑定
+- `v-model` 可以实现数据的**双向**绑定
+
+> `v-model` 只能运用在**表单元素**中，或者用于自定义组件。常见的表单元素包括：`input(radio, text, address, email....) 、select、checkbox 、textarea`
+
+![image-20220227131956304](http://cdn.ayusummer233.top/img/202202271320613.png)
+
+---
+
+#### 计算器示例
+
+![image-20220228153518969](http://cdn.ayusummer233.top/img/202202281535505.png)
+
+---
+
+### `v-bind`
+
+> [学习Vue3 第四章（模板语法 & vue指令）_qq1195566313的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/122773486)
+
+`v-bind` 绑定 `style` 样例:
+
+```vue
+<!-- v-bind 示例 -->
+<script setup lang="ts">
+import { ref, Ref } from 'vue'
+
+let flag: Ref<boolean> = ref(false)
+
+type Cls = {
+    other: boolean,
+    h: boolean
+}
+
+const flag1: Cls = {
+    other: false,
+    h: true
+}
+
+
+type Style = {
+    height: string,
+    color: string
+}
+
+const style: Style = {
+    height: "300px",
+    color: "blue"
+}
+
+</script>
+
+<template>
+    <!-- v-model 下拉菜单绑定 flag -->
+    <select v-model="flag">
+        <option type="string" value="true">true</option>
+        <option type="string" value="false">false</option>
+    </select>
+    <!-- 绑定样式 -->
+    <div :class="[flag ? 'active' : 'other', 'h']">12323</div>
+    <!-- 利用元组进行样式绑定 -->
+    <div :class="flag1">{{ flag1 }}</div>
+    <div :style="style">2222</div>
+</template>
+
+<style scoped>
+.active {
+    color: red;
+}
+.other {
+    color: blue;
+}
+.h {
+    height: 300px;
+    border: 1px solid #ccc;
+}
+</style>
+
+```
+
+![image-20220228223823608](http://cdn.ayusummer233.top/img/202202282238402.png)
 
 ---
 
