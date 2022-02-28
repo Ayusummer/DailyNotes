@@ -167,15 +167,90 @@
 
 ### 第 8 周(2.7-2.13)
 
-
-
 - LeetCode
   - [ ] [困难-10. 正则表达式匹配 - 力扣（LeetCode） (leetcode-cn.com)](https://leetcode-cn.com/problems/regular-expression-matching/)
-  - [ ] 
+  - [ ] [中等-438. 找到字符串中所有字母异位词 - 力扣（LeetCode） (leetcode-cn.com)](https://leetcode-cn.com/problems/find-all-anagrams-in-a-string/)
+  - [ ] [中等-713. 乘积小于K的子数组 - 力扣（LeetCode） (leetcode-cn.com)](https://leetcode-cn.com/problems/subarray-product-less-than-k/)
+  - [ ] [中等-209. 长度最小的子数组 - 力扣（LeetCode） (leetcode-cn.com)](https://leetcode-cn.com/problems/minimum-size-subarray-sum/)
+  - [ ] [中等-200. 岛屿数量 - 力扣（LeetCode） (leetcode-cn.com)](https://leetcode-cn.com/problems/number-of-islands/)
+  - [ ] [中等-547. 省份数量 - 力扣（LeetCode） (leetcode-cn.com)](https://leetcode-cn.com/problems/number-of-provinces/)
+  - [ ] [中等-117. 填充每个节点的下一个右侧节点指针 II - 力扣（LeetCode） (leetcode-cn.com)](https://leetcode-cn.com/problems/populating-next-right-pointers-in-each-node-ii/)
+  
+- VUE
+  - vue3 从入门到精通_猪场前端程序媛@哔哩哔哩_bilibili
+    - [ ] [P1~9](https://www.bilibili.com/video/BV1W34y1i7cG?p=1&spm_id_from=pageDriver)
+    - [ ] [P10~18](https://www.bilibili.com/video/BV1W34y1i7cG?p=10&spm_id_from=pageDriver)
+    - [ ] [P19~27](https://www.bilibili.com/video/BV1W34y1i7cG?p=19&spm_id_from=pageDriver)
+  - 【尚硅谷】Vue3 全套教程Web前端丨vuejs 轻松掌握_哔哩哔哩_bilibili
+    - [ ] [P1~12](https://www.bilibili.com/video/BV1NR4y1x7Ab?p=1)
+    - [ ] [P13~24](https://www.bilibili.com/video/BV1NR4y1x7Ab?p=13)
+    - [ ] [P25~36](https://www.bilibili.com/video/BV1NR4y1x7Ab?p=25)
 
 
+---
 
+### 第 9 周(2.14-2.20)
 
+- LeetCode
+  - [ ] [简单-572. 另一棵树的子树 - 力扣（LeetCode） (leetcode-cn.com)](https://leetcode-cn.com/problems/subtree-of-another-tree/)
+  - [ ] [中等-1091. 二进制矩阵中的最短路径 - 力扣（LeetCode） (leetcode-cn.com)](https://leetcode-cn.com/problems/shortest-path-in-binary-matrix/)
+  - [ ] [中等-130. 被围绕的区域 - 力扣（LeetCode） (leetcode-cn.com)](https://leetcode-cn.com/problems/surrounded-regions/)
+  - [ ] [中等-797. 所有可能的路径 - 力扣（LeetCode） (leetcode-cn.com)](https://leetcode-cn.com/problems/all-paths-from-source-to-target/)
+  - [ ] [中等-78. 子集 - 力扣（LeetCode） (leetcode-cn.com)](https://leetcode-cn.com/problems/subsets/)
+  - [ ] [中等-90. 子集 II - 力扣（LeetCode） (leetcode-cn.com)](https://leetcode-cn.com/problems/subsets-ii/)
+  - [ ] [中等-47. 全排列 II - 力扣（LeetCode） (leetcode-cn.com)](https://leetcode-cn.com/problems/permutations-ii/)
 
+- VUE
+  - vue3 从入门到精通_猪场前端程序媛@哔哩哔哩_bilibili
+    - [ ] [P28~36](https://www.bilibili.com/video/BV1W34y1i7cG?p=28&spm_id_from=pageDriver)
+    - [ ] [P37~45](https://www.bilibili.com/video/BV1W34y1i7cG?p=37&spm_id_from=pageDriver)
+    - [ ] [P46~54](https://www.bilibili.com/video/BV1W34y1i7cG?p=46)
+    - [ ] [P55~62](https://www.bilibili.com/video/BV1W34y1i7cG?p=55&spm_id_from=pageDriver)
+  - 【尚硅谷】Vue3 全套教程Web前端丨vuejs 轻松掌握_哔哩哔哩_bilibili
+    - [ ] [P37~48](https://www.bilibili.com/video/BV1NR4y1x7Ab?p=37)
+    - [ ] [P49~60](https://www.bilibili.com/video/BV1NR4y1x7Ab?p=49)
+    - [ ] [P61~72](https://www.bilibili.com/video/BV1NR4y1x7Ab?p=61)
+    - [ ] [P73~84](https://www.bilibili.com/video/BV1NR4y1x7Ab?p=73)
 
+---
 
+### 第 10 周(2.21-2.27)
+
+- LeetCode
+  - [ ] [中等-39. 组合总和 - 力扣（LeetCode） (leetcode-cn.com)](https://leetcode-cn.com/problems/combination-sum/)
+  - [ ] [中等-40. 组合总和 II - 力扣（LeetCode） (leetcode-cn.com)](https://leetcode-cn.com/problems/combination-sum-ii/)
+  - [ ] [中等-17. 电话号码的字母组合 - 力扣（LeetCode） (leetcode-cn.com)](https://leetcode-cn.com/problems/letter-combinations-of-a-phone-number/)
+  - [ ] [中等-22. 括号生成 - 力扣（LeetCode） (leetcode-cn.com)](https://leetcode-cn.com/problems/generate-parentheses/)
+  - [ ] [中等-79. 单词搜索 - 力扣（LeetCode） (leetcode-cn.com)](https://leetcode-cn.com/problems/word-search/)
+
+---
+
+### 第 12 周(2.28-3.6)
+
+- VUE
+
+  - [x] [学习Vue3 第一章_qq1195566313的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/122768533)
+
+  - [x] [学习Vue3 第二章（配置环境）_qq1195566313的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/122769982)
+
+  - [x] [学习Vue3 第三章（Vite目录 & Vue单文件组件）_qq1195566313的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/122771007)
+
+  - [ ] [学习Vue3 第四章（模板语法 & vue指令）_qq1195566313的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/122773486)
+
+  - [ ] [学习Vue3 第五章（Vue核心虚拟Dom和 diff 算法）_qq1195566313的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/122778560)
+
+  - [ ] [学习Vue3 第六章（认识Ref全家桶）_qq1195566313的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/122780637)
+
+  - [ ] [学习Vue3 第七章（认识Reactive全家桶）_qq1195566313的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/122784094)
+
+  - [ ] [学习Vue3 第八章（认识to系列全家桶）_qq1195566313的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/122791665)
+
+  - [ ] [学习Vue3 第九章（认识computed计算属性）_qq1195566313的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/122792620)
+  
+  - [ ] [学习Vue3 第十章（认识watch侦听器）_qq1195566313的博客-CSDN博客_watch 函数](https://blog.csdn.net/qq1195566313/article/details/122797990)
+  
+  - [ ] [学习Vue3 第十一章（认识watchEffect高级侦听器）_qq1195566313的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/122802130)
+  
+  - [ ] [学习Vue3 第十二章（认识组件&Vue3生命周期）_qq1195566313的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/122811060)
+  
+    
