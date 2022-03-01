@@ -62,6 +62,52 @@
 
 ---
 
+## 关键字
+
+### var, let 与 const
+
+> [TypeScript 使用let和const声明变量 - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/396435904)
+
+使用 `var` 声明变量的时候，可以同时声明某个变量多次，但是只有最后一个生效。
+
+而 `let` 不支持这样做，使用 `let` 声明变量，一个变量同时只能声明一次，否则会报错。
+
+```typescript
+// var 重复声明
+var a = 1;
+var a = 2;
+console.log(a);
+
+// let 尝试重复声明
+let b = 1;
+let b = 2;
+console.log(b);
+```
+
+![image-20220301084125051](http://cdn.ayusummer233.top/img/202203010841228.png)
+
+let 的作用域在其所在块内, const 也是如此
+
+const 与 let 的不同之处在于其声明的变量只能在声明时被赋值, 也即使用 const 生命的变量被赋值后无法再改变变量所指向的内存地址(指针)
+
+> const 声明常量后无法改变值, 但是使用 const 声明一个对象后, 虽然对象变量锁指向的内存地址不改变, 但是对象的属性是可变的
+>
+> ```typescript
+> // const 声明常量后尝试改变常量值
+> const c = 1;
+> c = 2;
+> 
+> // const 声明对象后改变对象属性
+> const d = {
+>     name: '咸鱼型233'
+> };
+> d.name = '233';
+> ```
+>
+> ![image-20220301084824328](http://cdn.ayusummer233.top/img/202203010848443.png)
+
+---
+
 ## 模板字符串
 
 在 TypeScript 中，还可以使用模板字符串，该模板字符串可以跨越多行并具有嵌入式表达式。 这些字符串由反撇号/反引号 (\`) 字符括起，并且嵌入式表达式的形式为 `${ expr }`。

@@ -119,3 +119,25 @@ console.log(list2);
 let person1: [string, number] = ['Marcia', 35];
 console.log(person1);
 
+
+// var 重复声明
+var a = 1;
+var a = 2;
+console.log(a);
+
+// let 尝试重复声明
+let b = 1;
+// let b = 2;
+console.log(b);
+
+
+// const 声明常量后尝试改变常量值
+const c = 1;
+// c = 2;
+
+// const 声明对象后改变对象属性
+const d = {
+    name: '咸鱼型233'
+};
+d.name = '233';
+
