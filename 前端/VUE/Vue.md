@@ -1,6 +1,6 @@
-# Vue
+Vue
 
-## 简介
+# 简介
 
 > [介绍 — Vue.js (vuejs.org)](https://cn.vuejs.org/v2/guide/)
 >
@@ -14,7 +14,7 @@
 
 ---
 
-### MVC
+## MVC
 
 `MVC` 是 `模型(Model)`、`视图(View)`、`控制器(Controller)` 的简写，是一种软件设计规范。
 
@@ -98,7 +98,7 @@ Vue 以及大型 Vue 项目所需的周边技术，构成了生态。
 
 ---
 
-## Microsoft Learn | 开始使用 Vue.js
+# Microsoft Learn | 开始使用 Vue.js
 
 > [开始使用 Vue.js - Learn | Microsoft Docs](https://docs.microsoft.com/zh-cn/learn/paths/vue-first-steps/)
 >
@@ -1863,7 +1863,7 @@ methods: {
 
 ---
 
-## 安装
+# 安装
 
 > [安装 | Vue.js (vuejs.org)](https://v3.cn.vuejs.org/guide/installation.html#发布版本说明)
 
@@ -1876,7 +1876,7 @@ methods: {
 
 ---
 
-### pnpm
+## pnpm
 
 ```bash
 # 最新稳定版
@@ -1891,7 +1891,7 @@ pnpm install vue@next
 
 ---
 
-### 命令行工具(CLI)
+## 命令行工具(CLI)
 
 Vue 提供了一个[官方的 CLI](https://github.com/vuejs/vue-cli)，为单页面应用 (SPA) 快速搭建繁杂的脚手架。它为现代前端工作流提供了功能齐备的构建设置。只需要几分钟的时间就可以运行起来并带有热重载、保存时 lint 校验，以及生产环境可用的构建版本。更多详情可查阅 [Vue CLI 的文档](https://cli.vuejs.org/)。
 
@@ -1923,21 +1923,21 @@ vue upgrade --next
 
 ---
 
-## 工具
+# 工具
 
-### TypeScript 支持
+## TypeScript 支持
 
 > [Vue CLI](https://cli.vuejs.org/) 提供内置的 TypeScript 工具支持。
 
 ---
 
-###  NPM 包中的官方声明
+##  NPM 包中的官方声明
 
 随着应用的增长，静态类型系统可以帮助防止许多潜在的运行时错误，这就是为什么 Vue 3 是用 TypeScript 编写的。这意味着在 Vue 中使用 TypeScript 不需要任何其他工具——它具有一等公民支持。
 
 ---
 
-### 推荐配置
+## 推荐配置
 
 ```json
 // tsconfig.json
@@ -1959,9 +1959,9 @@ vue upgrade --next
 
 ---
 
-### 开发工具
+## 开发工具
 
-#### 项目创建
+### 项目创建
 
 [Vue CLI](https://github.com/vuejs/vue-cli) 可以生成使用 TypeScript 的新项目，开始：
 
@@ -1994,9 +1994,9 @@ vue add typescript
 
 ---
 
-#### DevTools
+### DevTools
 
-##### DevTools 无法加载源映射
+#### DevTools 无法加载源映射
 
 > [DevTools 无法加载 SourceMap：XXXX.map 的内容:HTTP 错误: 状态代码 404，net::ERR_UNKNOWN_URL_SCHEM_caesarding07-CSDN博客_devtools 无法加载源映射](https://blog.csdn.net/qq_44628595/article/details/116061062)
 
@@ -2009,7 +2009,7 @@ vue add typescript
 关掉就好了
 
 ---
-## Vite
+# Vite
 
 > [开始 | Vite 官方中文文档 (vitejs.dev)](https://cn.vitejs.dev/guide/)
 >
@@ -2038,7 +2038,7 @@ pnpm create v
 
 ---
 
-### 目录结构
+## 目录结构
 
 > [学习Vue3 第三章（Vite目录 & Vue单文件组件）_qq1195566313的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/122771007)
 
@@ -2052,7 +2052,7 @@ pnpm create v
 
 ---
 
-### 单页面应用与多页面应用
+## 单页面应用与多页面应用
 
 > [前端：你要懂的单页面应用和多页面应用 - 掘金 (juejin.cn)](https://juejin.cn/post/6844903512107663368)
 
@@ -2060,7 +2060,7 @@ pnpm create v
 
 ---
 
-### 报错收集
+## 报错收集
 
 #### `listen EACCES: permission denied 127.0.0.1:3000`
 
@@ -2112,7 +2112,7 @@ declare module '*.vue' {
 
 ---
 
-## Router
+# Router
 
 > [介绍 | Vue Router (vuejs.org)](https://next.router.vuejs.org/zh/introduction.html)
 >
@@ -2133,7 +2133,7 @@ declare module '*.vue' {
 
 ---
 
-## Vuex
+# Vuex
 
 > Vuex 是一个专为 Vue.js 应用程序开发的 **状态管理模式 + 库**。它采用集中式存储管理应用的所有组件的状态，并以相应的规则保证状态以一种可预测的方式发生变化。
 >
@@ -2147,13 +2147,13 @@ declare module '*.vue' {
 
 ---
 
-## Pinia
+# Pinia
 
 
 
 ---
 
-## 组件系统
+# 组件系统
 
 > [介绍 | Vue.js (vuejs.org)-组件化应用构建](https://v3.cn.vuejs.org/guide/introduction.html#组件化应用构建)
 
@@ -2287,13 +2287,69 @@ console.log('hello script setup')
 
 > `v-model` 只能运用在**表单元素**中，或者用于自定义组件。常见的表单元素包括：`input(radio, text, address, email....) 、select、checkbox 、textarea`
 
-![image-20220227131956304](http://cdn.ayusummer233.top/img/202202271320613.png)
-
 ---
 
 #### 计算器示例
 
+```vue
+<!-- v-model 实现简易计算器, v-model 双向绑定示例 -->
+<script setup lang="ts">
+import { ref, Ref } from 'vue'
+
+const n1: Ref<number> = ref(0)
+const n2: Ref<number> = ref(0)
+const result: Ref<number> = ref(0)
+const opt: Ref<string> = ref('+')
+
+const message: Ref<string> = ref("v-model字符串")
+
+const calculate = (): void => {
+    switch (opt.value) {
+        case '+':
+            result.value = n1.value + n2.value
+            break
+        case '-':
+            result.value = n1.value - n2.value
+            break
+        case '*':
+            result.value = n1.value * n2.value
+            break
+        case '/':
+            result.value = n1.value / n2.value
+            break
+        default:
+            break
+    }
+}
+
+</script>
+
+<template>
+    {{ result }}
+    <input type="number" v-model="n1" />
+    <select v-model="opt">
+        <option value="+">+</option>
+        <option value="-">-</option>
+        <option value="*">*</option>
+        <option value="/">/</option>
+    </select>
+    <input type="number" v-model="n2" />
+    <input type="button" value="=" @click="calculate" />
+    <input type="number" v-model="result" />
+
+    <input v-model="message" type="text" />
+    <div>{{ message }}</div>
+</template>
+
+<style scoped>
+</style> 
+```
+
+
+
 ![image-20220228153518969](http://cdn.ayusummer233.top/img/202202281535505.png)
+
+![image-20220301085411622](http://cdn.ayusummer233.top/img/202203010854905.png)
 
 ---
 
@@ -2365,17 +2421,17 @@ const style: Style = {
 
 ---
 
-## API
+# API
 
 > [API | Vue.js (vuejs.org)](https://v3.cn.vuejs.org/api/)
 
 ---
 
-### 响应性 API
+## 响应性 API
 
-#### 响应性基础 API
+### 响应性基础 API
 
-##### reactive
+#### reactive
 
 > [响应性基础 API-reactive | Vue.js (vuejs.org)](https://v3.cn.vuejs.org/api/basic-reactivity.html#reactive)
 
@@ -2433,13 +2489,13 @@ function reactive<T extends object>(target: T): UnwrapNestedRefs<T>
 > console.log(obj.count === count.value) // true
 > ```
 
-
+> 官方建议定义数据的时候, `reactive` 定义复杂的数据类型的数据, `ref` 推荐定义基本数据类型,
 
 ---
 
-#### Refs
+### Refs
 
-##### ref
+#### ref
 
 > [Refs | Vue.js (vuejs.org)](https://v3.cn.vuejs.org/api/refs-api.html#ref)
 
@@ -2488,3 +2544,72 @@ function useState<State extends string>(initial: State) {
 }
 ```
 
+---
+
+### `Computed` 与 `watch`
+
+#### `computed`
+
+> [Computed 与 watch | Vue.js (vuejs.org)](https://v3.cn.vuejs.org/api/computed-watch-api.html#computed)
+>
+> [Vue+TypeScript中如何处理computed_语霖BABA的博客-CSDN博客](https://blog.csdn.net/weixin_45614615/article/details/112057767)
+>
+> [TypeScript 支持 | Vue.js (vuejs.org)](https://v3.cn.vuejs.org/guide/typescript-support.html#注解返回类型)
+
+**「computed」** 是[Vue](https://so.csdn.net/so/search?q=Vue&spm=1001.2101.3001.7020)中提供的一个计算属性。它被混入到Vue实例中，所有的getter和setter的this上下文自动的绑定为Vue实例。计算属性的结果会被缓存，除非依赖的响应式property变化才会从新计算。
+
+由于 Vue 声明文件的循环特性，TypeScript 可能难以推断 computed 的类型。因此，你可能需要**注解**计算属性的返回类型。
+
+```typescript
+import { defineComponent } from 'vue'
+
+const Component = defineComponent({
+  data() {
+    return {
+      message: 'Hello!'
+    }
+  },
+  computed: {
+    // 需要注解
+    greeting(): string {
+      return this.message + '!'
+    },
+
+    // 在使用 setter 进行计算时，需要对 getter 进行注解
+    greetingUppercased: {
+      get(): string {
+        return this.greeting.toUpperCase()
+      },
+      set(newValue: string) {
+        this.message = newValue.toUpperCase()
+      }
+    }
+  }
+})
+```
+
+**类型声明 computed**
+
+```typescript
+import { defineComponent, ref, computed } from 'vue'
+
+export default defineComponent({
+  name: 'CounterButton',
+  setup() {
+    let count = ref(0)
+
+    // 只读
+    const doubleCount = computed(() => count.value * 2)
+
+    const result = doubleCount.value.split('') // => Property 'split' does not exist on type 'number'
+  }
+})
+```
+
+![image-20220302173614712](http://cdn.ayusummer233.top/img/202203021736254.png)
+
+---
+
+`购物车示例`
+
+![image-20220303153601773](http://cdn.ayusummer233.top/img/202203031536279.png)
