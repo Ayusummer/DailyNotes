@@ -14,6 +14,28 @@
 - [安装](#安装)
 - [教程](#教程)
 - [类型](#类型)
+  - [关键字](#关键字)
+    - [var, let 与 const](#var-let-与-const)
+  - [模板字符串](#模板字符串)
+  - [枚举](#枚举)
+  - [unknown 类型](#unknown-类型)
+  - [类型断言](#类型断言)
+  - [类型保护](#类型保护)
+  - [联合类型](#联合类型)
+  - [交叉类型](#交叉类型)
+  - [对象类型](#对象类型)
+    - [数组](#数组)
+    - [元组](#元组)
+- [接口](#接口)
+  - [TypeScript 中的接口概述](#typescript-中的接口概述)
+    - [接口与类型别名的区别](#接口与类型别名的区别)
+  - [扩展接口](#扩展接口)
+    - [使用接口描述 JavaScript API](#使用接口描述-javascript-api)
+- [函数](#函数)
+  - [命名函数](#命名函数)
+  - [匿名函数](#匿名函数)
+  - [箭头函数](#箭头函数)
+  - [参数](#参数)
 - [Tips](#tips)
   - [VSCode](#vscode)
     - [扩展](#扩展)
@@ -370,11 +392,11 @@ console.log(person1);
 
 - 定义该接口的属性（或成员）及其类型。 属性可以为必需、可选或只读属性。
 
-  | 属性类型 | 说明                                                         | 示例                          |
-  | :------- | :----------------------------------------------------------- | :---------------------------- |
-  | 必须     | 除非另行指定，否则所有属性都是必需的。                       | `firstName: string;`          |
+  | 属性类型 | 说明                                                                                                           | 示例                          |
+  | :------- | :------------------------------------------------------------------------------------------------------------- | :---------------------------- |
+  | 必须     | 除非另行指定，否则所有属性都是必需的。                                                                         | `firstName: string;`          |
   | 可选     | 在属性名称的末尾添加问号 (`?`)。 对于不是必需的属性，请使用此属性。 这可以防止类型系统在省略该属性时引发错误。 | `firstName?: string;`         |
-  | 只读     | 在属性名称的前面添加 readonly 关键字。 对于只应在首次创建对象时修改的属性，请使用此属性。 | `readonly firstName: string;` |
+  | 只读     | 在属性名称的前面添加 readonly 关键字。 对于只应在首次创建对象时修改的属性，请使用此属性。                      | `readonly firstName: string;` |
 
   定义接口后，可以将其用作类型，并可享受到类型检查和 Intellisense 的所有好处。
 
@@ -508,6 +530,213 @@ showPost();
 > 虽然早期版本的 ECMAScript（如 ES3）不支持 `async` 和 `await`，但 TypeScript 编译器能够生成兼容代码来实现此功能。 这样，你就能够在仍使用旧版浏览器的同时利用较新的功能！
 
 -----
+
+# 函数
+
+> [在 TypeScript 中创建函数 - Learn | Microsoft Docs](https://docs.microsoft.com/zh-cn/learn/modules/typescript-develop-typed-functions/2-create-functions-typescript)
+
+`TypeScript` 简化了函数开发，通过允许键入参数和返回值，使它们更易于进行故障排除。 `TypeScript` 还为参数添加了新选项。 例如，虽然在 `JavaScript` 函数中，所有参数都是可选的，但你可以在 `TypeScript` 中将参数设置为必需的或可选的。
+
+---
+
+## 命名函数
+
+```typescript
+function addNumbers(x: number, y: number): number {
+    return x + y;
+}
+console.log(addNumbers(1, 2))
+```
+
+---
+
+## 匿名函数
+
+函数表达式（或匿名函数）是未预先加载到执行上下文中的函数，并且仅当代码遇到该函数时才会运行。 函数表达式是在运行时创建的，并且必须先声明才能调用。 （这意味着不会对它们进行提升，而命名函数声明在程序开始执行时就会进行提升，并且可以在其声明之前调用。）
+
+```typescript
+let addNumbers_anonymous = function (x: number, y: number): number {
+    return x + y;
+}
+console.log(addNumbers_anonymous(3, 2))
+
+let total = function (input: number[]): number {
+    let sum: number = 0;
+    for (let i = 0; i < input.length; i++) {
+        if (isNaN(input[i])) {
+            continue;
+        }
+        sum += input[i];
+    }
+    return sum;
+}
+console.log(total([1, 2, 3, 4, 5, 6, 7, 8, 9]))
+```
+
+在使用匿名函数时，你将获得类型检查和 Intellisense。 你还会注意到，在此示例中，变量 `total` 不是类型化的变量，但 TypeScript 可以通过称为“上下文类型化”的内容（一种类型推理形式）来确定其类型。 这可以减少保持程序类型所需的工作量。
+
+---
+
+## 箭头函数
+
+箭头函数（也称为 Lambda 或胖箭头函数，因为定义它们的是 `=>` 运算符）提供用于定义匿名函数的简写语法。 由于其简洁性，箭头函数通常用于简单的函数和某些事件处理场景。
+
+ 箭头函数通过省略函数关键字并在参数和函数体之间添加 `=>` 运算符来简化语法。
+
+```typescript
+let addNumbers_arrow = (x: number, y: number): number => {
+    return x + y;
+}
+console.log(addNumbers_arrow(3, 4))
+```
+
+> 箭头函数是在 ES2015 中引入的，因此并非所有浏览器都支持它们。 通过使用 TypeScript，你可以利用这些函数类型，然后转译到更低的 JavaScript 版本（如有必要），这样你的代码就可以在旧版浏览器上使用。
+
+![image-20220301224130936](http://cdn.ayusummer233.top/img/202203012241501.png)
+
+---
+
+## 参数
+
+> [运用参数的乐趣 - Learn | Microsoft Docs](https://docs.microsoft.com/zh-cn/learn/modules/typescript-develop-typed-functions/4-parameters)
+
+- 可选参数
+
+  ```typescript
+  console.log("可选参数:")
+  let addNumbers_optional = (x: number, y?: number): number => {
+      if (y === undefined) {
+          y = 0;
+      }
+      return x + y;
+  }
+  console.log(addNumbers_optional(5, 4))
+  console.log(addNumbers_optional(5))
+  ```
+
+  ![image-20220301224948862](http://cdn.ayusummer233.top/img/202203012249148.png)
+
+  需要注意的是设置了参数可选后, 函数体内需要对没有参数的情况进行相应处理
+  
+- 默认参数
+
+  ```typescript
+  let addNumbers_default = (x: number, y: number = 10): number => {
+      return x + y;
+  }
+  console.log(addNumbers_default(5, 4))
+  console.log(addNumbers_default(5))
+  ```
+
+  ![image-20220302081528148](http://cdn.ayusummer233.top/img/202203020815408.png)
+
+- `rest 参数` 
+
+  如果要使用多个参数作为一个组（在数组中）或不知道函数最终将采用的参数数量，则可以使用 rest 参数。 rest 参数被视为无限数量的可选参数。 可以将它们保留不动，或根据需要调整数量。
+
+  此示例包含一个必需参数和一个可选参数 `restOfNumbers`，该参数可接受任意数量的其他数字。 `restOfNumbers` 之前的省略号 (`...`) 指示编译器构建一个传递给函数的参数数组，并给它后面的名称赋值，这样你就可以在函数中使用它。
+
+  ```typescript
+  let addAllNumbers_rest = (firstNumber: number, ...restOfNumbers: number[]): number => {
+      let total: number = firstNumber;
+      for (let counter = 0; counter < restOfNumbers.length; counter++) {
+          if (isNaN(restOfNumbers[counter])) {
+              continue;
+          }
+          total += Number(restOfNumbers[counter]);
+      }
+      return total;
+  }
+  console.log(addAllNumbers_rest(1, 2, 3, 4, 5, 6, 7, 8, 9))
+  console.log(addAllNumbers_rest(2))
+  console.log(addAllNumbers_rest(2, 3, NaN, 4))
+  ```
+
+  ![image-20220302082942124](http://cdn.ayusummer233.top/img/202203020829351.png)
+
+- 析构对象参数
+
+  函数参数是有位置的，并且必须按照它们在函数中定义的顺序传递。 在调用具有多个可选参数或相同数据类型的函数时，这可能会降低代码的可读性。
+
+  若要启用命名参数，可以使用称为析构对象参数的技术。 这使你能够在函数中使用接口来定义命名参数，而不是定位参数。
+
+  以下示例定义了一个接口 `Message`，该接口又定义了两个属性。 在 `displayMessage` 函数中，`Message` 对象作为参数传递，提供对属性的访问，就像它们是普通参数一样。
+
+  > 主要是当参数多的时候能够更加明显看出参数的含义
+
+  ```typescript
+  interface Message {
+      text: string;
+      sender: string;
+  }
+  
+  function displayMessage({ text, sender }: Message) {
+      console.log(`Message from ${sender}: ${text}`);
+  }
+  
+  displayMessage({ sender: 'Christopher', text: 'hello, world' });
+  ```
+
+  ![image-20220302090757288](http://cdn.ayusummer233.top/img/202203020907460.png)
+
+---
+
+## 定义函数类型
+
+可以使用类型别名来定义函数类型
+
+```typescript
+// 定义一个用于对两个 number 进行运算并返回一个 number 的函数类型别名 calculator
+type calculator = (x: number, y: number) => number;
+// 定义一个加法运算 calculator 函数 addNumbers_calculator
+let addNumbers_calculator: calculator = (x: number, y: number) => x + y;
+// 定义一个减法运算 calculator 函数 subtractNumbers_calculator
+let subtractNumbers_calculator: calculator = (x: number, y: number) => x - y;
+// 定义一个参数为 operation 字符串(add | subtract) 返回 calculator 类型的函数 doCalculation
+let doCalculation = (operation: "add" | "substract"): calculator => {
+    if (operation === "add") {
+        return addNumbers_calculator;
+    } else {
+        return subtractNumbers_calculator;
+    }
+}
+console.log(doCalculation("add")(1, 2))
+console.log(doCalculation("substract")(1, 2))
+```
+
+![image-20220302093052728](http://cdn.ayusummer233.top/img/202203020930891.png)
+
+将别名换成 interface 定义接口, 主体逻辑也不用改变
+
+```typescript
+// 定义一个用于对两个 number 进行运算并返回一个 number 的函数类型别名 calculator
+// type calculator = (x: number, y: number) => number;
+// 使用接口定义 calculator
+interface calculator {
+    (x: number, y: number): number;
+}
+
+// 定义一个加法运算 calculator 函数 addNumbers_calculator
+let addNumbers_calculator: calculator = (x: number, y: number) => x + y;
+// 定义一个减法运算 calculator 函数 subtractNumbers_calculator
+let subtractNumbers_calculator: calculator = (x: number, y: number) => x - y;
+// 定义一个参数为 operation 字符串(add | subtract) 返回 calculator 类型的函数 doCalculation
+let doCalculation = (operation: "add" | "substract"): calculator => {
+    if (operation === "add") {
+        return addNumbers_calculator;
+    } else {
+        return subtractNumbers_calculator;
+    }
+}
+console.log(doCalculation("add")(1, 2))
+console.log(doCalculation("substract")(1, 2))
+```
+
+---
+
+
+
+---
 
 # Tips
 
