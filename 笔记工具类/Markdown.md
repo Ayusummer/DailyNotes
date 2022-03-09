@@ -250,9 +250,6 @@ markdown 支持内嵌 HTML
 [安装 Pandoc](#Pandoc) 再重启 VSCode 即可
 
 
-
-
-
 ---
 
 ## Pandoc
@@ -291,3 +288,48 @@ reveal-md path_markdown_file
 如:
 
 ![20220120231927](http://cdn.ayusummer233.top/img/20220120231927.png)
+
+---
+# markdown + pandoc 撰写学位论文
+
+> 没搞定, 太繁杂了感觉, mark 下, 以后有空再弄
+
+> [使用Markdown搭配Pandoc撰写学术论文的详细指南 - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/395193554)
+
+## 文献管理工具: Zotero
+
+> [Zotero | Your personal research assistant](https://www.zotero.org/)
+
+![20220309100246-Zotero](http://cdn.ayusummer233.top/img/20220309100246.png)
+
+官网下载 [Zotero](https://www.zotero.org/download/client/dl?channel=release&platform=win32&version=5.0.96.3), [EDGE 插件](https://microsoftedge.microsoft.com/addons/detail/nmhdhpibnnopknkmonacoephklnflpho) 以及 VSCode Zotero 插件[可选, 主要看自己习惯用什么写 markdown]
+
+> ![20220309100613-Citation Picker for Zotero](http://cdn.ayusummer233.top/img/20220309100613.png)
+
+> [quick start guide [Zotero Documentation\]](https://www.zotero.org/support/quick_start_guide)
+>
+> [adding items to zotero [Zotero Documentation\]](https://www.zotero.org/support/adding_items_to_zotero)
+>
+> [collections and tags [Zotero Documentation\]](https://www.zotero.org/support/collections_and_tags)
+>
+> [creating bibliographies [Zotero Documentation\]](https://www.zotero.org/support/creating_bibliographies)
+>
+> [word processor plugin usage [Zotero Documentation\]](https://www.zotero.org/support/word_processor_plugin_usage)
+
+## Better BibTex
+
+> [Better BibTeX](https://retorque.re/zotero-better-bibtex/)
+
+下载此 `xpi` 文件后打开 `Zotero->工具->插件->右上方齿轮图标-> Install add-on From File...` 选择下载好的 `xpi` 文件进行安装, 安装完后重启 `Zotero` 会自动进入 `Better BibTeX` 的配置页面(均默认即可)
+
+然后进入 `Zotero` 主界面 `编辑->首选项->Better BibTeX` 进行如下配置:
+
+![20220309152816](http:cdn.ayusummer233.top/img/20220309152816.png)
+
+![20220309152859](http:cdn.ayusummer233.top/img/20220309152859.png)
+
+返回 `Zotero` 主界面后会看到多了一列 `Citation Key` 属性
+
+![20220309153131](http:cdn.ayusummer233.top/img/20220309153131.png)
+
+> `Citation Key` 可以理解成每个条目的唯一 id, 在上述配置过程中我们将其配置成了 `[auth:lower[year]`的形式, 如果有重复的话会在后面添加 `a b c` 或者数字进行区分
