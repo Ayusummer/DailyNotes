@@ -290,7 +290,7 @@ reveal-md path_markdown_file
 ![20220120231927](http://cdn.ayusummer233.top/img/20220120231927.png)
 
 ---
-# markdown + pandoc 撰写学位论文
+# markdown + pandoc 写论文
 
 > 没搞定, 太繁杂了感觉, mark 下, 以后有空再弄
 
