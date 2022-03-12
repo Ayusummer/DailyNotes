@@ -1,3 +1,11 @@
+# Latex 编译文件
+NoteTools/LaTex/latex/latex.aux
+NoteTools/LaTex/latex/latex.log
+NoteTools/LaTex/latex/latex.out
+NoteTools/LaTex/latex/latex.synctex.gz
+NoteTools/LaTex/latex/latex.thm
+NoteTools/LaTex/latex/latex.toc
+
 # 资源文件
 res_-daily-notes
 DailyLife/picOCR_toExcel/res
