@@ -33,11 +33,10 @@
 
 ----
 # 个人图床(七牛云+阿里云域名+picgo)
-- [七牛云+阿里云域名+PicGo](http:cdn.ayusummer233.top/qq_45807032/article/details/113772697)
-- ![VSCode PicGo插件配置](http:cdn.ayusummer233.top/img/20210309122224.png)
+- [七牛云+阿里云域名+PicGo](https://blog.csdn.net/qq_45807032/article/details/113772697)
+- ![VSCode PicGo插件配置](http://cdn.ayusummer233.top/img/20210309122224.png)
 - 使用说明  
-  ![具体使用](http:cdn.ayusummer233.top/img/20210309122603.png)
-
+  ![具体使用](http://cdn.ayusummer233.top/img/20210309122603.png)
 
 ---
 # 基本用法
