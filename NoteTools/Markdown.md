@@ -9,6 +9,7 @@
 > 用于记录markdown使用的一些随笔
 
 # 编辑软件
+
 ## 在VSCode中编写Markdown文件
 - 安装VSCode扩展
   - Markdown All in One
