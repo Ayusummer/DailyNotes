@@ -118,10 +118,15 @@
 \RequirePackage{amsmath, amssymb}
 \RequirePackage[amsmath,thmmarks]{ntheorem}  % 定理
 \RequirePackage{graphicx, subcaption}
+\RequirePackage{float}                       % 图表浮动
 \RequirePackage{listings}                    % 代码段
 % \RequirePackage{minted}                    % 代码高亮（需要 python 安装 pygments 库）
 \RequirePackage{algorithm2e, algorithmic}    % 算法代码
-\RequirePackage{tikz, pgfplots}              % 绘图
+\RequirePackage{tikz}              % 绘图
+% 使用 1.17 版本的 pgfplots 包绘图
+\RequirePackage{pgfplots}
+\pgfplotsset{compat=1.17}
+
 \RequirePackage{fontspec, color, url, array}
 
 \RequirePackage{txfonts}                     % Times 风格（数学）字体

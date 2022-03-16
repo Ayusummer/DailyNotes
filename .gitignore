@@ -5,6 +5,8 @@ NoteTools/LaTex/latex/latex.out
 NoteTools/LaTex/latex/latex.synctex.gz
 NoteTools/LaTex/latex/latex.thm
 NoteTools/LaTex/latex/latex.toc
+# Latex 资源文件
+NoteTools/LaTex/latex/resource
 
 # 资源文件
 res_-daily-notes
