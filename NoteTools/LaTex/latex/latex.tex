@@ -1,4 +1,4 @@
-\documentclass[UTF8]{UJSBachelor} % 文章
+\documentclass{UJSBachelor} % 文章
 
 % 标题
 \title{Latex 学习随笔}
@@ -37,5 +37,51 @@ update MIKTeX -> \href{https://miktex.org/howto/update-miktex}{Update MiKTeX}
 % 纠错随笔
 \section{纠错随笔}
 
+\subsection{unsuitable tick labels; missing features}
+
+% ![20220313111134](http:cdn.ayusummer233.top/img/20220313111134.png)
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{resource/202203131116.png}
+    \caption{unsuitable tick labels; missing features}
+\end{figure} 
+
+\href{https://tex.stackexchange.com/questions/81899/what-does-running-in-backwards-compatibility-mode-mean-and-what-should-i-fix-t}{What does "running in backwards compatibility mode" mean and what should I fix to get rid of it?}
+
+\lstset{
+    basicstyle=\ttfamily,   
+    breaklines=true
+}
+\begin{lstlisting}
+% 使用 1.17 版本的 pgfplots 包绘图
+\RequirePackage{pgfplots}
+\pgfplotsset{compat=1.17}
+\end{lstlisting}
+
+
+\subsection{Font "FandolHei-Regular" does not contain requested fontspec Script "CJK".}
+
+忽略即可
+
+\href{https://zhuanlan.zhihu.com/p/145429470}{抑制 xeCJK/fontspec 警告 no-script "CJK"}
+
+
+\subsection{Latex 显示中文}
+
+\href{https://blog.csdn.net/hungryfoolisher/article/details/110099026}{latex显示中文}
+
+在源文件中导言部分加入代码 
+
+\lstset{
+    basicstyle=\ttfamily,   
+    breaklines=true
+}
+\begin{lstlisting}
+\usepackage[UTF8]{ctex}
+\end{lstlisting}
+
+
+使用 xelatex 或 lualatex 编译
 
 \end{document}
