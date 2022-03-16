@@ -2613,3 +2613,67 @@ export default defineComponent({
 `购物车示例`
 
 ![image-20220303153601773](http://cdn.ayusummer233.top/img/202203031536279.png)
+
+---
+
+#### watch
+
+`watch` API 与选项式 API [this.$watch](https://v3.cn.vuejs.org/api/instance-methods.html#watch) (以及相应的 [watch](https://v3.cn.vuejs.org/api/options-data.html#watch) 选项) 完全等效。`watch` 需要侦听特定的数据源，并在单独的回调函数中执行副作用。默认情况下，它也是惰性的——即回调仅在侦听源发生变化时被调用。
+
+- 与 [watchEffect](https://v3.cn.vuejs.org/api/computed-watch-api.html#watcheffect) 相比，`watch` 允许我们：
+  - 惰性地执行副作用；
+  - 更具体地说明应触发侦听器重新运行的状态；
+  - 访问被侦听状态的先前值和当前值。
+
+```vue
+<script setup lang="ts">
+import { ref, watch, reactive } from 'vue'
+
+let message = ref({
+    nav: {
+        bar: {
+            name: "233"
+        }
+    }
+})
+
+let message2 = reactive({
+    nav: {
+        bar: {
+            title: "233"
+        }
+    }
+})
+
+watch(message, (newVal, oldVal) => {
+    console.log("message新值:" + newVal + "，旧值：" + oldVal)
+},
+    {
+        deep: true
+    }
+)
+
+watch(() => message2.nav.bar.title, (newVal, oldVal) => {
+    console.log("message2新值:" + newVal + "，旧值：" + oldVal)
+})
+
+
+</script>
+
+<template>
+    <div>
+        message.nav.bar.name:
+        <input v-model="message.nav.bar.name" type="text" />
+    </div>
+    <div>
+        message2.nav.bar.title:
+        <input v-model="message2.nav.bar.title" type="text" />
+    </div>
+</template>
+
+<style>
+</style>
+```
+
+![image-20220316184424436](http://cdn.ayusummer233.top/img/202203161844749.png)
+
