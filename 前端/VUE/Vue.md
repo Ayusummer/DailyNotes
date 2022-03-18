@@ -2677,3 +2677,64 @@ watch(() => message2.nav.bar.title, (newVal, oldVal) => {
 
 ![image-20220316184424436](http://cdn.ayusummer233.top/img/202203161844749.png)
 
+---
+
+#### watchEffect
+
+> [Computed 与 watch | Vue.js (vuejs.org)](https://v3.cn.vuejs.org/api/computed-watch-api.html#watcheffect)
+>
+> [学习Vue3 第十一章（认识watchEffect高级侦听器）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/122802130)
+
+立即执行传入的一个函数，同时响应式追踪其依赖，并在其依赖变更时重新运行该函数
+
+```typescript
+<script setup lang="ts">
+import { watchEffect, ref } from 'vue'
+
+let message = ref<string>('233')
+let message2 = ref<string>("寄")
+
+const stop = watchEffect((oninvalidate) => {
+    // let ipt: HTMLInputElement = document.querySelector('#ipt') as HTMLInputElement
+    console.log("messgae===>" + message.value)
+    // console.log("messgae2===>" + message2.value)
+
+    // console.log(ipt, "ell")
+
+    oninvalidate(() => {
+        console.log("before")
+    })
+}, {
+    flush: "post",
+    onTrigger: (e) => {
+        debugger
+    }
+}
+
+);
+
+const stopWatch = () => stop()
+
+</script>
+
+<template>
+    <div>
+        <input id="ipt" type="text" v-model="message" />
+        <input type="text" v-model="message2" />
+        <button @click="stopWatch">停止监听</button>
+    </div>
+</template>
+
+<style scoped>
+</style>
+```
+
+![image-20220317143305226](http://cdn.ayusummer233.top/img/202203171433600.png)
+
+- 副作用刷新时机 flush 一般使用post
+
+|          |        pre         |         sync         |        post        |
+| :------: | :----------------: | :------------------: | :----------------: |
+| 更新时机 | 组件**更新前**执行 | 强制效果始终同步触发 | 组件**更新后**执行 |
+
+- `onTrigger` 可以帮助调试 `watchEffect`
