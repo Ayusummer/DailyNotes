@@ -1,3 +1,7 @@
+# 日常资源及测试文件
+DailyLife/res
+DailyLife/test.ipynb
+
 # Latex 编译文件
 NoteTools/LaTex/latex/latex.aux
 NoteTools/LaTex/latex/latex.log
