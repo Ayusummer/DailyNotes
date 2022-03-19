@@ -221,7 +221,7 @@
   - [ ] [中等-40. 组合总和 II - 力扣（LeetCode） (leetcode-cn.com)](https://leetcode-cn.com/problems/combination-sum-ii/)
   - [ ] [中等-17. 电话号码的字母组合 - 力扣（LeetCode） (leetcode-cn.com)](https://leetcode-cn.com/problems/letter-combinations-of-a-phone-number/)
   - [ ] [中等-22. 括号生成 - 力扣（LeetCode） (leetcode-cn.com)](https://leetcode-cn.com/problems/generate-parentheses/)
-  - [ ] [中等-79. 单词搜索 - 力扣（LeetCode） (leetcode-cn.com)](https://leetcode-cn.com/problems/word-search/)
+  - [x] [中等-79. 单词搜索 - 力扣（LeetCode） (leetcode-cn.com)](https://leetcode-cn.com/problems/word-search/)
 
 ---
 
@@ -235,22 +235,85 @@
 
   - [x] [学习Vue3 第三章（Vite目录 & Vue单文件组件）_qq1195566313的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/122771007)
 
-  - [ ] [学习Vue3 第四章（模板语法 & vue指令）_qq1195566313的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/122773486)
+  - [x] [学习Vue3 第四章（模板语法 & vue指令）_qq1195566313的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/122773486)
 
-  - [ ] [学习Vue3 第五章（Vue核心虚拟Dom和 diff 算法）_qq1195566313的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/122778560)
+  - [x] [学习Vue3 第五章（Vue核心虚拟Dom和 diff 算法）_qq1195566313的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/122778560)
 
-  - [ ] [学习Vue3 第六章（认识Ref全家桶）_qq1195566313的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/122780637)
+  - [x] [学习Vue3 第六章（认识Ref全家桶）_qq1195566313的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/122780637)
 
-  - [ ] [学习Vue3 第七章（认识Reactive全家桶）_qq1195566313的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/122784094)
+  - [x] [学习Vue3 第七章（认识Reactive全家桶）_qq1195566313的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/122784094)
 
-  - [ ] [学习Vue3 第八章（认识to系列全家桶）_qq1195566313的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/122791665)
+  - [x] [学习Vue3 第八章（认识to系列全家桶）_qq1195566313的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/122791665)
 
-  - [ ] [学习Vue3 第九章（认识computed计算属性）_qq1195566313的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/122792620)
+  - [x] [学习Vue3 第九章（认识computed计算属性）_qq1195566313的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/122792620)
   
-  - [ ] [学习Vue3 第十章（认识watch侦听器）_qq1195566313的博客-CSDN博客_watch 函数](https://blog.csdn.net/qq1195566313/article/details/122797990)
+  - [x] [学习Vue3 第十章（认识watch侦听器）_qq1195566313的博客-CSDN博客_watch 函数](https://blog.csdn.net/qq1195566313/article/details/122797990)
   
-  - [ ] [学习Vue3 第十一章（认识watchEffect高级侦听器）_qq1195566313的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/122802130)
+  - [x] [学习Vue3 第十一章（认识watchEffect高级侦听器）_qq1195566313的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/122802130)
   
-  - [ ] [学习Vue3 第十二章（认识组件&Vue3生命周期）_qq1195566313的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/122811060)
+  - [x] [学习Vue3 第十二章（认识组件&Vue3生命周期）_qq1195566313的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/122811060)
+  
+- TypeScript
+
+  - [x] 使用 TypeScript 开发类型函数_MSLearn(共 9 节)
   
     
+
+### 第 13 周(3.7-3.13)
+
+- Vue
+  - [x] [学习Vue3 第十三章（实操组件和认识less 和 scoped）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/122832888)
+  - [ ] [学习Vue3 第十四章（父子组件传参）_小满zs的博客-CSDN博客_vue3 父子组件传参](https://blog.csdn.net/qq1195566313/article/details/122850170)
+  - [ ] [学习Vue3 第十五章（全局组件，局部组件，递归组件）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/122862736)
+  - [ ] [学习Vue3 第十六章（动态组件）_小满zs的博客-CSDN博客_vue3 动态组件](https://blog.csdn.net/qq1195566313/article/details/122891279)
+  - [ ] [学习Vue3 第十七章（插槽slot）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/122904105)
+  - [ ] [学习Vue3 第十八章（异步组件&代码分包&suspense）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/122909360)
+  - [ ] [学习Vue3 第十九章（Teleport传送组件）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/122916261)
+  - [ ] [学习Vue3 第二十章（keep-alive缓存组件）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/122953072)
+
+### 第 14 周(3.14-3.20)
+
+- Vue
+
+  - [ ] [学习Vue3 第二十一章（transition动画组件）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123000653)
+  - [ ] [学习Vue3 第二十二章（transition-group过度列表）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123058884)
+  - [ ] [学习Vue3 第二十三章（依赖注入Provide / Inject）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123143981)
+  - [ ] [学习Vue3 第二十四章（兄弟组件传参和Bus）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123158620)
+  - [ ] [学习Vue3 第二十五章（TSX）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123172735)
+  - [ ] [学习Vue3 第二十六章（深入v-model）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123187523)
+  - [ ] [学习Vue3 第二十七章（自定义指令directive）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123228132)
+  - [ ] [学习Vue3 第二十八章（自定义Hooks）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123271189)
+  - [ ] [学习Vue3 第二十九章（Vue3定义全局函数和变量）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123292042)
+  - [ ] [学习Vue3 第三十章（编写Vue3插件）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123300264)
+  - [ ] [学习Vue3 第三十一章（了解UI库ElementUI，AntDesigin等）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123306603)
+  - [ ] [学习Vue3 第三十二章（详解Scoped和样式 穿透）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123319462)
+
+- Pinia
+
+  - [ ] [学习Pinia 第一章（介绍Pinia）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123338137)
+  - [ ] [学习Pinia 第二章（初始化仓库Store）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123342785)
+  - [ ] [学习Pinia 第三章（State）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123360349)
+  - [ ] [学习Pinia 第四章（解构store）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123365751)
+  - [ ] [学习Pinia 第五章（Actions，getters）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123376269)
+  - [ ] [学习Pinia 第六章（API）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123402377)
+  - [ ] [学习Pinia 第七章（pinia插件）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123431769)
+
+- 实战
+
+  - [ ] [Vue3 + vite + Ts + pinia + 实战 + 源码 (bilibili.com)P50~60](https://www.bilibili.com/medialist/play/ml1460588865/BV1dS4y1y7vd?oid=723739713&otype=2)
+
+- Router
+
+  - [小满Router（第一章入门）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123585949?spm=1001.2014.3001.5501)
+  
+- Pm2
+  
+  - [学习Pm2 第一章_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123564779?spm=1001.2014.3001.5501)
+  
+  
+  
+  
+  
+  
+  
+  
