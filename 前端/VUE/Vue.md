@@ -2650,6 +2650,402 @@ const style: Style = {
 
 ---
 
+## 父子组件传参
+
+父组件通过 `v-bind` 绑定一个数据，然后子组件通过 `defineProps` 接受传过来的值，
+
+### 传递字符串
+
+字符串传递可以直接在父组件调用子组件的之后写个字符串上去;
+
+例如在父组件 `less_layout` 中调用子组件 `lessMenu` 时传一个字符串 `message` 过去
+
+```vue
+<script setup lang="ts">
+import lessMenu from './Menu/lessMenu.vue'
+import lessHeader from './Header/lessHeader.vue'
+import lessContent from './Content/lessContent.vue'
+
+</script>
+
+<template>
+    <div class="layout_less">
+        <lessMenu message="传递一个字符串" />
+        <div class="layout_less-right">
+            <lessHeader />
+            <lessContent />
+        </div>
+    </div>
+</template>
+
+<style lang="less" scoped>
+.layout_less {
+    display: flex;
+    height: 60%;
+    overflow: hidden;
+    border: 1px solid #ccc;
+    &-right {
+        display: flex;
+        flex-direction: column; // 垂直方向
+        flex: 1;
+    }
+}
+</style>
+```
+
+子组件 `lessMenu`  则通过 `defineProps` 来接收父组件传递过来的值
+
+> `defineProps` 是无需引入的直接使用即可
+
+使用 `TypeScript` 的话可以使用传递字面量类型的纯类型语法做为参数
+
+```vue
+<script setup lang="ts">
+defineProps<{
+    message: string
+}>()
+
+
+</script>
+
+<template>
+    <div class="menu_less">
+        菜单区域
+        {{ message }}
+    </div>
+</template>
+
+<style lang="less" scoped>
+.menu_less {
+    width: 200px;
+    border-right: 1px solid #ccc;
+}
+</style>
+```
+
+---
+
+### 传递任意类型参数
+
+父组件使用 `v-bind` 对子组件进行传参
+
+```vue
+<script setup lang="ts">
+import lessMenu from './Menu/lessMenu.vue'
+import lessHeader from './Header/lessHeader.vue'
+import lessContent from './Content/lessContent.vue'
+import { reactive } from 'vue'
+
+const data_array = reactive<number[]>([1, 2, 3])
+
+</script>
+
+<template>
+    <div class="layout_less">
+        <lessMenu message="传递一个字符串" v-bind:data_array="data_array" />
+        <div class="layout_less-right">
+            <lessHeader />
+            <lessContent />
+        </div>
+    </div>
+</template>
+
+<style lang="less" scoped>
+.layout_less {
+    display: flex;
+    height: 60%;
+    overflow: hidden;
+    border: 1px solid #ccc;
+    &-right {
+        display: flex;
+        flex-direction: column; // 垂直方向
+        flex: 1;
+    }
+}
+</style>
+```
+
+子组件使用 `definePops` 接收父组件传递的参数
+
+```vue
+<script setup lang="ts">
+defineProps<{
+    message: string
+    data_array: number[]
+}>()
+
+
+</script>
+
+<template>
+    <div class="menu_less">
+        菜单区域
+        {{ message }}
+        <div v-for="item in data_array" :key="item">{{ item }}</div>
+    </div>
+</template>
+
+<style lang="less" scoped>
+.menu_less {
+    width: 200px;
+    border-right: 1px solid #ccc;
+}
+</style>
+```
+
+---
+
+###  参数默认值
+
+TS 特有的默认值方式
+
+withDefaults是个函数也是无须引入开箱即用接受一个props函数第二个参数是一个对象设置默认值
+
+例如:
+
+```vue
+<script setup lang="ts">
+type Props = {
+    message?: string
+    data_array?: number[]
+    omit?: string
+}
+withDefaults(defineProps<Props>(), {
+    message: 'Hello World',
+    data_array: () => [1, 2, 3],
+    omit: 'omit'
+})
+
+</script>
+
+<template>
+    <div class="menu_less">
+        菜单区域
+        {{ message }}
+        <div v-for="item in data_array" :key="item">{{ item }}</div>
+        {{ omit }}
+    </div>
+</template>
+
+<style lang="less" scoped>
+.menu_less {
+    width: 200px;
+    border-right: 1px solid #ccc;
+}
+</style>
+```
+
+---
+
+### 子组件给父组件传参
+
+在子组件绑定一个 `click` 事件, 然后通过 `defineEmits` 注册一个自定时事件,  点击 click 触发 emit 调用注册的时间然后传递参数
+
+```vue
+<script setup lang="ts">
+import { reactive } from 'vue'
+
+/* 子组件给父组件传参 */
+const list = reactive<number[]>([4, 5, 6])
+const emit = defineEmits(['onclickTap'])
+const clickTap = () => {
+    emit('onclickTap', list)
+}
+
+// 参数默认值
+type Props = {
+    message?: string
+    data_array?: number[]
+    omit?: string
+}
+withDefaults(defineProps<Props>(), {
+    message: 'Hello World',
+    data_array: () => [1, 2, 3],
+    omit: 'omit'
+})
+
+</script>
+
+<template>
+    <div class="menu_less">
+        菜单区域
+        {{ message }}
+        <div v-for="item in data_array" :key="item">{{ item }}</div>
+        {{ omit }}
+        <button @click="clickTap">派发给父组件</button>
+    </div>
+</template>
+
+<style lang="less" scoped>
+.menu_less {
+    width: 200px;
+    border-right: 1px solid #ccc;
+}
+</style>
+```
+
+父组件接收子组件的事件
+
+```vue
+<script setup lang="ts">
+import lessMenu from './Menu/lessMenu.vue'
+import lessHeader from './Header/lessHeader.vue'
+import lessContent from './Content/lessContent.vue'
+import { reactive } from 'vue'
+
+const data_array = reactive<number[]>([1, 2, 3])
+
+// 父组件接收子组件传参
+const getList = (list: number[]) => {
+    console.log(list, "父组件接收子组件")
+}
+
+</script>
+
+<template>
+    <div class="layout_less">
+        <lessMenu
+            message="传递一个字符串"
+            v-bind:data_array="data_array"
+            @onclickTap="getList"
+            omit="233"
+        />
+        <div class="layout_less-right">
+            <lessHeader />
+            <lessContent />
+        </div>
+    </div>
+</template>
+
+<style lang="less" scoped>
+.layout_less {
+    display: flex;
+    height: 60%;
+    overflow: hidden;
+    border: 1px solid #ccc;
+    &-right {
+        display: flex;
+        flex-direction: column; // 垂直方向
+        flex: 1;
+    }
+}
+</style>
+```
+
+![image-20220320175309546](http://cdn.ayusummer233.top/img/202203201753539.png)
+
+---
+
+### 子组件暴露给父组件内部属性
+
+通过 `defineExpose` 将子组件的内部属性暴露给父组件
+
+```vue
+<script setup lang="ts">
+import { reactive } from 'vue'
+
+/* 子组件通过 defineExpose 将内部属性 exposeArray 暴露给父组件 */
+const exposeArray = reactive<number[]>([7, 8, 9])
+defineExpose({
+    exposeArray
+})
+
+
+/* 子组件给父组件传参 */
+const list = reactive<number[]>([4, 5, 6])
+const emit = defineEmits(['onclickTap'])
+const clickTap = () => {
+    emit('onclickTap', list)
+}
+
+// 参数默认值
+type Props = {
+    message?: string
+    data_array?: number[]
+    omit?: string
+}
+withDefaults(defineProps<Props>(), {
+    message: 'Hello World',
+    data_array: () => [1, 2, 3],
+    omit: 'omit'
+})
+
+</script>
+
+<template>
+    <div class="menu_less">
+        菜单区域
+        {{ message }}
+        <div v-for="item in data_array" :key="item">{{ item }}</div>
+        {{ omit }}
+        <button @click="clickTap">派发给父组件</button>
+    </div>
+</template>
+
+<style lang="less" scoped>
+.menu_less {
+    width: 200px;
+    border-right: 1px solid #ccc;
+}
+</style>
+```
+
+父组件通过 `ref` 接收子组件暴露给父组件的内部属性
+
+```vue
+<script setup lang="ts">
+import lessMenu from './Menu/lessMenu.vue'
+import lessHeader from './Header/lessHeader.vue'
+import lessContent from './Content/lessContent.vue'
+import { reactive, ref } from 'vue'
+
+const exposeArrayFromMenu = ref(null)
+
+const data_array = reactive<number[]>([1, 2, 3])
+
+// 父组件接收子组件传参
+const getList = (list: number[]) => {
+    console.log(list, "父组件接收子组件")
+}
+
+</script>
+
+<template>
+    <div class="layout_less">
+        {{ exposeArrayFromMenu }}
+        <lessMenu
+            message="传递一个字符串"
+            v-bind:data_array="data_array"
+            @onclickTap="getList"
+            omit="233"
+            ref="exposeArrayFromMenu"
+        />
+        <div class="layout_less-right">
+            <lessHeader />
+            <lessContent />
+        </div>
+    </div>
+</template>
+
+<style lang="less" scoped>
+.layout_less {
+    display: flex;
+    height: 60%;
+    overflow: hidden;
+    border: 1px solid #ccc;
+    &-right {
+        display: flex;
+        flex-direction: column; // 垂直方向
+        flex: 1;
+    }
+}
+</style>
+```
+
+
+
+---
+
 # API
 
 > [API | Vue.js (vuejs.org)](https://v3.cn.vuejs.org/api/)

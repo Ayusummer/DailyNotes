@@ -103,9 +103,9 @@
     - [ ] [简单-1763. 最长的美好子字符串 - 力扣（LeetCode） (leetcode-cn.com)](https://leetcode-cn.com/problems/longest-nice-substring/)
   - VUE
     - [x] [01-Vue的介绍和vue-cli | 千古前端图文教程 (qianguyihao.com)](https://web.qianguyihao.com/12-Vue基础/01-Vue的介绍和vue-cli.html#mvvm模式)
-    - [ ] [02-Vue的系统指令 | 千古前端图文教程 (qianguyihao.com)](https://web.qianguyihao.com/12-Vue基础/02-Vue的系统指令.html)
-    - [ ] [03-v-on的事件修饰符 | 千古前端图文教程 (qianguyihao.com)](https://web.qianguyihao.com/12-Vue基础/03-v-on的事件修饰符.html)
-    - [ ] [Web/04-Vue的系统指令(二).md at master · qianguyihao/Web (github.com)](https://github.com/qianguyihao/Web/blob/master/12-Vue基础/04-Vue的系统指令(二).md)
+    - [x] [02-Vue的系统指令 | 千古前端图文教程 (qianguyihao.com)](https://web.qianguyihao.com/12-Vue基础/02-Vue的系统指令.html)
+    - [x] [03-v-on的事件修饰符 | 千古前端图文教程 (qianguyihao.com)](https://web.qianguyihao.com/12-Vue基础/03-v-on的事件修饰符.html)
+    - [x] [Web/04-Vue的系统指令(二).md at master · qianguyihao/Web (github.com)](https://github.com/qianguyihao/Web/blob/master/12-Vue基础/04-Vue的系统指令(二).md)
     - [ ] [05-Vue的举例：列表功能 | 千古前端图文教程 (qianguyihao.com)](https://web.qianguyihao.com/12-Vue基础/05-Vue的举例：列表功能.html#列表功能举例)
     - [ ] [06-自定义过滤器：时间格式化举例 | 千古前端图文教程 (qianguyihao.com)](https://web.qianguyihao.com/12-Vue基础/06-自定义过滤器：时间格式化举例.html)
     - [ ] [07-自定义按键修饰符&自定义指令 | 千古前端图文教程 (qianguyihao.com)](https://web.qianguyihao.com/12-Vue基础/07-自定义按键修饰符&自定义指令.html)
@@ -220,12 +220,12 @@
   - [ ] [中等-39. 组合总和 - 力扣（LeetCode） (leetcode-cn.com)](https://leetcode-cn.com/problems/combination-sum/)
   - [ ] [中等-40. 组合总和 II - 力扣（LeetCode） (leetcode-cn.com)](https://leetcode-cn.com/problems/combination-sum-ii/)
   - [ ] [中等-17. 电话号码的字母组合 - 力扣（LeetCode） (leetcode-cn.com)](https://leetcode-cn.com/problems/letter-combinations-of-a-phone-number/)
-  - [ ] [中等-22. 括号生成 - 力扣（LeetCode） (leetcode-cn.com)](https://leetcode-cn.com/problems/generate-parentheses/)
+  - [x] [中等-22. 括号生成 - 力扣（LeetCode） (leetcode-cn.com)](https://leetcode-cn.com/problems/generate-parentheses/)
   - [x] [中等-79. 单词搜索 - 力扣（LeetCode） (leetcode-cn.com)](https://leetcode-cn.com/problems/word-search/)
 
 ---
 
-### 第 12 周(2.28-3.6)
+### 第 11 周(2.28-3.6)
 
 - VUE
 
@@ -245,6 +245,15 @@
 
   - [x] [学习Vue3 第八章（认识to系列全家桶）_qq1195566313的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/122791665)
 
+- TypeScript
+
+  - [x] 使用 TypeScript 开发类型函数_MSLearn(共 9 节)
+  
+    
+
+### 第 12 周(3.7-3.13)
+
+- VUE
   - [x] [学习Vue3 第九章（认识computed计算属性）_qq1195566313的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/122792620)
   
   - [x] [学习Vue3 第十章（认识watch侦听器）_qq1195566313的博客-CSDN博客_watch 函数](https://blog.csdn.net/qq1195566313/article/details/122797990)
@@ -252,29 +261,18 @@
   - [x] [学习Vue3 第十一章（认识watchEffect高级侦听器）_qq1195566313的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/122802130)
   
   - [x] [学习Vue3 第十二章（认识组件&Vue3生命周期）_qq1195566313的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/122811060)
-  
-- TypeScript
 
-  - [x] 使用 TypeScript 开发类型函数_MSLearn(共 9 节)
-  
-    
-
-### 第 13 周(3.7-3.13)
+### 第 13 周(3.14-3.20)
 
 - Vue
   - [x] [学习Vue3 第十三章（实操组件和认识less 和 scoped）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/122832888)
-  - [ ] [学习Vue3 第十四章（父子组件传参）_小满zs的博客-CSDN博客_vue3 父子组件传参](https://blog.csdn.net/qq1195566313/article/details/122850170)
+  - [x] [学习Vue3 第十四章（父子组件传参）_小满zs的博客-CSDN博客_vue3 父子组件传参](https://blog.csdn.net/qq1195566313/article/details/122850170)
   - [ ] [学习Vue3 第十五章（全局组件，局部组件，递归组件）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/122862736)
   - [ ] [学习Vue3 第十六章（动态组件）_小满zs的博客-CSDN博客_vue3 动态组件](https://blog.csdn.net/qq1195566313/article/details/122891279)
   - [ ] [学习Vue3 第十七章（插槽slot）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/122904105)
   - [ ] [学习Vue3 第十八章（异步组件&代码分包&suspense）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/122909360)
   - [ ] [学习Vue3 第十九章（Teleport传送组件）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/122916261)
   - [ ] [学习Vue3 第二十章（keep-alive缓存组件）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/122953072)
-
-### 第 14 周(3.14-3.20)
-
-- Vue
-
   - [ ] [学习Vue3 第二十一章（transition动画组件）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123000653)
   - [ ] [学习Vue3 第二十二章（transition-group过度列表）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123058884)
   - [ ] [学习Vue3 第二十三章（依赖注入Provide / Inject）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123143981)
@@ -287,6 +285,12 @@
   - [ ] [学习Vue3 第三十章（编写Vue3插件）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123300264)
   - [ ] [学习Vue3 第三十一章（了解UI库ElementUI，AntDesigin等）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123306603)
   - [ ] [学习Vue3 第三十二章（详解Scoped和样式 穿透）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123319462)
+
+---
+
+## VUE 相关技术栈学习(2022/3/21-2022/4/3, 共 2 周)
+
+### 第 1 周(3.21-3.26)
 
 - Pinia
 
@@ -305,15 +309,15 @@
 - Router
 
   - [小满Router（第一章入门）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123585949?spm=1001.2014.3001.5501)
-  
+
 - Pm2
-  
+
   - [学习Pm2 第一章_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123564779?spm=1001.2014.3001.5501)
+
   
+
   
+
   
-  
-  
-  
-  
+
   
