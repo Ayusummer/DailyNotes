@@ -33,8 +33,6 @@ action 属性规定当提交表单时，向何处发送表单数据。
 
 `action=""`　和 `action="#"` 以及没有action属性的作用相同，都是提交到当前页面(也就是 `document.location.href`)
 
-
-
 ---
 
 # CSS

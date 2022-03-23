@@ -1959,6 +1959,45 @@ vue upgrade --next
 
 ---
 
+## VSCode 用户片段
+
+`vue.json`:
+
+```json
+{
+	// Place your snippets for vue here. Each snippet is defined under a snippet name and has a prefix, body and 
+	// description. The prefix is what is used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
+	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. Placeholders with the 
+	// same ids are connected.
+	// Example:
+	// "Print to console": {
+	// 	"prefix": "log",
+	// 	"body": [
+	// 		"console.log('$1');",
+	// 		"$2"
+	// 	],
+	// 	"description": "Log output to console"
+	// }
+	"vue-template":{
+		"prefix": "vue3",
+		"body": [
+			"<script setup lang=\"ts\">",
+			"</script>",
+			"",
+			"<template>",
+			"</template>",
+			"",
+			"<style lang=\"less\" scoped>",
+			"</style>"
+		],
+		"description": "vue3 template"
+	}
+}
+
+```
+
+---
+
 ## 开发工具
 
 ### 项目创建
@@ -2839,7 +2878,7 @@ withDefaults(defineProps<Props>(), {
 
 ### 子组件给父组件传参
 
-在子组件绑定一个 `click` 事件, 然后通过 `defineEmits` 注册一个自定时事件,  点击 click 触发 emit 调用注册的时间然后传递参数
+在子组件绑定一个 `click` 事件, 然后通过 `defineEmits` 注册一个自定义事件,  点击 click 触发 emit 调用注册的时间然后传递参数
 
 ```vue
 <script setup lang="ts">
@@ -3041,6 +3080,658 @@ const getList = (list: number[]) => {
 }
 </style>
 ```
+
+---
+
+## 全局组件
+
+> [学习Vue3 第十五章（全局组件，局部组件，递归组件）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/122862736)
+>
+> [组件注册 | Vue.js (vuejs.org)](https://v3.cn.vuejs.org/guide/component-registration.html#全局注册)
+
+有些组件使用频率非常高, 几乎每个界面都在使用
+
+> 此前的示例中我使用的是 `vite` 构建的初始模板, 之后的组件注册主要是在模块系统中进行的局部注册
+>
+> > [组件注册-在模块系统中局部注册 | Vue.js (vuejs.org)](https://v3.cn.vuejs.org/guide/component-registration.html#在模块系统中局部注册)
+> >
+> > 创建一个 `components` 目录，并将每个组件放置在其各自的文件中。
+> >
+> > 在局部注册之前导入每个你想使用的组件。例如，假设在 `App.vue` 文件中：
+> >
+> > ```vue
+> > <script setup lang="ts">
+> > // This starter template is using Vue 3 <script setup> SFCs
+> > // Check out https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup
+> > import HelloWorld from './components/HelloWorld.vue'
+> > import Marquee from './components/Marquee.vue';
+> > import VueOn from './components/vueon.vue';
+> > import VueModel from './components/vuemodel.vue';
+> > import VueBind from './components/vuebind.vue';
+> > import VueComputed from './components/vuecomputed.vue';
+> > import VueComputedT from './components/vuecomputedt_test.vue';
+> > import VueWatch from './components/vuewatch.vue';
+> > import Vuewatch from './components/vuewatch.vue';
+> > import Vuewatcheffect from './components/vuewatcheffect.vue';
+> > import lessLayout from './layout_less/less_layout.vue';
+> > 
+> > </script>
+> > 
+> > <template>
+> >   <div class="vueLogo">
+> >     <img alt="Vue logo" src="./assets/logo.png" />
+> >   </div>
+> > 
+> >   <!-- <HelloWorld msg="Hello Vue 3 + TypeScript + Vite" /> -->
+> >   <!-- <HelloWorld msg="233" /> -->
+> >   <!-- <Marquee /> -->
+> >   <!-- <VueOn /> -->
+> >   <!-- <VueModel /> -->
+> >   <!-- <VueBind /> -->
+> >   <!-- <VueComputed /> -->
+> >   <!-- <VueComputedT /> -->
+> >   <!-- <Vuewatch /> -->
+> >   <!-- <vuewatcheffect /> -->
+> >   <lessLayout />
+> > </template>
+> > 
+> > <style lang="less">
+> > html,
+> > body,
+> > #app {
+> >   // font-family: Avenir, Helvetica, Arial, sans-serif;
+> >   // -webkit-font-smoothing: antialiased;
+> >   // -moz-osx-font-smoothing: grayscale;
+> >   text-align: center;
+> >   color: #2c3e50;
+> >   // margin-top: 60px;
+> >   height: 100%;
+> >   overflow: hidden;
+> > }
+> > 
+> > .vueLogo {
+> >   height: 40%;
+> >   border: 1px solid #ccc;
+> > }
+> > </style>
+> > 
+> > ```
+
+例如: 封装一个 `Card` 组件
+
+`card.vue`:
+
+```vue
+<!-- 全局组件学习: 封装一个 Card 组件 -->
+<script setup lang="ts">
+
+type Props = {
+    content: string
+}
+defineProps<Props>()
+
+// 两种写法是一致的
+// defineProps<{
+//     content: string
+// }>()
+
+</script>
+
+<template>
+    <div class="card">
+        <div class="card-header">
+            <div>标题</div>
+            <div>副标题</div>
+        </div>
+        <div v-if="content" class="card-content">{{ content }}</div>
+    </div>
+</template>
+
+
+
+<style lang="less" scoped>
+@border: #ccc;
+.card {
+    width: 300px;
+    border: 1px solid @border;
+    border-radius: 3px;
+    &:hover {
+        box-shadow: 0 0 10px @border;
+    }
+
+    &-content {
+        padding: 10px;
+    }
+    &-header {
+        display: flex;
+        justify-content: space-between;
+        padding: 10px;
+        border-bottom: 1px solid @border;
+    }
+}
+</style>
+```
+
+然后在 `main.ts` 引入 `card` 组件跟随在 `createApp(App)` 后面;
+
+> 切记不能放到 `mount` 后面这是一个链式调用
+>
+> 调用 `component` 第一个参数组件名称 第二个参数组件实例
+
+`main.ts`
+
+```typescript
+import { createApp } from 'vue'
+import App from './App.vue'
+import './assets/css/reset.less'
+import Card from './components/Card.vue'
+
+createApp(App)
+    .component('Card', Card)
+    .mount('#app')
+
+```
+
+如此一来在其他 vue 页面无需引入 `card 组件` 可以直接使用
+
+`App.vue`
+
+```vue
+<script setup lang="ts">
+// This starter template is using Vue 3 <script setup> SFCs
+// Check out https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup
+import HelloWorld from './components/HelloWorld.vue'
+import Marquee from './components/Marquee.vue';
+import VueOn from './components/vueon.vue';
+import VueModel from './components/vuemodel.vue';
+import VueBind from './components/vuebind.vue';
+import VueComputed from './components/vuecomputed.vue';
+import VueComputedT from './components/vuecomputedt_test.vue';
+import VueWatch from './components/vuewatch.vue';
+import Vuewatch from './components/vuewatch.vue';
+import Vuewatcheffect from './components/vuewatcheffect.vue';
+import lessLayout from './layout_less/less_layout.vue';
+
+</script>
+
+<template>
+  <div class="vueLogo">
+    <img alt="Vue logo" src="./assets/logo.png" />
+  </div>
+
+  <!-- <HelloWorld msg="Hello Vue 3 + TypeScript + Vite" /> -->
+  <!-- <HelloWorld msg="233" /> -->
+  <!-- <Marquee /> -->
+  <!-- <VueOn /> -->
+  <!-- <VueModel /> -->
+  <!-- <VueBind /> -->
+  <!-- <VueComputed /> -->
+  <!-- <VueComputedT /> -->
+  <!-- <Vuewatch /> -->
+  <!-- <vuewatcheffect /> -->
+  <!-- <lessLayout /> -->
+  <Card content="此处为内容区域 233333" />
+</template>
+
+<style lang="less">
+html,
+body,
+#app {
+  // font-family: Avenir, Helvetica, Arial, sans-serif;
+  // -webkit-font-smoothing: antialiased;
+  // -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  // margin-top: 60px;
+  height: 100%;
+  overflow: hidden;
+}
+
+.vueLogo {
+  height: 40%;
+  border: 1px solid #ccc;
+}
+</style>
+
+```
+
+![image-20220321211051296](http://cdn.ayusummer233.top/img/202203212110626.png)
+
+---
+
+## 局部组件
+
+在一个组件中通过引入另一个组件以达到在此组件中局部使用另一个组件的目的
+
+例如在 `App 根组件` 中引入并使用 `Helloworld 组件` :
+
+`Helloworld.vue`:
+
+```vue
+<script setup lang="ts">
+import { ref } from 'vue'
+import { defineProps } from 'vue'
+
+defineProps<{ msg: string }>()
+
+const count = ref(0)
+
+</script>
+
+<template>
+  <h1>{{ msg }}</h1>
+
+  <p>
+    Recommended IDE setup:
+    <a href="https://code.visualstudio.com/" target="_blank">VSCode</a>
+    +
+    <a href="https://github.com/johnsoncodehk/volar" target="_blank">Volar</a>
+  </p>
+
+  <p>
+    See
+    <code>README.md</code> for more information.
+  </p>
+
+  <p>
+    <a href="https://vitejs.dev/guide/features.html" target="_blank">Vite Docs</a>
+    |
+    <a href="https://v3.vuejs.org/" target="_blank">Vue 3 Docs</a>
+  </p>
+
+  <button type="button" @click="count++">count is: {{ count }}</button>
+
+  <p>
+    Edit
+    <code>components/HelloWorld.vue</code> to test hot module replacement.
+  </p>
+</template>
+
+<!-- 在<style>标签中使用 scoped 属性会限制样式只影响 <style> 标签的父元素和它所有的后代元素。 -->
+<style scoped>
+a {
+  color: #42b983;
+}
+
+label {
+  margin: 0 0.5em;
+  font-weight: bold;
+}
+
+code {
+  background-color: #eee;
+  padding: 2px 4px;
+  border-radius: 4px;
+  color: #304455;
+}
+</style>
+
+```
+
+`App.vue`:
+
+```vue
+<script setup lang="ts">
+// This starter template is using Vue 3 <script setup> SFCs
+// Check out https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup
+import HelloWorld from './components/HelloWorld.vue'
+import Marquee from './components/Marquee.vue';
+import VueOn from './components/vueon.vue';
+import VueModel from './components/vuemodel.vue';
+import VueBind from './components/vuebind.vue';
+import VueComputed from './components/vuecomputed.vue';
+import VueComputedT from './components/vuecomputedt_test.vue';
+import VueWatch from './components/vuewatch.vue';
+import Vuewatch from './components/vuewatch.vue';
+import Vuewatcheffect from './components/vuewatcheffect.vue';
+import lessLayout from './layout_less/less_layout.vue';
+
+</script>
+
+<template>
+  <div class="vueLogo">
+    <img alt="Vue logo" src="./assets/logo.png" />
+  </div>
+
+  <!-- <HelloWorld msg="Hello Vue 3 + TypeScript + Vite" /> -->
+  <HelloWorld msg="233" />
+  <!-- <Marquee /> -->
+  <!-- <VueOn /> -->
+  <!-- <VueModel /> -->
+  <!-- <VueBind /> -->
+  <!-- <VueComputed /> -->
+  <!-- <VueComputedT /> -->
+  <!-- <Vuewatch /> -->
+  <!-- <vuewatcheffect /> -->
+  <!-- <lessLayout /> -->
+  <!-- <Card content="此处为内容区域 233333" /> -->
+</template>
+
+<style lang="less">
+html,
+body,
+#app {
+  // font-family: Avenir, Helvetica, Arial, sans-serif;
+  // -webkit-font-smoothing: antialiased;
+  // -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  // margin-top: 60px;
+  height: 100%;
+  overflow: hidden;
+}
+
+.vueLogo {
+  height: 40%;
+  border: 1px solid #ccc;
+}
+</style>
+
+```
+
+![image-20220321210853862](http://cdn.ayusummer233.top/img/202203212108166.png)
+
+---
+
+## 递归组件
+
+> [学习Vue3 第十五章（全局组件，局部组件，递归组件）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/122862736)
+>
+> [递归组件  | Vue.js (vuejs.org)](https://v3.cn.vuejs.org/api/sfc-script-setup.html#递归组件)
+
+递归组件自己调用自己, 通过一个条件来结束递归(否则将导致内存泄露)
+
+例如:
+
+`Tree.vue`
+
+```vue
+<script setup lang="ts">
+
+type TreeList = {
+    name: string;
+    icon?: string;
+    children?: TreeList[] | [];
+}
+
+type  Props = {
+    dataTreeList?: TreeList[]    
+}
+defineProps<Props>()
+
+const emit = defineEmits(['on-click'])
+
+const ClickItem = (item:TreeList) =>{
+    console.log(item, 2333);
+    emit('on-click', item)
+}
+
+</script>
+
+<script lang="ts">
+export default{
+    name: "Tree"
+}
+
+</script>
+
+
+<template>
+    <div style="margin-left: 10px;">
+        <!-- {{dataTreeList}} -->
+        <div 
+            :key="index" v-for="(item, index) in dataTreeList" 
+            @click.stop="ClickItem(item)">
+            {{item.name}}
+            <Tree 
+                v-if="item?.children?.length" :dataTreeList="item.children"
+                @on-click="ClickItem" />
+        </div>
+    </div>
+</template>
+
+<style lang="less" scoped>
+</style>
+```
+
+> `item?.children?.length`:
+>
+> 当读 `item` 和 `item.children` 时读出 `undefined` 或 `null`  时不会继续调用 `.length` 而是直接返回 `undefined`, 这样就避免了读 `undefined.length` 导致的报错
+>
+> 可以配合 `??` 使用: `item?.children?.length ?? []`:
+>
+> 当 `??` 前面的式子读出 `undefined` 时采用后面的 `[]`
+
+`lessMenu.vue`
+
+```vue
+<script setup lang="ts">
+import { reactive } from 'vue'
+import Tree from '../../components/Tree.vue'
+
+/* 子组件通过 defineExpose 将内部属性 exposeArray 暴露给父组件 */
+const exposeArray = reactive<number[]>([7, 8, 9])
+defineExpose({
+    exposeArray
+})
+
+
+/* 子组件给父组件传参 */
+const list = reactive<number[]>([4, 5, 6])
+const emit = defineEmits(['onclickTap'])
+const clickTap = () => {
+    emit('onclickTap', list)
+}
+
+// 参数默认值
+type Props = {
+    message?: string
+    data_array?: number[]
+    omit?: string
+}
+withDefaults(defineProps<Props>(), {
+    message: 'Hello World',
+    data_array: () => [1, 2, 3],
+    omit: 'omit'
+})
+
+// 递归组件测试
+type TreeList = {
+    name: string;
+    icon?: string;
+    children?: TreeList[] | [];
+}
+const dataArrayTreeList = reactive<TreeList[]>([
+    {
+        name: "no.1",
+        children: [
+            {
+                name: "no.1-1",
+                children: [
+                    {
+                        name: "no.1-1-1",
+                    },
+                ],
+            },
+        ],
+    },
+    {
+        name: "no.2",
+        children: [
+            {
+                name: "no.2-1",
+            },
+        ],
+    },
+    {
+        name: "no.3",
+    }
+])
+
+const getItem = (item: TreeList) => {
+    console.log("父组件的item"+item.name);
+}
+</script>
+
+<template>
+    <div class="menu_less">
+        <div>菜单区域</div>
+        {{ message }}
+        <div v-for="item in data_array" :key="item">{{ item }}</div>
+        {{ omit }}
+        <button @click="clickTap">派发给父组件</button>
+        <Card content="测试字符串"/>    
+        <Tree :dataTreeList="dataArrayTreeList" @on-click="getItem"/>
+    </div>
+</template>
+
+<style lang="less" scoped>
+.menu_less {
+    width: 200px;
+    border-right: 1px solid #ccc;
+    display: flex;
+    flex-direction: column; // 垂直方向
+    flex: 1;
+    overflow: auto;
+}
+</style>
+```
+
+`less_layout.vue`
+
+```vue
+<script setup lang="ts">
+import lessMenu from './Menu/lessMenu.vue'
+import lessHeader from './Header/lessHeader.vue'
+import lessContent from './Content/lessContent.vue'
+import { reactive, ref } from 'vue'
+
+const exposeArrayFromMenu = ref(null)
+
+const data_array = reactive<number[]>([1, 2, 3])
+
+// 父组件接收子组件传参
+const getList = (list: number[]) => {
+    console.log(list, "父组件接收子组件")
+}
+
+</script>
+
+<template>
+    <div class="layout_less">
+        <!-- <div>{{ exposeArrayFromMenu }}</div> -->
+        <lessMenu
+            message="传递一个字符串"
+            v-bind:data_array="data_array"
+            @onclickTap="getList"
+            ref="exposeArrayFromMenu"
+        />
+        <div class="layout_less-right">
+            <lessHeader />
+            <lessContent />
+        </div>
+    </div>
+</template>
+
+<style lang="less" scoped>
+.layout_less {
+    display: flex;
+    height: 60%;
+    overflow: hidden;
+    border: 1px solid #ccc;
+    &-right {
+        display: flex;
+        flex-direction: column; // 垂直方向
+        flex: 1;
+    }
+}
+</style>
+```
+
+
+
+`App.vue`
+
+```vue
+<script setup lang="ts">
+// This starter template is using Vue 3 <script setup> SFCs
+// Check out https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup
+import HelloWorld from './components/HelloWorld.vue'
+import Marquee from './components/Marquee.vue';
+import VueOn from './components/vueon.vue';
+import VueModel from './components/vuemodel.vue';
+import VueBind from './components/vuebind.vue';
+import VueComputed from './components/vuecomputed.vue';
+import VueComputedT from './components/vuecomputedt_test.vue';
+import VueWatch from './components/vuewatch.vue';
+import Vuewatch from './components/vuewatch.vue';
+import Vuewatcheffect from './components/vuewatcheffect.vue';
+import lessLayout from './layout_less/less_layout.vue';
+
+</script>
+
+<template>
+  <div class="vueLogo">
+    <img alt="Vue logo" src="./assets/logo.png" />
+  </div>
+
+  <!-- <HelloWorld msg="Hello Vue 3 + TypeScript + Vite" /> -->
+  <!-- <HelloWorld msg="233" /> -->
+  <!-- <Marquee /> -->
+  <!-- <VueOn /> -->
+  <!-- <VueModel /> -->
+  <!-- <VueBind /> -->
+  <!-- <VueComputed /> -->
+  <!-- <VueComputedT /> -->
+  <!-- <Vuewatch /> -->
+  <!-- <vuewatcheffect /> -->
+  <lessLayout />
+  <!-- <Card content="此处为内容区域 233333" /> -->
+</template>
+
+<style lang="less">
+html,
+body,
+#app {
+  // font-family: Avenir, Helvetica, Arial, sans-serif;
+  // -webkit-font-smoothing: antialiased;
+  // -moz-osx-font-smoothing: grayscale;
+  // text-align: center;
+  color: #2c3e50;
+  // margin-top: 60px;
+  height: 100%;
+  overflow: hidden;
+}
+
+.vueLogo {
+  height: 40%;
+  border: 1px solid #ccc;
+}
+</style>
+
+```
+
+![image-20220322224213121](http://cdn.ayusummer233.top/img/202203222242790.png)
+
+---
+
+## 动态组件
+
+> [学习Vue3 第十六章（动态组件）_小满zs的博客-CSDN博客_vue3 动态组件](https://blog.csdn.net/qq1195566313/article/details/122891279)
+
+动态组件就是让多个组件使用同一个挂载点并动态切换
+
+在挂载点使用 `component` 标签, 然后使用 `v-bind: is=“组件”`, 用法如下:
+
+```vue
+<!-- 引入组件 -->
+import A from './A.vue'
+import B from './B.vue'
+<!-- 通过 is 切换 A B 组件 -->
+<component :is="A"></component>
+```
+
+使用场景 tab 切换居多
 
 
 
