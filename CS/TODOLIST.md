@@ -276,7 +276,7 @@
 
 - Vue
   - [x] [学习Vue3 第十五章（全局组件，局部组件，递归组件）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/122862736)
-  - [ ] [学习Vue3 第十六章（动态组件）_小满zs的博客-CSDN博客_vue3 动态组件](https://blog.csdn.net/qq1195566313/article/details/122891279)
+  - [x] [学习Vue3 第十六章（动态组件）_小满zs的博客-CSDN博客_vue3 动态组件](https://blog.csdn.net/qq1195566313/article/details/122891279)
   - [ ] [学习Vue3 第十七章（插槽slot）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/122904105)
   - [ ] [学习Vue3 第十八章（异步组件&代码分包&suspense）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/122909360)
   - [ ] [学习Vue3 第十九章（Teleport传送组件）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/122916261)
