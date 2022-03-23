@@ -247,7 +247,7 @@
 
 - TypeScript
 
-  - [x] 使用 TypeScript 开发类型函数_MSLearn(共 9 节)
+  - [x] 使用 TypeScript 开发类型函数_MSLearn(共 9 节)1
   
     
 
@@ -267,7 +267,15 @@
 - Vue
   - [x] [学习Vue3 第十三章（实操组件和认识less 和 scoped）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/122832888)
   - [x] [学习Vue3 第十四章（父子组件传参）_小满zs的博客-CSDN博客_vue3 父子组件传参](https://blog.csdn.net/qq1195566313/article/details/122850170)
-  - [ ] [学习Vue3 第十五章（全局组件，局部组件，递归组件）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/122862736)
+
+---
+
+## VUE 相关技术栈学习(2022/3/21-2022/4/3, 共 2 周)
+
+### 第 1 周(3.21-3.26)
+
+- Vue
+  - [x] [学习Vue3 第十五章（全局组件，局部组件，递归组件）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/122862736)
   - [ ] [学习Vue3 第十六章（动态组件）_小满zs的博客-CSDN博客_vue3 动态组件](https://blog.csdn.net/qq1195566313/article/details/122891279)
   - [ ] [学习Vue3 第十七章（插槽slot）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/122904105)
   - [ ] [学习Vue3 第十八章（异步组件&代码分包&suspense）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/122909360)
@@ -286,11 +294,6 @@
   - [ ] [学习Vue3 第三十一章（了解UI库ElementUI，AntDesigin等）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123306603)
   - [ ] [学习Vue3 第三十二章（详解Scoped和样式 穿透）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123319462)
 
----
-
-## VUE 相关技术栈学习(2022/3/21-2022/4/3, 共 2 周)
-
-### 第 1 周(3.21-3.26)
 
 - Pinia
 
