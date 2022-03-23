@@ -3733,7 +3733,172 @@ import B from './B.vue'
 
 使用场景 tab 切换居多
 
+示例:
 
+`A.vue`:
+
+```vue
+<script setup lang="ts">
+</script>
+
+<template>
+<div class = "styleA">A组件内容</div>
+</template>
+
+<style lang="less" scoped>
+.styleA {
+    background: red;
+    height: 300px;
+    border: 1px solid #ccc;
+}
+
+</style>
+```
+
+`B.vue`
+
+```vue
+<script setup lang="ts">
+</script>
+
+<template>
+    <div class="styleB">
+        B组件内容
+    </div>
+</template>
+
+<style lang="less" scoped>
+.styleB {
+    background: greenyellow;
+    height: 300px;
+    border: 1px solid #ccc;
+}
+
+</style>
+```
+
+`C.vue`
+
+```vue
+<script setup lang="ts">
+</script>
+
+<template>
+    <div class="styleC">
+        C组件内容
+    </div>
+</template>
+
+<style lang="less" scoped>
+.styleC {
+    background: burlywood;
+    height: 300px;
+    border: 1px solid #ccc;
+}
+
+</style>
+```
+
+`lessContent.vue`
+
+```vue
+<script setup lang="ts">
+import A from './A.vue'
+import B from './B.vue'
+import C from './C.vue'
+import {reactive, markRaw} from 'vue'
+
+type Tabs = {
+    name: string,
+    comName:any
+}
+
+type Com = Pick<Tabs, 'comName'>
+
+const data = reactive<Tabs[]>([
+    {
+        name: '我是 A 组件',
+        comName: markRaw(A)
+    },
+    {
+        name: '我是 B 组件',
+        comName: markRaw(B)
+    },
+    {
+        name: '我是 C 组件',
+        comName: markRaw(C)
+    }
+])
+
+
+let current = reactive<Com>({
+    comName: data[0].comName
+})
+
+const switchCom =(item: Tabs) =>{
+    current.comName = item.comName
+}
+</script>
+
+<template>
+    <div class="content_layout">
+        <div class = "tab">
+            <div :key="item.name" v-for="item in data"
+                @click="switchCom(item)">
+                {{item.name}}
+            </div>
+        </div>
+        <component :is="current.comName" />
+        <div class="content_layout-items" 
+            :key="item" v-for="item in 100">
+                {{ item }}
+        </div>      
+    </div>
+</template>
+
+<style lang="less" scoped>
+.content_layout {
+    flex: 1;
+    margin: 20px;
+    border: 1px solid #ccc;
+    overflow: auto;
+    &-items {
+        padding: 20px;
+        border: 1px solid #ccc;
+    }
+}
+
+.tab{
+    display: flex;
+    flex:1;
+    flex-direction: row;
+    div{
+        flex: 1;
+        padding: 10px;
+        border: 1px solid #ccc;
+        cursor: pointer;
+        &:hover{
+            background: #eee;
+        }
+    }
+}
+</style>
+```
+
+![image-20220323101459591](http://cdn.ayusummer233.top/img/202203231015963.png)
+
+> 注意事项
+>
+> - 在 `Vue2` 的时候 `:is` 是通过组件名称切换的, 而在 `Vue3 setup` 中是通过组件实例切换的
+>
+> - 如果把组件实例放到 `Reactive` 中那么 `Vue` 会给你一个警告 `runtime-core.esm-bundler.js:38 [Vue warn]: Vue received a Component which was made a reactive object. This can lead to unnecessary performance overhead, and should be avoided by marking the component with markRaw or using  shallowRef instead of  ref.
+>   Component that was made reactive: `
+>
+>   ![image-20220323102616021](http://cdn.ayusummer233.top/img/202203231026284.png)
+>
+>   这是因为 `reactive` 会进行 `proxy 代理`; 而我们组件代理之后毫无用处; 为节省性能开销推荐我们使用 `shallowRef` 或者 `markRaw` 跳过 `proxy` 代理:
+>
+>   ![image-20220323102759875](http://cdn.ayusummer233.top/img/202203231028152.png)
 
 ---
 
