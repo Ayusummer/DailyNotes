@@ -3902,9 +3902,351 @@ const switchCom =(item: Tabs) =>{
 
 ---
 
+## 通过插槽分发内容
+
+> [组件基础 | Vue.js (vuejs.org)](https://v3.cn.vuejs.org/guide/component-basics.html#通过插槽分发内容)
+>
+> [学习Vue3 第十七章（插槽slot）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/122904105)
+
+插槽就是子组件中的提供给父组件使用的一个[占位符](https://so.csdn.net/so/search?q=占位符&spm=1001.2101.3001.7020)，用 `<slot></slot> ` 表示，父组件可以在这个占位符中填充任何模板代码，如 HTML、组件等，填充的内容会替换子组件的 `<slot></slot>` 标签。
+
+![image-20220325095939066](http://cdn.ayusummer233.top/img/202203250959056.png)
+
+---
+
+### 匿名插槽
+
+在子组件放置一个插槽:
+
+```vue
+<template>
+    <div>
+       <slot></slot>
+    </div>
+</template>
+```
+
+在父组件中使用插槽并给其填充内容:
+
+```vue
+        <Dialog>
+           <template v-slot>
+               <div>寄</div>
+           </template>
+        </Dialog>
+```
+
+---
+
+### 具名插槽
+
+给插槽起个名字, 父组件中通过不同的插槽名调用不同插槽
+
+```vue
+    <div>
+        <slot name="header"></slot>
+        <slot></slot>
+ 
+        <slot name="footer"></slot>
+    </div>
+```
+
+```vue
+        <Dialog>
+            <!-- 具名插槽 -->
+            <template v-slot:dialog_header>
+                <div>
+                    摆
+                </div>
+            </template>
+            <!-- 具名插槽 -->
+            <!-- 简写: -->
+            <template #dialog_footer>
+                <div>
+                    摸了
+                </div>
+        </Dialog>
+```
+
+---
+
+### 作用域插槽
+
+在子组件插槽中动态绑定参数并派发给父组件调用插槽时使用
+
+```vue
+<script setup lang="ts">
+import {reactive} from 'vue'
+
+type names = {
+    name: string,
+    age:number
+}
+const data = reactive<names[]>([
+    {
+        name: '张三',
+        age: 18
+    },
+    {
+        name: '李四',
+        age: 20
+    },
+    {
+        name: '王五',
+        age: 22
+    }
+])
+
+</script>
+
+<template>
+	<div>
+        <main class="main">
+            <div v-for="item in data">
+                <slot :data="item"></slot>
+            </div>
+        </main>
+    </div>
+</template>
+
+```
+
+通过结构方式取值
+
+```vue
+        <Dialog>
+            <!-- 匿名插槽 -->
+            <!-- <template v-slot="{data}"> -->
+            <!-- 简写: -->
+            <template #default="{data}">
+                <div>
+                    姓名: {{data.name}} 年龄: {{data.age}}
+                </div>
+            </template>
+        </Dialog>
+```
+
+---
+
+### 动态插槽
+
+父组件中调用插槽时插槽名可以是个变量名, 通过改变变量调用不同名称对应插槽
+
+```vue
+const name = ref('header')
+
+<Dialog>
+    <template #[name]>
+		<div>
+    		233
+        </div>
+    </template>
+</Dialog>
+
+```
+
+---
+
+`Dialog.vue`
+
+```vue
+<script setup lang="ts">
+import {reactive} from 'vue'
+
+type names = {
+    name: string,
+    age:number
+}
+const data = reactive<names[]>([
+    {
+        name: '张三',
+        age: 18
+    },
+    {
+        name: '李四',
+        age: 20
+    },
+    {
+        name: '王五',
+        age: 22
+    }
+])
+
+</script>
+
+<template>
+    <div>
+        <header class="header">
+            <slot name="dialog_header" />
+        </header>
+        <main class="main">
+            <div v-for="item in data">
+                <slot :data="item"></slot>
+            </div>
+        </main>
+        <footer class="footer">
+            <slot name="dialog_footer" />
+        </footer>
+    </div>
+</template>
+
+<style lang="less" scoped>
+.header{
+    height: 100px;
+    background: red;
+    color: #fff;
+}
+.main{
+    height: 100px;
+    background: green;
+    color: #fff;
+}
+.footer{
+    height: 100px;
+    background: blue;
+    color: #fff;
+}
+</style>
+```
+
+`lessContent.vue`:
+
+```vue
+<script setup lang="ts">
+import A from './A.vue'
+import B from './B.vue'
+import C from './C.vue'
+import Dialog from '../../components/Dialog.vue'
+import {reactive, markRaw, ref} from 'vue'
+
+type Tabs = {
+    name: string,
+    comName:any
+}
+
+type Com = Pick<Tabs, 'comName'>
+
+const data = reactive<Tabs[]>([
+    {
+        name: '我是 A 组件',
+        comName: markRaw(A)
+    },
+    {
+        name: '我是 B 组件',
+        comName: markRaw(B)
+    },
+    {
+        name: '我是 C 组件',
+        comName: markRaw(C)
+    }
+])
+
+
+let current = reactive<Com>({
+    comName: data[0].comName
+})
+
+const switchCom =(item: Tabs) =>{
+    current.comName = item.comName
+}
+
+// 动态插槽相关
+let name = ref('dialog_header')
+</script>
+
+<template>
+    <div class="content_layout">
+        <Dialog>
+            <!-- 具名插槽 -->
+            <template v-slot:dialog_header>
+                <div>
+                    摆
+                </div>
+            </template>
+            <!-- 匿名插槽 -->
+            <!-- <template v-slot="{data}"> -->
+            <!-- 简写: -->
+            <template #default="{data}">
+                <div>
+                    姓名: {{data.name}} 年龄: {{data.age}}
+                </div>
+            </template>
+            <!-- 具名插槽 -->
+            <!-- 简写: -->
+            <template #dialog_footer>
+                <div>
+                    摸了
+                </div>
+            </template>
+            <!-- 动态插槽 -->
+            <template #[name]>
+                动态插槽演示
+            </template>
+        </Dialog>
+        <div class = "tab">
+            <div :key="item.name" v-for="item in data"
+                @click="switchCom(item)">
+                {{item.name}}
+            </div>
+        </div>
+        <component :is="current.comName" />
+        <div class="content_layout-items" 
+            :key="item" v-for="item in 100">
+                {{ item }}
+        </div>      
+    </div>
+</template>
+
+<style lang="less" scoped>
+.content_layout {
+    flex: 1;
+    margin: 20px;
+    border: 1px solid #ccc;
+    overflow: auto;
+    &-items {
+        padding: 20px;
+        border: 1px solid #ccc;
+    }
+}
+
+.tab{
+    display: flex;
+    flex:1;
+    flex-direction: row;
+    div{
+        flex: 1;
+        padding: 10px;
+        border: 1px solid #ccc;
+        cursor: pointer;
+        &:hover{
+            background: #eee;
+        }
+    }
+}
+</style>
+```
+
+
+
+![image-20220325102705894](http://cdn.ayusummer233.top/img/202203251027872.png)
+
+---
+
 # API
 
 > [API | Vue.js (vuejs.org)](https://v3.cn.vuejs.org/api/)
+
+---
+
+## 内置组件
+
+### `slot`
+
+> [内置组件 | Vue.js (vuejs.org)](https://v3.cn.vuejs.org/api/built-in-components.html#slot)
+>
+> [学习Vue3 第十七章（插槽slot）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/122904105)
+
+详见 [通过插槽分发内容](#通过插槽分发内容)
 
 ---
 
