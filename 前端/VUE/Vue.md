@@ -4730,6 +4730,382 @@ let name = ref('dialog_header')
 
 详见 [通过插槽分发内容](#通过插槽分发内容)
 
+
+
+---
+
+### `keep-alive`
+
+> [内置组件-keep-alive | Vue.js (vuejs.org)](https://v3.cn.vuejs.org/api/built-in-components.html#keep-alive)
+>
+> [学习Vue3 第二十章（keep-alive缓存组件）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/122953072)
+
+有时候我们不希望组件被重新渲染影响使用体验；或者处于性能考虑，避免多次重复渲染降低性能。而是希望组件可以缓存下来,维持当前的状态。这时候就需要用到`keep-alive`组件。
+
+> `keep-alive` 主要用于保留组件状态或避免重新渲染。
+>
+> `<keep-alive>` 不会在函数式组件中正常工作，因为它们没有缓存实例。
+
+- **Props：**
+  - `include` - `string | RegExp | Array`。只有名称匹配的组件会被缓存。
+  - `exclude` - `string | RegExp | Array`。任何名称匹配的组件都不会被缓存。
+  - `max` - `number | string`。最多可以缓存多少组件实例。
+
+`login.vue`:
+
+```vue
+<!-- 登录组件 -->
+<script setup lang="ts">
+import {reactive, onMounted, onUnmounted, onActivated, onDeactivated} from 'vue'
+// 只有使用了 keep-alive 组件才会有 onActivated 和 onDeactivated 事件
+
+// 登录表单
+const form = reactive({
+    login:"",
+    password:""
+})
+
+// 登录按钮触发事件
+const submit = () => {
+    console.log(form)
+}
+
+onMounted(() => {
+    console.log("login mounted")
+})
+
+onUnmounted(() => {
+    console.log("login unmounted")
+})
+
+onActivated(() => {
+    console.log("login activated")
+})
+
+onDeactivated(() => {
+    console.log("login deactivated")
+})
+</script>
+
+<template>
+<div>
+    <!-- 账密输入表单 -->
+    <table>
+        <!-- 账号输入区域 -->
+        <tr>
+            <td>账号</td>
+            <td>
+                <input type="text" v-model="form.login" placeholder="请输入账号">
+            </td>
+        </tr>
+        <!-- 密码输入区域 -->
+        <tr>
+            <td>密码</td>
+            <td>
+                <input type="password" v-model="form.password" placeholder="请输入密码">
+            </td>
+        </tr>
+    </table>
+    <button @click="submit">登录</button>
+
+</div>
+</template>
+
+<style lang="less" scoped>
+</style>
+```
+
+> 只有使用了 `keep-alive` 组件才会有 `onActivated` 和 `onDeactivated` 事件
+>
+> > (这会运用在 `<keep-alive>` 的直接子节点及其所有子孙节点。)
+>
+> ![image-20220328211128813](https://cdn.ayusummer233.top/img/202203282111604.png)
+>
+> 如图所示, `Login 组件` 只会 `mounted` 一次, 点击 `切换按钮` 后不会 `unmounted`, 不过点击切换按钮会调起 `onDeactivated`, 再点击一次会变再调起 `onActivated`
+>
+> ![](http://cdn.ayusummer233.top/img/202203282120763.gif)
+
+`register.vue`
+
+```vue
+<!-- 登录组件 -->
+<script setup lang="ts">
+import {reactive} from 'vue'
+
+// 登录表单
+const form = reactive({
+    login:"",
+    password:"",
+    code:""
+})
+
+// 登录按钮触发事件
+const submit = () => {
+    console.log(form)
+}
+</script>
+
+<template>
+<div>
+    <!-- 账密输入表单 -->
+    <table>
+        <!-- 账号输入区域 -->
+        <tr>
+            <td>账号</td>
+            <td>
+                <input type="text" v-model="form.login" placeholder="请输入账号">
+            </td>
+        </tr>
+        <!-- 密码输入区域 -->
+        <tr>
+            <td>密码</td>
+            <td>
+                <input type="password" v-model="form.password" placeholder="请输入密码">
+            </td>
+        </tr>
+        <!-- 验证码输入区域 -->
+        <tr>
+            <td>验证码</td>
+            <td>
+                <input type="text" v-model="form.code" placeholder="请输入验证码">
+            </td>
+        </tr>
+    </table>
+    <button @click="submit">注册</button>
+
+</div>
+</template>
+
+<style lang="less" scoped>
+</style>
+```
+
+> 在登录组件中演示了使用 `keep-alive` 后组件声明周期的变化, 可以得知如果想在切换组件的时候做些什么, 那么应当修改 `onActivated` 和 `onDeactivated` 方法
+>
+> 例如在从注册界面切换到登录界面时清空注册页面的验证码输入框:
+>
+> ```typescript
+> // 设置切换到登录界面时, 注册界面的验证码会清空
+> onDeactivated(() => {
+>     console.log("register deactivated")
+>     form.code=""
+>     console.log("验证码已清空")
+> })
+> ```
+>
+> ![](http://cdn.ayusummer233.top/img/202203282137692.gif)
+
+`lessContent.vue`:
+
+```vue
+<script setup lang="ts">
+import A from './A.vue'
+import B from './B.vue'
+import C from './C.vue'
+import Dialog from '../../components/Dialog.vue'
+// import Loading from '../../components/Loading/loading.vue' 异步化组件后就不能这样直接引入使用了
+// 引入登录组件
+import Login from '../../components/login/login.vue'
+// 引入注册组件
+import Register from '../../components/register/register.vue'
+import {reactive, markRaw, ref, defineAsyncComponent} from 'vue'
+
+const Loading = defineAsyncComponent(() => import('../../components/Loading/loading.vue'))
+
+type Tabs = {
+    name: string,
+    comName:any
+}
+
+type Com = Pick<Tabs, 'comName'>
+
+const data = reactive<Tabs[]>([
+    {
+        name: '我是 A 组件',
+        comName: markRaw(A)
+    },
+    {
+        name: '我是 B 组件',
+        comName: markRaw(B)
+    },
+    {
+        name: '我是 C 组件',
+        comName: markRaw(C)
+    }
+])
+
+
+let current = reactive<Com>({
+    comName: data[0].comName
+})
+
+const switchCom =(item: Tabs) =>{
+    current.comName = item.comName
+}
+
+// 动态插槽相关
+let name = ref('dialog_header')
+
+// 切换登录注册表单页面
+const flag = ref(true)
+const switchLoginRegist = () => {
+    flag.value = !flag.value
+}
+</script>
+
+<template>
+    <div class="content_layout">
+        <button @click="switchLoginRegist">切换</button>
+        <keep-alive>
+            <Login v-if="flag"></Login>
+            <Register v-else></Register>
+        </keep-alive>
+        <teleport to='.teleport_class_test'>
+            <div class="loading">
+                loading...
+            </div>
+        </teleport>
+        <!-- 异步组件测试 -->
+        <Suspense>
+            <template #default>
+                <Loading></Loading>
+            </template>
+            <template #fallback>
+                <div>加载中...</div>
+            </template>
+        </Suspense>
+        <!-- 插槽测试 -->
+        <Dialog>
+            <!-- 具名插槽 -->
+            <template v-slot:dialog_header>
+                <div>
+                    摆
+                </div>
+            </template>
+            <!-- 匿名插槽 -->
+            <!-- <template v-slot="{data}"> -->
+            <!-- 简写: -->
+            <template #default="{data}">
+                <div>
+                    姓名: {{data.name}} 年龄: {{data.age}}
+                </div>
+            </template>
+            <!-- 具名插槽 -->
+            <!-- 简写: -->
+            <template #dialog_footer>
+                <div>
+                    摸了
+                </div>
+            </template>
+            <!-- 动态插槽 -->
+            <template #[name]>
+                动态插槽演示
+            </template>
+        </Dialog>
+        <div class = "tab">
+            <div :key="item.name" v-for="item in data"
+                @click="switchCom(item)">
+                {{item.name}}
+            </div>
+        </div>
+        <component :is="current.comName" />
+        <div class="content_layout-items" 
+            :key="item" v-for="item in 100">
+                {{ item }}
+        </div>      
+    </div>
+</template>
+
+<style lang="less" scoped>
+.content_layout {
+    flex: 1;
+    margin: 20px;
+    border: 1px solid #ccc;
+    overflow: auto;
+    &-items {
+        padding: 20px;
+        border: 1px solid #ccc;
+    }
+}
+
+.tab{
+    display: flex;
+    flex:1;
+    flex-direction: row;
+    div{
+        flex: 1;
+        padding: 10px;
+        border: 1px solid #ccc;
+        cursor: pointer;
+        &:hover{
+            background: #eee;
+        }
+    }
+}
+
+.loading{
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    background: greenyellow;
+}
+</style>
+```
+
+如果想选择性的使 `keep-alive 标签` 内的组件应用 `keep-alive` 的话可以使用 `:include`
+
+例如, 如果想让上面的 `keep-alive 标签` 内的两个组件 `Login` 和 `Register` 只有前者应用 `keep-alive` 的话可以如此书写:
+
+```html
+        <keep-alive :include="['Login']">
+            <Login v-if="flag"></Login>
+            <Register v-else></Register>
+        </keep-alive>
+```
+
+> 这样写法需要注意的是定位 `Login 组件` 使用的 `“”` 字符串, 那么在使用 `vue3 setup 语法糖` 的情况下应当在 `Login 组件` 中添加一个 `script 标签` 并在其中定义组件别名:
+>
+> ```typescript
+> <script lang="ts">
+> export default{
+>  name: "Login"
+> }
+> </script>
+> ```
+>
+> ![](http://cdn.ayusummer233.top/img/202203282148228.gif)
+
+与 `include` 相对的则是 `exclude`, 使用 `exclude` 可以使 `exclude` 后面数组内的组件不应用缓存
+
+> 二者都可以用逗号分隔字符串、正则表达式或一个数组来表示:
+>
+> ```html
+> <!-- 逗号分隔字符串 -->
+> <keep-alive include="a,b">
+>   <component :is="view"></component>
+> </keep-alive>
+> 
+> <!-- regex (使用 `v-bind`) -->
+> <keep-alive :include="/a|b/">
+>   <component :is="view"></component>
+> </keep-alive>
+> 
+> <!-- Array (使用 `v-bind`) -->
+> <keep-alive :include="['a', 'b']">
+>   <component :is="view"></component>
+> </keep-alive>
+> ```
+
+
+
+除此以外 `max` prop 的作用是决定最多可以缓存多少组件实例, 一旦这个数字达到了，在新实例被创建之前，已缓存组件中**最久没有被访问的实例**会被销毁掉。
+
+```html
+<keep-alive :max="10">
+  <component :is="view"></component>
+</keep-alive>
+```
+
 ---
 
 ## 响应性 API
