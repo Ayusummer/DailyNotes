@@ -2099,6 +2099,92 @@ pnpm create v
 
 ---
 
+## 开始
+
+### 搭建一个 `Vite` 项目
+
+> [开始 | Vite 官方中文文档 (vitejs.dev)](https://cn.vitejs.dev/guide/#trying-vite-online)
+
+> **兼容性注意:**
+>
+> Vite 需要 [Node.js](https://nodejs.org/en/) 版本 `>= 12.0.0`。然而，有些模板需要依赖更高的 `Node` 版本才能正常运行，当你的包管理器发出警告时，请注意升级你的 `Node` 版本。
+
+- `npm`
+
+  ```shell
+   npm create vite@latest
+  ```
+
+- `yarn`
+
+  ```shell
+  yarn create vite
+  ```
+
+- `pnpm`
+
+  ```shell
+  pnpm create vite
+  ```
+
+---
+
+## 部署静态站点
+
+> [部署静态站点 | Vite 官方中文文档 (vitejs.dev)](https://cn.vitejs.dev/guide/static-deploy.html#testing-the-app-locally)
+
+### 构建应用
+
+- `npm`
+
+  ```shell
+  npm run build
+  ```
+
+- `pnpm`
+
+  ```shell
+  pnpm run build
+  ```
+
+默认情况下，构建会输出到 `dist` 文件夹中。你可以部署这个 `dist` 文件夹到任何你喜欢的平台。
+
+> ![image-20220325121425782](http://cdn.ayusummer233.top/img/202203251214892.png)
+
+---
+
+### 本地测试应用
+
+当构建完成应用后, 可以通过运行 `npm run preview` 命令, 在本地测试该应用
+
+```shell
+# pnpm 与 npm 命令一般是相似的
+npm run build
+npm run preview
+
+# pnpm
+pnpm run build
+pnpm run preview
+```
+
+`vite preview` 命令会在本地启动一个静态 Web 服务器，将 `dist` 文件夹运行在 `http://localhost:4173`。这样在本地环境下查看该构建产物是否正常可用就方便多了。
+
+可以通过 `--port` 参数来配置服务的运行端口。
+
+```json
+{
+  "scripts": {
+    "preview": "vite preview --port 8080"
+  }
+}
+```
+
+现在 `preview` 命令会将服务器运行在 `http://localhost:8080`。
+
+
+
+---
+
 ## 报错收集
 
 #### `listen EACCES: permission denied 127.0.0.1:3000`
@@ -3902,6 +3988,24 @@ const switchCom =(item: Tabs) =>{
 
 ---
 
+## 异步组件
+
+> [动态组件 & 异步组件 | Vue.js (vuejs.org)](https://v3.cn.vuejs.org/guide/component-dynamic-async.html#异步组件)
+>
+> [学习Vue3 第十八章（异步组件&代码分包&suspense）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/122909360)
+
+在大型应用中，我们可能需要将应用分割成小一些的代码块，并且只在需要的时候才从服务器加载一个模块。为了实现这个效果，Vue 有一个 `defineAsyncComponent` 方法配合 `Suspense 及其插槽`可以使用异步组件
+
+![image-20220328123937510](http://cdn.ayusummer233.top/img/202203281239688.png)
+
+
+
+---
+
+
+
+---
+
 ## 通过插槽分发内容
 
 > [组件基础 | Vue.js (vuejs.org)](https://v3.cn.vuejs.org/guide/component-basics.html#通过插槽分发内容)
@@ -4225,8 +4329,6 @@ let name = ref('dialog_header')
 }
 </style>
 ```
-
-
 
 ![image-20220325102705894](http://cdn.ayusummer233.top/img/202203251027872.png)
 
@@ -4561,3 +4663,4 @@ const stopWatch = () => stop()
 | 更新时机 | 组件**更新前**执行 | 强制效果始终同步触发 | 组件**更新后**执行 |
 
 - `onTrigger` 可以帮助调试 `watchEffect`
+
