@@ -36,6 +36,7 @@
   - [匿名函数](#匿名函数)
   - [箭头函数](#箭头函数)
   - [参数](#参数)
+  - [定义函数类型](#定义函数类型)
 - [Tips](#tips)
   - [VSCode](#vscode)
     - [扩展](#扩展)
@@ -779,4 +780,44 @@ console.log(doCalculation("substract")(1, 2))
 
 
 ----
+
+# Promise
+
+> [Promise · 深入挖掘 TypeScript (gitbooks.io)](https://rexdainiel.gitbooks.io/typescript/content/docs/promise.html)[**感觉文档比较生硬, 夹杂着很多奇怪的词汇, 看起来像是蹩脚的翻译**]
+>
+> [Promise - JavaScript | MDN (mozilla.org)](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise)
+>
+> [Promise - 廖雪峰的官方网站 (liaoxuefeng.com)](https://www.liaoxuefeng.com/wiki/1022910821149312/1023024413276544)
+
+`Promise` 类存在于很多现代 JavaScript 引擎中，而且可以很容易地被 [polyfill](https://github.com/stefanpenner/es6-promise)。Promise 的主要目的是为异步／回调风格的代码带来同步风格的错误处理。
+
+`Promise` 对象用于表示一个异步操作的最终完成 (或失败)及其结果值。
+
+一个 `Promise` 对象代表一个在这个 `promise` 被创建出来时不一定已知的值。它让您能够把异步操作最终的成功返回值或者失败原因和相应的处理程序关联起来。 这样使得异步方法可以像同步方法那样返回值：异步方法并不会立即返回最终的值，而是会返回一个 `promise`，以便在未来某个时候把值交给使用者。
+
+一个 `Promise` 必然处于以下几种状态之一：
+
+- *待定（pending）*: 初始状态，既没有被兑现，也没有被拒绝。
+- *已兑现（fulfilled）*: 意味着操作成功完成。
+- *已拒绝（rejected）*: 意味着操作失败。
+
+待定状态的 Promise 对象要么会通过一个值*被兑现（fulfilled）*，要么会通过一个原因（错误）*被拒绝（rejected）*。当这些情况之一发生时，我们用 promise 的 then 方法排列起来的相关处理程序就会被调用。如果 promise 在一个相应的处理程序被绑定时就已经被兑现或被拒绝了，那么这个处理程序就会被调用，因此在完成异步操作和绑定处理方法之间不会存在竞争状态。
+
+![img](http://cdn.ayusummer233.top/img/202203281209302.png)
+
+> 如果一个 promise 已经被兑现（fulfilled）或被拒绝（rejected），那么我们也可以说它处于*已敲定（settled）*状态。您还会听到一个经常跟 promise 一起使用的术语：*已决议（resolved）*，它表示 promise 已经处于已敲定(settled)状态，或者为了匹配另一个 promise 的状态被"锁定"了。`Domenic Denicola` 的 [States and fates](https://github.com/domenic/promises-unwrapping/blob/master/docs/states-and-fates.md) 中有更多关于 promise 术语的细节可以供您参考。
+
+---
+
+## 创建 Promise
+
+创建 `promise` 只需要简单地在 `Promise 构造器` 上调用 `new` 即可; `promise 构造器` 传入 `resolve` 和 `reject` 以控制 `promise 状态`
+
+```typescript
+const promise = new Promise((resolve, reject) => {
+    // resolve / reject 函数操控着 promise 的命运
+});
+```
+
+
 
