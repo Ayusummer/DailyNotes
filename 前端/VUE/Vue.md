@@ -3998,11 +3998,209 @@ const switchCom =(item: Tabs) =>{
 
 ![image-20220328123937510](http://cdn.ayusummer233.top/img/202203281239688.png)
 
+`data.json`
 
+```json
+[
+    {
+        "name": "张三"
+    },
+    {
+        "name": "李四"
+    },
+    {
+        "name": "王五"
+    },
+    {
+        "name": "赵六"
+    }
+]
+```
+
+`loading.vue`
+
+```vue
+<script setup lang="ts">
+import {axios} from './server'
+
+const list = await axios('./data.json')
+console.log(list)
+</script>
+
+<template>
+    <div v-for="item in list"> 
+        {{item.name}}
+    </div>
+</template>
+
+<style lang="less" scoped>
+</style>
+```
+
+`server.ts`
+
+```typescript
+type NameList = {
+    name: string
+}
+
+export const axios = (url: string):Promise<NameList[]> => {
+    return new Promise((resolve)=> {
+        let xhr: XMLHttpRequest = new XMLHttpRequest()
+        
+        xhr.open('GET', url)
+        
+        xhr.onreadystatechange = () => {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                // 等 2s 返回信息
+                setTimeout(() => {
+                    resolve(JSON.parse(xhr.responseText))
+                }, 2000);
+                
+            }
+        }
+
+        xhr.send()
+    })
+    
+}
+```
+
+`lessContent.vue`
+
+```vue
+<script setup lang="ts">
+import A from './A.vue'
+import B from './B.vue'
+import C from './C.vue'
+import Dialog from '../../components/Dialog.vue'
+// import Loading from '../../components/Loading/loading.vue' 异步化组件后就不能这样直接引入使用了
+import {reactive, markRaw, ref, defineAsyncComponent} from 'vue'
+
+const Loading = defineAsyncComponent(() => import('../../components/Loading/loading.vue'))
+
+type Tabs = {
+    name: string,
+    comName:any
+}
+
+type Com = Pick<Tabs, 'comName'>
+
+const data = reactive<Tabs[]>([
+    {
+        name: '我是 A 组件',
+        comName: markRaw(A)
+    },
+    {
+        name: '我是 B 组件',
+        comName: markRaw(B)
+    },
+    {
+        name: '我是 C 组件',
+        comName: markRaw(C)
+    }
+])
+
+
+let current = reactive<Com>({
+    comName: data[0].comName
+})
+
+const switchCom =(item: Tabs) =>{
+    current.comName = item.comName
+}
+
+// 动态插槽相关
+let name = ref('dialog_header')
+</script>
+
+<template>
+    <div class="content_layout">
+        <!-- 异步组件测试 -->
+        <Suspense>
+            <template #default>
+                <Loading></Loading>
+            </template>
+            <template #fallback>
+                <div>加载中...</div>
+            </template>
+        </Suspense>
+        <!-- 插槽测试 -->
+        <Dialog>
+            <!-- 具名插槽 -->
+            <template v-slot:dialog_header>
+                <div>
+                    摆
+                </div>
+            </template>
+            <!-- 匿名插槽 -->
+            <!-- <template v-slot="{data}"> -->
+            <!-- 简写: -->
+            <template #default="{data}">
+                <div>
+                    姓名: {{data.name}} 年龄: {{data.age}}
+                </div>
+            </template>
+            <!-- 具名插槽 -->
+            <!-- 简写: -->
+            <template #dialog_footer>
+                <div>
+                    摸了
+                </div>
+            </template>
+            <!-- 动态插槽 -->
+            <template #[name]>
+                动态插槽演示
+            </template>
+        </Dialog>
+        <div class = "tab">
+            <div :key="item.name" v-for="item in data"
+                @click="switchCom(item)">
+                {{item.name}}
+            </div>
+        </div>
+        <component :is="current.comName" />
+        <div class="content_layout-items" 
+            :key="item" v-for="item in 100">
+                {{ item }}
+        </div>      
+    </div>
+</template>
+
+<style lang="less" scoped>
+.content_layout {
+    flex: 1;
+    margin: 20px;
+    border: 1px solid #ccc;
+    overflow: auto;
+    &-items {
+        padding: 20px;
+        border: 1px solid #ccc;
+    }
+}
+
+.tab{
+    display: flex;
+    flex:1;
+    flex-direction: row;
+    div{
+        flex: 1;
+        padding: 10px;
+        border: 1px solid #ccc;
+        cursor: pointer;
+        &:hover{
+            background: #eee;
+        }
+    }
+}
+</style>
+```
+
+![image-20220328151058494](http://cdn.ayusummer233.top/img/202203281510929.png)
+
+![image-20220328151110771](http://cdn.ayusummer233.top/img/202203281511141.png)
 
 ---
-
-
 
 ---
 
@@ -4331,6 +4529,188 @@ let name = ref('dialog_header')
 ```
 
 ![image-20220325102705894](http://cdn.ayusummer233.top/img/202203251027872.png)
+
+---
+
+# 可复用 & 组合
+
+## Teleport
+
+> [学习Vue3 第十九章（Teleport传送组件）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/122916261)
+>
+> [Teleport | Vue.js (vuejs.org)](https://v3.cn.vuejs.org/guide/teleport.html#teleport)
+
+`Teleport` 是 `Vue 3.0` 新特性之一。
+
+Teleport 可以将模板渲染至指定 DOM 节点，不受父级 style、v-show 等属性影响，但 data、prop 数据依旧能够共用的技术；类似于 React 的 Portal。
+
+> 虽然不受 `v-show` 影响, 但是 `v-if` 的优先级还是比 `teleport` 高的
+
+`index.html`
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" href="/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vite-vue-ts 学习</title>
+</head>
+
+<body>
+  <div id="app"></div>
+  <div class="teleport_class_test"></div>
+  <script type="module" src="/src/main.ts"></script>
+</body>
+
+</html>
+```
+
+`lessContent.vue`
+
+```vue
+<script setup lang="ts">
+import A from './A.vue'
+import B from './B.vue'
+import C from './C.vue'
+import Dialog from '../../components/Dialog.vue'
+// import Loading from '../../components/Loading/loading.vue' 异步化组件后就不能这样直接引入使用了
+import {reactive, markRaw, ref, defineAsyncComponent} from 'vue'
+
+const Loading = defineAsyncComponent(() => import('../../components/Loading/loading.vue'))
+
+type Tabs = {
+    name: string,
+    comName:any
+}
+
+type Com = Pick<Tabs, 'comName'>
+
+const data = reactive<Tabs[]>([
+    {
+        name: '我是 A 组件',
+        comName: markRaw(A)
+    },
+    {
+        name: '我是 B 组件',
+        comName: markRaw(B)
+    },
+    {
+        name: '我是 C 组件',
+        comName: markRaw(C)
+    }
+])
+
+
+let current = reactive<Com>({
+    comName: data[0].comName
+})
+
+const switchCom =(item: Tabs) =>{
+    current.comName = item.comName
+}
+
+// 动态插槽相关
+let name = ref('dialog_header')
+</script>
+
+<template>
+    <div class="content_layout">
+        <teleport to='.teleport_class_test'>
+            <div class="loading">
+                loading...
+            </div>
+        </teleport>
+        <!-- 异步组件测试 -->
+        <Suspense>
+            <template #default>
+                <Loading></Loading>
+            </template>
+            <template #fallback>
+                <div>加载中...</div>
+            </template>
+        </Suspense>
+        <!-- 插槽测试 -->
+        <Dialog>
+            <!-- 具名插槽 -->
+            <template v-slot:dialog_header>
+                <div>
+                    摆
+                </div>
+            </template>
+            <!-- 匿名插槽 -->
+            <!-- <template v-slot="{data}"> -->
+            <!-- 简写: -->
+            <template #default="{data}">
+                <div>
+                    姓名: {{data.name}} 年龄: {{data.age}}
+                </div>
+            </template>
+            <!-- 具名插槽 -->
+            <!-- 简写: -->
+            <template #dialog_footer>
+                <div>
+                    摸了
+                </div>
+            </template>
+            <!-- 动态插槽 -->
+            <template #[name]>
+                动态插槽演示
+            </template>
+        </Dialog>
+        <div class = "tab">
+            <div :key="item.name" v-for="item in data"
+                @click="switchCom(item)">
+                {{item.name}}
+            </div>
+        </div>
+        <component :is="current.comName" />
+        <div class="content_layout-items" 
+            :key="item" v-for="item in 100">
+                {{ item }}
+        </div>      
+    </div>
+</template>
+
+<style lang="less" scoped>
+.content_layout {
+    flex: 1;
+    margin: 20px;
+    border: 1px solid #ccc;
+    overflow: auto;
+    &-items {
+        padding: 20px;
+        border: 1px solid #ccc;
+    }
+}
+
+.tab{
+    display: flex;
+    flex:1;
+    flex-direction: row;
+    div{
+        flex: 1;
+        padding: 10px;
+        border: 1px solid #ccc;
+        cursor: pointer;
+        &:hover{
+            background: #eee;
+        }
+    }
+}
+
+.loading{
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    background: greenyellow;
+}
+</style>
+```
+
+![image-20220328153035492](http://cdn.ayusummer233.top/img/202203281530867.png)
 
 ---
 
