@@ -286,7 +286,7 @@
   - [x] [学习Vue3 第十八章（异步组件&代码分包&suspense）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/122909360)
   - [x] [学习Vue3 第十九章（Teleport传送组件）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/122916261)
   - [x] [学习Vue3 第二十章（keep-alive缓存组件）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/122953072)
-  - [ ] [学习Vue3 第二十一章（transition动画组件）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123000653)
+  - [x] [学习Vue3 第二十一章（transition动画组件）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123000653)
   - [ ] [学习Vue3 第二十二章（transition-group过度列表）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123058884)
   - [ ] [学习Vue3 第二十三章（依赖注入Provide / Inject）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123143981)
   - [ ] [学习Vue3 第二十四章（兄弟组件传参和Bus）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123158620)
