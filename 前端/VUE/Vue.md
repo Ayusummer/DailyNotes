@@ -1,4 +1,4 @@
-**Vue**
+*Vue**
 
 # 简介
 
@@ -2496,6 +2496,44 @@ pnpm install less less-loader -D
 
 ---
 
+# `Animate.css`
+
+> [Animate.css | A cross-browser library of CSS animations.](https://animate.style/)
+
+## 安装与使用
+
+```shell
+pnpm install webpack
+pnpm install animate.css
+```
+
+使用 `pnpm` 安装在组建中导入 `css` 即可使用
+
+```typescript
+import 'animate.css'
+```
+
+---
+
+## 结合 `vue3 transition` 使用
+
+安装了依赖并在组建中导入后在使用 `<transition>` 时指定 `enter-active-class` 与 `leave-active-class` 来使用 `animate.css` 的动效, 如:
+
+```html
+    <transition 
+        enter-active-class="animate__animated animate__bounce"
+        leave-active-class="animate__animated animate__fadeOut"
+    >
+        <div v-if="flag" class="box"></div>
+    </transition>
+```
+
+> 完整代码详见 [内置组件-transition中的相关内容](#结合 Animate.css 使用)
+>
+> ![](http://cdn.ayusummer233.top/img/202203291950307.gif)
+
+---
+
 # 组件系统
 
 > [介绍 | Vue.js (vuejs.org)-组件化应用构建](https://v3.cn.vuejs.org/guide/introduction.html#组件化应用构建)
@@ -4722,16 +4760,305 @@ let name = ref('dialog_header')
 
 ## 内置组件
 
-### `slot`
+### `transition`
 
-> [内置组件 | Vue.js (vuejs.org)](https://v3.cn.vuejs.org/api/built-in-components.html#slot)
+> [内置组件-transition | Vue.js (vuejs.org)](https://v3.cn.vuejs.org/api/built-in-components.html#component)
 >
-> [学习Vue3 第十七章（插槽slot）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/122904105)
+> [学习Vue3 第二十一章（transition动画组件）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123000653)
+>
+> [ css 动画中 ease,seae-in,ease-in-out,ease-out,效果区别_小赞赞No1的博客-CSDN博客_ease-in-out](https://blog.csdn.net/Candy_10181/article/details/80611009)
 
-详见 [通过插槽分发内容](#通过插槽分发内容)
+使用 `v-if` 或 `v-show` 切换组件的显示隐藏比较生硬, 使用 `transition` 配合 css 可以实现一些动效
 
+`tansition_test.vue`
 
+```vue
+<script setup lang="ts">
+import {ref} from 'vue'
 
+// 定义状态切换标记
+const flag = ref<boolean>(true)
+
+</script>
+
+<template>
+<div>
+    <button @click="flag=!flag"> switch </button>
+    <div v-if="flag" class="box"></div>
+</div>
+</template>
+
+<style lang="less" scoped>
+.box {
+    width: 400px;
+    height: 400px;
+    background: red;
+}
+</style>
+```
+
+> ![image-20220329095527566](http://cdn.ayusummer233.top/img/202203290955912.png)
+>
+> ![](http://cdn.ayusummer233.top/img/202203290954418.gif)
+>
+> 可以看到, 这个切换比较生硬
+
+使用 `<transition>` 包裹元素后可以结合 `css` 实现一些动效:
+
+`transition_test.vue`:
+
+```vue
+<script setup lang="ts">
+import {ref} from 'vue'
+
+// 定义状态切换标记
+const flag = ref<boolean>(true)
+
+</script>
+
+<template>
+<div>
+    <button @click="flag=!flag"> switch </button>
+    <transition name="boxFade">
+        <div v-if="flag" class="box"></div>
+    </transition>
+</div>
+</template>
+
+<style lang="less" scoped>
+.box {
+    width: 400px;
+    height: 400px;
+    background: red;
+}
+// 区域显示起点样式
+.boxFade-enter-from{
+    width: 0px;
+    height: 0px;
+}
+
+// 区域显示过渡曲线
+.boxFade-enter-active{
+    // 动画执行 1.5s, 速度由快到慢(ease)[PS: 除了ease外还有 linear ease-in ease-out ease-in-out]
+    transition: all 1.5s ease;
+}
+
+// 区域显示终点样式(一般与标签内定义样式这里就是与 box 一致)
+.boxFade-enter-to{
+    width: 400px;
+    height: 400px;
+}
+
+// 区域隐藏起点样式(一般与标签内定义样式这里就是与 box 一致)
+.boxFade-leave-from{
+    width: 400px;
+    height: 400px;
+}
+
+// 区域隐藏过渡曲线
+.boxFade-leave-active{
+    transition: all 2s ease;
+}
+
+// 区域隐藏终点样式
+.boxFade-leave-to{
+    width: 0px;
+    height: 0px;
+}
+</style>
+```
+
+>  - `ease`
+>
+>     ![image-20220329102544982](http://cdn.ayusummer233.top/img/202203291025134.png)
+>
+>    默认值, 元素样式从初始状态过渡到终止状态时速度由快到慢, 逐渐变慢
+>
+>    ![](http://cdn.ayusummer233.top/img/202203291019719.gif)  
+>
+>
+>  - `linear`
+>
+>    ![image-20220329102857044](http://cdn.ayusummer233.top/img/202203291028209.png)
+>
+>    元素样式从初始状态过渡到到终止状态速度是恒速（等于 cubic-bezier(0,0,1,1)）。(匀速)
+>
+>    ![](http://cdn.ayusummer233.top/img/202203291022664.gif)
+>
+>  - `ease-in`
+>
+>    ![image-20220329103142854](http://cdn.ayusummer233.top/img/202203291031023.png)
+>
+>    规定以慢速开始的过渡效果（等于 cubic-bezier(0.42,0,1,1)）（相对于匀速，开始的时候慢，之后快）。
+>
+>    呈加速状态, 常称这种效果为渐显效果 ![](http://cdn.ayusummer233.top/img/202203291024226.gif)
+>
+>  - `ease-out`
+>
+>    ![image-20220329103155504](http://cdn.ayusummer233.top/img/202203291031664.png)
+>
+>    规定以慢速结束的过渡效果（等于 cubic-bezier(0,0,0.58,1)）（相对于匀速，开始时快，结束时候间慢，）。
+>
+>    呈减速状态, 常称这种效果为渐隐效果
+>
+>    ![](http://cdn.ayusummer233.top/img/202203291040141.gif)
+>
+>  - `ease-in-out`
+>
+>    ![image-20220329103207973](http://cdn.ayusummer233.top/img/202203291032144.png)
+>
+>    规定以慢速开始和结束的过渡效果（等于 cubic-bezier(0.42,0,0.58,1)）（相对于匀速，（开始和结束都慢）两头慢）。
+>
+>    先加速再减速, 常称这种效果为渐显渐隐效果
+>    
+>    ![](http://cdn.ayusummer233.top/img/202203291042203.gif)
+>
+>  - `cubic-bezier(n,n,n,n)`
+>
+>    在 cubic-bezier 函数中定义自己的值。可能的值是 0 至 1 之间的数值。
+>
+
+还可以再加点花里胡哨的效果, 比如旋转:
+
+```less
+// 区域显示起点样式
+.boxFade-enter-from{
+    width: 0px;
+    height: 0px;
+    // 来点花里胡哨的 360° 旋转
+    transform: rotate(360deg);
+}
+
+// 区域隐藏起点样式(一般与标签内定义样式这里就是与 box 一致)
+.boxFade-leave-from{
+    width: 400px;
+    height: 400px;
+    // 来点花里胡哨的 360° 旋转
+    transform: rotate(360deg);
+}
+```
+
+>   ![](http://cdn.ayusummer233.top/img/202203291046959.gif)
+
+样式表里不光可以使用 `name-xxx` 的形式, 也支持自定义, 比如:
+
+```vue
+<script setup lang="ts">
+import {ref} from 'vue'
+
+// 定义状态切换标记
+const flag = ref<boolean>(true)
+
+</script>
+
+<template>
+<div>
+    <button @click="flag=!flag"> switch </button>
+    <transition 
+        name="boxFade"
+        enter-from-class="boxEF"
+        enter-active-class="boxEA"
+        enter-to-class="boxET"
+        leave-from-class="boxLF"
+        leave-active-class="boxLA"
+        leave-to-class="boxLT"
+        >
+        <div v-if="flag" class="box"></div>
+    </transition>
+</div>
+</template>
+
+<style lang="less" scoped>
+.box {
+    width: 400px;
+    height: 400px;
+    background: red;
+}
+// 区域显示起点样式
+.boxEF{
+    width: 0px;
+    height: 0px;
+    // 来点花里胡哨的 360° 旋转
+    transform: rotate(360deg);
+}
+
+// 区域显示过渡曲线
+.boxEA{
+    // 动画执行 1.5s, 速度由快到慢(ease)[PS: 除了ease外还有 linear ease-in ease-out ease-in-out]
+    transition: all 1.5s ease-in-out;
+}
+
+// 区域显示终点样式(一般与标签内定义样式这里就是与 box 一致)
+.boxET{
+    width: 400px;
+    height: 400px;
+}
+
+// 区域隐藏起点样式(一般与标签内定义样式这里就是与 box 一致)
+.boxLF{
+    width: 400px;
+    height: 400px;
+    // 来点花里胡哨的 360° 旋转
+    transform: rotate(360deg);
+}
+
+// 区域隐藏过渡曲线
+.boxLA{
+    transition: all 1.5s ease-in-out;
+}
+
+// 区域隐藏终点样式
+.boxLT{
+    width: 0px;
+    height: 0px;
+}
+</style>
+```
+
+> 在使用 `<transition>` 时定义好各个样式的别名即可
+
+---
+
+#### 结合 Animate.css 使用
+
+> [Animate.css](#结合 `vue3 transition` 使用)
+
+`transition_test.vue`:
+
+```vue
+<script setup lang="ts">
+import {ref} from 'vue'
+// 引入 animate.css
+import 'animate.css'
+
+// 定义状态切换标记
+const flag = ref<boolean>(true)
+
+</script>
+
+<template>
+<div>
+    <button @click="flag=!flag"> switch </button>
+    <transition 
+        enter-active-class="animate__animated animate__bounce"
+        leave-active-class="animate__animated animate__fadeOut"
+    >
+        <div v-if="flag" class="box"></div>
+    </transition>
+</div>
+</template>
+
+<style lang="less" scoped>
+.box {
+    width: 400px;
+    height: 400px;
+    background: red;
+}
+</style>
+```
+
+> 
+![](http://cdn.ayusummer233.top/img/202203291950307.gif)
 ---
 
 ### `keep-alive`
@@ -5105,6 +5432,15 @@ const switchLoginRegist = () => {
   <component :is="view"></component>
 </keep-alive>
 ```
+
+---
+### `slot`
+
+> [内置组件 | Vue.js (vuejs.org)](https://v3.cn.vuejs.org/api/built-in-components.html#slot)
+>
+> [学习Vue3 第十七章（插槽slot）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/122904105)
+
+详见 [通过插槽分发内容](#通过插槽分发内容)
 
 ---
 
