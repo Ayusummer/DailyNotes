@@ -5161,6 +5161,57 @@ const leave = (el:Element, done:gsap.Callback) =>{
 >  ![](http://cdn.ayusummer233.top/img/202203292030940.gif)
 ---
 
+#### appear
+
+通过这个属性可以设置初始节点过度 就是页面加载完成就开始动画 对应三个状态
+
+```html
+appear-active-class=""
+appear-from-class=""
+appear-to-class=""
+appear
+```
+
+可以结合 `Animate.css` 调用一些高级的动效:
+
+`transition_test_appear.vue`:
+
+```vue
+<script setup lang="ts">
+import {ref} from 'vue'
+// 引入 animate.css
+import 'animate.css'
+
+// 定义状态切换标记
+const flag = ref<boolean>(true)
+
+</script>
+
+<template>
+<div>
+    <button @click="flag=!flag"> switch </button>
+    <transition 
+        appear
+        appear-active-class="animate__animated animate__bounce"
+    >
+        <div v-if="flag" class="box"></div>
+    </transition>
+</div>
+</template>
+
+<style lang="less" scoped>
+.box {
+    width: 400px;
+    height: 400px;
+    background: red;
+}
+</style>
+```
+
+> 
+![](http://cdn.ayusummer233.top/img/202203292044079.gif)
+---
+
 ### `keep-alive`
 
 > [内置组件-keep-alive | Vue.js (vuejs.org)](https://v3.cn.vuejs.org/api/built-in-components.html#keep-alive)
