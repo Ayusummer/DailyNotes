@@ -5212,6 +5212,92 @@ const flag = ref<boolean>(true)
 ![](http://cdn.ayusummer233.top/img/202203292044079.gif)
 ---
 
+### `transition-group`
+
+> [内置组件-transition-group | Vue.js (vuejs.org)](https://v3.cn.vuejs.org/api/built-in-components.html#transition-group)
+>
+> [学习Vue3 第二十二章（transition-group过度列表）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123058884)
+
+- **Props：**
+
+  - `tag` - `string` - 如果未定义，则不渲染动画元素。
+  - `move-class` - 覆盖移动过渡期间应用的 CSS 类。
+  - 除了 `mode` - 其他 attribute 和 `<transition>` 相同。
+
+- **事件：**
+
+  - 事件和 `<transition>` 相同。
+
+- **用法：**
+
+  `<transition-group>` 提供了**多个**元素/组件的过渡效果。默认情况下，它不会渲染一个 DOM 元素包裹器，但是可以通过 `tag` attribute 来定义。
+
+  注意，每个 `<transition-group>` 的子节点必须有[**独立的 key**](https://v3.cn.vuejs.org/api/special-attributes.html#key)，动画才能正常工作。
+
+`<transition-group>` 支持通过 CSS transform 过渡移动。当一个子节点被更新，从屏幕上的位置发生变化，它会被应用一个移动中的 CSS 类 (通过 `name` attribute 或配置 `move-class` attribute 自动生成)。如果 CSS `transform` property 是“可过渡” property，当应用移动类时，将会使用 [FLIP 技术](https://aerotwist.com/blog/flip-your-animations/)使元素流畅地到达动画终点。
+
+```html
+<transition-group tag="ul" name="slide">
+  <li v-for="item in items" :key="item.id">
+    {{ item.text }}
+  </li>
+</transition-group>
+```
+
+动效用法和 `transition` 一致:
+
+`transition_group_test.vue`:
+
+```vue
+<script setup lang="ts">
+import {ref, reactive} from 'vue'
+import 'animate.css'
+
+const list = reactive<number[]>([1, 2, 3, 4, 5, 6])
+
+const add = () => {
+    list.push(list.length + 1)
+}
+
+const dec = () => {
+    list.pop()
+}
+</script>
+
+<template>
+<div>
+    <button @click="add">添加</button>
+    <button @click="dec">删除</button>
+    <div class="wraps">
+        <transition-group 
+            enter-active-class="animate__animated animate__bounce"
+            leave-active-class="animate__animated animate__fadeOut"
+        >
+            <div v-for="item in list" :key="item" class="box">
+                {{item}}
+            </div>
+        </transition-group>
+    </div>
+</div>
+</template>
+
+<style lang="less" scoped>
+.wraps {
+    display: flex;
+    flex-wrap: wrap;
+    word-break: break-all;  // 不换行
+    border: 1px solid #ccc;
+    .box{
+        margin: 10px;
+    }
+}
+</style>
+```
+
+> 
+
+---
+
 ### `keep-alive`
 
 > [内置组件-keep-alive | Vue.js (vuejs.org)](https://v3.cn.vuejs.org/api/built-in-components.html#keep-alive)
