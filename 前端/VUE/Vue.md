@@ -2534,6 +2534,22 @@ import 'animate.css'
 
 ---
 
+# GreenSock
+
+> [学习Vue3 第二十一章（transition动画组件）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123000653)
+>
+> [GreenSock | Docs | GSAP](https://greensock.com/docs/v3/GSAP)
+
+一个强大的 JS 动画库
+
+- 安装
+
+  ```shell
+  pnpm install gsap
+  ```
+
+---
+
 # 组件系统
 
 > [介绍 | Vue.js (vuejs.org)-组件化应用构建](https://v3.cn.vuejs.org/guide/introduction.html#组件化应用构建)
@@ -5059,6 +5075,90 @@ const flag = ref<boolean>(true)
 
 > 
 ![](http://cdn.ayusummer233.top/img/202203291950307.gif)
+---
+
+#### 生命周期 和 GSAP
+
+> [学习Vue3 第二十一章（transition动画组件）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123000653)
+>
+> [GreenSock | Docs | GSAP](https://greensock.com/docs/v3/GSAP)
+
+`transition` 有 8 个生命周期
+
+```typescript
+  @before-enter="beforeEnter" //对应enter-from
+  @enter="enter"//对应enter-active
+  @after-enter="afterEnter"//对应enter-to
+  @enter-cancelled="enterCancelled"//显示过度打断
+  @before-leave="beforeLeave"//对应leave-from
+  @leave="leave"//对应enter-active
+  @after-leave="afterLeave"//对应leave-to
+  @leave-cancelled="leaveCancelled"//离开过度打断
+```
+
+当只用 JavaScript 过渡的时候，在 **`enter` 和 `leave` 钩子中必须使用 `done` 进行回调**
+
+结合 `gsap` 动画库使用:
+
+`transition_test_gsap.vue`:
+
+```vue
+<script setup lang="ts">
+import {ref} from 'vue'
+// 引入 gsap
+import gsap from 'gsap'
+
+// 定义状态切换标记
+const flag = ref<boolean>(true)
+
+const EnterFrom = (el:Element) =>{
+    gsap.set(el, {
+        width:0,
+        height:0
+    })
+}
+
+const EnterActive = (el:Element, done:gsap.Callback) =>{
+    gsap.to(el, {
+        width:400,
+        height:400,
+        onComplete:done
+    })
+}
+
+const leave = (el:Element, done:gsap.Callback) =>{
+    gsap.to(el, {
+        width:0,
+        height:0,
+        onComplete:done
+    })
+}
+
+</script>
+
+<template>
+<div>
+    <button @click="flag=!flag"> switch </button>
+    <transition 
+        @before-enter="EnterFrom"
+        @enter="EnterActive"
+        @leave="leave"
+    >
+        <div v-if="flag" class="box"></div>
+    </transition>
+</div>
+</template>
+
+<style lang="less" scoped>
+.box {
+    width: 400px;
+    height: 400px;
+    background: red;
+}
+</style>
+```
+
+>  ![](http://cdn.ayusummer233.top/img/202203292030940.gif)
 ---
 
 ### `keep-alive`
