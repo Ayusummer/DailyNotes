@@ -6,7 +6,9 @@
  * @Description: In User Settings Edit
  * @FilePath: \DailyNotes\DailyLife.md
 -->
+
 # 目录
+
 - [目录](#目录)
 - [Programming](#programming)
   - [行尾序列](#行尾序列)
@@ -40,6 +42,7 @@
   - [图片OCR->表格](#图片ocr-表格)
   - [英语学习](#英语学习)
     - [背单词](#背单词)
+- [桌面显示器屏幕使用体验](#桌面显示器屏幕使用体验)
 - [Game](#game)
   - [Steam](#steam)
     - [steam工具箱](#steam工具箱)
@@ -235,23 +238,23 @@ asklib.com
 - 进入[微软开发者中心](https://developer.microsoft.com/zh-cn/)并进入Office子项  
   ![20210403092546](http:cdn.ayusummer233.top/img/20210403092546.png)
 - 加入开发人员计划  
-  ![20210403093501](http:cdn.ayusummer233.top/img/20210403093501.png)
-  ![20210403093524](http:cdn.ayusummer233.top/img/20210403093524.png)
+  ![20210403093501](http://cdn.ayusummer233.top/img/20210403093501.png)
+  ![20210403093524](http://cdn.ayusummer233.top/img/20210403093524.png)
 - 填写基本信息并进入下一步  
   - 国家选中国(否则国内连接服务器延迟可能会很高),企业随便填
-  - ![20210403093832](http:cdn.ayusummer233.top/img/20210403093832.png)
+  - ![20210403093832](http://cdn.ayusummer233.top/img/20210403093832.png)
   - 下一步的信息按照自己的实际情况填写即可
 - 设置开发者订阅
   - 验证个人信息,密码,手机号
-  - ![20210403094040](http:cdn.ayusummer233.top/img/20210403094040.png)
+  - ![20210403094040](http://cdn.ayusummer233.top/img/20210403094040.png)
 - 转到订阅进行进一步设置
-  ![20210403094241](http:cdn.ayusummer233.top/img/20210403094241.png)
+  ![20210403094241](http://cdn.ayusummer233.top/img/20210403094241.png)
 - 进入OD  
-  ![20210403094714](http:cdn.ayusummer233.top/img/20210403094714.png)
+  ![20210403094714](http://cdn.ayusummer233.top/img/20210403094714.png)
 - 进入[活跃用户界面](https://admin.microsoft.com/Adminportal/Home?source=applauncher#/users)
-  - ![20210403095449](http:cdn.ayusummer233.top/img/20210403095449.png)
+  - ![20210403095449](http://cdn.ayusummer233.top/img/20210403095449.png)
   - 更改空间即可
-  - ![20210403095727](http:cdn.ayusummer233.top/img/20210403095727.png)
+  - ![20210403095727](http://cdn.ayusummer233.top/img/20210403095727.png)
 - 每个E5账号可以注册25个子账号,除去管理员和一个空子账号有23个账号
   - 当子账号>5 && 每个子账号的OD容量只剩0.5T时可以向微软提交工单扩容到25T 
 
@@ -264,7 +267,7 @@ asklib.com
 #### OneIndex
 - [参考视频](https://www.bilibili.com/video/BV1T64y1u7Z5)
 > 自己懒得搭了(  配合本地OneDriveBusiness当同步分享盘了  
-> ![20210403114429](http:cdn.ayusummer233.top/img/20210403114429.png)
+> ![20210403114429](http://cdn.ayusummer233.top/img/20210403114429.png)
 
 ---
 ### 同步目录空格路径解决
@@ -298,13 +301,13 @@ mklink /J OneDriveE5\mix "E:\OneDriveE5\mixon\OneDrive - ayusummer"
 
 ---
 - 安装完后点击工具栏中的`添加`按钮进行添加,点击确定后会弹出登录界面,按照你要挂载云盘的账号登录并授权即可  
-  ![20210405192941](http:cdn.ayusummer233.top/img/20210405192941.png)
+  ![20210405192941](http://cdn.ayusummer233.top/img/20210405192941.png)
 > 我这里用的是E5开发者订阅里的OneDrive Business,墙内是可以直连的,不用挂代理;
 
 
 ---
 > - 最初找这个只是为了能让[PotPlayer](https://ayusummer-my.sharepoint.com/:u:/g/personal/233_ayusummer_onmicrosoft_com/EdWtKYYX0yRMrz5J8JLHEhMBRUPM_9xJu00VVpxWUCc_Uw?e=i8cZt2)能更方便地访问云盘中的视频资源从而在本地倍速播放云端的视频;
-> ![20210405195251](http:cdn.ayusummer233.top/img/20210405195251.png)
+> ![20210405195251](http://cdn.ayusummer233.top/img/20210405195251.png)
 
 
 
@@ -415,13 +418,13 @@ pnputil /delete-driver oem116.inf
 pnputil /delete-driver oem110.inf
 ```
 
-![20211218181950-删除不兼容驱动](http:cdn.ayusummer233.top/img/20211218181950.png)
+![20211218181950-删除不兼容驱动](http://cdn.ayusummer233.top/img/20211218181950.png)
 
 重新扫描
 
-![20211218182035](http:cdn.ayusummer233.top/img/20211218182035.png)
+![20211218182035](http://cdn.ayusummer233.top/img/20211218182035.png)
 
-![20211218182146](http:cdn.ayusummer233.top/img/20211218182146.png)
+![20211218182146](http://cdn.ayusummer233.top/img/20211218182146.png)
 
 这两个驱动实在找不到(, 驱动检测里没有, `C:\Windows\System32\DriverStore\FileRepository` 也没有
 
@@ -429,30 +432,30 @@ pnputil /delete-driver oem110.inf
 
 打开 `C:\Windows\System32\drivers` 可以找到 `TesMon.sys`
 
-![20211218182922-TesMon.sys](http:cdn.ayusummer233.top/img/20211218182922.png)
+![20211218182922-TesMon.sys](http://cdn.ayusummer233.top/img/20211218182922.png)
 
 删除 `TesMon.sys` 然后重新重新扫描
 
-![20211218190522-UniFairySys.sys](http:cdn.ayusummer233.top/img/20211218190522.png)
+![20211218190522-UniFairySys.sys](http://cdn.ayusummer233.top/img/20211218190522.png)
 
-![20211218192308-UniFairySys.sys-搜索结果](http:cdn.ayusummer233.top/img/20211218192308.png)
+![20211218192308-UniFairySys.sys-搜索结果](http://cdn.ayusummer233.top/img/20211218192308.png)
 
-![20211218192422-UniFairySys.sys-属性](http:cdn.ayusummer233.top/img/20211218192422.png)
+![20211218192422-UniFairySys.sys-属性](http://cdn.ayusummer233.top/img/20211218192422.png)
 
-![20211218192556-UniFairySys.sys-数字签名](http:cdn.ayusummer233.top/img/20211218192556.png)
+![20211218192556-UniFairySys.sys-数字签名](http://cdn.ayusummer233.top/img/20211218192556.png)
 
-![20211218192739-UniFairySys.sys-位置](http:cdn.ayusummer233.top/img/20211218192739.png)
+![20211218192739-UniFairySys.sys-位置](http://cdn.ayusummer233.top/img/20211218192739.png)
 
 在 `C:\Windows\System32` 目录下, `everything` 检索结果中的另一个也出现在了其属性中的 "原始名称"字段中, 且检索资料时也有说这个文件导致崩崩崩游戏蓝屏之类, 所以将此文件剪切到其他目录再重新扫描试试, 后面如果有关于此文件的报错再将其放回去
 
-![20211218193109](http:cdn.ayusummer233.top/img/20211218193109.png)
+![20211218193109](http://cdn.ayusummer233.top/img/20211218193109.png)
 
 > [Windows 10中的核心隔离和内存完整性是什么？ | MOS86](https://mos86.com/95722.html)  
 > 查阅资料中发现这个功能可能会导致虚拟机运行异常, 不过遇见这种问题时再把功能关掉就是了(
 
 重启计算机, 检查下是否有虚拟机运行异常
 
-> ![20211218194344](http:cdn.ayusummer233.top/img/20211218194344.png)  
+> ![20211218194344](http://cdn.ayusummer233.top/img/20211218194344.png)  
 > 基于 Hyper-V 的 BlueStacks 模拟器运行正常  
 > **WSL2 异常** 
 
@@ -463,7 +466,7 @@ pnputil /delete-driver oem110.inf
 
 > 解决方案: [WSL 2 自定义安装目录和网络配置_daihaoxin的专栏-CSDN博客_wsl2目录](https://blog.csdn.net/daihaoxin/article/details/115978662)
 
-![20211218213224](http:cdn.ayusummer233.top/img/20211218213224.png)
+![20211218213224](http://cdn.ayusummer233.top/img/20211218213224.png)
 - 网络: 172.22.0.0, 20 位掩码
 
 配置主网防火墙入站规则
@@ -500,7 +503,79 @@ pnputil /delete-driver oem110.inf
 - [初次使用注意事项](https://saladict.crimx.com/notice.html)
 - [配合Anki使用](https://saladict.crimx.com/anki.html)
 - 也支持欧路词典, 扇贝单词和 WebDAV 方式同步
-  ![20220117225152](http:cdn.ayusummer233.top/img/20220117225152.png)
+  ![20220117225152](https://cdn.ayusummer233.top/img/20220117225152.png)
+
+---
+
+# 桌面显示器屏幕使用体验
+
+写这份随笔的时候已经入手 `小米 34英寸 WQHD` 这款带鱼屏一个月有余了, 实际体验下来确实比之前双屏三屏副屏的时候体验要好不少, 至少脖子没有那么不舒服了
+
+最开始有副屏需求是为了能够边写代码边看文档, 但是笔记本 15.6 英寸的屏幕同时代码和文档两个窗口的话太挤, 要么代码看不全要么文档看不全, 最初尝鲜副屏没有太多预算, 于是花 236 在咸鱼淘了个 13.5 英寸 1080P 的 DIY 副屏
+
+![image-20220328222132611](http://cdn.ayusummer233.top/img/202203282221481.png)
+
+![image-20220328222148173](http://cdn.ayusummer233.top/img/202203282221990.png)
+
+从无到有的体验还是比较奇妙的, 总的来说写代码的体验有了质的提升, 至少不用来回切屏了, 不过 DIY副屏驱动板拖着一根排线接着屏幕, 支架也是个 DIY 的塑料支架, 直到有一次在图书馆折了支架又裂了排线后有了换屏幕的想法, 再加上 13.6 英寸的屏幕感觉还是有些小, 于是又入了一个 23.8 英寸的 `熊猫 PH24QA2`
+
+![image-20220328222820090](http://cdn.ayusummer233.top/img/202203282228044.png)
+
+感觉屏幕素质还好, 不过这款显示器就无法竖起来放置了, 基本上都是斜着放置在左侧, 比起上一个可以竖起来放置的 13.6 英寸的 DIY 屏幕, 这款显示器的优势在于屏幕更大了, 可以放下更多的内容, 不过纵向长度感觉变短了
+
+用过一段时间的左边是 23.8 英寸的显示器, 中间放个 15.6 英寸的笔记本, 右边竖起来放置一个 13.6 英寸 DIY 屏幕, 不过后面由于宿舍桌子长度有限且二人共用因此撤掉了右侧的 DIY 屏幕送给室友用了
+
+用了一段时间后愈发觉得这个显示器别扭, 放文档的话为了减少脖子扭动的幅度一般会放在靠近笔记本屏幕的一侧贴半边, 不过这也就导致了显示器的左半侧使用是一个比较尴尬的地方, 我需要扭动脖子将近 60° 去看左半边的屏幕, 这对脖子太不友好了, 而且两个屏幕之前的大块空隙完全是视野无效区域, 就算是在显示器右半边看文档, 时间长了脖子还是会有些酸痛, 于是就有了入个大点的屏幕的想法, 于是在今年 2 月入了小米的这款 34 英寸的带鱼屏
+
+![image-20220328224024373](http://cdn.ayusummer233.top/img/202203282240451.png)
+
+宿舍桌面空间有限, 就把笔记本放在了桌面上层的书架格子上背过放置, 这样比较方便走线
+
+> 左侧那个显示器拍摄当时是想出掉所以拿出来放在侧边准备截下参数和色域检测以及坏点检测之类的图的, 并不是与带鱼屏一起使用(而且也不想再大浮动扭脖子看另一个屏幕了
+
+一个月的使用体验上来看, 带鱼屏对于我个人码代码方面还是比较友好的, 属于是折腾这么长时间以来使用体验最舒服的一次折腾 (当然也是最贵的一次(ಥ_ಥ)
+
+windows 自带的分屏可以覆盖大多数应用场景
+
+- 需要长时间使用单个窗口时一般将窗口防止屏幕中央占大块区域
+
+  > 比如 Typora 专注写一份文档
+
+  ![image-20220328224910432](http://cdn.ayusummer233.top/img/202203282249120.png)
+
+  放在中间正对面部基本就不需要扭脖子了
+
+- 写前端项目时我一般会打开 4 个窗口, `文档, 笔记, 调试页面, 编码页面`
+
+  最开始用的是上图中的中间大块区域码代码两边一侧文档一侧笔记的分屏方式, 但是总感觉哪里不太对, 除了需要单独切出来调试界面外后来换用了另一种分屏方式后发现文档那屏宽度不太够, 有的博主的文章样式比较怪, 横向全显示不支持滚动, 有的则是代码看不全;
+
+  后来在实践中找到了合适的窗口排布方案, 不过由于不是 win11 原生支持的贴边所以为了不频繁切换窗口就新建了一个虚拟桌面专门用来放置写前端项目的这四个窗口
+  
+  ![image-20220329074440333](http://cdn.ayusummer233.top/img/202203290744483.png)
+  
+  ![image-20220329074906822](http://cdn.ayusummer233.top/img/202203290749181.png)
+  
+  > 除了四格外还放了 picgo 的上传图片界面以及 ShareX 的截图文件夹, 用来给笔记贴 gif 图
+  >
+  > ![image-20220329075153895](http://cdn.ayusummer233.top/img/202203290751207.png)
+  >
+  > 
+  
+  前端项目的四格单放一个桌面后原本的主桌面主要用于放置其他日常窗口以及 `Typora 正在书写的笔记对应的 VSCode 窗口`
+  
+  > ![image-20220329075415478](http://cdn.ayusummer233.top/img/202203290754851.png)
+  >
+  > 毕竟 Typora 没有 Wakatime 插件, 而 VSCode 有 wakatime 扩展, 不在 VSCode 中打开相应文件的话就会丢失这部分的时间记录
+  
+  此外, 让我比较愉悦的一点在于, 这块屏幕终于能让我完整地看完 wakatime 的页面了(
+  
+  > ![image-20220329075832380](http://cdn.ayusummer233.top/img/202203290758685.png)
+  
+  ![image-20220329080647578](http://cdn.ayusummer233.top/img/202203290806742.png)
+  
+  > 目前写前端项目的桌面状态差不多就是这样
+  >
+  > pad 主要用于看视频教程, 不看视频教程时一般就是用来放音乐(
 
 ----
 # Game
@@ -530,7 +605,7 @@ pnputil /delete-driver oem110.inf
 
 需要注意的是模拟器启动程序务必使用管理员模式启动
 
-![20211208145623](http:cdn.ayusummer233.top/img/20211208145623.png)
+![20211208145623](http://cdn.ayusummer233.top/img/20211208145623.png)
 > [如何從您的電腦上完全移除BlueStacks 5](https://support.bluestacks.com/hc/zh-tw/articles/360057724751)  
 > [Bluestacks 5 Cannot Start BlueStacks on Win11 (any 64Bit instance version)](https://www.reddit.com/r/BlueStacks/comments/r7hvkw/bluestacks_5_cannot_start_bluestacks_on_win11_any/)
 
