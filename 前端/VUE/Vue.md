@@ -6114,3 +6114,106 @@ const stopWatch = () => stop()
 
 - `onTrigger` 可以帮助调试 `watchEffect`
 
+---
+
+## 组合式 API
+
+## Provide/inject
+
+> [组合式 API | Vue.js (vuejs.org)](https://v3.cn.vuejs.org/api/composition-api.html#provide-inject)
+>
+> [学习Vue3 第二十三章（依赖注入Provide / Inject）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123143981)
+
+`provide` 和 `inject` 启用依赖注入。这两者只能在使用当前活动实例的 [`setup()`](https://v3.cn.vuejs.org/api/composition-api.html#setup) 期间被调用。
+
+当出现多层组件嵌套时, 要从根组件向下传递信息除了可以通过逐级传递之外还可以使用依赖注入的方式进行传递
+
+使用上比较简单, 根组件使用 `provide` 定义需要的传给子组件的数据, 然后各级子组件直接使用 `inject` 取值即可
+
+`PI_A.vue`:
+
+```vue
+<script setup lang="ts">
+import PIB from './PI_B.vue'
+import { provide, ref } from 'vue'
+
+provide('flag', ref(false))  // 两个参数, 前者是 key 后者是 value
+</script>
+
+<template>
+    <div class="PI_A">
+        <div>A 组件内容区域</div>
+        <PIB></PIB>
+    </div>
+</template>
+
+<style lang="less" scoped>
+.PI_A {
+    width: 300px;
+    height: 300px;
+    background: red;
+    color: #fff;
+}
+</style>
+```
+
+`PI_B.vue`
+
+```vue
+<script setup lang="ts">
+import PIC from './PI_C.vue'
+import { inject } from 'vue'
+
+let data = inject('flag')
+</script>
+
+<template>
+    <div class="PI_B">
+        <h1>B 组件内容区域</h1>
+        <div>{{ data }}</div>
+        <PIC></PIC>
+    </div>
+</template>
+
+<style lang="less" scoped>
+.PI_B {
+    width: 300px;
+    height: 300px;
+    background: blue;
+    color: #fff;
+}
+</style>
+```
+
+`PI_C.vue`
+
+```vue
+<script setup lang="ts">
+import { inject, Ref, ref } from 'vue'
+
+let data = inject<Ref<boolean>>('flag', ref(false)) // 两个参数, 前者是 key 后者是 默认值
+</script>
+
+<template>
+    <div class="PI_C">
+        <!-- 通过按钮改变 data 接受的 flag 值(取反)-->
+        <button @click="data = !data">改变 flag</button>
+        <h1>C 组件内容区域</h1>
+        <h1>{{ data }}</h1>
+    </div>
+</template>
+
+<style lang="less" scoped>
+.PI_C {
+    width: 300px;
+    height: 300px;
+    background: green;
+    color: #fff;
+}
+</style>
+```
+
+> ![](http://cdn.ayusummer233.top/img/202203301011461.gif)
+
+> 底层逻辑是使用类似对象继承的方式实现的, 构造子对象的时候会自动继承父级的属性
+
