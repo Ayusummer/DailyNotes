@@ -10,8 +10,6 @@
 
 ![img](http://cdn.ayusummer233.top/img/202202281517242.png)
 
-
-
 ---
 
 ## MVC
@@ -2546,6 +2544,21 @@ import 'animate.css'
 
   ```shell
   pnpm install gsap
+  ```
+
+---
+
+# Lodash
+
+> [Lodash 简介 | Lodash 中文文档 | Lodash 中文网 (lodashjs.com)](https://www.lodashjs.com/)
+
+Lodash 是一个一致性、模块化、高性能的 JavaScript 实用工具库。
+
+- 安装:
+
+  ```shell
+  pnpm install lodash -S
+  pnpm install @types/lodash -D
   ```
 
 ---
@@ -5294,7 +5307,115 @@ const dec = () => {
 </style>
 ```
 
-> ![](http://cdn.ayusummer233.top/img/202203292249471.gif) 
+> ![](http://cdn.ayusummer233.top/img/202203292249471.gif)
+
+---
+
+#### 平面过渡动画
+
+> [学习Vue3 第二十二章（transition-group过度列表）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123058884)
+>
+> [Lodash](#Lodash)
+
+以打乱数组为例:
+
+`transition_group_test_flip.vue`:
+
+```vue
+<script setup lang="ts">
+import { ref } from 'vue'
+import _ from 'lodash'
+
+let list = ref(Array.apply(null, { length: 81 } as number[]).map((_, index) => {
+    return {
+        id: index,
+        number: (index % 9) + 1
+    }
+}))
+
+console.log(list.value)
+
+const random = () => {
+    list.value = _.shuffle(list.value)
+}
+</script>
+
+<template>
+    <div>
+        <button @click="random">random</button>
+        <transition-group move-class="move_active" class="wraps" tag="div">
+            <div class="items" v-for="item in list" :key="item.id">{{ item.number }}</div>
+        </transition-group>
+    </div>
+</template>
+
+<style lang="less" scoped>
+.wraps {
+    display: flex;
+    flex-wrap: wrap;
+    width: calc(25px * 10 + 9px);
+    .items {
+        width: 25px;
+        height: 25px;
+        border: 1px solid #ccc;
+        display: flex;
+        justify-content: center; // 居中
+        align-items: center; // 垂直居中
+    }
+}
+
+.move_active {
+    transition: all 1.5s ease-in-out;
+}
+</style>
+```
+
+> ![](http://cdn.ayusummer233.top/img/202203300832433.gif)
+
+---
+
+#### 状态过渡
+
+>  [学习Vue3 第二十二章（transition-group过度列表）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123058884)
+>
+> [GSAP](#GreenSock)
+
+结合 gsap 实现一个数字更新时的滚动效果:
+
+```vue
+<!-- 状态过渡 -->
+<script setup lang="ts">
+import gsap from 'gsap'
+import { reactive, watch } from 'vue'
+
+const num = reactive({
+    current: 0,
+    tweenedNumber: 0
+})
+
+watch(() => num.current, (newVal, oldVal) => {
+    gsap.to(num, {
+        duration: 1,
+        tweenedNumber: newVal,
+        onUpdate: () => {
+            console.log(num.tweenedNumber)
+        }
+    })
+})
+</script>
+
+<template>
+    <div>
+        <input v-model="num.current" step="20" type="number" />
+        <div>{{ num.tweenedNumber.toFixed(0) }}</div>
+    </div>
+</template>
+
+<style lang="less" scoped>
+</style>
+```
+
+>  ![](http://cdn.ayusummer233.top/img/202203300846915.gif)
 
 ---
 
