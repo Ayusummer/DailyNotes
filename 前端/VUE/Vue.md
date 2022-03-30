@@ -2563,6 +2563,32 @@ Lodash 是一个一致性、模块化、高性能的 JavaScript 实用工具库�
 
 ---
 
+# TSX
+
+> [JSX · TypeScript中文网 · TypeScript——JavaScript的超集 (tslang.cn)](https://www.tslang.cn/docs/handbook/jsx.html)
+>
+> [学习Vue3 第二十五章（TSX）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123172735)
+>
+> [(为什么 Vue3 的组件库都在使用 jsx/tsx？ - 知乎 (zhihu.com)](https://www.zhihu.com/question/436260027)
+
+[JSX](https://facebook.github.io/jsx/)是一种嵌入式的类似XML的语法。 它可以被转换成合法的JavaScript，尽管转换的语义是依据不同的实现而定的。 JSX因[React](https://reactjs.org/)框架而流行，但也存在其它的实现。 TypeScript支持内嵌，类型检查以及将JSX直接编译为JavaScript。
+
+在此之前使用的是 Template去写模板。现在可以扩展另一种风格: `TSX风格`
+
+vue2 的时候就已经支持 jsx 写法，只不过不是很友好，随着 vue3 对[typescript](https://so.csdn.net/so/search?q=typescript&spm=1001.2101.3001.7020)的支持度，tsx 写法越来越被接受
+
+- 安装
+
+  ```pnpm
+  pnpm install @vitejs/plugin-vue-jsx -D
+  ```
+
+> `TODO`: 感觉暂时没有上 JSX/TSX 的需求, 后面切实需要用到时再看看吧
+>
+> 至少目前大部分业务场景都可以直接 template 写
+
+---
+
 # 组件系统
 
 > [介绍 | Vue.js (vuejs.org)-组件化应用构建](https://v3.cn.vuejs.org/guide/introduction.html#组件化应用构建)
