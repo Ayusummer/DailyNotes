@@ -3124,7 +3124,9 @@ const getList = (list: number[]) => {
 </style>
 ```
 
-![image-20220320175309546](http://cdn.ayusummer233.top/img/202203201753539.png)
+> ![image-20220320175309546](http://cdn.ayusummer233.top/img/202203201753539.png)
+>
+> 需要注意的是: 虽然子组件传过来的是个 `reactive<number[]>`, 父组件的接收函数中的参数类型应但是 `number[]`, 否则将无法正常接收
 
 ---
 
@@ -3233,6 +3235,226 @@ const getList = (list: number[]) => {
 }
 </style>
 ```
+
+---
+
+## 兄弟组件传参
+
+> [学习Vue3 第二十四章（兄弟组件传参和Bus）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123158620)
+
+---
+
+### 利用父组件中转实现兄弟组件传参
+
+`BCTP_A.vue`:
+
+```vue
+<!-- 与 B 组件互为兄弟组件 -->
+<script setup lang="ts">
+import { ref, Ref } from 'vue'
+
+const emit = defineEmits(['transferFlag'])
+let flag: Ref<boolean> = ref(false)
+
+const emitFlag = () => {
+    flag.value = !flag.value
+    console.log("A组件待传值flag:" + flag.value + "到父组件")
+    emit('transferFlag', flag.value)
+}
+</script>
+
+<template>
+    <div class="BCTP_A">
+        <button @click="emitFlag">flag 取反并传给 parent</button>
+    </div>
+</template>
+
+<style lang="less" scoped>
+.BCTP_A {
+    width: 200px;
+    height: 200px;
+    background: blue;
+    color: #fff;
+}
+</style>
+```
+
+`BCTP_parent.vue`:
+
+```vue
+<!-- 兄弟组件传参-父组件 -->
+<script setup lang="ts">
+import BCTP_A from './BCTP_A.vue'
+import BCTP_B from './BCTP_B.vue'
+import { Ref, ref } from 'vue'
+// 定义一个 ref 变量, 用于接收 BCTP_A 组件的 flag 值, 并且设置默认值为 false
+let BCTP_A_flag: Ref<boolean> = ref(false)
+// 接收 BCTP_A 组件传递过来的 flag 值
+const getFlag = (flag: boolean) => {
+    BCTP_A_flag.value = flag
+    console.log('父组件接收到 A 组件的传值为:', BCTP_A_flag.value)
+}
+</script>
+
+<template>
+    <div>
+        <BCTP_A @transferFlag="getFlag"></BCTP_A>
+        <BCTP_B :flag="BCTP_A_flag"></BCTP_B>
+    </div>
+</template>
+
+<style lang="less" scoped>
+</style>
+```
+
+`BCTP_B.vue`
+
+```vue
+<!-- 与 A 组件互为兄弟组件 -->
+<script setup lang="ts">
+type Props = {
+    flag: boolean
+}
+defineProps<Props>()
+</script>
+
+<template>
+    <div class="BCTP_B">B 组件接收到父组件传过来的值为: {{ flag }}</div>
+</template>
+
+<style lang="less" scoped>
+.BCTP_B {
+    width: 200px;
+    height: 200px;
+    background: green;
+    color: #fff;
+}
+</style>
+```
+
+> ![](http://cdn.ayusummer233.top/img/202203301801215.gif)
+
+虽然这种凭借父组件中转的方法可以实现兄弟组件之间的传参, 但是这样做未免太过繁琐, 每次传参都需要写三处传入传出
+
+---
+
+### 通过发布订阅模式传参
+
+> [学习Vue3 第二十四章（兄弟组件传参和Bus）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123158620)
+
+`Bus.ts`
+
+```typescript
+type BusClass<T> = {
+    emit: (name: T) => void
+    on: (name: T, callback: Function) => void
+}
+type BusParams = string | number | symbol
+type List = {
+    [key: BusParams]: Array<Function>
+}
+class Bus<T extends BusParams> implements BusClass<T> {
+    list: List
+    constructor() {
+        this.list = {}
+    }
+    emit(name: T, ...args: Array<any>) {
+        let eventName: Array<Function> = this.list[name]
+        eventName.forEach(ev => {
+            ev.apply(this, args)
+        })
+    }
+    on(name: T, callback: Function) {
+        let fn: Array<Function> = this.list[name] || [];
+        fn.push(callback)
+        this.list[name] = fn
+    }
+}
+
+export default new Bus<string>()
+```
+
+`BCTP_A.vue`:
+
+```vue
+<!-- 与 B 组件互为兄弟组件 -->
+<script setup lang="ts">
+import { ref, Ref } from 'vue'
+import Bus from '../../Bus'
+
+const emit = defineEmits(['transferFlag'])
+let flag: Ref<boolean> = ref(false)
+
+const emitFlag = () => {
+    flag.value = !flag.value
+    console.log("A组件待传值flag:" + flag.value + "到父组件")
+    emit('transferFlag', flag.value)
+}
+
+// 使用 bus 传值给 B 组件
+const emitFlagToBByBus = () => {
+    flag.value = !flag.value
+    Bus.emit('transferFlagToBByBus', flag.value)
+}
+</script>
+
+<template>
+    <div class="BCTP_A">
+        <button @click="emitFlag">flag 取反并传给 parent</button>
+        <button @click="emitFlagToBByBus">flag 取反并通过 Bus 派发给 B 组件</button>
+    </div>
+</template>
+
+<style lang="less" scoped>
+.BCTP_A {
+    width: 200px;
+    height: 200px;
+    background: blue;
+    color: #fff;
+}
+</style>
+```
+
+`BCTP_B.vue`:
+
+```vue
+<!-- 与 A 组件互为兄弟组件 -->
+<script setup lang="ts">
+import Bus from '../../Bus'
+import { ref, Ref } from 'vue'
+
+let flagB = ref(false)  // 定义一个 ref 变量, 用于接收 A 组件的 flag 值, 并且设置默认值为 false
+
+type Props = {
+    flag: boolean
+}
+defineProps<Props>()
+
+// 利用 Bus 接收 A 组件派发的 flag
+Bus.on('transferFlagToBByBus', (flag: boolean) => {
+    flagB.value = flag
+    console.log('B 组件接收到 A 组件的传值为:', flagB.value)
+})
+</script>
+
+<template>
+    <div class="BCTP_B">
+        <div>B 组件接收到父组件传过来的值为: {{ flag }}</div>
+        <div>B 组件从 Bus 接收到从 A 组件传过来的值为: {{ flagB }}</div>
+    </div>
+</template>
+
+<style lang="less" scoped>
+.BCTP_B {
+    width: 200px;
+    height: 200px;
+    background: green;
+    color: #fff;
+}
+</style>
+```
+
+> ![](http://cdn.ayusummer233.top/img/202203301842020.gif)
 
 ---
 
