@@ -41,6 +41,8 @@
   - [VSCode](#vscode)
     - [扩展](#扩展)
   - [在线编译运行](#在线编译运行)
+- [Promise](#promise)
+  - [创建 Promise](#创建-promise)
 
 
 
