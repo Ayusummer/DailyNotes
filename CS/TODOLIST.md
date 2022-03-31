@@ -272,7 +272,7 @@
 
 ## VUE 相关技术栈学习(2022/3/21-2022/4/3, 共 2 周)
 
-### 第 1 周(3.21-3.26)
+### 第 1 周(3.21-3.27)
 
 - Vue
   - [x] [学习Vue3 第十五章（全局组件，局部组件，递归组件）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/122862736)
@@ -281,19 +281,20 @@
   
   
 
-### 第 2 周
+### 第 2 周(3.28-4.3)
 
   - [x] [学习Vue3 第十八章（异步组件&代码分包&suspense）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/122909360)
   - [x] [学习Vue3 第十九章（Teleport传送组件）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/122916261)
   - [x] [学习Vue3 第二十章（keep-alive缓存组件）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/122953072)
   - [x] [学习Vue3 第二十一章（transition动画组件）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123000653)
-  - [ ] [学习Vue3 第二十二章（transition-group过度列表）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123058884)
-  - [ ] [学习Vue3 第二十三章（依赖注入Provide / Inject）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123143981)
-  - [ ] [学习Vue3 第二十四章（兄弟组件传参和Bus）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123158620)
-  - [ ] [学习Vue3 第二十五章（TSX）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123172735)
-  - [ ] [学习Vue3 第二十六章（深入v-model）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123187523)
-  - [ ] [学习Vue3 第二十七章（自定义指令directive）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123228132)
-  - [ ] [学习Vue3 第二十八章（自定义Hooks）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123271189)
+  - [x] [学习Vue3 第二十二章（transition-group过度列表）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123058884)
+  - [x] [学习Vue3 第二十三章（依赖注入Provide / Inject）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123143981)
+  - [x] [学习Vue3 第二十四章（兄弟组件传参和Bus）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123158620)
+  - [x] [学习Vue3 第二十五章（TSX）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123172735)
+  - [x] [学习Vue3 第二十六章（深入v-model）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123187523)
+  - [x] [学习Vue3 第二十七章（自定义指令directive）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123228132)
+  - [x] [学习Vue3 第二十八章（自定义Hooks）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123271189)
+
   - [ ] [学习Vue3 第二十九章（Vue3定义全局函数和变量）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123292042)
   - [ ] [学习Vue3 第三十章（编写Vue3插件）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123300264)
   - [ ] [学习Vue3 第三十一章（了解UI库ElementUI，AntDesigin等）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123306603)

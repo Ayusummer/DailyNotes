@@ -2691,6 +2691,22 @@ Lodash 是一个一致性、模块化、高性能的 JavaScript 实用工具库�
 
 ---
 
+# VueUse
+
+> [Get Started | VueUse](https://vueuse.org/guide/)
+
+`VueUse` 是一个基于 [Composition API](https://v3.vuejs.org/guide/composition-api-introduction.html) 的实用函数的合集
+
+- 安装
+
+  ```shell
+  pnpm install @vueuse/core
+  ```
+
+  
+
+---
+
 # TSX
 
 > [JSX · TypeScript中文网 · TypeScript——JavaScript的超集 (tslang.cn)](https://www.tslang.cn/docs/handbook/jsx.html)
@@ -5269,6 +5285,118 @@ const vMove: Directive<any, void> = (el: HTMLDivElement, binding: DirectiveBindi
 ```
 
 > ![](http://cdn.ayusummer233.top/img/202203312011082.gif)
+
+---
+
+### mixin
+
+> [应用 API-mixin | Vue.js (vuejs.org)](https://v3.cn.vuejs.org/api/application-api.html#mixin)
+>
+> [学习Vue3 第二十八章（自定义Hooks）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123271189)
+
+- **参数：**
+
+  - `{Object} mixin`
+
+- **返回值：**
+
+  - 应用实例
+
+- **用法：**
+
+  将一个 mixin 应用在整个应用范围内。一旦注册，它们就可以在当前的应用中任何组件模板内使用它。插件作者可以使用此方法将自定义行为注入组件。**不建议在应用代码中使用**。
+
+- **参考：**[全局 mixin](https://v3.cn.vuejs.org/guide/mixins.html#全局-mixin)
+
+---
+
+### 自定义 Hook
+
+> [学习Vue3 第二十八章（自定义Hooks）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123271189)
+>
+> [应用 API-mixin | Vue.js (vuejs.org)](https://v3.cn.vuejs.org/api/application-api.html#mixin)
+
+vue3 的自定义 hook 主要用来处理复用代码逻辑的一些封装
+
+- Vue3 的 hook函数 相当于 vue2 的 mixin, 不同在与 hooks 是函数
+- Vue3 的 hook函数 可以帮助我们提高代码的复用性, 让我们能在不同的组件中都利用 hooks 函数
+
+以获取图片元素 base64 为例:
+
+`ImageToBase64.ts`:
+
+```typescript
+// 将图片信息转 base64 的一个 hook
+import { onMounted } from 'vue'
+
+// 定义 hook 参数类型
+type Options = {
+    el: string
+}
+
+export default function (options: Options): Promise<{ baseUrl: string }> {
+    return new Promise((resolve) => {
+        onMounted(() => {
+            let img: HTMLImageElement = document.querySelector(options.el) as HTMLImageElement
+            console.log(img, "=====>")
+            img.onload = () => {
+                resolve({
+                    baseUrl: base64(img)
+                })
+            }
+        })
+        // 将图片转 base64
+        const base64 = (el: HTMLImageElement) => {
+            // 定义画布
+            const canvas = document.createElement('canvas')
+            // 建立一个 CanvasRenderingContext2D 二维渲染上下文。
+            const ctx = canvas.getContext('2d')
+            canvas.width = el.width
+            canvas.height = el.height
+            ctx?.drawImage(el, 0, 0, el.width, el.height)
+            // 方法返回一个包含图片展示的 data URI 
+            return canvas.toDataURL('image/png')
+        }
+    })
+}
+
+```
+
+> [Promise - 廖雪峰的官方网站 (liaoxuefeng.com)](https://www.liaoxuefeng.com/wiki/1022910821149312/1023024413276544)
+>
+> [document.querySelector() - Web API 接口参考 | MDN (mozilla.org)](https://developer.mozilla.org/zh-CN/docs/Web/API/Document/querySelector)
+>
+> [Document.createElement() - Web API 接口参考 | MDN (mozilla.org)](https://developer.mozilla.org/zh-CN/docs/Web/API/Document/createElement)
+>
+> [HTMLCanvasElement.getContext() - Web API 接口参考 | MDN (mozilla.org)](https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLCanvasElement/getContext)
+>
+> [HTMLCanvasElement.toDataURL() - Web API 接口参考 | MDN (mozilla.org)](https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLCanvasElement/toDataURL)
+
+`DIYHook.vue`:
+
+```vue
+<!-- 自定义hook使用测试 -->
+<script setup lang="ts">
+import useBase64 from '../../hooks/ImageToBase64'
+useBase64({ el: '#img' }).then(res => {
+    console.log(res.baseUrl)
+})
+
+</script>
+
+<template>
+    <div>
+        <img id="img" width="512" height="512" src="../../assets/M4.png" alt="M4" />
+    </div>
+</template>
+
+<style lang="less" scoped>
+</style>
+```
+
+> [Promise.prototype.then() - JavaScript | MDN (mozilla.org)](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise/then)
+
+> ![](http://cdn.ayusummer233.top/img/202204010740857.gif)
 
 ---
 
