@@ -5035,6 +5035,110 @@ let name = ref('dialog_header')
 
 ---
 
+## 指令
+
+### v-model
+
+> [学习Vue3 第二十六章（深入v-model）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123187523)
+>
+> [指令 | Vue.js (vuejs.org)](https://v3.cn.vuejs.org/api/directives.html#v-model)
+
+> v-model 是 vue3 的一项破坏性更新, 它其实是个语法糖, 是通过 props 和 emit 组合而成的
+
+使用 `v-model` 可以实现父子组件之间的双向绑定:
+
+`Dialog_vmodel.vue`:
+
+```vue
+<script setup lang="ts">
+import { ref, Ref } from 'vue'
+type Props = {
+    flag: boolean,
+    title: string
+    modelModifiers?: {
+        change: boolean,
+    }
+}
+const PropsData = defineProps<Props>()
+console.log(PropsData)
+
+// 改值:
+const emit = defineEmits(['update:flag', 'update:title', 'update:modelModifiers', 'update:peopleModifiers'])
+const close = () => {
+    if (PropsData.modelModifiers?.change) {
+        emit("update:title", "子组件已接收回传change")
+    } else {
+        console.log(PropsData.modelModifiers?.change)
+        emit("update:title", "子组件未接收到change信号")
+    }
+    emit('update:flag', false)
+    // emit('update:title', '咸鱼型')
+}
+
+</script>
+
+<template>
+    <div v-if="flag" class="Dialog_vmodel">
+        <div class="Dialog_vmodel-header">
+            <span>标题---{{ title }}</span>
+            <span @click="close">X</span>
+        </div>
+        <div class="Dialog_vmodel-content">
+            <span>内容</span>
+        </div>
+    </div>
+</template>
+
+<style lang="less" scoped>
+.Dialog_vmodel {
+    width: 300px;
+    height: 300px;
+    border: 1px solid #ccc;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    &-header {
+        header-bottom: 1px solid #ccc;
+        display: flex;
+        justify-content: space-between;
+        padding: 10px;
+    }
+    &-content {
+        padding: 10px;
+    }
+}
+</style>
+```
+
+`Dialog_parent.vue`:
+
+```vue
+<script setup lang="ts">
+import DialogVModel from './Dialog_vmodel.vue'
+import { ref, Ref } from 'vue'
+
+let flag: Ref<boolean> = ref<boolean>(true)
+let title: Ref<string> = ref<string>("咸鱼型233")
+let change: Ref<boolean> = ref<boolean>(false)
+</script>
+
+<template>
+    <div>
+        <button @click="flag = !flag">change {{ flag }}</button>
+        <div>标题:{{ title }}</div>
+        <!-- 单个双向绑定可以直接 v-model="xxx" 多个的时候可以用 v-model:xxx="xxx" -->
+        <DialogVModel v-model:flag="flag" v-model:title="title" v-model.change="change" />
+    </div>
+</template>
+
+<style lang="less" scoped></style>
+```
+
+> ![](http://cdn.ayusummer233.top/img/202203311004868.gif)
+
+---
+
 ## 内置组件
 
 ### `transition`
