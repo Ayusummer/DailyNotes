@@ -1,3 +1,20 @@
+# 目录
+- [目录](#目录)
+- [HTML](#html)
+  - [`label`](#label)
+  - [`form`](#form)
+    - [`action`](#action)
+- [CSS](#css)
+  - [属性](#属性)
+    - [`overflow`](#overflow)
+    - [`padding`](#padding)
+    - [margin](#margin)
+  - [布局](#布局)
+    - [`Flex`](#flex)
+      - [flex 属性](#flex-属性)
+- [通识](#通识)
+  - [DOM](#dom)
+
 # HTML
 
 ## `label`
@@ -160,6 +177,20 @@ p
 该属性有两个快捷值：`auto (1 1 auto)` 和  `none (0 0 auto)`。
 
 建议优先使用这个属性，而不是单独写三个分离的属性，因为浏览器会推算相关值。
+
+---
+
+# 通识
+
+## DOM
+
+> [老说的 DOM 到底是什么？？_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV1w64y147yM?spm_id_from=333.337.search-card.all.click)
+>
+> [理解DOM到底是什么_chinadbo的博客-CSDN博客_dom到底是什么](https://blog.csdn.net/chinadbo/article/details/104678569)
+
+`文档对象模型(Document Object Model)` 是 HTML 文档的接口, 被浏览器用作确定在视口中呈现内容的第一步, 并通过 JS 程序来修改页面内容/结构/样式;
+
+DOM 总是与当前 HTML 保持一致, 当当前页面的 HTML 发生变动时, DOM 也会做出相应改变, 可以通过 JS 来手动操作 DOM
 
 
 

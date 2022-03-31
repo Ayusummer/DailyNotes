@@ -1,4 +1,132 @@
 *Vue**
+# 目录
+- [目录](#目录)
+- [简介](#简介)
+  - [MVC](#mvc)
+    - [MV*](#mv)
+    - [Vue框架的特点](#vue框架的特点)
+    - [常见的插件](#常见的插件)
+    - [与 Vue2 对比](#与-vue2-对比)
+      - [Options API 与 Composition API](#options-api-与-composition-api)
+- [Microsoft Learn | 开始使用 Vue.js](#microsoft-learn--开始使用-vuejs)
+    - [Vue 入门](#vue-入门)
+      - [简介](#简介-1)
+      - [Vue.js 入门](#vuejs-入门)
+      - [通过使用 Vue.js 创建应用](#通过使用-vuejs-创建应用)
+      - [属性绑定](#属性绑定)
+    - [通过 Vue.js 动态显示界面](#通过-vuejs-动态显示界面)
+      - [目标](#目标)
+      - [Render lists](#render-lists)
+      - [使用条件呈现(Use conditional rendering)](#使用条件呈现use-conditional-rendering)
+    - [处理 Vue.js 中的数据和事件](#处理-vuejs-中的数据和事件)
+      - [动态数据和事件概述](#动态数据和事件概述)
+      - [使用窗体](#使用窗体)
+      - [处理事件](#处理事件)
+      - [了解计算属性](#了解计算属性)
+    - [Vue.js 中的 Vue CLI 和单文件组件入门](#vuejs-中的-vue-cli-和单文件组件入门)
+      - [Vue CLI 入门](#vue-cli-入门)
+      - [使用 Vue CLI 创建应用程序](#使用-vue-cli-创建应用程序)
+      - [Vue 组件入门](#vue-组件入门)
+      - [创建组件](#创建组件)
+      - [组件属性](#组件属性)
+      - [向组件添加属性](#向组件添加属性)
+      - [组件的自定义事件](#组件的自定义事件)
+      - [向组件添加自定义事件](#向组件添加自定义事件)
+- [安装](#安装)
+  - [pnpm](#pnpm)
+  - [命令行工具(CLI)](#命令行工具cli)
+- [工具](#工具)
+  - [TypeScript 支持](#typescript-支持)
+  - [NPM 包中的官方声明](#npm-包中的官方声明)
+  - [推荐配置](#推荐配置)
+  - [VSCode 用户片段](#vscode-用户片段)
+  - [开发工具](#开发工具)
+    - [项目创建](#项目创建)
+    - [DevTools](#devtools)
+      - [DevTools 无法加载源映射](#devtools-无法加载源映射)
+- [Vite](#vite)
+  - [目录结构](#目录结构)
+  - [单页面应用与多页面应用](#单页面应用与多页面应用)
+  - [开始](#开始)
+    - [搭建一个 `Vite` 项目](#搭建一个-vite-项目)
+  - [部署静态站点](#部署静态站点)
+    - [构建应用](#构建应用)
+    - [本地测试应用](#本地测试应用)
+  - [报错收集](#报错收集)
+      - [`listen EACCES: permission denied 127.0.0.1:3000`](#listen-eacces-permission-denied-1270013000)
+      - [`找不到模块“vue”或其相应的类型声明。ts(2307)`](#找不到模块vue或其相应的类型声明ts2307)
+- [Router](#router)
+- [Vuex](#vuex)
+- [Pinia](#pinia)
+- [Less](#less)
+  - [使用](#使用)
+  - [实例](#实例)
+- [`Animate.css`](#animatecss)
+  - [安装与使用](#安装与使用)
+  - [结合 `vue3 transition` 使用](#结合-vue3-transition-使用)
+- [GreenSock](#greensock)
+- [Lodash](#lodash)
+- [TSX](#tsx)
+- [组件系统](#组件系统)
+  - [生命周期](#生命周期)
+  - [单文件组件SFC(Single File Component)](#单文件组件sfcsingle-file-component)
+    - [基本语法](#基本语法)
+  - [模板语法](#模板语法)
+    - [`v-on`](#v-on)
+    - [`.stop`](#stop)
+    - [`v-model`](#v-model)
+      - [计算器示例](#计算器示例)
+    - [`v-bind`](#v-bind)
+  - [父子组件传参](#父子组件传参)
+    - [传递字符串](#传递字符串)
+    - [传递任意类型参数](#传递任意类型参数)
+    - [参数默认值](#参数默认值)
+    - [子组件给父组件传参](#子组件给父组件传参)
+    - [子组件暴露给父组件内部属性](#子组件暴露给父组件内部属性)
+  - [兄弟组件传参](#兄弟组件传参)
+    - [利用父组件中转实现兄弟组件传参](#利用父组件中转实现兄弟组件传参)
+    - [通过发布订阅模式传参](#通过发布订阅模式传参)
+  - [全局组件](#全局组件)
+  - [局部组件](#局部组件)
+  - [递归组件](#递归组件)
+  - [动态组件](#动态组件)
+  - [异步组件](#异步组件)
+  - [通过插槽分发内容](#通过插槽分发内容)
+    - [匿名插槽](#匿名插槽)
+    - [具名插槽](#具名插槽)
+    - [作用域插槽](#作用域插槽)
+    - [动态插槽](#动态插槽)
+- [可复用 & 组合](#可复用--组合)
+  - [Teleport](#teleport)
+- [API](#api)
+  - [应用 API](#应用-api)
+    - [directive](#directive)
+  - [指令](#指令)
+    - [v-model](#v-model-1)
+  - [内置组件](#内置组件)
+    - [`transition`](#transition)
+      - [结合 Animate.css 使用](#结合-animatecss-使用)
+  - [!](#)
+      - [生命周期 和 GSAP](#生命周期-和-gsap)
+  - [>  !](#--)
+      - [appear](#appear)
+  - [!](#-1)
+    - [`transition-group`](#transition-group)
+      - [平面过渡动画](#平面过渡动画)
+      - [状态过渡](#状态过渡)
+    - [`keep-alive`](#keep-alive)
+    - [`slot`](#slot)
+  - [响应性 API](#响应性-api)
+    - [响应性基础 API](#响应性基础-api)
+      - [reactive](#reactive)
+    - [Refs](#refs)
+      - [ref](#ref)
+    - [`Computed` 与 `watch`](#computed-与-watch)
+      - [`computed`](#computed)
+      - [watch](#watch)
+      - [watchEffect](#watcheffect)
+  - [组合式 API](#组合式-api)
+  - [Provide/inject](#provideinject)
 
 # 简介
 
@@ -5032,6 +5160,115 @@ let name = ref('dialog_header')
 # API
 
 > [API | Vue.js (vuejs.org)](https://v3.cn.vuejs.org/api/)
+
+---
+
+## 应用 API
+
+> [应用 API | Vue.js (vuejs.org)](https://v3.cn.vuejs.org/api/application-api.html)
+
+---
+
+### directive
+
+> [应用 API-directive | Vue.js (vuejs.org)](https://v3.cn.vuejs.org/api/application-api.html#directive)
+>
+> [学习Vue3 第二十七章（自定义指令directive）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123228132)
+
+`directive` 是 `vue3` 的一项破坏性更新, 通过 `directive` 我们可以根据自己的需要自定义 vue 指令
+
+当我们要手动操作 DOM 来修改视图并且在多处位置需要同样的操作逻辑时就可以通过自定义 vue 指令从而在各处便捷的进行使用
+
+- **参数：**
+
+  - `{string} name`
+  - `{Function | Object} [definition]`
+
+- **返回值：**
+
+  - 如果传入 `definition` 参数，则返回应用实例。
+  - 如果不传入 `definition` 参数，则返回指令定义。
+
+- **用法：**
+
+  注册或检索全局指令。
+
+- 钩子函数
+
+  `created`: 元素初始化的时候(在绑定元素的 attribute 或事件监听器被应用之前调用)
+
+  `beforeMount`: 指令绑定到元素后(在绑定元素的父组件挂载之前调用) 只调用一次
+
+  `mounted`: 元素插入父级 dom 时(在绑定元素的父组件挂载之后调用)
+
+  `beforeUpdate`: 元素被更新之前(在包含组件的 VNode 更新之前调用)
+
+  `updated`: 在包含组件的 VNode 及其子组件的 VNode 更新之后调用
+
+  `beforeUnmount`: 在元素被移除前(在绑定元素的父组件卸载之前调用)
+
+  `unmounted`: 指令被移除后(在绑定元素的父组件卸载之后调用) 只调用一次
+
+以拖曳操作为例, 实现组件拖动效果:
+
+```vue
+<!-- 组件拖曳示例 -->
+<script setup lang="ts">
+// 导入 directive 相关模块
+import { ref, Directive, DirectiveBinding } from 'vue'
+// 自定义 v-move 指令进行组件拖曳
+const vMove: Directive<any, void> = (el: HTMLDivElement, binding: DirectiveBinding) => {
+    // 取当前元素的第一个子元素作为拖曳元素
+    let moveElement: HTMLDivElement = el.firstElementChild as HTMLDivElement
+    console.log(moveElement)
+    // 定义鼠标按下事件(拖动)
+    const mouseDown = (e: MouseEvent) => {
+        let X = e.clientX - el.offsetLeft
+        let Y = e.clientY - el.offsetTop
+        const move = (e: MouseEvent) => {
+            console.log(e)
+            el.style.left = e.clientX - X + 'px'
+            el.style.top = e.clientY - Y + 'px'
+        }
+        document.addEventListener('mousemove', move)
+        document.addEventListener('mouseup', () => {
+            document.removeEventListener('mousemove', move)
+        })
+    }
+    // 绑定鼠标按下拖曳事件
+    moveElement.addEventListener('mousedown', mouseDown)
+}
+
+</script>
+
+<template>
+    <div v-move class="box">
+        <div class="header"></div>
+        <div>内容</div>
+    </div>
+</template>
+
+<style lang="less" scoped>
+.box {
+    // box 内容区域样式定义
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 200px;
+    height: 200px;
+    border: 3px solid #000;
+    // 拖曳 header 样式定义
+    .header {
+        width: 100%;
+        height: 50px;
+        background: rgb(5, 5, 5);
+    }
+}
+</style>
+```
+
+> ![](http://cdn.ayusummer233.top/img/202203312011082.gif)
 
 ---
 
