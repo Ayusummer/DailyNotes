@@ -2457,6 +2457,8 @@ lessc styles.less styles.css
 <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/3.11.1/less.min.js" ></script>
 ```
 
+
+
 ---
 
 ## 实例
@@ -5176,6 +5178,26 @@ let name = ref('dialog_header')
 # API
 
 > [API | Vue.js (vuejs.org)](https://v3.cn.vuejs.org/api/)
+
+---
+
+## GlobalAPI
+
+### app.config.globalProperties
+
+> [Application API | Vue.js (vuejs.org)](https://vuejs.org/api/application.html#app-config-globalproperties)
+>
+> [学习Vue3 第二十九章（Vue3定义全局函数和变量）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123292042)
+
+Vue3 没有 Prototype 属性, 使用 `app.config.globalProperties` 代替, 然后去自定义变量和函数
+
+用于注册全局属性以供各位置组件使用
+
+以字符串修饰为例:
+
+`main.ts`
+
+
 
 ---
 
