@@ -55,6 +55,10 @@
   - [报错收集](#报错收集)
       - [`listen EACCES: permission denied 127.0.0.1:3000`](#listen-eacces-permission-denied-1270013000)
       - [`找不到模块“vue”或其相应的类型声明。ts(2307)`](#找不到模块vue或其相应的类型声明ts2307)
+- [ESLint](#eslint)
+  - [安装](#安装-1)
+  - [配置文件](#配置文件)
+    - [配置 ignore files](#配置-ignore-files)
 - [Router](#router)
 - [Vuex](#vuex)
 - [Pinia](#pinia)
@@ -66,7 +70,10 @@
   - [结合 `vue3 transition` 使用](#结合-vue3-transition-使用)
 - [GreenSock](#greensock)
 - [Lodash](#lodash)
+- [VueUse](#vueuse)
 - [TSX](#tsx)
+- [auto-import](#auto-import)
+- [自定义全局插件](#自定义全局插件)
 - [组件系统](#组件系统)
   - [生命周期](#生命周期)
   - [单文件组件SFC(Single File Component)](#单文件组件sfcsingle-file-component)
@@ -99,8 +106,12 @@
 - [可复用 & 组合](#可复用--组合)
   - [Teleport](#teleport)
 - [API](#api)
+  - [GlobalAPI](#globalapi)
+    - [app.config.globalProperties](#appconfigglobalproperties)
   - [应用 API](#应用-api)
     - [directive](#directive)
+    - [mixin](#mixin)
+    - [自定义 Hook](#自定义-hook)
   - [指令](#指令)
     - [v-model](#v-model-1)
   - [内置组件](#内置组件)
@@ -2380,6 +2391,8 @@ declare module '*.vue' {
 > [Roadmap: TSLint -> ESLint · Issue #4534 · palantir/tslint (github.com)](https://github.com/palantir/tslint/issues/4534)
 >
 > [typescript-eslint/typescript-eslint: Monorepo for all the tooling which enables ESLint to support TypeScript (github.com)](https://github.com/typescript-eslint/typescript-eslint)
+>
+> [Linting your TypeScript Codebase | TypeScript ESLint (typescript-eslint.io)](https://typescript-eslint.io/docs/linting/)
 
 2019 年 1 月，`TypeScript` 官方决定全面采用 `ESLint`，之后也发布 `typescript-eslint` 项目，以集中解决 `TypeScript` 和 `ESLint` 兼容性问题。而之前的两个 `lint` 解决方案都将弃用：
 
@@ -2388,10 +2401,105 @@ declare module '*.vue' {
 
 > ![image-20220402133014799](http://cdn.ayusummer233.top/img/202204021330104.png)
 
-安装:
+## 安装
 
 ```shell
 pnpm i eslint @typescript-eslint/parser @typescript-eslint/eslint-plugin -D
+```
+
+> `@typescript-eslint/parser`为 `ESLint` 提供解析器。
+>
+> `@typescript-eslint/eslint-plugin` 它作为 `ESLint` 默认规则的补充，提供了一些额外的适用于 `ts` 语法的规则。
+
+---
+
+## 配置文件
+
+`.eslintrc.js`
+
+```js
+module.exports = {
+  root: true,
+  parser: '@typescript-eslint/parser',
+  plugins: [
+    '@typescript-eslint',
+  ],
+  extends: [
+    'eslint:recommended',
+    'plugin:@typescript-eslint/recommended',
+  ],
+};
+```
+
+> 如上是最小化的一个配置文件
+>
+> - `parser: '@typescript-eslint/parser,'`
+>
+>   告诉 `ESLint` 使用 `@typescript-eslint/parser` 作为 `parser package`
+>   
+>   这可以使 `ESLint` 可以理解 `TypeScript` 语法
+>   
+>   不这样写的话会使 `ESLint` 像往常解析 `JS` 一样解析 `TS`, 自然就会报错
+>   
+> - ```js
+>   plugins: [
+>       '@typescript-eslint',
+>   ],
+>   ```
+>
+>   告诉 `ESLint` 加载安装好的 `@typescript-eslint/eslint-plugin` `plugin package`
+>
+>   这将允许你在代码库中使用这些 `rules`
+>
+> - ```js
+>       extends: [
+>           'eslint:recommended',
+>           'plugin:@typescript-eslint/recommended',
+>       ],
+>   ```
+>
+>   `extends` 属性告诉 `ESLint` 你的配置 `extends(扩展)`  了给定配置
+>
+>   - `'eslint:recommended'` 是 `ESLint` 内置的 "推荐配置" ---- 他给出一个小的,合理的 `rules` 集, 这些 `rules` 是众所周知的最佳实践的 `lint`
+>   - `'plugin:@typescript-eslint/recommended'` 是官方的 "建议配置" --- 它就像 `eslint:recomment` 一样, 只不过它只针对 `TypeScript-specific` 插件中的 `rules`
+>
+> ----
+>
+> `module` 报错: `'module' is not defined. eslint(no-undef)`
+>
+> ![image-20220402141356618](http://cdn.ayusummer233.top/img/202204021413088.png)
+>
+> [typescript-eslint config: .eslintrc file 'module' is not defined - Stack Overflow](https://stackoverflow.com/questions/63478122/typescript-eslint-config-eslintrc-file-module-is-not-defined)
+>
+> `env` 里加上 `node:true` 即可解决
+>
+> ```js
+> module.exports = {
+>     root: true,
+>     parser: '@typescript-eslint/parser',         // Specifies the ESLint parser
+>     plugins: [
+>         '@typescript-eslint',
+>     ],
+>     extends: [
+>         'eslint:recommended',
+>         'plugin:@typescript-eslint/recommended',
+>     ],
+>     env: {
+>         node: true  // 解决 module 报错
+>     }
+> };
+> ```
+>
+
+---
+
+### 配置 ignore files
+
+在根目录下再创建一个 `.eslintignore` 文件, 它会告诉 `ESLint` 不要 `lint` 哪些文件(夹)
+
+```eslintignore
+# don't lint build output (make sure it's set to your correct build folder name)
+dist
 ```
 
 
@@ -2792,7 +2900,211 @@ vue2 的时候就已经支持 jsx 写法，只不过不是很友好，随着 vue
   pnpm i -D unplugin-auto-import
   ```
 
+- `vite 配置`
+
+  ```typescript
+  import { defineConfig } from 'vite'
+  import vue from '@vitejs/plugin-vue'
+  import VueJsx from '@vitejs/plugin-vue-jsx'
+  import AutoImport from 'unplugin-auto-import/vite'
+  // https://vitejs.dev/config/
+  export default defineConfig({
+    plugins: [vue(),VueJsx(),AutoImport({
+      imports:['vue'],
+      dts:"src/auto-import.d.ts"
+    })]
+  })
+  ```
+
+---
+
+# 自定义全局插件
+
+> [学习Vue3 第三十章（编写Vue3插件）_小满zs的博客-CSDN博客_vue3插件写法](https://blog.csdn.net/qq1195566313/article/details/123300264)
+>
+> [插件 | Vue.js (vuejs.org)](https://staging-cn.vuejs.org/guide/reusability/plugins.html#plugins)
+>
+> [插件 | Vue.js (vuejs.org)](https://v3.cn.vuejs.org/guide/plugins.html#插件)
+>
+> [Plugins | Vue.js (vuejs.org)](https://vuejs.org/guide/reusability/plugins.html#plugins)
+
+插件是一种呢能够为 Vue 添加全局功能的工具代码
+
+- 会用插件
+
+  ```typescript
+  import { createApp } from 'vue'
   
+  const app = createApp({})
+  
+  app.use(myPlugin, {
+    /* 可选的选项 */
+  })
+  ```
+
+插件是一个拥有 `install()` 方法的对象, 或者简单的就只是一个函数, 它自己就是安装函数
+
+, 接收应用实例和传递给 `app.use()` 的额外选项
+
+```typescript
+const myPlugin = {
+  install(app, options) {
+    // 配置此应用
+  }
+}
+```
+
+---
+
+`示例: 写一个 loading 插件`:
+
+`AnotherLoading.vue`:
+
+```vue
+<script setup lang="ts">
+import { ref } from 'vue'
+
+let isShow = ref<boolean>(false)
+
+const show = () => {
+    isShow.value = true
+}
+
+const hide = () => {
+    isShow.value = false
+}
+
+defineExpose({
+    show,
+    hide,
+    isShow
+})
+</script>
+
+<template>
+    <div v-if="isShow" class="loading">
+        <div class="loading-content">loading...</div>
+    </div>
+</template>
+
+<style lang="less" scoped>
+.loading {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &-content {
+        font-size: 30px;
+        color: #fff;
+    }
+}
+</style>
+```
+
+`AnotherLoading.ts`
+
+```typescript
+import {App, createVNode, VNode, render} from 'vue'
+import AnotherLoading from './AnotherLoading.vue'
+
+export default {
+    install(app: App) {
+        const vnode: VNode = createVNode(AnotherLoading)
+        render(vnode, document.body)
+        console.log(AnotherLoading)
+        console.log(vnode.component?.exposed)
+        app.config.globalProperties.$AnotherLoading = {
+            show: vnode.component?.exposed?.show,
+            hide: vnode.component?.exposed?.hide
+        }
+        // app.config.globalProperties.$AnotherLoading.show()
+    }
+}
+```
+
+`main.ts`
+
+```typescript
+import { createApp } from 'vue'
+import App from './App.vue'
+import './assets/css/reset.less'
+import Card from './components/Card.vue'
+import AnotherLoading from './components/AnotherLoading/AnotherLoading'
+
+// export const app = createApp(App)
+const app = createApp(App)
+
+
+// 定义 Filter 类型, 作为 $filters 的返回类型
+type Filter = {
+    format: <T>(str: T) => string
+}
+
+// Loading 插件类型定义
+type ALP = {
+    show: () => void,
+    hide: () => void
+}
+
+// 添加声明
+declare module '@vue/runtime-core' {
+    export interface ComponentCustomProperties {
+        $filters: Filter,
+        $env: string
+        // Loading 插件
+        $AnotherLoading: ALP
+    }
+}
+
+// 注册全局过滤器
+app.config.globalProperties.$filters = {
+    format<T>(str: T): string {
+        return `233${str}`;
+    }
+}
+
+app.config.globalProperties.$env = 'dev'
+
+// 注册 Loading 插件
+app.use(AnotherLoading)
+
+// 注册全局组件以及别名
+app.component('Card', Card)
+    .mount('#app')
+
+
+```
+
+`AnotherLoadingTest.vue`
+
+```vue
+<script setup lang="ts">
+import { ComponentInternalInstance, getCurrentInstance } from 'vue';
+
+const { appContext } = getCurrentInstance() as ComponentInternalInstance
+
+const showLoading = () => {
+    console.log(appContext)
+    appContext.config.globalProperties.$AnotherLoading.show()
+    setTimeout(() => {
+        appContext.config.globalProperties.$AnotherLoading.hide()
+    }, 2000)
+}
+</script>
+
+<template>
+    <div>
+        <button @click="showLoading">切换</button>
+    </div>
+</template>
+
+<style lang="less" scoped>
+</style>
+```
+
+> ![](http://cdn.ayusummer233.top/img/202204021731338.gif)
 
 ---
 
