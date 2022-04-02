@@ -2238,6 +2238,55 @@ pnpm create v
 
 ---
 
+## 路径别名配置
+
+> [(32) vite配置项目路径别名 - SegmentFault 思否](https://segmentfault.com/a/1190000041417219)
+
+`vite.config.ts`:
+
+```typescript
+// vite.config.js/ts
+import { join } from "path";
+import { defineConfig } from 'vite'
+
+// https://vitejs.dev/config/
+export default defineConfig({
+  resolve: {
+    alias: {
+      '@': join(__dirname, "src"),
+    }
+  }
+})
+
+```
+
+`tsconfig.json`
+
+```typescript
+{
+   // ...
+  "compilerOptions": {
+    // ...其他配置
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    }
+  },
+  // ...
+}
+
+```
+
+如果你是刚创建的TypeScript项目，有可能会遇到`找不到模块“path”或其相应的类型声明`的错误提示，安装`@types/node`即可。
+
+```shell
+pnpm install @types/node --save-dev
+```
+
+
+
+---
+
 ## 单页面应用与多页面应用
 
 > [前端：你要懂的单页面应用和多页面应用 - 掘金 (juejin.cn)](https://juejin.cn/post/6844903512107663368)
@@ -2915,6 +2964,29 @@ vue2 的时候就已经支持 jsx 写法，只不过不是很友好，随着 vue
     })]
   })
   ```
+
+---
+
+# ElementUI
+
+> [Button 按钮 | Element Plus (gitee.io)](https://element-plus.gitee.io/zh-CN/component/button.html)
+
+- `安装`
+
+  ```shell
+  pnpm install element-plus
+  pnpm i @types/lodash-es@"*"
+  ```
+
+- `main.ts` 引入
+
+  ```typescript
+  import ElementPlus from 'element-plus'
+  import 'element-plus/dist/index.css'
+  
+  ```
+
+使用的时候直接在官网 cpoy 代码使用即可(可能有的组件会要求再装一些库)
 
 ---
 
