@@ -296,7 +296,7 @@
   - [x] [学习Vue3 第二十八章（自定义Hooks）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123271189)
 
   - [x] [学习Vue3 第二十九章（Vue3定义全局函数和变量）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123292042)
-  - [ ] [学习Vue3 第三十章（编写Vue3插件）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123300264)
+  - [x] [学习Vue3 第三十章（编写Vue3插件）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123300264)
   - [ ] [学习Vue3 第三十一章（了解UI库ElementUI，AntDesigin等）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123306603)
   - [ ] [学习Vue3 第三十二章（详解Scoped和样式 穿透）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123319462)
 
