@@ -2208,12 +2208,22 @@ pnpm create v
 > [学习Vue3 第三章（Vite目录 & Vue单文件组件）_qq1195566313的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/122771007)
 
 - `public` - 不会被编译, 放置静态资源
+
 - `assets` - 存放可编译的静态资源
+
 - `components` - 存放组件
+
 - `App.vue` - 全局组件
+
 - `main.ts` - 全局 ts 文件
+
 - `index.html` - 非常重要的入口文件**（webpack，rollup 他们的入口文件都是enrty input 是一个 js文件 而 Vite 的入口文件是一个 html 文件，他刚开始不会编译这些js文件 只有当你用到的时候 如script src="xxxxx.js" 会发起一个请求被vite拦截这时候才会解析js文件）**
+
 - `vite.config.ts` - vite 配置项
+
+- `tsconfig.json` - TS 编译器配置
+
+  > [详解TypeScript项目中的tsconfig.json配置 - 简书 (jianshu.com)](https://www.jianshu.com/p/0383bbd61a6b)
 
 ---
 
@@ -2363,6 +2373,31 @@ declare module '*.vue' {
 
 ---
 
+# ESLint
+
+> [代码检查工具！从 TSLint 到 ESLint - 掘金 (juejin.cn)](https://juejin.cn/post/6955025103507849223)
+>
+> [Roadmap: TSLint -> ESLint · Issue #4534 · palantir/tslint (github.com)](https://github.com/palantir/tslint/issues/4534)
+>
+> [typescript-eslint/typescript-eslint: Monorepo for all the tooling which enables ESLint to support TypeScript (github.com)](https://github.com/typescript-eslint/typescript-eslint)
+
+2019 年 1 月，`TypeScript` 官方决定全面采用 `ESLint`，之后也发布 `typescript-eslint` 项目，以集中解决 `TypeScript` 和 `ESLint` 兼容性问题。而之前的两个 `lint` 解决方案都将弃用：
+
+- `typescript-eslint-parser` 已停止维护
+- 在完成 `ESLint` 功能后，将弃用 `TSLint` 并帮助用户迁移到 `ESLint`
+
+> ![image-20220402133014799](http://cdn.ayusummer233.top/img/202204021330104.png)
+
+安装:
+
+```shell
+pnpm i eslint @typescript-eslint/parser @typescript-eslint/eslint-plugin -D
+```
+
+
+
+---
+
 # Router
 
 > [介绍 | Vue Router (vuejs.org)](https://next.router.vuejs.org/zh/introduction.html)
@@ -2472,6 +2507,16 @@ lessc styles.less styles.css
 ```cmd
 pnpm install less less-loader -D
 ```
+
+> ![image-20220402134322239](http://cdn.ayusummer233.top/img/202204021343407.png)
+>
+> 可能会报缺少 webpack, 可以在开发环境下装下webpack
+>
+> ```shell
+> pnpm i webpack -D
+> ```
+>
+> ![image-20220402134957842](http://cdn.ayusummer233.top/img/202204021349006.png)
 
 - `src\assets\css\reset.less` 清除原生样式:
 
@@ -2732,6 +2777,22 @@ vue2 的时候就已经支持 jsx 写法，只不过不是很友好，随着 vue
 > `TODO`: 感觉暂时没有上 JSX/TSX 的需求, 后面切实需要用到时再看看吧
 >
 > 至少目前大部分业务场景都可以直接 template 写
+
+---
+
+# auto-import
+
+> [antfu/unplugin-auto-import: Auto import APIs on-demand for Vite, Webpack and Rollup (github.com)](https://github.com/antfu/unplugin-auto-import)
+>
+> [学习Vue3 第二十六章（深入v-model）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123187523)
+
+- 安装
+
+  ```shell
+  pnpm i -D unplugin-auto-import
+  ```
+
+  
 
 ---
 
