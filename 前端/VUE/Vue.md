@@ -2595,6 +2595,55 @@ dist
 
 # Pinia
 
+> [pinia_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/category_11672479.html)
+>
+> [Introduction | Pinia (vuejs.org)](https://pinia.vuejs.org/introduction.html)
+>
+> [技术胖-Pinia入门视频教程 全新一代状态管理工具Pinia -Vue3全家桶系列 (jspang.com)](https://jspang.com/article/82)
+
+Pinia是Vue生态里Vuex的代替者，一个全新Vue的状态管理库, 是 Vue3 中推荐的状态管理库
+
+> Pinia 也是 Vuex 的开发团队开发的
+
+特点
+
+- 支持 Vue3 和 Vue2
+
+- 完整的 TS 支持
+- 足够轻量, 压缩后体积只有 1kb 左右
+- 去除 mutations, 只有 state, getter, actions
+- actions 支持同步与异步
+- 代码扁平化没有模板嵌套, 只有 store 的概念, store 之前可以自由使用, 每一个 store 都是独立的
+- 无需手动添加 store, store 一旦创建会自动添加
+
+---
+
+## 安装
+
+```shell
+pnpm install pinia
+```
+
+引入注册 Vue3
+
+`main.ts`:
+
+```typescript
+import { createApp } from 'vue'
+import App from './App.vue'
+import {createPinia} from 'pinia'
+ 
+const store = createPinia()
+let app = createApp(App)
+ 
+ 
+app.use(store)
+ 
+app.mount('#app')
+```
+
+
+
 ---
 
 # Less
