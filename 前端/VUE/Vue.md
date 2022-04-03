@@ -63,8 +63,10 @@
 - [Router](#router)
 - [Vuex](#vuex)
 - [Pinia](#pinia)
-- [Less](#less)
+  - [安装](#安装-2)
   - [使用](#使用)
+- [Less](#less)
+  - [使用](#使用-1)
   - [实例](#实例)
 - [`Animate.css`](#animatecss)
   - [安装与使用](#安装与使用)
@@ -2642,7 +2644,77 @@ app.use(store)
 app.mount('#app')
 ```
 
+---
 
+## 使用
+
+> [技术胖-Pinia入门视频教程 全新一代状态管理工具Pinia -Vue3全家桶系列 (jspang.com)](https://jspang.com/article/82)
+>
+> [学习Pinia 第二章（初始化仓库Store）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123342785)
+>
+> 
+
+在 main.ts 中引入完 pinia 后就可以创建状态管理库了
+
+再 `src` 目录下创建一个 `store ` 文件夹, 在其中创建一个 `index.ts` 文件, 用于
+
+- 定义状态管理库
+- 修改容器中的 `state`
+- 仓库中 `action` 的使用
+
+示例:
+
+`@/store/store-names.ts`:
+
+```typescript
+export const enum Names{
+    TEST = 'TEST'
+}
+```
+
+`@/store/index.ts`
+
+```typescript
+import { defineStore } from 'pinia'
+import { Names} from './store-name'
+
+export const useTestStore = defineStore(Names.TEST, {
+    // state 存储全局状态
+    state: () => {
+        return {
+            current: 1,
+            name:'233'
+        }
+    },
+    // computed like, 修饰一些值, 用于监视(计算)状态变化, 有缓存的功能
+    getters: {
+        
+    },
+    // methods, 可做同步异步, 提交state(用于修改 state 全局状态数据)
+    actions: {
+        
+    }
+})
+```
+
+`PiniaTest.vue`:
+
+```vue
+<script setup lang="ts">
+import { useTestStore } from '@/store';
+
+const useTest = useTestStore()
+</script>
+
+<template>
+    <div>pinia:{{ useTest.current }} -- {{ useTest.name }}</div>
+</template>
+
+<style lang="less" scoped>
+</style>
+```
+
+> ![image-20220403224742834](http://cdn.ayusummer233.top/img/202204032247528.png)
 
 ---
 
