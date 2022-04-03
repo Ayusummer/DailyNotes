@@ -303,8 +303,8 @@
 
 - Pinia
 
-  - [ ] [学习Pinia 第一章（介绍Pinia）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123338137)
-  - [ ] [学习Pinia 第二章（初始化仓库Store）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123342785)
+  - [x] [学习Pinia 第一章（介绍Pinia）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123338137)
+  - [x] [学习Pinia 第二章（初始化仓库Store）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123342785)
   - [ ] [学习Pinia 第三章（State）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123360349)
   - [ ] [学习Pinia 第四章（解构store）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123365751)
   - [ ] [学习Pinia 第五章（Actions，getters）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123376269)
