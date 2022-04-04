@@ -2809,6 +2809,161 @@ const useTestChange5 = () => {
 
 ---
 
+## 解构 store
+
+> [学习Pinia 第四章（解构store）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123365751)
+>
+> [技术胖-Pinia入门视频教程 全新一代状态管理工具Pinia -Vue3全家桶系列 (jspang.com)](https://jspang.com/article/82#toc5)
+>
+> [Using a store outside of a component | Pinia (vuejs.org)](https://pinia.vuejs.org/core-concepts/outside-component-usage.html#single-page-applications)
+
+直接解构 store 的话没有响应性特性, 需要使用 storeToRefs 方法转换为响应式对象解构出来
+
+```vue
+<script setup lang="ts">
+import { useTestStore } from '@/store';
+// 导入 storeToRefs 以从 store 中获取响应式数据
+import { storeToRefs } from 'pinia';
+const useTest = useTestStore()
+
+// 直接结构 useTest 不具有响应式特性
+const { current, name } = useTest
+// 通过 storeToRefs 将 store 中的数据转换为响应式数据
+const { current: currentRef, name: nameRef } = storeToRefs(useTest)
+
+
+// 直接修改属性值实现 useTest.current++
+const useTestChange1 = () => {
+    useTest.current++
+}
+// 方法2: 通过$patch 批量修改属性值
+const useTestChange2 = () => {
+    useTest.$patch({
+        name: '马克杯',
+        current: 10
+    })
+}
+// 方法3: $patch 函数式写法
+const useTestChange3 = () => {
+    useTest.$patch((state) => {
+        state.name = '立牌'
+        state.current = 5
+    })
+}
+// 方法4: 通过原始对象修改整个实例(缺点在于需要修改state所有属性, 因此一般不建议使用)
+const useTestChange4 = () => {
+    useTest.$state = {
+        name: '小夜灯',
+        current: 7
+    }
+}
+// 方法5: 通过 actions 修改
+const useTestChange5 = () => {
+    useTest.currentIncrement()
+}
+</script>
+
+<template>
+    <div>
+        <div>pinia: {{ useTest.name }} -- ${{ useTest.current }}</div>
+        <button @click="useTestChange1">increment-直接修改属性值</button>
+        <button @click="useTestChange2">通过$patch批量修改属性</button>
+        <button @click="useTestChange3">$patch的函数式写法</button>
+        <button @click="useTestChange4">通过原始对象修改整个实例</button>
+        <button @click="useTestChange5">通过 actions 修改</button>
+    </div>
+    <div>
+        <div>直接解构: name: {{ name }} --- current: {{ current }} --- 不具有响应式特性</div>
+        <div>通过 storeToRefs 解构: name: {{ nameRef }} --- current: {{ currentRef }} --- 具有响应式特性</div>
+    </div>
+</template>
+
+<style lang="less" scoped>
+</style>
+```
+
+> ![](http://cdn.ayusummer233.top/img/202204041739489.gif)
+
+原理和 `toRefs` 一样是给数据包一层`toRef`
+
+---
+
+在一个 store 中调用另一个 store 的方法和在 SFC 中调用 store 的方法一致:
+
+`store-name.ts`:
+
+```typescript
+export const enum Names{
+    TEST = 'TEST',
+    STUDENT = 'STUDENT'
+}
+```
+
+`student.ts`:
+
+```typescript
+import { defineStore } from 'pinia'
+import { Names } from './store-name'
+
+export const studentStore = defineStore(Names.STUDENT, {
+    state: () => {
+        return {
+            stuNames: ['张三', '李四', '王五', '赵六', '田七']
+        }
+    }
+})
+```
+
+`index.ts`:
+
+```typescript
+import { defineStore } from 'pinia'
+import { Names } from './store-name'
+import { studentStore } from './student'
+
+export const useTestStore = defineStore(Names.TEST, {
+    // state 存储全局状态
+    state: () => {
+        return {
+            current: 1,
+            name:'Cola'
+        }
+    },
+    // computed like, 修饰一些值, 用于监视(计算)状态变化, 有缓存的功能
+    getters: {
+        
+    },
+    // methods, 可做同步异步, 提交state(用于修改 state 全局状态数据)
+    actions: {
+        // current++
+        currentIncrement() {
+            this.current++
+        },
+        // 打印 studentStore 的 name
+        printStudentState() {
+            console.log(studentStore().stuNames)
+        }
+    }
+})
+```
+
+`PiniaTest.vue` 代码片段:
+
+```typescript
+import { useTestStore } from '@/store';
+// 导入 storeToRefs 以从 store 中获取响应式数据
+import { storeToRefs } from 'pinia';
+const useTest = useTestStore()
+
+// 调用 useTest actions 中的  printStudentState() 函数打印 studentSTore 中的 name
+console.log('studentStoreName:')
+useTest.printStudentState()
+```
+
+> ![image-20220404175644156](http://cdn.ayusummer233.top/img/202204041756354.png)
+
+---
+
 # Less
 
 > [学习Vue3 第十三章（实操组件和认识less 和 scoped）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/122832888)
