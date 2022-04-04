@@ -144,6 +144,8 @@ const 与 let 的不同之处在于其声明的变量只能在声明时被赋值
 ## 枚举
 
 > [练习 - 枚举 - Learn | Microsoft Docs](https://docs.microsoft.com/zh-cn/learn/modules/typescript-declare-variable-types/4-enums)
+>
+> [TS入门篇 | 详解 TypeScript 枚举类型 - 掘金 (juejin.cn)](https://juejin.cn/post/6998318291420708900)
 
 枚举提供了一种处理相关常量集的简单方法。 `enum` 是一组值的符号名。 枚举被视为数据类型，你可以使用它们来创建用于变量和属性的常量集。
 
