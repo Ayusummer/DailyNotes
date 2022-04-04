@@ -65,6 +65,7 @@
 - [Pinia](#pinia)
   - [安装](#安装-2)
   - [使用](#使用)
+  - [Pinia 状态修改](#pinia-状态修改)
 - [Less](#less)
   - [使用](#使用-1)
   - [实例](#实例)
@@ -2715,6 +2716,96 @@ const useTest = useTestStore()
 ```
 
 > ![image-20220403224742834](http://cdn.ayusummer233.top/img/202204032247528.png)
+
+---
+
+## Pinia 状态修改
+
+五种修改方式, 比 vuex 的写法要简洁, 具体示例如下:
+
+`@store/index.ts`
+
+```typescript
+import { defineStore } from 'pinia'
+import { Names} from './store-name'
+
+export const useTestStore = defineStore(Names.TEST, {
+    // state 存储全局状态
+    state: () => {
+        return {
+            current: 1,
+            name:'Cola'
+        }
+    },
+    // computed like, 修饰一些值, 用于监视(计算)状态变化, 有缓存的功能
+    getters: {
+        
+    },
+    // methods, 可做同步异步, 提交state(用于修改 state 全局状态数据)
+    actions: {
+        // current++
+        currentIncrement() {
+            this.current++
+        },
+    }
+})
+```
+
+`PiniaTest.vue`
+
+```vue
+<script setup lang="ts">
+import { useTestStore } from '@/store';
+
+const useTest = useTestStore()
+
+// 直接修改属性值实现 useTest.current++
+const useTestChange1 = () => {
+  useTest.current++
+}
+// 方法2: 通过$patch 批量修改属性值
+const useTestChange2 = () => {
+  useTest.$patch({
+    name: '马克杯',
+    current: 10
+  })
+}
+// 方法3: $patch 函数式写法
+const useTestChange3 = () => {
+  useTest.$patch( (state) => {
+    state.name = '立牌'
+    state.current = 5
+  })
+}
+// 方法4: 通过原始对象修改整个实例(缺点在于需要修改state所有属性, 因此一般不建议使用)
+const useTestChange4 = () => {
+  useTest.$state = {
+    name: '小夜灯',
+    current: 7
+  }
+}
+// 方法5: 通过 actions 修改
+const useTestChange5 = () => {
+  useTest.currentIncrement()
+}
+</script>
+
+<template>
+    <div>pinia: {{ useTest.name }} -- ${{ useTest.current }}</div>
+    <button @click="useTestChange1">increment-直接修改属性值</button>
+    <button @click="useTestChange2">通过$patch批量修改属性</button>
+    <button @click="useTestChange3">$patch的函数式写法</button>
+    <button @click="useTestChange4">通过原始对象修改整个实例</button>
+    <button @click="useTestChange5">通过 actions 修改</button>
+</template>
+
+<style lang="less" scoped>
+</style>
+```
+
+> ![image-20220404091331349](http://cdn.ayusummer233.top/img/202204040913862.png)
+>
+> ![](http://cdn.ayusummer233.top/img/202204040915730.gif)
 
 ---
 
