@@ -40,6 +40,18 @@
   ![具体使用](http://cdn.ayusummer233.top/img/20210309122603.png)
 
 ---
+
+## 继续配合 ShareX 使用
+
+用 shareX 主要是其功能比较强大, 这里主要说下 gif:
+
+设置截图后复制文件到剪贴板:
+
+![image-20220405100108067](http://cdn.ayusummer233.top/img/202204051001244.png)
+
+然后直接在 Typora 上粘贴即可自动调用 PicGo 上传到图床
+
+---
 # 基本用法
 ```markdown
 # 一级标题
