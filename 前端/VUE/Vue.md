@@ -68,6 +68,9 @@
   - [Pinia 状态修改](#pinia-状态修改)
   - [解构 store](#解构-store)
   - [Actions, getters](#actions-getters)
+    - [`Actions` 同步写法](#actions-同步写法)
+    - [Actions 异步写法](#actions-异步写法)
+    - [getters](#getters)
 - [Less](#less)
   - [使用](#使用-1)
   - [实例](#实例)
@@ -2976,7 +2979,7 @@ useTest.printStudentState()
 >
 > [技术胖-Pinia入门视频教程 全新一代状态管理工具Pinia -Vue3全家桶系列 (jspang.com)](https://jspang.com/article/82#toc4)
 
-`Actions` 同步写法:
+### `Actions` 同步写法
 
 `store-name.ts` 片段:
 
@@ -3051,7 +3054,25 @@ const changeUserByAction = () => {
 >
 > ![](http://cdn.ayusummer233.top/img/202204042156011.gif)
 
-使用 ElementPlus 更新一波 UI:
+---
+
+### Actions 异步写法
+
+`user.ts` 代码片段:
+
+```typescript
+        // 异步写法
+        async setUserAsync() {
+            const resultAsyn = await Login()
+            this.user = resultAsyn
+            this.setName("233Alter")
+        },
+        setName(name: string) {
+            this.name = name
+        }
+```
+
+`PiniaTest.vue`: 使用 ElementPlus 更新一波 UI:
 
 ```vue
 <script setup lang="ts">
@@ -3176,6 +3197,45 @@ const useTestChange5 = () => {
 ```
 
 > ![image-20220405080944278](http://cdn.ayusummer233.top/img/202204050809673.png)
+>
+> ![](http://cdn.ayusummer233.top/img/202204050826567.gif)
+
+---
+
+### getters
+
+actions 可用于修改 state, 而 getters 可用于修饰 state 并返回修饰结果
+
+`User.ts` 代码片段:
+
+```typescript
+    // computed like, 修饰一些值, 用于监视(计算)状态变化, 有缓存的功能
+    getters: {
+        newName(): string {
+            return `$ - 名: ${this.name} - 年龄: ${this.getUserAge}`
+        },
+        getUserAge(): number {
+            return this.user.age
+        }
+    },
+```
+
+`PiniaTest.vue`代码片段:
+
+```html
+        <el-card class="box-card">
+            <template #header>
+                <div class="card-header">actions 同/异步写法, getters 测试</div>
+            </template>
+            <p>actions-user: {{ userTest.user }}</p>
+            <p>actions-name: {{ userTest.name }}</p>
+            <p>getters: {{ userTest.newName }}</p>
+            <el-button @click="changeUserByAction">通过 action 修改 user</el-button>
+            <el-button @click="changeUserByActionAsync">通过 action 异步修改 user</el-button>
+        </el-card>
+```
+
+> ![](http://cdn.ayusummer233.top/img/202204050826567.gif)
 
 ---
 
