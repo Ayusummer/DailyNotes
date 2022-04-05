@@ -486,7 +486,7 @@ pnputil /delete-driver oem110.inf
 > TODO: 计网的复习该提上日程了(
 
 ----
-# 学习工作生活小技能?
+# 小技能?
 
 ----
 ## 图片OCR->表格
