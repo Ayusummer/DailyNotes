@@ -1,4 +1,5 @@
 *Vue**
+
 # 目录
 - [目录](#目录)
 - [简介](#简介)
@@ -3236,6 +3237,65 @@ actions 可用于修改 state, 而 getters 可用于修饰 state 并返回修饰
 ```
 
 > ![](http://cdn.ayusummer233.top/img/202204050826567.gif)
+
+---
+
+## API
+
+> [学习Pinia 第六章（API）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123402377)
+
+---
+
+### $reset
+
+无参函数, 用于重置 state 状态
+
+```html
+<el-button @click="userTest.$reset()">通过 $reset 重置 userTest 到初始状态</el-button>
+```
+
+> ![](http://cdn.ayusummer233.top/img/202204050927720.gif)
+
+---
+
+### $subscribe
+
+订阅 state 更新
+
+`PiniaTest.vue` 代码片段:
+
+```typescript
+// 通过 $subscribe 订阅 state 的改变
+userTest.$subscribe((args, state) => {
+    console.log(args)
+    console.log('userTest state:', state)
+})
+```
+
+> ![](http://cdn.ayusummer233.top/img/202204050929731.gif)
+>
+> `$subscribe` 还有第二个参数, 目前暂时没用到就没做记录, 详见[学习Pinia 第六章（API）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123402377)
+
+---
+
+### $onAction
+
+只要有 action 被调用就会执行该函数
+
+`PiniaTest.vue` 代码片段:
+
+```typescript
+// 当有 action 执行时便会执行 $onAction 函数
+userTest.$onAction((args) => {
+    console.log("有 action 执行了 ↓")
+    console.log(args)
+    console.log("有 action 执行了 ↑")
+})
+```
+
+> ![](http://cdn.ayusummer233.top/img/202204050939211.gif)
+>
+> `$onAction` 还有第二个参数, 目前暂时没用到就没做记录, 详见[学习Pinia 第六章（API）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123402377)
 
 ---
 
