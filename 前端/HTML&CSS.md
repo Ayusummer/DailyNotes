@@ -14,6 +14,10 @@
       - [flex 属性](#flex-属性)
 - [通识](#通识)
   - [DOM](#dom)
+- [Web API 接口](#web-api-接口)
+  - [Window](#window)
+    - [Window.localStorage](#windowlocalstorage)
+      - [示例](#示例)
 
 # HTML
 
@@ -194,3 +198,45 @@ DOM 总是与当前 HTML 保持一致, 当当前页面的 HTML 发生变动时, 
 
 
 
+---
+
+# Web API 接口
+
+## Window
+
+### Window.localStorage
+
+> [Window.localStorage - Web API 接口参考 | MDN (mozilla.org)](https://developer.mozilla.org/zh-CN/docs/Web/API/Window/localStorage)
+
+只读的`localStorage` 属性允许你访问一个[`Document`](https://developer.mozilla.org/zh-CN/docs/Web/API/Document) 源（origin）的对象 [`Storage`](https://developer.mozilla.org/zh-CN/docs/Web/API/Storage)；存储的数据将保存在浏览器会话中。`localStorage` 类似 [`sessionStorage`](https://developer.mozilla.org/zh-CN/docs/Web/API/Window/sessionStorage)，但其区别在于：存储在 `localStorage` 的数据可以长期保留；而当页面会话结束——也就是说，当页面被关闭时，存储在 `sessionStorage` 的数据会被清除 。
+
+应注意，无论数据存储在 `localStorage` 还是 `sessionStorage` ，**它们都特定于页面的协议。**
+
+另外，`localStorage` 中的键值对总是以字符串的形式存储。 (需要注意, 和js对象相比, 键值对总是以字符串的形式存储意味着数值类型会自动转化为字符串类型).
+
+#### 示例
+
+访问了当前域名下的本地 [`Storage`](https://developer.mozilla.org/zh-CN/docs/Web/API/Storage) 对象，并通过 [`Storage.setItem()`](https://developer.mozilla.org/zh-CN/docs/Web/API/Storage/setItem) 增加一个数据项目:
+
+```typescript
+localStorage.setItem('myCat', 'Tom');
+```
+
+读取 `localStorage` 项:
+
+```typescript
+let cat = localStorage.getItem('myCat');
+```
+
+移除 `localStorage` 项:
+
+```typescript
+localStorage.removeItem('myCat');
+```
+
+移除所有的 `localStorage` 项:
+
+```typescript
+// 移除所有
+localStorage.clear();
+```
