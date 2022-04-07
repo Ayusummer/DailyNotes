@@ -7,6 +7,28 @@
  * @FilePath: \DailyNotes\社区相关\Github.md
 -->
 
+# 目录
+- [目录](#目录)
+- [杂项](#杂项)
+  - [PC网页端用户头像加载不出来](#pc网页端用户头像加载不出来)
+  - [.git过大](#git过大)
+  - [github连接超时问题](#github连接超时问题)
+  - [Branch](#branch)
+- [Git配置](#git配置)
+- [Commit](#commit)
+  - [规范](#规范)
+- [Issues](#issues)
+- [Pull Request](#pull-request)
+- [Actions](#actions)
+- [Markdown](#markdown)
+  - [数学公式](#数学公式)
+- [webhooks](#webhooks)
+  - [借助钉钉的Github机器人将仓库变动通知到钉钉群里](#借助钉钉的github机器人将仓库变动通知到钉钉群里)
+- [开源许可证选择](#开源许可证选择)
+- [报错处理](#报错处理)
+  - [`Failed to connect to github.com port 443 after 21063 ms: Timed out`](#failed-to-connect-to-githubcom-port-443-after-21063-ms-timed-out)
+  - [`OpenSSL SSL_read: Connection was reset, errno 10054`](#openssl-ssl_read-connection-was-reset-errno-10054)
+
 # 杂项
 
 ---
@@ -23,7 +45,7 @@
     # GitHub Start(更新于2021.1.22) 
     140.82.113.3      github.com
     140.82.114.20     gist.github.com
-  
+    
     199.232.96.133    assets-cdn.github.com
     199.232.96.133    raw.githubusercontent.com
     199.232.96.133    gist.githubusercontent.com
@@ -49,7 +71,7 @@
     199.232.68.133     avatars7.githubusercontent.com
     199.232.96.133    avatars8.githubusercontent.com
     199.232.68.133     avatars8.githubusercontent.com
-  
+    
     # GitHub End
     ```
   > 如若你得到的ip并非`199.232.96.133`则只需把上面代码中的`199.232.96.133`利用查找替换替换为你得到的ip即可(当再次无法看到头像时可以试着重查一次ip然后替换掉原ip)
@@ -177,3 +199,24 @@
 # 开源许可证选择
 ![开源许可证选择](https://images.gitee.com/uploads/images/2021/0213/173905_ce78c29a_7703072.png "屏幕截图.png")
 > [from 阮一峰-2011.5.2](http://www.ruanyifeng.com/blog/2011/05/how_to_choose_free_software_licenses.html)
+
+---
+
+# 报错处理
+
+## `Failed to connect to github.com port 443 after 21063 ms: Timed out`
+
+网不好, 换个结点
+
+---
+
+## `OpenSSL SSL_read: Connection was reset, errno 10054`
+
+> [【Git/GitHub】解决Git上传时OpenSSL SSL_read: Connection was reset, errno 10054的错误_memcpy0的博客-CSDN博客](https://blog.csdn.net/myRealization/article/details/119737101)
+
+我碰到的情况是本地 git 配置错了, 前阵子在 github 上更改了主邮箱, 相应的本地配置要改下邮箱
+
+```shell
+git config --global user.email "xxx"
+```
+
