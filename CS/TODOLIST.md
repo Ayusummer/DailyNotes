@@ -313,8 +313,8 @@
   - [x] [学习Pinia 第三章（State）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123360349)
   - [x] [学习Pinia 第四章（解构store）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123365751)
   - [x] [学习Pinia 第五章（Actions，getters）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123376269)
-  - [ ] [学习Pinia 第六章（API）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123402377)
-  - [ ] [学习Pinia 第七章（pinia插件）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123431769)
+  - [x] [学习Pinia 第六章（API）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123402377)
+  - [x] [学习Pinia 第七章（pinia插件）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123431769)
 
 - 实战
 
