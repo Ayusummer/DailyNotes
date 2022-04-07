@@ -72,6 +72,7 @@
     - [`Actions` 同步写法](#actions-同步写法)
     - [Actions 异步写法](#actions-异步写法)
     - [getters](#getters)
+  - [PInia 插件](#pinia-插件)
   - [API](#api)
     - [$reset](#reset)
     - [$subscribe](#subscribe)
@@ -3242,6 +3243,76 @@ actions 可用于修改 state, 而 getters 可用于修饰 state 并返回修饰
 ```
 
 > ![](http://cdn.ayusummer233.top/img/202204050826567.gif)
+
+---
+
+## PInia 插件
+
+>[学习Pinia 第七章（pinia插件）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123431769)
+
+pinia 和 vuex 都有一个通病 页面刷新状态会丢失, 所以要做下持久化插件
+
+`main.ts` 代码片段:
+
+```typescript
+import { createApp, toRaw } from 'vue'
+
+import { createPinia, PiniaPluginContext } from 'pinia'
+
+
+type Options = {
+    key?:string
+}
+// 默认配置
+const __piniaKey__ = 'yusummer'
+
+// 将 key 存入 localstorage
+const setStorage = (key: string, value: any) => {
+    localStorage.setItem(key, JSON.stringify(value))
+}
+
+// 根据 key 从 localstorage 获取数据
+const getStorage = (key: string) => {
+    return localStorage.getItem(key) ? JSON.parse(localStorage.getItem(key) as string) : null
+}
+
+// 定义 pinia 插件
+const piniaPlugin = (options:Options) => {
+    return (context: PiniaPluginContext) => {
+        const { store } = context;
+        // 从 localstorage 获取数据
+        const data = getStorage(`${options.key ?? __piniaKey__}-${store.$id}`) 
+        console.log(data)
+        // state 有变化时, 将数据存入 localstorage
+        store.$subscribe(() => {
+            setStorage(`${options.key ?? __piniaKey__}-${store.$id}`, toRaw(store.$state))
+        })
+        
+        console.log("store", store)
+
+        return {
+            ...data
+        }
+    }
+}
+
+// export const app = createApp(App)
+const app = createApp(App)
+// 使用 ElementPlus 插件
+app.use(ElementPlus)
+
+// 引入 pinia
+const store = createPinia()
+store.use(piniaPlugin({
+    key: 'pinia'
+}))
+```
+
+> [DailyNotes/HTML&CSS.md at main · Ayusummer/DailyNotes (github.com)](https://github.com/Ayusummer/DailyNotes/blob/main/前端/HTML%26CSS.md#windowlocalstorage)
+>
+> ![msedge_2RktLwJ26F](http://cdn.ayusummer233.top/img/202204071059859.gif)
+
+
 
 ---
 
