@@ -62,9 +62,11 @@
   - [配置文件](#配置文件)
     - [配置 ignore files](#配置-ignore-files)
 - [Router](#router)
+  - [安装](#安装-2)
+  - [入门](#入门)
 - [Vuex](#vuex)
 - [Pinia](#pinia)
-  - [安装](#安装-2)
+  - [安装](#安装-3)
   - [使用](#使用)
   - [Pinia 状态修改](#pinia-状态修改)
   - [解构 store](#解构-store)
@@ -2590,7 +2592,77 @@ dist
 > - 可定制的滚动行为
 > - URL 的正确编码
 
+---
 
+## 安装
+
+```shell
+pnpm install vue-router@4
+```
+
+> vue3 装 router4
+>
+> vue2 装 router3
+
+![image-20220408220637494](http://cdn.ayusummer233.top/img/202204082206720.png)
+
+---
+
+## 入门
+
+用 Vue + Vue Router 创建单页应用非常简单：通过 Vue.js，我们已经用组件组成了我们的应用。当加入 Vue Router 时，我们需要做的就是将我们的组件映射到路由上，让 Vue Router 知道在哪里渲染它们。下面是一个基本的例子：
+
+在 `src` 目录下新建一个 `router` 文件夹, 新建一个 `index.ts` 文件
+
+`src/router/index.ts`:
+
+```typescript
+//引入路由对象
+import { createRouter, createWebHistory, createWebHashHistory, createMemoryHistory, RouteRecordRaw } from 'vue-router'
+
+//路由数组的类型 RouteRecordRaw
+// 定义一些路由
+// 每个路由都需要映射到一个组件。
+const routes: Array<RouteRecordRaw> = [{
+    path: '/',
+    component: () => import('../components/HelloWorld.vue')
+}, {
+    path: '/marquee',
+    component: () => import('../components/Marquee.vue')
+}]
+
+// 创建 router
+const router = createRouter({
+    history: createWebHistory(),
+    routes
+})
+
+//导出router
+export default router
+```
+
+在 `main.ts` 中引入并使用:
+
+```typescript
+// 引入 vue-router
+import router from './router'
+// 使用 router
+app.use(router)
+```
+
+在 `App,vue` 中展示
+
+```html
+<router-view></router-view>
+```
+
+可以使用 `<router-link>` 添加跳转链接
+
+```html
+<router-link to="/marquee">跑马灯组件跳转</router-link>
+```
+
+> ![msedge_ClbRzoAsDK](http://cdn.ayusummer233.top/img/202204082247577.gif)
 
 ---
 
