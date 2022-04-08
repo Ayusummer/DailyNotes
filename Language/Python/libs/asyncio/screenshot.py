@@ -3,7 +3,7 @@
 # @Author    : 咸鱼型233
 # @File      : screenshot.py
 # @Software  : PyCharm
-# @Function  : 
+# @Function  :
 # @ChangeLog :
 import asyncio
 from pyppeteer import launch
