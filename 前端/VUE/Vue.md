@@ -2716,7 +2716,7 @@ const router = createRouter({
 
 ---
 
-### 命名路由
+## 命名路由
 
 > [命名路由 | Vue Router (vuejs.org)](https://router.vuejs.org/zh/guide/essentials/named-routes.html)
 >
@@ -2776,6 +2776,93 @@ router.push({ name: 'user', params: { username: 'erina' } })
 ```
 
 在这两种情况下，路由将导航到路径 `/user/erina`。
+
+> 还可以使用 a 标签进行跳转
+> ```html
+> <!-- 使用 a 标签跳转 -->
+> <el-button>
+>  <a href="/marquee">使用a标签跳转到跑马灯</a>
+> </el-button>
+> ```
+>
+> 使用 `router.push` 进行跳转
+>
+> ```html
+>   <!-- 使用 router.push 跳转 -->
+>   <el-button @click="switchToMarquee">使用router.push跳转到跑马灯</el-button>
+> ```
+>
+> ```typescript
+> // 引入 vue-router
+> import router from '@/router'
+> // 使用 router.push 跳转到跑马灯页面
+> const switchToMarquee = (): void => {
+>   router.push('/marquee')
+> }
+> ```
+>
+> 三种跳转方式中只有使用 a 标签进行跳转是在重新加载界面的情况下更改URL
+>
+> ![image-20220409211757607](http://cdn.ayusummer233.top/img/202204092118935.png)
+
+---
+
+## 编程式导航
+
+> [编程式导航 | Vue Router (vuejs.org)](https://router.vuejs.org/zh/guide/essentials/navigation.html#编程式导航)
+>
+> [小满Router（第二章-命名路由-编程式导航）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123589648)
+
+---
+
+### 导航到不同位置
+
+**注意：在 Vue 实例中，你可以通过 `$router` 访问路由实例。因此你可以调用 `this.$router.push`。**
+
+想要导航到不同的 URL，可以使用 `router.push` 方法。这个方法会向 history 栈添加一个新的记录，所以，当用户点击浏览器后退按钮时，会回到之前的 URL。
+
+当你点击 `<router-link>` 时，内部会调用这个方法，所以点击 `<router-link :to="...">` 相当于调用 `router.push(...)` ：
+
+|          声明式           |       编程式       |
+| :-----------------------: | :----------------: |
+| `<router-link :to="...">` | `router.push(...)` |
+
+该方法的参数可以是一个字符串路径，或者一个描述地址的对象。例如：
+
+```js
+// 字符串路径
+router.push('/users/eduardo')
+
+// 带有路径的对象
+router.push({ path: '/users/eduardo' })
+
+// 命名的路由，并加上参数，让路由建立 url
+router.push({ name: 'user', params: { username: 'eduardo' } })
+
+// 带查询参数，结果是 /register?plan=private
+router.push({ path: '/register', query: { plan: 'private' } })
+
+// 带 hash，结果是 /about#team
+router.push({ path: '/about', hash: '#team' })
+```
+
+**注意**：如果提供了 `path`，`params` 会被忽略，上述例子中的 `query` 并不属于这种情况。取而代之的是下面例子的做法，你需要提供路由的 `name` 或手写完整的带有参数的 `path` ：
+
+```js
+const username = 'eduardo'
+// 我们可以手动建立 url，但我们必须自己处理编码
+router.push(`/user/${username}`) // -> /user/eduardo
+// 同样
+router.push({ path: `/user/${username}` }) // -> /user/eduardo
+// 如果可能的话，使用 `name` 和 `params` 从自动 URL 编码中获益
+router.push({ name: 'user', params: { username } }) // -> /user/eduardo
+// `params` 不能与 `path` 一起使用
+router.push({ path: '/user', params: { username } }) // -> /user
+```
+
+由于属性 `to` 与 `router.push` 接受的对象种类相同，所以两者的规则完全相同。
+
+`router.push` 和所有其他导航方法都会返回一个 *Promise*，让我们可以等到导航完成后才知道是成功还是失败。在官方文档的 [Navigation Handling](https://router.vuejs.org/zh/guide/advanced/navigation-failures.html) 中有详细介绍。
 
 ---
 
