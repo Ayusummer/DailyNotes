@@ -2716,6 +2716,69 @@ const router = createRouter({
 
 ---
 
+### 命名路由
+
+> [命名路由 | Vue Router (vuejs.org)](https://router.vuejs.org/zh/guide/essentials/named-routes.html)
+>
+> [小满Router（第二章-命名路由-编程式导航）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123589648)
+
+除了 `path` 之外，你还可以为任何路由提供 `name`。这有以下优点：
+
+- 没有硬编码的 URL
+- `params` 的自动编码/解码。
+- 防止你在 url 中出现打字错误。
+- 绕过路径排序（如显示一个）
+
+```typescript
+const routes: Array<RouteRecordRaw> = [{
+    path: '/',
+    name: 'helloWorld',
+    component: () => import('../components/HelloWorld.vue')
+}, {
+    path: '/marquee',
+    name: 'marquee',
+    component: () => import('../components/Marquee.vue')
+}]
+```
+
+官方示例:
+
+```typescript
+const routes = [
+  {
+    path: '/user/:username',
+    name: 'user',
+    component: User
+  }
+]
+```
+
+要链接到一个命名的路由，可以向 `router-link` 组件的 `to` 属性传递一个对象：
+
+```html
+  <el-button>
+    <router-link :to="{
+      name: 'marquee'
+    }">跑马灯组件跳转</router-link>
+  </el-button>
+```
+
+```html
+<router-link :to="{ name: 'user', params: { username: 'erina' }}">
+  User
+</router-link>
+```
+
+这跟代码调用 `router.push()` 是一回事：
+
+```js
+router.push({ name: 'user', params: { username: 'erina' } })
+```
+
+在这两种情况下，路由将导航到路径 `/user/erina`。
+
+---
+
 # Vuex
 
 > Vuex 是一个专为 Vue.js 应用程序开发的 **状态管理模式 + 库**。它采用集中式存储管理应用的所有组件的状态，并以相应的规则保证状态以一种可预测的方式发生变化。
