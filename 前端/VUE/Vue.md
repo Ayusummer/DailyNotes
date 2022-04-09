@@ -2662,7 +2662,57 @@ app.use(router)
 <router-link to="/marquee">跑马灯组件跳转</router-link>
 ```
 
+> 请注意，我们没有使用常规的 `a` 标签，而是使用一个自定义组件 `router-link` 来创建链接。这使得 Vue Router 可以在不重新加载页面的情况下更改 URL，处理 URL 的生成以及编码。我们将在后面看到如何从这些功能中获益。
+>
 > ![msedge_ClbRzoAsDK](http://cdn.ayusummer233.top/img/202204082247577.gif)
+
+---
+
+## 路由模式
+
+> [不同的历史模式 | Vue Router (vuejs.org)](https://router.vuejs.org/zh/guide/essentials/history-mode.html)
+>
+> [小满Router（第一章入门）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123585949?spm=1001.2014.3001.5502)
+
+在创建路由器实例时，`history` 配置允许我们在不同的历史模式中进行选择。
+
+```typescript
+// 创建 router
+const router = createRouter({
+    history: createWebHistory(),
+    routes
+})
+```
+
+
+
+`Vue2 -> Vue3` 路由模式名称变化
+
+|  Vue2   |         Vue3         |
+| :-----: | :------------------: |
+| history |   createWebHistory   |
+|  hash   | createWebHashHistory |
+| abstact | createMemoryHistory  |
+
+---
+
+### Hash 模式
+
+它在内部传递的实际 URL 之前使用了一个哈希字符（`#`）。由于这部分 URL 从未被发送到服务器，所以它不需要在服务器层面上进行任何特殊处理。不过，**它在 SEO 中确实有不好的影响**。如果你担心这个问题，可以使用 HTML5 模式。
+
+> [搜索引擎优化（搜索优化）_百度百科 (baidu.com)](https://baike.baidu.com/item/搜索引擎优化/3132)
+
+---
+
+### HTML5 模式
+
+用 `createWebHistory()` 创建 HTML5 模式，**官方推荐使用这个模式**
+
+当使用这种历史模式时，URL 会看起来很 "正常"，例如 `https://example.com/user/id`。漂亮!
+
+不过，问题来了。由于我们的应用是一个单页的客户端应用，如果没有适当的服务器配置，用户在浏览器中直接访问 `https://example.com/user/id`，就会得到一个 404 错误。这就丑了。
+
+不用担心：要解决这个问题，你需要做的就是在你的服务器上添加一个简单的回退路由。如果 URL 不匹配任何静态资源，它应提供与你的应用程序中的 `index.html` 相同的页面。漂亮依旧!
 
 ---
 
