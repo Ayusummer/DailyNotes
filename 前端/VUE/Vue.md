@@ -64,6 +64,13 @@
 - [Router](#router)
   - [安装](#安装-2)
   - [入门](#入门)
+  - [路由模式](#路由模式)
+    - [Hash 模式](#hash-模式)
+    - [HTML5 模式](#html5-模式)
+  - [命名路由](#命名路由)
+  - [编程式导航](#编程式导航)
+    - [导航到不同位置](#导航到不同位置)
+  - [历史记录](#历史记录)
 - [Vuex](#vuex)
 - [Pinia](#pinia)
   - [安装](#安装-3)
@@ -2863,6 +2870,57 @@ router.push({ path: '/user', params: { username } }) // -> /user
 由于属性 `to` 与 `router.push` 接受的对象种类相同，所以两者的规则完全相同。
 
 `router.push` 和所有其他导航方法都会返回一个 *Promise*，让我们可以等到导航完成后才知道是成功还是失败。在官方文档的 [Navigation Handling](https://router.vuejs.org/zh/guide/advanced/navigation-failures.html) 中有详细介绍。
+
+---
+
+## 历史记录
+
+> [小满Router（第三章-历史记录）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123590884)
+
+使用 `replace` 可以在不留下历史记录的情况下跳转页面
+
+> 就是不支持前进回退了, 当不需要用户回退上个界面的时候可以使用这个, 比如登录后不需要再返回登录界面
+
+```typescript
+// 不留示例记录跳转
+const switchToMarquee_no_record = (): void => {
+  router.replace('/marquee')
+}
+```
+
+```html
+  <!-- 不留历史记录跳转 -->
+  <el-button @click="switchToMarquee_no_record">不留历史记录跳转到跑马灯</el-button>
+```
+
+> ![msedge_cSoLw6uzxb](http://cdn.ayusummer233.top/img/202204100815795.gif)
+
+当然, 同样的`前进` 和 `回退` 操作也是支持自定义按钮及层级的
+
+```typescript
+// 前进 1 级界面
+const forward = (): void => {
+  router.forward()
+  // 或者 router.go(1)
+}
+
+// 回退 1 级界面
+const back = (): void => {
+  router.back()
+  // 或者 router.go(-1)
+}
+```
+
+```html
+  <!-- 前进 1 级界面 -->
+  <el-button @click="forward">前进 1 级界面</el-button>
+  <!-- 回退 1 级界面 -->
+  <el-button @click="back">回退 1 级界面</el-button>
+```
+
+> ![msedge_3pZIvCuV6y](http://cdn.ayusummer233.top/img/202204100824354.gif)
+
+
 
 ---
 
