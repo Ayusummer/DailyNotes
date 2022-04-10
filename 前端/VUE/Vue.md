@@ -71,6 +71,8 @@
   - [编程式导航](#编程式导航)
     - [导航到不同位置](#导航到不同位置)
   - [历史记录](#历史记录)
+  - [路由传参](#路由传参)
+    - [query 路由传参](#query-路由传参)
 - [Vuex](#vuex)
 - [Pinia](#pinia)
   - [安装](#安装-3)
@@ -2919,6 +2921,18 @@ const back = (): void => {
 ```
 
 > ![msedge_3pZIvCuV6y](http://cdn.ayusummer233.top/img/202204100824354.gif)
+
+---
+
+## 路由传参
+
+> [小满Router（第四章-路由传参）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123613595)
+>
+> [将 props 传递给路由组件 | Vue Router (vuejs.org)](https://router.vuejs.org/zh/guide/essentials/passing-props.html)
+
+---
+
+### query 路由传参
 
 
 
