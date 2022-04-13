@@ -2930,11 +2930,204 @@ const back = (): void => {
 >
 > [将 props 传递给路由组件 | Vue Router (vuejs.org)](https://router.vuejs.org/zh/guide/essentials/passing-props.html)
 
+query 传参和 params 传参的区别
+
+- query 传参配置的是 path，而 params 传参配置的是name，在 params中配置 path 无效
+- query 在路由配置不需要设置参数，而 params 必须设置
+- query 传递的参数会显示在地址栏中
+- params传参刷新会无效，但是 query 会保存传递过来的值，刷新不变 ;
+- 路由配置
+
 ---
 
 ### query 路由传参
 
+`GoodsWarehouse.vue`:
 
+```vue
+<script setup lang="ts">
+import router from '@/router'
+import { data } from './goods.json'
+
+type good = {
+    id: number;
+    name: string;
+    price: number;
+}
+
+// 转到商品详情页_path+query
+const toGoodsDetail = (good: good) => {
+    router.push({
+        path: '/goodInfo',
+        query: good
+    })
+}
+
+
+
+</script>
+
+<template>
+    <div>
+        <el-table :data=data>
+            <el-table-column label="商品名称" prop="name" width="180">
+            </el-table-column>
+            <el-table-column label="商品价格" prop="price" width="180">
+            </el-table-column>
+            <!-- 商品id -->
+            <el-table-column label="商品id" prop="id" width="180">
+            </el-table-column>
+            <el-table-column label="操作" width="180">
+                <!-- 跳转到商品详情页 -->
+                <template #default="scope">
+                    <el-button @click="toGoodsDetail(scope.row)" type="text">查看详情</el-button>
+                </template>
+            </el-table-column>
+        </el-table>
+    </div>
+</template>
+
+<style lang="less" scoped>
+</style>
+
+```
+
+> `el-table` 中可以使用插槽来获取单行数据
+
+`GoodInfo.vue`:
+
+```vue
+<script setup lang="ts">
+import { useRoute, useRouter } from 'vue-router';
+
+const route = useRoute();
+const router = useRouter();
+
+</script>
+
+<template>
+    <div>
+        <!-- 返回商品货仓界面 -->
+        <el-button @click="router.push('/goodsWarehouse')">返回商品货仓界面</el-button>
+        <el-row>
+            id: {{ route.query.id }}
+        </el-row>
+        <el-row>
+            商品名称 {{ route.query.name }}
+        </el-row>
+        <el-row>
+            商品价格: {{ route.query.price }}
+        </el-row>
+    </div>
+</template>
+
+<style lang="less" scoped>
+</style>
+```
+
+> 子界面使用 `useRoute().query.xx`获取传入数据
+
+> ![msedge_gJMiVwzXow](http://cdn.ayusummer233.top/img/202204132052730.gif)
+
+---
+
+### 使用 Params 传参
+
+```typescript
+// 转到商品详情页_name+params
+const toGoodsDetail_params = (good: good) => {
+    router.push({
+        name: 'goodInfo',
+        params: good
+    })
+}
+```
+
+```html
+        <!-- params 传参, route.params 接收参数 -->
+        <el-card>
+            <template #header>
+                <div class="card-header">params 传参, route.params 接收参数</div>
+            </template>
+            <div>
+                <el-row>
+                    id: {{ route.params?.id }}
+                </el-row>
+                <el-row>
+                    商品名称 {{ route.params?.name }}
+                </el-row>
+                <el-row>
+                    商品价格: {{ route.params?.price }}
+                </el-row>
+            </div>
+        </el-card>
+```
+
+> ![msedge_6mAt4yKKUJ](http://cdn.ayusummer233.top/img/202204132106174.gif)
+
+---
+
+### 动态路由
+
+> [带参数的动态路由匹配 | Vue Router (vuejs.org)](https://router.vuejs.org/zh/guide/essentials/dynamic-matching.html#带参数的动态路由匹配)
+
+设置动态路由:
+
+```typescript
+    {
+        path: '/goodInfo/:id',
+        name: 'goodInfo',
+        component: () => import('@/components/GoodsWarehouse/GoodInfo.vue')
+    }
+```
+
+```typescript
+// 转到商品详情页_动态路由传id
+const toGoodsDetail_dynamic = (good: good) => {
+    router.push({
+        name: 'goodInfo',
+        params: {
+            id: good.id
+        }
+    })
+}
+```
+
+```typescript
+import { useRoute, useRouter } from 'vue-router';
+import { data } from './goods.json'
+
+const route = useRoute();
+const router = useRouter();
+
+const item = data.find(v => v.id === Number(route.params.id))
+```
+
+```html
+        <!-- 动态路由传参, 导入数据结合传入id提取目标数据 -->
+        <el-card>
+            <template #header>
+                <div class="card-header">动态路由传参, 导入数据结合传入id提取目标数据</div>
+            </template>
+            <div>
+                <el-row>
+                    id: {{ item?.id }}
+                </el-row>
+                <el-row>
+                    商品名称 {{ item?.name }}
+                </el-row>
+                <el-row>
+                    商品价格: {{ item?.price }}
+                </el-row>
+            </div>
+        </el-card>
+```
+
+> ![msedge_CVTuOI2ofJ](http://cdn.ayusummer233.top/img/202204132143962.gif)
+
+> 动态路由传参也是通过 Params, 因此除了根据 id 定位 data 中的相应条目数据
+>
+> params 直接传一个 good 对象即可(good对象中有id属性, 默认会赋给id
 
 ---
 
