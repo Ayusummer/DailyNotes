@@ -311,9 +311,13 @@
 ### 第 3 周(4.4-4.10)
 
   - [x] [学习Pinia 第三章（State）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123360349)
+
   - [x] [学习Pinia 第四章（解构store）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123365751)
+
   - [x] [学习Pinia 第五章（Actions，getters）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123376269)
+
   - [x] [学习Pinia 第六章（API）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123402377)
+
   - [x] [学习Pinia 第七章（pinia插件）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123431769)
 
 - 实战
@@ -325,7 +329,10 @@
   - [x] [小满Router（第一章入门）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123585949?spm=1001.2014.3001.5501)
   - [x] [小满Router（第二章-命名路由-编程式导航）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123589648)
   - [x] [小满Router（第三章-历史记录）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123590884)
-  - [ ] [小满Router（第四章-路由传参）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123613595)
+
+### 第 4 周(4.11-4.17)
+
+  - [x] [小满Router（第四章-路由传参）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123613595)
   - [ ] [小满Router（第五章-嵌套路由）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123618719)
   - [ ] [小满Router（第六章-命名视图）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123671069)
   - [ ] [小满Router（第七章-重定向-别名）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123697904)
