@@ -333,7 +333,7 @@
 ### 第 4 周(4.11-4.17)
 
   - [x] [小满Router（第四章-路由传参）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123613595)
-  - [ ] [小满Router（第五章-嵌套路由）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123618719)
+  - [x] [小满Router（第五章-嵌套路由）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123618719)
   - [ ] [小满Router（第六章-命名视图）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123671069)
   - [ ] [小满Router（第七章-重定向-别名）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123697904)
   - [ ] [小满Router（第八章-导航守卫）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123699583)

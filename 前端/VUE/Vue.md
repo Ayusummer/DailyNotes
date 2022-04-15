@@ -73,6 +73,9 @@
   - [历史记录](#历史记录)
   - [路由传参](#路由传参)
     - [query 路由传参](#query-路由传参)
+    - [使用 Params 传参](#使用-params-传参)
+    - [动态路由](#动态路由)
+  - [嵌套路由](#嵌套路由)
 - [Vuex](#vuex)
 - [Pinia](#pinia)
   - [安装](#安装-3)
@@ -3127,7 +3130,78 @@ const item = data.find(v => v.id === Number(route.params.id))
 
 > 动态路由传参也是通过 Params, 因此除了根据 id 定位 data 中的相应条目数据
 >
-> params 直接传一个 good 对象即可(good对象中有id属性, 默认会赋给id
+> params 直接传一个 good 对象即可(good对象中有id属性, 默认会赋给id)
+>
+> > 只传 id 然后结合 data 取值可以通过网址直接访问具体商品的详情(网址里传了id)
+
+---
+
+## 嵌套路由
+
+> [小满Router（第五章-嵌套路由）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123618719)
+
+比如导航菜单栏做成父路由, 具体内容做成子路由
+
+![image-20220415202911435](http://cdn.ayusummer233.top/img/202204152029712.png)
+
+首先在路由表里把子路由嵌套进父路由的 `children` 属性中:
+
+```typescript
+    {
+        path: '/goodsWarehouse',
+        name: 'goodsWarehouse',
+        component: () => import('@/components/GoodsWarehouse/footer.vue'),
+        children: [
+            {
+                // path 设为空默认显示该子路由页面
+                path: '',
+                name: 'goodsWarehouseMain',
+                component: () => import('@/components/GoodsWarehouse/GoodsWarehouse.vue')
+            },
+            {
+                path: '/goodInfo/:id',
+                name: 'goodInfo',
+                component: () => import('@/components/GoodsWarehouse/GoodInfo.vue')
+            }
+        ]
+    },
+```
+
+然后在组件中使用 `<router-view>` 展示子路由
+
+`footer`:
+
+```vue
+<script setup lang="ts">
+import router from '@/router'
+</script>
+
+<template>
+    <el-card>
+        <template #header>
+            <div class="card-header">我是父路由</div>
+            <div class="card-header">
+                <!-- 跳转到货仓主界面 -->
+                <el-button @click="router.push('/goodsWarehouse')">返回货仓主界面</el-button>
+                <!-- 前往商品1详情页 -->
+                <el-button @click="router.push('/goodInfo/1')">前往商品1详情页</el-button>
+            </div>
+        </template>
+        <router-view></router-view>
+    </el-card>
+</template>
+
+<style lang="less" scoped>
+.card-header {
+    // 文字居中
+    text-align: center;
+}
+</style>
+```
+
+> ![image-20220415214306409](http://cdn.ayusummer233.top/img/202204152143958.png)
+>
+> ![msedge_69jPqzIooD](http://cdn.ayusummer233.top/img/202204152144041.gif)
 
 ---
 
