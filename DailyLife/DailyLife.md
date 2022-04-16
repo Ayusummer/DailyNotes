@@ -18,6 +18,7 @@
   - [项目管理职业资格认证(PMI)](#项目管理职业资格认证pmi)
   - [华为认证](#华为认证)
 - [下载](#下载)
+  - [IDM](#idm)
   - [aria2](#aria2)
   - [超星相关](#超星相关)
     - [没有下载选项的 PDF](#没有下载选项的-pdf)
@@ -153,6 +154,24 @@ PMI 所有证书
 
 ---
 # 下载
+
+---
+
+## IDM
+
+> [解决新版 Edge 浏览器无法使用 IDM 的问题_Xavier Jiezou的博客-CSDN博客_edge idm](https://blog.csdn.net/qq_42951560/article/details/120678847)
+
+在 Edge 上安装 IDM 扩展
+
+打开 `IDM 安装目录` 找到 `IDMGCExt.crx`
+
+![image-20220416092234213](http://cdn.ayusummer233.top/img/202204160922375.png)
+
+在 Edge 扩展中打开 `开发人员模式`:
+
+![image-20220416092329182](http://cdn.ayusummer233.top/img/202204160923294.png)
+
+将 `IDMGCExt.crx` 拖动到 Edge 扩展界面即可安装扩展
 
 ---
 ## aria2
