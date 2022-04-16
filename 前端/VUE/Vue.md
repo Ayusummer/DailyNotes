@@ -76,6 +76,10 @@
     - [使用 Params 传参](#使用-params-传参)
     - [动态路由](#动态路由)
   - [嵌套路由](#嵌套路由)
+  - [命名视图](#命名视图)
+  - [重定向和别名](#重定向和别名)
+    - [重定向](#重定向)
+    - [别名](#别名)
 - [Vuex](#vuex)
 - [Pinia](#pinia)
   - [安装](#安装-3)
@@ -3312,7 +3316,94 @@ const router = createRouter({
 >
 > ![image-20220416100053450](http://cdn.ayusummer233.top/img/202204161000639.png)
 
+---
 
+## 重定向和别名
+
+> [小满Router（第七章-重定向-别名）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123697904)
+>
+> [重定向和别名 | Vue Router (vuejs.org)](https://router.vuejs.org/zh/guide/essentials/redirect-and-alias.html)
+>
+> [Redirect and Alias | Vue Router (vuejs.org)](https://router.vuejs.org/guide/essentials/redirect-and-alias.html)
+
+---
+
+### 重定向
+
+重定向可以用于将主页面路由重定向到想要作为默认页面的子页面路由上, 以 [命名视图](#命名视图) 中的例子为基准, 其主页面路由为 `/namedView`:
+
+![image-20220416173721210](http://cdn.ayusummer233.top/img/202204161737466.png)
+
+想要将 `namedView 主页面` 重定向到 `user1` 的话可以在路由表中加个 `redirect`:
+
+```typescript
+    {
+        path: '/namedVIew',
+        name: 'namedView',
+        redirect:'/namedView/user1',
+        component: () => import('@/components/NamedViewsTest/root.vue'),
+        children: [{
+            path: "user1",
+            components: {
+                default: () => import('@/components/NamedViewsTest/A.vue'),
+            }
+        },
+            {
+                path: "user2",
+                components: {
+                    b: () => import('@/components/NamedViewsTest/B.vue'),
+                    c: () => import('@/components/NamedViewsTest/C.vue')
+                }
+            }
+        ]
+    }
+```
+
+> ![msedge_1NBz7cHtPj](http://cdn.ayusummer233.top/img/202204161803114.gif)
+
+---
+
+`redirect` 除了可以写路径字符串外还可以使用对象形式配置:
+
+```typescript
+redirect:{path:'/namedView/user1'},
+```
+
+以及函数形式(可以传参):
+
+```typescript
+redirect: to => {
+    // console.log("函数形式重定向")
+    return {
+        path: '/namedView/user1',
+        query: {
+            name: '233'
+        }
+    }
+},
+```
+
+---
+
+### 别名
+
+顾名思义可以给路由定义别名, 比如给 `namedView` 定义两个别名 `namedView1, namedView2` 可以在路由表中使用 `alias` 属性进行定义:
+
+```typescript
+path: '/namedVIew',
+name: 'namedView',
+// 别名
+alias: ['/namedView1', '/namedView2'],
+```
+
+```html
+<!-- 跳转到 namedView1 -->
+<el-button @click="$router.push('/namedView1')">跳转到 namedView1</el-button>
+<!-- 跳转到 namedView2 -->
+<el-button @click="$router.push('/namedView2')">跳转到 namedView2</el-button>
+```
+
+> ![msedge_oDYgxZLJHR](http://cdn.ayusummer233.top/img/202204161821462.gif)
 
 ---
 
