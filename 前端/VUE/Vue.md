@@ -3205,6 +3205,117 @@ import router from '@/router'
 
 ---
 
+## 命名视图
+
+> [小满Router（第六章-命名视图）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123671069)
+>
+> [命名路由 | Vue Router (vuejs.org)](https://router.vuejs.org/zh/guide/essentials/named-routes.html)
+
+命名视图和插槽比较像
+
+有时候想同时 (同级) 展示多个视图，而不是嵌套展示，例如创建一个布局，有 `sidebar` (侧导航) 和 `main` (主内容) 两个视图，这个时候命名视图就派上用场了。你可以在界面中拥有多个单独命名的视图，而不是只有一个单独的出口。如果 `router-view` 没有设置名字，那么默认为 `default`。
+
+```html
+<router-view class="view left-sidebar" name="LeftSidebar"></router-view>
+<router-view class="view main-content"></router-view>
+<router-view class="view right-sidebar" name="RightSidebar"></router-view>
+```
+
+一个视图使用一个组件渲染，因此对于同个路由，多个视图就需要多个组件。确保正确使用 `components` 配置 (带上 **s**)：
+
+```js
+const router = createRouter({
+  history: createWebHashHistory(),
+  routes: [
+    {
+      path: '/',
+      components: {
+        default: Home,
+        // LeftSidebar: LeftSidebar 的缩写
+        LeftSidebar,
+        // 它们与 `<router-view>` 上的 `name` 属性匹配
+        RightSidebar,
+      },
+    },
+  ],
+})
+```
+
+---
+
+在路由表上进行相关配置:
+
+```typescript
+    {
+        path: '/namedVIew',
+        name: 'namedView',
+        component: () => import('@/components/NamedViewsTest/root.vue'),
+        children: [{
+            path: "user1",
+            components: {
+                default: () => import('@/components/NamedViewsTest/A.vue'),
+            }
+        },
+            {
+                path: "user2",
+                components: {
+                    b: () => import('@/components/NamedViewsTest/B.vue'),
+                    c: () => import('@/components/NamedViewsTest/C.vue')
+                }
+            }
+        ]
+    }
+```
+
+> 这是由一组嵌套路由和两组命名视图组成的(
+
+`A B C 组件` 中只有象征性的 `Component X` 字符串
+
+`root.vue`:
+
+```vue
+<script setup lang="ts">
+</script>
+
+<template>
+    <!-- 返回主界面 -->
+    <el-button @click="$router.push('/')">返回主界面</el-button>
+    <!-- 跳转到 user1 -->
+    <el-button @click="$router.push('/namedView/user1')">跳转到 user1</el-button>
+    <!-- 跳转到 user2 -->
+    <el-button @click="$router.push('/namedView/user2')">跳转到 user2</el-button>
+    <router-view></router-view>
+    <router-view name="b"></router-view>
+    <router-view name="c"></router-view>
+</template>
+
+<style lang="less" scoped>
+</style>
+```
+
+> ![image-20220416095535247](http://cdn.ayusummer233.top/img/202204160955467.png)
+>
+> ![msedge_P5oKJvTUy9](http://cdn.ayusummer233.top/img/202204160955336.gif)
+>
+> `root.vue` 中的三个 `router-view` 第一个其实就是指 `default`, 如果在路由表的 `user2` 中加上 `default` 组件那么跳转到 `user2` 界面时就能看到三个组件界面了
+>
+> ```typescript
+>             {
+>                 path: "user2",
+>                 components: {
+>                     default: () => import('@/components/NamedViewsTest/A.vue'),
+>                     b: () => import('@/components/NamedViewsTest/B.vue'),
+>                     c: () => import('@/components/NamedViewsTest/C.vue')
+>                 }
+>             }
+> ```
+>
+> ![image-20220416100053450](http://cdn.ayusummer233.top/img/202204161000639.png)
+
+
+
+---
+
 # Vuex
 
 > Vuex 是一个专为 Vue.js 应用程序开发的 **状态管理模式 + 库**。它采用集中式存储管理应用的所有组件的状态，并以相应的规则保证状态以一种可预测的方式发生变化。
