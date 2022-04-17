@@ -80,6 +80,8 @@
   - [重定向和别名](#重定向和别名)
     - [重定向](#重定向)
     - [别名](#别名)
+  - [导航守卫](#导航守卫)
+  - [全局前置守卫](#全局前置守卫)
 - [Vuex](#vuex)
 - [Pinia](#pinia)
   - [安装](#安装-3)
@@ -108,6 +110,8 @@
 - [auto-import](#auto-import)
 - [ElementPlus](#elementplus)
   - [backtop 踩坑记录](#backtop-踩坑记录)
+  - [表单](#表单)
+    - [表单校验](#表单校验)
 - [Scoped 与样式穿透](#scoped-与样式穿透)
 - [自定义全局插件](#自定义全局插件)
 - [组件系统](#组件系统)
@@ -3407,6 +3411,183 @@ alias: ['/namedView1', '/namedView2'],
 
 ---
 
+## 导航守卫
+
+> [导航守卫 | Vue Router (vuejs.org)](https://router.vuejs.org/zh/guide/advanced/navigation-guards.html)
+>
+> [小满Router（第八章-导航守卫）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123699583)
+>
+> [Navigation Guards | Vue Router (vuejs.org)](https://router.vuejs.org/guide/advanced/navigation-guards.html)
+
+vue-router 提供的导航守卫主要用来通过跳转或取消的方式守卫导航。这里有很多方式植入路由导航中：全局的，单个路由独享的，或者组件级的。
+
+所有的跳转和前进后退都会走导航守卫函数, 因此做路由权限用得比较多
+
+## 全局前置守卫
+
+比如在登录时存一个 `token`, 当直接通过路由访问界面时先判断当前路由是否在路由白名单中或者当前已登录(存了 token, 或者其他复杂的加密算法) 则放通路由, 否则重定位回登录界面
+
+`main.ts`:
+
+```typescript
+// 定义路由白名单
+const whiteList = ['/login', '/404', '/401', '/lock']
+
+//  使用导航守卫
+router.beforeEach((to, from, next) => {
+    // 若路由在白名单内或者已经登录(有token), 则放通
+    if (whiteList.indexOf(to.path) !== -1 || localStorage.getItem('token')) {
+        next()
+    } else {
+        // 否则跳转到登录页面
+        next('/login')
+    }
+})
+```
+
+路由表:
+
+```typescript
+// 导航守卫测试页面
+{
+    path: '/',
+    name: 'login',
+    alias: '/login',
+    component: () => import('@/views/NavigationGuardTest/login.vue'),
+},
+// 导航守卫测试主页面(需要登录才能访问)(导航界面)
+{
+    path: "/navigation",
+    name: "navigation",
+    component: () => import("@/components/Navigation/Navigation.vue")
+},
+```
+
+`login.vue`:
+
+```vue
+<script setup lang="ts">
+import { reactive, ref, Ref } from 'vue'
+import type { FormInstance, FormItemRule } from 'element-plus'
+import { ElMessage } from 'element-plus'
+import router from '@/router'
+
+// 定义表单数据类型
+type FormData = {
+    account: string,
+    password: string
+}
+
+// 定义表单验证规则
+const form = ref<FormInstance>()
+
+// 定义规则类型
+type Rules = {
+    [K in keyof FormData]?: Array<FormItemRule>
+}
+
+// 定义表单数据
+const formLabelAlign = reactive<FormData>({
+    // 账号
+    account: '',
+    // 密码
+    password: '',
+})
+
+// 定义规则
+const rules = reactive<Rules>({
+    account: [
+        {
+            required: true,
+            message: '请输入账号',
+            type: 'string',
+        },
+    ],
+    password: [
+        {
+            required: true,
+            message: '请输入密码',
+            type: 'string',
+        },
+    ],
+})
+
+// 密码输入框的显示状态
+const showPassword: Ref<boolean> = ref(false)
+
+
+//  登录函数
+const login = (): void => {
+    form.value?.validate((validate) => {
+        if (validate) {
+            // 跳转到首页
+            router.push('/navigation')
+            // 设置token
+            localStorage.setItem('token', '1')
+        } else {
+            // 提示错误
+            ElMessage.error('请检查表单错误')
+        }
+    })
+}
+
+</script>
+
+<template>
+    <div class="login">
+        <el-card class="box-card">
+            <template #header>
+                <div class="card-header">
+                    <!-- 返回主界面 -->
+                    <el-button @click="$router.push('/')">返回主界面</el-button>
+                    Login
+                </div>
+            </template>
+            <el-form :model="formLabelAlign" :rules="rules" ref="form">
+                <el-form-item label="账号:" prop="account">
+                    <el-input v-model="formLabelAlign.account" placeholder="请输入账号"></el-input>
+                </el-form-item>
+                <el-form-item label="密码:" prop="password">
+                    <!-- <el-input type="password" v-model="formLabelAlign.password" /> -->
+                    <el-input v-model="formLabelAlign.password" type="password" show-password show-password-icon
+                        @click="showPassword = !showPassword" placeholder="请输入密码" />
+                </el-form-item>
+                <el-form-item>
+                    <!-- 登录按钮 -->
+                    <el-button type="primary" @click="login">登录</el-button>
+                </el-form-item>
+
+            </el-form>
+        </el-card>
+    </div>
+</template>
+
+<style lang="less" scoped>
+.login {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.box-card {
+    width: 480px;
+}
+</style>
+```
+
+> 这里使用了 `ElementPlus` 的表单控件并配了示例性质的表单校验
+>
+> ![msedge_qXVOGjzrg4](http://cdn.ayusummer233.top/img/202204171003267.gif)
+
+---
+
 # Vuex
 
 > Vuex 是一个专为 Vue.js 应用程序开发的 **状态管理模式 + 库**。它采用集中式存储管理应用的所有组件的状态，并以相应的规则保证状态以一种可预测的方式发生变化。
@@ -4622,6 +4803,18 @@ vue2 的时候就已经支持 jsx 写法，只不过不是很友好，随着 vue
 ```
 
 ![msedge_b09VxKHBwD](http://cdn.ayusummer233.top/img/202204062119433.gif)
+
+---
+
+## 表单
+
+### 表单校验
+
+先装下 `async-validator`:
+
+```shell
+pnpm i async-validator
+```
 
 
 

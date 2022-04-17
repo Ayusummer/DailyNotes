@@ -334,8 +334,8 @@
 
   - [x] [小满Router（第四章-路由传参）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123613595)
   - [x] [小满Router（第五章-嵌套路由）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123618719)
-  - [ ] [小满Router（第六章-命名视图）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123671069)
-  - [ ] [小满Router（第七章-重定向-别名）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123697904)
+  - [x] [小满Router（第六章-命名视图）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123671069)
+  - [x] [小满Router（第七章-重定向-别名）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123697904)
   - [ ] [小满Router（第八章-导航守卫）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123699583)
   - [ ] [小满Router（第九章-路由元信息）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123766639)
   - [ ] [小满Router（第十章-路由过渡动效）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123767240)
