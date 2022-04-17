@@ -81,7 +81,8 @@
     - [重定向](#重定向)
     - [别名](#别名)
   - [导航守卫](#导航守卫)
-  - [全局前置守卫](#全局前置守卫)
+    - [全局前置守卫](#全局前置守卫)
+    - [全局后置钩子](#全局后置钩子)
 - [Vuex](#vuex)
 - [Pinia](#pinia)
   - [安装](#安装-3)
@@ -154,6 +155,8 @@
     - [自定义 Hook](#自定义-hook)
   - [指令](#指令)
     - [v-model](#v-model-1)
+  - [特殊 attribute](#特殊-attribute)
+    - [ref](#ref)
   - [内置组件](#内置组件)
     - [`transition`](#transition)
       - [结合 Animate.css 使用](#结合-animatecss-使用)
@@ -171,7 +174,7 @@
     - [响应性基础 API](#响应性基础-api)
       - [reactive](#reactive)
     - [Refs](#refs)
-      - [ref](#ref)
+      - [ref](#ref-1)
     - [`Computed` 与 `watch`](#computed-与-watch)
       - [`computed`](#computed)
       - [watch](#watch)
@@ -3423,7 +3426,7 @@ vue-router 提供的导航守卫主要用来通过跳转或取消的方式守卫
 
 所有的跳转和前进后退都会走导航守卫函数, 因此做路由权限用得比较多
 
-## 全局前置守卫
+### 全局前置守卫
 
 比如在登录时存一个 `token`, 当直接通过路由访问界面时先判断当前路由是否在路由白名单中或者当前已登录(存了 token, 或者其他复杂的加密算法) 则放通路由, 否则重定位回登录界面
 
@@ -3585,6 +3588,28 @@ const login = (): void => {
 > 这里使用了 `ElementPlus` 的表单控件并配了示例性质的表单校验
 >
 > ![msedge_qXVOGjzrg4](http://cdn.ayusummer233.top/img/202204171003267.gif)
+
+---
+
+### 全局后置钩子
+
+和守卫不同的是，钩子不会接受 `next` 函数也不会改变导航本身：
+
+```js
+router.afterEach((to, from) => {
+  sendToAnalytics(to.fullPath)
+})
+```
+
+它们对于分析、更改页面标题、声明页面等辅助功能以及许多其他事情都很有用。
+
+它们也反映了 [navigation failures](https://router.vuejs.org/zh/guide/advanced/navigation-failures.html) 作为第三个参数：
+
+```js
+router.afterEach((to, from, failure) => {
+  if (!failure) sendToAnalytics(to.fullPath)
+})
+```
 
 ---
 
@@ -7852,6 +7877,26 @@ let change: Ref<boolean> = ref<boolean>(false)
 ```
 
 > ![](http://cdn.ayusummer233.top/img/202203311004868.gif)
+
+---
+
+## 特殊 attribute
+
+### ref
+
+> [特殊 attribute-ref | Vue.js (vuejs.org)](https://v3.cn.vuejs.org/api/special-attributes.html#ref)
+>
+> [模板 ref | Vue.js (vuejs.org)](https://staging-cn.vuejs.org/guide/essentials/template-refs.html)
+>
+> [Built-in Special Attributes | Vue.js (vuejs.org)](https://staging-cn.vuejs.org/api/built-in-special-attributes.html#ref)
+
+- **Expects:** `string | Function`
+
+`ref` 用于给元素或者子组件注册一个 `reference`
+
+
+
+
 
 ---
 
