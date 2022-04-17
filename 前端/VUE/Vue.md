@@ -83,6 +83,7 @@
   - [导航守卫](#导航守卫)
     - [全局前置守卫](#全局前置守卫)
     - [全局后置钩子](#全局后置钩子)
+  - [路由元信息](#路由元信息)
 - [Vuex](#vuex)
 - [Pinia](#pinia)
   - [安装](#安装-3)
@@ -3610,6 +3611,78 @@ router.afterEach((to, from, failure) => {
   if (!failure) sendToAnalytics(to.fullPath)
 })
 ```
+
+---
+
+## 路由元信息
+
+> [路由元信息 | Vue Router (vuejs.org)](https://router.vuejs.org/zh/guide/advanced/meta.html)
+>
+> [小满Router（第九章-路由元信息）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123766639)
+
+通过路由记录的 `meta` 属性可以定义路由的**元信息**。使用路由元信息可以在路由中附加自定义的数据，例如：
+
+- 权限校验标识。
+- 路由组件的过渡名称。
+- 路由组件持久化缓存 (keep-alive) 的相关配置。
+- 标题名称
+
+我们可以在**导航守卫**或者是**路由对象**中访问路由的元信息数据。
+
+比如我们给每个页面路由加一个 `meta` 属性, 其中包含一个 `title` 字段, 并在 `beforeEach` 中读取 `title` 并赋给当前界面标题:
+
+`路由表`:
+
+```typescript
+// 导航守卫测试页面
+{
+    path: '/',
+    name: 'login',
+    alias: '/login',
+    // 路由元信息
+    meta: {
+        title: '登录页面',
+    },
+    component: () => import('@/views/NavigationGuardTest/login.vue'),
+},
+// 导航守卫测试主页面(需要登录才能访问)(导航界面)
+{
+    path: "/navigation",
+    name: "navigation",
+    meta: {
+        title: '组件导航页面'
+    },
+    component: () => import("@/components/Navigation/Navigation.vue")
+},
+    
+// .....其他路由meta
+    
+// 定义 meta 中的属性类型, 以免后面使用时报类型错误
+declare module 'vue-router' {
+    interface RouteMeta {
+        title: string
+    }
+}
+
+//  使用导航守卫(前置守卫)
+router.beforeEach((to, from, next) => {
+    document.title = to.meta.title
+    // 挂载 LoadingBar 到 body 上(折中做法)
+    render(LoadingBarVNode, document.body)
+    LoadingBarVNode.component?.exposed?.startLoading()
+    // 若路由在白名单内或者已经登录(有token), 则放通
+    if (whiteList.indexOf(to.path) !== -1 || localStorage.getItem('token')) {
+        next()
+    } else {
+        // 否则跳转到登录页面
+        next('/login')
+    }
+})
+```
+
+> ![msedge_DOQ8qIlolX](http://cdn.ayusummer233.top/img/202204172206956.gif)
+
+
 
 ---
 
