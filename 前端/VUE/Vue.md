@@ -3757,6 +3757,52 @@ import 'animate.css'
 
 ---
 
+## 滚动行为
+
+> [滚动行为 | Vue Router (vuejs.org)](https://router.vuejs.org/zh/guide/advanced/scroll-behavior.html#滚动行为)
+>
+> [小满Router（第十一章-滚动行为）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123770440)
+
+使用前端路由，当切换到新路由时，想要页面滚到顶部，或者是保持原先的滚动位置，就像重新加载页面那样。 vue-router 能做到，而且更好，它让你可以自定义路由切换时页面如何滚动。
+
+> **注意: 这个功能只在支持 history.pushState 的浏览器中可用。**
+
+当创建一个 Router 实例，你可以提供一个 `scrollBehavior` 方法:
+
+```js
+const router = createRouter({
+  history: createWebHashHistory(),
+  routes: [...],
+  scrollBehavior (to, from, savedPosition) {
+    // return 期望滚动到哪个的位置
+  }
+})
+```
+
+比如想让路由跳转时记住当前页面滚动条位置并在下次回到当前页面时保持此位置(若无则默认滚动到顶部) 可以如下操作:
+
+在路由表 `router` 创建时:
+
+```typescript
+// 创建 router
+const router = createRouter({
+    history: createWebHistory(),
+    routes,
+    scrollBehavior(to, from, savedPosition) {
+        console.log("savaPosition", savedPosition);
+        if (savedPosition) {
+            return savedPosition
+        } else {
+            return { top: 0 }
+        }
+    }
+})
+```
+
+> ![msedge_QUnJhZJs4x](http://cdn.ayusummer233.top/img/202204181005323.gif)
+
+---
+
 # Vuex
 
 > Vuex 是一个专为 Vue.js 应用程序开发的 **状态管理模式 + 库**。它采用集中式存储管理应用的所有组件的状态，并以相应的规则保证状态以一种可预测的方式发生变化。
