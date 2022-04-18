@@ -320,10 +320,6 @@
 
   - [x] [学习Pinia 第七章（pinia插件）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123431769)
 
-- 实战
-
-  - [ ] [Vue3 + vite + Ts + pinia + 实战 + 源码 (bilibili.com)P50~60](https://www.bilibili.com/medialist/play/ml1460588865/BV1dS4y1y7vd?oid=723739713&otype=2)
-
 - Router
 
   - [x] [小满Router（第一章入门）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123585949?spm=1001.2014.3001.5501)
@@ -338,12 +334,14 @@
   - [x] [小满Router（第七章-重定向-别名）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123697904)
   - [x] [小满Router（第八章-导航守卫）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123699583)
   - [x] [小满Router（第九章-路由元信息）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123766639)
-  - [ ] [小满Router（第十章-路由过渡动效）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123767240)
+  - [x] [小满Router（第十章-路由过渡动效）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123767240)
   - [ ] [小满Router（第十一章-滚动行为）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123770440)
   - [ ] [小满Router（第十二章-动态路由）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123783173)
 
-- Pm2
+- 实战
+  - [ ] [Vue3 + vite + Ts + pinia + 实战 + 源码 (bilibili.com)P50~60](https://www.bilibili.com/medialist/play/ml1460588865/BV1dS4y1y7vd?oid=723739713&otype=2)
 
+- Pm2
   - [学习Pm2 第一章_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123564779?spm=1001.2014.3001.5501)
 
   

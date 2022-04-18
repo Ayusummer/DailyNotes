@@ -3753,6 +3753,8 @@ import 'animate.css'
 </template>
 ```
 
+> ![msedge_L6Sb0mpZNj](http://cdn.ayusummer233.top/img/202204180919633.gif)
+
 ---
 
 # Vuex
