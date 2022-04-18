@@ -84,6 +84,7 @@
     - [全局前置守卫](#全局前置守卫)
     - [全局后置钩子](#全局后置钩子)
   - [路由元信息](#路由元信息)
+  - [过渡动效](#过渡动效)
 - [Vuex](#vuex)
 - [Pinia](#pinia)
   - [安装](#安装-3)
@@ -3682,7 +3683,75 @@ router.beforeEach((to, from, next) => {
 
 > ![msedge_DOQ8qIlolX](http://cdn.ayusummer233.top/img/202204172206956.gif)
 
+---
 
+## 过渡动效
+
+> [过渡动效 | Vue Router (vuejs.org)](https://router.vuejs.org/zh/guide/advanced/transitions.html)
+>
+> [小满Router（第十章-路由过渡动效）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123767240)
+
+想要在路径组件上使用转场，并对导航进行动画处理，你需要使用 [v-slot API](https://router.vuejs.org/zh/api/#router-view-s-v-slot)：
+
+```html
+<router-view v-slot="{ Component }">
+  <transition name="fade">
+    <component :is="Component" />
+  </transition>
+</router-view>
+```
+
+比如结合 [Animate.css](https://animate.style/#usage) 来做一些路由入场动效:
+
+首先在路由表里给每个路由的 `meta` 加上一个 `transition` 字段:
+
+```typescript
+// 导航守卫测试页面
+{
+    path: '/',
+    name: 'login',
+    alias: '/login',
+    // 路由元信息
+    meta: {
+        title: '登录页面',
+        transition: 'animate__fadeIn',
+    },
+    component: () => import('@/views/NavigationGuardTest/login.vue'),
+},
+// 导航守卫测试主页面(需要登录才能访问)(导航界面)
+{
+    path: "/navigation",
+    name: "navigation",
+    meta: {
+        title: '组件导航页面',
+        transition: 'animate__fadeIn',
+    },
+    component: () => import("@/components/Navigation/Navigation.vue")
+},
+    
+    // ... 其他路由 transition.....
+```
+
+> 图省事每个路由的 `transition` 都填的淡入效果
+
+然后在使用 `router-view` 时通过插槽解出 `route(当前路由信息)` 和 `Component(当前VNode)` 并使用过渡效果
+
+```typescript
+<script setup lang="ts">
+import 'animate.css'
+</script>
+```
+
+```html
+<template>
+  <!-- route 即路由信息, Component 即当前 VNode -->
+  <router-view #default="{ route, Component }">
+    <transition :enter-active-class="`animate__animated ${route.meta.transition}`">
+      <component :is="Component"></component>
+    </transition>
+  </router-view>
+</template>
+```
 
 ---
 
