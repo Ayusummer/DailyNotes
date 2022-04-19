@@ -85,6 +85,8 @@
     - [全局后置钩子](#全局后置钩子)
   - [路由元信息](#路由元信息)
   - [过渡动效](#过渡动效)
+  - [滚动行为](#滚动行为)
+  - [动态路由](#动态路由-1)
 - [Vuex](#vuex)
 - [Pinia](#pinia)
   - [安装](#安装-3)
@@ -3800,6 +3802,18 @@ const router = createRouter({
 ```
 
 > ![msedge_QUnJhZJs4x](http://cdn.ayusummer233.top/img/202204181005323.gif)
+
+---
+
+## 动态路由
+
+> [小满Router（第十二章-动态路由）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123783173)
+>
+> [动态路由 | Vue Router (vuejs.org)](https://router.vuejs.org/zh/guide/advanced/dynamic-routing.html)
+
+对路由的添加通常是通过 [`routes` 选项](https://router.vuejs.org/zh/api/#routes)来完成的，但是在某些情况下，你可能想在应用程序已经运行的时候添加或删除路由。具有可扩展接口(如 [Vue CLI UI](https://cli.vuejs.org/dev-guide/ui-api.html) )这样的应用程序可以使用它来扩展应用程序。
+
+> 常用于分权限, 比如不同用户看到的页面功能不同
 
 ---
 
