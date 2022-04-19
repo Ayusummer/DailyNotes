@@ -67,10 +67,10 @@
 		"body": [
 		  "'''",
 		  "-*- encoding: utf-8 -*-",
-		  "@文件    :$RELATIVE_FILEPATH",
-		  "@时间    :$CURRENT_YEAR/$CURRENT_MONTH/$CURRENT_DATE $CURRENT_HOUR:$CURRENT_MINUTE:$CURRENT_SECOND",
-		  "@作者    :咸鱼型233",
-		  "@说明    :",
+		  "@文件: $RELATIVE_FILEPATH",
+		  "@时间: $CURRENT_YEAR/$CURRENT_MONTH/$CURRENT_DATE $CURRENT_HOUR:$CURRENT_MINUTE:$CURRENT_SECOND",
+		  "@作者: 咸鱼型233",
+		  "@说明: ",
 		  "'''",
 		],
 	  }
