@@ -135,3 +135,6 @@
   ![Terminal图标](https://images.gitee.com/uploads/images/2021/0302/173555_2cc6665a_7703072.png "屏幕截图.png")  
   点开之后默认采用当前项目的根目录
   ![输入图片说明](https://images.gitee.com/uploads/images/2021/0302/173623_407de49c_7703072.png "屏幕截图.png")
+
+---
+
