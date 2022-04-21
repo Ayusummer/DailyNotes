@@ -5,6 +5,8 @@
 > [pnpm/pnpm: Fast, disk space efficient package manager -- 快速的，节省磁盘空间的包管理工具 (github.com)](https://github.com/pnpm/pnpm)
 >
 > [Fast, disk space efficient package manager | pnpm](https://pnpm.io/zh/)
+>
+> [都2022年了，pnpm快到碗里来！ - 掘金 (juejin.cn)](https://juejin.cn/post/7053340250210795557)
 
 ![image-20211116141412200](http://cdn.ayusummer233.top/img/202111161414336.png)
 
@@ -31,8 +33,24 @@ cnpm、pnpm 用法类似npm，yarn不一样地方列出来单独说明
   - 删除 node_modules` 目录然后重新安装
 
 - `--no-save`: 查看 `package.json`，文件内容不发生改变，在运行项目时能正常运行，当 `npm i` 时候，不会安装该依赖，提示安装该依赖。
+
 - `--save`: 查看 `package.json` 会有一个 `dependencies` 对象，里面就是项目运行需要的依赖。 `dependencies` 代表项目运行所依赖的模块, 简写 `-S`
+
 - `--save-dev`: 查看 `package.json` 会有一个 `devDependencies` 对象，里面就是项目开发时候需要的依赖。 `devDependencies` 代表项目开发所需要的模块, 简写 `-D`; 
+
+- 查看当前 less 的版本号
+
+  ```bash
+  npm list less
+  ```
+
+- 查看依赖库最新版本及历史版本
+
+  ```bash
+  npm view <packagename> versions --json
+  ```
+
+  
 
 
 
