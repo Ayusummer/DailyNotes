@@ -138,3 +138,25 @@
 
 ---
 
+## vscode-icons
+
+![](http://cdn.ayusummer233.top/img/202204212054230.png)
+
+---
+
+## prettier + ESLint
+
+> [Prettier · Opinionated Code Formatter](https://prettier.io/)
+>
+> [Prettier 文档](https://prettier.io/docs/en/index.html)
+>
+> [Prettier Playground v2.6.2](https://prettier.io/playground/)
+>
+> [ESLint - Pluggable JavaScript linter - ESLint中文](http://eslint.cn/)
+
+![](http://cdn.ayusummer233.top/img/202204212028180.png)
+
+![image-20220421202926005](http://cdn.ayusummer233.top/img/202204212029364.png)用 ESLint 做约束, 用 Prettier 做代码格式化
+
+
+
