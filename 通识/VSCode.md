@@ -115,6 +115,58 @@
 
 ---
 
+## KoroFileHeader
+
+> [配置字段 · OBKoro1/koro1FileHeader Wiki (github.com)](https://github.com/OBKoro1/koro1FileHeader/wiki/配置字段)
+>
+> [安装和快速上手 · OBKoro1/koro1FileHeader Wiki (github.com)](https://github.com/OBKoro1/koro1FileHeader/wiki/安装和快速上手)
+
+可用于创建文件时自动生成注释
+
+个人配置 stash
+
+```json
+  // 头部注释
+  "fileheader.customMade": {
+    "Author": "咸鱼型233", // 创建文件的作者
+    "Date": "Do not edit", // 文件创建时间(不变)
+    "LastEditors": "咸鱼型233", // 文件最后编辑者
+    // 由于编辑文件就会变更最后编辑时间，多人协作中合并的时候会导致merge
+    // 可以将时间颗粒度改为周、或者月，这样冲突就减少很多。搜索变更时间格式: dateFormat
+    "LastEditTime": "Do not edit", // 文件最后编辑时间
+    // 输出相对路径，类似: /文件夹名称/src/index.js
+    "FilePath": "Do not edit", // 文件在项目中的相对路径 自动更新
+    // 插件会自动将光标移动到Description选项中 方便输入 Description字段可以在specialOptions更改
+    "Description": "", // 介绍文件的作用、文件的入参、出参。
+    // custom_string_obkoro1~custom_string_obkoro100都可以输出自定义信息
+    // 可以设置多条自定义信息 设置个性签名、留下QQ、微信联系方式、输入空行等
+    "custom_string_obkoro1": "",
+    // 版权声明 保留文件所有权利 自动替换年份
+    "custom_string_obkoro1_copyright": "Copyright (c) ${now_year} by 咸鱼型233, All Rights Reserved. "
+  },
+  // 函数注释
+  "fileheader.cursorMode": {
+    "description": "", // 函数注释生成之后，光标移动到这里
+    "param": "", // param 开启函数参数自动提取 需要将光标放在函数行或者函数上方的空白行
+    "return": "",
+  },
+  // 插件配置项
+  "fileheader.configObj": {
+    // 自动添加头部注释黑名单
+    "prohibitAutoAdd": [
+      "json"
+    ],
+    "folderBlacklist": [
+      "node_modules",
+      "README.md",
+    ], // 文件夹或文件名禁止自动添加头部注释
+  },
+```
+
+
+
+---
+
 # 插件食用记录
 
 ## open
