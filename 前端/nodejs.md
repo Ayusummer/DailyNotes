@@ -1,5 +1,31 @@
 # Nodejs
 
+---
+
+## 安装
+
+Windows 下直接下载可执行文件安装即可
+
+Ubuntu 下使用
+
+```shell
+apt install nodejs
+```
+
+的话安装的版本会比较低, 安装特定版本的话可参考 [nodesource/distributions: NodeSource Node.js Binary Distributions (github.com)](https://github.com/nodesource/distributions#debinstall)
+
+```shell
+# Using Ubuntu
+curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
+sudo apt-get install -y nodejs
+
+# Using Debian, as root
+curl -fsSL https://deb.nodesource.com/setup_16.x | bash -
+apt-get install -y nodejs
+```
+
+
+
 ## 包管理工具
 
 > [pnpm/pnpm: Fast, disk space efficient package manager -- 快速的，节省磁盘空间的包管理工具 (github.com)](https://github.com/pnpm/pnpm)
