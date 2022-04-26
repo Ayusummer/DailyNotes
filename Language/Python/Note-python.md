@@ -650,17 +650,32 @@ Code2flow is useful for:
 ----
 ## 使用
 - 不支持中文,注释也不行,因此第一步就是要给待会要作为基底生成流程图的python文件去中文注释
+
 - 由于 `VSCode` 的查询功能有正则匹配的模式,所以想到使用 `VSCode` 直接去除整个文档的注释
   - 记得备份原文档(直接使用拷贝文档就是了)
   - (`^#.*` 匹配以#开头后接任意个任意字符的语句来去掉注释行)[PS : `.` 不会匹配 `\n` (换行)] 匹配行首注释
   - `#.*` 匹配行尾注释
   ![20210522163436](http:cdn.ayusummer233.top/img/20210522163436.png)
+  
 - 将去除注释的文件和 安装过程中最后指出的 `Scripts` 目录下的 `code2flow` 文件拷贝到同一文件目录下并用已经安装好 `code2flow` 的 `python环境` 打开该文件夹并打开命令行执行
   ```
   python code2flow mypythonfile.py
   ```
-  ![20210522164300](http:cdn.ayusummer233.top/img/20210522164300.png)
-  ![20210522164321](http:cdn.ayusummer233.top/img/20210522164321.png)
+  ![20210522164300](http://cdn.ayusummer233.top/img/20210522164300.png)![20210522164321](http://cdn.ayusummer233.top/img/20210522164321.png)
+
+---
+
+# import 相关
+
+---
+
+## 相对导入引发的相关问题
+
+> [python - ImportError : Attempted relative import with no known parent package - Stack Overflow](https://stackoverflow.com/questions/60593604/importerror-attempted-relative-import-with-no-known-parent-package)
+>
+> [python - Relative imports for the billionth time - Stack Overflow](https://stackoverflow.com/questions/14132789/relative-imports-for-the-billionth-time/14132912#14132912)
+>
+> [【一分钟解决】Python报错ImportError: attempted relative import with no known parent package_jaredyam的博客-CSDN博客](https://blog.csdn.net/weixin_43958105/article/details/114012590)
 
 
 ---
