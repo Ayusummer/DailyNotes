@@ -1,10 +1,10 @@
 <!--
  * @Author: your name
  * @Date: 2021-02-27 17:22:36
- * @LastEditTime: 2021-03-02 17:36:55
- * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2022-04-26 19:14:37
+ * @LastEditors: 咸鱼型233
  * @Description: In User Settings Edit
- * @FilePath: \DailyNotes\社区相关\VSCode.md
+ * @FilePath: \DailyNotes\通识\VSCode.md
 -->
 > 用于记录 VSCode 使用的一些随笔
 
@@ -14,10 +14,17 @@
 - [VSCode 下载](#vscode-下载)
 - [用户代码片段](#用户代码片段)
 	- [自用代码片段 stash](#自用代码片段-stash)
+	- [KoroFileHeader](#korofileheader)
+		- [快捷键](#快捷键)
+			- [文件头部注释快捷键](#文件头部注释快捷键)
+			- [函数注释注释快捷键](#函数注释注释快捷键)
+			- [多行函数参数鼠标选中后函数声明后按快捷键自动提取](#多行函数参数鼠标选中后函数声明后按快捷键自动提取)
 - [插件食用记录](#插件食用记录)
 	- [open](#open)
 	- [Python-autopep8](#python-autopep8)
 	- [Terminal](#terminal)
+	- [vscode-icons](#vscode-icons)
+	- [prettier + ESLint](#prettier--eslint)
 
 
 # VSCode 下载
@@ -207,6 +214,12 @@
   ![Terminal图标](https://images.gitee.com/uploads/images/2021/0302/173555_2cc6665a_7703072.png "屏幕截图.png")  
   点开之后默认采用当前项目的根目录
   ![输入图片说明](https://images.gitee.com/uploads/images/2021/0302/173623_407de49c_7703072.png "屏幕截图.png")
+
+清空终端信息
+
+1. ctrl+shift+p 呼出命令面板
+2. 搜索 open keyboard shortcuts
+3. 搜索 workbench.action.terminal.clea
 
 ---
 
