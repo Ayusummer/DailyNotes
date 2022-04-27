@@ -680,6 +680,34 @@ Code2flow is useful for:
 
 ---
 # 基础杂项
+
+---
+
+## 函数注释
+
+> [python函数注释 - stardsd - 博客园 (cnblogs.com)](https://www.cnblogs.com/sddai/p/14406799.html)
+>
+> [什么是 REST 风格 - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/20927249)
+>
+> [理解RESTful架构 - 阮一峰的网络日志 (ruanyifeng.com)](http://www.ruanyifeng.com/blog/2011/09/restful.html)
+
+Rest 风格的注释:
+
+```python
+"""
+This is a reST style.
+ 
+:param param1: this is a first param
+:param param2: this is a second param
+:returns: this is a description of what is returned
+:raises keyError: raises an exception
+"""
+```
+
+
+
+---
+
 ## 深浅拷贝
 - [该部分来源](https://www.runoob.com/w3cnote/python-understanding-dict-copy-shallow-or-deep.html)
 - 直接赋值：其实就是对象的引用（别名）。
