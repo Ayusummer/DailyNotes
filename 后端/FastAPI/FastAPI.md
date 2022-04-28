@@ -24,7 +24,7 @@ class CityName(str, Enum):
 from enum import Enum, IntEnum
 
 # 定义部门 id 枚举类型
-class DidEnum(Enum):
+class DidEnum(IntEnum):
     LinChuang=1
     NeiKe=2
     WaiKe=3
