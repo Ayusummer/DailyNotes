@@ -9,7 +9,9 @@
 - [请求体及混合参数](#请求体及混合参数)
   - [请求体和字段](#请求体和字段)
   - [多参数混合](#多参数混合)
-  - [数据格式嵌套的请求体](#数据格式嵌套的请求体)
+- [数据格式嵌套的请求体](#数据格式嵌套的请求体)
+- [配置 Cookie 和 Header 参数](#配置-cookie-和-header-参数)
+  - [Cookie 校验](#cookie-校验)
 
 # 路径参数和数据的解析验证
 
@@ -234,6 +236,28 @@ async def nested_models(data: Data):
 ![image-20220429233413969](http://cdn.ayusummer233.top/img/202204292334127.png)
 
 ![image-20220429233435690](http://cdn.ayusummer233.top/img/202204292334851.png)
+
+---
+
+# 配置 Cookie 和 Header 参数
+
+## Cookie 校验
+
+```python
+from fastapi import Cookie
+
+@router.get("/cookie")
+async def cookie(cookie_id: Optional[str] =  Cookie(None)):
+    return {"cookie_id": cookie_id}
+```
+
+调试需要在 apipost 中调下, 在 Header 中设置 Cookie
+
+![image-20220429235629565](http://cdn.ayusummer233.top/img/202204292356756.png)
+
+
+
+以及处理请求头中 key 重复的参数
 
 
 
