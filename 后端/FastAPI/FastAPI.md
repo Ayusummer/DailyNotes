@@ -202,7 +202,7 @@ body 包括两个 CityInfo: city01, city02
 
 ---
 
-## 数据格式嵌套的请求体
+# 数据格式嵌套的请求体
 
 在使用 Pydantic 定义请求体数据的时候, 校验使用 pydantic.Field
 
