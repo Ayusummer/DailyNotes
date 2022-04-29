@@ -8,6 +8,7 @@
   - [多个参数, 列表, 字符串验证, 正则, 参数别名](#多个参数-列表-字符串验证-正则-参数别名)
 - [请求体及混合参数](#请求体及混合参数)
   - [请求体和字段](#请求体和字段)
+  - [多参数混合](#多参数混合)
 
 # 路径参数和数据的解析验证
 
@@ -160,6 +161,43 @@ async def city_info(city: CityInfo):
 需要注意的是, 这里的请求体就不是 query 了而是 body(application/json)
 
 ![image-20220429212813608](http://cdn.ayusummer233.top/img/202204292128796.png)
+
+---
+
+## 多参数混合
+
+```python
+# 多参数混合
+@router.put("/request_body/city/{name}")
+async def mix_city_info(
+    name: str,
+    city01: CityInfo,
+    city02: CityInfo,
+    confirmed: int = Query(ge=0, description="确诊数", default=0),
+    death: int = Query(ge=0, description="死亡数", default=0)
+    ):
+    if name == "Shanghai":
+        return {
+            "Shanghai":
+            {
+                "confirmed": confirmed,
+                "death": death
+            }
+        }
+    return city01.dict(), city02.dict()
+```
+
+直接在参数中添加不同类型参数即可
+
+query 包括 name, confirmed, death
+
+body 包括两个 CityInfo: city01, city02
+
+![image-20220429215047949](http://cdn.ayusummer233.top/img/202204292150419.png)
+
+![image-20220429215120620](http://cdn.ayusummer233.top/img/202204292151154.png)
+
+![image-20220429215200273](http://cdn.ayusummer233.top/img/202204292152593.png)
 
 
 
