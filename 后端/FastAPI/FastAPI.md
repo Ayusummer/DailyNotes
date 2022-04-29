@@ -9,6 +9,7 @@
 - [请求体及混合参数](#请求体及混合参数)
   - [请求体和字段](#请求体和字段)
   - [多参数混合](#多参数混合)
+  - [数据格式嵌套的请求体](#数据格式嵌套的请求体)
 
 # 路径参数和数据的解析验证
 
@@ -199,7 +200,40 @@ body 包括两个 CityInfo: city01, city02
 
 ![image-20220429215200273](http://cdn.ayusummer233.top/img/202204292152593.png)
 
+---
 
+## 数据格式嵌套的请求体
+
+在使用 Pydantic 定义请求体数据的时候, 校验使用 pydantic.Field
+
+校验路径使用 fastapi.Path
+
+校验查询参数用 fastapi.Query
+
+```python
+# 引入日期类
+from datetime import date
+
+# ####### 数据格式嵌套的请求体 #######
+
+class Data(BaseModel):
+    city: List[CityInfo] = None # 定义数据格式嵌套的请求体
+    date: date
+    # 使用 Field 进行数据校验
+    confirmed: int = Field(default=0, ge=0, description="确诊数")
+    death: int = Field(default=0, ge=0, description="死亡数")
+    recovered: int = Field(default=0,  ge=0, description="治愈数")
+
+@router.put("/request_body/nested")
+async def nested_models(data: Data):
+    return data
+
+
+```
+
+![image-20220429233413969](http://cdn.ayusummer233.top/img/202204292334127.png)
+
+![image-20220429233435690](http://cdn.ayusummer233.top/img/202204292334851.png)
 
 
 
