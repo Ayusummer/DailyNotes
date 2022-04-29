@@ -1,22 +1,27 @@
 #   目录
 - [目录](#目录)
-- [路径参数和数据的解析验证](#路径参数和数据的解析验证)
-  - [枚举类型](#枚举类型)
-- [查询参数和数据的解析, 验证](#查询参数和数据的解析-验证)
-  - [默认参数与可选参数](#默认参数与可选参数)
-  - [bool 参数](#bool-参数)
-  - [多个参数, 列表, 字符串验证, 正则, 参数别名](#多个参数-列表-字符串验证-正则-参数别名)
-- [请求体及混合参数](#请求体及混合参数)
-  - [请求体和字段](#请求体和字段)
-  - [多参数混合](#多参数混合)
-- [数据格式嵌套的请求体](#数据格式嵌套的请求体)
-- [配置 Cookie 和 Header 参数](#配置-cookie-和-header-参数)
-  - [Cookie 校验](#cookie-校验)
-  - [Header 校验](#header-校验)
+- [请求模型](#请求模型)
+  - [路径参数和数据的解析验证](#路径参数和数据的解析验证)
+    - [枚举类型](#枚举类型)
+  - [查询参数和数据的解析, 验证](#查询参数和数据的解析-验证)
+    - [默认参数与可选参数](#默认参数与可选参数)
+    - [bool 参数](#bool-参数)
+    - [多个参数, 列表, 字符串验证, 正则, 参数别名](#多个参数-列表-字符串验证-正则-参数别名)
+  - [请求体及混合参数](#请求体及混合参数)
+    - [请求体和字段](#请求体和字段)
+    - [多参数混合](#多参数混合)
+  - [数据格式嵌套的请求体](#数据格式嵌套的请求体)
+  - [配置 Cookie 和 Header 参数](#配置-cookie-和-header-参数)
+    - [Cookie 校验](#cookie-校验)
+    - [Header 校验](#header-校验)
 
-# 路径参数和数据的解析验证
+---
 
-## 枚举类型
+# 请求模型
+
+## 路径参数和数据的解析验证
+
+### 枚举类型
 
 可以使用枚举类型来指定参数范围
 
@@ -49,9 +54,9 @@ async def readStaffByDid(did: DidEnum):
 ```
 ---
 
-# 查询参数和数据的解析, 验证
+## 查询参数和数据的解析, 验证
 
-## 默认参数与可选参数
+### 默认参数与可选参数
 
 ```python
 from typing import Optional
@@ -67,7 +72,7 @@ def page_limit(page: int=1, limit: Optional[int] = None):
 
 ---
 
-## bool 参数
+### bool 参数
 
 ```python
 # bool 参数
@@ -84,7 +89,7 @@ async def type_conversion(param: bool=False):
 
 ---
 
-## 多个参数, 列表, 字符串验证, 正则, 参数别名
+### 多个参数, 列表, 字符串验证, 正则, 参数别名
 
 ```python
 from typing import (
@@ -118,9 +123,9 @@ async def query_params_validate(
 
 ---
 
-# 请求体及混合参数
+## 请求体及混合参数
 
-## 请求体和字段
+### 请求体和字段
 
 ```python
 from pydantic import (
@@ -168,7 +173,7 @@ async def city_info(city: CityInfo):
 
 ---
 
-## 多参数混合
+### 多参数混合
 
 ```python
 # 多参数混合
@@ -205,7 +210,7 @@ body 包括两个 CityInfo: city01, city02
 
 ---
 
-# 数据格式嵌套的请求体
+## 数据格式嵌套的请求体
 
 在使用 Pydantic 定义请求体数据的时候, 校验使用 pydantic.Field
 
@@ -240,9 +245,9 @@ async def nested_models(data: Data):
 
 ---
 
-# 配置 Cookie 和 Header 参数
+## 配置 Cookie 和 Header 参数
 
-## Cookie 校验
+### Cookie 校验
 
 ```python
 from fastapi import Cookie
@@ -258,7 +263,7 @@ async def cookie(cookie_id: Optional[str] =  Cookie(None)):
 
 ---
 
-## Header 校验
+### Header 校验
 
 ```python
 from fastapi import Header
@@ -287,7 +292,7 @@ async def header(user_agent: Optional[str] = Header(
 
 ![image-20220430002550536](http://cdn.ayusummer233.top/img/202204300025727.png)
 
-
+---
 
 
 
