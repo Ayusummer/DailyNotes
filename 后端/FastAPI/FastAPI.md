@@ -12,6 +12,7 @@
 - [数据格式嵌套的请求体](#数据格式嵌套的请求体)
 - [配置 Cookie 和 Header 参数](#配置-cookie-和-header-参数)
   - [Cookie 校验](#cookie-校验)
+  - [Header 校验](#header-校验)
 
 # 路径参数和数据的解析验证
 
@@ -255,11 +256,36 @@ async def cookie(cookie_id: Optional[str] =  Cookie(None)):
 
 ![image-20220429235629565](http://cdn.ayusummer233.top/img/202204292356756.png)
 
+---
 
+## Header 校验
 
-以及处理请求头中 key 重复的参数
+```python
+from fastapi import Header
 
+# 校验 Header
+@router.get("/header")
+async def header(user_agent: Optional[str] = Header(
+            None, 
+            convert_underscores=True    # 将下划线转换为 - 
+        ),
+        # 不加下划线转化的话就变成了普通的query列表参数了
+        x_token: List[str] = Header(None)  
+    ):
+    return {"user_agent": user_agent, "x_token": x_token}
+```
 
+需要注意的是, 第二个参数就是普通的 Header 参数, 只有将参数名称设置为 user_agent 时才能正确接收到 user_agent
+
+![image-20220430001220308](http://cdn.ayusummer233.top/img/202204300012561.png)
+
+![image-20220430001314429](http://cdn.ayusummer233.top/img/202204300013654.png)
+
+需要注意的是, 设置了 `*convert_underscores=True` 的话发请求的时候 Header 中的相应参数要使用短横线而非下划线, 如 user-agent, x-token, 否则会无法正确接收到信息
+
+![image-20220430002420244](http://cdn.ayusummer233.top/img/202204300024484.png)
+
+![image-20220430002550536](http://cdn.ayusummer233.top/img/202204300025727.png)
 
 
 
