@@ -1,4 +1,4 @@
-# 目录
+#   目录
 - [目录](#目录)
 - [路径参数和数据的解析验证](#路径参数和数据的解析验证)
   - [枚举类型](#枚举类型)
@@ -6,6 +6,8 @@
   - [默认参数与可选参数](#默认参数与可选参数)
   - [bool 参数](#bool-参数)
   - [多个参数, 列表, 字符串验证, 正则, 参数别名](#多个参数-列表-字符串验证-正则-参数别名)
+- [请求体及混合参数](#请求体及混合参数)
+  - [请求体和字段](#请求体和字段)
 
 # 路径参数和数据的解析验证
 
@@ -110,4 +112,66 @@ async def query_params_validate(
 ![image-20220429154600704](http://cdn.ayusummer233.top/img/202204291546033.png)
 
 ---
+
+# 请求体及混合参数
+
+## 请求体和字段
+
+```python
+from pydantic import (
+    BaseModel,  # 基本模型类, 用于构建数据模型
+    Field,  # 字段类, 用于构建数据模型
+)
+
+####### 请求体和混合参数 #######
+
+class CityInfo(BaseModel):
+    name: str = Field(..., example='Beijing')   # example 是注解作用, 值不会被验证
+    country: str = Field(..., example='China')
+    contry_code: str = Field(..., example='CN')
+    contry_population: int = Field(default=800,  title="人口数量", 
+                                                    description="国家的人口数量", ge=800)
+    class Config:
+        schema_extra = {
+            "example": {
+                "name": "Beijing",
+                "country": "China",
+                "contry_code": "CN",
+                "contry_population": 1400000000
+            }
+        }
+
+@router.post("/request_body/city", tags=["city"])
+async def city_info(city: CityInfo):
+    print(city.name, city.country)
+    return city.dict()
+```
+
+![image-20220429211641949](http://cdn.ayusummer233.top/img/202204292116611.png)
+
+成功响应:
+
+![image-20220429211727171](http://cdn.ayusummer233.top/img/202204292117373.png)
+
+`country_population` 不在允许范围内:
+
+![image-20220429211953031](http://cdn.ayusummer233.top/img/202204292119236.png)
+
+需要注意的是, 这里的请求体就不是 query 了而是 body(application/json)
+
+![image-20220429212813608](http://cdn.ayusummer233.top/img/202204292128796.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
