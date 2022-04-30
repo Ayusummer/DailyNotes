@@ -40,6 +40,16 @@
   - [配置 SQLAlchemy ORM](#配置-sqlalchemy-orm)
   - [DataBase Models](#database-models)
 - [大型工程的目录结构设计 - 应用文件拆分](#大型工程的目录结构设计---应用文件拆分)
+- [中间件](#中间件)
+- [跨域资源共享](#跨域资源共享)
+  - [源](#源)
+  - [步骤](#步骤)
+  - [通配符](#通配符)
+  - [使用 CORSMiddleWare](#使用-corsmiddleware)
+    - [CORS 预检请求](#cors-预检请求)
+    - [简单请求](#简单请求)
+- [后台任务](#后台任务)
+- [测试用例](#测试用例)
 
 ---
 
@@ -1571,7 +1581,55 @@ app.add_middleware(
 
 # 后台任务
 
+> [【独家新技术】从0到1学习 FastAPI 框架的所有知识点_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV1iN411X72b?p=41)
+>
+> [Background Tasks - FastAPI (tiangolo.com)](https://fastapi.tiangolo.com/zh/tutorial/background-tasks/)
 
+最典型的使用是: 用户注册之后发邮件
+
+用户能够在前端立刻得到返回, 但是接口中实行的是比较耗时的任务
+
+引入 `fastapi.BackgroundTask` 后通过在异步函数中调用其中的 `add_task` 来添加后台任务
+
+```python
+####### Background Tasks 后台任务 #######
+import os
+from fastapi import APIRouter, BackgroundTasks, Depends
+
+file_path = os.path.abspath(os.path.join(os.path.dirname(__file__), './README.md'))
+
+def bg_task(framework: str):
+    """已续写的形式用 utf-8 编码写入README.md"""
+    with open(file_path, mode="a", encoding="utf-8") as f:
+        f.write(f"\n## {framework} 框架精讲")
+
+
+@app08.post("/background_tasks")
+async def run_bg_task(framework: str, background_tasks: BackgroundTasks):
+    """
+    :param framework: 被调用的后台任务函数的参数
+    :param background_tasks: FastAPI.BackgroundTasks
+    :return:
+    """
+    background_tasks.add_task(bg_task, framework)
+    return {"message": "任务已在后台运行"}
+
+
+def continue_write_readme(background_tasks: BackgroundTasks, q: Optional[str] = None):
+    if q:
+        background_tasks.add_task(bg_task, 
+        "\n> 整体的介绍 FastAPI, 快速上手开发, 结合 API 交互文档逐个讲解核心模块的使用\n")
+    return q
+
+
+@app08.post("/dependency/background_tasks")
+async def dependency_run_bg_task(q: str = Depends(continue_write_readme)):
+    """用依赖注入的方式导入后台任务
+    """
+    if q:
+        return {"message": "README.md更新成功"}
+
+```
 
 ---
 
