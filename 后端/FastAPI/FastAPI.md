@@ -29,6 +29,7 @@
   - [类作为依赖项](#类作为依赖项)
   - [子依赖的创建和调用](#子依赖的创建和调用)
   - [路径操作装饰器中导入依赖](#路径操作装饰器中导入依赖)
+  - [FastAPI 框架中全局依赖的使用](#fastapi-框架中全局依赖的使用)
 
 ---
 
@@ -787,3 +788,46 @@ async def dependency_in_path_operation():
 
 ---
 
+## FastAPI 框架中全局依赖的使用
+
+假设现在有一个子依赖需要在应用的任何地方使用(或者某个组件内部的所有地方), 那么可以使用全局依赖
+
+在 `APIRouter` 中使用:
+
+```python
+# 直接在 APIRouter 定义文件中使用:
+app05 = APIRouter(dependencies=[Depends(verify_token), Depends(verify_key)])
+```
+
+在 `main App` 中使用:
+
+```python
+# 引入 chapter05 中的全剧依赖 verify_token 和 verify_key
+from .chapter05 import verify_token, verify_key
+from fastapi import (
+    FastAPI, 
+    Request,
+    Depends # 引入依赖  
+)
+
+# FastAPI 配置项
+app = FastAPI(
+    # 标题
+    title='FastAPI Tutorial and Coronavirus Tracker API Docs',
+    # 描述
+    description='FastAPI教程 \
+        新冠病毒疫情跟踪器API接口文档, \
+        项目代码:https://github.com/liaogx/fastapi-tutorial',
+    # 版本
+    version='1.0.0',
+    # Swagger UI 文档地址
+    docs_url='/docs',
+    # ReDoc 文档地址
+    redoc_url='/redocs',
+    dependencies = [Depends(verify_token), Depends(verify_key)]
+)
+```
+
+![image-20220430190445228](http://cdn.ayusummer233.top/img/202204301904524.png)
+
+---
