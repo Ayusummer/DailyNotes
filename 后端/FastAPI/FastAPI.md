@@ -22,6 +22,14 @@
 
 ---
 
+# 前言
+
+随笔基于慕课网 21 年发的一份 `FastAPI` 基础教程
+
+[【独家新技术】从0到1学习 FastAPI 框架的所有知识点_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV1iN411X72b?p=19&spm_id_from=333.1007.top_right_bar_window_history.content.click)
+
+---
+
 # 请求模型
 
 ## 路径参数和数据的解析验证
@@ -478,6 +486,35 @@ app = FastAPI(
 static_path = os.path.abspath(os.path.join(os.path.dirname(__file__), './coronavirus/static'))
 app.mount(path='/static', app=StaticFiles(directory=static_path), name='static')  
 ```
+
+---
+
+## 路径操作配置
+
+```python 
+"""Path Operation Configuration 路径操作配置"""
+# 响应的状态码, 标签, 相应的描述符, 参数类型, 参数名称, 参数描述等等
+
+@app04.post(
+    "/path_operation_configuration",    # URL 地址
+    response_model=UserOut,   # 响应的结果类型
+    # tags=["Path", "Operation", "Configuration"],    # 标签, 在 doc 中会按照标签进行分类展示
+    summary="This is summary",  # 接口描述, 在 doc 中会在路径后面显示
+    description="This is description",  # 描述, 在 doc 中会在接口描述下面显示
+    response_description="This is response description",    # 响应描述, 在 doc 中会在响应结果下面显示
+    # deprecated=True,    # 是否弃用
+    status_code=status.HTTP_200_OK  # 响应状态码
+)
+async def path_operation_configuration(user: UserIn):
+    """
+    Path Operation Configuration 路径操作配置
+    :param user: 用户信息
+    :return: 返回结果
+    """
+    return user.dict()
+```
+
+![image-20220430153331803](http://cdn.ayusummer233.top/img/202204301533021.png)
 
 ---
 
