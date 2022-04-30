@@ -35,6 +35,7 @@
   - [密码授权模式(Resource Owner Password Credentials Grant)](#密码授权模式resource-owner-password-credentials-grant)
   - [OAuth2 密码模式和 FastAPI 的 OAuth2PasswordBearer](#oauth2-密码模式和-fastapi-的-oauth2passwordbearer)
   - [基于 Password 和 Bearer token 的 OAuth2 认证](#基于-password-和-bearer-token-的-oauth2-认证)
+  - [开发基于 JSON Web Tokens 的认证](#开发基于-json-web-tokens-的认证)
 
 ---
 
@@ -1090,4 +1091,169 @@ flowchart LR
 ![image-20220430212933083](http://cdn.ayusummer233.top/img/202204302129260.png)
 
 ![image-20220430213118220](http://cdn.ayusummer233.top/img/202204302131447.png)
+
+---
+
+## 开发基于 JSON Web Tokens 的认证
+
+> [【独家新技术】从0到1学习 FastAPI 框架的所有知识点_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV1iN411X72b?p=32)
+
+![image-20220430222152045](http://cdn.ayusummer233.top/img/202204302221258.png)
+
+```python
+# 先更新下模拟数据库吗修改下 hash 密码使其更接近真实值:
+fake_users_db.update({
+    "john snow": {
+        "username": "john snow",
+        "full_name": "John Snow",
+        "email": "johnsnow@example.com",
+        "hashed_password": "$2b$12$EixZaYVK1fsbw1ZfbX3OXePaWxn96p36WQoeG6Lruj3vjPGga31lW",
+        "disabled": False,
+    }
+})
+# 生成密钥 openssl rand -hex 32
+SECRET_KEY = "09d25e094faa6ca2556c818166b7a9563b93f7099f6f0f4caa6cf63b88e8d3e7"  
+# 加密算法
+ALGORITHM = "HS256"  
+# 访问令牌过期分钟
+ACCESS_TOKEN_EXPIRE_MINUTES = 30  
+```
+
+```python
+# from datetime import (
+#     datetime, 
+#     timedelta
+# )
+# from jose import (
+#     JWTError, 
+#     jwt
+# )
+# from passlib.context import CryptContext    # 用于对用户传过来的密码进行加密
+
+pwd_context = CryptContext(
+    schemes=["bcrypt"],     # 密码加密算法使用 bcrypt
+    deprecated="auto"   
+)
+```
+
+```python
+# 用于接收用户名密码, 创建 token 的接口
+oauth2_schema = OAuth2PasswordBearer(tokenUrl="/chapter06/jwt/token")
+
+
+def verity_password(plain_password: str, hashed_password: str):
+    """对密码进行校验"""
+    return pwd_context.verify(plain_password, hashed_password)
+
+
+def jwt_get_user(db, username: str):
+    """获取当前用户并返回解构信息
+    """
+    if username in db:
+        user_dict = db[username]
+        return UserInDB(**user_dict)
+
+
+def jwt_authenticate_user(db, username: str, password: str):
+    """
+    验证用户是否存在以及  
+    验证用户名和密码是否匹配
+    """
+    user = jwt_get_user(db=db, username=username)
+    if not user:
+        return False
+    if not verity_password(plain_password=password, hashed_password=user.hashed_password):
+        return False
+    return user
+
+
+def create_access_token(data: dict, expires_delta: Optional[timedelta] = None):
+    """创建token  
+    :param data: 包含用户信息的字典
+    :param expires_delta: token 过期时间  
+    copy 一份用户信息用户编码
+
+    """
+    to_encode = data.copy()
+    # 如果传入了过期时间就更新下过期时间: 当前时间+过期时间
+    if expires_delta:
+        expire = datetime.utcnow() + expires_delta
+    else:
+        # 没传入过期时间的话默认设置过期时间为 15 min
+        expire = datetime.utcnow() + timedelta(minutes=15)
+    to_encode.update({"exp": expire})
+    # 创建编码后的 jwt
+    encoded_jwt = jwt.encode(
+        claims=to_encode, 
+        key=SECRET_KEY, 
+        algorithm=ALGORITHM
+    )
+    return encoded_jwt
+
+
+@app06.post("/jwt/token", response_model=Token)
+async def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends()):
+    """创建并返回 Token  
+    :param form_data: 表单数据
+    """
+    # jwt 校验
+    user = jwt_authenticate_user(db=fake_users_db, username=form_data.username, password=form_data.password)
+    # 认证失败则抛出异常: 用户名或密码不正确
+    if not user:
+        raise HTTPException(
+            status.HTTP_401_UNAUTHORIZED,
+            detail="Incorrect username or password",
+            headers={"WWW-Authenticate": "Bearer"},
+        )
+    # 获取 token 过期时间
+    access_token_expires = timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
+    # 创建 token
+    access_token = create_access_token(
+        data={"sub": user.username}, expires_delta=access_token_expires
+    )
+    return {"access_token": access_token, "token_type": "bearer"}
+
+
+async def jwt_get_current_user(token: str = Depends(oauth2_schema)):
+    """获取当前用户
+    :param token: jwt token
+    """
+    # 定义错误返回信息
+    credentials_exception = HTTPException(
+        status.HTTP_401_UNAUTHORIZED,
+        detail="Could not validate credentials",
+        headers={"WWW-Authenticate": "Bearer"},
+    )
+    try:
+        # jwt 解码
+        payload = jwt.decode(token=token, key=SECRET_KEY, algorithms=[ALGORITHM])
+        # 获取解码后的用户名
+        username = payload.get("sub")
+        # 如果用户名不存在则抛出异常
+        if username is None:
+            raise credentials_exception
+    # 如果解码失败则抛出异常
+    except JWTError:
+        raise credentials_exception
+    user = jwt_get_user(db=fake_users_db, username=username)
+    if user is None:
+        raise credentials_exception
+    return user
+
+
+async def jwt_get_current_active_user(current_user: User = Depends(jwt_get_current_user)):
+    """获取活跃用户"""
+    if current_user.disabled:
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Inactive user")
+    return current_user
+
+
+@app06.get("/jwt/users/me")
+async def jwt_read_users_me(current_user: User = Depends(jwt_get_current_active_user)):
+    """获取当前用户信息"""
+    return current_user
+
+```
+
+![image-20220430225118757](http://cdn.ayusummer233.top/img/202204302251027.png)
 
