@@ -36,6 +36,8 @@
   - [OAuth2 密码模式和 FastAPI 的 OAuth2PasswordBearer](#oauth2-密码模式和-fastapi-的-oauth2passwordbearer)
   - [基于 Password 和 Bearer token 的 OAuth2 认证](#基于-password-和-bearer-token-的-oauth2-认证)
   - [开发基于 JSON Web Tokens 的认证](#开发基于-json-web-tokens-的认证)
+- [FastAPI 的数据库操作及大型工程应用的目录结构设计](#fastapi-的数据库操作及大型工程应用的目录结构设计)
+  - [配置 SQLAlchemy ORM](#配置-sqlalchemy-orm)
 
 ---
 
@@ -1256,4 +1258,50 @@ async def jwt_read_users_me(current_user: User = Depends(jwt_get_current_active_
 ```
 
 ![image-20220430225118757](http://cdn.ayusummer233.top/img/202204302251027.png)
+
+---
+
+# FastAPI 的数据库操作及大型工程应用的目录结构设计
+
+## 配置 SQLAlchemy ORM
+
+```python
+from sqlalchemy import create_engine
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import sessionmaker
+import os
+
+# sqlite 数据库 url
+SQLALCHEMY_DATABASE_URL = "sqlite:///E:/GithubProject/Vben/VbenBackend/static/data/vben.db"
+# SQLALCHEMY_DATABASE_URL = "postgresql://user:password@postgresserver/db"
+
+# 创建 SQLAlchemy 引擎
+engine = create_engine(
+    SQLALCHEMY_DATABASE_URL, 
+    encoding='utf-8',
+    # echo=True表示引擎将用repr()函数记录所有语句及其参数列表到日志
+    echo=True,
+    # 由于SQLAlchemy是多线程，
+    # 指定check_same_thread=False来让建立的对象任意线程都可使用。
+    # 这个参数只在用SQLite数据库时设置
+    connect_args={"check_same_thread": False}
+)
+
+# 在SQLAlchemy中，CRUD都是通过会话(session)进行的，
+# 所以我们必须要先创建会话，每一个SessionLocal实例就是一个数据库session
+# 创建SessionLocal 类
+SessionLocal = sessionmaker(
+    # commit()是指提交事务，将变更保存到数据库文件
+    autocommit=False, 
+    # flush()是指发送数据库语句到数据库，但数据库不一定执行写入磁盘；
+    autoflush=False, 
+    bind=engine
+)
+
+# 创建一个 Base 类, 后面继承这个类来创建每个数据库的 ORM Model
+Base = declarative_base()
+
+```
+
+---
 
