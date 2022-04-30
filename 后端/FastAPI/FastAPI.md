@@ -34,6 +34,7 @@
 - [OAuth2.0 的授权模式](#oauth20-的授权模式)
   - [密码授权模式(Resource Owner Password Credentials Grant)](#密码授权模式resource-owner-password-credentials-grant)
   - [OAuth2 密码模式和 FastAPI 的 OAuth2PasswordBearer](#oauth2-密码模式和-fastapi-的-oauth2passwordbearer)
+  - [基于 Password 和 Bearer token 的 OAuth2 认证](#基于-password-和-bearer-token-的-oauth2-认证)
 
 ---
 
@@ -939,4 +940,154 @@ oauth2_schema = OAuth2PasswordBearer(tokenUrl="/chapter06/token")
 async def oauth2_password_bearer(token: str = Depends(oauth2_schema)):
     return {"token": token}
 ```
+
+---
+
+## 基于 Password 和 Bearer token 的 OAuth2 认证
+
+```python
+####### 基于 Password 和 Bearer token 的 OAuth2 认证 #######
+
+# 模拟数据库信息
+fake_users_db = {
+    "john snow": {
+        "username": "john snow",
+        "full_name": "John Snow",
+        "email": "johnsnow@example.com",
+        "hashed_password": "fakehashedsecret",
+        "disabled": False,
+    },
+    "alice": {
+        "username": "alice",
+        "full_name": "Alice Wonderson",
+        "email": "alice@example.com",
+        "hashed_password": "fakehashedsecret2",
+        "disabled": True,
+    },
+}
+
+
+def fake_hash_password(password: str):
+    """对密码进行加密"""
+    return "fakehashed" + password
+
+
+class User(BaseModel):
+    """用户信息schema"""
+    username: str
+    email: Optional[str] = None
+    full_name: Optional[str] = None
+    disabled: Optional[bool] = None
+
+
+class UserInDB(User):
+    hashed_password: str
+
+
+@app06.post("/token")
+async def login(form_data: OAuth2PasswordRequestForm = Depends()):
+    """登录操作
+    密码加密使用前缀字符串的形式
+    token使用username
+    """
+    user_dict = fake_users_db.get(form_data.username)
+    if not user_dict:
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Incorrect username or password-用户不存在")
+    user = UserInDB(**user_dict)
+    hashed_password = fake_hash_password(form_data.password)
+    if not hashed_password == user.hashed_password:
+        print(hashed_password, user.hashed_password)
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Incorrect username or password-密码错误")
+    return {"access_token": user.username, "token_type": "bearer"}
+
+
+def get_user(db, username: str):
+    """获取用户信息"""
+    if username in db:
+        user_dict = db[username]
+        return UserInDB(**user_dict)
+
+
+def fake_decode_token(token: str):
+    """解码token"""
+    user = get_user(fake_users_db, token)
+    return user
+
+
+async def get_current_user(token: str = Depends(oauth2_schema)):
+    user = fake_decode_token(token)
+    if not user:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Invalid authentication credentials",
+            # OAuth2的规范，如果认证失败，请求头中返回“WWW-Authenticate”
+            headers={"WWW-Authenticate": "Bearer"},  
+        )
+    return user
+
+
+async def get_current_active_user(current_user: User = Depends(get_current_user)):
+    if current_user.disabled:
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Inactive user")
+    return current_user
+
+
+@app06.get("/users/me")
+async def read_users_me(current_user: User = Depends(get_current_active_user)):
+    """
+    活跃用户返回用户信息  
+    不活跃用户返回 Inactive user
+    """
+    return current_user
+
+```
+
+`login` 执行逻辑:
+
+```mermaid
+flowchart LR
+  user[用户] --username<br>password<br>查数据库--> isIn
+
+  subgraph login
+  isIn{username 是否在数据库中}
+  isIn --否--> error400[用户名或密码错误]
+  isIn --是--> create_user[解构数据库查询结果生成user]
+  create_user --fake_hash_password<br>生成hash密码-->iscorrect{密码是否匹配}
+  iscorrect --否--> error400
+  iscorrect --是--> login_success[登录成功<br>生成并返回access_token]
+  end
+```
+
+`read_users_me` 执行逻辑:
+
+```mermaid
+flowchart LR
+  subgraph read_users_me
+    subgraph get_current_active_user
+      subgraph get_current_user
+        subgraph fake_decode_token
+          subgraph get_user
+            username(username)
+          end
+          username --查询数据库-->userInDb(解构数据库中数据)
+        end
+        userInDb --> isExist{是否存在}
+        isExist --False--> error401[UNAUTHORIZED] 
+        isExist --True--> user(user)
+      end
+      user --查询user.disabled--> isActive{是否活跃}
+      isActive --disabled==True<br>不活跃 -->inactive[Inactive user]
+    end
+    isActive --disabled==False<br>活跃 --> userInfo[返回用户信息]
+  end
+  
+```
+
+
+
+![image-20220430212806528](http://cdn.ayusummer233.top/img/202204302128756.png)
+
+![image-20220430212933083](http://cdn.ayusummer233.top/img/202204302129260.png)
+
+![image-20220430213118220](http://cdn.ayusummer233.top/img/202204302131447.png)
 
