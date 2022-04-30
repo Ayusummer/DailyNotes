@@ -1305,3 +1305,102 @@ Base = declarative_base()
 
 ---
 
+## DataBase Models
+
+> [【独家新技术】从0到1学习 FastAPI 框架的所有知识点_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV1iN411X72b?p=35)
+
+```python
+'''
+Author: 咸鱼型233
+Date: 2022-04-28 16:38:14
+LastEditors: 咸鱼型233
+LastEditTime: 2022-04-30 23:54:14
+FilePath: \VbenBackend\app\model.py
+Description: database model
+Copyright (c) 2022 by 咸鱼型233, All Rights Reserved.
+'''
+from xml.etree.ElementTree import Comment
+from sqlalchemy import (
+    Boolean, 
+    Column, 
+    ForeignKey, 
+    Integer, 
+    String, 
+    FLOAT,
+    BigInteger,
+    Date,
+    DateTime,
+    func, 
+)
+from sqlalchemy.orm import relationship
+from .database import Base
+
+# 部门/科室类
+class Department(Base):
+    """部门类
+    """
+    __tablename__ = "department"    # 表名
+
+    did = Column(Integer, primary_key=True, nullable=False, comment = "部门id")
+    dname = Column(String(30), nullable=False, comment="部门名称")
+    
+    # 关联 <- staff.did
+    staffs = relationship("Staff", back_populates="reDid")
+
+    # 当数据创建或者更新时插入当前时间
+    created_at = Column(DateTime, server_default=func.now(), comment="创建时间")
+    updated_at = Column(DateTime, server_default=func.now(), 
+                            onupdate=func.now(), comment="更新时间")
+
+    # 排序相关
+    __mapper_args__ = {
+        # 倒序的话可以使用   "order_by": did.desc()
+        "order_by": did
+    }
+
+    # 显示类对象
+    def __repr__(self):
+        return f"<Department {self.did}_{self.dname}>"
+
+
+# 员工类
+class Staff(Base):
+    """员工类
+    """
+    __tablename__ = "staff"   # 表名
+
+    sid = Column(Integer, primary_key=True, nullable=False, comment="员工id")
+    sname = Column(String(30), nullable=False, comment="员工姓名")
+    did = Column(Integer, ForeignKey("department.did"), comment="员工所属单位id")     # 外键
+
+    # 外键 -> department.did
+    reDid = relationship("Department", back_populates="staffs")
+
+    # 当数据创建或者更新时插入当前时间
+    created_at = Column(DateTime, server_default=func.now(), comment="创建时间")
+    updated_at = Column(DateTime, server_default=func.now(), 
+                            onupdate=func.now(), comment="更新时间")
+
+    # 排序相关
+    __mapper_args__ = {
+        # 倒序的话可以使用   "order_by": did.desc()
+        "order_by": sid
+    }
+
+    # 显示类对象
+    def __repr__(self):
+        return f"<Staff {self.sid}_{self.sname}_{self.did}>"
+
+# 用户类
+class User(Base):
+    """用户类
+    """
+    __tablename__ = "user"
+
+    uid = Column(Integer, primary_key=True, nullable=False,  autoincrement=True, comment="用户id")
+    account = Column(Integer, nullable=False, comment="账号")
+    password = Column(String(30), nullable=False, comment="密码")
+    uname = Column(String(30), comment="用户名")
+    role = Column(Integer, nullable=False, comment="身份组")
+```
+
