@@ -17,6 +17,7 @@
 - [响应模型](#响应模型)
   - [响应状态码](#响应状态码)
   - [表单数据处理](#表单数据处理)
+  - [文件上传及参数详解](#文件上传及参数详解)
 
 ---
 
@@ -410,5 +411,47 @@ async def login(username: str = Form(...), password: str = Form(...)):  # 定义
 
 ---
 
+## 文件上传及参数详解
 
+引入 `fastapi.File & UploadFile`, 路由函数参数中使用 `File` 和 `UploadFile` 来注解参数
+
+```python
+"""Request Files 单文件、多文件上传及参数详解"""
+# from fastapi import (
+#     File,   # 文件处理
+#     UploadFile,     # 用于处理文件上传
+# )
+
+@app04.post("/file")
+async def file_(file: bytes = File(...)):  
+    """
+    如果要上传多个文件 files: List[bytes] = File(...)  
+    使用File类 文件内容会以bytes的形式读入内存  
+    适合于上传小文件
+    """
+    return {"file_size": len(file)}
+
+
+@app04.post("/upload_files")
+async def upload_files(files: List[UploadFile] = File(...)):  
+    """
+    如果要上传单个文件 file: UploadFile = File(...)  
+    使用 UploadFile 类的优势:  
+    1.文件存储在内存中，使用的内存达到阈值后，将被保存在磁盘中  
+    2.适合于图片、视频大文件  
+    3.可以获取上传的文件的元数据，如文件名，创建时间等  
+    4.有文件对象的异步接口  
+    5.上传的文件是Python文件对象, 可以使用write(), read(), seek(), close()操作  
+    """
+    for file in files:
+        contents = await file.read()
+        print(contents)
+    return {"filename": files[0].filename, "content_type": files[0].content_type}
+```
+
+![image-20220430150417033](http://cdn.ayusummer233.top/img/202204301504212.png)
+
+![image-20220430150355031](http://cdn.ayusummer233.top/img/202204301503316.png)
+
+---
 
