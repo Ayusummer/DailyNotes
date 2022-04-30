@@ -14,6 +14,7 @@
   - [配置 Cookie 和 Header 参数](#配置-cookie-和-header-参数)
     - [Cookie 校验](#cookie-校验)
     - [Header 校验](#header-校验)
+- [响应模型](#响应模型)
 
 ---
 
@@ -296,9 +297,74 @@ async def header(user_agent: Optional[str] = Header(
 
 # 响应模型
 
+使用 `pydantic.BaseModel` 派生子类创建响应模型类, 在写路由时使用 `response_model=xxx` 来指定 `xxx` 为响应模型, 这样返回的响应就是一个 `xxx` 实例
 
+```python
+class UserBase(BaseModel):
+    username: str
+    email: EmailStr
+    mobile: str = "10086"
+    address: str = None
+    full_name: Optional[str] = None
 
+class UserIn(UserBase):
+    """用于创建 User 对象
+    用户创建时需要给出 password
+    但是访问用户时不应当返回 password
+    """
+    password: str
 
+class UserOut(UserBase):
+    pass
+
+users = {
+    "user01": {"username": "user01", "password": "123123", "email": "user01@example.com"},
+    "user02": {"username": "user02", "password": "123456", "email": "user02@example.com", "mobile": "110"}
+}
+
+# 使用响应模型
+@app04.post("/response_model/", response_model=UserOut, response_model_exclude_unset=True)
+async def response_model(user: UserIn):
+    """
+    response_model_exclude_unset=True 表示默认值不包含在响应中, 仅包含实际给的值, 
+    如果实际给的值与默认值相同也会包含在响应中
+    """
+    print(user.password)  # password不会被返回
+    # return user
+    return users["user02"]
+```
+
+![image-20220430141333793](http://cdn.ayusummer233.top/img/202204301413543.png)
+
+---
+
+```python
+@app04.post(
+    "/response_model/attributes",
+    # response_model=UserOut,
+    # response_model=Union[UserIn, UserOut],    # 取并集(也就是两个类的属性都有)
+    response_model=List[UserOut],
+    # 包含某些字段, 这里的 mobile 会被下面 exclude 覆盖掉
+    # response_model_include=["username", "email", "mobile"], 
+    response_model_include=["username", "email"], # 包含某些字段
+    response_model_exclude=["mobile"]   # 排除掉某些字段
+)
+async def response_model_attributes(user: UserIn):
+    """response_model_include列出需要在返回结果中包含的字段  
+    response_model_exclude列出需要在返回结果中排除的字段
+    """
+    # del user.password  # Union[UserIn, UserOut]后，删除password属性也能返回成功
+    # return user
+    return [user, user]
+```
+
+响应模型可以使用单个响应模型类, 也可以使用模型类并集, 模型类列表;
+
+响应模型亦可以进行特定字段的选取与排除
+
+![image-20220430142357442](http://cdn.ayusummer233.top/img/202204301423796.png)
+
+---
 
 
 
