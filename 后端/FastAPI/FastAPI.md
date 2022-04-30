@@ -831,3 +831,63 @@ app = FastAPI(
 ![image-20220430190445228](http://cdn.ayusummer233.top/img/202204301904524.png)
 
 ---
+
+## 使用 yield 的依赖和子依赖
+
+`yield` 关键字在依赖中的使用 
+
+```python
+####### Dependencies with yield 带yield的依赖 #######
+
+
+# 这个需要Python3.7才支持，Python3.6需要pip install async-exit-stack async-generator
+# 以下都是伪代码
+
+async def get_db():
+    db = "db_connection"
+    try:
+        yield db
+    finally:
+        db.endswith("db_close")
+
+
+async def dependency_a():
+    dep_a = "generate_dep_a()"
+    try:
+        yield dep_a
+    finally:
+        dep_a.endswith("db_close")
+
+
+async def dependency_b(dep_a=Depends(dependency_a)):
+    dep_b = "generate_dep_b()"
+    try:
+        yield dep_b
+    finally:
+        dep_b.endswith(dep_a)
+
+
+async def dependency_c(dep_b=Depends(dependency_b)):
+    dep_c = "generate_dep_c()"
+    try:
+        yield dep_c
+    finally:
+        dep_c.endswith(dep_b)
+
+```
+
+实际上使用最多的就是 `get_db`:
+
+```python
+# 引入数据库
+from ..database import SessionLocal, engine
+
+# Dependency (关键字 yield 可用于共享连接)
+def get_db():
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
+```
+
