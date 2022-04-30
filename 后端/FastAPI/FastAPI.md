@@ -1,5 +1,6 @@
 #   目录
 - [目录](#目录)
+- [前言](#前言)
 - [请求模型](#请求模型)
   - [路径参数和数据的解析验证](#路径参数和数据的解析验证)
     - [枚举类型](#枚举类型)
@@ -19,6 +20,8 @@
   - [表单数据处理](#表单数据处理)
   - [文件上传及参数详解](#文件上传及参数详解)
   - [静态文件的配置](#静态文件的配置)
+  - [路径操作配置](#路径操作配置)
+  - [FastAPI 配置项](#fastapi-配置项)
 
 ---
 
@@ -515,6 +518,29 @@ async def path_operation_configuration(user: UserIn):
 ```
 
 ![image-20220430153331803](http://cdn.ayusummer233.top/img/202204301533021.png)
+
+---
+
+## FastAPI 配置项
+
+```python
+
+# FastAPI 配置项
+app = FastAPI(
+    # 标题
+    title='FastAPI Tutorial and Coronavirus Tracker API Docs',
+    # 描述
+    description='FastAPI教程 \
+        新冠病毒疫情跟踪器API接口文档, \
+        项目代码:https://github.com/liaogx/fastapi-tutorial',
+    # 版本
+    version='1.0.0',
+    # Swagger UI 文档地址
+    docs_url='/docs',
+    # ReDoc 文档地址
+    redoc_url='/redocs',
+)
+```
 
 ---
 
