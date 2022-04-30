@@ -18,6 +18,7 @@
   - [响应状态码](#响应状态码)
   - [表单数据处理](#表单数据处理)
   - [文件上传及参数详解](#文件上传及参数详解)
+  - [静态文件的配置](#静态文件的配置)
 
 ---
 
@@ -452,6 +453,31 @@ async def upload_files(files: List[UploadFile] = File(...)):
 ![image-20220430150417033](http://cdn.ayusummer233.top/img/202204301504212.png)
 
 ![image-20220430150355031](http://cdn.ayusummer233.top/img/202204301503316.png)
+
+---
+
+## 静态文件的配置
+
+静态文件一般放在 `static ` 文件夹中, 需要在 `main app` (而非 `APIRouter` 分路由) 中进行挂载方可使用
+
+```python
+import os   # 用于拼接路径
+
+app = FastAPI(
+    title='FastAPI Tutorial and Coronavirus Tracker API Docs',
+    description='FastAPI教程 \
+        新冠病毒疫情跟踪器API接口文档, \
+        项目代码:https://github.com/liaogx/fastapi-tutorial',
+    version='1.0.0',
+    docs_url='/docs',
+    redoc_url='/redocs',
+)
+
+# mount表示将某个目录下一个完全独立的应用挂载过来，这个不会在API交互文档中显示
+# .mount()不要在分路由APIRouter().mount()调用，模板会报错
+static_path = os.path.abspath(os.path.join(os.path.dirname(__file__), './coronavirus/static'))
+app.mount(path='/static', app=StaticFiles(directory=static_path), name='static')  
+```
 
 ---
 
