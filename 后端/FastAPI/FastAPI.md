@@ -22,6 +22,8 @@
   - [静态文件的配置](#静态文件的配置)
   - [路径操作配置](#路径操作配置)
   - [FastAPI 配置项](#fastapi-配置项)
+  - [错误处理](#错误处理)
+    - [自定义异常处理](#自定义异常处理)
 
 ---
 
@@ -524,7 +526,6 @@ async def path_operation_configuration(user: UserIn):
 ## FastAPI 配置项
 
 ```python
-
 # FastAPI 配置项
 app = FastAPI(
     # 标题
@@ -541,6 +542,80 @@ app = FastAPI(
     redoc_url='/redocs',
 )
 ```
+
+---
+
+## 错误处理
+
+引入 `fastapi.HTTPException` 后在路由函数中进行使用
+
+```python
+####### Handling Errors 错误处理 #######
+# HTTP Exception 以及自定义异常处理器
+# from fastapi import HTTPException   # 用于处理HTTP异常
+
+@app04.get("/http_exception")
+async def http_exception(city: str):
+    """默认的异常处理测试   
+    :param city: 城市名称  
+    :return: 返回城市名称  
+    若 city 不是 Beijing 则抛出 404 错误
+    """
+    if city != "Beijing":
+        raise HTTPException(status_code=404, detail="City not found!", headers={"X-Error": "Error"})
+    return {"city": city}
+```
+
+---
+
+### 自定义异常处理
+
+在 `main app` 中进行异常处理的重写
+
+```python
+from fastapi.exceptions import RequestValidationError # 请求校验错误处理
+from fastapi.responses import PlainTextResponse       # 文本形式返回 response
+from starlette.exceptions import HTTPException as StarletteHTTPException  # HTTP 异常处理
+
+
+@app.exception_handler(StarletteHTTPException)  # 重写HTTPException异常处理器
+async def http_exception_handler(request, exc):
+    """
+    使用文本形式返回异常信息
+    :param request: request 请求      (这个参数不能省)
+    :param exc: 错误
+    :return:
+    """
+    return PlainTextResponse(str(exc.detail), status_code=exc.status_code)
+#
+#
+@app.exception_handler(RequestValidationError)  # 重写请求验证异常处理器
+async def validation_exception_handler(request, exc):
+    """
+    :param request: 这个参数不能省
+    :param exc:
+    :return:
+    """
+    return PlainTextResponse(str(exc), status_code=400)
+```
+
+重写前HTTP异常:
+
+![image-20220430155058089](http://cdn.ayusummer233.top/img/202204301550627.png)
+
+重写后HTTP异常:
+
+![image-20220430155146255](http://cdn.ayusummer233.top/img/202204301551512.png)
+
+---
+
+重写前请求异常:
+
+![image-20220430155253999](http://cdn.ayusummer233.top/img/202204301552271.png)
+
+重写后请求异常:
+
+![image-20220430155240171](http://cdn.ayusummer233.top/img/202204301552608.png)
 
 ---
 
