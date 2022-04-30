@@ -1680,7 +1680,7 @@ def test_dependency_run_bg_task_q():
 
 在命令行中 `cd` 到测试文件所在目录然后 `pytest`
 
-![image-20220501015902685](C:/Users/233/AppData/Roaming/Typora/typora-user-images/image-20220501015902685.png)
+![image-20220501020126599](http://cdn.ayusummer233.top/img/202205010201866.png)
 
 ---
 
