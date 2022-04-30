@@ -16,6 +16,7 @@
     - [Header 校验](#header-校验)
 - [响应模型](#响应模型)
   - [响应状态码](#响应状态码)
+  - [表单数据处理](#表单数据处理)
 
 ---
 
@@ -386,7 +387,28 @@ async def status_attribute():
     return {"status_code": status.HTTP_200_OK}
 ```
 
+---
 
+## 表单数据处理
+
+引入 `fastapi.Form` 用于处理表单数据
+
+```python
+# from fastapi import Form   # 用于处理表单数据
+
+@app04.post("/login/")
+async def login(username: str = Form(...), password: str = Form(...)):  # 定义表单参数
+    """
+    Form(...) 表示参数为必填项  
+    用Form类需要pip install python-multipart;   
+    Form类的元数据和校验方法类似Body/Query/Path/Cookie
+    """
+    return {"username": username}
+```
+
+![image-20220430145257599](http://cdn.ayusummer233.top/img/202204301452811.png)
+
+---
 
 
 
