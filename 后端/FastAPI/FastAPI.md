@@ -38,6 +38,8 @@
   - [开发基于 JSON Web Tokens 的认证](#开发基于-json-web-tokens-的认证)
 - [FastAPI 的数据库操作及大型工程应用的目录结构设计](#fastapi-的数据库操作及大型工程应用的目录结构设计)
   - [配置 SQLAlchemy ORM](#配置-sqlalchemy-orm)
+  - [DataBase Models](#database-models)
+- [大型工程的目录结构设计 - 应用文件拆分](#大型工程的目录结构设计---应用文件拆分)
 
 ---
 
@@ -1403,4 +1405,25 @@ class User(Base):
     uname = Column(String(30), comment="用户名")
     role = Column(Integer, nullable=False, comment="身份组")
 ```
+
+---
+
+# 大型工程的目录结构设计 - 应用文件拆分
+
+- `app`	应用根目录
+  - `databse.py`	创建 SQLAlchemy
+  - `model.py` Database models
+  - `schema`  Pydantic models, 定义请求模型与响应模型
+    - `....py`
+  - `crud`  crud 操作
+    - `....py`
+  - `routers`  各个部分的 `APIRouter` 
+    - `....py`
+  - `cors.py`  跨域资源请求配置
+  - `main.py` 主应用程序
+  - `enums.py`  枚举类定义
+
+---
+
+
 
