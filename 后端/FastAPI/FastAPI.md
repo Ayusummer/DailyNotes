@@ -26,7 +26,8 @@
     - [自定义异常处理](#自定义异常处理)
 - [依赖注入](#依赖注入)
   - [创建, 导入和声明依赖](#创建-导入和声明依赖)
-- [类作为依赖项](#类作为依赖项)
+  - [类作为依赖项](#类作为依赖项)
+  - [子依赖的创建和调用](#子依赖的创建和调用)
 
 ---
 
@@ -675,7 +676,7 @@ def dependency02(commons: dict = Depends(common_parameters)):
 
 ---
 
-# 类作为依赖项
+## 类作为依赖项
 
 ```python
 # 假设这是一个从数据库中获取的数据
@@ -709,6 +710,40 @@ async def classes_as_dependencies(commons=Depends(CommonQueryParams)):
 需要注意的是, 要与 Pydantic 派生类型作为参数相区分, 使用 `pydantic.BaseModel` 子类作为参数在函数请求体中, 而类作为依赖项进行注入作为 `query` 参数
 
 ![image-20220430182936870](http://cdn.ayusummer233.top/img/202204301829321.png)
+
+---
+
+## 子依赖的创建和调用
+
+```python
+####### Sub-dependencies 子依赖 #######
+
+
+def query(q: Optional[str] = None):
+    return q
+
+
+def sub_query(q: str = Depends(query), last_query: Optional[str] = None):
+    if not q:
+        return last_query
+    return q
+
+
+@app05.get("/sub_dependency")
+async def sub_dependency(final_query: str = Depends(sub_query, use_cache=True)):
+    """use_cache默认是True,
+    表示当多个依赖有一个共同的子依赖时,
+    每次request请求只会调用子依赖一次,
+    多次调用将从缓存中获取
+    """
+    return {"sub_dependency": final_query}
+```
+
+`query` 是子依赖
+
+![image-20220430184123474](http://cdn.ayusummer233.top/img/202204301841699.png)
+
+![image-20220430184031831](http://cdn.ayusummer233.top/img/202204301840123.png)
 
 ---
 
