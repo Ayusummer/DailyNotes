@@ -25,6 +25,8 @@
   - [错误处理](#错误处理)
     - [自定义异常处理](#自定义异常处理)
 - [依赖注入](#依赖注入)
+  - [创建, 导入和声明依赖](#创建-导入和声明依赖)
+- [类作为依赖项](#类作为依赖项)
 
 ---
 
@@ -638,4 +640,75 @@ FastAPI 的兼容性
 ---
 
 ## 创建, 导入和声明依赖
+
+将函数作为依赖进行注入操作(query)
+
+```python
+from fastapi import (
+    Depends,    # 引入依赖
+)
+
+####### Dependencies 创建、导入和声明依赖 #######
+
+
+async def common_parameters(q: Optional[str] = None, page: int = 1, limit: int = 100):
+    """公共函数测试"""
+    return {"q": q, "page": page, "limit": limit}
+
+
+@app05.get("/dependency01")
+async def dependency01(commons: dict = Depends(common_parameters)):
+    """使用 Depends 进行依赖注入
+    """
+    return commons
+
+
+@app05.get("/dependency02")
+def dependency02(commons: dict = Depends(common_parameters)):
+    """可以在async def中调用def依赖  
+    也可以在def中导入async def依赖
+    """
+    return commons
+```
+
+![image-20220430174337819](http://cdn.ayusummer233.top/img/202204301743566.png)
+
+---
+
+# 类作为依赖项
+
+```python
+# 假设这是一个从数据库中获取的数据
+fake_items_db = [{"item_name": "Foo"}, {"item_name": "Bar"}, {"item_name": "Baz"}]
+
+
+class CommonQueryParams:
+    def __init__(self, q: Optional[str] = None, page: int = 1, limit: int = 100):
+        self.q = q
+        self.page = page
+        self.limit = limit
+
+
+@app05.get("/classes_as_dependencies")
+# async def classes_as_dependencies(commons: CommonQueryParams = Depends(CommonQueryParams)):
+# async def classes_as_dependencies(commons: CommonQueryParams = Depends()):
+async def classes_as_dependencies(commons=Depends(CommonQueryParams)):
+    """
+    使用 Depends 创建类作为依赖项
+    """
+    response = {}
+    if commons.q:
+        response.update({"q": commons.q})
+    # 切片操作
+    items = fake_items_db[commons.page - 1 : commons.page + commons.limit]
+    response.update({"items": items})
+    return response
+
+```
+
+需要注意的是, 要与 Pydantic 派生类型作为参数相区分, 使用 `pydantic.BaseModel` 子类作为参数在函数请求体中, 而类作为依赖项进行注入作为 `query` 参数
+
+![image-20220430182936870](http://cdn.ayusummer233.top/img/202204301829321.png)
+
+---
 
