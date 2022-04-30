@@ -30,6 +30,10 @@
   - [子依赖的创建和调用](#子依赖的创建和调用)
   - [路径操作装饰器中导入依赖](#路径操作装饰器中导入依赖)
   - [FastAPI 框架中全局依赖的使用](#fastapi-框架中全局依赖的使用)
+  - [使用 yield 的依赖和子依赖](#使用-yield-的依赖和子依赖)
+- [OAuth2.0 的授权模式](#oauth20-的授权模式)
+  - [密码授权模式(Resource Owner Password Credentials Grant)](#密码授权模式resource-owner-password-credentials-grant)
+  - [OAuth2 密码模式和 FastAPI 的 OAuth2PasswordBearer](#oauth2-密码模式和-fastapi-的-oauth2passwordbearer)
 
 ---
 
@@ -889,5 +893,50 @@ def get_db():
         yield db
     finally:
         db.close()
+```
+
+-----
+
+# OAuth2.0 的授权模式
+
+- 授权码授权模式（Authorization Code Grant）
+- 隐式授权模式（Implicit Grant）
+- **密码授权模式（Resource Owner Password Credentials Grant）**
+- 客户端凭证授权模式（Client Credentials Grant）
+
+---
+
+## 密码授权模式(Resource Owner Password Credentials Grant)
+
+![image-20220430201704453](http://cdn.ayusummer233.top/img/202204302017634.png)
+
+---
+
+## OAuth2 密码模式和 FastAPI 的 OAuth2PasswordBearer
+
+```python
+from fastapi.security import (
+    OAuth2PasswordBearer,   # OAuth2的认证方式
+)
+
+####### OAuth2 密码模式和 FastAPI 的 OAuth2PasswordBearer #######
+
+"""
+OAuth2PasswordBearer是接收URL作为参数的一个类: 
+客户端会向该URL发送username和password参数, 然后得到一个Token值
+OAuth2PasswordBearer并不会创建相应的URL路径操作, 
+只是指明客户端用来请求Token的URL地址
+当请求到来的时候, FastAPI会检查请求的Authorization头信息, 
+如果没有找到Authorization头信息,或者头信息的内容不是Bearer token,
+它会返回401状态码(UNAUTHORIZED)
+"""
+
+# 请求Token的URL地址 http://127.0.0.1:8000/chapter06/token
+oauth2_schema = OAuth2PasswordBearer(tokenUrl="/chapter06/token")  
+
+
+@app06.get("/oauth2_password_bearer")
+async def oauth2_password_bearer(token: str = Depends(oauth2_schema)):
+    return {"token": token}
 ```
 
