@@ -28,6 +28,7 @@
   - [创建, 导入和声明依赖](#创建-导入和声明依赖)
   - [类作为依赖项](#类作为依赖项)
   - [子依赖的创建和调用](#子依赖的创建和调用)
+  - [路径操作装饰器中导入依赖](#路径操作装饰器中导入依赖)
 
 ---
 
@@ -744,6 +745,45 @@ async def sub_dependency(final_query: str = Depends(sub_query, use_cache=True)):
 ![image-20220430184123474](http://cdn.ayusummer233.top/img/202204301841699.png)
 
 ![image-20220430184031831](http://cdn.ayusummer233.top/img/202204301840123.png)
+
+---
+
+## 路径操作装饰器中导入依赖
+
+```python
+####### Dependencies in path operation decorators 路径操作装饰器中的多依赖 #######
+
+
+async def verify_token(x_token: str = Header(...)):
+    """
+    没有返回值的子依赖
+    """
+    if x_token != "fake-super-secret-token":
+        raise HTTPException(status_code=400, detail="X-Token header invalid")
+
+
+async def verify_key(x_key: str = Header(...)):
+    """
+    有返回值的子依赖，但是返回值不会被调用
+    """
+    if x_key != "fake-super-secret-key":
+        raise HTTPException(status_code=400, detail="X-Key header invalid")
+    return x_key
+
+
+@app05.get("/dependency_in_path_operation", 
+        dependencies=[Depends(verify_token), Depends(verify_key)]
+)   # 这时候不是在函数参数中调用依赖，而是在路径操作中调用依赖
+async def dependency_in_path_operation():
+    return [
+        {"user": "user01"}, 
+        {"user": "user02"}
+    ]
+```
+
+可以用于校验 key 之类的, 在 Header 中包含 key, 后端路径操作装饰器中导入依赖
+
+![image-20220430185536241](http://cdn.ayusummer233.top/img/202204301855666.png)
 
 ---
 
