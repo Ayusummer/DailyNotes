@@ -15,6 +15,7 @@
     - [Cookie 校验](#cookie-校验)
     - [Header 校验](#header-校验)
 - [响应模型](#响应模型)
+  - [响应状态码](#响应状态码)
 
 ---
 
@@ -365,6 +366,25 @@ async def response_model_attributes(user: UserIn):
 ![image-20220430142357442](http://cdn.ayusummer233.top/img/202204301423796.png)
 
 ---
+
+## 响应状态码
+
+在路由中通过 `status_code` 进行指定, 其值为整型, 可以通过 `status.HTTP_xx_xx` 获得名称上的提示
+
+```python
+@app04.post("/status_code", status_code=200)
+async def status_code():
+    """返回status_code: 200"""
+    return {"status_code": 200}
+
+
+@app04.post("/status_attribute", status_code=status.HTTP_200_OK)
+async def status_attribute():
+    """返回 status.HTTP_200_OK
+    """
+    print(type(status.HTTP_200_OK))
+    return {"status_code": status.HTTP_200_OK}
+```
 
 
 
