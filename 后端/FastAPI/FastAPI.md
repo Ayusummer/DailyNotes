@@ -1477,6 +1477,20 @@ class User(Base):
     role = Column(Integer, nullable=False, comment="身份组")
 ```
 
+> [__mapper_args__ = {"order_by":...-慕课网 (imooc.com)](https://www.imooc.com/qadetail/353354)
+>
+> 新版本的 sqlalchemy 丢弃了 __mappter_args__ 当中设置的方法
+>
+> 应当用 db.query().order_by() 直接在 Query 对象后面显示地调用 order_by 函数
+>
+> 例如:
+>
+> ```python
+> db.query(models.City).order_by(models.City.province).offset().limit().all()
+> 
+> db.query(models.Data).order_by(models.Data.confirmed)....
+> ```
+
 ---
 
 # 大型工程的目录结构设计 - 应用文件拆分
