@@ -1425,11 +1425,11 @@ class Department(Base):
     updated_at = Column(DateTime, server_default=func.now(), 
                             onupdate=func.now(), comment="更新时间")
 
-    # 排序相关
-    __mapper_args__ = {
-        # 倒序的话可以使用   "order_by": did.desc()
-        "order_by": did
-    }
+    # # 排序相关(新版 SQLAlchemy 已弃用)
+    # __mapper_args__ = {
+    #     # 倒序的话可以使用   "order_by": did.desc()
+    #     "order_by": did
+    # }
 
     # 显示类对象
     def __repr__(self):
@@ -1454,11 +1454,11 @@ class Staff(Base):
     updated_at = Column(DateTime, server_default=func.now(), 
                             onupdate=func.now(), comment="更新时间")
 
-    # 排序相关
-    __mapper_args__ = {
-        # 倒序的话可以使用   "order_by": did.desc()
-        "order_by": sid
-    }
+    # # 排序相关(新版 SQLAlchemy 已弃用)
+    # __mapper_args__ = {
+    #     # 倒序的话可以使用   "order_by": did.desc()
+    #     "order_by": sid
+    # }
 
     # 显示类对象
     def __repr__(self):
