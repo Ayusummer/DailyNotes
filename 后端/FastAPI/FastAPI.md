@@ -16,6 +16,10 @@
     - [Cookie 校验](#cookie-校验)
     - [Header 校验](#header-校验)
 - [响应模型](#响应模型)
+  - [response_model](#response_model)
+    - [复杂类型响应](#复杂类型响应)
+      - [直接搓 JSON](#直接搓-json)
+      - [封装 schema](#封装-schema)
   - [响应状态码](#响应状态码)
   - [表单数据处理](#表单数据处理)
   - [文件上传及参数详解](#文件上传及参数详解)
@@ -342,6 +346,10 @@ async def header(user_agent: Optional[str] = Header(
 
 # 响应模型
 
+---
+
+## response_model
+
 使用 `pydantic.BaseModel` 派生子类创建响应模型类, 在写路由时使用 `response_model=xxx` 来指定 `xxx` 为响应模型, 这样返回的响应就是一个 `xxx` 实例
 
 ```python
@@ -408,6 +416,101 @@ async def response_model_attributes(user: UserIn):
 响应模型亦可以进行特定字段的选取与排除
 
 ![image-20220430142357442](http://cdn.ayusummer233.top/img/202204301423796.png)
+
+---
+
+### 复杂类型响应
+
+比如这种响应:
+
+![image-20220502192305698](http://cdn.ayusummer233.top/img/202205021923030.png)
+
+首先这是从数据库中获取到的数据加上一些修饰得到的
+
+实现这种需求的两种方式:
+
+---
+
+#### 直接搓 JSON
+
+```python
+staffs = crud.read_staff_by_page(db, page, pageSize)
+staffs = list(jsonable_encoder(staffs))
+return JSONResponse(content={
+    "code":0,
+    "message":"ok",
+    "result":{
+        "items":staffs,
+        "total": len(staffs)
+    },
+    "type":"success"
+})    
+```
+
+---
+
+#### 封装 schema
+
+先用 `pydantic.BaseModel` 和 `staff schema` 封装一个响应模型类
+
+```python
+# 虚拟一个默认员工
+default_staff = {
+    "sid": 0,
+    "sname": "咸鱼型233",
+    "did": 0
+}
+
+class ResultSchema(BaseModel):
+    """结果类"""
+    items: List[Staff] = [Staff(**default_staff)]
+    total: int = len(items)
+
+# StaffListGetResultModel 
+class StaffListGetResultModel(BaseModel):
+    """员工列表获取结果类  
+    :param items: 员工列表; 默认值: [default_staff]  
+    :param total: 员工总数; 默认值: 1  
+    """
+    code: int = 0
+    message: str = "ok"
+    result: ResultSchema = ResultSchema(**default_staff)
+    type: str = "success"
+```
+
+然后再返回需要从数据库中读取的数据以及默认值:
+
+```python
+# 查询 page 页, 页大小为 pageSize 的员工信息
+@router.get(
+    "/getStaffByPage/", 
+    summary="分页按条目获取员工信息",
+    response_model= schema.StaffListGetResultModel,
+    response_model_exclude_unset=False,
+)
+async def get_staff_by_page(
+    page: int = 1, 
+    pageSize: int = 10, 
+    db:Session = Depends(get_db),
+):
+    """分页按条目获取员工信息  
+    :param page: 页码  
+    :param pageSize: 页大小  
+    :param db: 数据库连接  
+    :param response_model: 返回结果类型: schema.StaffListGetResultModel  
+    :param response_model_exclude_unset: 是否排除未设置的字段, 表示默认值不包含在响应中, 仅包含实际给的值,   
+                                        如果实际给的值与默认值相同也会包含在响应中
+    """
+    staffs = crud.read_staff_by_page(db, page, pageSize)
+    return {
+        "result":{
+            "items":staffs,
+            "total": len(staffs)
+        },
+    }
+```
+
+![image-20220502193659478](http://cdn.ayusummer233.top/img/202205021936876.png)
 
 ---
 
