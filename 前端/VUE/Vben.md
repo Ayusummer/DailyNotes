@@ -14,6 +14,15 @@
   - [配置文件中修改权限模式为 BACK](#配置文件中修改权限模式为-back)
   - [后端接口返回路由表](#后端接口返回路由表)
   - [数据库修改](#数据库修改)
+- [深入理解之路由、菜单、权限的设计](#深入理解之路由菜单权限的设计)
+  - [mark](#mark)
+  - [项目初始化](#项目初始化)
+  - [路由配置](#路由配置)
+  - [登录主体流程](#登录主体流程)
+  - [获取用户信息](#获取用户信息)
+  - [生成路由](#生成路由)
+  - [生成菜单](#生成菜单)
+  - [路由守卫](#路由守卫)
 
 ---
 
@@ -321,4 +330,555 @@ commit-lint 的配置位于项目根目录下 `commitlint.config.js`
 
 
 ![image-20220503082207631](http://cdn.ayusummer233.top/img/202205030822719.png)
+
+> 后续内容未完成, go 接触的不多且当前时间比较紧, 打算自己嗯用 FastAPI 搓
+
+---
+
+# 深入理解之路由、菜单、权限的设计
+
+> [Vben Admin 深入理解之路由、菜单、权限的设计 - 掘金 (juejin.cn)](https://juejin.cn/post/7001851383607459848)
+
+## mark
+
+- 路由是怎么自动加载并生成菜单的？
+- 菜单权限模式分别有什么不同，怎么做的区分和处理？
+- 权限的认证流程和初始化是怎么完成的？
+
+---
+
+## 项目初始化
+
+`src/main.ts`
+
+```typescript
+async function bootstrap() {
+  const app = createApp(App);
+
+  // Configure store
+  // 使用 pinia
+  setupStore(app);
+
+  // Initialize internal system configuration
+  // 初始化系统配置: 项目配置, 样式主题, 持久化缓存等
+  initAppConfigStore();
+
+  // Register global components
+  // 注册全局组件
+  registerGlobComp(app);
+
+  // Multilingual configuration
+  // Asynchronous case: language files may be obtained from the server side
+  // 多语言配置(国际化配置)
+  await setupI18n(app);
+
+  // Configure routing
+  // 路由配置
+  setupRouter(app);
+
+  // router-guard
+  // 路由守卫: 权限判断, 初始化缓存数据等
+  setupRouterGuard(router);
+
+  // Register global directive
+  // 注册全局指令
+  setupGlobDirectives(app);
+
+  // Configure global error handling
+  // 配置全局错误处理
+  setupErrorHandle(app);
+
+  // https://next.router.vuejs.org/api/#isready
+  // await router.isReady();
+
+  app.mount('#app');
+}
+```
+
+---
+
+## 路由配置
+
+实现自动加载 `modules` 下的路由文件并生成路由配置信息和一些通用的配置。
+
+`src/router/routes/index.ts`:
+
+```typescript
+import type { AppRouteRecordRaw, AppRouteModule } from '/@/router/types';
+
+import { PAGE_NOT_FOUND_ROUTE, REDIRECT_ROUTE } from '/@/router/routes/basic';
+
+import { mainOutRoutes } from './mainOut';
+import { PageEnum } from '/@/enums/pageEnum';
+import { t } from '/@/hooks/web/useI18n';
+
+// 自动加载 ./modules 目录下的路由模块
+const modules = import.meta.globEager('./modules/**/*.ts');
+
+const routeModuleList: AppRouteModule[] = [];
+
+Object.keys(modules).forEach((key) => {
+  const mod = modules[key].default || {};
+  const modList = Array.isArray(mod) ? [...mod] : [mod];
+  routeModuleList.push(...modList);
+});
+
+// 读取的路由并未立即注册，而是等权限认证完后通过 router.addRoutes 添加到路由实例，实现权限的过滤
+export const asyncRoutes = [PAGE_NOT_FOUND_ROUTE, ...routeModuleList];
+
+export const RootRoute: AppRouteRecordRaw = {
+  path: '/',
+  name: 'Root',
+  redirect: PageEnum.BASE_HOME,
+  meta: {
+    title: 'Root',
+  },
+};
+
+export const LoginRoute: AppRouteRecordRaw = {
+  path: '/login',
+  name: 'Login',
+  component: () => import('/@/views/sys/login/Login.vue'),
+  meta: {
+    title: t('routes.basic.login'),
+  },
+};
+
+// Basic routing without permission
+export const basicRoutes = [
+  // 登录路由
+  LoginRoute,
+  // 跟路由
+  RootRoute,
+  // 新页面 /main-out
+  ...mainOutRoutes,
+  // 重定向路由
+  REDIRECT_ROUTE,
+  // 404
+  PAGE_NOT_FOUND_ROUTE,
+];
+
+```
+
+---
+
+## 登录主体流程
+
+点击登录获取用户信息，存储使用的 `pinia` 实现。
+
+`src\views\sys\login\LoginForm.vue`:
+
+```typescript
+// 获取用户信息, 存储使用 pinia
+const userInfo = await userStore.login({
+  password: data.password,
+  username: data.account,
+  mode: 'none', //不要默认的错误提示
+});
+```
+
+`src\store\modules\user.ts`:
+
+```typescript
+    /**
+     * @description: login
+     */
+    async login(
+      params: LoginParams & {
+        goHome?: boolean;
+        mode?: ErrorMessageMode;
+      },
+    ): Promise<GetUserInfoModel | null> {
+      try {
+        const { goHome = true, mode, ...loginParams } = params;
+        // 1. 调用登录接口
+        const data = await loginApi(loginParams, mode);
+        const { token } = data;
+
+        // save token
+        // 2. 设置 token 并存储本地缓存
+        this.setToken(token);
+        return this.afterLoginAction(goHome);
+      } catch (error) {
+        return Promise.reject(error);
+      }
+    },
+    async afterLoginAction(goHome?: boolean): Promise<GetUserInfoModel | null> {
+      if (!this.getToken) return null;
+      // get user info
+      // 3. 获取用户信息
+      const userInfo = await this.getUserInfoAction();
+
+      const sessionTimeout = this.sessionTimeout;
+      if (sessionTimeout) {
+        this.setSessionTimeout(false);
+      } else {
+        const permissionStore = usePermissionStore();
+        if (!permissionStore.isDynamicAddedRoute) {
+          // 4. 获取路由配置并动态添加路由配置
+          const routes = await permissionStore.buildRoutesAction();
+          routes.forEach((route) => {
+            router.addRoute(route as unknown as RouteRecordRaw);
+          });
+          router.addRoute(PAGE_NOT_FOUND_ROUTE as unknown as RouteRecordRaw);
+          permissionStore.setDynamicAddedRoute(true);
+        }
+        goHome && (await router.replace(userInfo?.homePath || PageEnum.BASE_HOME));
+      }
+      return userInfo;
+    },
+    async getUserInfoAction(): Promise<UserInfo | null> {
+      if (!this.getToken) return null;
+      const userInfo = await getUserInfo();
+      const { roles = [] } = userInfo;
+      if (isArray(roles)) {
+        const roleList = roles.map((item) => item.value) as RoleEnum[];
+        this.setRoleList(roleList);
+      } else {
+        userInfo.roles = [];
+        this.setRoleList([]);
+      }
+      this.setUserInfo(userInfo);
+      return userInfo;
+    },
+```
+
+---
+
+## 获取用户信息
+
+`src\store\modules\user.ts`:
+
+```typescript
+    async getUserInfoAction(): Promise<UserInfo | null> {
+      if (!this.getToken) return null;
+      const userInfo = await getUserInfo();
+      const { roles = [] } = userInfo;
+      if (isArray(roles)) {
+        const roleList = roles.map((item) => item.value) as RoleEnum[];
+        // 设置权限列表, 并存储本地缓存
+        this.setRoleList(roleList);
+      } else {
+        userInfo.roles = [];
+        this.setRoleList([]);
+      }
+      // 设置用户信息, 并存储本地缓存
+      this.setUserInfo(userInfo);
+      return userInfo;
+    },
+```
+
+---
+
+## 生成路由
+
+登录成功之后调用 `buildRoutesAction` 获取路由配置、生成菜单配置。
+
+`src\store\modules\permission.ts\userPermissionStore/actions/buildRoutesAction()`:
+
+```typescript
+    async buildRoutesAction(): Promise<AppRouteRecordRaw[]> {
+      const { t } = useI18n();
+      const userStore = useUserStore();
+      const appStore = useAppStoreWithOut();
+
+      let routes: AppRouteRecordRaw[] = [];
+      const roleList = toRaw(userStore.getRoleList) || [];
+      // 获取权限模式
+      const { permissionMode = projectSetting.permissionMode } = appStore.getProjectConfig;
+
+      const routeFilter = (route: AppRouteRecordRaw) => {
+        const { meta } = route;
+        const { roles } = meta || {};
+        if (!roles) return true;
+        return roleList.some((role) => roles.includes(role));
+      };
+
+      const routeRemoveIgnoreFilter = (route: AppRouteRecordRaw) => {
+        const { meta } = route;
+        const { ignoreRoute } = meta || {};
+        return !ignoreRoute;
+      };
+
+      /**
+       * @description 根据设置的首页path，修正routes中的affix标记（固定首页）
+       * */
+      const patchHomeAffix = (routes: AppRouteRecordRaw[]) => {
+        if (!routes || routes.length === 0) return;
+        let homePath: string = userStore.getUserInfo.homePath || PageEnum.BASE_HOME;
+        function patcher(routes: AppRouteRecordRaw[], parentPath = '') {
+          if (parentPath) parentPath = parentPath + '/';
+          routes.forEach((route: AppRouteRecordRaw) => {
+            const { path, children, redirect } = route;
+            const currentPath = path.startsWith('/') ? path : parentPath + path;
+            if (currentPath === homePath) {
+              if (redirect) {
+                homePath = route.redirect! as string;
+              } else {
+                route.meta = Object.assign({}, route.meta, { affix: true });
+                throw new Error('end');
+              }
+            }
+            children && children.length > 0 && patcher(children, currentPath);
+          });
+        }
+        try {
+          patcher(routes);
+        } catch (e) {
+          // 已处理完毕跳出循环
+        }
+        return;
+      };
+      // 区分权限模式
+      switch (permissionMode) {
+        // 前端方式控制(菜单和路由分开配置)
+        case PermissionModeEnum.ROLE:
+          // 根据权限过滤路由
+          routes = filter(asyncRoutes, routeFilter);
+          routes = routes.filter(routeFilter);
+          // Convert multi-level routing to level 2 routing
+          // 将多级路由转换为二级路由
+          routes = flatMultiLevelRoutes(routes);
+          break;
+
+        // 前端方式控制(菜单和路由配置自动生成)
+        case PermissionModeEnum.ROUTE_MAPPING:
+          // 根据权限过滤路由
+          routes = filter(asyncRoutes, routeFilter);
+          routes = routes.filter(routeFilter);
+          // 通过转换路由生成菜单
+          const menuList = transformRouteToMenu(routes, true);
+          routes = filter(routes, routeRemoveIgnoreFilter);
+          routes = routes.filter(routeRemoveIgnoreFilter);
+          menuList.sort((a, b) => {
+            return (a.meta?.orderNo || 0) - (b.meta?.orderNo || 0);
+          });
+
+          // 设置保存菜单列表
+          this.setFrontMenuList(menuList);
+          // Convert multi-level routing to level 2 routing
+          // 将多级路由转换为二级路由
+          routes = flatMultiLevelRoutes(routes);
+          break;
+
+        //  If you are sure that you do not need to do background dynamic permissions, please comment the entire judgment below
+        // 后台方式控制
+        case PermissionModeEnum.BACK:
+          const { createMessage } = useMessage();
+
+          createMessage.loading({
+            content: t('sys.app.menuLoading'),
+            duration: 1,
+          });
+
+          // !Simulate to obtain permission codes from the background,
+          // this function may only need to be executed once, and the actual project can be put at the right time by itself
+          // 获取后台返回的菜单配置 /mock/sys/menu.ts
+          let routeList: AppRouteRecordRaw[] = [];
+          try {
+            this.changePermissionCode();
+            routeList = (await getMenuList()) as AppRouteRecordRaw[];
+          } catch (error) {
+            console.error(error);
+          }
+
+          // Dynamically introduce components
+          routeList = transformObjToRoute(routeList);
+
+          //  Background routing to menu structure
+          // 通过转换路由生成菜单
+          const backMenuList = transformRouteToMenu(routeList);
+          // 设置菜单列表
+          this.setBackMenuList(backMenuList);
+
+          // remove meta.ignoreRoute item
+          routeList = filter(routeList, routeRemoveIgnoreFilter);
+          routeList = routeList.filter(routeRemoveIgnoreFilter);
+
+          // 设置保存菜单列表
+          routeList = flatMultiLevelRoutes(routeList);
+          routes = [PAGE_NOT_FOUND_ROUTE, ...routeList];
+          break;
+      }
+
+      routes.push(ERROR_LOG_ROUTE);
+      patchHomeAffix(routes);
+      return routes;
+    },
+```
+
+---
+
+## 生成菜单
+
+根据不同的权限模式从不同的数据源获取菜单。
+
+`src\router\menus\index.ts`:
+
+```typescript
+// 自动加载 `modules` 目录下的菜单模块
+const modules = import.meta.globEager('./modules/**/*.ts');
+
+async function getAsyncMenus() {
+  const permissionStore = usePermissionStore();
+  // 后端模式 BACK
+  if (isBackMode()) {
+    // 获取 this.setBackMenuList(menuList) 设置的菜单
+    return permissionStore.getBackMenuList.filter((item) => !item.meta?.hideMenu && !item.hideMenu);
+  }
+  // 前端模式(菜单由路由配置自动生成) ROUTE_MAPPING
+  if (isRouteMappingMode()) {
+    // 获取 this.setFrontMenuList(menuList) 设置的菜单
+    return permissionStore.getFrontMenuList.filter((item) => !item.hideMenu);
+  }
+  // 前端模式(菜单和路由分开配置) ROLE
+  return staticMenus;
+}
+```
+
+在菜单组件中获取菜单配置渲染。
+
+`src\layouts\default\menu\index.vue\scrupt\default\setup\renderMenu()`:
+
+```typescript
+      // 在菜单组件中获取菜单配置渲染
+      function renderMenu() {
+        const { menus, ...menuProps } = unref(getCommonProps);
+        // console.log(menus);
+        if (!menus || !menus.length) return null;
+        return !props.isHorizontal ? (
+          <SimpleMenu {...menuProps} isSplitMenu={unref(getSplit)} items={menus} />
+        ) : (
+          <BasicMenu
+            {...(menuProps as any)}
+            isHorizontal={props.isHorizontal}
+            type={unref(getMenuType)}
+            showLogo={unref(getIsShowLogo)}
+            mode={unref(getComputedMenuMode as any)}
+            items={menus}
+          />
+        );
+      }
+```
+
+---
+
+## 路由守卫
+
+判断是否登录以及刷新之后的初始化。
+
+`src\router\guard\permissionGuard.ts`:
+
+```typescript
+
+export function createPermissionGuard(router: Router) {
+  const userStore = useUserStoreWithOut();
+  const permissionStore = usePermissionStoreWithOut();
+  router.beforeEach(async (to, from, next) => {
+    if (
+      from.path === ROOT_PATH &&
+      to.path === PageEnum.BASE_HOME &&
+      userStore.getUserInfo.homePath &&
+      userStore.getUserInfo.homePath !== PageEnum.BASE_HOME
+    ) {
+      next(userStore.getUserInfo.homePath);
+      return;
+    }
+
+    const token = userStore.getToken;
+
+    // Whitelist can be directly entered
+    // 白名单可以直接进入
+    if (whitePathList.includes(to.path as PageEnum)) {
+      if (to.path === LOGIN_PATH && token) {
+        const isSessionTimeout = userStore.getSessionTimeout;
+        try {
+          await userStore.afterLoginAction();
+          if (!isSessionTimeout) {
+            next((to.query?.redirect as string) || '/');
+            return;
+          }
+        } catch {}
+      }
+      next();
+      return;
+    }
+
+    // token does not exist
+    // token不存在则重定向到登录页
+    if (!token) {
+      // You can access without permission. You need to set the routing meta.ignoreAuth to true
+      if (to.meta.ignoreAuth) {
+        next();
+        return;
+      }
+
+      // redirect login page
+      const redirectData: { path: string; replace: boolean; query?: Recordable<string> } = {
+        path: LOGIN_PATH,
+        replace: true,
+      };
+      if (to.path) {
+        redirectData.query = {
+          ...redirectData.query,
+          redirect: to.path,
+        };
+      }
+      next(redirectData);
+      return;
+    }
+
+    // Jump to the 404 page after processing the login
+    // 处理登录后跳转到 404 页面
+    if (
+      from.path === LOGIN_PATH &&
+      to.name === PAGE_NOT_FOUND_ROUTE.name &&
+      to.fullPath !== (userStore.getUserInfo.homePath || PageEnum.BASE_HOME)
+    ) {
+      next(userStore.getUserInfo.homePath || PageEnum.BASE_HOME);
+      return;
+    }
+
+    // get userinfo while last fetch time is empty
+    // 获取用户信息 userinfo / roleList
+    if (userStore.getLastUpdateTime === 0) {
+      try {
+        await userStore.getUserInfoAction();
+      } catch (err) {
+        next();
+        return;
+      }
+    }
+
+    // 根据判断是否重新获取动态路由
+    if (permissionStore.getIsDynamicAddedRoute) {
+      next();
+      return;
+    }
+
+    const routes = await permissionStore.buildRoutesAction();
+
+    routes.forEach((route) => {
+      router.addRoute(route as unknown as RouteRecordRaw);
+    });
+
+    router.addRoute(PAGE_NOT_FOUND_ROUTE as unknown as RouteRecordRaw);
+
+    permissionStore.setDynamicAddedRoute(true);
+
+    if (to.name === PAGE_NOT_FOUND_ROUTE.name) {
+      // 动态添加路由后，此处应当重定向到fullPath，否则会加载404页面内容
+      next({ path: to.fullPath, replace: true, query: to.query });
+    } else {
+      const redirectPath = (from.query.redirect || to.path) as string;
+      const redirect = decodeURIComponent(redirectPath);
+      const nextData = to.path === redirect ? { ...to, replace: true } : { path: redirect };
+      next(nextData);
+    }
+  });
+}
+
+```
+
+---
 
