@@ -1,11 +1,17 @@
 # 目录
 - [目录](#目录)
 - [项目地址](#项目地址)
+- [项目文档](#项目文档)
 - [开始](#开始)
   - [环境](#环境)
     - [VSCode 插件](#vscode-插件)
   - [npm Script](#npm-script)
   - [目录说明](#目录说明)
+- [项目配置](#项目配置)
+- [后端路由接入](#后端路由接入)
+    - [配置文件路径](#配置文件路径)
+
+---
 
 # 项目地址
 
@@ -14,6 +20,14 @@
 [vbenjs/vben-admin-thin-next: vue-vben-admin-2.0 mini template.vue3,vite,typescript (github.com)](https://github.com/vbenjs/vben-admin-thin-next)
 
 [vbenjs/vue-vben-admin-doc: vue-vben-admin-doc (github.com)](https://github.com/vbenjs/vue-vben-admin-doc)
+
+---
+
+# 项目文档
+
+> [Home | Vben Admin (vvbin.cn)](https://vvbin.cn/doc-next/)
+>
+> [构建&部署 | Vben Admin (vvbin.cn)](https://vvbin.cn/doc-next/guide/deploy.html)
 
 ---
 
@@ -169,5 +183,122 @@
 
 用于修改项目的配色、布局、缓存、多语言、组件默认配置
 
+---
 
+# 后端路由接入
+
+## 配置文件中修改权限模式为 BACK
+
+[src/settings/projectSetting.ts](https://github.com/vbenjs/vue-vben-admin/tree/main/src/settings/projectSetting.ts)
+
+将系统内权限模式改为 `BACK` 模式开启权限由后台动态获取
+
+![image-20220503073803911](http://cdn.ayusummer233.top/img/202205030738082.png)
+
+> 后台返回角色, 前端根据返回结果显示界面等
+
+配置改完后要清缓存:
+
+![image-20220503071625298](http://cdn.ayusummer233.top/img/202205030716480.png)
+
+最基本的静态路由存放在 `src/router/routes/index.ts` 中, 包含根路由以及登录页面
+
+![image-20220503071246721](http://cdn.ayusummer233.top/img/202205030712969.png)
+
+原本前端路由情况下登入操作的请求及响应如下:
+
+![image-20220503073244809](http://cdn.ayusummer233.top/img/202205030732941.png)
+
+![image-20220503074215472](http://cdn.ayusummer233.top/img/202205030742550.png)
+
+----
+
+## 后端接口返回路由表
+
+---
+
+切换后端路由后登录操作请求资源如下:
+
+![image-20220503074342187](http://cdn.ayusummer233.top/img/202205030743271.png)
+
+---
+
+`login`:
+
+![image-20220503074514748](http://cdn.ayusummer233.top/img/202205030745837.png)
+
+![image-20220503074552655](http://cdn.ayusummer233.top/img/202205030745723.png)
+
+![image-20220503074450395](http://cdn.ayusummer233.top/img/202205030744462.png)
+
+---
+
+`getUserInfo`:
+
+![image-20220503074657195](http://cdn.ayusummer233.top/img/202205030746282.png)
+
+![image-20220503074711295](http://cdn.ayusummer233.top/img/202205030747383.png)
+
+---
+
+登陆成功获取 `权限码(PermCode`, `菜单(MenuList)`
+
+`getPermCode`:
+
+![image-20220503074845976](http://cdn.ayusummer233.top/img/202205030748072.png)
+
+![image-20220503074857618](http://cdn.ayusummer233.top/img/202205030748697.png)
+
+---
+
+`getMenuList`:
+
+![image-20220503074940111](http://cdn.ayusummer233.top/img/202205030749194.png)
+
+![image-20220503075017643](http://cdn.ayusummer233.top/img/202205030750750.png)
+
+---
+
+以及一个图标请求:
+
+![image-20220503075123487](http://cdn.ayusummer233.top/img/202205030751576.png)
+
+![image-20220503075133396](http://cdn.ayusummer233.top/img/202205030751456.png)
+
+![image-20220503075147948](http://cdn.ayusummer233.top/img/202205030751031.png)
+
+> 不过这个请求明显是发往站外的, 就不用写了
+
+---
+
+重点说说 `MenuList`:
+
+
+![image-20220503074940111](http://cdn.ayusummer233.top/img/202205030749194.png)
+
+![image-20220503075017643](http://cdn.ayusummer233.top/img/202205030750750.png)
+
+![image-20220503075834271](http://cdn.ayusummer233.top/img/202205030758420.png)
+
+![image-20220503081228333](http://cdn.ayusummer233.top/img/202205030812505.png)
+
+---
+
+在 `.env.development` 中关掉 `mock` 后再删除缓存放回登录页面登录, 那么就会
+
+![](http://cdn.ayusummer233.top/img/202205030838782.png)
+
+这个请求地址和之前一致, 那么可以保留 mock, 然后用转发慢慢联调(
+
+## 数据库修改
+
+在数据库中新建一个 `router` 表
+
+字段根据上面的 `menuList` 设置:
+
+![image-20220503082151720](http://cdn.ayusummer233.top/img/202205030821797.png)
+
+
+
+![image-20220503082207631](http://cdn.ayusummer233.top/img/202205030822719.png)
 
