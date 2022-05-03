@@ -1,3 +1,12 @@
+# 目录
+- [目录](目录)
+- [查看与升级版本](#查看与升级版本)
+- [配置相关](#配置相关)
+- [仓库相关](#仓库相关)
+  - [常规操作](#常规操作)
+- [报错收集](#报错收集)
+  - [fatal: Authentication failed](#fatal-authentication-failed)
+
 # 查看与升级版本
 
 > [How to upgrade Git on Windows to the latest version - Stack Overflow](https://stackoverflow.com/questions/13790592/how-to-upgrade-git-on-windows-to-the-latest-version)
@@ -48,4 +57,38 @@ git commit -m "备注"
 # 推送到 origin master
 git push origin master
 ```
+
+---
+
+# 报错收集
+
+---
+
+## fatal: Authentication failed
+
+> [Token authentication requirements for Git operations | The GitHub Blog](https://github.blog/2020-12-15-token-authentication-requirements-for-git-operations/)
+>
+> [Creating a personal access token - GitHub Docs](https://docs.github.com/cn/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token)
+
+`remote: Support for password authentication was removed on August 13, 2021. Please use a personal access token instead.
+remote: Please see https://github.blog/2020-12-15-token-authentication-requirements-for-git-operations/ for more information.
+fatal: Authentication failed for 'https://github.com/Ayusummer/vue-vben-admin.git/'`
+
+![image-20220503212613312](http://cdn.ayusummer233.top/img/202205032126873.png)
+
+![image-20220503212933997](http://cdn.ayusummer233.top/img/202205032129065.png)
+
+需要在 github 上创建一个私有的 access token 来用
+
+![image-20220503213035692](http://cdn.ayusummer233.top/img/202205032130796.png)
+
+![image-20220503213144120](http://cdn.ayusummer233.top/img/202205032131211.png)
+
+填写自拟的token名并设置过期时间以及权限后点击页面左下角的 `Generate token`创建即可
+
+> **Warning:** Treat your tokens like passwords and keep them secret. When working with the API, use tokens as environment variables instead of hardcoding them into your programs.
+
+然后就可以通过 `username` 和 `token` 来进行一些权限操作了
+
+![image-20220503213634670](http://cdn.ayusummer233.top/img/202205032136970.png)
 
