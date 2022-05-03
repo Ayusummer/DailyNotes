@@ -8,8 +8,12 @@
   - [npm Script](#npm-script)
   - [目录说明](#目录说明)
 - [项目配置](#项目配置)
+- [项目规范](#项目规范)
+  - [CommitLint](#commitlint)
 - [后端路由接入](#后端路由接入)
-    - [配置文件路径](#配置文件路径)
+  - [配置文件中修改权限模式为 BACK](#配置文件中修改权限模式为-back)
+  - [后端接口返回路由表](#后端接口返回路由表)
+  - [数据库修改](#数据库修改)
 
 ---
 
@@ -182,6 +186,22 @@
 # 项目配置
 
 用于修改项目的配色、布局、缓存、多语言、组件默认配置
+
+---
+
+# 项目规范
+
+> [Lint | Vben Admin (vvbin.cn)](https://vvbin.cn/doc-next/dep/lint.html)
+
+---
+
+## CommitLint
+
+commit-lint 的配置位于项目根目录下 `commitlint.config.js`
+
+![image-20220503143453435](http://cdn.ayusummer233.top/img/202205031434826.png)
+
+
 
 ---
 
