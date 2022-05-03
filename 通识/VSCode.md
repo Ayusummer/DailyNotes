@@ -25,6 +25,8 @@
 	- [Terminal](#terminal)
 	- [vscode-icons](#vscode-icons)
 	- [prettier + ESLint](#prettier--eslint)
+- [报错收集](#报错收集)
+	- [git Missing or invalid credentials.](#git-missing-or-invalid-credentials)
 
 
 # VSCode 下载
@@ -244,4 +246,18 @@
 ![image-20220421202926005](http://cdn.ayusummer233.top/img/202204212029364.png)用 ESLint 做约束, 用 Prettier 做代码格式化
 
 
+
+---
+
+# 报错收集
+
+---
+
+## git Missing or invalid credentials.
+
+> [git Missing or invalid credentials. · Issue #107024 · microsoft/vscode (github.com)](https://github.com/microsoft/vscode/issues/107024)
+
+![image-20220503212809785](http://cdn.ayusummer233.top/img/202205032128921.png)
+
+![image-20220503212826597](http://cdn.ayusummer233.top/img/202205032128654.png)
 
