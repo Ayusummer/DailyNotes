@@ -56,6 +56,7 @@
     - [简单请求](#简单请求)
 - [后台任务](#后台任务)
 - [测试用例](#测试用例)
+- [运行](#运行)
 
 ---
 
@@ -1862,3 +1863,14 @@ def test_dependency_run_bg_task_q():
 
 ---
 
+# 运行
+
+```bash
+uvicorn app.mian:app --reload --host 'xxx' --port xxx
+```
+
+> `–relaod` 可以更新自动重载
+>
+> `--port` 可以指定端口运行
+>
+> `--host` 可以用于指定 host, 当在服务器上跑 uvicorn 时可以指定 `–host ‘0.0.0.0’ ` 否则会自动挂载在本地上
