@@ -21,6 +21,9 @@
 - [Go](#go)
   - [安装](#安装-1)
   - [代理](#代理)
+- [Zellij](#zellij)
+  - [安装](#安装-2)
+  - [使用](#使用)
 
 
 ---
@@ -415,7 +418,7 @@ conda deactivate
 - 以 sudo 身份运行此命令，下载并执行 NodeSource 安装脚本
   ```bash
   curl -sL https://deb.nodesource.com/setup_16.x | sudo -E bash -
-  ```  
+  ```
   这个脚本将会添加 NodeSource 的签名 key 到你的系统，创建一个 apt 源文件，安装必备的软件包，并且刷新 apt 缓存。
 - NodeSource 源启用成功后，安装 Node.js 和 npm:
   ```bash
@@ -466,8 +469,102 @@ conda deactivate
   go env -w GO111MODULE=on
   go env -w GOPROXY=https://goproxy.cn,direct
   ```
+  
 - macOS 或 Linux
   ```bash
   export GO111MODULE=on
   export GOPROXY=https://goproxy.cn
   ```
+
+---
+
+# Zellij
+
+> [Zellij](https://zellij.dev/)
+
+## 安装
+
+> [Linux Ubuntu添加环境变量_FarryNiu的博客-CSDN博客_ubuntu 添加环境变量](https://blog.csdn.net/qq_43474959/article/details/115028848)
+>
+> [Installation - Zellij User Guide](https://zellij.dev/documentation/installation.html)
+
+先在 [Zellij](https://zellij.dev/) 下载好压缩包
+
+解压:
+
+```shell
+tar -xvf zellij-x86_64-unknown-linux-musl.tar.gz
+```
+
+![](http://cdn.ayusummer233.top/img/202205041947326.png)
+
+添加执行权限:
+
+```shell
+chmod +x zellij
+```
+
+运行 `zellij`:
+
+```shell
+./zellij
+```
+
+将 `zellij` 所在目录添加到 `PATH` 变量中以在任何地方使用 `zellij`:
+
+打开 `/root/.bashrc` 在末尾加上如下内容:
+
+```sh
+export PATH="/home/ubuntu/zellij:$PATH"
+```
+
+然后:
+
+```shell
+source ~/.bashrc
+```
+
+然后就可以在任意位置使用 `zellij` 命令来启用 `zellij` 了
+
+---
+
+## 使用
+
+新建一个`session`
+
+```shell
+zellij
+```
+
+新建一个 `Tab`: `ctrl + t, n`
+
+重命名 `Tab`: `ctrl + t, r`
+
+新建一个 `pane`: `ctrl + p, n`
+
+重命名 `pane`: `Ctrl + p, c`
+
+detach session: `ctrl + o, d`
+
+关闭 session: `Ctrl + q`
+
+界面底部有提示, 很友好:
+
+![image-20220504210749149](http://cdn.ayusummer233.top/img/202205042107266.png)
+
+显示 session 列表: `zellij list-sessions` 或者 `zellij ls`
+
+![image-20220504210932759](http://cdn.ayusummer233.top/img/202205042109817.png)
+
+返回某个 session: `zellij attach xxx` 或者 `zellij a xxx`
+
+
+
+
+
+
+
+
+
+
+
