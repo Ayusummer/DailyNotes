@@ -1,6 +1,15 @@
 #   目录
 - [目录](#目录)
 - [前言](#前言)
+- [起步](#起步)
+  - [导入 FastAPI](#导入-fastapi)
+  - [创建一个 FastAPI 实例](#创建一个-fastapi-实例)
+  - [创建一个路径操作](#创建一个路径操作)
+    - [路径](#路径)
+    - [操作](#操作)
+    - [定义一个路径操作装饰器](#定义一个路径操作装饰器)
+  - [定义路径操作函数](#定义路径操作函数)
+  - [返回内容](#返回内容)
 - [请求模型](#请求模型)
   - [路径参数和数据的解析验证](#路径参数和数据的解析验证)
     - [枚举类型](#枚举类型)
@@ -42,10 +51,31 @@
   - [OAuth2 密码模式和 FastAPI 的 OAuth2PasswordBearer](#oauth2-密码模式和-fastapi-的-oauth2passwordbearer)
   - [基于 Password 和 Bearer token 的 OAuth2 认证](#基于-password-和-bearer-token-的-oauth2-认证)
   - [开发基于 JSON Web Tokens 的认证](#开发基于-json-web-tokens-的认证)
-- [FastAPI 的数据库操作及大型工程应用的目录结构设计](#fastapi-的数据库操作及大型工程应用的目录结构设计)
+- [SQL(Relational) Databases](#sqlrelational-databases)
+  - [创建 SQLAlchemy](#创建-sqlalchemy)
+    - [引入 SQLAlchemy 库](#引入-sqlalchemy-库)
+    - [为 SQLAlchemy 创建 database URL](#为-sqlalchemy-创建-database-url)
+    - [创建 SQLAlchemy engine](#创建-sqlalchemy-engine)
+    - [创建一个 SessionLocal 类](#创建一个-sessionlocal-类)
+    - [创建一个 Base 类](#创建一个-base-类)
+  - [创建 database models](#创建-database-models)
+    - [从 Base 类创建 SQLAlchemy model](#从-base-类创建-sqlalchemy-model)
+    - [创建 model attributes/columns](#创建-model-attributescolumns)
+    - [创建 relationships](#创建-relationships)
+  - [创建 Pydantic model](#创建-pydantic-model)
+    - [创建 initial Pydantic models / schemas](#创建-initial-pydantic-models--schemas)
+      - [SQLAlchemy style 和 Pydantic style](#sqlalchemy-style-和-pydantic-style)
+    - [创建用于 reading / returning 的 Pydantic models / schemas](#创建用于-reading--returning-的-pydantic-models--schemas)
+    - [使用 Pydantic 的 orm_mode](#使用-pydantic-的-orm_mode)
+      - [关于 ORM mode 的技术细节](#关于-orm-mode-的技术细节)
+  - [CRUD utils](#crud-utils)
+  - [Main FastAPI app](#main-fastapi-app)
+    - [创建数据库表](#创建数据库表)
+    - [创建 dependency](#创建-dependency)
+- [数据库操作(慕课网)](#数据库操作慕课网)
   - [配置 SQLAlchemy ORM](#配置-sqlalchemy-orm)
   - [DataBase Models](#database-models)
-- [大型工程的目录结构设计 - 应用文件拆分](#大型工程的目录结构设计---应用文件拆分)
+- [大型工程的目录结构设计](#大型工程的目录结构设计)
 - [中间件](#中间件)
 - [跨域资源共享](#跨域资源共享)
   - [源](#源)
@@ -59,12 +89,179 @@
 - [运行](#运行)
 
 ---
-
 # 前言
 
-随笔基于慕课网 21 年发的一份 `FastAPI` 基础教程
+随笔有一部分内容基于慕课网 21 年发的一份 `FastAPI` 基础教程
 
 [【独家新技术】从0到1学习 FastAPI 框架的所有知识点_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV1iN411X72b?p=19&spm_id_from=333.1007.top_right_bar_window_history.content.click)
+
+---
+# 起步
+
+> [第一步 - FastAPI (tiangolo.com)](https://fastapi.tiangolo.com/zh/tutorial/first-steps/)
+
+基本示例:
+
+```python
+# main.py
+
+# 导入 FastAPI
+from fastapi import FastAPI
+# 创建一个 FastAPI 实例
+app = FastAPI()
+
+@app.get("/")
+async def root():
+    return {"message": "Hello World"}
+```
+
+```shell
+uvicorn main:app --reload
+```
+- `main`: `main.py` 文件(一个 Python「模块」)
+- `app`: 在 `main.py` 文件中通过 `app = FastAPI()` 创建的对象。
+- `--reload`: 让服务器在更新代码后重新启动。仅在开发时使用该选项。
+
+![20220408093533](http://cdn.ayusummer233.top/img/20220408093533.png)
+
+- 在浏览器中访问 `http://127.0.0.1:8000`  
+- 交互式 API 文档: `http://127.0.0.1:8000/docs`
+  ![20220408093911](http://cdn.ayusummer233.top/img/20220408093911.png)
+- 可选的 API 文档: `http://127.0.0.1:8000/redoc#operation/read_item_items__item_id__get`
+  ![20220408094106](http://cdn.ayusummer233.top/img/20220408094106.png)
+
+
+## 导入 FastAPI
+
+```python
+from fastapi import FastAPI
+```
+
+`FastAPI` 是一个为你的 API 提供了所有功能的 Python 类。
+
+`FastAPI` 是直接从 [Starlette](https://www.starlette.io/) 继承的类。
+> [Starlette (worldlink.com.cn)](https://www.worldlink.com.cn/en/osdir/starlette.html)  
+> ![20220408094954](http://cdn.ayusummer233.top/img/20220408094954.png)
+
+可以通过 `FastAPI` 使用所有的 `Starlette` 的功能。
+
+## 创建一个 FastAPI 实例
+
+```python
+app = FastAPI()
+```
+
+这里的变量 app 会是 FastAPI 类的一个「实例」
+
+这个实例将是创建你所有 API 的主要交互对象。
+
+这个 app 同样在如下命令中被 uvicorn 所引用：
+
+```bash
+uvicorn main:app --reload
+```
+
+## 创建一个路径操作
+
+### 路径
+
+> [路径 - FastAPI (tiangolo.com)](https://fastapi.tiangolo.com/zh/tutorial/first-steps/#_6)
+
+这里的「路径」指的是 URL 中从第一个 / 起的后半部分。
+
+所以，在一个这样的 URL 中: `https://example.com/items/foo` 路径会是 `/items/foo`
+
+> 「路径」也通常被称为「端点」或「路由」。
+
+开发 API 时，「路径」是用来分离「关注点」和「资源」的主要手段。
+
+### 操作
+
+> [操作 - FastAPI (tiangolo.com)](https://fastapi.tiangolo.com/zh/tutorial/first-steps/#_7)
+
+这里的「操作」指的是一种 HTTP「方法」。
+
+下列之一:
+- `POST`
+- `GET`
+- `PUT`
+- `DELETE`
+
+以及更少见的几种:
+- `OPTIONS`
+- `HEAD`
+- `PATCH`
+- `TRACE`
+
+在 HTTP 协议中，你可以使用以上的其中一种（或多种）「方法」与每个路径进行通信。
+
+在开发 API 时，通常使用特定的 HTTP 方法去执行特定的行为。
+
+通常使用：
+- `POST`: 创建数据。
+- `GET`: 读取数据。
+- `PUT`: 更新数据。
+- `DELETE`: 删除数据。
+
+因此，在 OpenAPI 中，每一个 HTTP 方法都被称为「操作」。
+
+我们也打算称呼它们为「操作」。
+
+### 定义一个路径操作装饰器
+
+> [定义一个路径操作装饰器 - FastAPI (tiangolo.com)](https://fastapi.tiangolo.com/zh/tutorial/first-steps/#_8)
+
+```python
+@app.get("/")
+```
+
+`@app.get("/") `  告诉 FastAPI 在它下方的函数负责处理如下访问请求：
+- 请求路径为 `/`
+- 使用 get 操作
+
+> `@something` 语法在 Python 中被称为「装饰器」。  
+> 装饰器接收位于其下方的函数并且用它完成一些工作。  
+> 在我们的例子中，这个装饰器告诉 FastAPI 位于其下方的函数对应着路径 / 加上 get 操作。  
+> 它是一个「路径操作装饰器」。  
+
+
+## 定义路径操作函数
+
+> [定义路径操作函数- FastAPI (tiangolo.com)](https://fastapi.tiangolo.com/zh/tutorial/first-steps/#4)
+
+这是我们的「路径操作函数」：
+
+路径：是 /。  
+操作：是 get。  
+函数：是位于「装饰器」下方的函数（位于 @app.get("/") 下方）。  
+
+```python
+from fastapi import FastAPI
+
+app = FastAPI()
+
+@app.get("/")
+async def root():
+    return {"message": "Hello World"}
+```
+
+每当 FastAPI 接收一个使用 GET 方法访问 URL「/」的请求时这个函数会被调用。
+
+
+## 返回内容
+
+> [返回内容- FastAPI (tiangolo.com)](https://fastapi.tiangolo.com/zh/tutorial/first-steps/#5)
+
+```python
+return {"message": "Hello World"}
+```
+
+你可以返回一个 dict、list，像 str、int 一样的单个值，等等。
+
+你还可以返回 Pydantic 模型（稍后你将了解更多）。
+
+还有许多其他将会自动转换为 JSON 的对象和模型（包括 ORM 对象等）。尝试下使用你最喜欢的一种，它很有可能已经被支持。
+
 
 ---
 
@@ -435,6 +632,10 @@ async def response_model_attributes(user: UserIn):
 #### 直接搓 JSON
 
 ```python
+# 引入 jsonable_encoder
+from fastapi.encoders import jsonable_encoder
+from fastapi.responses import JSONResponse
+
 staffs = crud.read_staff_by_page(db, page, pageSize)
 staffs = list(jsonable_encoder(staffs))
 return JSONResponse(content={
@@ -1437,8 +1638,449 @@ async def jwt_read_users_me(current_user: User = Depends(jwt_get_current_active_
 ![image-20220430225118757](http://cdn.ayusummer233.top/img/202204302251027.png)
 
 ---
+# SQL(Relational) Databases
 
-# FastAPI 的数据库操作及大型工程应用的目录结构设计
+示例项目结构:
+
+- `sql_app`
+    - `__init__.py`
+    - `crud.py`
+    - `database.py`
+    - `main.py`
+    - `models.py`
+    - `schemas.py`
+
+> `__init__.py` 是个空文件，它只是为了让 Python 识别这是一个 module。
+
+
+## 创建 SQLAlchemy
+
+> [SQLAlchemy](https://www.sqlalchemy.org/)
+
+首先要装下  `SQLAlchemy` 库
+
+```bash
+pip install sqlalchemy
+```
+
+编辑 `database.py` 文件
+
+### 引入 SQLAlchemy 库
+
+```python
+from sqlalchemy import create_engine
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import sessionmaker
+```
+
+### 为 SQLAlchemy 创建 database URL
+
+```python
+SQLALCHEMY_DATABASE_URL = "sqlite:///E:/ProgrammingLessons/Vue/vite/ViteLearningBackend/ViteLearningBackend.db"
+# SQLALCHEMY_DATABASE_URL = "postgresql://user:password@postgresserver/db"
+```
+
+在本次示例中, 使用 SQLite 作为数据库, 在 `E:/ProgrammingLessons/Vue/vite/ViteLearningBackend/` 目录下有一个 `ViteLearningBackend.db` 数据库文件, 因此 URL 最后部分是 `E:/ProgrammingLessons/Vue/vite/ViteLearningBackend/ViteLearningBackend.db`
+
+![20220419093125](http://cdn.ayusummer233.top/img/20220419093125.png)
+
+如果使用 `PostgreSQL` 的话可以如注释这般使用
+
+使用其他数据库的话把 `sqlite` 字段相应的换成  `mysql`, `mariadb` 等即可
+
+### 创建 SQLAlchemy engine
+
+```python
+engine = create_engine(
+    SQLALCHEMY_DATABASE_URL, connect_args={"check_same_thread": False}
+)
+```
+
+`connect_args={"check_same_thread": False}` 字段只有在使用 `SQLite` 时才需要
+
+> SQLite 默认只允许一个线程通信, 假设每个线程处理一个独立的请求
+> 
+> 这是为了防止意外地为不同请求共享相同的 connection
+> 
+> 但是在 FastAPI 的函数中, 不止一个 thread 可以向 database 发起请求, 所以我们需要让 SQLIte 知道它应当通过  `connect_args = {"check_same_thread": False}` 允许这些 thread 向数据库发请求
+
+### 创建一个 SessionLocal 类
+
+SessionLocal 类的每个实例都是一个 database session, 不过该类本身并非 database session(数据库会话)
+
+但是一旦我们创建了一个 SessionLocal 类的示例, 那么这个实例将会成为实际的 database session
+
+我们将其命名为 SessionLocal 以与从 SQLAlchemy 中引入的 Session 相区分
+
+使用 sessionmaker 来创建一个 SessionLocal 类
+
+```python
+SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+```
+
+### 创建一个 Base 类
+
+使用 declarative_base 来返回一个类赋给 Base
+
+后面我们会继承这个类来创建每个数据库的 model 和 class(ORM models)
+
+```python
+Base = declarative_base()
+```
+
+## 创建 database models
+
+编辑 `models.py`
+
+### 从 Base 类创建 SQLAlchemy model
+
+> SQLAlchemy 使用术语 "model" 来指代这些与数据库交互的 class 及 instance
+> 
+> 不过需要注意的是 Pydantic 也使用术语 "model" 来指代不同的东西, data validation, coversion, documentation classes 以及 instances
+
+从 `database.py` 引入 `Base` 类
+
+创建继承于 Base 类的子类
+
+这些子类都是 SQLAlchemy model
+
+```python
+from .database import Base
+
+class Admin(Base):
+    __tablename__ = "admin"
+
+class Good(Base):
+__tablename__ = "Good"
+```
+
+```python
+# 因为这里是直接在 jupyter笔记本里写的, 已经运行过代码块了直接使用 Base 即可
+# from .database import Base
+from tokenize import Double
+from sqlalchemy import Boolean, Column, ForeignKey, Integer, String, FLOAT
+from sqlalchemy.orm import relationship
+
+class Admin(Base):
+    __tablename__ = "admin"
+
+    uid = Column(Integer, primary_key=True, index=True)
+    password = Column(String)
+
+class Good(Base):
+    __tablename__ = "Good"
+
+    GoodID = Column(Integer, primary_key=True, index=True)
+    GoodName = Column(String)
+    GoodPrice = Column(FLOAT)
+```
+
+`__tablename__` 属性告诉 SQLAlchemy 在数据库中为每个 model 使用的表名
+
+
+---
+
+### 创建 model attributes/columns
+
+创建所有 model 的 attribute
+
+这些 attribute 对应的表示数据库相应表中的一列
+
+我们使用 SQLAlchemy 中的 `Column` 作为默认值
+
+然后传递一个 SQLAlchemy 类 "type", 作为 `Interger`, `String`, 或者 `Boolean`, 将数据库中的字段类型定义为一个参数
+
+![20220419103008](http://cdn.ayusummer233.top/img/20220419103008.png)
+
+
+---
+
+### 创建 relationships
+
+> 个人写的示例中没有定义外键, 因为后面要加速开发原型, 所以个人示例比较简略
+> 
+> 因此这部分搬下官方示例
+
+我们使用 SQLAlchemy ORM 提供的  `relationship` 来创建 relationship
+
+这将或多或少称为一个 "magic" attribute, 他讲包含与此表关联的其他表的值
+
+![20220419103414](http://cdn.ayusummer233.top/img/20220419103414.png)
+
+当我们从 `User` 中访问 `items` 属性时, 比如 `my_user.items`, 他将生成一个 `Item` SQLAlchemy models 列表(来自 `items` 表), 其中有一个外键指向 `users` 表中的这个记录
+
+当访问 `my_usr.items` 时, SQLAlchemy 实际上会从数据库的  `items` 表中查询到这些 items并填入这里
+
+当我们访问 `Item` 中的 `owner` 属性时, 他将包含来自 `users` 表的 `User` SQLAlchemy model; 他将使用 `onwer_id`  attribute/column 及其外键来决定从 `users` 表中获取哪些记录
+
+---
+
+## 创建 Pydantic model
+
+编辑 `schemas.py`
+
+> 为了避免 `SQLAlchemy models` 和 `Pydantic models` 之间的混淆，我们在 `models.py` 中创建 `SQLAlchemy models`, 在  `shcemas.py` 中创建`Pydantic models`
+
+> 这些 `Pydantic models` 或多或少地定义了一个`"schema"`(一个有效的 `data shape`)。
+
+> 因此，这将有助于我们避免在使用二者时可能产生的混淆
+
+### 创建 initial Pydantic models / schemas
+
+创建一个 `StaffBase Pydantic model` (或者说 `schema`)  一遍在创建和读取数据时由公共属性
+
+然后创建一个 `StaffCreate` 继承自 `StaffBase`
+
+![20220425192442](http://cdn.ayusummer233.top/img/20220425192442.png)
+
+---
+
+#### SQLAlchemy style 和 Pydantic style
+
+在 SQLAlchemy models 中定义属性时使用的是 `=`, 并将类型作为参数传给 `Column`, 如下:
+
+```python
+name = Column(String)
+```
+
+然而在 Pydantic models 中使用 `:` 声明这些类型, 如下:
+
+```python
+name: str
+```
+
+---
+
+### 创建用于 reading / returning 的 Pydantic models / schemas
+
+创建 Pydantic models(schemas), 当从 API 返回数据时, 将在读取数据时使用它
+
+例如, 在创建一个 staff 时我们不知道他的 id 是什么, 但是当读取他(从 API 返回他) 时, 我们已经知道它的 ID
+
+![20220425193620](http://cdn.ayusummer233.top/img/20220425193620.png)
+
+---
+
+### 使用 Pydantic 的 orm_mode
+
+现在, 在 Pydantic models 中为了方便读取, 给 Staff 类添加一个内部的 Config 类
+
+这个 Config 类用于向 Pydantic 提供配置
+
+在 Config 类中, 将 orm_mode 属性设置为 True
+
+> 需要注意的是使用 `=` 进行赋值  
+> 它不像前面一样使用 `:` 进行类型声明  
+> 这是设置一个配置值而非声明一个类型
+
+Pydantic 的 orm-mode 会告诉 Pydantic model 读取数据, 即便它并非是个 dict 而是 ORM model(或者其他任何具有属性的任意对象)
+
+如此一来, 不再只是类似如下操作一样从 dict 中获取类型:
+
+```python
+id = data['id']
+```
+
+它也会尝试从属性中获取到 id, 如:
+
+```python
+id = data.id
+```
+
+有了这些, Pydantic model 就和 ORM 兼容了, 并且你可以只在 path 操作中的 `response_model` 参数中声明它
+
+您将能够返回一个 database model, 并从中读取数据
+
+---
+
+#### 关于 ORM mode 的技术细节
+
+[关于 ORM mode 的技术细节](https://fastapi.tiangolo.com/zh/tutorial/sql-databases/#technical-details-about-orm-mode)
+
+SQLAlchemy 和许多其他的默认方法是“lazy loading”。
+
+这意味着，例如，它们不会从数据库中获取关系数据，除非您尝试访问将包含该数据的属性。
+
+例如，访问 items 属性:
+
+```python
+current_user.items
+```
+
+将使 SQLAlchemy 转到 items 表并获取该用户的条目，但不是在此之前。
+
+如果没有 orm_mode，则如果从路径操作返回 SQLAlchemy 模型，它将不包含关系数据。
+
+即使你在你的 Pydantic 模型中声明了这些关系。
+
+但是在 ORM 模式下，由于 Pydantic 本身将尝试从属性访问它需要的数据(而不是假设 dict) ，你可以声明你想要返回的特定数据，它将能够去获取它，甚至是从 ORM。
+
+
+---
+
+## CRUD utils
+
+编辑 `crud.py`
+
+在这个文件中，我们将使用可重用的函数与数据库中的数据进行交互。
+
+CRUD 来自: Creat(创建)、Read(读取)、Update(更新) 和 Delete(删除)。
+
+```python
+'''
+Author: 咸鱼型233
+Date: 2022-04-25 16:35:15
+LastEditors: 咸鱼型233
+LastEditTime: 2022-04-25 20:29:15
+FilePath: \VbenBackend\sql_app\curd.py
+Description: 
+Copyright (c) 2022 by 咸鱼型233, All Rights Reserved.
+'''
+'''
+-*- encoding: utf-8 -*-
+@文件    :curd.py
+@时间    :2022/04/18 21:07:48
+@作者    :咸鱼型233
+@说明    :
+'''
+from sqlalchemy.orm import Session
+
+from . import models, schemas
+
+# 通过 id 读取 Staff
+def get_staff(db: Session, id: int):
+    return db.query(models.Staff).filter(models.Staff.id == id).first()
+
+# 通过 staffNo 读取 Staff
+def get_staff_by_staffNo(db: Session, staffNo: str):
+    return db.query(models.Staff).filter(models.Staff.staffNo == staffNo).first()
+
+# 获取所有 Staff
+def get_staffs(db: Session, skip: int = 0, limit: int = 100):
+    return db.query(models.Staff).offset(skip).limit(limit).all()
+
+# 创建 Staff
+def create_staff(db: Session, staff: schemas.StaffCreate):
+    db_staff = models.Staff(**staff.dict())
+    db.add(db_staff)
+    db.commit()
+    db.refresh(db_staff)
+    return db_staff
+
+# 更新 staffNo
+def update_staff_staffNo(db: Session, id: int, staffNo: str):
+    db_staff = db.query(models.Staff).filter(models.Staff.id == id).first()
+    db_staff.staffNo = staffNo
+    db.commit()
+    return db_staff
+
+# 更新 name
+def update_staff_name(db: Session, id: int, name: str):
+    db_staff = db.query(models.Staff).filter(models.Staff.id == id).first()
+    db_staff.name = name
+    db.commit()
+    return db_staff
+
+# 更新 sex
+def update_staff_sex(db:Session, id: int, sex:str):
+    db_staff = db.query(models.Staff).filter(models.Staff.id == id).first()
+    db_staff.sex = sex
+    db.commit
+    return db_staff
+
+# 更新 birthday
+def update_staff_birthday(db:Session, id: int, birthday:str):
+    db_staff = db.query(models.Staff).filter(models.Staff.id == id).first()
+    db_staff.birthday = birthday
+    db.commit
+    return db_staff
+
+# 更新 phone
+def update_staff_phone(db:Session, id: int, phone:str):
+    db_staff = db.query(models.Staff).filter(models.Staff.id == id).first()
+    db_staff.phone = phone
+    db.commit
+    return db_staff
+
+# 更新 education
+def update_staff_education(db:Session, id: int, education:str):
+    db_staff = db.query(models.Staff).filter(models.Staff.id == id).first()
+    db_staff.education = education
+    db.commit
+    return db_staff
+
+# 更新 namePinyin
+def update_staff_namePinyin(db:Session, id: int, namePinyin:str):
+    db_staff = db.query(models.Staff).filter(models.Staff.id == id).first()
+    db_staff.namePinyin = namePinyin
+    db.commit
+    return db_staff
+
+
+# 删除 Staff
+def delete_staff(db: Session, id: int):
+    db_staff = db.query(models.Staff).filter(models.Staff.id == id).first()
+    db.delete(db_staff)
+    db.commit()
+    return db_staff
+
+```
+
+---
+
+## Main FastAPI app
+
+编辑 `main.py`
+
+
+---
+
+### 创建数据库表
+
+用一种非常简单的方式创建数据库表
+
+```python
+models.Base.metadata.create_all(bind=engine)
+```
+
+---
+
+### 创建 dependency
+
+现在使用我们在 `sql_app/databases.py` 文件中创建的 `SessionLocal` 类创建一个依赖项。
+
+我们需要每个请求都有一个独立的数据库会话/连接(SessionLocal) ，在所有请求中使用同一个会话，然后在请求完成后关闭它。
+
+然后为下一个请求创建一个新会话。
+
+为此，我们将创建一个带有 yield 的新 dependency，如前面关于 Dependencies 与 yield 的部分所解释的那样。
+
+我们的依赖项将创建一个新的 SQLAlchemy SessionLocal，它将在单个请求中使用，然后在请求完成后关闭它。
+
+```python
+# Dependency
+def get_db():
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
+```
+
+> 我们将 `SessionLocal()` 的创建和请求的处理放在一个 try 块中。  
+> 然后我们在 finally 块关闭它。
+> 这样我们就可以确保在请求之后数据库会话总是关闭的。即使在处理请求时出现异常。
+> 但是您不能从退出代码(在 yield 之后)中引发另一个异常
+
+然后，当在路径操作函数中使用依赖项时，我们使用直接从 SQLAlchemy 导入的 Session 类型声明它。
+
+这样我们就可以在路径操作函数中获得更好的编辑器支持，因为编辑器会知道 db 参数的类型是 Session:
+
+---
+
+---
+
+# 数据库操作(慕课网)
 
 ## 配置 SQLAlchemy ORM
 
@@ -1597,7 +2239,9 @@ class User(Base):
 
 ---
 
-# 大型工程的目录结构设计 - 应用文件拆分
+# 大型工程的目录结构设计
+
+应用文件拆分
 
 - `app`	应用根目录
   - `databse.py`	创建 SQLAlchemy
