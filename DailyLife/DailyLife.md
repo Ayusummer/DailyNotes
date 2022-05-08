@@ -52,6 +52,7 @@
 - [PowerToys](#powertoys)
   - [自定义窗口布局](#自定义窗口布局)
   - [调整图像大小](#调整图像大小)
+  - [始终置项](#始终置项)
 - [零散报错](#零散报错)
   - [Win11 下 QQ 调起文件资源管理器 C:\WINDOWS\SYSTEM32\ntdll.dll 报错](#win11-下-qq-调起文件资源管理器-cwindowssystem32ntdlldll-报错)
 
@@ -666,6 +667,22 @@ windows 自带的分屏可以覆盖大多数应用场景
 ![image-20220508085838940](http://cdn.ayusummer233.top/img/202205080858038.png)
 
 ![image-20220508090021884](http://cdn.ayusummer233.top/img/202205080900080.png)
+
+---
+
+## 始终置项
+
+![image-20220508090222743](http://cdn.ayusummer233.top/img/202205080902866.png)
+
+![image-20220508090404436](http://cdn.ayusummer233.top/img/202205080904587.png)
+
+始终此功能可以将一些不支持置项的窗口进行置项(比如原生的便筏)
+
+![image-20220508090440581](http://cdn.ayusummer233.top/img/202205080904708.png)
+
+
+
+
 
 ---
 # 零散报错
