@@ -50,7 +50,8 @@
   - [手游模拟器](#手游模拟器)
     - [蓝叠模拟器 5(支持 Hyper-V)](#蓝叠模拟器-5支持-hyper-v)
 - [PowerToys](#powertoys)
-  - [使用 PowerToys 自定义窗口布局](#使用-powertoys-自定义窗口布局)
+  - [自定义窗口布局](#自定义窗口布局)
+  - [调整图像大小](#调整图像大小)
 - [零散报错](#零散报错)
   - [Win11 下 QQ 调起文件资源管理器 C:\WINDOWS\SYSTEM32\ntdll.dll 报错](#win11-下-qq-调起文件资源管理器-cwindowssystem32ntdlldll-报错)
 
@@ -636,7 +637,7 @@ windows 自带的分屏可以覆盖大多数应用场景
 
 ----
 
-## 使用 PowerToys 自定义窗口布局
+## 自定义窗口布局
 
 ![image-20220508084455471](http://cdn.ayusummer233.top/img/202205080844574.png)
 
@@ -651,6 +652,20 @@ windows 自带的分屏可以覆盖大多数应用场景
 窗口之间不想留太多距离的话可以在自定义布局时将区域周围的空间设置为0
 
 ![image-20220508085213113](http://cdn.ayusummer233.top/img/202205080852269.png)
+
+---
+
+## 调整图像大小
+
+![image-20220508085743432](http://cdn.ayusummer233.top/img/202205080857567.png)
+
+![image-20220508085807402](http://cdn.ayusummer233.top/img/202205080858585.png)
+
+![image-20220508085728963](http://cdn.ayusummer233.top/img/202205080857073.png)
+
+![image-20220508085838940](http://cdn.ayusummer233.top/img/202205080858038.png)
+
+![image-20220508090021884](http://cdn.ayusummer233.top/img/202205080900080.png)
 
 ---
 # 零散报错
