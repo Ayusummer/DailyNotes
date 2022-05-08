@@ -13,8 +13,13 @@
   - [结点内文字换行](#结点内文字换行)
   - [限制流程图大小](#限制流程图大小)
 - [显示支持](#显示支持)
-  - [绘图](#绘图)
+- [绘图](#绘图)
   - [甘特图](#甘特图)
+  - [流程图](#流程图)
+    - [流程图整体方向](#流程图整体方向)
+    - [结点形状](#结点形状)
+    - [连接线形状](#连接线形状)
+    - [语法冲突的特殊字符](#语法冲突的特殊字符)
 
 
 ----
@@ -47,7 +52,7 @@ a-->b[2<br>3<br>3]
 
 ----
 
-## 绘图
+# 绘图
 
 ## 甘特图
 
@@ -61,6 +66,99 @@ Completed task  : des1, 2014-01-06,2014-01-08
 Active task     : des2, 2014-01-09, 2d
 Future task     : des3, after des2, 5d
 Future task2    : des4, after des3, 5d
+```
+
+---
+
+## 流程图
+
+> [Flowchart (mermaid-js.github.io)](https://mermaid-js.github.io/mermaid/#/flowchart?id=graph)
+
+```mermaid
+flowchart TD
+    Start --> Stop
+```
+
+---
+
+> `-->` 实线箭头
+
+---
+
+### 流程图整体方向
+
+- `TB` - top to bottom
+- `TD` - top-down/ same as top to bottom
+- `BT` - bottom to top
+- `RL` - right to left
+- `LR` - left to right
+
+---
+
+### 结点形状
+
+> [Flowchart (mermaid-js.github.io)](https://mermaid-js.github.io/mermaid/#/flowchart?id=node-shapes)
+
+```mermaid
+flowchart LR
+  id1(round edges)
+  id2([stadium-shaped])
+  id3[[subroutine shape]]
+  id4[(A node in a cylindrical shape)]
+  id5((A node in the form of a circle))
+  id6>A node in an asymmetric shape]
+  id7{A node rhombus}
+  id8{{A hexagon node}}
+  id9[/Parallelogram/]
+  id10[\Parallelogram alt\]
+  id11[/Trapezoid\]
+```
+
+---
+
+### 连接线形状
+
+> [Flowchart (mermaid-js.github.io)](https://mermaid-js.github.io/mermaid/#/flowchart?id=links-between-nodes)
+
+```mermaid
+flowchart LR
+  A --> B
+  A --实线单箭头--> B
+  A -->|实线单箭头|C
+  
+  B --- C
+  B --实线--- C
+  B ---|实线|D
+  
+  C -.-|虚线|D
+  C -.->|虚线单箭头|D
+  
+  D ==> E
+  D ==>|粗实线单箭头|E
+  
+  E --> F & G --> H
+  
+  H & I --> J & K
+  
+  L --o|实线圆头|M
+  M --x|实线x头|N
+  
+  N <--> |双向箭头|O
+  O o--o P
+  P x--x Q
+  
+  R -------|横线越多越长| S
+```
+
+---
+
+### 语法冲突的特殊字符
+
+> [Flowchart (mermaid-js.github.io)](https://mermaid-js.github.io/mermaid/#/flowchart?id=special-characters-that-break-syntax)
+
+```mermaid
+flowchart LR
+  A["结点内使用(括号)"]
 ```
 
 
