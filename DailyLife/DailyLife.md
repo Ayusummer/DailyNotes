@@ -49,6 +49,8 @@
     - [steam工具箱](#steam工具箱)
   - [手游模拟器](#手游模拟器)
     - [蓝叠模拟器 5(支持 Hyper-V)](#蓝叠模拟器-5支持-hyper-v)
+- [PowerToys](#powertoys)
+  - [使用 PowerToys 自定义窗口布局](#使用-powertoys-自定义窗口布局)
 - [零散报错](#零散报错)
   - [Win11 下 QQ 调起文件资源管理器 C:\WINDOWS\SYSTEM32\ntdll.dll 报错](#win11-下-qq-调起文件资源管理器-cwindowssystem32ntdlldll-报错)
 
@@ -627,6 +629,28 @@ windows 自带的分屏可以覆盖大多数应用场景
 ![20211208145623](http://cdn.ayusummer233.top/img/20211208145623.png)
 > [如何從您的電腦上完全移除BlueStacks 5](https://support.bluestacks.com/hc/zh-tw/articles/360057724751)  
 > [Bluestacks 5 Cannot Start BlueStacks on Win11 (any 64Bit instance version)](https://www.reddit.com/r/BlueStacks/comments/r7hvkw/bluestacks_5_cannot_start_bluestacks_on_win11_any/)
+
+---
+
+# PowerToys
+
+----
+
+## 使用 PowerToys 自定义窗口布局
+
+![image-20220508084455471](http://cdn.ayusummer233.top/img/202205080844574.png)
+
+使用快捷键打开 FancyZiones 编辑器:
+
+![image-20220508083929402](http://cdn.ayusummer233.top/img/202205080839769.png)
+
+自定义完布局后按住 Shift 并拖动窗口就可以像使用原生贴边一样进行窗口排版了(如果设置了布局快捷键的话此时可以按下布局快捷键数字来显示自定义的不同布局进行贴靠)
+
+![](http://cdn.ayusummer233.top/img/202205080850523.png)
+
+窗口之间不想留太多距离的话可以在自定义布局时将区域周围的空间设置为0
+
+![image-20220508085213113](http://cdn.ayusummer233.top/img/202205080852269.png)
 
 ---
 # 零散报错
