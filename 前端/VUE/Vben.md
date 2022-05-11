@@ -23,6 +23,8 @@
   - [生成路由](#生成路由)
   - [生成菜单](#生成菜单)
   - [路由守卫](#路由守卫)
+- [常见问题](#常见问题)
+  - [tab 页切换后页面空白](#tab-页切换后页面空白)
 
 ---
 
@@ -882,3 +884,36 @@ export function createPermissionGuard(router: Router) {
 
 ---
 
+# 常见问题
+
+## tab 页切换后页面空白
+
+> [常见问题 | Vben Admin (vvbin.cn)](https://vvbin.cn/doc-next/other/faq.html#tab-页切换后页面空白)
+
+这是由于开启了路由切换动画,且对应的页面组件存在多个根节点导致的，在页面最外层添加`<div></div>`即可
+
+**错误示例**
+
+```html
+<template>
+  <!-- 注释也算一个节点 -->
+  <h1>text h1</h1>
+  <h2>text h2</h2>
+</template>
+```
+
+**正确示例**
+
+```html
+<template>
+  <div>
+    <h1>text h1</h1>
+    <h2>text h2</h2>
+  </div>
+</template>
+```
+
+> PS:
+>
+> - 如果想使用多个根标签，可以禁用路由切换动画
+> - template 下面的根注释节点也算一个节点
