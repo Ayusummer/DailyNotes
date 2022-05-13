@@ -2521,7 +2521,13 @@ uvicorn app.mian:app --reload --host 'xxx' --port xxx
 > >
 > > 请使用 `--reload-dir 目录` 来设置重新加载目录
 > >
-> > > `--reload-dir` 是一个整体，没有空格
+> > > - `--reload-dir` 是一个整体，没有空格
+> > >
+> > > - `--reload-dir`  需要配合 `--reload` 使用, 具体使用方法如下:
+> > >
+> > >   ```shell
+> > >   uvicorn app.mian:app --reload --reload-dir xxx
+> > >   ```
 >
 > `--port` 可以指定端口运行
 >
