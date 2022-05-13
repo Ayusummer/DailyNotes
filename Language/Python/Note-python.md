@@ -16,6 +16,8 @@
 - [JupyterLab](#jupyterlab)
   - [简介](#简介)
   - [使用](#使用)
+  - [深浅拷贝](#深浅拷贝)
+    - [字典浅拷贝实例](#字典浅拷贝实例)
     - [深度拷贝需要引入 copy 模块：](#深度拷贝需要引入-copy-模块)
     - [解析](#解析)
   - [逻辑符号](#逻辑符号)
@@ -676,6 +678,10 @@ Code2flow is useful for:
 > [python - Relative imports for the billionth time - Stack Overflow](https://stackoverflow.com/questions/14132789/relative-imports-for-the-billionth-time/14132912#14132912)
 >
 > [【一分钟解决】Python报错ImportError: attempted relative import with no known parent package_jaredyam的博客-CSDN博客](https://blog.csdn.net/weixin_43958105/article/details/114012590)
+>
+> [终于搞懂了Python模块之间的相互引用问题 - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/349407590)
+
+
 
 
 ---
