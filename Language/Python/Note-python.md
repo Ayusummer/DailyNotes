@@ -16,6 +16,9 @@
 - [JupyterLab](#jupyterlab)
   - [简介](#简介)
   - [使用](#使用)
+  - [解决方案](#解决方案)
+- [基础杂项](#基础杂项)
+  - [函数注释](#函数注释)
   - [深浅拷贝](#深浅拷贝)
     - [字典浅拷贝实例](#字典浅拷贝实例)
     - [深度拷贝需要引入 copy 模块：](#深度拷贝需要引入-copy-模块)
@@ -35,7 +38,7 @@
 - [函数](#函数)
   - [返回函数参数表及参数数目](#返回函数参数表及参数数目)
   - [lamda函数:定义匿名函数](#lamda函数定义匿名函数)
-  - [函数注释](#函数注释)
+  - [函数注释](#函数注释-1)
   - [*args,**kwargs](#argskwargs)
     - [*args的用法](#args的用法)
     - [**kwargs的用法](#kwargs的用法)
@@ -671,7 +674,7 @@ Code2flow is useful for:
 
 ---
 
-## 相对导入引发的相关问题
+相对导入引发的相关问题
 
 > [python - ImportError : Attempted relative import with no known parent package - Stack Overflow](https://stackoverflow.com/questions/60593604/importerror-attempted-relative-import-with-no-known-parent-package)
 >
@@ -681,7 +684,54 @@ Code2flow is useful for:
 >
 > [终于搞懂了Python模块之间的相互引用问题 - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/349407590)
 
+## ModuleNotFoundError
 
+```
+ModuleNotFoundError: No module named '__main__.src_test1'; '__main__' is not a package
+```
+
+一般出现于运行的当前文件中通过相对引用 `.xxx` 引入其他模块时由于运行时当前模块名为 `__main__` 所以会对相对引用路径进行拼接导致引用错误
+
+解决方法: 引用当前文件同级目录下的模块可以不用 `.` 拼接直接 `import xxx`
+
+---
+
+## ImportErro
+
+```
+ImportError: attempted relative import with no known parent package 
+```
+
+```
+|--- test_main.py
+|--- src
+  |--- __init__.py                                                              
+    |--- src_test1.py
+    |--- src_test2.pys
+    |--- test_src.py
+```
+
+`src_test1.py`:
+
+```python
+from .src_test2 import Test2
+def func1():
+    pass
+```
+
+`test_src.py`:
+
+```python
+from src_test1 import fun1
+```
+
+运行 `test_src.py` 会上述错误, 问题在于引入 `src_test1` 时, `src_test1` 内使用 `.` 拼接相对路径引用 `src_test2`, 由于 `.` 的存在, 需要先找到父包才能继续拼接路径, 但是当前 `test_src.py` 被认为是根结点(没有父包), 所以会报 `no know parent package`
+
+---
+
+## 解决方案
+
+需要注意的是: 上面的报错都是运行时报错, 在编写代码时至少 VSCode 是不会报错的, 那么个人的解决方案就是将主业务全放在工作区根目录下的一个目录下, 然后在根目录放一个 `py` 文件调用程序主入口来启动程序
 
 
 ---
