@@ -2517,6 +2517,12 @@ uvicorn app.mian:app --reload --host 'xxx' --port xxx
 >
 > > [Uvicorn 重载目录, 优维康 HTTP/2, 乌维康寿命 (zditect.com)](https://www.zditect.com/article/34997596.html)
 > >
+> > [uvicorn reload-dir参数_聪明的大嘴花的博客-CSDN博客](https://blog.csdn.net/weixin_46248273/article/details/119930170)
+> >
+> > [Settings - Uvicorn](https://www.uvicorn.org/settings/#development)
+> >
+> > ----
+> >
 > > 需要注意的是 `--reload` 会跟踪当前工作目录， 当前工作目录有文件更新则会自动重载
 > >
 > > 请使用 `--reload-dir 目录` 来设置重新加载目录
