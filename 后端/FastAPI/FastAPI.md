@@ -2513,7 +2513,15 @@ def test_dependency_run_bg_task_q():
 uvicorn app.mian:app --reload --host 'xxx' --port xxx
 ```
 
-> `–relaod` 可以更新自动重载
+> `--relaod` 可以更新自动重载
+>
+> > [Uvicorn 重载目录, 优维康 HTTP/2, 乌维康寿命 (zditect.com)](https://www.zditect.com/article/34997596.html)
+> >
+> > 需要注意的是 `--reload` 会跟踪当前工作目录， 当前工作目录有文件更新则会自动重载
+> >
+> > 请使用 `--reload-dir 目录` 来设置重新加载目录
+> >
+> > > `--reload-dir` 是一个整体，没有空格
 >
 > `--port` 可以指定端口运行
 >
