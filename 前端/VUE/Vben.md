@@ -887,6 +887,25 @@ export function createPermissionGuard(router: Router) {
 ```
 
 ---
+# 组件
+
+---
+
+## Table
+
+### 常见问题
+
+#### 表格类属性超过长度时换行显示
+
+设置 `useTable` 的 `ellipsis` 属性为 `false` 即可:
+
+![image-20220513194050415](http://cdn.ayusummer233.top/img/202205131940818.png)
+
+![image-20220513194206793](http://cdn.ayusummer233.top/img/202205131942021.png)
+
+
+
+---
 
 # 常见问题
 
@@ -924,19 +943,6 @@ export function createPermissionGuard(router: Router) {
 
 ---
 
-# 组件
+## 404
 
----
-
-## Table
-
-### 常见问题
-
-#### 表格类属性超过长度时换行显示
-
-设置 `useTable` 的 `ellipsis` 属性为 `false` 即可:
-
-![image-20220513194050415](http://cdn.ayusummer233.top/img/202205131940818.png)
-
-![image-20220513194206793](http://cdn.ayusummer233.top/img/202205131942021.png)
-
+后端也能接收到的话说明请求地址写错了😅
