@@ -26,6 +26,7 @@
 	- [vscode-icons](#vscode-icons)
 	- [prettier + ESLint](#prettier--eslint)
 	- [Sourcery](#sourcery)
+	- [Thunder Client](#thunder-client)
 - [报错收集](#报错收集)
 	- [git Missing or invalid credentials.](#git-missing-or-invalid-credentials)
 
@@ -256,9 +257,23 @@
 
 Sourcery-ai 可以给开发者提供 Python 代码的重构建议:
 
-![image-20220517211458690](http://cdn.ayusummer233.top/img/202205172114972.png)
+![image-20220517212351093](http://cdn.ayusummer233.top/img/202205172123260.png)
 
 ![image-20220517211830963](http://cdn.ayusummer233.top/img/202205172118184.png)
+
+---
+
+## Thunder Client
+
+> [(95) I Don't Need Postman Anymore!! I Use VS Code Instead... - YouTube](https://www.youtube.com/watch?v=AbCTlemwZ1k)
+
+![image-20220517215708231](http://cdn.ayusummer233.top/img/202205172157643.png)
+
+![image-20220517215904117](http://cdn.ayusummer233.top/img/202205172159573.png)
+
+可以当成 Postman 的平替, 这样就不用多开一个软件调试接口了
+
+> 不过目前个人开发后端接口使用的是 FastAPI, 自带可交互式文档, 相对而言 postman 对我来说不重要, 后面使用其他的框架开发 api 的时候应该能用到
 
 ---
 
