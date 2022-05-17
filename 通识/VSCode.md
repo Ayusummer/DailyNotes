@@ -25,6 +25,7 @@
 	- [Terminal](#terminal)
 	- [vscode-icons](#vscode-icons)
 	- [prettier + ESLint](#prettier--eslint)
+	- [Sourcery](#sourcery)
 - [报错收集](#报错收集)
 	- [git Missing or invalid credentials.](#git-missing-or-invalid-credentials)
 
@@ -245,7 +246,19 @@
 
 ![image-20220421202926005](http://cdn.ayusummer233.top/img/202204212029364.png)用 ESLint 做约束, 用 Prettier 做代码格式化
 
+-----
 
+## Sourcery
+
+> [Sourcery Documentation](https://docs.sourcery.ai/)
+
+![image-20220517211545800](http://cdn.ayusummer233.top/img/202205172115029.png)
+
+Sourcery-ai 可以给开发者提供 Python 代码的重构建议:
+
+![image-20220517211458690](http://cdn.ayusummer233.top/img/202205172114972.png)
+
+![image-20220517211830963](http://cdn.ayusummer233.top/img/202205172118184.png)
 
 ---
 
