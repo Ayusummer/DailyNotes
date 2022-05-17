@@ -24,6 +24,8 @@ Anaconda + VSCode + jupyter插件 + Python相关插件
 
 ### Anaconda
 
+> 需要注意的是, 使用 Anaconda Navigator 或者 conda 环境操作时需要关掉梯子, 否则可能会报 host 错误
+
 [安装包](https://ayusummer-my.sharepoint.com/:u:/g/personal/233_ayusummer_onmicrosoft_com/EeoLeabp6RtDnVkgJ46y_fIB9gqFsNbpyO8BqSZzQv_r3w?e=NwyQXf)
 
 #### Anaconda 换源
