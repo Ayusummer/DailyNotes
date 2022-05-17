@@ -1,3 +1,15 @@
+# 目录
+- [目录](#目录)
+- [快速开始](#快速开始)
+  - [开发环境方面](#开发环境方面)
+    - [Anaconda](#anaconda)
+      - [Anaconda 换源](#anaconda-换源)
+      - [新建一个 conda 环境](#新建一个-conda-环境)
+    - [VSCode](#vscode)
+      - [VSCode 扩展安装](#vscode-扩展安装)
+  - [Matplotlib](#matplotlib)
+  - [Pandas](#pandas)
+
 # 快速开始
 
 ## 开发环境方面
@@ -30,6 +42,28 @@ Anaconda + VSCode + jupyter插件 + Python相关插件
   ```
   
   配置清华源是为了后续使用 `pip` 命令安装 python 库时快些, 不配置换源而直接使用默认源的话在墙内容易超时报错
+
+---
+
+#### 新建一个 conda 环境
+
+打开 `Anaconda Navigator -> Environments` 在环境列表底部按钮中找到 `Create` 并点击
+
+![image-20220517153334579](http://cdn.ayusummer233.top/img/202205171533981.png)
+
+为新环境命一个名(英文命名, 尽量简短些, 之后激活要用)
+
+> 这里选择了 Python 3.8.13, 不上 3.9 或者 3.10 主要是因为有一些三方库更新没跟上, 不一定支持 python3.9 及以上
+
+![image-20220517153442365](http://cdn.ayusummer233.top/img/202205171534732.png)
+
+在命令行中使用 conda 环境可以使用如下指令激活:
+
+```bash
+conda activate 环境名
+```
+
+![image-20220517153733464](http://cdn.ayusummer233.top/img/202205171537691.png)
 
 ---
 
