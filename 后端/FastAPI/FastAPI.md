@@ -2561,6 +2561,10 @@ uvicorn app.mian:app --reload --host 'xxx' --port xxx
 `Union` type 允许 Model属性支持不同的类型,例如:
 
 ```python
+from uuid import UUID
+from typing import Union
+from pydantic import BaseModel
+
 class User(BaseModel):
     id: Union[int, str, UUID]
     name: str
@@ -2569,6 +2573,10 @@ class User(BaseModel):
 需要注意的是, **使用 `Union` 类型时, Pydantic 会尝试匹配其中的各种类型, 并且会使用其匹配到的第一个合适的类型**;因此在以上示例中, 由于 `UUID` 类型可以被解析为 `int` 类型, 因此 `pydantic` 会将其认定为 `int` 类型并不再向后排查类型; 因此, 以上示例应当改为:
 
 ```python
+from uuid import UUID
+from typing import Union
+from pydantic import BaseModel
+
 class User(BaseModel):
     id: Union[UUID,int, str]
     name: str
