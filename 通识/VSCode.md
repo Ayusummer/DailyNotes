@@ -27,6 +27,7 @@
 	- [prettier + ESLint](#prettier--eslint)
 	- [Sourcery](#sourcery)
 	- [Thunder Client](#thunder-client)
+	- [CodeTour](#codetour)
 - [报错收集](#报错收集)
 	- [git Missing or invalid credentials.](#git-missing-or-invalid-credentials)
 
@@ -274,6 +275,18 @@ Sourcery-ai 可以给开发者提供 Python 代码的重构建议:
 可以当成 Postman 的平替, 这样就不用多开一个软件调试接口了
 
 > 不过目前个人开发后端接口使用的是 FastAPI, 自带可交互式文档, 相对而言 postman 对我来说不重要, 后面使用其他的框架开发 api 的时候应该能用到
+
+---
+
+## CodeTour
+
+> [microsoft/codetour: VS Code extension that allows you to record and play back guided tours of codebases, directly within the editor. (github.com)](https://github.com/microsoft/codetour)
+
+![image-20220520220919634](http://cdn.ayusummer233.top/img/202205202209885.png)
+
+![image-20220520221430457](http://cdn.ayusummer233.top/img/202205202214733.png)
+
+可以用来写业务逻辑步骤或者代码分步骤讲解式引导
 
 ---
 
