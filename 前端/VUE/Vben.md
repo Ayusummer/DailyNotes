@@ -1,6 +1,5 @@
-# 目录
+目录
 
-- [目录](#目录)
 - [项目地址](#项目地址)
 - [项目文档](#项目文档)
 - [开始](#开始)
@@ -33,6 +32,11 @@
   - [tab 页切换后页面空白](#tab-页切换后页面空白)
   - [404](#404)
 - [群内 QA](#群内-qa)
+- [源码阅读](#源码阅读)
+  - [Login 业务](#login-业务)
+    - [api](#api)
+      - [login](#login)
+      - [getUserInfo](#getuserinfo)
 
 ---
 
@@ -964,4 +968,110 @@ export function createPermissionGuard(router: Router) {
 ---
 
 # 群内 QA
+
+---
+
+# 源码阅读
+
+## Login 业务
+
+### api
+
+---
+
+#### login
+
+用户点击登录按钮后首先会触发 `login` api
+
+![image-20220518180854173](http://cdn.ayusummer233.top/img/202205181808091.png)
+
+![image-20220518180922032](http://cdn.ayusummer233.top/img/202205181809451.png)
+
+![image-20220518180907982](http://cdn.ayusummer233.top/img/202205181809688.png)
+
+> 上面三个图示为在 mock 环境下默认的 login 请求情况
+
+api数据结构定义: `src\api\sys\model\userModel.ts`:
+
+登录负载:
+
+```typescript
+/**
+ * @description: Login interface parameters
+ */
+export interface LoginParams {
+  username: string;
+  password: string;
+}
+```
+
+登录响应体: 
+
+```typescript
+export interface RoleInfo {
+  roleName: string;
+  value: string;
+}
+
+/**
+ * @description: Login interface return value
+ */
+export interface LoginResultModel {
+  userId: string | number;
+  token: string;
+  role: RoleInfo;
+}
+```
+
+可以看到, 源码定义的响应结构和上面 mock 模式下的相应结果有出入, 后者多了两个参数: `desc` 和 `realName`, 不过这并不影响正常响应, 并且其实这两个参数会在后续会调用的 `getUserIno` 相应中包含
+
+---
+
+#### getUserInfo
+
+`login` api 正确响应后会调用 `getUserInfo` api 获取用户信息
+
+![image-20220518181829146](http://cdn.ayusummer233.top/img/202205181820877.png)
+
+![image-20220518182037436](http://cdn.ayusummer233.top/img/202205181820923.png)
+
+> 上面2个图示为在 mock 环境下默认的 `getUserInfo` 请求情况
+
+获取用户信息响应结构:
+
+```typescript
+/**
+ * @description: Get user information return value
+ */
+export interface GetUserInfoModel {
+  roles: RoleInfo[];
+  // 用户id
+  userId: string | number;
+  // 用户名
+  username: string;
+  // 真实名字
+  realName: string;
+  // 头像
+  avatar: string;
+  // 介绍
+  desc?: string;
+}
+
+```
+
+与 `login` 类似, `getUserInfo` 的响应体也多了一些未定义的参数, 不过并不影响实际运作
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
