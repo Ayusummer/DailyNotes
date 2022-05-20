@@ -1,9 +1,11 @@
 # 目录
-- [目录](目录)
+- [目录](#目录)
 - [查看与升级版本](#查看与升级版本)
 - [配置相关](#配置相关)
 - [仓库相关](#仓库相关)
   - [常规操作](#常规操作)
+- [relations](#relations)
+  - [code996](#code996)
 - [报错收集](#报错收集)
   - [fatal: Authentication failed](#fatal-authentication-failed)
 
@@ -56,6 +58,36 @@ git add .
 git commit -m "备注"
 # 推送到 origin master
 git push origin master
+```
+
+---
+
+# relations
+
+## code996
+
+> [hellodigua/code996: code996 是一个分析工具，它可以统计 Git 项目的 commit 时间分布，进而推导出这个项目的编码工作强度 (github.com)](https://github.com/hellodigua/code996)
+>
+> code996 是一个分析工具，它可以统计 Git 项目的 commit 时间分布，进而推导出这个项目的编码工作强度。
+
+[Preview](https://hellodigua.github.io/code996/)
+
+Mac 或 Linux 用户：
+
+**在 Git 项目的根目录**，执行以下命令：
+
+```shell
+/bin/bash -c "$(curl -fsSL https://fastly.jsdelivr.net/gh/hellodigua/code996/bin/code996.sh)"
+```
+
+Windows 用户：
+
+下载该脚本 `https://fastly.jsdelivr.net/gh/hellodigua/code996/bin/code996.sh`
+
+然后将该脚本移至要分析的 Git 项目目录，并执行以下命令：
+
+```shell
+sh code996.sh
 ```
 
 ---
