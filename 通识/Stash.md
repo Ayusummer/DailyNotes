@@ -52,7 +52,19 @@
 
 # 机器学习
 
+[MLEveryday/100-Days-Of-ML-Code: 100-Days-Of-ML-Code中文版 (github.com)](https://github.com/MLEveryday/100-Days-Of-ML-Code)
+
+
+
 ## 深度学习
+
+### 入门
+
+[论文代码看不懂，谁能救救我_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV1nu411C7Bb?spm_id_from=333.851.b_7265636f6d6d656e64.2)
+
+[三个月从零入门深度学习，保姆级学习路线图_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV1yg411K72z/?spm_id_from=333.788.b_7265636f5f6c697374.2)
+
+---
 
 ### fastai
 
