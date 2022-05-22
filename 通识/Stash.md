@@ -71,3 +71,17 @@
 [fastai/fastai: The fastai deep learning library (github.com)](https://github.com/fastai/fastai)
 
 ![image-20220521082632900](http://cdn.ayusummer233.top/img/202205210826235.png)
+
+---
+
+# FastAPI
+
+## full-stack-fastapi-postgresql
+
+[tiangolo/full-stack-fastapi-postgresql: Full stack, modern web application generator. Using FastAPI, PostgreSQL as database, Docker, automatic HTTPS and more. (github.com)](https://github.com/tiangolo/full-stack-fastapi-postgresql)
+
+fastapi 脚手架, 用于搭建 fastapi + vue 项目
+
+![image-20220522222935779](http://cdn.ayusummer233.top/img/202205222229376.png)
+
+虽然不一定用, 但是一定程度上可以作为类似开发的参考
