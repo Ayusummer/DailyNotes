@@ -156,6 +156,34 @@
   - 你拿到试卷重新改正错误，相当于 merge。
 
 ---
+
+# SSH Key
+
+> [git生成连接远程仓库的密钥_旁观者lgp的博客-CSDN博客](https://blog.csdn.net/qq_45515863/article/details/106312232)
+
+- 在主机创建 ssh key
+
+  ```shell
+  ssh-keygen -t rsa -C "youremail@example.com"
+  ```
+
+  `youremail@example.com` 替换为 github 登录邮箱
+
+  运行命令后一路回车默认配置, 根据运行提示找到 公钥 `id_rsa.pub`
+
+- `Github 右上角头像 -> Settings -> SSH and GPG keys -> add new ssh key`
+
+  title 随便填, key 粘贴 `id_rsa.pub` 的全部内容
+
+- 在主机上使用
+
+  ```shell
+  git clone 仓库SSH路径
+  ```
+
+  来 clone 仓库
+
+---
 # Actions
 
 > [原文链接:GitHub Actions 入门教程 - 阮一峰的网络日志 (ruanyifeng.com)](http://www.ruanyifeng.com/blog/2019/09/getting-started-with-github-actions.html)
