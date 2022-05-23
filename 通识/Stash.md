@@ -107,3 +107,16 @@ fastapi 脚手架, 用于搭建 fastapi + vue 项目
 ![image-20220522222935779](http://cdn.ayusummer233.top/img/202205222229376.png)
 
 虽然不一定用, 但是一定程度上可以作为类似开发的参考
+
+---
+
+# 网站
+
+## 命令行风格网站
+
+> [Cveinnt/LiveTerm: 💻 Build terminal styled websites in minutes! (github.com)](https://github.com/Cveinnt/LiveTerm)
+>
+> [LiveTerm](https://liveterm.vercel.app/)
+
+![image-20220523101122126](http://cdn.ayusummer233.top/img/202205231011393.png)
+
