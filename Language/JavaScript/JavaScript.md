@@ -29,3 +29,14 @@ class Item {
 let item2 = new Item(2, '兼职');
 ```
 
+---
+
+## 动画/动效
+
+### sliderland
+
+> [blinry/sliderland: A (very) minimalist creative coding playground. Make animations using only 64 HTML sliders! (github.com)](https://github.com/blinry/sliderland)
+>
+> [Sliderland (blinry.org)](https://sliderland.blinry.org/)
+
+![image-20220523093011957](http://cdn.ayusummer233.top/img/202205230930199.png)
