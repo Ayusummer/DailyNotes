@@ -28,9 +28,13 @@ Anaconda + VSCode + jupyter插件 + Python相关插件
 
 [安装包](https://ayusummer-my.sharepoint.com/:u:/g/personal/233_ayusummer_onmicrosoft_com/EeoLeabp6RtDnVkgJ46y_fIB9gqFsNbpyO8BqSZzQv_r3w?e=NwyQXf)
 
+安装完成后打开 `Anaconda Navigator`:
+
+![image-20220523093633147](http://cdn.ayusummer233.top/img/202205230936469.png)
+
 #### Anaconda 换源
 
-- [原文链接](https://www.cnblogs.com/yuvejxke/p/13169172.html)
+> [anaconda修改国内源 - 余者皆可 - 博客园 (cnblogs.com)](https://www.cnblogs.com/yuvejxke/p/13169172.html)
 
 - 打开 `anaconda prompt`   
   ![20220113131937](http://cdn.ayusummer233.top/img/20220113131937.png)  
@@ -42,7 +46,7 @@ Anaconda + VSCode + jupyter插件 + Python相关插件
   conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge
   conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/msys2/
   ```
-  
+
   配置清华源是为了后续使用 `pip` 命令安装 python 库时快些, 不配置换源而直接使用默认源的话在墙内容易超时报错
 
 ---
