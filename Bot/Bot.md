@@ -9,7 +9,43 @@
   - [群内QA](#群内qa)
     - [jinja2 报错](#jinja2-报错)
 
+---
+
 # go-cqhttp
+
+> [go-cqhttp 帮助中心](https://docs.go-cqhttp.org/)
+>
+> [Mrs4s/go-cqhttp: cqhttp的golang实现，轻量、原生跨平台. (github.com)](https://github.com/Mrs4s/go-cqhttp)
+
+---
+
+## 安装运行(以 Ubuntu 为例)
+
+在 [Releases · Mrs4s/go-cqhttp (github.com)](https://github.com/Mrs4s/go-cqhttp/releases) 获取系统对应版本的 release
+
+解压:
+
+```bash
+tar -xf go-cqhttp_linux_amd64.tar.gz 
+```
+
+给 `go-cqhttp` 文件的所有者以执行权限
+
+```bash
+chmod u+x go-cqhttp
+```
+
+首次运行 `go-cqhttp` 生成配置文件
+
+```bash
+./go-cqhttp
+```
+
+![image-20220523134826512](http://cdn.ayusummer233.top/img/202205231348243.png)
+
+修改完配置后再次运行即可
+
+---
 
 ## 群内 QA
 
@@ -21,7 +57,9 @@
 
 解决方案: 
 
-本地登录后向服务器上传设备配置文件和登录缓存文件
+在本地运行 go-cqhttp, 登陆成功会生成 `session.token` 文件, 将其拷贝到服务器相应位置即可
+
+![image-20220523142442098](http://cdn.ayusummer233.top/img/202205231424440.png)
 
 ---
 
@@ -36,6 +74,12 @@
 ---
 
 # Hoshino
+
+
+
+
+
+—
 
 ## 群内QA
 
@@ -65,3 +109,4 @@
 
 ---
 
+[RROR: No matching distribution found for dataclasses==0.8 - Streamlit Cloud - Streamlit](https://discuss.streamlit.io/t/rror-no-matching-distribution-found-for-dataclasses-0-8/11667/3)
