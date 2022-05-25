@@ -98,7 +98,13 @@ echo $SHELL
 
 ---
 
-## `ssh: connect to host localhost port 22: Connection refused`
+## 报错收集
+
+---
+
+### ssh 拒绝
+
+`ssh: connect to host localhost port 22: Connection refused`
 
 > [wsl 的 ssh server 无法启动 （ssh localhost 时报错ssh: connect to host localhost port 22: Connection refused）_hxc2101的博客-CSDN博客](https://blog.csdn.net/hxc2101/article/details/113617870)
 
@@ -115,6 +121,18 @@ service ssh restart
 **mark 下这句 ssh 服务重启指令**, ssh localhost 能够正常运行后如果 WSL2 关闭重启了再 `ssh localhost` 可能还会 `Connection refused`, 这时只要再 `service ssh restart` 然后 `ssh localhost` 就可以了
 
 ![image-20211026214857109](http://cdn.ayusummer233.top/img/202110262148965.png)
+
+---
+
+### ping 的通 ip , ping 不通域名
+
+dns 解析错误
+
+修改 `/etc/resolv.conf` 文件
+
+```conf
+nameserver 8.8.8.8
+```
 
 ---
 
@@ -254,6 +272,33 @@ scp -r [user]@[ip]:[Linux 服务器上目标文件的路径] [指定下载到win
 ---
 
 # python
+
+---
+
+## 安装
+
+> [Ubuntu安装Python3 - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/149796622)
+
+更新源:
+
+```bash
+apt-get update
+```
+
+安装 python3
+
+```bash
+apt install python3-pip
+```
+
+验证
+
+```bash
+pip -V
+python3 -V
+```
+
+---
 
 ## Pipenv
 
