@@ -72,6 +72,7 @@
   - [Main FastAPI app](#main-fastapi-app)
     - [创建数据库表](#创建数据库表)
     - [创建 dependency](#创建-dependency)
+  - [Prisma](#prisma)
 - [数据库操作(慕课网)](#数据库操作慕课网)
   - [配置 SQLAlchemy ORM](#配置-sqlalchemy-orm)
   - [DataBase Models](#database-models)
@@ -2078,6 +2079,22 @@ def get_db():
 然后，当在路径操作函数中使用依赖项时，我们使用直接从 SQLAlchemy 导入的 Session 类型声明它。
 
 这样我们就可以在路径操作函数中获得更好的编辑器支持，因为编辑器会知道 db 参数的类型是 Session:
+
+---
+
+## Prisma
+
+> [What is the best tool or ORM to manage database in Fast API? · Issue #4659 · tiangolo/fastapi (github.com)](https://github.com/tiangolo/fastapi/issues/4659#issuecomment-1143744431)
+>
+> [Prisma Client Python (prisma-client-py.readthedocs.io)](https://prisma-client-py.readthedocs.io/en/stable/)
+>
+> [prisma/prisma: Next-generation ORM for Node.js & TypeScript | PostgreSQL, MySQL, MariaDB, SQL Server, SQLite, MongoDB and CockroachDB (Preview) (github.com)](https://github.com/prisma/prisma)
+>
+> [Prisma - Next-generation Node.js and TypeScript ORM for Databases](https://www.prisma.io/)
+
+[TODO:  前端 TS 能用, 后端可以用 Prisma-python, 看起来比 SQLAlchemy 好用, 下个项目准备上 Prisma && Prisma-python]
+
+
 
 ---
 
