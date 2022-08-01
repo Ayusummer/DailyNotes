@@ -46,6 +46,7 @@
   - [英语学习](#英语学习)
     - [背单词](#背单词)
 - [桌面显示器屏幕使用体验](#桌面显示器屏幕使用体验)
+  - [Win11 设置合盖不休眠](#win11-设置合盖不休眠)
 - [Game](#game)
   - [Steam](#steam)
     - [steam工具箱](#steam工具箱)
@@ -336,9 +337,9 @@ mklink /J OneDriveE5\mix "E:\OneDriveE5\mixon\OneDrive - ayusummer"
   
   ---
 - 效果:
-  - ![20210404202719](http:cdn.ayusummer233.top/img/20210404202719.png)
+  - ![20210404202719](http://cdn.ayusummer233.top/img/20210404202719.png)
 - 下载[RaiDrive](https://ayusummer-my.sharepoint.com/:u:/g/personal/233_ayusummer_onmicrosoft_com/EY5FYay5Go1En2aduguGoIsBErdJ8QCQT_r4BwxspAB7qw?e=VFsSSc)并安装到自定义位置后打卡软件,可以自行更新到最新版本(本就是官网有提供的free版)  
-  ![20210404203117](http:cdn.ayusummer233.top/img/20210404203117.png)
+  ![20210404203117](http://cdn.ayusummer233.top/img/20210404203117.png)
 > 如果安装的时候出现问题可以选择忽略,这样依然装好了,运行桌面上的快捷方式,在设置里面检查更新到最新版本安装的时候基本不会报错
 > 也可以直接在[官网](https://www.raidrive.com/)下载(可能需要一些魔法)
 
@@ -619,6 +620,14 @@ windows 自带的分屏可以覆盖大多数应用场景
   > 目前写前端项目的桌面状态差不多就是这样
   >
   > pad 主要用于看视频教程, 不看视频教程时一般就是用来放音乐(
+
+---
+
+## Win11 设置合盖不休眠
+
+`控制面板 -> 硬件和声音 -> 电源选项 -> 选择关闭笔记本计算机盖的功能 -> 关闭盖子时不采取任何操作`
+
+![image-20220707003226256](http://cdn.ayusummer233.top/img/202207070032741.png)
 
 ----
 # Game
