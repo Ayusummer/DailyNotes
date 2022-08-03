@@ -8,7 +8,7 @@
       - [环境变量](#环境变量)
   - [Ubuntu](#ubuntu)
     - [Pipenv](#pipenv)
-    - [VSCode](#vscode)
+  - [VSCode](#vscode)
       - [VSCode 扩展安装](#vscode-扩展安装)
 
 # 快速开始
@@ -113,13 +113,11 @@ apt install python3-pip
 pip -V
 python3 -V
 ```
-
----
-
-
 ---
 
 ### Pipenv
+
+> 如果上一步使用 `Python Environment Manager` 安装了 conda 环境的话建议使用 conda 环境, 就没必要用  pipenv 了
 
 > [如何开始使用 Pipenv？ | w3c笔记 (w3cschool.cn)](https://www.w3cschool.cn/article/94449206.html)
 >
@@ -175,7 +173,7 @@ pipenv shell
 ---
 
 
-### VSCode
+## VSCode
 
 [VSCode 安装包](https://ayusummer-my.sharepoint.com/:u:/g/personal/233_ayusummer_onmicrosoft_com/EazLjY72FsFBvNS9qfiXUNsBoncvju914TnopNKvIkyU_A?e=H46sLL)
 
