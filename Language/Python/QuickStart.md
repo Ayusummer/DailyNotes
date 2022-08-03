@@ -5,6 +5,7 @@
     - [Anaconda](#anaconda)
       - [Anaconda 换源](#anaconda-换源)
       - [新建一个 conda 环境](#新建一个-conda-环境)
+      - [环境变量](#环境变量)
     - [VSCode](#vscode)
       - [VSCode 扩展安装](#vscode-扩展安装)
   - [Matplotlib](#matplotlib)
@@ -72,6 +73,20 @@ conda activate 环境名
 ![image-20220517153733464](http://cdn.ayusummer233.top/img/202205171537691.png)
 
 ---
+#### 环境变量
+
+在控制台输入 `conda -V` 没有反应的话应该是环境变量没加(虽然我记得装的时候会提示勾选添加环境变量)
+
+如果没添加环境变量的话可以编辑系统环境变量, 在 `系统变量` 的 `Path` 项中添加两条环境变量
+
+```bash
+C:\Users\zhangyufan\Anaconda3
+C:\Users\zhangyufan\Anaconda3\Scripts
+```
+
+> 第一条对应自己的 Anaconda 安装位置根目录  
+> 第二条对应 Anaconda 根目录下的 Scripts 目录
+
 
 ### VSCode
 
