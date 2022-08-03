@@ -1,25 +1,27 @@
 # 目录
 - [目录](#目录)
 - [快速开始](#快速开始)
-  - [开发环境方面](#开发环境方面)
+  - [Windows](#windows)
     - [Anaconda](#anaconda)
       - [Anaconda 换源](#anaconda-换源)
       - [新建一个 conda 环境](#新建一个-conda-环境)
       - [环境变量](#环境变量)
+  - [Ubuntu](#ubuntu)
+    - [Pipenv](#pipenv)
     - [VSCode](#vscode)
       - [VSCode 扩展安装](#vscode-扩展安装)
-  - [Matplotlib](#matplotlib)
-  - [Pandas](#pandas)
 
 # 快速开始
-
-## 开发环境方面
 
 Anaconda + VSCode + jupyter插件 + Python相关插件
 - `Anaconda`: 用于管理 python 环境
 - `VSCode`: 用于编写与运行 python 程序
 - `VSCode 中的 Jupyter 插件`: 用于交互式编写 python 程序
 - `VSCode 中的 Python 相关插件`: 用于支持一些 Python 相关的代码提示, 语法高亮之类
+
+----
+
+## Windows
 
 ---
 
@@ -87,6 +89,91 @@ C:\Users\zhangyufan\Anaconda3\Scripts
 > 第一条对应自己的 Anaconda 安装位置根目录  
 > 第二条对应 Anaconda 根目录下的 Scripts 目录
 
+---
+
+## Ubuntu
+
+> [Ubuntu安装Python3 - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/149796622)
+
+更新源:
+
+```bash
+apt-get update
+```
+
+安装 python3
+
+```bash
+apt install python3-pip
+```
+
+验证
+
+```bash
+pip -V
+python3 -V
+```
+
+---
+
+
+---
+
+### Pipenv
+
+> [如何开始使用 Pipenv？ | w3c笔记 (w3cschool.cn)](https://www.w3cschool.cn/article/94449206.html)
+>
+> [WSL Ubuntu 18.04上使用pipenv的4个关键点 | 老梅笔记 (laomeinote.com)](https://laomeinote.com/4-points-need-to-be-noticed-about-pipenv-usage-in-wsl-ubuntu-18.04)
+>
+> [Pipenv: Python Dev Workflow for Humans — pipenv 2021.11.9 documentation (pypa.io)](https://pipenv.pypa.io/en/latest/)
+>
+> [12. Virtual Environments and Packages — Python 3.10.0 documentation](https://docs.python.org/3/tutorial/venv.html)
+
+[Pipenv](https://pipenv.pypa.io/en/latest/) 是 Python 的 Python 打包工具，是对使用 [Pip](https://pip.pypa.io/en/stable/)、[Venv](https://docs.python.org/3/library/venv.html) 和 requirements.txt的升级。Pipenv 是将包管理与虚拟环境相结合的好方法。
+
+虚拟环境是一个自包含的目录树，其中包含针对特定 Python 版本的 Python 安装，以及许多其他包。
+
+
+安装 `pipenv` 模块:
+
+```sh
+apt install pipenv
+pip insatll pipenv
+```
+
+使用 `cd` 命令切换到需要安装虚拟环境的目录安装虚拟环境(如果当前目录下没有 `Pipfile` 则会先生成 `Pipfile`, 如果有的话便会继续安装虚拟环境):
+
+```sh
+pipenv install
+```
+
+> `Pipfile` 中将 `[[source]]` 区域下的 `url` 改为国内的源
+>
+> ```sh
+> # 华为镜像
+> https://repo.huaweicloud.com/repository/pypi/simple
+> # 阿里镜像
+> https://mirrors.aliyun.com/pypi/simple
+> # 官方源
+> https://pypi.python.org/simple
+> ```
+>
+> ![image-20211114221709756](http://cdn.ayusummer233.top/img/202208031439022.png)
+>
+> 如果默认生成的 `Pipfile` 中的包特别多, 那么这条命令会执行很长时间且没有 log, 这将会是一个很折磨的过程(
+
+启动虚拟环境
+
+```sh
+pipenv shell
+```
+
+可以通过 `exit` 退出虚拟环境
+
+
+
+---
+
 
 ### VSCode
 
@@ -125,28 +212,4 @@ C:\Users\zhangyufan\Anaconda3\Scripts
   用于在 VSCode 中打开 powershell 执行命令
 
   ![image-20220113134623777](http://cdn.ayusummer233.top/img/202201131346049.png)
-
-----
-
-## Matplotlib
-
-[Matplotlib 中文文档](https://www.matplotlib.org.cn/)
-
-Python 的一个绘图库, 可以便捷地绘制柱状图, 饼图, 折线图, 散点图, 雷达图等数据可视化图表
-
-[学习的时候记的一些 markdown 笔记](https://gitee.com/ayusummer233/DailyNotes/blob/main/ProgrammingLanguage/Python/Note-python.md#matplotlib)
-
-[后面使用 jupyter 重写了遍笔记](https://gitee.com/ayusummer233/DailyNotes/blob/main/ProgrammingLanguage/Python/libs/Matplotlib.ipynb), 这一版相当于上一版而言好处在于可以边阅读边执行示例代码, 网页上不方便执行代码块可以如下图所示下载 zip 文件解压后使用VSCode 打开阅读及执行
-
-![image-20220113133816489](http://cdn.ayusummer233.top/img/202201131338785.png)
-
----
-
-## Pandas
-
-[Pandas 中文文档(pypandas.cn)](https://www.pypandas.cn/)
-
-[当时学习的时候记录的一些 markdown 笔记](https://gitee.com/ayusummer233/DailyNotes/blob/main/ProgrammingLanguage/Python/Note-python.md#pandas)
-
----
 
