@@ -1,12 +1,35 @@
-<!--
- * @Author: your name
- * @Date: 2021-01-22 00:43:47
- * @LastEditTime: 2021-06-28 10:23:25
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: \DailyNotes\Markdown.md
--->
 > 用于记录markdown使用的一些随笔
+
+# 目录
+- [目录](#目录)
+- [编辑软件](#编辑软件)
+  - [在VSCode中编写Markdown文件](#在vscode中编写markdown文件)
+  - [Typora](#typora)
+- [个人图床(七牛云+阿里云域名+picgo)](#个人图床七牛云阿里云域名picgo)
+  - [继续配合 ShareX 使用](#继续配合-sharex-使用)
+- [基本用法](#基本用法)
+  - [分页符](#分页符)
+  - [排版](#排版)
+  - [字体格式](#字体格式)
+  - [字体大小](#字体大小)
+  - [公式](#公式)
+    - [公式内部打空格](#公式内部打空格)
+    - [多行公式等号对齐](#多行公式等号对齐)
+  - [链接](#链接)
+  - [矩阵](#矩阵)
+  - [内嵌 HTML](#内嵌-html)
+    - [markdownlint 取消部分 html 标签警告](#markdownlint-取消部分-html-标签警告)
+- [something interesting](#something-interesting)
+  - [徽章](#徽章)
+- [工具](#工具)
+  - [Markdown Preview Enhanced](#markdown-preview-enhanced)
+  - [Pandoc](#pandoc)
+  - [reveal-md](#reveal-md)
+- [markdown + pandoc 写论文](#markdown--pandoc-写论文)
+  - [文献管理工具: Zotero](#文献管理工具-zotero)
+  - [Better BibTex](#better-bibtex)
+
+---
 
 # 编辑软件
 
