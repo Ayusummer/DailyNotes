@@ -1,9 +1,12 @@
 # 目录
+
 - [目录](#目录)
 - [通识](#通识)
   - [SHELL](#shell)
 - [WSL2](#wsl2)
   - [VSCode-ssh-remote](#vscode-ssh-remote)
+  - [端口映射](#端口映射)
+  - [WSL2 DNS 服务异常](#wsl2-dns-服务异常)
   - [报错收集](#报错收集)
     - [ssh 拒绝](#ssh-拒绝)
     - [ping 的通 ip , ping 不通域名](#ping-的通-ip--ping-不通域名)
@@ -98,10 +101,91 @@ echo $SHELL
   再用 VSCode-SSH-remote 连接 WSL 时可以看到登入用户已经切换成刚才配置的用户了, 当切换的是 root 用户时, 此时就可以使用 VSCode 新建及编辑系统目录下的文件了
   
   ![image-20210921164444924](http://cdn.ayusummer233.top/img/202109211644088.png)
+  
+  ---
+
+## 端口映射
+
+正常情况下直接从本机 telnet  wsl2 的端口是不通的, 需要映射 wsl2 端口到本机
+
+> [wsl2 设置端口映射_压码路的博客-CSDN博客_wsl端口映射](https://blog.csdn.net/keyiis_sh/article/details/113819244)
+
+```powershell
+# 获取 wsl ip 地址
+wsl -- ifconfig eth0
+```
+
+> ![image-20220806160015420](http://cdn.ayusummer233.top/img/202208061600558.png)
+
+```powershell
+# 随便看看本机端口有没有占用(比如9225)
+netstat -aon | findstr "9225"
+```
+
+> ![image-20220806160222828](http://cdn.ayusummer233.top/img/202208061602939.png)
+
+```powershell
+# 将ip地址的对应的端口映射到宿主win10对应的端口
+# 需要管理员权限
+# netsh interface portproxy add v4tov4 listenport=[win10端口] listenaddress=0.0.0.0 connectport=[虚拟机的端口] connectaddress=[虚拟机的ip]
+netsh interface portproxy add v4tov4 listenport=9225 listenaddress=0.0.0.0 connectport=69 connectaddress=172.29.61.202
+```
+
+> ![image-20220806160340771](http://cdn.ayusummer233.top/img/202208061603880.png)
+
+```powershell
+# 检测是否设置成功
+netsh interface portproxy show all
+```
+
+> ![image-20220806160442677](http://cdn.ayusummer233.top/img/202208061604773.png)
+>
+> ```powershell
+> # 删除端口转发
+> netsh interface portproxy delete v4tov4 listenport=9225 listenaddress=0.0.0.0
+> ```
+>
+> 
+
+
+---
+## WSL2 DNS 服务异常
+
+无法正确解析域名, 直接 ping ip 可以 ping 通, 排查了一圈发现主网也 ping 不通
+
+> 解决方案: [WSL 2 自定义安装目录和网络配置_daihaoxin的专栏-CSDN博客_wsl2目录](https://blog.csdn.net/daihaoxin/article/details/115978662)
+
+![20211218213224](http://cdn.ayusummer233.top/img/20211218213224.png)
+- 网络: 172.22.0.0, 20 位掩码
+
+配置主网防火墙入站规则
+- 规则类型: 自定义
+- 程序: 所有程序
+- 协议和端口: 默认值不做改动
+- 作用域: 此规则适用于哪些本地 IP 地址?: 下列 IP 地址 -> 添加 -> 此 ip 地址或子网: `172.22.0.0/20` 
+- 操作: 允许连接
+- 配置文件: 全选
+- 名称自定义
+
+然后在 WSL2 里重新 ping 主网又能 ping 通了, DNS 也正常了, 可以 ping 同其他域名了
+
+> 缺点在于计算机重启后 WSL2 主网地址可能会变(   
+> 需要再配下防火墙  
+> 挺秃然的, 没有完全搞清楚原理, 无法一劳永逸地解决这个问题  
+> TODO: 计网的复习该提上日程了(
+
+
+
 
 ---
 
 ## 报错收集
+
+> [WSL2 踩坑分享 – xiabee](https://xiabee.cn/coding/wsl2/)
+>
+> [WSL2 网络异常排查 [ping 不通、网络地址异常、缺少默认路由、被宿主机防火墙拦截\] - 简书 (jianshu.com)](https://www.jianshu.com/p/ba2cf239ebe0)
+>
+> 
 
 ---
 
@@ -605,13 +689,6 @@ detach session: `ctrl + o, d`
 ![image-20220504210932759](http://cdn.ayusummer233.top/img/202205042109817.png)
 
 返回某个 session: `zellij attach xxx` 或者 `zellij a xxx`
-
-
-
-
-
-
-
 
 
 
