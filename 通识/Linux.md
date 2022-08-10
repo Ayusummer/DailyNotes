@@ -3,6 +3,8 @@
 - [目录](#目录)
 - [通识](#通识)
   - [SHELL](#shell)
+- [常见问题](#常见问题)
+  - [the root filesystem require a manual fsck](#the-root-filesystem-require-a-manual-fsck)
 - [WSL2](#wsl2)
   - [VSCode-ssh-remote](#vscode-ssh-remote)
   - [端口映射](#端口映射)
@@ -52,7 +54,27 @@ sh 的全名是 Bourne Shell。名字中的玻恩就是这个 Shell 的作者。
 echo $SHELL
 ```
 
-![20211219065045](http:cdn.ayusummer233.top/img/20211219065045.png)
+![20211219065045](http://cdn.ayusummer233.top/img/20211219065045.png)
+
+---
+
+# 常见问题
+
+## the root filesystem require a manual fsck
+
+> [boot - Root file system requires manual fsck - Ask Ubuntu](https://askubuntu.com/questions/885062/root-file-system-requires-manual-fsck#:~:text=The root  filesystem on %2Fdev%2Fsda1 requires a,Lets first check your file system for errors.)
+
+![image-20220810092901637](http://cdn.ayusummer233.top/img/202208100929766.png)
+
+```bash
+fask -tf /dev/mapper/ubuntu--vg-root
+exit
+```
+
+> [Linux fsck 命令 command not found fsck 未找到命令 fsck 命令详解 fsck 命令未找到 fsck 命令安装 - CommandNotFound ⚡️ 坑否](https://commandnotfound.cn/linux/1/451/fsck-命令#:~:text=fsck 命令选项： 1 -a：自动修复文件系统，不询问任何问题； 2 -A：依照 %2Fetc%2Ffstab 配置文件的内容，检查文件内,7 -s：依序执行检查作业，而非同时执行； 8 -t<文件系统类型>：指定要检查的文件系统类型； 9 -T：执行fsck指令时，不显示标题信息； 10 -V：显示指令执行过程。)
+>
+> - `-y`: 确认所有的 yes/no 选项
+> - `-f`: (force)  尽管目录被标记为 clean 也强制检查
 
 
 ---
@@ -689,7 +711,6 @@ detach session: `ctrl + o, d`
 ![image-20220504210932759](http://cdn.ayusummer233.top/img/202205042109817.png)
 
 返回某个 session: `zellij attach xxx` 或者 `zellij a xxx`
-
 
 
 
