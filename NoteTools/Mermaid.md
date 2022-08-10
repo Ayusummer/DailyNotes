@@ -11,6 +11,7 @@
     - [结点形状](#结点形状)
     - [连接线形状](#连接线形状)
     - [语法冲突的特殊字符](#语法冲突的特殊字符)
+  - [时序图](#时序图)
 
 
 ----
@@ -151,6 +152,39 @@ flowchart LR
 flowchart LR
   A["结点内使用(括号)"]
 ```
+
+---
+
+## 时序图
+
+> [Sequence diagram (mermaid-js.github.io)](https://mermaid-js.github.io/mermaid/#/sequenceDiagram)
+>
+> [Mermaid之时序图语法_Feng乍起的博客-CSDN博客_时序图语法](https://blog.csdn.net/qq_37196887/article/details/112764646)
+
+```mermaid
+sequenceDiagram
+participant C as Client.discard(9)
+participant S as Server.47660
+C ->> S: [SYN] 请求建立 TCP 连接
+S ->> C: [SYN ACK] 确认建立 TCP 连接
+C ->> S: [ACK] 确认收到确认建立 TCP 连接
+
+Note over C,S: ↑ 3 次握手
+
+loop 数据传输(不分片情况)
+C ->> S: [PSH ACK] 发送数据
+S ->> C: [ACK]确认接收数据
+end
+
+Note over C,S: ↓ 4 次挥手
+
+C ->> S: [FIN, ACK] 发起终止连接请求
+S ->> C: [ACK] 确认终止连接请求
+S ->> C: [FIN, ACK] 发起终止连接请求
+C ->> S: [ACK] 确认终止连接请求
+```
+
+
 
 
 
