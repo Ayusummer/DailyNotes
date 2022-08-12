@@ -284,6 +284,73 @@ markdown 支持内嵌 HTML
 
 [安装 Pandoc](#Pandoc) 再重启 VSCode 即可
 
+---
+
+### 使用 MPE 导出 base64图片 && 带侧边目录的 HTML
+
+> [3.1 HTML 导出-markdown preview enhanced文档（简体中文版）-面试哥 (mianshigee.com)](https://www.mianshigee.com/tutorial/mpe/zh-cn-html.md)
+>
+> [最完善的markdown转html/pdf方法、带目录生成_所谓向日葵族的博客-CSDN博客_markdown转html](https://blog.csdn.net/weixin_38601833/article/details/94585595)
+>
+> [Markdown转换单一html文件并添加侧边栏目录_吟风划彩虹的博客-CSDN博客_html添加目录](https://blog.csdn.net/yqahx/article/details/119785262)
+>
+> [HTML (shd101wyy.github.io)](https://shd101wyy.github.io/markdown-preview-enhanced/#/zh-cn/html)
+
+使用 VSCode 打开 markdown 文件后, 打开 `Markdown Preview Enhanced` 的预览模式
+
+![image-20220812161158973](http://cdn.ayusummer233.top/img/202208121629553.png)
+
+将光标放到第一行，然后(按 `Ctrl+Shift+P` )呼出命令面板，输入 `Markdown Preview Enhanced: Create Toc` 会在光标位置生成一段代码：
+
+![image-20220812161806527](http://cdn.ayusummer233.top/img/202208121629592.png)
+
+```html
+<!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=6 orderedList=false} -->
+```
+
+此时每次保存文件都会自动生成目录
+
+![image-20220812161844235](http://cdn.ayusummer233.top/img/202208121629879.png)
+
+然后在头部添加
+
+```yaml
+---
+html:
+  embed_local_images: true
+  embed_svg: true
+  offline: true
+  toc: true
+print_background: true
+export_on_save:
+  html: true
+---
+```
+
+- `embed_local_images` 被设置为 `true`，那么所有的本地图片将会被嵌入为 `base64` 格式。
+
+- `toc` 
+
+  - 设置为 `false`，那么边栏目录将会被隐藏。
+  - `toc` 被设置为 `true`，那么边栏目录将会被缺省启动并显示。
+  - `toc` 没有被设置，那么缺省边栏目录将会被启动，但是并不显示。
+
+- ```yaml
+  export_on_save:
+    html: true
+  ```
+
+  保存时自动导出 html
+
+- `offline`
+
+  - `HTML (offline)`
+    选择这个选项如果你要离线使用这个 html 文件。
+  - `HTML (cdn hosted)`
+    选择这个选项如果你要远程或在服务器上使用这个 html 文件。
+
+- `print_background`: 使用当前背景样式
+
 
 ---
 
