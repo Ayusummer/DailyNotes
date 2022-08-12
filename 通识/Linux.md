@@ -58,6 +58,34 @@ echo $SHELL
 
 ---
 
+# SSH 工具
+
+## VSCode: Remote-SSH
+
+### 确认 SSH 服务情况
+
+首先需要确认自己的机子是否有 SSH 服务, 如果 SSH 不能连上本机的话那么
+
+---
+
+## MobaXterm
+
+
+
+---
+
+## WindTerm
+
+
+
+---
+
+## Terminus
+
+
+
+---
+
 # 常见问题
 
 ## the root filesystem require a manual fsck
@@ -75,6 +103,27 @@ exit
 >
 > - `-y`: 确认所有的 yes/no 选项
 > - `-f`: (force)  尽管目录被标记为 clean 也强制检查
+
+---
+
+## `E: dpkg was interrupted, you must manually run 'dpkg --configure -a' to correct the problem.`
+
+执行 `dpkg --configure -a` 以修复
+
+若执行后出现 
+
+```bash
+dpkg: error: parsing file '/var/lib/dpkg/updates/0000' near line 0:
+ newline in field name '▒v▒▒'
+```
+
+则
+
+```bash
+sudo rm /var/lib/dpkg/updates/*
+```
+
+即可
 
 
 ---
