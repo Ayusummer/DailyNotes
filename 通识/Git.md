@@ -77,8 +77,10 @@ Mac 或 Linux 用户：
 **在 Git 项目的根目录**，执行以下命令：
 
 ```shell
-/bin/bash -c "$(curl -fsSL https://fastly.jsdelivr.net/gh/hellodigua/code996/bin/code996.sh)"
+curl -fsSL https://fastly.jsdelivr.net/gh/hellodigua/code996/bin/code996.sh | bash
 ```
+
+> 或者下载 `https://fastly.jsdelivr.net/gh/hellodigua/code996/bin/code996.sh` 后直接 `bash code996.sh`
 
 Windows 用户：
 
@@ -87,8 +89,12 @@ Windows 用户：
 然后将该脚本移至要分析的 Git 项目目录，并执行以下命令：
 
 ```shell
-sh code996.sh
+iwr https://fastly.jsdelivr.net/gh/hellodigua/code996/bin/code996.ps1 -OutFile ([System.IO.Path]::Combine([System.IO.Path]::GetTempPath(), 'code996.ps1')); & ([System.IO.Path]::Combine([System.IO.Path]::GetTempPath(), 'code996.ps1')); ri ([System.IO.Path]::Combine([System.IO.Path]::GetTempPath(), 'code996.ps1'))
 ```
+
+> 需要使用 PowerShell 7 或更高版本
+>
+> [PowerShell 7相关](https://github.com/Ayusummer/DailyNotes/blob/main/通识/软件相关.md#powershell-7)
 
 ---
 
