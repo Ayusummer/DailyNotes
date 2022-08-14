@@ -82,3 +82,8 @@ ProgrammingLanguage/TypeScript/Test
 test.xlsx
 Language/Python/Test.ipynb
 后端/test
+
+# 忽略所有的 Vnote 相关配置文件
+**/vx.json
+**/notebook.db
+**/vx_notebook.json
