@@ -296,6 +296,10 @@ markdown 支持内嵌 HTML
 >
 > [HTML (shd101wyy.github.io)](https://shd101wyy.github.io/markdown-preview-enhanced/#/zh-cn/html)
 
+安装完 MPE 插件后在设置中打开脚本执行支持
+
+![image-20220813031117722](http://cdn.ayusummer233.top/img/202208141930666.png)
+
 使用 VSCode 打开 markdown 文件后, 打开 `Markdown Preview Enhanced` 的预览模式
 
 ![image-20220812161158973](http://cdn.ayusummer233.top/img/202208121629553.png)
