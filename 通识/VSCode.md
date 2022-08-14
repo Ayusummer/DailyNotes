@@ -28,6 +28,7 @@
 	- [Sourcery](#sourcery)
 	- [Thunder Client](#thunder-client)
 	- [CodeTour](#codetour)
+	- [markmap](#markmap)
 - [报错收集](#报错收集)
 	- [git Missing or invalid credentials.](#git-missing-or-invalid-credentials)
 
@@ -287,6 +288,20 @@ Sourcery-ai 可以给开发者提供 Python 代码的重构建议:
 ![image-20220520221430457](http://cdn.ayusummer233.top/img/202205202214733.png)
 
 可以用来写业务逻辑步骤或者代码分步骤讲解式引导
+
+---
+
+## markmap
+
+> [Markmap - Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=gera2ld.markmap-vscode)
+>
+> [Try markmap](https://markmap.js.org/repl)
+>
+> [gera2ld/markmap: Visualize your Markdown as mindmaps with Markmap. (github.com)](https://github.com/gera2ld/markmap)
+
+能够将 markdown 文件根据目录层级转换为思维导图
+
+![image-20220814212254716](http://cdn.ayusummer233.top/img/202208142122676.png)
 
 ---
 
