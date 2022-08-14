@@ -5,6 +5,7 @@
 - [编辑软件](#编辑软件)
   - [在VSCode中编写Markdown文件](#在vscode中编写markdown文件)
   - [Typora](#typora)
+  - [vnote](#vnote)
 - [个人图床(七牛云+阿里云域名+picgo)](#个人图床七牛云阿里云域名picgo)
   - [继续配合 ShareX 使用](#继续配合-sharex-使用)
 - [基本用法](#基本用法)
@@ -23,8 +24,7 @@
   - [徽章](#徽章)
 - [工具](#工具)
   - [Markdown Preview Enhanced](#markdown-preview-enhanced)
-  - [Pandoc](#pandoc)
-  - [reveal-md](#reveal-md)
+    - [使用 MPE 导出 base64图片 && 带侧边目录的 HTML](#使用-mpe-导出-base64图片--带侧边目录的-html)
 - [markdown + pandoc 写论文](#markdown--pandoc-写论文)
   - [文献管理工具: Zotero](#文献管理工具-zotero)
   - [Better BibTex](#better-bibtex)
@@ -53,6 +53,20 @@
   - 配合 PicGo 也可以自动上传图片到个人图床, 截图完直接粘贴可以自动生成图链(不过可能会出现转义问题, `http:` 后面记得加上 `//`)
   - 超链接的生成比较灵活, 复制完网页链接之后直接粘贴会根据内容生成超链接及其文本, 对于参考链接的书写比较友好, 省下了不少自己打描述的时间
 
+---
+
+## vnote
+
+[vnote-githubRepo](https://github.com/vnotex/vnote)
+
+开始之初，VNote是一款专为Markdown设计的Vim风格笔记应用程序。它不仅仅是一个Markdown编辑器。VNote旨在成为一个带有便捷笔记管理的功能强大的Markdown编辑器，或者一个拥有舒适Markdown体验的笔记软件。
+
+现在，VNote致力于成为一个舒适的笔记平台，会逐步支持更多的文档格式。
+
+VNote是免费、开源的。您可以获得适用于Linux，Windows和macOS的版本。
+
+> 可以导出嵌入图片的带侧边大纲的 HTML  
+> 但是 PDF 导出有些差强人意
 
 
 ----
