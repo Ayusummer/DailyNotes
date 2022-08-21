@@ -1,9 +1,13 @@
-> 用于记录markdown使用的一些随笔
+# CHANGELOG
+- `2022.8.14`: [✨ Vnote食用随笔init( •̀ ω •́ )✧](#vnote)
+- `2022.8.12`: [✨ 使用MPE导出base64图片带侧边目录的HTMLヾ(≧▽≦*)o](#使用-mpe-导出-base64图片--带侧边目录的-html)
+
 
 # 目录
+- [CHANGELOG](#changelog)
 - [目录](#目录)
 - [编辑软件](#编辑软件)
-  - [在VSCode中编写Markdown文件](#在vscode中编写markdown文件)
+  - [在 VSCode 中编写 Markdown 文件](#在-vscode-中编写-markdown-文件)
   - [Typora](#typora)
   - [vnote](#vnote)
 - [个人图床(七牛云+阿里云域名+picgo)](#个人图床七牛云阿里云域名picgo)
@@ -29,12 +33,11 @@
   - [文献管理工具: Zotero](#文献管理工具-zotero)
   - [Better BibTex](#better-bibtex)
 
----
 
 # 编辑软件
 
-## 在VSCode中编写Markdown文件
-- 安装VSCode扩展
+## 在 VSCode 中编写 Markdown 文件
+- 安装 VSCode 扩展
   - Markdown All in One
   - Markdown Converter
 - markdown文件的后缀名为`md`
