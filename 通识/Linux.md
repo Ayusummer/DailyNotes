@@ -106,7 +106,7 @@ exit
 
 ---
 
-## `E: dpkg was interrupted, you must manually run 'dpkg --configure -a' to correct the problem.`
+## E: dpkg was interrupted, you must manually run 'dpkg --configure -a' to correct the problem.
 
 执行 `dpkg --configure -a` 以修复
 
@@ -124,6 +124,14 @@ sudo rm /var/lib/dpkg/updates/*
 ```
 
 即可
+
+---
+
+## E: Sub-process /usr/bin/dpkg returned an error code (1)
+
+![image-20220825102350086](http://cdn.ayusummer233.top/img/202208251023257.png)
+
+> [E: Sub-process /usr/bin/dpkg returned an error code (1)解决办法_Mr.Stick的博客-CSDN博客](https://blog.csdn.net/stickmangod/article/details/85316142)
 
 
 ---
@@ -720,6 +728,10 @@ chmod +x zellij
 ```sh
 export PATH="/home/ubuntu/zellij:$PATH"
 ```
+
+> 若已经有了其他的环境变量, 请使用 `:` 将此条拼接在前面
+>
+> ![image-20220824141913053](http://cdn.ayusummer233.top/img/202208241419154.png)
 
 然后:
 
