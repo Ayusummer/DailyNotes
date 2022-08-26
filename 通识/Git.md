@@ -6,6 +6,7 @@
   - [常规操作](#常规操作)
 - [relations](#relations)
   - [code996](#code996)
+- [learnGitBranching](#learngitbranching)
 - [报错收集](#报错收集)
   - [fatal: Authentication failed](#fatal-authentication-failed)
 
@@ -98,6 +99,32 @@ iwr https://fastly.jsdelivr.net/gh/hellodigua/code996/bin/code996.ps1 -OutFile (
 
 ---
 
+# learnGitBranching
+
+> [pcottle/learnGitBranching: An interactive git visualization and tutorial. Aspiring students of git can use this app to educate and challenge themselves towards mastery of git! (github.com)](https://github.com/pcottle/learnGitBranching)
+
+Github 仓库拉取速度可能会比较慢, 所以可以将其导入到 Gitee 仓库中: [learnGitBranching: https://github.com/pcottle/learnGitBranching 学习 Git, 用于个人部署 (gitee.com)](https://gitee.com/ayusummer233/learnGitBranching)
+
+![image-20220826194715403](http://cdn.ayusummer233.top/img/202208261947482.png)
+
+选择一台设备装好 Python 和 nodejs+yarn 并配置好 Git, 本次试验环境为 ubuntu16.04
+
+```bash
+# clone 仓库
+git clone https://gitee.com/ayusummer233/learnGitBranching.git
+# 安装依赖
+yarn install
+yarn gulp fastBuild # skips tests and linting, faster build
+yarn gulp build # runs tests and lint
+# 使用 screen 创建一个窗口(或者使用 tmux 或者 zellij 均可)
+screen -S gitLearn
+# 使用 Python http.server 部署到本地 9222 端口(或随便换个自己喜欢的端口)
+python -m http.server 9222
+# Ctrl A D 挂起当前 screen
+```
+
+---
+
 # 报错收集
 
 ---
@@ -129,4 +156,6 @@ fatal: Authentication failed for 'https://github.com/Ayusummer/vue-vben-admin.gi
 然后就可以通过 `username` 和 `token` 来进行一些权限操作了
 
 ![image-20220503213634670](http://cdn.ayusummer233.top/img/202205032136970.png)
+
+---
 
