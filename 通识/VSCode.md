@@ -317,3 +317,9 @@ Sourcery-ai 可以给开发者提供 Python 代码的重构建议:
 
 ![image-20220503212826597](http://cdn.ayusummer233.top/img/202205032128654.png)
 
+---
+
+## remote-ssh 一直 waiting for server log
+
+> [vscode ssh连接失败_我歌月徘徊、的博客-CSDN博客_vscode连不上ssh](https://blog.csdn.net/myWorld001/article/details/119443079)
+
