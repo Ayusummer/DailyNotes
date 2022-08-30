@@ -109,6 +109,24 @@ Github 仓库拉取速度可能会比较慢, 所以可以将其导入到 Gitee �
 
 选择一台设备装好 Python 和 nodejs+yarn 并配置好 Git, 本次试验环境为 ubuntu16.04
 
+> [Ubuntu 安装 yarn 可参考此项](https://github.com/Ayusummer/DailyNotes/blob/main/前端/通识.md#ubuntu-安装-yarn)
+>
+> ```bash
+> # Ubuntu 安装 nodejs 16
+> curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
+> sudo apt-get install -y nodejs
+> # 持久换淘宝源
+> npm config set registry https://registry.npm.taobao.org
+> # 查看换源是否生效
+> npm config get registry
+> 
+> # 安装 yarn
+> curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+> echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+> sudo apt update
+> sudo apt install yarn
+> ```
+
 ```bash
 # clone 仓库
 git clone https://gitee.com/ayusummer233/learnGitBranching.git
