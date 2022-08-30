@@ -363,6 +363,32 @@ mklink /J OneDriveE5\mix "E:\OneDriveE5\mixon\OneDrive - ayusummer"
 > [删除win10 删除icloud后资源管理器icloud图标无法删除？ - 知乎 (zhihu.com)](https://www.zhihu.com/question/393865503/answer/1307730087)
 
 ---
+## Cloudreve
+
+> [快速开始 - Cloudreve](https://docs.cloudreve.org/getting-started/install)
+
+---
+
+### WebDav 使用
+
+可用于双向同步云盘和本地文件, 需要使用第三方 Webdav 客户端 Raidrive
+
+首先需要在浏览器 cloudreve 页面的 WebDAV 选项卡添加账户, 并记住==提示中的==地址和登录名以及==新建账号的密码==
+
+![image-20220829110858019](http://cdn.ayusummer233.top/img/202208291108129.png)
+
+然后打开 Raidrive 配置下 WebDAV 挂载
+
+![image-20220829110810634](http://cdn.ayusummer233.top/img/202208291108723.png)
+
+然后就可以在文件资源管理器中看到了
+
+![image-20220829111044719](http://cdn.ayusummer233.top/img/202208291110794.png)
+
+
+
+---
+
 # Microsoft
 
 ---
