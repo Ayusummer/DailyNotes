@@ -182,3 +182,238 @@ urn:isbn:9780141036144
 
 ## Data URLs
 
+**Data URLs**，即前缀为 `data:` 协议的 URL，其允许内容创建者向文档中嵌入小文件。
+
+---
+
+### 语法
+
+Data URLs 由四个部分组成：前缀 (`data:`)、指示数据类型的 MIME 类型、如果非文本则为可选的`base64`标记、数据本身：
+
+```
+data:[<mediatype>][;base64],<data>
+```
+
+`mediatype` 是个 [MIME](#MIME 类型) 类型的字符串，例如 `image/jpeg` 表示 JPEG 图像文件。如果被省略，则默认值为 `text/plain;charset=US-ASCII`
+
+如果数据是文本类型，你可以直接将文本嵌入 (根据文档类型，使用合适的实体字符或转义字符)。
+
+如果是二进制数据，你可以将数据进行 base64 编码之后再进行嵌入。
+
+---
+
+`示例`:
+
+- 简单的 `text/plain` 类型数据
+
+  ```
+  data:,Hello%2C%20World!
+  ```
+
+  ![image-20220831204824673](http://cdn.ayusummer233.top/img/202208312131837.png)
+
+- 上一条示例的 base64 编码版本
+
+  ```
+  data:text/plain;base64,SGVsbG8sIFdvcmxkIQ%3D%3D
+  ```
+
+  ![image-20220831205017015](http://cdn.ayusummer233.top/img/202208312131016.png)
+
+  > [Python模块——base64 - 龙~白 - 博客园 (cnblogs.com)](https://www.cnblogs.com/longwhite/p/10397707.html)
+  >
+  > [Base64 在线编码解码 | Base64 加密解密 - Base64.us](https://base64.us/)
+
+- 一个 HTML 文档源代码 `<h1>Hello, World</h1>`
+
+  ````
+  data:text/html,%3Ch1%3EHello%2C%20World!%3C%2Fh1%3E
+  ````
+
+  ![image-20220831210533807](http://cdn.ayusummer233.top/img/202208312131707.png)
+
+- 一个会执行 JavaScript alert 的 HTML 文档。注意 script 标签必须封闭。
+
+  ```
+  data:text/html,<script>alert('hi');</script>
+  ```
+
+  ![image-20220831210613201](http://cdn.ayusummer233.top/img/202208312131935.png)
+
+---
+
+### 给数据做 base64 编码
+
+`base64` 是一组 `binary-to-text`(二进制转文本) `encoding scheme` (编码方案), 通过将二进制数据解释成 `radix-64` 的表现形式从而能够用 ASCII 字符串的形式表示出来; 由于仅由 ASCII 字符组成, base64 字符串通常是 `url-safe` 的, 这就是它可用于在 Data URL 中编码数据的原因
+
+---
+
+==在 JavaScript 中编码==
+
+Web API 有原生的方法编码或解码 base64
+
+> [Base64 - MDN Web Docs Glossary: Definitions of Web-related terms | MDN (mozilla.org)](https://developer.mozilla.org/en-US/docs/Glossary/Base64#encoded_size_increase)
+>
+> [Base64 的编码与解码 - 术语表 | MDN (mozilla.org)](https://developer.mozilla.org/zh-CN/docs/Glossary/Base64)
+
+在 JavaScript 中, 有两个函数分别用来处理编码和解码 base64 字符串
+
+- [`atob()`](https://developer.mozilla.org/zh-CN/docs/Web/API/atob)
+- [`btoa()`](https://developer.mozilla.org/zh-CN/docs/Web/API/btoa)
+
+---
+
+==在 Unix 系统中编码==
+
+在 Linux 和 macOS 系统中, 可以使用 `base64` 命令行来为文件或者字符串进行 base64 编码
+
+```bash
+echo -n hello | base64
+```
+
+> `echo -n`: 显示输出并清除换行
+>
+> ![image-20220831213639392](http://cdn.ayusummer233.top/img/202208312136550.png)
+
+```bash
+echo -n hello > a.txt
+base64 a.txt
+```
+
+> ![image-20220831213729490](http://cdn.ayusummer233.top/img/202208312137544.png)
+
+```bash
+base64 a.txt > b.txt
+```
+
+> ![image-20220831213759617](http://cdn.ayusummer233.top/img/202208312137667.png)
+
+---
+
+==在 Windows 中编码==
+
+使用 Powershell  的 `Convert.ToBase64String` 或者找一个 `GUN/Linux shell`(比如 WSL 或者 git bash) 用前面 Unix 的 `base64` 命令
+
+---
+
+### 常见问题
+
+下文介绍一些在使用`data` URIs 时遇到的常见问题：
+
+---
+
+==语法==
+
+`data` URLs 的格式很简单，但很容易会忘记把逗号加在 "data" 协议名后面，在对数据进行 base64 编码时也很容易发生错误。
+
+```
+data:[<mediatype>][;base64],<data>
+```
+
+---
+
+==HTML 代码格式化==
+
+一个 `data` URL 是一个文件中的文件，相对于文档来说这个文件可能就非常的长。因为 data URL 也是 URL，所以 data 会用空白符 (换行符，制表符，空格) 来对它进行格式化。但如果数据是经过 base64 编码的，就可能会[遇到一些问题](https://bugzilla.mozilla.org/show_bug.cgi?id=73026#c12)。
+
+---
+
+==长度限制==
+
+虽然 Firefox 支持无限长度的 `data` URLs，但是标准中并没有规定浏览器必须支持任意长度的 `data` URIs。比如，Opera 11 浏览器限制 URLs 最长为 65535 个字符，这意味着 data URLs 最长为 65529 个字符（如果你使用纯文本 data:, 而不是指定一个 MIME 类型的话，那么 65529 字符长度是编码后的长度，而不是源文件）。
+
+----
+
+==缺乏错误处理==
+
+MIME 类型错误或者 base64 编码错误，都会造成`data` URIs 无法被正常解析，但不会有任何相关错误提示。
+
+---
+
+==不支持查询字符串==
+
+一个 data URI 的数据字段是没有结束标记的，所以尝试在一个 data URI 后面添加查询字符串会导致，查询字符串也一并被当作数据字段。例如：
+
+```
+data:text/html,lots of text...<p><a name%3D"bottom">bottom</a>?arg=val
+```
+
+> 这个 data URL 代表的 HTML 源文件内容为：
+>
+> ```bash
+> lots of text...<p><a name="bottom">bottom</a>?arg=val
+> ```
+>
+> ![image-20220831214537926](http://cdn.ayusummer233.top/img/202208312145985.png)
+
+---
+
+### 规范
+
+> [Data URLs - HTTP | MDN (mozilla.org)](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Basics_of_HTTP/Data_URLs#规范)
+
+---
+
+### 浏览器兼容性
+
+> [Data URLs - HTTP | MDN (mozilla.org)](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Basics_of_HTTP/Data_URLs#浏览器兼容性)
+
+---
+
+## MIME 类型
+
+**媒体类型**（通常称为 **Multipurpose Internet Mail Extensions** 或 **MIME** 类型）是一种标准，用来表示文档、文件或字节流的性质和格式。它在[IETF RFC 6838](https://tools.ietf.org/html/rfc6838)中进行了定义和标准化。
+
+互联网号码分配机构（[IANA](https://www.iana.org/)）是负责跟踪所有官方 MIME 类型的官方机构，您可以在[媒体类型](https://www.iana.org/assignments/media-types/media-types.xhtml)页面中找到最新的完整列表。
+
+> **警告：** 浏览器通常使用 MIME 类型（而不是文件扩展名）来确定如何处理 URL，因此 Web 服务器在响应头中添加正确的 MIME 类型非常重要。如果配置不正确，浏览器可能会曲解文件内容，网站将无法正常工作，并且下载的文件也会被错误处理。
+
+---
+
+### 语法
+
+`通用结构`:
+
+```
+type/subtype
+```
+
+MIME 的组成结构非常简单；由类型与子类型两个字符串中间用`'/'`分隔而组成。不允许空格存在。*type* 表示可以被分多个子类的独立类别。*subtype 表示细分后的每个类型。*
+
+MIME 类型对大小写不敏感，但是传统写法都是小写。
+
+---
+
+`独立类型`
+
+```
+text/plain
+text/html
+image/jpeg
+image/png
+audio/mpeg
+audio/ogg
+audio/*
+video/mp4
+application/*
+application/json
+application/javascript
+application/ecmascript
+application/octet-stream
+…
+```
+
+*独立*类型表明了对文件的分类，可以是如下之一：
+
+|     类型      |                             描述                             |                           典型示例                           |
+| :-----------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
+|    `text`     |             表明文件是普通文本，理论上是人类可读             |    `text/plain`, `text/html`, `text/css, text/javascript`    |
+|    `image`    | 表明是某种图像。不包括视频，但是动态图（比如动态 gif）也使用 image 类型 | `image/gif`, `image/png`, `image/jpeg`, `image/bmp`, `image/webp`, `image/x-icon`, `image/vnd.microsoft.icon` |
+|    `audio`    |                      表明是某种音频文件                      | `audio/midi`, `audio/mpeg, audio/webm, audio/ogg, audio/wav` |
+|    `video`    |                      表明是某种视频文件                      |                  `video/webm`, `video/ogg`                   |
+| `application` |                     表明是某种二进制数据                     | `application/octet-stream`, `application/pkcs12`, `application/vnd.mspowerpoint`, `application/xhtml+xml`, `application/xml`, `application/pdf` |
+
+
+
+
+
