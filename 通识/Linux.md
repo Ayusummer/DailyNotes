@@ -133,6 +133,26 @@ sudo rm /var/lib/dpkg/updates/*
 
 > [E: Sub-process /usr/bin/dpkg returned an error code (1)解决办法_Mr.Stick的博客-CSDN博客](https://blog.csdn.net/stickmangod/article/details/85316142)
 
+---
+
+# 常用命令
+
+## echo
+
+> [How to use Echo Command in Linux (With Examples) (phoenixnap.com)](https://phoenixnap.com/kb/echo-command-linux)
+
+```bash
+# 帮助文档
+/bin/echo --help
+```
+
+```bash
+# 语法
+echo [option] [string]
+```
+
+
+
 
 ---
 # WSL2
