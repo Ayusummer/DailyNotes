@@ -151,6 +151,25 @@ sudo rm /var/lib/dpkg/updates/*
 echo [option] [string]
 ```
 
+---
+
+## 查看软件安装位置
+
+> [Ubuntu中查看软件的安装位置及安装文件 - Macrored - 博客园 (cnblogs.com)](https://www.cnblogs.com/macrored/p/11757888.html)
+
+```bash
+whereis
+which
+```
+
+---
+
+## 防火墙相关
+
+> [Debian/Ubuntu/Centos 防火墙放行指定端口 - SunPma'Blog](https://sunpma.com/555.html#:~:text=Debian%2FUbuntu 放行端口 安装iptables（通常系统都会自带，如果没有就需要安装） apt-get,update apt- get install iptables)
+>
+> [ubuntu的ufw如何开放特定端口?_justheretobe的博客-CSDN博客_ufw开放端口](https://blog.csdn.net/justheretobe/article/details/51843178)
+
 
 
 
@@ -719,7 +738,9 @@ conda deactivate
 >
 > [Installation - Zellij User Guide](https://zellij.dev/documentation/installation.html)
 
-先在 [Zellij](https://zellij.dev/) 下载好压缩包
+先在 [Zellij](https://zellij.dev/) 下载好压缩包, 然后传到 Linux 文件系统中
+
+> 位置选定在自己想要安装 zellij 位置
 
 解压:
 
