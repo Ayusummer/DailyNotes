@@ -1,9 +1,15 @@
 # 目录
+
 - [目录](#目录)
 - [查看与升级版本](#查看与升级版本)
-- [配置相关](#配置相关)
+- [安装与配置相关](#安装与配置相关)
+  - [安装](#安装)
+    - [Linux](#linux)
+      - [PPA](#ppa)
+  - [配置](#配置)
 - [仓库相关](#仓库相关)
   - [常规操作](#常规操作)
+  - [分支操作](#分支操作)
 - [relations](#relations)
   - [code996](#code996)
 - [learnGitBranching](#learngitbranching)
@@ -31,7 +37,89 @@ git update-git-for-windows
 
 ---
 
-# 配置相关
+# 安装与配置相关
+
+## 安装
+
+### Linux
+
+`Debian/Ubuntu`
+
+```bash
+# 更新源
+apt update 	# 只检查,不更新
+apt upgrade	# 更新已安装的软件包
+# 安装最新版本的 git
+apt-get install git
+# For Ubuntu, this PPA provides the latest stable upstream Git version
+add-apt-repository ppa:git-core/ppa
+apt update
+apt install git
+```
+
+---
+
+#### PPA
+
+> [Ubuntu PPA 使用指南 - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/55250294)[==很详细==]
+>
+> [What is PPA in Ubuntu Linux and How Do I Use Them (ubuntupit.com)](https://www.ubuntupit.com/what-is-ppa-in-ubuntu-linux-and-how-do-i-use-them/)
+
+---
+
+`PPA` 表示 *个人软件包存档(`Personal Package Archive`)*。
+
+> 在这里注意 “个人” 这个词，它暗示了这是开发人员独有的东西，并没有得到分发的正式许可。
+
+---
+
+软件仓库是一组文件，其中包含各种软件及其版本的信息，以及校验和等其他一些详细信息。每个版本的 Ubuntu 都有自己的四个官方软件仓库：
+
+- `Main` - Canonical 支持的自由开源软件。
+- `Universe` - 社区维护的自由开源软件。
+- `Restricted` - 设备的专有驱动程序。
+- `Multiverse` - 受版权或法律问题限制的软件。
+
+---
+
+PPA 基本上是一个包含软件信息的网址, 这些信息存储在 `/etc/apt` 目录中的 `sources.list` 文件中
+
+当运行 `sudo apt update` 命令时，系统将使用 [APT 工具](https://link.zhihu.com/?target=https%3A//wiki.debian.org/Apt) 来检查软件仓库并将软件及其版本信息存储在缓存中。当使用 `sudo apt install package_name` 命令时，它通过该信息从实际存储软件的网址获取该软件包
+
+如果软件仓库中没有关于某个包的信息, 将会报错
+
+```bash
+E: Unable to locate package
+```
+
+----
+
+Ubuntu 对系统中的软件进行管理，更重要的是控制你在系统上获得哪个版本的软件
+
+Ubuntu 不会立即提供该新版本的软件。需要一个步骤来检查此新版本的软件是否与系统兼容，从而可以确保系统的稳定性。
+
+这就需要 PPA
+
+---
+
+Ubuntu 提供了一个名为 Launchpad 的平台，使软件开发人员能够创建自己的软件仓库。终端用户，也就是你，可以将 PPA 仓库添加到 `sources.list` 文件中，当你更新系统时，你的系统会知道这个新软件的可用性，然后你可以使用标准的 `sudo apt install` 命令安装它。
+
+```bash
+# 将 PPA 仓库添加到列表中
+sudo add-apt-repository ppa:dr-akulavich/lighttable
+# 更新可以在当前系统上安装的软件包列表。
+sudo apt-get update
+# 安装软件包。
+sudo apt-get install lighttable-installer
+```
+
+
+
+
+
+---
+
+## 配置
 
 ```shell
 git config --global user.email "GitHub绑定邮箱"
@@ -60,6 +148,29 @@ git commit -m "备注"
 # 推送到 origin master
 git push origin master
 ```
+
+---
+
+## 分支操作
+
+```bash
+# 新建并转移到 bugFix 分支
+git checkout -b bugFix
+# 提交
+git commit
+# 返回 master 分支
+git checkout master
+# 拉取主分支更新(并处理冲突)
+git pull
+# 返回 bugFix 分支, 合并 master 分支更新
+git checkout bugFix
+git merge master
+git push
+# 合并 bugFix 分支
+git merge bugFix
+```
+
+
 
 ---
 
