@@ -41,24 +41,29 @@
 # 编辑软件
 
 ## 在 VSCode 中编写 Markdown 文件
+
 - 安装 VSCode 扩展
-  - Markdown All in One
+  - Markdown All in One / [Markdown Preview Enhanced](#Markdown Preview Enhanced)
   - Markdown Converter
 - markdown文件的后缀名为`md`
-  ![](res_-daily-notes/img/README/markdown打开.png)
+  ![image-20220906085910035](http://cdn.ayusummer233.top/img/202209060859172.png)
 - 使用大纲快速索引章节位置
-  ![](res_-daily-notes/img/README/markdown大纲.png)
+  ![image-20220906085945030](http://cdn.ayusummer233.top/img/202209060859150.png)
 - 使用插件快速更新生成目录
 
 ----
 ## Typora
 
 - 与 VSCode 相较而言在大文件的续写方面渲染速度太慢, 但是当文档仅有一千行左右时渲染速度还不错
+
+  > PS: 长期使用过后我个人写 Markdown 的主力工具仍是 Typora, 因其对表格以及图片的支持比较好
+
 - VSCode 主要在文档中含有太多外链图片资源时编辑文档经常乱跳屏幕, 编辑体验不是很好
+
 - Typora 编辑 markdown 文件也有如下顺手之处
   - 自动空行, 使得回车时确实能够换行书写
   - 可视化编辑格式(尤其是表格的插入和编辑体验很好)
-  - 配合 PicGo 也可以自动上传图片到个人图床, 截图完直接粘贴可以自动生成图链(不过可能会出现转义问题, `http:` 后面记得加上 `//`)
+  - 配合 PicGo 也可以自动上传图片到个人图床, 截图完直接粘贴可以自动生成图链
   - 超链接的生成比较灵活, 复制完网页链接之后直接粘贴会根据内容生成超链接及其文本, 对于参考链接的书写比较友好, 省下了不少自己打描述的时间
 
 ---
