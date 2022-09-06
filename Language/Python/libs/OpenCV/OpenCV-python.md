@@ -48,10 +48,10 @@
 - 原始的 LBP 算子定义在像素 $3*3$ 的邻域内，以邻域中心像素为阈值，相邻的 8 个像素的灰度值与邻域中心的像素值进行比较，若周围像素大于中心像素值，则该像素点的位置被标记为 1 ，否则为 0 。这样，$3*3$ 邻域内的 8 个点经过比较可产生 8 位二进制数，将这 8 位二进制数依次排列形成一个二进制数字，这个二进制数字就是中心像素的 LBP 值，LBP 值共有 $2^8 = 256$ 种可能。中心像素的 LBP 值反映了该像素周围区域的纹理信息。
 > PS : 计算 LBP 特征的图像必须是灰度图，如果是彩色图，需要先转换成灰度图。
 - 上述过程用图像表示为：  
-  ![20210526101757](http:cdn.ayusummer233.top/img/20210526101757.png)     
-  ![20210526101852](http:cdn.ayusummer233.top/img/20210526101852.png)   
+  ![20210526101757](http://.ayusummer233.top/img/20210526101757.png)     
+  ![20210526101852](http://.ayusummer233.top/img/20210526101852.png)   
 - 将上述过程用公式表示为：        
-  ![20210526101929](http:cdn.ayusummer233.top/img/20210526101929.png)    
+  ![20210526101929](http://.ayusummer233.top/img/20210526101929.png)    
   $(x_c, y_c)$ 为中心像素的坐标     
   p 为邻域的第 p 个像素    
   ip  为邻域像素的灰度值    
@@ -88,7 +88,7 @@
     }
     ```    
   测试结果：     
-  ![20210526102435](http:cdn.ayusummer233.top/img/20210526102435.png)
+  ![20210526102435](http://.ayusummer233.top/img/20210526102435.png)
   > 原博主测测试结果, 我个人用的 OpenCV-python 没做测试
 
     ----
@@ -160,7 +160,7 @@ void detectMultiScale(
     plt.hist(img.ravel(), 256, [0, 256])
     plt.show()
   ```
-  ![20210410155316](http:cdn.ayusummer233.top/img/20210410155316.png)
+  ![20210410155316](http://.ayusummer233.top/img/20210410155316.png)
   - 可以看出,这个图像确实有够糊的
 
     ---
@@ -191,7 +191,7 @@ void detectMultiScale(
     plt.show()
 
     ```
-    ![20210410162024](http:cdn.ayusummer233.top/img/20210410162024.png)
+    ![20210410162024](http://.ayusummer233.top/img/20210410162024.png)
 
     ---
 - 自己编写函数实现相应用功能
@@ -232,4 +232,4 @@ void detectMultiScale(
     cv2.waitKey(0)
     cv2.destroyAllWindows()
     ```
-    ![20210410163952](http:cdn.ayusummer233.top/img/20210410163952.png)
+    ![20210410163952](http://.ayusummer233.top/img/20210410163952.png)

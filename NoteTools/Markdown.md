@@ -1,4 +1,5 @@
 # CHANGELOG
+
 - `2022.8.14`: [✨ Vnote食用随笔init( •̀ ω •́ )✧](#vnote)
 - `2022.8.12`: [✨ 使用MPE导出base64图片带侧边目录的HTMLヾ(≧▽≦*)o](#使用-mpe-导出-base64图片--带侧边目录的-html)
 
@@ -477,12 +478,14 @@ reveal-md path_markdown_file
 
 然后进入 `Zotero` 主界面 `编辑->首选项->Better BibTeX` 进行如下配置:
 
-![20220309152816](http:cdn.ayusummer233.top/img/20220309152816.png)
+![20220309152816](http://cdn.ayusummer233.top/img/20220309152816.png)
 
-![20220309152859](http:cdn.ayusummer233.top/img/20220309152859.png)
+![20220309152859](http://.ayusummer233.top/img/20220309152859.png)
 
 返回 `Zotero` 主界面后会看到多了一列 `Citation Key` 属性
 
-![20220309153131](http:cdn.ayusummer233.top/img/20220309153131.png)
+![20220309153131](http://.ayusummer233.top/img/20220309153131.png)
 
 > `Citation Key` 可以理解成每个条目的唯一 id, 在上述配置过程中我们将其配置成了 `[auth:lower[year]`的形式, 如果有重复的话会在后面添加 `a b c` 或者数字进行区分
+
+---

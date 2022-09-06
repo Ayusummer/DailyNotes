@@ -204,9 +204,9 @@ Code2flow is useful for:
     ```
     python setup.py install
     ```
-    ![20210522162039](http:cdn.ayusummer233.top/img/20210522162039.png)
+    ![20210522162039](http://.ayusummer233.top/img/20210522162039.png)
   - 成功安装后在当前 python 环境的根目录下的 `Scripts` 目录下可以看到一个 `code2flow` 文件  
-    ![20210522162413](http:cdn.ayusummer233.top/img/20210522162413.png)
+    ![20210522162413](http://.ayusummer233.top/img/20210522162413.png)
 
 ----
 ## 使用
@@ -216,7 +216,7 @@ Code2flow is useful for:
   - 记得备份原文档(直接使用拷贝文档就是了)
   - (`^#.*` 匹配以#开头后接任意个任意字符的语句来去掉注释行)[PS : `.` 不会匹配 `\n` (换行)] 匹配行首注释
   - `#.*` 匹配行尾注释
-  ![20210522163436](http:cdn.ayusummer233.top/img/20210522163436.png)
+  ![20210522163436](http://.ayusummer233.top/img/20210522163436.png)
   
 - 将去除注释的文件和 安装过程中最后指出的 `Scripts` 目录下的 `code2flow` 文件拷贝到同一文件目录下并用已经安装好 `code2flow` 的 `python环境` 打开该文件夹并打开命令行执行
   ```
