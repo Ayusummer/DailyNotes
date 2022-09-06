@@ -29,7 +29,7 @@
 - `turtle.seth(to_angle)`
 - `to_angle` -- 一个数值 (整型或浮点型)
 - 设置海龟的朝向为 to_angle。以下是以角度表示的几个常用方向：
-![20210523134615](http://.ayusummer233.top/img/20210523134615.png)
+![20210523134615](http://cdn.ayusummer233.top/img/20210523134615.png)
 
 ```python
 >>> turtle.setheading(90)

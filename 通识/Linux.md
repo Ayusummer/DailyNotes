@@ -568,19 +568,19 @@ wget https://repo.anaconda.com/archive/Anaconda3-2021.11-Linux-x86_64.sh
 bash Anaconda3-2021.11-Linux-x86_64.sh
 ```
 
-![20211219065157](http://.ayusummer233.top/img/20211219065157.png)
+![20211219065157](http://cdn.ayusummer233.top/img/20211219065157.png)
 
 长按 ENTER 阅读完条款
 
-![20211219065309](http://.ayusummer233.top/img/20211219065309.png)
+![20211219065309](http://cdn.ayusummer233.top/img/20211219065309.png)
 
 yes
 
-![20211219065431](http://.ayusummer233.top/img/20211219065431.png)
+![20211219065431](http://cdn.ayusummer233.top/img/20211219065431.png)
 
 选择安装路径, 默认为 `/root/anaconda3`, 这个过程会比较长
 
-![20211219065943](http://.ayusummer233.top/img/20211219065943.png)
+![20211219065943](http://cdn.ayusummer233.top/img/20211219065943.png)
 
 yes, 执行初始化, 这将会将命令行工具 conda 添加到系统的 PATH 环境变量中。  
 不过想要激活 Anaconda，还需要关闭并且重新打开你的 shell 或者在当前 shell 会话中输入下面的命令，来重新加载 PATH 环境变量：   
@@ -590,7 +590,7 @@ source ~/.bashrc
 
 可以使用 `conda --version` 查看 Anaconda 版本
 
-![20211219070617](http://.ayusummer233.top/img/20211219070617.png)
+![20211219070617](http://cdn.ayusummer233.top/img/20211219070617.png)
 
 设置国内镜像
 
@@ -619,7 +619,7 @@ conda create -n BigData python=3.9
 conda activate BigData
 ```
 
-![20211219072053](http://.ayusummer233.top/img/20211219072053.png)
+![20211219072053](http://cdn.ayusummer233.top/img/20211219072053.png)
 
 退出当前虚拟环境
 ```shell

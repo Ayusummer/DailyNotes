@@ -280,7 +280,7 @@ asklib.com
 ----
 ### 申请流程
 - 进入[微软开发者中心](https://developer.microsoft.com/zh-cn/)并进入Office子项  
-  ![20210403092546](http://.ayusummer233.top/img/20210403092546.png)
+  ![20210403092546](http://cdn.ayusummer233.top/img/20210403092546.png)
 - 加入开发人员计划  
   ![20210403093501](http://cdn.ayusummer233.top/img/20210403093501.png)
   ![20210403093524](http://cdn.ayusummer233.top/img/20210403093524.png)
@@ -405,11 +405,11 @@ mklink /J OneDriveE5\mix "E:\OneDriveE5\mixon\OneDrive - ayusummer"
 
 > [Windows 10中的核心隔离和内存完整性是什么？ | MOS86](https://mos86.com/95722.html)
 
-![20211218173047-内核隔离警告](http://.ayusummer233.top/img/20211218173047.png)
+![20211218173047-内核隔离警告](http://cdn.ayusummer233.top/img/20211218173047.png)
 
-![20211218173109-不兼容驱动](http://.ayusummer233.top/img/20211218173109.png)
+![20211218173109-不兼容驱动](http://cdn.ayusummer233.top/img/20211218173109.png)
 
-![20211218180744-不兼容驱动详细信息](http://.ayusummer233.top/img/20211218180744.png)
+![20211218180744-不兼容驱动详细信息](http://cdn.ayusummer233.top/img/20211218180744.png)
 
 > 解决方案: [Windows 10 Core Isolation: Remove incompatible drivers - Administrator](https://administrator.pro/tutorial/windows-10-core-isolation-remove-incompatible-drivers-769558697.html)  
 > [Core Isolation - Memory Integrity Not Turning On - Driver - Microsoft Community](https://answers.microsoft.com/en-us/windows/forum/all/core-isolation-memory-integrity-not-turning-on/d49ca385-77a8-4390-a4e1-b96224ba3fee?auth=1)  

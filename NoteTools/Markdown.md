@@ -480,11 +480,11 @@ reveal-md path_markdown_file
 
 ![20220309152816](http://cdn.ayusummer233.top/img/20220309152816.png)
 
-![20220309152859](http://.ayusummer233.top/img/20220309152859.png)
+![20220309152859](http://cdn.ayusummer233.top/img/20220309152859.png)
 
 返回 `Zotero` 主界面后会看到多了一列 `Citation Key` 属性
 
-![20220309153131](http://.ayusummer233.top/img/20220309153131.png)
+![20220309153131](http://cdn.ayusummer233.top/img/20220309153131.png)
 
 > `Citation Key` 可以理解成每个条目的唯一 id, 在上述配置过程中我们将其配置成了 `[auth:lower[year]`的形式, 如果有重复的话会在后面添加 `a b c` 或者数字进行区分
 
