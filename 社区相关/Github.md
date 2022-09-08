@@ -30,7 +30,7 @@
   - [`Failed to connect to github.com port 443 after 21063 ms: Timed out`](#failed-to-connect-to-githubcom-port-443-after-21063-ms-timed-out)
   - [`OpenSSL SSL_read: Connection was reset, errno 10054`](#openssl-ssl_read-connection-was-reset-errno-10054)
 
-# 杂项
+# 加速
 
 ---
 ## PC网页端用户头像加载不出来
@@ -97,9 +97,149 @@
 ## Branch
 - 多分支适用于开发环境, 签出多个分支以同时推进多个任务, 提高开发效率
 
+---
+
+## Github 镜像
+
+> [eryajf/Thanks-Mirror: 整理记录各个包管理器，系统镜像，以及常用软件的好用镜像，Thanks Mirror。 走过路过，如觉不错，麻烦点个赞👆🌟 (github.com)](https://github.com/eryajf/Thanks-Mirror#github)
+
+---
+
+### Official
+
+- [https://github.com](https://github.com/)
+
+### Mirrors
+
+GitHub 相关的国内镜像，有不同的使用方式，这里仅列出目前可用的国内镜像，具体用法请查阅镜像的官方说明。
+
+- https://hub.fastgit.xyz/
+
+  提供了 GitHub 全站镜像，但注意不要在这个站登陆你的 GitHub 账号。详见[官方文档](https://doc.fastgit.org/zh-cn/)。
+
+  类似fastgit的还有：
+
+  - https://hub.yzuu.cf/
+  - https://hub.njuu.cf/
+
+- https://gitclone.com/
+
+  提供了 `GitHub` 全面的加速，详见[官方文档](https://gitclone.com/docs/feature/gitclone_web)。
+
+- https://ghproxy.com/
+
+  `GitHub` 文件 , Releases , archive , gist , `raw.githubusercontent.com` 文件代理加速下载服务，使用细则参见官方。
+
+- https://toolwa.com/github/
+
+- https://github.91chi.fun/
+
+- https://github.abskoop.workers.dev/
+
+- https://pd.zwc365.com/
+
+- https://gh.con.sh/
+
+- https://www.7ed.net/#/raw-cdn
+
+也可以通过其他方式提供的加速方案。
+
+- [油猴脚本](https://greasyfork.org/zh-CN/scripts/397419-fastgithub-镜像加速访问-克隆和下载)
+
+  安装之后，会直接在 `GitHub` 项目当中出现可用的国内加速克隆方式，比较方便，推荐安装。
+
+- [chrome插件](https://chrome.google.com/webstore/detail/github加速/ffjjnphohkfckeplcjflmgneebafggej?hl=zh)
+
+  与油猴脚本效果一致，只是通过插件的形式安装配置。
+
+---
+
+#### 镜像测速
+
+```python
+# 读取源列表每一行的地址, 将每个地址拆分为 [协议, 域名, 路径], 然后对每个域名 ping 4次, 按照响应时间递增排序, 输出到目的文件
+import os
+import re
 
 
+def ping_linux(host: str, count: int = 4) -> float:
+    """Linux 下的 ping 命令  
+    :param host: 域名
+    :param count: ping 的次数
+    :return: 返回平均响应时长
+    """
+    output = os.popen(f'ping {host} -c {count}').read()
+    try:
+        min, avg, max, mdev = re.findall(r'rtt min/avg/max/mdev = (\d+\.\d+)/(\d+\.\d+)/(\d+\.\d+)/(\d+\.\d+) ms', output)[0]
+        print(f'{host} {avg}ms')
+    # 全丢包的情况下就找不到了, 此时返回一个很大的数
+    except IndexError:
+        print(f'{host} 超时')
+        return 999999
+    return float(avg)
 
+
+def split_url_to_hosts(source_path: str) -> list:
+    """将源列表每个条目拆分成 [协议, 域名, 路径] 的格式并返回所有条目拆分完后的嵌套列表  
+    :param source_path: 源文件
+    :return: 拆分后的嵌套列表
+    """
+    with open(source_path, 'r') as f:
+        hosts = f.read().splitlines()
+        for i in range(len(hosts)):
+            hosts[i] = hosts[i].strip()
+            # 根据 :// 进行拆分, 拆分结果作为继续拆分 协议, 域名, 路径 的依据
+            main_split = hosts[i].split('://')
+
+            # 第一片为 协议://
+            first_fragment = main_split[0] + '://'
+            # 第二片为 域名
+            second_fragment = main_split[1].split('/')[0]
+            # 第三片为 路径
+            third_fragment = '/' + '/'.join(main_split[1].split('/')[1:])
+
+            # 将拆分后的三片组合成一个列表
+            hosts[i] = [first_fragment, second_fragment, third_fragment]
+        # 返回拆分后的嵌套列表
+        return hosts
+
+
+def sort_write_hosts(hosts: list, target_path: str) -> None:
+    """根据对源文件拆分后的嵌套列表中的域名进行 ping 操作, 并将结果按响应时间升序输出到目的文件  
+    :param hosts: 源文件拆分后的嵌套列表  
+    :param target_path: 目标输出文件路径
+    :return: None
+    """
+    # 遍历 hosts 中的每个域名, 并对其进行 ping 操作, 将平均响应时间插入到 hosts 尾部
+    for i in range(len(hosts)):
+        hosts[i].append(ping_linux(hosts[i][1]))
+    # 按照响应时间升序排序
+    hosts.sort(key=lambda x: x[3])
+    # 将排序后的 hosts 写入到目的文件
+    with open(target_path, 'w') as f:
+        for host in hosts:
+            f.write(f'{host[0]}{host[1]}{host[2]} {host[3]}ms \n')
+
+
+def sort_sources(source_path: str, target_path: str) -> None:
+    """对源文件(kali 镜像列表)进行排序, 并按照响应时间升序输出到目的文件  
+    :param source_path: kali 镜像列表文件路径  
+    :param target_path: 按照相应时间升序输出的目的文件路径
+    """
+    print("开始拆分源文件...")
+    # 将源文件拆分为嵌套列表
+    hosts = split_url_to_hosts(source_path)
+    print("拆分完成, 开始排序...")
+    # 对拆分后的嵌套列表进行排序并输出到目的文件
+    sort_write_hosts(hosts, target_path)    
+    print("排序完成, 请查看目的文件")
+
+
+if __name__ == '__main__':
+    source_path = os.path.join(os.path.dirname(__file__), 'sources_github.txt')
+    target_path = os.path.join(os.path.dirname(__file__), 'result_github.txt')
+    sort_sources(source_path, target_path)
+```
 
 ---
 # Git配置
@@ -315,7 +455,6 @@ workflow 文件的配置字段非常多，详见[官方文档](https://help.gith
   
   > [About self-hosted runners - GitHub Docs](https://docs.github.com/cn/github-ae@latest/actions/hosting-your-own-runners/about-self-hosted-runners)
   
-
 - `jobs.<job_id>.steps`: `steps`字段指定每个 Job 的运行步骤，可以包含一个或多个步骤。每个步骤都可以指定以下三个字段。
   - `jobs.<job_id>.steps.name`：步骤名称。
   - `jobs.<job_id>.steps.run`：该步骤运行的命令或者 action。
