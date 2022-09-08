@@ -680,53 +680,6 @@ conda deactivate
   ```
 
 ---
-# Go
-
-## 安装
-- 拉取官网最新的 release
-  ```bash
-  wget https://golang.google.cn/dl/go1.17.4.linux-amd64.tar.gz
-  ```
-- 解压到 /usr/local/go
-  ```bash
-  sudo tar -C /usr/local -xzf go1.17.4.linux-amd64.tar.gz
-  ```
-  > 如果之前安装了其他版本的 go 那么可以备份后先移除该版本目录再运行上面的命令
-  > ```bash
-  > sudo rm -rf /usr/local/go
-  > ```
-- 创建环境变量
-  ```bash
-  export PATH=$PATH:/usr/local/go/bin
-  ```
-  > 添加完环境变量后若想立即生效则需要重启计算机或者执行下面的 shell 命令
-  > ```bash
-  > source $HOME/.profile
-  > ```
-- 验证
-  ```bash
-  go version
-  ```
-
----
-## 代理
-
-> [goproxy.cn/README.zh-CN.md at master · goproxy/goproxy.cn (github.com)](https://github.com/goproxy/goproxy.cn/blob/master/README.zh-CN.md)
-
-用法:
-- 在终端中执行:
-  ```bash
-  go env -w GO111MODULE=on
-  go env -w GOPROXY=https://goproxy.cn,direct
-  ```
-  
-- macOS 或 Linux
-  ```bash
-  export GO111MODULE=on
-  export GOPROXY=https://goproxy.cn
-  ```
-
----
 
 # Zellij
 
