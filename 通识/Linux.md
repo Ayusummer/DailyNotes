@@ -463,6 +463,7 @@ scp -r [user]@[ip]:[Linux 服务器上目标文件的路径] [指定下载到win
   /etc/init.d/network restart
   #重启方式2：
   systemctl restart network
+  ```
 
 ---
 ### 使用密钥登录到 root 账户
