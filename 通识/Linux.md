@@ -3,8 +3,20 @@
 - [目录](#目录)
 - [通识](#通识)
   - [SHELL](#shell)
+- [SSH 工具](#ssh-工具)
+  - [VSCode: Remote-SSH](#vscode-remote-ssh)
+    - [确认 SSH 服务情况](#确认-ssh-服务情况)
+  - [MobaXterm](#mobaxterm)
+  - [WindTerm](#windterm)
+  - [Terminus](#terminus)
 - [常见问题](#常见问题)
   - [the root filesystem require a manual fsck](#the-root-filesystem-require-a-manual-fsck)
+  - [E: dpkg was interrupted, you must manually run 'dpkg --configure -a' to correct the problem.](#e-dpkg-was-interrupted-you-must-manually-run-dpkg---configure--a-to-correct-the-problem)
+  - [E: Sub-process /usr/bin/dpkg returned an error code (1)](#e-sub-process-usrbindpkg-returned-an-error-code-1)
+- [常用命令](#常用命令)
+  - [echo](#echo)
+  - [查看软件安装位置](#查看软件安装位置)
+  - [防火墙相关](#防火墙相关)
 - [WSL2](#wsl2)
   - [VSCode-ssh-remote](#vscode-ssh-remote)
   - [端口映射](#端口映射)
@@ -18,6 +30,8 @@
   - [文件下载](#文件下载)
   - [腾讯云轻量](#腾讯云轻量)
     - [内网 DNS](#内网-dns)
+    - [使用密钥登录到 root 账户](#使用密钥登录到-root-账户)
+  - [探针](#探针)
 - [python](#python)
   - [安装](#安装)
   - [Pipenv](#pipenv)
@@ -26,12 +40,11 @@
 - [nodejs](#nodejs)
   - [安装](#安装-1)
     - [从 NodeSource 中安装 Node.js 和 npm](#从-nodesource-中安装-nodejs-和-npm)
-- [Go](#go)
-  - [安装](#安装-2)
-  - [代理](#代理)
 - [Zellij](#zellij)
-  - [安装](#安装-3)
+  - [安装](#安装-2)
   - [使用](#使用)
+- [Screen命令](#screen命令)
+    - [语法](#语法)
 
 
 ---
@@ -474,6 +487,73 @@ scp -r [user]@[ip]:[Linux 服务器上目标文件的路径] [指定下载到win
   cat /home/ubuntu/.ssh/authorized_keys > /root/.ssh/authorized_keys
   ```
   然后就可以使用密钥登录到 `root` 用户了
+
+---
+
+## 探针
+
+> [cokemine/ServerStatus-Hotaru: 云探针、多服务器探针、云监控、多服务器云监控 (github.com)](https://github.com/CokeMine/ServerStatus-Hotaru)
+
+在连不上 GitHub 时使用方式
+
+> Coding 目前好像是需要登录才能下载, 仓库提供的默认脚本使用 coding 会拉不下来仓库, 所以还是用 github
+>
+> 将源仓库中的 github 相关链接换成了 GitHub Proxy 对应链接, 于是有了下文中的脚本
+
+- 服务端
+
+  ```bash
+  # 源仓库的 shell(由于有时服务器不一定可以连上 github 所以修改了其中的部分链接便有了下面第二个自己修改的 shell)
+  # wget https://cokemine.coding.net/p/hotarunet/d/ServerStatus-Hotaru/git/raw/master/status.sh
+  wget https://cdn.ayusummer233.top/shell/status.sh
+  ```
+
+  ```bash
+  bash status.sh s
+  ```
+
+  > - `选择 GitHub / Coding.net`: 保持默认(Github)(1)
+  > - `选择监听端口`: 保持默认(35601) 或者自己填个未被使用且已放通的端口
+  > - `自动部署`: 保持默认(y)
+  > - `输入本机域名或ip`: 没有域名就直接输入本机 ip
+  > - `输入 ServerStatus 服务端中网站要设置的 域名/IP 的端口`: 随便输个未被使用且已放通的端口, 这个端口用于访问 Web 页面
+  >
+  > ![image-20220913174443396](http://cdn.ayusummer233.top/img/202209131744795.png)
+  >
+  > ![image-20220913174525133](http://cdn.ayusummer233.top/img/202209131745321.png)
+  >
+  > ![image-20220913174857476](http://cdn.ayusummer233.top/img/202209131748700.png)
+  >
+  > ![image-20220913174920330](http://cdn.ayusummer233.top/img/202209131749559.png)
+
+- 客户端
+
+  首先在服务端添加一个节点配置, 用于与客户端配置对接
+  
+  ```bash
+  bash status.sh s
+  ```
+  
+  - 进入 7-服务端配置
+  - 1 - 节点配置
+  - 设置节点账密(自定义, 之后客户端通过此项配置进行连接)以及基本信息
+
+> ![image-20220913175404031](http://cdn.ayusummer233.top/img/202209131754161.png)
+>
+> ![image-20220913175713057](http://cdn.ayusummer233.top/img/202209131757271.png)
+
+在客户端进行相应配置(与服务端刚才设置的节点信息一致即可)
+
+```bash
+# 源仓库的 shell(由于有时服务器不一定可以连上 github 所以修改了其中的部分链接便有了下面第二个自己修改的 shell)
+# wget https://cokemine.coding.net/p/hotarunet/d/ServerStatus-Hotaru/git/raw/master/status.sh
+wget https://cdn.ayusummer233.top/shell/status.sh
+bash status.sh c
+```
+
+> ![image-20220913175901782](http://cdn.ayusummer233.top/img/202209131759040.png)
+
+
 
 ---
 
