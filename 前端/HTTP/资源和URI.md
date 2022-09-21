@@ -362,6 +362,8 @@ data:text/html,lots of text...<p><a name%3D"bottom">bottom</a>?arg=val
 
 ## MIME 类型
 
+> [MIME 类型 - HTTP | MDN (mozilla.org)-2022-9-13](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Basics_of_HTTP/MIME_Types)
+
 **媒体类型**（通常称为 **Multipurpose Internet Mail Extensions** 或 **MIME** 类型）是一种标准，用来表示文档、文件或字节流的性质和格式。它在[IETF RFC 6838](https://tools.ietf.org/html/rfc6838)中进行了定义和标准化。
 
 互联网号码分配机构（[IANA](https://www.iana.org/)）是负责跟踪所有官方 MIME 类型的官方机构，您可以在[媒体类型](https://www.iana.org/assignments/media-types/media-types.xhtml)页面中找到最新的完整列表。
@@ -442,6 +444,10 @@ multipart/byteranges
 
 > `text/plain`并不是意味着某种文本数据。如果浏览器想要一个文本文件的明确类型，浏览器并不会考虑他们是否匹配。比如说，如果通过一个表明是下载 CSS 文件的[<link>](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/link)链接下载了一个 `text/plain` 文件。如果提供的信息是 text/plain，浏览器并不会认出这是有效的 CSS 文件。CSS 类型需要使用 text/css。
 
+> ![image-20220913103709402](http://cdn.ayusummer233.top/img/202209131037479.png)
+>
+> ![image-20220913103732443](http://cdn.ayusummer233.top/img/202209131037538.png)
+
 ---
 
 #### text/css
@@ -453,4 +459,113 @@ multipart/byteranges
 #### text/html
 
 所有的 HTML 内容都应该使用这种类型。XHTML 的其他 MIME 类型（如`application/xml+html`）现在基本不再使用（HTML5 统一了这些格式）。
+
+> PS: 如果需要使用 XML 严格解析规则的话需要使用 `application/xml` 或者 `application/xhtml+xml`, 使用 `<![CDATA[...]]>` 或者其他的来自 `non-HTML`、`non-SVG`  或 `non-MathML` XML 名称空间的元素，因为 `text/HTML` 的解析语义与 `application/XML` 的语义微妙地不兼容。
+
+---
+
+#### text/javascript
+
+根据 HTML 标准 , 对于 JavaScript 文件, 应当使用 `text/javascript` MIME 类型而非其他类型, 否则可能会导致无法载入或运行脚本
+由于历史原因，[MIME 嗅探标准](https://mimesniff.spec.whatwg.org/)（定义浏览器应该如何解释媒体类型和如何处理无有效媒体类型的内容）允许使用匹配以下任意的 MIME 类型服务 JavaScript：
+
+- `application/javascript`
+- `application/ecmascript`
+- `application/x-ecmascript` 非标准
+- `application/x-javascript` 非标准
+- `text/javascript`
+- `text/ecmascript`
+- `text/javascript1.0` 非标准
+- `text/javascript1.1` 非标准
+- `text/javascript1.2` 非标准
+- `text/javascript1.3` 非标准
+- `text/javascript1.4` 非标准
+- `text/javascript1.5` 非标准
+- `text/jscript` 非标准
+- `text/livescript` 非标准
+- `text/x-ecmascript` 非标准
+- `text/x-javascript` 非标准
+
+> PS:  即便任何给定的 [user agent](https://developer.mozilla.org/zh-CN/docs/Glossary/User_agent) 可能支持这些中的任意或所有，你==只应该使用 `text/javascript`==。它是唯一确保能在==目前和以后正常工作的 MIME 类型==。
+
+你可能发现某些内容在 `text/javascript` 媒体类型末尾有一个 `charset` 参数，指定用于表示代码内容的字符集。这不是合法的，而且在大多数场景下会导致脚本不被载入。
+
+> ![image-20220913102530907](http://cdn.ayusummer233.top/img/202209131025002.png)
+>
+> ![image-20220913103536589](http://cdn.ayusummer233.top/img/202209131035701.png)
+
+---
+
+#### 图片类型
+
+MIME 类型包含 `image` 的文件包含图像数据, 其子类型指定了具体的图片数据类型
+
+在网页上常使用以下安全的图像类型
+
+|    MIME 类型    |                           图片类型                           |
+| :-------------: | :----------------------------------------------------------: |
+|   image/apng    | Animated Portable Network Graphics  (**动态便携式网络图像**)(PNG 格式的动画扩展) |
+|   image/avif    |                    AV1 Image File Format                     |
+|   `image/gif`   | Graphics Interchange Format  (GIF 图片)(无损耗压缩方面被 PNG 所替代) |
+|  `image/jpeg`   |      Joint Photographic Expert Group image  (JPEG 图片)      |
+|   `image/png`   |            Portable Network Graphics  (PNG 图片)             |
+| `image/svg+xml` |        Scalable Vector Graphics  (SVG 图片) (矢量图)         |
+|   image/webp    |                  Web Picture format (WEBP)                   |
+
+> [不一样的动图-APNG - 腾讯云开发者社区-腾讯云 (tencent.com)](https://cloud.tencent.com/developer/article/1114186#:~:text=APNG. APNG 全称是 Animated Portable Network Graphics ，,Android 上有 APNG View 等，iOS 上有 APNGKit 等。.)
+>
+> [APNG 那些事 - HelloWorld开发者社区](https://www.helloworld.net/p/5650557531)
+>
+> APNG（Animated Portable Network Graphics）顾名思义是基于 PNG 格式扩展的一种动画格式，增加了对动画图像的支持，同时加入了 24 位图像和 8 位 Alpha 透明度的支持，这意味着动画将拥有更好的质量，其诞生的目的是为了替代老旧的 GIF 格式，但它目前并没有获得 PNG 组织官方的认可。
+>
+> ---
+>
+> [关于下一代图片格式AVIF，你想要知道的都在这里了。 - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/355256489)
+>
+> AVIF是一种基于AV1视频编码的新图像格式，相对于JPEG，WEBP这类图片格式来说，它的压缩率更高，并且画面细节更好。而最关键的是，它是免费且开源的，没有任何授权费用。
+>
+> ---
+>
+> [几种常见图片格式的区别 - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/143649897)
+
+> 这篇文档: [Image file type and format guide](https://developer.mozilla.org/en-US/docs/Web/Media/Formats/Image_types#common_image_file_types) 提供了何时使用何种图像格式的信息以及建议
+
+---
+
+`image/svg+xml`
+
+> ![image-20220913102741732](http://cdn.ayusummer233.top/img/202209131027815.png)
+>
+> ![image-20220913102936868](http://cdn.ayusummer233.top/img/202209131029976.png)
+
+---
+
+`image/png`
+
+> ![image-20220913103825724](http://cdn.ayusummer233.top/img/202209131038814.png)
+>
+> ![image-20220913103837963](http://cdn.ayusummer233.top/img/202209131038043.png)
+
+---
+
+#### 音视频类型
+
+
+
+---
+
+#### font/woff2
+
+> ![image-20220913102710582](http://cdn.ayusummer233.top/img/202209131027657.png)
+
+
+---
+
+#### application/json
+
+> ![image-20220913103625938](http://cdn.ayusummer233.top/img/202209131036023.png)
+>
+> ![image-20220913103634799](http://cdn.ayusummer233.top/img/202209131036887.png)
+
+---
 
