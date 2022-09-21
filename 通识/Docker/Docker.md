@@ -83,3 +83,75 @@ docker container exec -it [容器id] /bin/sh
 
 > [docker容器导出，并将导出镜像在另外一台设备上运行起来_hx_long的博客-CSDN博客_docker 容器导出](https://blog.csdn.net/hx_long/article/details/122705151)
 
+---
+
+## Docker-hub 换源
+
+打开 `/etc/docker/daemon.json` 并输入
+
+```json
+{
+    "registry-mirrors": [
+      "https://hub-mirror.c.163.com",
+      "https://ustc-edu-cn.mirror.aliyuncs.com"
+      ]
+}
+
+```
+
+然后重启 docker
+
+```bash
+service docker restart
+```
+
+
+
+---
+
+## 常见问题
+
+### ERROR: could not find an available, non-overlapping IPv4 address pool among the defaults to assign to the network
+
+> [[openvpn\] ERROR: could not find an available, non-overlapping IPv4 address pool among the defaults to assign to the network · Issue #418 · docker/for-linux (github.com)](https://github.com/docker/for-linux/issues/418)
+
+```bash
+docker network prune
+```
+
+---
+
+## unable to connect to deb.debian.org:http
+
+![image-20220919202703896](http://cdn.ayusummer233.top/img/202209192027036.png)
+
+>  [Docker failed to fetch http://deb.debian.org/debian/dists/jessie/InRelease - Stack Overflow](https://stackoverflow.com/questions/44080220/docker-failed-to-fetch-http-deb-debian-org-debian-dists-jessie-inrelease)
+
+![image-20220919202953164](http://cdn.ayusummer233.top/img/202209192029288.png)
+
+![image-20220919203028392](http://cdn.ayusummer233.top/img/202209192030522.png)
+
+---
+
+### There is no public key
+
+> [使用apt-get时出现 “no public key available” 的解决方法-阿里云开发者社区 (aliyun.com)](https://developer.aliyun.com/article/533899)
+
+```BASH
+sudo apt-key adv --recv-keys --keyserver keyserver.ubuntu.com [报错缺失的public key]
+```
+
+
+
+
+
+---
+
+### debconf: delaying package configuration, since apt-utils is not installed
+
+> [[16.04\] debconf: delaying package configuration, since apt-utils is not installed · Issue #319 · phusion/baseimage-docker (github.com)](https://github.com/phusion/baseimage-docker/issues/319)
+
+```BASH
+apt-get update && apt-get install -y --no-install-recommends apt-utils
+```
+
