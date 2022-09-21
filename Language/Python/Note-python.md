@@ -233,7 +233,31 @@ Code2flow is useful for:
 # 程序性能分析
 
 ## 执行时间
+
+---
+
+### pyinstrument
+
+> [joerick/pyinstrument: 🚴 Call stack profiler for Python. Shows you why your code is slow! (github.com)](https://github.com/joerick/pyinstrument)
+>
+> [User guide - pyinstrument 4.3.0 documentation](https://pyinstrument.readthedocs.io/en/latest/guide.html)
+
+```bash
+pip install pyinstrument
+```
+
+用例: 单文件脚本分析并输出 html 分析页
+
+```bash
+pyinstrument -r html script.py
+```
+
+
+
+---
+
 ### 使用datetime判断
+
 ```python
 import datetime
 
@@ -295,7 +319,7 @@ print(h.heap())
 
 ## ModuleNotFoundError
 
-```
+  ```
 ModuleNotFoundError: No module named '__main__.src_test1'; '__main__' is not a package
 ```
 
