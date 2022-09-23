@@ -1,8 +1,8 @@
-# 安装 jdk
+# Java 环境配置
 
-## Windows
+## 安装 jdk
 
-### 环境配置
+### Windows
 
 安装完后需要配置环境变量
 
@@ -33,7 +33,7 @@ javac
 
 ---
 
-## ubuntu
+### ubuntu
 
 > [OpenJDK: Download and install](https://openjdk.org/install/)
 
@@ -47,4 +47,14 @@ javac
   安装完后可以 `java -version` 看下
   
   > ![image-20220923112443274](http://cdn.ayusummer233.top/img/202209231124375.png)
+
+---
+
+## IDEA
+
+### ubuntu 安装 IDEA
+
+直接远程连接安装即可
+
+![image-20220923185210262](http://cdn.ayusummer233.top/img/202209231852362.png)
 
