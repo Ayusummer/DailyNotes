@@ -86,13 +86,17 @@ echo $SHELL
 打开 `/etc/apt/sources.list` 在文件首部加上如下配置
 
 ```
-# 清华镜像
-deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal main restricted
-deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal universe
-deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal multiverse
+# 镜像
+deb http://mirrors.163.com/ubuntu/ focal main restricted
+deb http://mirrors.163.com/ubuntu/ focal universe
+deb http://mirrors.163.com/ubuntu/ focal multiverse
+deb http://mirrors.163.com/ubuntu/ focal-updates main restricted
+deb http://mirrors.163.com/ubuntu/ focal-updates universe
+deb http://mirrors.163.com/ubuntu/ focal-updates multiverse
+deb http://mirrors.163.com/ubuntu/ focal-backports main restricted universe multiverse
 ```
 
-然后更新源即可
+然后注释掉相应后缀的源本的官方源之后更新下索引即可
 
 ```bash
 apt update
