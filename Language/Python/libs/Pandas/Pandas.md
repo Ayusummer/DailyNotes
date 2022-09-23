@@ -227,9 +227,8 @@ s2 = Series({'语文': 90, '数学': 87, '英语': 67, '程序设计': 78})
 ---
 ### DataFrame
 - 二维数据，类似于二维表格，由多行多列组成。
+
   ![示例](../../res/img/BigDataMicroMajor/Python/Pandas-DataFrame例子.png)
-
-
 
 
 ----
