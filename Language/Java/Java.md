@@ -1,6 +1,8 @@
-# 环境配置
+# 安装 jdk
 
-## JDK
+## Windows
+
+### 环境配置
 
 安装完后需要配置环境变量
 
@@ -28,3 +30,18 @@ javac
 ```
 
 看下有正常回显即可
+
+---
+
+## ubuntu
+
+> [OpenJDK: Download and install](https://openjdk.org/install/)
+
+- 安装 openjdk8
+
+  ```bash
+   sudo apt-get install openjdk-8-jre
+    sudo apt-get install openjdk-8-jdk
+  ```
+
+  
