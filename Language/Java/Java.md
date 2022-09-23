@@ -40,8 +40,11 @@ javac
 - 安装 openjdk8
 
   ```bash
-   sudo apt-get install openjdk-8-jre
-    sudo apt-get install openjdk-8-jdk
+  sudo apt-get install openjdk-8-jre
+  sudo apt-get install openjdk-8-jdk
   ```
 
+  安装完后可以 `java -version` 看下
   
+  > ![image-20220923112443274](http://cdn.ayusummer233.top/img/202209231124375.png)
+
