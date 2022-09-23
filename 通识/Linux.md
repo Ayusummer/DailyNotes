@@ -71,6 +71,43 @@ echo $SHELL
 
 ---
 
+# Ubuntu 的 source.list 文件
+
+> [Ubuntu | 对sources.list的总结 - 简书 (jianshu.com)](https://www.jianshu.com/p/5400722c369c)
+>
+> [详解Ubuntu的source.list文件_VinQin的博客-CSDN博客_sourcelist](https://blog.csdn.net/u012843189/article/details/80964287)
+
+## 换源
+
+> [vim - Ubuntu 20.04 Desktop 换源的两种方法_个人文章 - SegmentFault 思否](https://segmentfault.com/a/1190000040946515)
+
+换清华源:
+
+打开 `/etc/apt/sources.list` 在文件首部加上如下配置
+
+```
+# 清华镜像
+# 默认注释了源码镜像以提高 apt update 速度，如有需要可自行取消注释
+deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal main restricted universe multiverse
+# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal main restricted universe multiverse
+deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-updates main restricted universe multiverse
+# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-updates main restricted universe multiverse
+deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-backports main restricted universe multiverse
+# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-backports main restricted universe multiverse
+deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-security main restricted universe multiverse
+# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-security main restricted universe multiverse
+```
+
+然后更新源即可
+
+```bash
+apt update
+```
+
+
+
+---
+
 # SSH 工具
 
 ## VSCode: Remote-SSH
@@ -877,3 +914,22 @@ screen [-AmRvx -ls -wipe][-d <作业名称>][-h <行数>][-r <作业名称>][-s 
 
 在 screen 终端 下 按下 Ctrl+a d键  可以离开screen作业
 
+---
+
+# Ubuntu 安装邮件服务器
+
+> [Ubuntu安装邮件服务器 - 简书 (jianshu.com)](https://www.jianshu.com/p/f438aa21069e)
+>
+> [The Postfix Home Page](http://www.postfix.org/)
+>
+> [在Ubuntu 20.04上配置Postfix以使用Gmail SMTP-番茄网 (tomato.cm)](http://www.tomato.cm/1267.html)
+>
+> ---
+
+Postifx 是  `Wietse Venema` 在 IBM 的\ GPL 协议之下开发的 `MTA`（邮件传输代理）软件。是 Wietse Venema 想要为使用最广泛的 sendmail 提供替代品的一个尝试, 是一个SMTP服务器
+
+---
+
+## 安装 postfix
+
+> 
