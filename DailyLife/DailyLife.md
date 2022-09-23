@@ -337,8 +337,9 @@ mklink /J OneDriveE5\mix "E:\OneDriveE5\mixon\OneDrive - ayusummer"
   
   ---
 - 效果:
+  
   - ![20210404202719](http://cdn.ayusummer233.top/img/20210404202719.png)
-- 下载[RaiDrive](https://ayusummer-my.sharepoint.com/:u:/g/personal/233_ayusummer_onmicrosoft_com/EY5FYay5Go1En2aduguGoIsBErdJ8QCQT_r4BwxspAB7qw?e=VFsSSc)并安装到自定义位置后打卡软件,可以自行更新到最新版本(本就是官网有提供的free版)  
+- 下载[RaiDrive](https://ayusummer-my.sharepoint.com/:u:/g/personal/233_ayusummer_onmicrosoft_com/EY5FYay5Go1En2aduguGoIsBErdJ8QCQT_r4BwxspAB7qw?e=VFsSSc)并安装到自定义位置后打开软件,可以自行更新到最新版本(本就是官网有提供的free版)  
   ![20210404203117](http://cdn.ayusummer233.top/img/20210404203117.png)
 > 如果安装的时候出现问题可以选择忽略,这样依然装好了,运行桌面上的快捷方式,在设置里面检查更新到最新版本安装的时候基本不会报错
 > 也可以直接在[官网](https://www.raidrive.com/)下载(可能需要一些魔法)
