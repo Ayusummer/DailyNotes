@@ -586,7 +586,30 @@ bash status.sh c
 
 > ![image-20220913175901782](http://cdn.ayusummer233.top/img/202209131759040.png)
 
+---
 
+若客户端为 windows 则需要手动用 Python 跑下
+
+```bash
+curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py # 若未安装pip
+python get-pip.py
+# 可以换下源, 不换也行
+pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple/
+pip install psutil
+# 修改 status-psutil.py(在主仓库的 clients 目录中)
+# https://github.com/cokemine/ServerStatus-Hotaru/blob/master/clients/status-psutil.py
+# 运行程序, 也可以将这句写成个 bat 文件然后双击运行
+python status-psutil.py
+```
+
+> cmd 在快速编辑模式下运行命令时, 若用户鼠标点击到窗口区域可能会引起程序阻塞, 可以将其点掉
+>
+> ![image-20220928100730680](http://cdn.ayusummer233.top/img/202209281007350.png)
+>
+> > 快速编辑模式是一种很便捷的操作方式：左键选中，右键复制以及右键从剪贴板粘贴内容等  
+> > 如果鼠标选中控制台界面上的内容，控制台就被阻塞了  
+> > 在Windows Server 2012 及Windowns 8以上，控制台窗口的程序默认是打开“快速编辑模式”的开关的。
+>
 
 ---
 
