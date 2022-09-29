@@ -101,16 +101,12 @@ service docker restart
   docker pull vuldocker/lamp   
   ```
 
-  ![image-20220923153046568](http://cdn.ayusummer233.top/img/image-20220923153046568.png)
-  
 - 查看当前镜像列表
 
   ```bash
   docker images
   ```
 
-  ![image-20220923153106611](http://cdn.ayusummer233.top/img/image-20220923153106611.png)
-  
 - 修改镜像 Tag
 
   ```bash
@@ -126,10 +122,9 @@ service docker restart
 ### 删除镜像
 
 ```bash
-docker rmi  [容器ID]
 # 根据 镜像名称 来删除镜像
 docker rmi centos 
-# 根据 标签名称 来删除镜像
+# 根据 镜像:标签名称 来删除镜像
 docker rmi centos:v2
 # 根据 镜像ID 来删除镜像，
 docker rmi 7e6257c9f8d8 
@@ -139,18 +134,7 @@ docker rmi 7e6257c9f8d8
 
 > [Docker - 两个id相同的镜像怎么删除_Joker_Wangx的博客-CSDN博客_docker 镜像重复](https://blog.csdn.net/wx940627/article/details/106821002)
 
-两个镜像的镜像id一样，所以删除时出现报错，软件不知道删除哪个了。针对这种情况，我们可以使用docker untag可以直接将标签去除，也可以使用**docker rmi** **镜像名:TAG** 方式删除
-
-![在这里插入图片描述](http://cdn.ayusummer233.top/img/20200929201806923.png)
-
-
-\ **以下为补充内容**（关于如何创建**相同镜像名**repository，却**不同标签**tag的镜像）
-
-①.假如我现在有一个镜像
-![在这里插入图片描述](http://cdn.ayusummer233.top/img/20200929202240470.png)
-
-②.我开发了一个新版本的镜像，需要给他打上新标签，就用以下命令.例：**docker tag centos:7 centos:centos7** 效果如下：
-![在这里插入图片描述](http://cdn.ayusummer233.top/img/20200929202528351.png)
+通过 `docker rmi [镜像:tag]` 来删除对应标签的镜像, 实际上
 
 
 ---
@@ -318,7 +302,7 @@ docker run -it -d --name dvwa -p 8008:80 vuldocker/lamp
 docker container exec -it [容器id] /bin/bash
 docker container exec -it [容器id] /bin/sh
 
-# 删除容器 docker rm -f [容器 id]
+# 强制删除容器 docker rm -f [容器 id]
 # 删除所有容器
 docker rm -f $(docker ps -a -q)   
 
