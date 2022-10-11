@@ -88,3 +88,12 @@ Language/Python/Test.ipynb
 **/vx.json
 **/notebook.db
 **/vx_notebook.json
+
+# vuepress
+node_modules
+.temp
+.cache
+docs/.vuepress/dist
+
+# tests
+test
