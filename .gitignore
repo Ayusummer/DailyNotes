@@ -1,6 +1,7 @@
 # 日常资源及测试文件
 DailyLife/res
 DailyLife/test.ipynb
+**/output
 
 # Latex 编译文件
 NoteTools/LaTex/latex/latex.aux
@@ -13,18 +14,18 @@ NoteTools/LaTex/latex/latex.toc
 NoteTools/LaTex/latex/resource
 
 # 资源文件
+**/res
+**/.ipynb_checkpoints
 res_-daily-notes
-DailyLife/picOCR_toExcel/res
-研究方向/机器学习/MicrosoftLearn/训练和评估回归模型/.ipynb_checkpoints
-研究方向/机器学习/MicrosoftLearn/训练和评估回归模型/export
-BigDataMicroMajor/大数据应用/library.db
+**/export
+**/*.db
 
 # CLion
 CS/foundation/C/cmake-build-debug
 CS/foundation/C/.idea
 
 # 模型
-研究方向/机器学习/MicrosoftLearn/训练和评估分类模型/diabetes_model.pkl
+**/*.pkl
 
 # 临时工
 大三临时工.md
