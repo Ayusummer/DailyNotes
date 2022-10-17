@@ -935,7 +935,7 @@ screen [-AmRvx -ls -wipe][-d <作业名称>][-h <行数>][-r <作业名称>][-s 
 
 ---
 
-# Ubuntu 安装邮件服务器
+# Ubuntu 安装邮件服务器(TODO - 校验有问题且暂时不打算用, 已搁置)
 
 > [Ubuntu安装邮件服务器 - 简书 (jianshu.com)](https://www.jianshu.com/p/f438aa21069e)
 >
@@ -949,6 +949,83 @@ Postifx 是  `Wietse Venema` 在 IBM 的\ GPL 协议之下开发的 `MTA`（邮�
 
 ---
 
-## 安装 postfix
+# 软件
 
-> 
+## Firefox
+
+> [在 Linux 中安装 Firefox | Firefox 帮助 (mozilla.org)](https://support.mozilla.org/zh-CN/kb/linux-firefox#w_cong-fa-xing-ban-ti-gong-de-bao-an-zhuang-tui-jian)
+>
+> ---
+
+1. 从 [Firefox 下载页面](https://www.mozilla.org/firefox/linux/?utm_medium=referral&utm_source=support.mozilla.org) 并点击 {button立即下载} 按钮。
+
+2. 打开一个**终端**，转到下载 Firefox 的目录，比如
+
+- `cd ~/Downloads`
+
+3. 将下载文件的内容解压缩：
+
+- `tar xjf firefox-\*.tar.bz2`
+
+以下命令必须以 root 身份执行，或以 `sudo` 开头。
+
+4. 将解压的 Firefox 目录移到 */opt*:
+
+- `mv firefox /opt`
+
+5. 创建一个指向 Firefox 可执行文件的 symlink:
+
+- `ln -s /opt/firefox/firefox /usr/local/bin/firefox`
+
+6. 下载一个 desktop 文件：
+
+- `wget https://ghproxy.com/https://raw.githubusercontent.com/mozilla/sumo-kb/main/install-firefox-linux/firefox.desktop -P /usr/local/share/applications`
+
+如果，没有安装 `wget`，那么你可以右击以上链接，打开弹出菜单并选择 另存为。下载好文件之后，把它放到 */usr/local/share/applications*。
+
+你可以打开 [排障信息](https://support.mozilla.org/zh-CN/kb/使用故障排除信息页面来帮助解决Firefox的问题) 页面来验证安装是否成功。在 *应用基础* 部分，Application Binary 应该是 `/opt/firefox/firefox-bin`。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
