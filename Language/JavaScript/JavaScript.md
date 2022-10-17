@@ -40,3 +40,32 @@ let item2 = new Item(2, '兼职');
 > [Sliderland (blinry.org)](https://sliderland.blinry.org/)
 
 ![image-20220523093011957](http://cdn.ayusummer233.top/img/202205230930199.png)
+
+----
+
+## 模拟键盘输入
+
+>  [javascript 模拟按键事件 触发输入框oninput事件_谢泽的网络日志的博客-CSDN博客_js模拟输入数字到input](https://blog.csdn.net/a0405221/article/details/124374119)
+
+对于被框架劫持setter事件可以使用如下方式录入数据
+
+```js
+function changeReactInputValue(inputDom,newText){
+    let lastValue = inputDom.value;
+    inputDom.value = newText;
+    let event = new Event('input', { bubbles: true });
+    event.simulated = true;
+    let tracker = inputDom._valueTracker;
+    if (tracker) {
+        tracker.setValue(lastValue);
+    }
+    inputDom.dispatchEvent(event);
+}
+
+let userIdDom = document.getElementById('userName');		//普通JS获取输入框Dom
+let passwdDom = document.getElementById('password');		//普通JS获取输入框Dom
+
+changeReactInputValue(userIdDom,'hillstone');			//改变React的输入框的值
+changeReactInputValue(passwdDom,'Hillstone@123');			//改变React的输入框的值
+```
+
