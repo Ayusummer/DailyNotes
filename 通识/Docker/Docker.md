@@ -8,53 +8,53 @@
 >
 > [Docker 入门指南：如何在 Ubuntu 上安装和使用 Docker - 卡拉云 (kalacloud.com)](https://kalacloud.com/blog/how-to-install-and-use-docker-on-ubuntu/)
 
-安装所需工具包
+
 
 ```bash
-sudo apt install apt-transport-https ca-certificates curl gnupg-agent  software-properties-common
-```
-
-更新现有的软件包列表
-
-```bash
+# 更新现有的软件包列表
 apt update
-```
-
-然后将官方 Docker 版本库的 GPG 密钥添加到系统中：
-
-```bash
+# 安装所需工具包
+sudo apt install apt-transport-https ca-certificates curl gnupg-agent  software-properties-common
+# 然后将官方 Docker 版本库的 GPG 密钥添加到系统中：
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-```
-
-将 Docker 版本库添加到APT源：
-
-```bash
+# 将 Docker 版本库添加到APT源：
 sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable"
-```
-
-用新添加的 Docker 软件包来进行升级更新。
-
-```bash
+# 用新添加的 Docker 软件包来进行升级更新。
 sudo apt update
-```
-
-确保要从 Docker 版本库，而不是默认的 Ubuntu 版本库进行安装：
-
-```bash
+# 确保要从 Docker 版本库，而不是默认的 Ubuntu 版本库进行安装：
 apt-cache policy docker-ce
-```
-
-安装 Docker ：
-
-```bash
+# 安装 Docker ：
 sudo apt install docker-ce
-```
-
-现在 Docker 已经安装完毕。我们启动守护程序。检查 Docker 是否正在运行：
-
-```bash
+# 现在 Docker 已经安装完毕。我们启动守护程序。检查 Docker 是否正在运行：
 sudo systemctl status docker
 ```
+
+----
+
+### debian 安装 docker
+
+> [在Kali Linux版本中安装Docker（Docker CE社区版）和Docker Compose_Linux教程_云网牛站 (ywnz.com)](https://ywnz.com/linuxjc/6543.html#:~:text=要在Kali Linux上安装Docker CE，请运行以下命令： sudo apt install,docker-ce docker-ce-cli containerd.io 按y键开始在Kali Linux上安装Docker： 此安装会将docker组添加到系统中，而无需任何用户，将用户帐户添加到组中，以非特权用户身份运行docker命令：)
+>
+> ---
+
+```bash
+# 更新现有的软件包列表
+sudo apt update
+# 安装所需工具包
+sudo apt -y install curl gnupg2 apt-transport-https software-properties-common ca-certificates
+# 导入用于签署Docker软件包的Docker GPG密钥：
+curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
+# 添加包含Docker CE最新稳定版本的Docker存储库：
+echo "deb [arch=amd64] https://download.docker.com/linux/debian buster stable" | sudo tee  /etc/apt/sources.list.d/docker.list
+# 更新apt包索引
+sudo apt update
+# 在Kali Linux上安装Docker CE
+sudo apt install docker-ce docker-ce-cli containerd.io
+# 检查安装的Docker版本
+docker version
+```
+
+
 
 ---
 
