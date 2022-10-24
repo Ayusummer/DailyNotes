@@ -27,6 +27,8 @@ apt-cache policy docker-ce
 sudo apt install docker-ce
 # 现在 Docker 已经安装完毕。我们启动守护程序。检查 Docker 是否正在运行：
 sudo systemctl status docker
+# 设置 docker 开机自动启动
+sudo systemctl enable docker.service
 ```
 
 ----
@@ -174,7 +176,22 @@ docker run [OPTIONS] IMAGE [COMMAND] [ARG...]
 - **--net="bridge":** 指定容器的网络连接类型，支持 bridge/host/none/container: 四种类型；
 - **--link=[]:** 添加链接到另一个容器；
 - **--expose=[]:** 开放一个端口或一组端口；
-- **--volume , -v:** 绑定一个卷
+- `--volume , -v`: 绑定一个卷
+- `--restart=always`: 容器设置自动启动
+
+  - `no`: 不自动重启容器. (默认value)
+  - `on-failure`: 容器发生 error 
+  - 而退出(容器退出状态不为0)重启容器
+  - `unless-stopped`: 在容器已经 stop 掉或 `Docker stoped/restarted` 的时候才重启容器
+  - `always`: 在容器已经 stop 掉或 `Docker stoped/restarted` 的时候才重启容器
+
+  如果创建时未指定 `--restart=always` ,可通过update 命令
+
+  ```
+  docker update --restart=always [container-id]
+  ```
+
+---
 
 
 ```
@@ -300,30 +317,11 @@ docker pull 10.182.235.200:8081/baji/vulhub/mysql:5.5.23
 
 > [容器Docker进入的四种方法 - 指尖上的代码go - 博客园 (cnblogs.com)](https://www.cnblogs.com/cqqfboy/p/15209635.html#:~:text=容器Docker进入的四种方法 1 使用docker attach进入Docker容器,2 使用SSH进入Docker容器 3 使用nsenter进入Docker容器)
 
-
----
-
-### 将镜像跑为容器
-
-```
-docker run -it -d --name dvwa -p 8008:80 vuldocker/lamp
-```
-
-tips:设置名字为dvwa，映射端口为8008 -i: 交互式操作。-t: 终端（一般与i一起）。 -d：后台运行。
-
-![image-20220923153129005](http://cdn.ayusummer233.top/img/image-20220923153129005.png)
-
-从图中可以看到在执行
-
-```
-docker run -it -d --name dvwa -p 8008:80 vuldocker/lamp
-```
-
-指令时出现了问题，说已经有container使用了dvwa这个名字（ The container name "/dvwa" is already in use by container "6e3fc590b41c9c6cf6c0d81de14730c127240edecb6a2a5e3debf1565eb3fe6b"），但是从图中也可以看到docker ps指令执行后没有正在运行的container,可以执行
-
 ---
 
 ### 常用指令
+
+[将镜像跑为容器](#将镜像跑为容器)
 
 ```bash
 # 进入容器(使用 bash 或者 sh 均可)
