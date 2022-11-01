@@ -35,12 +35,15 @@
     - [同步目录空格路径解决](#同步目录空格路径解决)
   - [将云盘挂载到本地(RaiDrive)](#将云盘挂载到本地raidrive)
   - [微软商店中的iCloud](#微软商店中的icloud)
+  - [Cloudreve](#cloudreve)
+    - [WebDav 使用](#webdav-使用)
 - [Microsoft](#microsoft)
   - [Edge](#edge)
     - [扩展](#扩展)
   - [Windows](#windows)
     - [内核隔离](#内核隔离)
       - [WSL2 DNS 服务异常](#wsl2-dns-服务异常)
+      - [针对某一软件关闭...](#针对某一软件关闭)
 - [小技能?](#小技能)
   - [图片OCR->表格](#图片ocr-表格)
   - [英语学习](#英语学习)
@@ -555,6 +558,21 @@ pnputil /delete-driver oem110.inf
 > 需要再配下防火墙  
 > 挺秃然的, 没有完全搞清楚原理, 无法一劳永逸地解决这个问题  
 > TODO: 计网的复习该提上日程了(
+
+---
+
+### 针对某一软件关闭用户账户控制
+
+> [如何对某一程序取消用户账户控制_百度知道 (baidu.com)](https://zhidao.baidu.com/question/295265277.html)
+
+当设置了应用以管理员身份运行时, 在运行应用时会弹出一个用户账户控制的弹窗, `你要允许此应用对你的设备进行更改吗?`, 用户只有点击 `是` 之后才能正常运行应用, 对于一个已经设置了以管理员身份运行的应用要跳过此步的话可以做如下操作
+
+打开注册表编辑器在 `HKEY_CURRENT_USERS\Software\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Layers` 下新建值
+
+- 值的名称是程序的绝对路径
+- 值数据时 `RunAsInvoker`
+
+![image-20221101233113947](http://cdn.ayusummer233.top/img/202211012331979.png)
 
 ----
 # 小技能?
