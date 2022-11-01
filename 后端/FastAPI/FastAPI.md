@@ -2476,6 +2476,147 @@ async def dependency_run_bg_task(q: str = Depends(continue_write_readme)):
 
 ---
 
+## 与依赖注入一起使用
+
+> [Background Tasks - FastAPI (tiangolo.com)](https://fastapi.tiangolo.com/zh/tutorial/background-tasks/#dependency-injection)
+>
+> ---
+
+使用 `BackgroundTasks` 还可以与依赖注入系统一起工作, 你可以在多个层次上声明一个 `BackgroundTasks`  类型的参数(可以在 `path operation` 函数中, 在 `dependency(dependable)` 中, 亦可以在 `sub-dependency` 等处声明)
+
+```python
+# Python 3.10 and above
+from fastapi import BackgroundTasks, Depends, FastAPI
+
+app = FastAPI()
+
+
+def write_log(message: str):
+    with open("log.txt", mode="a") as log:
+        log.write(message)
+
+
+def get_query(background_tasks: BackgroundTasks, q: str | None = None):
+    if q:
+        message = f"found query: {q}\n"
+        background_tasks.add_task(write_log, message)
+    return q
+
+
+@app.post("/send-notification/{email}")
+async def send_notification(
+    email: str, background_tasks: BackgroundTasks, 
+    q: str = Depends(get_query)
+):
+    message = f"message to {email}\n"
+    background_tasks.add_task(write_log, message)
+    return {"message": "Message sent"}
+
+```
+
+![image-20221031174537122](http://cdn.ayusummer233.top/img/202210311745358.png)
+
+在这个示例中 query 参数传入 `email` 和 `q`
+
+接口在处理完 `email` 生成 `message`  并返回给用户后会将 `message` 传给后台任务 `weite_log` 来记录日志
+
+如果 query 参数中有 `q`, 那么它会在 `get_query` 函数中处理然后创给后台任务 `write_log` 来记录日志
+
+---
+
+# 高级用户指南
+
+## 启动和停止事件
+
+> [Events: startup - shutdown - FastAPI (tiangolo.com)](https://fastapi.tiangolo.com/zh/advanced/events/?h=log#events-startup-shutdown)
+>
+> ---
+
+你可以定义  `event handlers(functions)` 让其在应用程序启动前，或在应用程序关闭时执行。
+
+这些函数可以是同步的也可以是异步的
+
+> 需要注意的是你只能在 `main application` 中定义这种函数而不能在 [sub application](https://fastapi.tiangolo.com/zh/advanced/sub-applications/) 中定义它们
+
+---
+
+### `startup` 事件
+
+如果你需要在应用开始前执行一个函数, 那么可以使用 `startup` 事件来定义这样一个函数
+
+```python
+from fastapi import FastAPI
+
+app = FastAPI()
+
+items = {}
+
+
+@app.on_event("startup")
+async def startup_event():
+    items["foo"] = {"name": "Fighters"}
+    items["bar"] = {"name": "Tenders"}
+
+
+@app.get("/items/{item_id}")
+async def read_items(item_id: str):
+    return items[item_id]
+
+```
+
+在此事例中, 在应用启动前将会通过 `startup_event` 函数初始化 `items` 字典
+
+---
+
+我们可以在应用启动前记录 uvicorn 产生的日志
+
+```python
+import logging
+
+@app.on_event("startup")
+async def startup_event():
+    logger = logging.getLogger("uvicorn.access")
+    handler = logging.handlers.RotatingFileHandler("api.log",mode="a",maxBytes = 100*1024, backupCount = 3)
+    handler.setFormatter(logging.Formatter("%(asctime)s - %(levelname)s - %(message)s"))
+    logger.addHandler(handler)
+```
+
+这样记录的话, uvicorn 的输出就会记录在 `api.log` 中
+
+---
+
+### `shutdown` 事件
+
+ 与 `startup` 事件类似, 你也可以通过 `shutdown` 事件定义一个函数以在应用关闭后执行
+
+```Python
+from fastapi import FastAPI
+
+app = FastAPI()
+
+
+@app.on_event("shutdown")
+def shutdown_event():
+    with open("log.txt", mode="a") as log:
+        log.write("Application shutdown")
+
+
+@app.get("/items/")
+async def read_items():
+    return [{"name": "Foo"}]
+
+```
+
+在此示例中, 在应用关闭后将会将 `Application shutdown` 写入到 `log.txt` 的末尾
+
+> 需要注意的是, 在此事例中我们用到了 `open` 函数, 其不可以用于异步, 因此这里使用了 `def` 而非 `async def`
+
+----
+
+
+
+---
+
 # 测试用例
 
 > [Testing - FastAPI (tiangolo.com)](https://fastapi.tiangolo.com/zh/tutorial/testing/)
@@ -2561,6 +2702,15 @@ uvicorn app.mian:app --reload --host 'xxx' --port xxx
 
 ---
 
+## 放在主程序中运行
+
+```python
+if __name__ == '__main__':
+    uvicorn_run('__main__:app', host=uvicorn_host, port=uvicorn_port, reload=uvicorn_reload)
+```
+
+---
+
 # Pydantic
 
 > [pydantic (helpmanual.io)](https://pydantic-docs.helpmanual.io/)
@@ -2600,6 +2750,8 @@ class User(BaseModel):
     id: Union[UUID,int, str]
     name: str
 ```
+
+---
 
 
 
