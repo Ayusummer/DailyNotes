@@ -11,6 +11,7 @@
   - [使用](#使用)
 - [程序性能分析](#程序性能分析)
   - [执行时间](#执行时间)
+    - [pyinstrument](#pyinstrument)
     - [使用datetime判断](#使用datetime判断)
   - [内存占用](#内存占用)
     - [guppy3](#guppy3)
@@ -611,7 +612,9 @@ def dog(name:str ='dobi', age:(1, 99) =3, species:'狗狗的品种' ='Labrador')
 ```
 
 ## *args,**kwargs
-[原文链接](https://blog.csdn.net/qq_41877039/article/details/97623476>)  
+
+> [原文链接](https://blog.csdn.net/qq_41877039/article/details/97623476>)  
+
 ### *args的用法
 - 当传入的参数个数未知，且不需要知道参数名称时使用*args;
 
@@ -1556,3 +1559,38 @@ finally:
 您要读取的文件不存在，请确认
 文件正常关闭
 ```
+
+---
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
