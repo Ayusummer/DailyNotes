@@ -14,7 +14,7 @@ Pikachu由国内大佬@hanlu开发[GITHUB地址](https://github.com/zhuifengshao
 
 ```bash
 docker pull area39/pikachu
-docker run --restart=always -d -p 9221:80 area39/pikachu
+docker run --restart=always -d -p 9221:80 -p 9222:3306 area39/pikachu
 ```
 
 - `docker run`
