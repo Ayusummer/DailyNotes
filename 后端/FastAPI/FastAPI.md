@@ -144,6 +144,7 @@ from fastapi import FastAPI
 `FastAPI` 是一个为你的 API 提供了所有功能的 Python 类。
 
 `FastAPI` 是直接从 [Starlette](https://www.starlette.io/) 继承的类。
+
 > [Starlette (worldlink.com.cn)](https://www.worldlink.com.cn/en/osdir/starlette.html)  
 > ![20220408094954](http://cdn.ayusummer233.top/img/20220408094954.png)
 
