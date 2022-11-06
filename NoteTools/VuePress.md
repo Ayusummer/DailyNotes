@@ -6,61 +6,60 @@
 >
 > ---
 
-使用 [pnpm](https://pnpm.io/zh/) 时，需要安装 `vue` 和 `@vuepress/client` 作为 peer-dependencies ，即 
+- 使用 [pnpm](https://pnpm.io/zh/) 时，需要安装 `vue` 和 `@vuepress/client` 作为 peer-dependencies ，即 
 
-````sh
-pnpm add -D vue @vuepress/client@next
-````
+  ````sh
+  pnpm add -D vue @vuepress/client@next
+  ````
 
-然后将 VuePress 安装为本地依赖
+- 然后将 VuePress 安装为本地依赖
 
-```sh
-pnpm install -D vuepress@next
-```
+  ```sh
+  pnpm install -D vuepress@next
+  ```
 
-在 `package.json` 中添加一些 [scripts](https://classic.yarnpkg.com/zh-Hans/docs/package-json#toc-scripts)
+- 在 `package.json` 中添加一些 [scripts](https://classic.yarnpkg.com/zh-Hans/docs/package-json#toc-scripts)
 
-```json
-{
-  "scripts": {
-    "docs:dev": "vuepress dev docs",
-    "docs:build": "vuepress build docs"
+  ```json
+  {
+    "scripts": {
+      "docs:dev": "vuepress dev docs",
+      "docs:build": "vuepress build docs"
+    }
   }
-}
-```
+  ```
 
-编辑 `.gitignore` 文件, 添加临时目录和缓存目录以及 `dist` 目录
+- 编辑 `.gitignore` 文件, 添加临时目录和缓存目录以及 `dist` 目录
 
-```properties
-node_modules
-.temp
-.cache
-docs/.vuepress/dist
-```
+  ```properties
+  node_modules
+  .temp
+  .cache
+  docs/.vuepress/dist
+  ```
 
-在根目录下创建 `docs` 目录然后新建一个 `README.md` 文件并随便输入些文字
+- 在根目录下创建 `docs` 目录然后新建一个 `README.md` 文件并随便输入些文字
+- 可以先在本地尝试运行和打包下
 
-可以先在本地尝试运行和打包下
+  ```sh
+  pnpm run docs:dev
+  pnpm run dos:build
+  ```
 
-```sh
-pnpm run docs:dev
-pnpm run dos:build
-```
+- 在 `docs/.vuepress` 目录下创建 `config.js`
 
-在 `docs/.vuepress` 目录下创建 `config.js`
+  > [配置 | VuePress (vuejs.org)](https://v2.vuepress.vuejs.org/zh/reference/config.html)
 
-> [配置 | VuePress (vuejs.org)](https://v2.vuepress.vuejs.org/zh/reference/config.html)
-
-```js
-module.exports = {
-    // 站点的标题
-    title: "VuePressTest",
-    // 站点的描述
-    description: "This is a blog.",
-    // 站点配置, 设置为 /[仓库名]/
-    base: '/VuePressTest/',
-}
-```
+  ```js
+  module.exports = {
+      // 站点的标题
+      title: "VuePressTest",
+      // 站点的描述
+      description: "This is a blog.",
+      // 站点配置, 设置为 /[仓库名]/
+      base: '/VuePressTest/',
+  }
+  ```
 
 > 需要注意的是, 这里的 base 务必配置好, 否则之后部署完后可能会出现引入资源找不到的情况
 >
@@ -72,7 +71,7 @@ module.exports = {
 
 ---
 
-在根目录下新建 `.github/workflows/docs.yml`'
+- 在根目录下新建 `.github/workflows/docs.yml`'
 
 ```yaml
 name: Deploy Docs
@@ -132,23 +131,23 @@ jobs:
 
 ---
 
-提交并推送你的修改, 然后可以在 Github 仓库的 Actions 中查看下运行状态
+- 提交并推送你的修改, 然后可以在 Github 仓库的 Actions 中查看下运行状态
 
 > ![image-20221107011741954](http://cdn.ayusummer233.top/img/202211070117032.png)
 
 ---
 
-打开仓库的 `Settings->Pages` 将 `BUild and deployment->source` 修改为 `Deploy from a branch`(默认值就是这个), 然后选择 `gh-pages->/root` 并 `Save`
+- 打开仓库的 `Settings->Pages` 将 `BUild and deployment->source` 修改为 `Deploy from a branch`(默认值就是这个), 然后选择 `gh-pages->/root` 并 `Save`
 
 > ![image-20221107013516165](http://cdn.ayusummer233.top/img/202211070135213.png)
 
-然后就可以在 `Actions` 界面看到多了一个 Action
+- 然后就可以在 `Actions` 界面看到多了一个 Action
 
 > ![image-20221107013604098](http://cdn.ayusummer233.top/img/202211070136126.png)
 >
 > ![image-20221107013613106](http://cdn.ayusummer233.top/img/202211070136148.png)
 
-仓库主页右下角也会多一个 Environment, 在上一步的 Actions 中可以看到部署链接, 亦可以在此处看到部署链接
+- 仓库主页右下角也会多一个 Environment, 在上一步的 Actions 中可以看到部署链接, 亦可以在此处看到部署链接
 
 > ![image-20221107013756939](http://cdn.ayusummer233.top/img/202211070137988.png)
 >
