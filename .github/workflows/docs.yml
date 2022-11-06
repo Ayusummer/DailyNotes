@@ -1,0 +1,53 @@
+name: Deploy Docs
+
+on:
+  push:
+    branches:
+      # make sure this is the branch you are using
+      - main
+
+jobs:
+  deploy-gh-pages:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          # if your docs needs submodules, uncomment the following line
+          # submodules: true
+
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v3.5.1
+        with:
+          # 选择要使用的 node 版本
+          node-version: '18'
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2.2.4
+        with: 
+          version: 6.0.2
+
+
+      - name: Install Deps
+        run: pnpm install
+
+      - name: Build Docs
+        env:
+          NODE_OPTIONS: --max_old_space_size=8192
+        run:
+          pnpm run docs:build
+
+
+      # 查看 workflow 的文档来获取更多信息
+      # @see https://github.com/crazy-max/ghaction-github-pages
+      - name: GitHub Pages
+        uses: crazy-max/ghaction-github-pages@v3.1.0
+        with: 
+          # 部署到 gh-pages 分支
+          target_branch: gh-pages
+          # 部署目录为 VuePress 的默认输出目录
+          build_dir: docs/.vuepress/dist
+        env:
+          # @see https://docs.github.com/cn/actions/reference/authentication-in-a-workflow#about-the-github_token-secret
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

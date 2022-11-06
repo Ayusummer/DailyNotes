@@ -1,3 +1,9 @@
+# VuePress 相关
+node_modules
+.temp
+.cache
+docs/.vuepress/dist
+
 # 日常资源及测试文件
 DailyLife/res
 DailyLife/test.ipynb
