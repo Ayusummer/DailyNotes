@@ -1,44 +1,12 @@
-<!--
-
- * @Author: your name
- * @Date: 2021-01-21 23:01:29
- * @LastEditTime: 2021-06-28 11:19:07
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: \DailyNotes\社区相关\Github.md
--->
-
-# 目录
-- [目录](#目录)
-- [杂项](#杂项)
-  - [PC网页端用户头像加载不出来](#pc网页端用户头像加载不出来)
-  - [.git过大](#git过大)
-  - [github连接超时问题](#github连接超时问题)
-  - [Branch](#branch)
-- [Git配置](#git配置)
-- [Commit](#commit)
-  - [规范](#规范)
-- [Issues](#issues)
-- [Pull Request](#pull-request)
-- [Actions](#actions)
-- [Markdown](#markdown)
-  - [数学公式](#数学公式)
-- [webhooks](#webhooks)
-  - [借助钉钉的Github机器人将仓库变动通知到钉钉群里](#借助钉钉的github机器人将仓库变动通知到钉钉群里)
-- [开源许可证选择](#开源许可证选择)
-- [报错处理](#报错处理)
-  - [`Failed to connect to github.com port 443 after 21063 ms: Timed out`](#failed-to-connect-to-githubcom-port-443-after-21063-ms-timed-out)
-  - [`OpenSSL SSL_read: Connection was reset, errno 10054`](#openssl-ssl_read-connection-was-reset-errno-10054)
-
 # 加速
 
 ---
 ## PC网页端用户头像加载不出来
 - [解决Github网页上图片显示失败的问题](https://zhuanlan.zhihu.com/p/139219691)[参考链接]
 - 当前无法显示用户头像的页面下`Ctrl+Shift+C`打开元素选择器选择未加载出的头像定位到其在源码中的标签并记下其域名
-  - ![](../res_-daily-notes/img/Github/获取缺失图片域名.png)
+  <!-- - ![](../res_-daily-notes/img/Github/获取缺失图片域名.png) -->
 - 打开`https://www.ipaddress.com/`输入域名并回车得到一个ip
-  - ![](../res_-daily-notes/img/Github/获取ip.png)
+  <!-- - ![](../res_-daily-notes/img/Github/获取ip.png) -->
 - 打开路径`C:\Windows\System32\drivers\etc`
 - 修改该路径下的`host`文件的文件属性中的`安全`一栏中的`Users`组的权限,勾选`完全控制`
 - 用记事本打开`host`文件,在末尾粘贴以下文字并保存退出,返回原网页刷新即可
@@ -614,9 +582,9 @@ workflow 文件的配置字段非常多，详见[官方文档](https://help.gith
   - 打开Chrome扩展程序,打开开发者模式
   - 加载已解压的扩展程序
     - 就是刚才放到上面目录里的整个文件夹
-    - ![结构示意图](../res_-daily-notes/img/Github/Chrome插件github-mathjax文件结构示意图.png)
+    - ![image-20221108001752709](http://cdn.ayusummer233.top/img/202211080017729.png)  
   - 此时再打开Github查看源码就能显示markdown的数学公式了
-  - ![成功演示](../res_-daily-notes/img/Github/Github查看Markdown数学公式成功演示.png)
+  - ![image-20221108001819213](http://cdn.ayusummer233.top/img/202211080018283.png)
 
 # webhooks
 ## 借助钉钉的Github机器人将仓库变动通知到钉钉群里
