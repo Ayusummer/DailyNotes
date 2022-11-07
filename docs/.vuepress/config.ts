@@ -13,9 +13,11 @@ export default defineUserConfig({
     theme: hopeTheme({
         navbar: [
             // 导航栏
+            { text: "Language", link: "/Language/CPlusPlus/C++.md" },
+            { text: "后端", link: "/后端/FastAPI/FastAPI.md" },
+            { text: "前端", link: "/前端/通识.md" },
             { text: "Bot", link: "/Bot/" },
             { text: "CS", link: "/CS/统括.md" },
-            { text: "Language", link: "/Language/CPlusPlus/C++.md" },
         ],
         sidebar: {
             // 侧边栏
@@ -105,6 +107,68 @@ export default defineUserConfig({
                 {
                     text: "TypeScript",
                     link: "/Language/TypeScript/TypeScript.md",
+                },
+            ],
+            "/后端/": [
+                {
+                    text: "FastAPI",
+                    link: "/后端/FastAPI/FastAPI.md",
+                },
+                {
+                    text: "Flask",
+                    link: "/后端/Flask/Flask.md",
+                },
+                {
+                    text: "前后端交互数据的编码方案",
+                    link: "/后端/前后端交互数据的编码方案.md",
+                },
+                {
+                    text: "数据库",
+                    children: [
+                        {
+                            text: "数据库",
+                            link: "/后端/数据库/数据库.md",
+                        },
+                        {
+                            text: "Redis",
+                            link: "/后端/数据库/Redis.md",
+                        },
+                        {
+                            text: "SQLAlchemy",
+                            link: "/后端/数据库/SQLAlchemy.md",
+                        },
+                    ],
+                },
+            ],
+            "/前端/": [
+                {
+                    text: "通识",
+                    link: "/前端/通识.md",
+                },
+                {
+                    text: "Vue",
+                    children: [
+                        {
+                            text: "Vue",
+                            link: "/前端/Vue/Vue.md",
+                        },
+                        {
+                            text: "Vben",
+                            link: "/前端/Vue/Vben.md",
+                        },
+                        {
+                            text: "vue-admin-template",
+                            link: "/前端/Vue/vue-admin-template.md",
+                        },
+                    ],
+                },
+                {
+                    text: "HTML",
+                    link: "/前端/HTML/DOM学习.md",
+                },
+                {
+                    text: "HTTP",
+                    link: "/前端/HTTP/资源和URI.md",
                 },
             ],
         }

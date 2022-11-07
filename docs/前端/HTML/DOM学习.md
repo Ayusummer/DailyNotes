@@ -102,31 +102,31 @@ HTML DOM 将 HTML 文档视作树结构。这种结构被称为**节点树**：
 
 从上面的 HTML 中：
 
-- <html> 节点没有父节点；它是根节点
+- `<html>` 节点没有父节点；它是根节点
 
-- <head> 和 <body> 的父节点是 <html> 节点
+- `<head>` 和 `<body>` 的父节点是 `<html>` 节点
 
-- 文本节点 "Hello world!" 的父节点是 <p> 节点
-
-并且：
-
-- <html> 节点拥有两个子节点：<head> 和 <body>
-- <head> 节点拥有两个子节点：<meta> 与 <title> 节点
-- <title> 节点也拥有一个子节点：文本节点 "DOM 教程"
-- <h1> 和 <p> 节点是同胞节点，同时也是 <body> 的子节点
+- 文本节点 "Hello world!" 的父节点是 `<p>` 节点
 
 并且：
 
-- <head> 元素是 <html> 元素的首个子节点
-- <body> 元素是 <html> 元素的最后一个子节点
-- <h1> 元素是 <body> 元素的首个子节点
-- <p> 元素是 <body> 元素的最后一个子节点
+- `<html>` 节点拥有两个子节点：`<head>` 和 `<body>`
+- `<head>` 节点拥有两个子节点：`<meta>` 与 `<title>` 节点
+- `<title>` 节点也拥有一个子节点：文本节点 "DOM 教程"
+- `<h1>` 和 `<p>` 节点是同胞节点，同时也是 `<body>` 的子节点
+
+并且：
+
+- `<head>` 元素是 `<html>` 元素的首个子节点
+- `<body>` 元素是 `<html>` 元素的最后一个子节点
+- `<h1>` 元素是 `<body>` 元素的首个子节点
+- `<p>` 元素是 `<body>` 元素的最后一个子节点
 
 ### 警告！
 
 DOM 处理中的常见错误是希望元素节点包含文本。
 
-在本例中：*<title>DOM 教程</title>*，元素节点 <title>，包含值为 "DOM 教程" 的*文本节点*。
+在本例中：`<title>DOM 教程</title>`，元素节点 `<title>`，包含值为 "DOM 教程" 的*文本节点*。
 
 可通过节点的 *innerHTML* 属性来访问文本节点的值。
 
@@ -221,7 +221,7 @@ document.write(txt);
 
 ![image-20220826161516908](http://cdn.ayusummer233.top/img/image-20220826161516908.png)
 
- innerHTML 属性可用于获取或改变任意 HTML 元素，包括 <html> 和 <body>。
+ innerHTML 属性可用于获取或改变任意 HTML 元素，包括 `<html>` 和 `<body>`。
 
 ### nodeName属性
 
@@ -245,7 +245,7 @@ nodeValue 属性规定节点的值。
 - 文本节点的 nodeValue 是文本本身
 - 属性节点的 nodeValue 是属性值
 
-标签为<p id="intro"> 的元素节点
+标签为 `<p id="intro">` 的元素节点
 
 ![image-20220826162602580](http://cdn.ayusummer233.top/img/image-20220826162602580.png)
 
@@ -299,13 +299,13 @@ getElementsByTagName() 返回带有指定标签名的所有元素。
 
 *node*.getElementsByTagName(*"tagname"*);
 
-下面的例子返回包含文档中所有 <p> 元素的列表：
+下面的例子返回包含文档中所有 `<p>` 元素的列表：
 
 document.getElementsByTagName("p");
 
 ![image-20220829103608635](http://cdn.ayusummer233.top/img/image-20220829103608635.png)
 
-下面的例子返回包含文档中所有 <p> 元素的列表，并且这些 <p> 元素应该是 id="main" 的元素的后代（子、孙等等）：
+下面的例子返回包含文档中所有 `<p>` 元素的列表，并且这些 `<p>` 元素应该是 id="main" 的元素的后代（子、孙等等）：
 
 document.getElementById("main").getElementsByTagName("p");
 
