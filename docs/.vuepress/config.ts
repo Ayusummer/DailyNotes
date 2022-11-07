@@ -13,6 +13,7 @@ export default defineUserConfig({
     theme: hopeTheme({
         navbar: [
             // 导航栏
+            { text: "笔记工具", link: "/NoteTools/Markdown.md" },
             {text: "通识", link: "/通识/通识.md"},
             {text: "网络安全", link: "/网络安全/通识.md"},
             { text: "Language", link: "/Language/CPlusPlus/C++.md" },
@@ -24,6 +25,32 @@ export default defineUserConfig({
         ],
         // 侧边栏
         sidebar: {
+            "/NoteTools/": [
+                {
+                    text: "VuePress",
+                    link: "/NoteTools/VuePress.md",
+                },
+                {
+                    text: "Markdown",
+                    link: "/NoteTools/Markdown.md",
+                },
+                {
+                    text: "Mermaid",
+                    link: "/NoteTools/Mermaid.md",
+                },
+                {
+                    text: "LaTeX",
+                    link: "/NoteTools/LaTex/LateX.md",
+                },
+                {
+                    text: "PlantUML",
+                    link: "/NoteTools/PlantUML.md",
+                },
+                {
+                    text: "VitePress",
+                    link: "/NoteTools/VitePress.md",
+                },
+            ],
             "/通识/": [
                 {
                     text: "通识",
