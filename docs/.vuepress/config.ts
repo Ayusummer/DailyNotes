@@ -13,6 +13,7 @@ export default defineUserConfig({
     theme: hopeTheme({
         navbar: [
             // 导航栏
+            {text: "通识", link: "/通识/通识.md"},
             { text: "Language", link: "/Language/CPlusPlus/C++.md" },
             { text: "后端", link: "/后端/FastAPI/FastAPI.md" },
             { text: "前端", link: "/前端/通识.md" },
@@ -20,8 +21,43 @@ export default defineUserConfig({
             { text: "Bot", link: "/Bot/" },
             { text: "CS", link: "/CS/统括.md" },
         ],
+        // 侧边栏
         sidebar: {
-            // 侧边栏
+            "/通识/": [
+                {
+                    text: "通识",
+                    link: "/通识/通识.md",
+                },
+                {
+                    text: "Docker",
+                    children: [
+                        {
+                            text: "Docker",
+                            link: "/通识/Docker/Docker.md",
+                        },
+                        {
+                            text: "Harbor",
+                            link: "/通识/Docker/Harbor.md",
+                        }
+                    ]
+                },
+                {
+                    text: "换源",
+                    link: "/通识/换源.md",
+                },
+                {
+                    text: "外设",
+                    link: "/通识/外设.md",
+                },
+                {
+                    text: "Git",
+                    link: "/通识/Git.md",
+                },
+                {
+                    text: "VSCode",
+                    link: "/通识/VSCode.md",
+                },
+            ],
             "/Bot/": [
                 {
                     text: "Bot",
