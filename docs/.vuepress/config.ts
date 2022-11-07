@@ -13,13 +13,17 @@ export default defineUserConfig({
     theme: hopeTheme({
         navbar: [
             // 导航栏
-            { text: "主页", link: "/" },
             { text: "Bot", link: "/Bot/" },
-            { text: "CS", link: "/CS/" },
+            { text: "CS", link: "/CS/统括.md" },
+            { text: "Language", link: "/Language/CPlusPlus/C++.md" },
         ],
         sidebar: {
             // 侧边栏
             "/Bot/": [
+                {
+                    text: "Bot",
+                    link: "/Bot/",
+                },
                 {
                     text: "频道Bot",
                     link: "/Bot/频道Bot.md",
@@ -28,10 +32,55 @@ export default defineUserConfig({
                     text: "企微Bot",
                     link: "/Bot/企微Bot.md",
                 },
+            ],
+            "/CS/": [
                 {
-                    text: "commonNotes",
-                    link: "/Bot/commonNotes.md",
+                    text: "CS",
+                    link: "/CS/统括.md",
                 },
+                {
+                    text: "数据库",
+                    link: "/CS/数据库.md",
+                },
+                {
+                    text: "TODOLIST",
+                    link: "/CS/TODOLIST.md",
+                },
+            ],
+            "/Language/": [
+                {
+                    text: "C++",
+                    link: "/Language/CPlusPlus/C++.md",
+                },
+                {
+                    text: "Go",
+                    link: "/Language/Go/Go.md",
+                },
+                {
+                    text: "Java",
+                    children: [
+                        {
+                            text: "Java",
+                            link: "/Language/Java/Java.md",
+                        },
+                        {
+                            text: "Java代码审计",
+                            link: "/Language/Java/Java代码审计.md",
+                        },
+                        {
+                            text: "JavaWeb",
+                            link: "/Language/Java/JavaWeb.md",
+                        }
+                    ],
+                },
+                {
+                    text: "JavaScript",
+                    link: "/Language/JavaScript/JavaScript.md",
+                },
+                {
+                    text: "TypeScript",
+                    link: "/Language/TypeScript/TypeScript.md",
+                }
             ],
         }
     })
