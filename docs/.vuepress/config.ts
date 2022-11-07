@@ -16,6 +16,7 @@ export default defineUserConfig({
             { text: "Language", link: "/Language/CPlusPlus/C++.md" },
             { text: "后端", link: "/后端/FastAPI/FastAPI.md" },
             { text: "前端", link: "/前端/通识.md" },
+            { text: "社区相关", link: "/社区相关/Github.md" },
             { text: "Bot", link: "/Bot/" },
             { text: "CS", link: "/CS/统括.md" },
         ],
@@ -169,6 +170,20 @@ export default defineUserConfig({
                 {
                     text: "HTTP",
                     link: "/前端/HTTP/资源和URI.md",
+                },
+            ],
+            "/社区相关/": [
+                {
+                    text: "Github",
+                    link: "/社区相关/Github.md",
+                },
+                {
+                    text: "Gitee",
+                    link: "/社区相关/Gitee.md",
+                },
+                {
+                    text: "Gitlab",
+                    link: "/社区相关/Gitlab.md",
                 },
             ],
         }
