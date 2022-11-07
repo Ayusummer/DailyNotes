@@ -65,7 +65,7 @@ function changeReactInputValue(inputDom,newText){
 let userIdDom = document.getElementById('userName');		//普通JS获取输入框Dom
 let passwdDom = document.getElementById('password');		//普通JS获取输入框Dom
 
-changeReactInputValue(userIdDom,'hillstone');			//改变React的输入框的值
-changeReactInputValue(passwdDom,'Hillstone@123');			//改变React的输入框的值
+changeReactInputValue(userIdDom,'username');			//改变React的输入框的值
+changeReactInputValue(passwdDom,'passwd');			//改变React的输入框的值
 ```
 

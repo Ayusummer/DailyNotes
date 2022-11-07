@@ -23,6 +23,7 @@ export default defineUserConfig({
             { text: "社区相关", link: "/社区相关/Github.md" },
             { text: "Bot", link: "/Bot/" },
             { text: "CS", link: "/CS/统括.md" },
+            { text: "学习路线", link: "/学习路线/机器学习/机器学习.md" },
         ],
         // 侧边栏
         sidebar: {
@@ -330,6 +331,26 @@ export default defineUserConfig({
                     link: "/社区相关/Gitlab.md",
                 },
             ],
+            "/学习路线/": [
+                {
+                    text: "操作系统",
+                    children: [
+                        {
+                            text: "Linux",
+                            link: "/学习路线/操作系统/Linux/Linux.md",
+                        }
+                    ]
+                },
+                {
+                    text: "机器学习",
+                    children: [
+                        {
+                            text: "机器学习",
+                            link: "/学习路线/机器学习/机器学习.md",
+                        }
+                    ]
+                }
+            ]
         }
     })
 });
