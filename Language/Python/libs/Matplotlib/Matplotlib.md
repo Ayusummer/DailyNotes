@@ -473,8 +473,8 @@ plt.show()
   - 图例自动‘安家’在一个坐标面内的数据图表最少的位置
 - loc = 'XXX'
   - 这里的'XXX'代表了坐标面中的九个位置，例如loc = 'center'表示坐标平面中心位置，九种参数值及所对应位置如下图所示
-  - ![](../../res/img/BigDataMicroMajor/Python/loc字符串示意.png)
-  - ![与数值对应](../../res/img/BigDataMicroMajor/Python/loc字符串数值对照表.png)
+  <!-- - ![](../../res/img/BigDataMicroMajor/Python/loc字符串示意.png) -->
+  <!-- - ![与数值对应](../../res/img/BigDataMicroMajor/Python/loc字符串数值对照表.png) -->
 - loc = (x, y)
   - （x, y）表示图例左下角的位置，这是最灵活的一种放置图例的方法，慢慢调整，总会找到你想要的放置图例的位置
   - x, y并不是轴域中实际的x, y的值，而是将x轴, y轴分别看成1, 即： 

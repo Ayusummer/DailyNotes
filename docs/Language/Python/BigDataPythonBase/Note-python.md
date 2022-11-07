@@ -116,11 +116,10 @@ print(h.heap())
 ---
 ## 使用
 - Anaconda自带,直接在`Home`里`Launch`即可
-  ![](../../res/img/BigDataMicroMajor/Python/JupyterLab.png)
 - 启动完之后会发现默认启动路径是电脑`用户根目录`,可以将其改到一个自己觉得合适的目录,操作如下
   - [JupyterLab修改启动默认路径](https://blog.csdn.net/housz77/article/details/106125831)[**原文链接**]
   - `Anaconda`的`Environments`界面用`Terminal`打开默认的Python环境(也即默认安装的JupyterLab的依赖环境)
-    ![](../../res/img/BigDataMicroMajor/Python/JupyterLab-打开依赖环境.png) 
+    <!-- ![](../../res/img/BigDataMicroMajor/Python/JupyterLab-打开依赖环境.png)  -->
   - 安装`zmq`
     ```
     pip install -i https://mirrors.aliyun.com/pypi/simple/ zmq
@@ -139,8 +138,8 @@ print(h.heap())
 ---
 ## 插件
 - 环境准备
-  - 打开`cmd prompt`或者`Powershell prompt`
-    ![](../../res/img/JupyterLab/condaPrompt.png) 
+  - 打开`cmd prompt`或者`Powershell prompt`  
+    ![image-20221107224622026](http://cdn.ayusummer233.top/img/202211072246063.png)  
     - 安装`npm`
       ```
       pip install -i https://pypi.tuna.tsinghua.edu.cn/simple npm
@@ -152,8 +151,8 @@ print(h.heap())
   > - **不要**给`yarn`和`npm`换淘宝的源
   >   - 淘宝源里没有JupyterLab相关的插件,下载插件时会`404`
 - 安装插件
-  - 在`JupyterLab`可视化界面中安装
-     ![](../../res/img/JupyterLab/JupyterLab插件.png)
+  - 在`JupyterLab`可视化界面中安装  
+    ![image-20221107224757341](http://cdn.ayusummer233.top/img/202211072247385.png)  
   > 会有安装提示`install`及`rebuild`等
   - 安装好并且`rebuild`之后若左侧栏目未正常显示该插件则先关闭`JupyterLab`再重新启动看看有没有正常加载,若仍未正常显示则可以看看下面这条
 - 反复安装与卸载插件可能会导致插件无法正常加载的错误
@@ -176,10 +175,10 @@ print(h.heap())
 ---
 #### `@kiteco/jupyterlab-kite`
 - `Python`代码提示
-- 在`Anaconda`中安装`Spyder`的时候一般会引导下载`Kite`
-  - ![](../../res/img/JupyterLab/Kite.png)
+- 在`Anaconda`中安装`Spyder`的时候一般会引导下载`Kite`  
+  - ![image-20221107224953401](http://cdn.ayusummer233.top/img/202211072249470.png)  
 - 使用效果
-  - ![](../../res/img/JupyterLab/Kite插件使用示例.png)
+  - ![image-20221107224914859](http://cdn.ayusummer233.top/img/202211072249880.png)  
 - 安装
   - `Prompt`安装
     - 打开`Anaconda`的`Prompt`
@@ -445,11 +444,11 @@ Code2flow is useful for:
 ```
 ### 解析
 - b = a: 赋值引用，a 和 b 都指向同一个对象。
-  ![](./res/杂项_拷贝_赋值.png)
+  ![image-20221107230103747](http://cdn.ayusummer233.top/img/202211072301766.png)  
 - b = a.copy(): 浅拷贝, a 和 b 是一个独立的对象，但他们的子对象还是指向统一对象（是引用）。
-  ![](./res/杂项_拷贝_浅拷贝.png)
+  ![image-20221107230135564](http://cdn.ayusummer233.top/img/202211072301586.png)  
 - b = copy.deepcopy(a): 深度拷贝, a 和 b 完全拷贝了父对象及其子对象，两者是完全独立的。
-  ![](./res/杂项_拷贝_深拷贝.png)
+  ![image-20221107230152893](http://cdn.ayusummer233.top/img/202211072301915.png)
 
 ---
 ## 逻辑符号
@@ -1361,7 +1360,7 @@ Wed
 ---
 ## 异常类型
 - [图源](https://www.cnblogs.com/yonyong/p/9327663.html)
-- ![](./res/python异常体系结构.jpg)
+
 
 ---
 | 异常名称 | 描述 |
@@ -1692,7 +1691,7 @@ plt.show()
 
 ```
 - 运行结果
-  ![图解](../../res/img/BigDataMicroMajor/Python/11.26-图解linspace.png)
+  <!-- ![图解](../../res/img/BigDataMicroMajor/Python/11.26-图解linspace.png) -->
 
 ---
 #### 参数
@@ -2035,7 +2034,7 @@ a.H 返回自身的共轭转置
 
   [表1备用链接](https://codimd.s3.shivering-isles.com/demo/uploads/upload_e2ceb36eb9f9f825c773f116563541fb.png)
 
-  ![矩阵相乘实例分析表2](../../res/img/BigDataMicroMajor/Python/矩阵相乘实例分析表2.png)
+  ![image-20221107225259451](http://cdn.ayusummer233.top/img/202211072252467.png)
 
   [矩阵相乘实例分析表2备用链接](https://codimd.s3.shivering-isles.com/demo/uploads/upload_a8fbeb28aebf1c6936ac9673a0ddc539.png)
 - 计算如下数据:
@@ -2090,14 +2089,14 @@ print("四个季度每类成本的总数量为:\n{0}".format(MN.sum(axis=1)))
 
 ---
 #### 矩阵乘法及其应用
-![](../../res/img/BigDataMicroMajor/Python/矩阵乘法示意.png)
+<!-- ![](../../res/img/BigDataMicroMajor/Python/矩阵乘法示意.png) -->
 
-[矩阵乘法示意备用链接](https://codimd.s3.shivering-isles.com/demo/uploads/upload_6c85db63360e553a9c0941e471b8d768.png)
+![矩阵乘法示意备用链接](https://codimd.s3.shivering-isles.com/demo/uploads/upload_6c85db63360e553a9c0941e471b8d768.png)
 
 - 求解线性方程组
-![](../../res/img/BigDataMicroMajor/Python/线性方程组.png)
+<!-- ![](../../res/img/BigDataMicroMajor/Python/线性方程组.png) -->
 
-  [线性方程组备用链接](https://codimd.s3.shivering-isles.com/demo/uploads/upload_152824e62907db7878dcc4f1454c01be.png)
+  ![线性方程组备用链接](https://codimd.s3.shivering-isles.com/demo/uploads/upload_152824e62907db7878dcc4f1454c01be.png)  
   - 可以写成矩阵相乘的形式:
     - $ax = b$
     - 解方程求x
@@ -2401,9 +2400,9 @@ print("E_M:\n{0}"
 ---
 ### pyplot绘图的基本操作
 
-![pyplot绘图的基本操作](../../res/img/BigDataMicroMajor/Python/pyplot绘图基本操作.png)
+<!-- ![pyplot绘图的基本操作](../../res/img/BigDataMicroMajor/Python/pyplot绘图基本操作.png) -->
 
-[pyplot绘图的基本操作备用链接](https://codimd.s3.shivering-isles.com/demo/uploads/upload_aa6ca071f9d619b0c934dcf9bd737568.png)
+![pyplot绘图的基本操作备用链接](https://codimd.s3.shivering-isles.com/demo/uploads/upload_aa6ca071f9d619b0c934dcf9bd737568.png)
 
 ---
 #### 创建画布与创建子图
@@ -2461,9 +2460,9 @@ plt.show()
 
 ```
 - 运行结果
-![](../../res/img/BigDataMicroMajor/Python/新建画布.png)
+<!-- ![](../../res/img/BigDataMicroMajor/Python/新建画布.png) -->
 
-  [新建画布备用链接](https://codimd.s3.shivering-isles.com/demo/uploads/upload_dcc66c8cc53de5a90af45842a9ac6f6c.png)
+![新建画布备用链接](https://codimd.s3.shivering-isles.com/demo/uploads/upload_dcc66c8cc53de5a90af45842a9ac6f6c.png)
 
 
 ---
@@ -2472,7 +2471,7 @@ plt.show()
 - 添加图标题,坐标轴名称,设置刻度与范围
   - 没有先后顺序
 
-![结构示意图](../../res/img/BigDataMicroMajor/Python/Pyplot绘图结构示意图.png)
+<!-- ![结构示意图](../../res/img/BigDataMicroMajor/Python/Pyplot绘图结构示意图.png) -->
 
 ---
 
@@ -2493,7 +2492,7 @@ plt.show()
 - 通过rc参数可以修改默认的属性，包括窗体大小、每英寸的点数、线条宽度、颜色、样式、坐标轴、坐标和网络属性、文本、字体等。
 - rc参数存储在字典变量中，通过字典的方式进行访问。
 
-![rcParams](../../res/img/BigDataMicroMajor/Python/rcParams参数.png)
+<!-- ![rcParams](../../res/img/BigDataMicroMajor/Python/rcParams参数.png) -->
 
 - [matplotlib命令与格式：参数配置文件与参数配置](https://blog.csdn.net/helunqu2017/article/details/78652261)
 
@@ -2562,9 +2561,9 @@ plt.show()
 
 ```
 - 运行结果
-  ![使用fontmanager绘制sin(x)](../../res/img/BigDataMicroMajor/Python/使用fontmanager绘制sin(x).png)
+  <!-- ![使用fontmanager绘制sin(x)](../../res/img/BigDataMicroMajor/Python/使用fontmanager绘制sin(x).png) -->
 
-  [使用fontmanager绘制sin(x)备用链接](https://codimd.s3.shivering-isles.com/demo/uploads/upload_13dae5dc395d4b8e084abbc6312e927a.png)
+  ![使用fontmanager绘制sin(x)备用链接](https://codimd.s3.shivering-isles.com/demo/uploads/upload_13dae5dc395d4b8e084abbc6312e927a.png)
 
 ---
 ###### 为不同标题(图、坐标轴)设置不同的字体，大小，采用字体管理器 
@@ -2583,9 +2582,9 @@ plt.show()
 
   ```
   - 运行结果
-    ![sin(x)采用多种字体](../../res/img/BigDataMicroMajor/Python/sin(x)采用多种字体.png)
+    <!-- ![sin(x)采用多种字体](../../res/img/BigDataMicroMajor/Python/sin(x)采用多种字体.png) -->
 
-    [sin(x)采用多种字体备用链接](https://codimd.s3.shivering-isles.com/demo/uploads/upload_409fdda16adf62e809a2655eede7d387.png)
+    ![sin(x)采用多种字体备用链接](https://codimd.s3.shivering-isles.com/demo/uploads/upload_409fdda16adf62e809a2655eede7d387.png)
 
 ---
 ###### 显示图中的负号
@@ -2616,9 +2615,9 @@ plt.show()
 
   ```
   - 运行结果
-    ![sin(x)纵坐标旋转](../../res/img/BigDataMicroMajor/Python/sin(x)纵坐标旋转.png) 
+    <!-- ![sin(x)纵坐标旋转](../../res/img/BigDataMicroMajor/Python/sin(x)纵坐标旋转.png)  -->
 
-    [sin(x)纵坐标旋转备用链接](https://codimd.s3.shivering-isles.com/demo/uploads/upload_1636f9321d75ba33b05eb07922a51076.png)
+    ![sin(x)纵坐标旋转备用链接](https://codimd.s3.shivering-isles.com/demo/uploads/upload_1636f9321d75ba33b05eb07922a51076.png)
 
 ---
 - 使用matplotlib的rcParams属性
@@ -2642,9 +2641,9 @@ C:\Users\233\AppData\Local\Programs\Python\Python38\lib\site-packages\matplotlib
   font.set_text(s, 0, flags=flags)
 
 ```
-- ![运行截图](../../res/img/BigDataMicroMajor/Python/11.26-rcParams错误使用.png)
+<!-- - ![运行截图](../../res/img/BigDataMicroMajor/Python/11.26-rcParams错误使用.png) -->
   - 出错问题在于使用了默认的Unicode负号
-    - ![](../../res/img/BigDataMicroMajor/Python/11.26-Unicode和ASCII负号.png)
+    <!-- - ![](../../res/img/BigDataMicroMajor/Python/11.26-Unicode和ASCII负号.png) -->
     - 但是用的`SimHei`字体不支持Unicode负号
 
 ---
@@ -2667,9 +2666,9 @@ plt.show()
 
 ```
 - 运行结果
-  ![同图二线](../../res/img/BigDataMicroMajor/Python/同图二线.png)
+  <!-- ![同图二线](../../res/img/BigDataMicroMajor/Python/同图二线.png) -->
 
-  [同图二线备用链接](https://codimd.s3.shivering-isles.com/demo/uploads/upload_196560d2c52b06d240d2f432a9705f59.png)
+  ![同图二线备用链接](https://codimd.s3.shivering-isles.com/demo/uploads/upload_196560d2c52b06d240d2f432a9705f59.png)
 
 ---
 - 方案二：在一张图figure上画多个小图subplot 
@@ -2703,9 +2702,9 @@ plt.show()
 ```
 
 - 运行结果
-  ![绘制子图](../../res/img/BigDataMicroMajor/Python/绘制子图.png)
+  <!-- ![绘制子图](../../res/img/BigDataMicroMajor/Python/绘制子图.png) -->
 
-  [绘制子图备用链接](https://codimd.s3.shivering-isles.com/demo/uploads/upload_b01bb91975e606844d6a7654a24fa05c.png)
+  ![绘制子图备用链接](https://codimd.s3.shivering-isles.com/demo/uploads/upload_b01bb91975e606844d6a7654a24fa05c.png)
 
 ----
 - 添加子图标题
@@ -2736,9 +2735,9 @@ plt.show()
 
 ```
 - 运行结果
-  ![给子图加标题](../../res/img/BigDataMicroMajor/Python/给子图加标题.png)
+  <!-- ![给子图加标题](../../res/img/BigDataMicroMajor/Python/给子图加标题.png) -->
 
-  [给子图加标题备用链接](https://codimd.s3.shivering-isles.com/demo/uploads/upload_e0b86349b199a291ed8d7c5adb3b2fbc.png)
+  ![给子图加标题备用链接](https://codimd.s3.shivering-isles.com/demo/uploads/upload_e0b86349b199a291ed8d7c5adb3b2fbc.png)
 
 ---
 - 子图的位置分布
@@ -2782,7 +2781,7 @@ plt.show()
 
 ```
 - 运行截图
-![](../../res/img/BigDataMicroMajor/Python/子图位置分布.png)
+<!-- ![](../../res/img/BigDataMicroMajor/Python/子图位置分布.png) -->
 
 
 ---
@@ -2811,9 +2810,9 @@ plt.show()
 
 ```
 - 运行结果
-  ![烧烤店营业额](../../res/img/BigDataMicroMajor/Python/烧烤店营业额.png)
+  <!-- ![烧烤店营业额](../../res/img/BigDataMicroMajor/Python/烧烤店营业额.png) -->
 
-  [烧烤店营业额备用链接](https://codimd.s3.shivering-isles.com/demo/uploads/upload_3c8191fee8c201d31117c42ea9fcab56.png)
+  ![烧烤店营业额备用链接](https://codimd.s3.shivering-isles.com/demo/uploads/upload_3c8191fee8c201d31117c42ea9fcab56.png)
 
 ---
 #### legend.loc参数
@@ -2824,8 +2823,8 @@ plt.show()
   - 图例自动‘安家’在一个坐标面内的数据图表最少的位置
 - loc = 'XXX'
   - 这里的'XXX'代表了坐标面中的九个位置，例如loc = 'center'表示坐标平面中心位置，九种参数值及所对应位置如下图所示
-  - ![](../../res/img/BigDataMicroMajor/Python/loc字符串示意.png)
-  - ![与数值对应](../../res/img/BigDataMicroMajor/Python/loc字符串数值对照表.png)
+  <!-- - ![](../../res/img/BigDataMicroMajor/Python/loc字符串示意.png) -->
+  <!-- - ![与数值对应](../../res/img/BigDataMicroMajor/Python/loc字符串数值对照表.png) -->
 - loc = (x, y)
   - （x, y）表示图例左下角的位置，这是最灵活的一种放置图例的方法，慢慢调整，总会找到你想要的放置图例的位置
   - x, y并不是轴域中实际的x, y的值，而是将x轴, y轴分别看成1, 即： 
@@ -2895,7 +2894,7 @@ plt.show()
 
 ```
 - 运行截图
-  - ![](../../res/img/BigDataMicroMajor/Python/图例实例1.png)
+  <!-- - ![](../../res/img/BigDataMicroMajor/Python/图例实例1.png) -->
 
 
 ---
@@ -2936,7 +2935,7 @@ plt.show()
 
 ```
 - 运行截图
-![](../../res/img/BigDataMicroMajor/Python/图例例2.png)
+<!-- ![](../../res/img/BigDataMicroMajor/Python/图例例2.png) -->
 
 
 
@@ -3030,7 +3029,7 @@ plt.show()
   plot(x轴,y轴,折线形状颜色标记，设置标签显示信息）
   ```
 
-  ![图例标签](../../res/img/BigDataMicroMajor/Python/图例标签.png)
+  <!-- ![图例标签](../../res/img/BigDataMicroMajor/Python/图例标签.png) -->
 
 
 ---
@@ -3074,7 +3073,7 @@ plt.show()
 
 ```
 - 运行结果
-  - ![](../../res/img/BigDataMicroMajor/Python/折线图实例1.png)
+  <!-- - ![](../../res/img/BigDataMicroMajor/Python/折线图实例1.png) -->
 
 ---
 ##### 修改线的形状
@@ -3127,7 +3126,7 @@ plt.show()
 
 ```
 - 运行截图
-  - ![](../../res/img/BigDataMicroMajor/Python/折线图实例1.2.png)
+  <!-- - ![](../../res/img/BigDataMicroMajor/Python/折线图实例1.2.png) -->
 
 ---
 ### 散点图实战
@@ -3140,7 +3139,7 @@ plt.show()
   - 结合以上两个函数，可以实现例9-2同样的效果图。
   - 为了稍做区分，在本例中把端点符号设置为蓝色三角形。
 
-![图](../../res/img/BigDataMicroMajor/Python/11.26-散点图实例1.png)
+<!-- ![图](../../res/img/BigDataMicroMajor/Python/11.26-散点图实例1.png) -->
 
 
 ---
@@ -3197,7 +3196,7 @@ plt.show()
 
 ```
 - 运行截图
-  - ![](../../res/img/BigDataMicroMajor/Python/散点图例3.png)
+  <!-- - ![](../../res/img/BigDataMicroMajor/Python/散点图例3.png) -->
 
 ---
 ##### 标注数字
@@ -3249,7 +3248,7 @@ plt.show()
 
 ```
 - 运行截图
-  - ![](../../res/img/BigDataMicroMajor/Python/散点图例1.2.png)
+  <!-- - ![](../../res/img/BigDataMicroMajor/Python/散点图例1.2.png) -->
 
 
 ---
@@ -3278,7 +3277,7 @@ plt.show()
 - 常用的可视化图形是**折线图**(**plot**())
   - 在**数据项较少**的情况下，也可以使用**柱形图**(**bar**())。
 
-![折线图与柱形图](../../res/img/BigDataMicroMajor/Python/折线图与柱形图.png)  
+<!-- ![折线图与柱形图](../../res/img/BigDataMicroMajor/Python/折线图与柱形图.png)   -->
 - 数据项比较少时用柱状图比较清晰,但是当数据项多时柱状图会显得并排会显得比较挤
 
 ---
@@ -3316,7 +3315,7 @@ plt.show()
 
 ```
 - 运行截图
-  ![](../../res/img/BigDataMicroMajor/Python/部门业绩折线图.png)
+  <!-- ![](../../res/img/BigDataMicroMajor/Python/部门业绩折线图.png) -->
 
 
 ---
@@ -3329,9 +3328,9 @@ plt.show()
   - 而多个对象的多个指标的同时对比可用
     - 雷达图(polar())等。
 
-![](../../res/img/BigDataMicroMajor/Python/绘图-对比-1.png)
-![](../../res/img/BigDataMicroMajor/Python/绘图-对比-2.png)
-![](../../res/img/BigDataMicroMajor/Python/绘图-对比-3-雷达图.png)
+<!-- ![](../../res/img/BigDataMicroMajor/Python/绘图-对比-1.png) -->
+<!-- ![](../../res/img/BigDataMicroMajor/Python/绘图-对比-2.png) -->
+<!-- ![](../../res/img/BigDataMicroMajor/Python/绘图-对比-3-雷达图.png) -->
 
 ---
 ##### 示例:商场男女装销售对比
@@ -3356,7 +3355,7 @@ plt.legend()
 plt.show()
 
 ```
-![](../../res/img/BigDataMicroMajor/Python/商场各部门业绩1.png)
+<!-- ![](../../res/img/BigDataMicroMajor/Python/商场各部门业绩1.png) -->
 
 ---
 ###### 图形美化-"倒影"柱状图
@@ -3385,7 +3384,7 @@ plt.show()
 
 ```
 - 运行截图
-  !["倒影"柱状图](../../res/img/BigDataMicroMajor/Python/商场各部门业绩2.png)
+  <!-- !["倒影"柱状图](../../res/img/BigDataMicroMajor/Python/商场各部门业绩2.png) -->
 
 ---
 ###### 美化-并列柱状图
@@ -3465,7 +3464,7 @@ plt.show()
 
 
 - 运行截图
-  ![](../../res/img/BigDataMicroMajor/Python/商场各部门业绩3.png)
+  <!-- ![](../../res/img/BigDataMicroMajor/Python/商场各部门业绩3.png) -->
 
 ---
 ##### 示例2:商场各部门业绩
@@ -3497,7 +3496,7 @@ plt.show()
 
 ```
 - 运行截图
-  ![](../../res/img/BigDataMicroMajor/Python/商场各部门业绩4.png)
+  <!-- ![](../../res/img/BigDataMicroMajor/Python/商场各部门业绩4.png) -->
   - 显得比较挤,感觉上没有折线图美观
   - 并且数据项多了之后同一组数据的变化趋势就不明显了
     - 单作对比数据实用的话这样画柱状图还好
@@ -3535,7 +3534,7 @@ plt.show()
 
 ```
 - 运行截图
-  ![](../../res/img/BigDataMicroMajor/Python/商场各部门业绩5_条形图.png)
+  <!-- ![](../../res/img/BigDataMicroMajor/Python/商场各部门业绩5_条形图.png) -->
 
 
 ---
@@ -3545,7 +3544,7 @@ plt.show()
 - 常用的可视化图形，一般使用饼图（圆形图）及其变体，
   - 变体例如玫瑰图、扇形图、环形图等；
 
-![](../../res/img/BigDataMicroMajor/Python/绘图-结构-1.png)
+<!-- ![](../../res/img/BigDataMicroMajor/Python/绘图-结构-1.png) -->
 
 
 ---
@@ -3758,38 +3757,38 @@ dtype: int64
     ```Python
     print("s2 - s3:\n{0}\ns2 + s3:\n{1}\ns2 * s3:\n{2}\ns2 / s3:\n{3}".format(s2 - s3, s2 + s3, s2 * s3, s2 / s3))
     ```
-    ![](../../res/img/BigDataMicroMajor/Python/Pandas.Series-四则运算.png)
+    <!-- ![](../../res/img/BigDataMicroMajor/Python/Pandas.Series-四则运算.png) -->
     - 没有的部分自动补齐`NotANumber`
 - 不同索引运算其相对应的值控制为NaN
     ```python
     print("s1+s2:\n{0}".format(s1 + s2))
     ```
-    ![](../../res/img/BigDataMicroMajor/Python/Pandas.Series-NAN.png)
+    <!-- ![](../../res/img/BigDataMicroMajor/Python/Pandas.Series-NAN.png) -->
 - Series对象与标量进行算术运算
     ```python
     print("s3*2:\n{0}\ns3**0.5:\n{1}".format(s3 * 2, s3 ** 0.5))
     ```
-    ![](../../res/img/BigDataMicroMajor/Python/Pandas.Series-Series对象与标量进行算术运算.png)
+    <!-- ![](../../res/img/BigDataMicroMajor/Python/Pandas.Series-Series对象与标量进行算术运算.png) -->
 - Series对象的关系运算
     ```python
     print("\ns2[s2 >= 80]:\n{0}".format(s2[s2 >= 80]))
     ```
-    ![](../../res/img/BigDataMicroMajor/Python/Pandas.Series-Series对象的关系运算.png)
+    <!-- ![](../../res/img/BigDataMicroMajor/Python/Pandas.Series-Series对象的关系运算.png) -->
 - 计算Series对象的中值
     ```Python
     print("\ns3.median():\n{0}".format(s3.median()))
     ```
-    ![](../../res/img/BigDataMicroMajor/Python/Pandas.Series-计算Series对象的中值.png)
+    <!-- ![](../../res/img/BigDataMicroMajor/Python/Pandas.Series-计算Series对象的中值.png) -->
 - 计算s2中最小的1个值
     ```Python
     print('\ns2.nsmallest(1)：\n', s2.nsmallest(1))
     ```
-    ![](../../res/img/BigDataMicroMajor/Python/Pandas.Series-计算s2中最小的1个值.png)
+    <!-- ![](../../res/img/BigDataMicroMajor/Python/Pandas.Series-计算s2中最小的1个值.png) -->
 - 计算s2中最大的1个值
     ```python
     print('s2.nlargest(1)：\n', s2.nlargest(1))
     ```
-    ![](../../res/img/BigDataMicroMajor/Python/Pandas.Series-计算s2中最大的1个值.png)
+    <!-- ![](../../res/img/BigDataMicroMajor/Python/Pandas.Series-计算s2中最大的1个值.png) -->
 
 ---
 #### values的访问与修改
@@ -3806,18 +3805,18 @@ s2 = Series({'语文': 90, '数学': 87, '英语': 67, '程序设计': 78})
     print("s1[1:4]:\n{0}\n"
         "s2[1:3]:\n{1}".format(s1[1:4], s2[1:3]))
     ```
-    ![](../../res/img/BigDataMicroMajor/Python/Pandas.Series-通过索引，切片访问Series的value.png)
+    <!-- ![](../../res/img/BigDataMicroMajor/Python/Pandas.Series-通过索引，切片访问Series的value.png) -->
 - 通过索引修改Series的value，注意字典的键为索引
     ```python 
     s2['程序设计'] = 89
     print("s2:\n{0}".format(s2))
     ```
-    ![](../../res/img/BigDataMicroMajor/Python/Pandas.Series-通过索引修改Series的value，注意字典的键为索引.png)
+    <!-- ![](../../res/img/BigDataMicroMajor/Python/Pandas.Series-通过索引修改Series的value，注意字典的键为索引.png) -->
 
 ---
 ### DataFrame
 - 二维数据，类似于二维表格，由多行多列组成。
-  ![示例](../../res/img/BigDataMicroMajor/Python/Pandas-DataFrame例子.png)
+  <!-- ![示例](../../res/img/BigDataMicroMajor/Python/Pandas-DataFrame例子.png) -->
 
 
 

@@ -49,6 +49,31 @@ export default defineUserConfig({
             ],
             "/Language/": [
                 {
+                    text: "Python",
+                    children: [
+                        {
+                            text: "QuickStart",
+                            link: "/Language/Python/QuickStart.md",
+                        },
+                        {
+                            text: "开发环境",
+                            link: "/Language/Python/开发环境.md",
+                        },
+                        {
+                            text: "Note-python",
+                            link: "/Language/Python/Note-python.md",
+                        },
+                        {
+                            text: "PEP8",
+                            link: "/Language/Python/PEP8.md",
+                        },
+                        {
+                            text: "PythonWeb",
+                            link: "/Language/Python/PythonWeb.md",
+                        }
+                    ],
+                },
+                {
                     text: "C++",
                     link: "/Language/CPlusPlus/C++.md",
                 },
@@ -80,7 +105,7 @@ export default defineUserConfig({
                 {
                     text: "TypeScript",
                     link: "/Language/TypeScript/TypeScript.md",
-                }
+                },
             ],
         }
     })

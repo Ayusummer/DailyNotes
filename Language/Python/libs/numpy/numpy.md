@@ -185,7 +185,7 @@ plt.show()
 
 ```
 - 运行结果
-  ![图解](../../res/img/BigDataMicroMajor/Python/11.26-图解linspace.png)
+  <!-- ![图解](../../res/img/BigDataMicroMajor/Python/11.26-图解linspace.png) -->
 
 ---
 #### 参数
@@ -528,7 +528,7 @@ a.H 返回自身的共轭转置
 
   ![表1备用链接](https://codimd.s3.shivering-isles.com/demo/uploads/upload_e2ceb36eb9f9f825c773f116563541fb.png)
 
-  <!-- ![矩阵相乘实例分析表2](../../res/img/BigDataMicroMajor/Python/矩阵相乘实例分析表2.png) -->
+  <!-- ![image-20221107225259451](http://cdn.ayusummer233.top/img/202211072252467.png) -->
 
   ![矩阵相乘实例分析表2备用链接](https://codimd.s3.shivering-isles.com/demo/uploads/upload_a8fbeb28aebf1c6936ac9673a0ddc539.png)
 - 计算如下数据:

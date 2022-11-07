@@ -163,8 +163,8 @@
     - （也可以是一维）
   - ord
     - 范数类型
-    - 向量的范数：
-      ![](./res/向量的范数.png)
+    - 向量的范数：  
+      ![image-20221107225110380](http://cdn.ayusummer233.top/img/202211072251411.png)   
   - axis：
     - 处理类型
     - axis=1
@@ -313,12 +313,12 @@ print("10名同学身高体重的方差为:{0}".format(var_value))
 
 ---
 ## 1.矩阵基本运算
-- 某工厂生产三种产品,费用支出见表1,生产量见表2
-![](../../res/img/BigDataMicroMajor/Python/矩阵相乘实例分析表1.png)  
+- 某工厂生产三种产品,费用支出见表1,生产量见表2  
+![image-20221107225202340](http://cdn.ayusummer233.top/img/202211072252369.png)  
 
   [表1备用链接](https://codimd.s3.shivering-isles.com/demo/uploads/upload_e2ceb36eb9f9f825c773f116563541fb.png)
 
-  ![矩阵相乘实例分析表2](../../res/img/BigDataMicroMajor/Python/矩阵相乘实例分析表2.png)
+  ![image-20221107225259451](http://cdn.ayusummer233.top/img/202211072252467.png)
 
   [矩阵相乘实例分析表2备用链接](https://codimd.s3.shivering-isles.com/demo/uploads/upload_a8fbeb28aebf1c6936ac9673a0ddc539.png)
 - 计算如下数据:
@@ -375,9 +375,9 @@ print("四个季度每类成本的总数量为:\n{0}".format(MN.sum(axis=1)))
 ## 2.销售额估计
 现调查某个饭店的10家分店，季度销售额和去饭店吃饭的人数的数据表，如下表所示。
 
-![](../../res/img/BigDataMicroMajor/Python/练习11T2销售额与人数表格.png)
+![image-20221107225414115](http://cdn.ayusummer233.top/img/202211072254132.png)
 
-[练习11T2销售额与人数表格备用链接](https://codimd.s3.shivering-isles.com/demo/uploads/upload_b327e0c551f993aeedbc1170bcca6533.png)
+<!-- [练习11T2销售额与人数表格备用链接](https://codimd.s3.shivering-isles.com/demo/uploads/upload_b327e0c551f993aeedbc1170bcca6533.png) -->
 
 建立线性回归模型，并利用该模型预测当吃饭人数达到35000时，饭店的销售额是多少？
 
@@ -542,9 +542,9 @@ plt.show()                          # 显示图表
 ## 3.解线性方程组
 求解如下线性方程组并求系数矩阵的特征值、特征向量以及系数矩阵的2-范数
 
-![练习11T3](../../res/img/BigDataMicroMajor/Python/EX11T3.png)
+![image-20221107225510993](http://cdn.ayusummer233.top/img/202211072255035.png)
 
-[练习11T3备用链接](https://codimd.s3.shivering-isles.com/demo/uploads/upload_c1949335c6907b124a7692c1f4978001.png)
+<!-- [练习11T3备用链接](https://codimd.s3.shivering-isles.com/demo/uploads/upload_c1949335c6907b124a7692c1f4978001.png) -->
 
 ```python
 # -*- coding: utf-8 -*-
@@ -806,8 +806,8 @@ plt.savefig(file_path_save)
 plt.show()
 
 ```
-- 运行截图
-  - ![](../../res/img/BigDataMicroMajor/Python/11.26散点图折线图运行截图.png)
+- 运行截图  
+  ![QQ图片20221107225646](http://cdn.ayusummer233.top/img/202211072257682.png)  
 
 - tip:
   - plot的中直接使用表示图形的字符修改线的形状也可以做出散点图的效果
@@ -920,7 +920,7 @@ def load(file: str,
 > 关于函数用法  
 > [numpy中文参考手册](https://www.numpy.org.cn/reference/routines/io.html#numpy%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%96%87%E4%BB%B6%EF%BC%88npy%EF%BC%8Cnpz%EF%BC%89)  
 > Pycharm将鼠标移到函数上也会有英文文档
-> ![](../../res/img/BigDataMicroMajor/Python/函数英文文档示例.png)
+> ![image-20221107225805277](http://cdn.ayusummer233.top/img/202211072258297.png)
 
 
 ---
@@ -928,9 +928,9 @@ def load(file: str,
 - [原文链接](https://blog.csdn.net/du_shuang/article/details/84139716)
 - plt.tight_layout()会自动调整子图参数，使之填充整个图像区域。这是个实验特性，可能在一些情况下不工作。它仅仅检查坐标轴标签、刻度标签以及标题的部分。
 - 使用前
-  - ![](../../res/img/BigDataMicroMajor/Python/tight_layout前.png)
+  <!-- - ![](../../res/img/BigDataMicroMajor/Python/tight_layout前.png) -->
 - 使用后
-  - ![](../../res/img/BigDataMicroMajor/Python/tight_layout后.png)
+  <!-- - ![](../../res/img/BigDataMicroMajor/Python/tight_layout后.png) -->
 - [Matplotlib 中文用户指南 3.4 密致布局指南](https://www.jianshu.com/p/91eb0d616adb)
 
 ---
@@ -973,7 +973,7 @@ plt.show()
 
 ```
 - 运行截图
-  - ![](../../res/img/BigDataMicroMajor/Python/11.26-王伟吉.png)
+  <!-- - ![](../../res/img/BigDataMicroMajor/Python/11.26-王伟吉.png) -->
 
 - 数据数组没有一个个拆分出来而是在用到的时候直接整体使用切片操作来获取需要的数据
   - 一个循环完成了数据的筛选,图像的绘制以及给图片加标签的操作,有效地减少了代码的长度
@@ -1036,7 +1036,7 @@ plt.show()
 - 代码思路比较清晰
 
 - 运行截图:
-  - ![](../../res/img/BigDataMicroMajor/Python/11.26-程博.png)
+  <!-- - ![](../../res/img/BigDataMicroMajor/Python/11.26-程博.png) -->
 
 ---
 ## plt.style.use格式美化
@@ -1076,29 +1076,29 @@ plt.show()
      'tableau-colorblind10']
     ```
 - `seaborn`
-  - ![](../../res/img/BigDataMicroMajor/Python/seaborn.png)
+  <!-- - ![](../../res/img/BigDataMicroMajor/Python/seaborn.png) -->
 - `Solarize_Light2`
-  - ![](../../res/img/BigDataMicroMajor/Python/solarlight.png)
+  <!-- - ![](../../res/img/BigDataMicroMajor/Python/solarlight.png) -->
 - `_classic_test_patch`
-  - ![](../../res/img/BigDataMicroMajor/Python/_classic_test_patch.png)
+  <!-- - ![](../../res/img/BigDataMicroMajor/Python/_classic_test_patch.png) -->
 - `bmh`
-  - ![](../../res/img/BigDataMicroMajor/Python/bmh.png)
+  <!-- - ![](../../res/img/BigDataMicroMajor/Python/bmh.png) -->
 - `dark_background`
-  - ![](../../res/img/BigDataMicroMajor/Python/dark_background.png)
+  <!-- - ![](../../res/img/BigDataMicroMajor/Python/dark_background.png) -->
 - `fivethirtyeight`
-  - ![](../../res/img/BigDataMicroMajor/Python/fivethirtyeight.png)
+  <!-- - ![](../../res/img/BigDataMicroMajor/Python/fivethirtyeight.png) -->
 - `ggplot`
-  - ![](../../res/img/BigDataMicroMajor/Python/ggplot.png)
+  <!-- - ![](../../res/img/BigDataMicroMajor/Python/ggplot.png) -->
 - `grayscale`
-  - ![](../../res/img/BigDataMicroMajor/Python/grayscale.png)
+  <!-- - ![](../../res/img/BigDataMicroMajor/Python/grayscale.png) -->
 - `seaborn-dark`
-  - ![](../../res/img/BigDataMicroMajor/Python/seaborn-dark.png)
+  <!-- - ![](../../res/img/BigDataMicroMajor/Python/seaborn-dark.png) -->
 - `seaborn-darkgrid`
-  - ![](../../res/img/BigDataMicroMajor/Python/seaborn-darkgrid.png)
+  <!-- - ![](../../res/img/BigDataMicroMajor/Python/seaborn-darkgrid.png) -->
 - `seaborn-poster`
-  - ![](../../res/img/BigDataMicroMajor/Python/seaborn-poster.png)
+  <!-- - ![](../../res/img/BigDataMicroMajor/Python/seaborn-poster.png) -->
 - `seaborn-whitegrid`
-  - ![](../../res/img/BigDataMicroMajor/Python/seaborn-whitegrid.png)
+  <!-- - ![](../../res/img/BigDataMicroMajor/Python/seaborn-whitegrid.png) -->
 
 
 ---
