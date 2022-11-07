@@ -43,7 +43,7 @@
   - [Windows](#windows)
     - [内核隔离](#内核隔离)
       - [WSL2 DNS 服务异常](#wsl2-dns-服务异常)
-      - [针对某一软件关闭...](#针对某一软件关闭)
+    - [针对某一软件关闭用户账户控制](#针对某一软件关闭用户账户控制)
 - [小技能?](#小技能)
   - [图片OCR->表格](#图片ocr-表格)
   - [英语学习](#英语学习)
@@ -223,8 +223,8 @@ PMI 所有证书
 
 # 搜题目解析
 - 油猴插件:`AC-baidu-重定向优化百度搜狗谷歌必应搜索`
-  - ![](res_-daily-notes/img/DailyLife/拦截域名.png)
-- 垃圾域名
+  <!-- - ![](res_-daily-notes/img/DailyLife/拦截域名.png) -->
+- 垃圾域名   
 ```
 ppkao.com
 51xuexiaoyi.com

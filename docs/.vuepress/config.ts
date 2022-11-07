@@ -15,6 +15,7 @@ export default defineUserConfig({
             // 导航栏
             { text: "笔记工具", link: "/NoteTools/Markdown.md" },
             {text: "通识", link: "/通识/通识.md"},
+            {text: "日常", link: "/DailyLife/DailyLife.md"},
             {text: "网络安全", link: "/网络安全/通识.md"},
             { text: "Language", link: "/Language/CPlusPlus/C++.md" },
             { text: "后端", link: "/后端/FastAPI/FastAPI.md" },
