@@ -111,8 +111,14 @@ jobs:
       - name: Build Docs
         env:
           NODE_OPTIONS: --max_old_space_size=8192
-        run:
+        # 需要注意的是 github pages的jekyll模版会忽略下划线开头的文件
+        # 所以要禁用jekyll才能正确加载带下划线的资源  
+        # 可以通过在项目根目录下创建一个名为 .nojekyll 的空文件来禁用jekyll
+        # 关于 -run 和 run | 的区别可参阅:  
+        # https://stackoverflow.com/questions/59529042/difference-between-run-and-multiple-runs-in-github-actions
+        run: |-
           pnpm run docs:build
+          echo > docs/.vuepress/dist/.nojekyll
 
 
       # 查看 workflow 的文档来获取更多信息
