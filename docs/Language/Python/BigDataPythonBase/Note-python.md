@@ -3389,7 +3389,7 @@ plt.show()
 ---
 ###### 美化-并列柱状图
 - 一组数据的x轴坐标左/右平移一定距离
-  - $平移的距离应当 \geq 柱状图的宽度$以避免图象重叠
+  - 平移的距离应当 >= 柱状图的宽度 以避免图象重叠
 ```python
 import numpy as np
 import matplotlib.pyplot as plt
