@@ -1,7 +1,6 @@
 import { defineUserConfig } from "vuepress";
-import { hopeTheme } from "vuepress-theme-hope";
-import { Navbar } from "./navbar";
-import { Sidebar } from "./sidebar";
+import theme from "./theme";
+import { searchPlugin } from "@vuepress/plugin-search";
 
 export default defineUserConfig({
     lang: "zh-CN",
@@ -11,6 +10,7 @@ export default defineUserConfig({
     description: "233的日常学习记录",
     // 站点配置, 设置为 /[仓库名]/
     base: "/DailyNotes/",
+
     // 主题配置
     theme: hopeTheme({
         navbar: Navbar,
@@ -271,3 +271,4 @@ export default defineUserConfig({
         },
     }),
 });
+
