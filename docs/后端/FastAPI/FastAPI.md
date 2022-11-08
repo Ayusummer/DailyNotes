@@ -1,98 +1,3 @@
-#   目录
-- [目录](#目录)
-- [前言](#前言)
-- [起步](#起步)
-  - [导入 FastAPI](#导入-fastapi)
-  - [创建一个 FastAPI 实例](#创建一个-fastapi-实例)
-  - [创建一个路径操作](#创建一个路径操作)
-    - [路径](#路径)
-    - [操作](#操作)
-    - [定义一个路径操作装饰器](#定义一个路径操作装饰器)
-  - [定义路径操作函数](#定义路径操作函数)
-  - [返回内容](#返回内容)
-- [请求模型](#请求模型)
-  - [路径参数和数据的解析验证](#路径参数和数据的解析验证)
-    - [枚举类型](#枚举类型)
-  - [查询参数和数据的解析, 验证](#查询参数和数据的解析-验证)
-    - [默认参数与可选参数](#默认参数与可选参数)
-    - [bool 参数](#bool-参数)
-    - [多个参数, 列表, 字符串验证, 正则, 参数别名](#多个参数-列表-字符串验证-正则-参数别名)
-  - [请求体及混合参数](#请求体及混合参数)
-    - [请求体和字段](#请求体和字段)
-    - [多参数混合](#多参数混合)
-  - [数据格式嵌套的请求体](#数据格式嵌套的请求体)
-  - [配置 Cookie 和 Header 参数](#配置-cookie-和-header-参数)
-    - [Cookie 校验](#cookie-校验)
-    - [Header 校验](#header-校验)
-- [响应模型](#响应模型)
-  - [response_model](#response_model)
-    - [复杂类型响应](#复杂类型响应)
-      - [直接搓 JSON](#直接搓-json)
-      - [封装 schema](#封装-schema)
-  - [响应状态码](#响应状态码)
-  - [表单数据处理](#表单数据处理)
-  - [文件上传及参数详解](#文件上传及参数详解)
-  - [静态文件的配置](#静态文件的配置)
-  - [路径操作配置](#路径操作配置)
-  - [FastAPI 配置项](#fastapi-配置项)
-  - [错误处理](#错误处理)
-    - [自定义异常处理](#自定义异常处理)
-- [依赖注入](#依赖注入)
-  - [创建, 导入和声明依赖](#创建-导入和声明依赖)
-  - [类作为依赖项](#类作为依赖项)
-  - [子依赖的创建和调用](#子依赖的创建和调用)
-  - [路径操作装饰器中导入依赖](#路径操作装饰器中导入依赖)
-  - [FastAPI 框架中全局依赖的使用](#fastapi-框架中全局依赖的使用)
-  - [使用 yield 的依赖和子依赖](#使用-yield-的依赖和子依赖)
-- [JSON Compatible Encoder](#json-compatible-encoder)
-  - [使用 `jsonable_encoder`](#使用-jsonable_encoder)
-- [OAuth2.0 的授权模式](#oauth20-的授权模式)
-  - [密码授权模式(Resource Owner Password Credentials Grant)](#密码授权模式resource-owner-password-credentials-grant)
-  - [OAuth2 密码模式和 FastAPI 的 OAuth2PasswordBearer](#oauth2-密码模式和-fastapi-的-oauth2passwordbearer)
-  - [基于 Password 和 Bearer token 的 OAuth2 认证](#基于-password-和-bearer-token-的-oauth2-认证)
-  - [开发基于 JSON Web Tokens 的认证](#开发基于-json-web-tokens-的认证)
-- [SQL(Relational) Databases](#sqlrelational-databases)
-  - [创建 SQLAlchemy](#创建-sqlalchemy)
-    - [引入 SQLAlchemy 库](#引入-sqlalchemy-库)
-    - [为 SQLAlchemy 创建 database URL](#为-sqlalchemy-创建-database-url)
-    - [创建 SQLAlchemy engine](#创建-sqlalchemy-engine)
-    - [创建一个 SessionLocal 类](#创建一个-sessionlocal-类)
-    - [创建一个 Base 类](#创建一个-base-类)
-  - [创建 database models](#创建-database-models)
-    - [从 Base 类创建 SQLAlchemy model](#从-base-类创建-sqlalchemy-model)
-    - [创建 model attributes/columns](#创建-model-attributescolumns)
-    - [创建 relationships](#创建-relationships)
-  - [创建 Pydantic model](#创建-pydantic-model)
-    - [创建 initial Pydantic models / schemas](#创建-initial-pydantic-models--schemas)
-      - [SQLAlchemy style 和 Pydantic style](#sqlalchemy-style-和-pydantic-style)
-    - [创建用于 reading / returning 的 Pydantic models / schemas](#创建用于-reading--returning-的-pydantic-models--schemas)
-    - [使用 Pydantic 的 orm_mode](#使用-pydantic-的-orm_mode)
-      - [关于 ORM mode 的技术细节](#关于-orm-mode-的技术细节)
-  - [CRUD utils](#crud-utils)
-  - [Main FastAPI app](#main-fastapi-app)
-    - [创建数据库表](#创建数据库表)
-    - [创建 dependency](#创建-dependency)
-  - [Prisma](#prisma)
-- [数据库操作(慕课网)](#数据库操作慕课网)
-  - [配置 SQLAlchemy ORM](#配置-sqlalchemy-orm)
-  - [DataBase Models](#database-models)
-- [大型工程的目录结构设计](#大型工程的目录结构设计)
-- [中间件](#中间件)
-- [跨域资源共享](#跨域资源共享)
-  - [源](#源)
-  - [步骤](#步骤)
-  - [通配符](#通配符)
-  - [使用 CORSMiddleWare](#使用-corsmiddleware)
-    - [CORS 预检请求](#cors-预检请求)
-    - [简单请求](#简单请求)
-- [后台任务](#后台任务)
-- [测试用例](#测试用例)
-- [运行](#运行)
-- [Pydantic](#pydantic)
-  - [数据类型](#数据类型)
-    - [多种数据类型(Unions)](#多种数据类型unions)
-
----
 # 前言
 
 随笔有一部分内容基于慕课网 21 年发的一份 `FastAPI` 基础教程
@@ -1168,6 +1073,15 @@ app = FastAPI(
 
 `yield` 关键字在依赖中的使用 
 
+
+::: tabs
+@tab Python3.6
+
+Python3.6需要pip install async-exit-stack async-generator
+
+@tab:active Python3.7
+
+
 ```python
 ####### Dependencies with yield 带yield的依赖 #######
 
@@ -1207,6 +1121,9 @@ async def dependency_c(dep_b=Depends(dependency_b)):
         dep_c.endswith(dep_b)
 
 ```
+:::
+
+
 
 实际上使用最多的就是 `get_db`:
 
