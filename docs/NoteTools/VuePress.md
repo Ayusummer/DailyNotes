@@ -1,6 +1,6 @@
 # VuePress
 
-## pnpm,Github Actions, Github Pages 部署
+## pnpm,Github Actions, Github Pages 自动化部署文档
 
 > [快速上手 | VuePress (vuejs.org)](https://v2.vuepress.vuejs.org/zh/guide/getting-started.html)
 >
