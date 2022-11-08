@@ -1,45 +1,6 @@
-# CHANGELOG
-
-- `2022.8.14`: [✨ Vnote食用随笔init( •̀ ω •́ )✧](#vnote)
-- `2022.8.12`: [✨ 使用MPE导出base64图片带侧边目录的HTMLヾ(≧▽≦*)o](#使用-mpe-导出-base64图片--带侧边目录的-html)
-
-
-# 目录
-- [CHANGELOG](#changelog)
-- [目录](#目录)
-- [编辑软件](#编辑软件)
-  - [在 VSCode 中编写 Markdown 文件](#在-vscode-中编写-markdown-文件)
-  - [Typora](#typora)
-    - [踩坑](#踩坑)
-      - [image load failed](#image-load-failed)
-      - [无法正常导出PDF](#无法正常导出pdf)
-    - [LaTeX 相关](#latex-相关)
-  - [vnote](#vnote)
-- [个人图床(七牛云+阿里云域名+picgo)](#个人图床七牛云阿里云域名picgo)
-  - [继续配合 ShareX 使用](#继续配合-sharex-使用)
-- [基本用法](#基本用法)
-  - [分页符](#分页符)
-  - [排版](#排版)
-  - [字体格式](#字体格式)
-  - [字体大小](#字体大小)
-  - [公式](#公式)
-    - [公式内部打空格](#公式内部打空格)
-    - [多行公式等号对齐](#多行公式等号对齐)
-  - [链接](#链接)
-  - [矩阵](#矩阵)
-  - [内嵌 HTML](#内嵌-html)
-    - [markdownlint 取消部分 html 标签警告](#markdownlint-取消部分-html-标签警告)
-- [something interesting](#something-interesting)
-  - [徽章](#徽章)
-- [工具](#工具)
-  - [Markdown Preview Enhanced](#markdown-preview-enhanced)
-    - [使用 MPE 导出 base64图片 && 带侧边目录的 HTML](#使用-mpe-导出-base64图片--带侧边目录的-html)
-- [markdown + pandoc 写论文](#markdown--pandoc-写论文)
-  - [文献管理工具: Zotero](#文献管理工具-zotero)
-  - [Better BibTex](#better-bibtex)
-
-
 # 编辑软件
+
+<BiliBili bvid="BV1kt411o7C3" />
 
 ## 在 VSCode 中编写 Markdown 文件
 
@@ -210,9 +171,11 @@ VNote是免费、开源的。您可以获得适用于Linux，Windows和macOS的�
 ---
 ### 多行公式等号对齐
 
+NPV  = 现金流入现值和 - 现金流出现值和
+
 $$
 \begin{aligned}
-    NPV  &= 现金流入现值和 - 现金流出现值和 \\
+    NPV  &= CI - CO \\
     	 &= \sum_{t=0}^n CI_t (P/F, i_0, t) - \sum_{t=0}^n CO_t (P/F, i_0, t)  \\
 \end{aligned}
 $$
