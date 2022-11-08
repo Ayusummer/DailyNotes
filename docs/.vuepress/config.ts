@@ -13,7 +13,35 @@ export default defineUserConfig({
     theme: hopeTheme({
         navbar: [
             // 导航栏
-            { text: "笔记工具", link: "/NoteTools/Markdown.md" },
+            {
+                text: "笔记工具",
+                children: [
+                    {
+                        text: "VuePress",
+                        link: "/NoteTools/VuePress.md",
+                    },
+                    {
+                        text: "Markdown",
+                        link: "/NoteTools/Markdown.md",
+                    },
+                    {
+                        text: "Mermaid",
+                        link: "/NoteTools/Mermaid.md",
+                    },
+                    {
+                        text: "LaTeX",
+                        link: "/NoteTools/LaTex/LateX.md",
+                    },
+                    {
+                        text: "PlantUML",
+                        link: "/NoteTools/PlantUML.md",
+                    },
+                    {
+                        text: "VitePress",
+                        link: "/NoteTools/VitePress.md",
+                    },
+                ],
+            },
             {
                 text: "通识",
                 children: [
@@ -127,8 +155,8 @@ export default defineUserConfig({
                     },
                 ],
             },
-            { 
-                text: "前端", 
+            {
+                text: "前端",
                 children: [
                     {
                         text: "通识",
@@ -146,11 +174,10 @@ export default defineUserConfig({
                         text: "Vue",
                         link: "/前端/Vue/Vue.md",
                     },
-
                 ],
             },
-            { 
-                text: "社区相关", 
+            {
+                text: "社区相关",
                 children: [
                     {
                         text: "Github",
@@ -183,8 +210,8 @@ export default defineUserConfig({
                     },
                 ],
             },
-            { 
-                text: "CS", 
+            {
+                text: "CS",
                 children: [
                     {
                         text: "CS",
@@ -200,8 +227,8 @@ export default defineUserConfig({
                     },
                 ],
             },
-            { 
-                text: "学习路线", 
+            {
+                text: "学习路线",
                 children: [
                     {
                         text: "操作系统",
@@ -216,32 +243,6 @@ export default defineUserConfig({
         ],
         // 侧边栏
         sidebar: {
-            "/NoteTools/": [
-                {
-                    text: "VuePress",
-                    link: "/NoteTools/VuePress.md",
-                },
-                {
-                    text: "Markdown",
-                    link: "/NoteTools/Markdown.md",
-                },
-                {
-                    text: "Mermaid",
-                    link: "/NoteTools/Mermaid.md",
-                },
-                {
-                    text: "LaTeX",
-                    link: "/NoteTools/LaTex/LateX.md",
-                },
-                {
-                    text: "PlantUML",
-                    link: "/NoteTools/PlantUML.md",
-                },
-                {
-                    text: "VitePress",
-                    link: "/NoteTools/VitePress.md",
-                },
-            ],
             "/通识/Docker/": [
                 {
                     text: "Docker",
@@ -480,7 +481,7 @@ export default defineUserConfig({
                     link: "/后端/数据库/SQLAlchemy.md",
                 },
             ],
-            "/前端/VUE/":[
+            "/前端/VUE/": [
                 {
                     text: "Vue",
                     link: "/前端/VUE/Vue.md",
