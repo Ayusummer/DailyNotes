@@ -1,15 +1,3 @@
-# 目录
-- [目录](#目录)
-- [go-cqhttp](#go-cqhttp)
-  - [群内 QA](#群内-qa)
-    - [正在登陆的设备存在风险](#正在登陆的设备存在风险)
-- [yobot](#yobot)
-  - [群内 QA](#群内-qa-1)
-- [Hoshino](#hoshino)
-  - [群内QA](#群内qa)
-    - [jinja2 报错](#jinja2-报错)
-
----
 
 # go-cqhttp
 
