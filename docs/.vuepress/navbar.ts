@@ -207,10 +207,6 @@ export const Navbar = navbar([
                 link: "/CS/统括.md",
             },
             {
-                text: "数据库",
-                link: "/CS/数据库.md",
-            },
-            {
                 text: "TODOLIST",
                 link: "/CS/TODOLIST.md",
             },
