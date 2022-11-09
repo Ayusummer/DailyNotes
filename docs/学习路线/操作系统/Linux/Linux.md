@@ -58,9 +58,112 @@ apt update
 
 ## VSCode: Remote-SSH
 
-### 确认 SSH 服务情况
+> [如何在 Ubuntu 20.04 启用 SSH-阿里云开发者社区 (aliyun.com)](https://developer.aliyun.com/article/763505)
+>
+> ---
 
-首先需要确认自己的机子是否有 SSH 服务, 如果 SSH 不能连上本机的话那么
+首先需要确认自己的机子是否有 SSH 服务, 如果 SSH 不能连上本机的话那么需要装下 openssh
+
+```bash
+# 刚装好系统需要配置下 root 密码, 输入如下命令然后输入当前账户密码后设置 root 密码即可
+sudo passwd root
+
+# 更新源
+apt update
+# 安装 openssh-server
+apt install openssh-server
+```
+
+
+安装完成后 SSH 服务会自动启动
+
+```bash
+# 验证 SSH 是否在运行
+systemctl status ssh
+```
+
+> 按 `q` 返回命令行
+
+需要注意的是 ubuntu 自带一个配置 iptables 防火墙的工具 UFW(`Uncomplicated Firewall`), 如果系统防火墙已经启用那么请确保打开了 SSH 端口
+
+```bash
+ufw allow ssh
+```
+
+到此为止就可以使用普通账户 ssh 登录了, 但是还不能用 root 来 ssh  连接, 还需要再配置下
+
+```bash
+# 安装 vim
+apt install vim
+
+# 打开 sshd_config 文件
+vim /etc/ssh/sshd_config
+# 按下 i 切换到编辑模式进行文本编辑
+# 编辑完成后 esc 后输入 :wq 并回车即可保存并退出 vim
+```
+
+将 `#Authentication` 项目下的 `PermitRootLogin` 设置为 `yes`, `PasswordAuthentication` 项也设置为 `yes`
+
+> 如果后者没有就新建一个
+
+> ![image-20221110002027202](http://cdn.ayusummer233.top/img/202211100020293.png)  
+> ![image-20221110002039422](http://cdn.ayusummer233.top/img/202211100020468.png)
+
+```bash
+# 重启 ssh 服务
+service ssh restart
+# 添加开机启动
+update-rc.d ssh enable
+```
+
+然后就可以使用 root 账户 ssh 该设备了
+
+VSCode 安装 Remote-SSH
+
+> ![image-20221110003106144](http://cdn.ayusummer233.top/img/202211100031215.png)
+
+打开 Remote-SSH 配置项
+
+> ![image-20221110003320756](http://cdn.ayusummer233.top/img/202211100033780.png)
+
+填入
+
+```properties
+Host [为该主机随便起个有辨识度的名字]
+    HostName [主机ip]
+    User [登入用户, 可以填 root]
+```
+
+连接到远程然后根据提示选择 Linux, 输入密码即可
+
+---
+
+在本地打开命令行执行生成密钥命令:
+
+```bash
+ssh-keygen
+```
+
+根据提示完成密钥生成步骤(可以什么都不输入一路回车到完成)
+
+完成后会生成一个私钥(`id_rsa`)一个公钥(`id_rsa_pub`)
+
+将==本地公钥==复制到远程主机的 `/root/.ssh` 目录下然后在终端中 cd 到该目录执行(如果该目录不存在则先创建此目录)
+
+```bash
+cat id_rsa_ubuntu1.pub >> authorized_keys
+sudo chmod 600 authorized_keys	# 修改文件权限
+sudo chmod 700 ~/.ssh	# 修改目录权限
+```
+
+然后打开 remote-ssh 配置文件, 在原来配置项的基础上加上一个 `IdentityFile` 字段, 填写上==本地私钥==路径即可
+
+然后重新连接远程主机, 就不需要输入密码了
+
+---
+
+
+
 
 ---
 
@@ -569,216 +672,13 @@ python status-psutil.py
 
 ---
 
-# python
+# 窗口工具
 
----
-
-## 安装
-
-> [Ubuntu安装Python3 - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/149796622)
-
-更新源:
-
-```bash
-apt-get update
-```
-
-安装 python3
-
-```bash
-apt install python3-pip
-```
-
-验证
-
-```bash
-pip -V
-python3 -V
-```
-
----
-
-## Pipenv
-
-> [如何开始使用 Pipenv？ | w3c笔记 (w3cschool.cn)](https://www.w3cschool.cn/article/94449206.html)
->
-> [WSL Ubuntu 18.04上使用pipenv的4个关键点 | 老梅笔记 (laomeinote.com)](https://laomeinote.com/4-points-need-to-be-noticed-about-pipenv-usage-in-wsl-ubuntu-18.04)
->
-> [Pipenv: Python Dev Workflow for Humans — pipenv 2021.11.9 documentation (pypa.io)](https://pipenv.pypa.io/en/latest/)
->
-> [12. Virtual Environments and Packages — Python 3.10.0 documentation](https://docs.python.org/3/tutorial/venv.html)
-
-[Pipenv](https://pipenv.pypa.io/en/latest/) 是 Python 的 Python 打包工具，是对使用 [Pip](https://pip.pypa.io/en/stable/)、[Venv](https://docs.python.org/3/library/venv.html) 和 requirements.txt的升级。Pipenv 是将包管理与虚拟环境相结合的好方法。
-
-虚拟环境是一个自包含的目录树，其中包含针对特定 Python 版本的 Python 安装，以及许多其他包。
-
-
-安装 `pipenv` 模块:
-
-```sh
-apt install pipenv
-pip insatll pipenv
-```
-
-使用 `cd` 命令切换到需要安装虚拟环境的目录安装虚拟环境(如果当前目录下没有 `Pipfile` 则会先生成 `Pipfile`, 如果有的话便会继续安装虚拟环境):
-
-```sh
-pipenv install
-```
-
-> `Pipfile` 中将 `[[source]]` 区域下的 `url` 改为国内的源
->
-> ```sh
-> # 华为镜像
-> https://repo.huaweicloud.com/repository/pypi/simple
-> # 阿里镜像
-> https://mirrors.aliyun.com/pypi/simple
-> # 官方源
-> https://pypi.python.org/simple
-> ```
->
-> ![image-20211114221709756](http://cdn.ayusummer233.top/img/202111142217965.png)
->
-> 如果默认生成的 `Pipfile` 中的包特别多, 那么这条命令会执行很长时间且没有 log, 这将会是一个很折磨的过程(
-
-启动虚拟环境
-
-```sh
-pipenv shell
-```
-
-可以通过 `exit` 退出虚拟环境
-
-----
-## Anaconda
-
-> [如何在 Ubuntu 20.04 上安装 Anaconda - 云+社区 - 腾讯云 (tencent.com)](https://cloud.tencent.com/developer/article/1649008)  
-> [Anaconda conda常用命令：从入门到精通_chenxy_bwave的专栏-CSDN博客_conda常用命令](https://blog.csdn.net/chenxy_bwave/article/details/119996001)
-
-```sh
-# 安装 Anaconda
-wget https://repo.anaconda.com/archive/Anaconda3-2021.11-Linux-x86_64.sh
-bash Anaconda3-2021.11-Linux-x86_64.sh
-```
-
-![20211219065157](http://cdn.ayusummer233.top/img/20211219065157.png)
-
-长按 ENTER 阅读完条款
-
-![20211219065309](http://cdn.ayusummer233.top/img/20211219065309.png)
-
-yes
-
-![20211219065431](http://cdn.ayusummer233.top/img/20211219065431.png)
-
-选择安装路径, 默认为 `/root/anaconda3`, 这个过程会比较长
-
-![20211219065943](http://cdn.ayusummer233.top/img/20211219065943.png)
-
-yes, 执行初始化, 这将会将命令行工具 conda 添加到系统的 PATH 环境变量中。  
-不过想要激活 Anaconda，还需要关闭并且重新打开你的 shell 或者在当前 shell 会话中输入下面的命令，来重新加载 PATH 环境变量：   
-```shell
-source ~/.bashrc
-```
-
-可以使用 `conda --version` 查看 Anaconda 版本
-
-![20211219070617](http://cdn.ayusummer233.top/img/20211219070617.png)
-
-设置国内镜像
-
-```shell
-#设置清华镜像
-conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
-conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/
-conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge/
-conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/bioconda/
-#设置bioconda
-conda config --add channels bioconda
-conda config --add channels conda-forge
-#设置搜索时显示通道地址
-conda config --set show_channel_urls yes
-```
-
-创建一个名为 `BigData`, python 版本为 3.9 的虚拟环境
-
-```shell
-conda create -n BigData python=3.9
-```
-
-激活 `BigData` 虚拟环境
-
-```shell
-conda activate BigData
-```
-
-![20211219072053](http://cdn.ayusummer233.top/img/20211219072053.png)
-
-退出当前虚拟环境
-```shell
-conda deactivate
-```
-
-> [Conda clean 净化Anaconda - 简书 (jianshu.com)](https://www.jianshu.com/p/f14ac62bef99)  
-> [Anaconda conda常用命令：从入门到精通_chenxy_bwave的专栏-CSDN博客_conda常用命令](https://blog.csdn.net/chenxy_bwave/article/details/119996001)  
-> [Anaconda 官网](https://www.anaconda.com/products/individual)  
-> 可在此处获取其他版本的安装包
-
-
-
-
-
----
-## 生成环境依赖
-
-> [python 项目自动生成环境配置文件requirements.txt_凝眸伏笔的博客-CSDN博客](https://blog.csdn.net/pearl8899/article/details/113877334)
-
----
-
-- 生成整个当前环境的依赖
-
-    ```bash
-    pip freeze > requirements.txt
-    ```
-
-> 如果对项目使用了虚拟环境那么这会是一个生成项目依赖的不错的方法
-
-- 生成当前项目的依赖
-
-  ```bash
-  pip install pipreqs
-  pipreqs .
-  ```
-
----
-# nodejs
-
-## 安装
-
-### 从 NodeSource 中安装 Node.js 和 npm
-> > [如何在 Ubuntu 20.04 上安装 Node.js 和 npm-阿里云开发者社区 (aliyun.com)](https://developer.aliyun.com/article/760687)
-
-- 以 sudo 身份运行此命令，下载并执行 NodeSource 安装脚本
-  ```bash
-  curl -sL https://deb.nodesource.com/setup_16.x | sudo -E bash -
-  ```
-  这个脚本将会添加 NodeSource 的签名 key 到你的系统，创建一个 apt 源文件，安装必备的软件包，并且刷新 apt 缓存。
-- NodeSource 源启用成功后，安装 Node.js 和 npm:
-  ```bash
-  sudo apt install nodejs
-  ```
-- 想要从 npm 编译本地扩展，则需要安装开发工具：
-  ```bash
-  sudo apt install build-essential
-  ```
-
----
-
-# Zellij
+## Zellij
 
 > [Zellij](https://zellij.dev/)
 
-## 安装
+### 安装
 
 > [Linux Ubuntu添加环境变量_FarryNiu的博客-CSDN博客_ubuntu 添加环境变量](https://blog.csdn.net/qq_43474959/article/details/115028848)
 >
@@ -830,7 +730,7 @@ source ~/.bashrc
 
 ---
 
-## 使用
+### 使用
 
 新建一个`session`
 
@@ -860,7 +760,9 @@ detach session: `ctrl + o, d`
 
 返回某个 session: `zellij attach xxx` 或者 `zellij a xxx`
 
-# Screen命令
+---
+
+## Screen命令
 
 Linux screen命令用于多重视窗管理程序。
 
@@ -888,20 +790,6 @@ screen [-AmRvx -ls -wipe][-d <作业名称>][-h <行数>][-r <作业名称>][-s 
 - `-wipe` 　检查目前所有的screen作业，并删除已经无法使用的screen作业。
 
 在 screen 终端 下 按下 `Ctrl+a d` 键  可以离开 screen 作业
-
----
-
-# Ubuntu 安装邮件服务器(TODO - 校验有问题且暂时不打算用, 已搁置)
-
-> [Ubuntu安装邮件服务器 - 简书 (jianshu.com)](https://www.jianshu.com/p/f438aa21069e)
->
-> [The Postfix Home Page](http://www.postfix.org/)
->
-> [在Ubuntu 20.04上配置Postfix以使用Gmail SMTP-番茄网 (tomato.cm)](http://www.tomato.cm/1267.html)
->
-> ---
-
-Postifx 是  `Wietse Venema` 在 IBM 的\ GPL 协议之下开发的 `MTA`（邮件传输代理）软件。是 Wietse Venema 想要为使用最广泛的 sendmail 提供替代品的一个尝试, 是一个SMTP服务器
 
 ---
 
@@ -941,4 +829,16 @@ Postifx 是  `Wietse Venema` 在 IBM 的\ GPL 协议之下开发的 `MTA`（邮�
 
 你可以打开 [排障信息](https://support.mozilla.org/zh-CN/kb/使用故障排除信息页面来帮助解决Firefox的问题) 页面来验证安装是否成功。在 *应用基础* 部分，Application Binary 应该是 `/opt/firefox/firefox-bin`。
 
+---
 
+# Ubuntu 安装邮件服务器(TODO - 校验有问题且暂时不打算用, 已搁置)
+
+> [Ubuntu安装邮件服务器 - 简书 (jianshu.com)](https://www.jianshu.com/p/f438aa21069e)
+>
+> [The Postfix Home Page](http://www.postfix.org/)
+>
+> [在Ubuntu 20.04上配置Postfix以使用Gmail SMTP-番茄网 (tomato.cm)](http://www.tomato.cm/1267.html)
+>
+> ---
+
+Postifx 是  `Wietse Venema` 在 IBM 的\ GPL 协议之下开发的 `MTA`（邮件传输代理）软件。是 Wietse Venema 想要为使用最广泛的 sendmail 提供替代品的一个尝试, 是一个SMTP服务器
