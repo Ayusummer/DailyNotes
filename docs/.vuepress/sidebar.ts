@@ -145,6 +145,14 @@ export const Sidebar = sidebar({
             link: "/后端/数据库/数据库.md",
         },
         {
+            text: "MySQL",
+            link: "/后端/数据库/MySQL.md",
+        },
+        {
+            text: "SQLite",
+            link: "/后端/数据库/SQLite.md",
+        },
+        {
             text: "Redis",
             link: "/后端/数据库/Redis.md",
         },
