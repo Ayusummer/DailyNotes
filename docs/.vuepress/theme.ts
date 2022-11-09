@@ -2,8 +2,15 @@ import { hopeTheme } from "vuepress-theme-hope";
 import { Navbar } from "./navbar";
 import { Sidebar } from "./sidebar";
 
-
 export default hopeTheme({
+    // 主题色选择器
+    themeColor: {
+        blue: "#2196f3",
+        red: "#f26d6d",
+        green: "#3eaf7c",
+        orange: "#fb9b5f",
+    },
+
     // 导航栏
     navbar: Navbar,
     // 侧边栏
@@ -35,5 +42,4 @@ export default hopeTheme({
             mark: true,
         },
     },
-
 });
