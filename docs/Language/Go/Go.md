@@ -1,17 +1,31 @@
 # Go
 
-## 安装(ubuntu/debian)
+- [Go 语言圣经](https://gopl-zh.github.io/ch1/ch1-01.html)
+
+---
+
+
+
+## 安装
+
+:::tabs
+
+@tab:active ubuntu/debian
 
 - 拉取官网最新的 stable release
   ```bash
-  wget https://golang.google.cn/dl/go1.19.1.linux-amd64.tar.gz
+  wget https://golang.google.cn/dl/go1.19.3.linux-amd64.tar.gz
   ```
 - 解压到 `/usr/local/go`
   ```bash
-  sudo tar -C /usr/local -xzf go1.19.1.linux-amd64.tar.gz
+  sudo tar -C /usr/local -xzf go1.19.3.linux-amd64.tar.gz
   ```
   > 如果之前安装了其他版本的 go 那么可以备份后先移除该版本目录再运行上面的命令
   > ```bash
+  > # 可以先看看有没有
+  > ls /usr/local | grep go
+  > 
+  > # 如果有的话可以删除
   > sudo rm -rf /usr/local/go2
   > ```
 - 编辑 `~/.bashrc`, 在文件尾添加
@@ -29,6 +43,12 @@
   ```bash
   go version
   ```
+  
+  > ![image-20221110011243044](http://cdn.ayusummer233.top/img/202211100112060.png)
+
+@tab Windows
+
+:::
 
 ---
 ## 代理
