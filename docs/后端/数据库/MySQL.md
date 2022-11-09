@@ -8,7 +8,7 @@
 
 - 下载[MySQL 免安装版](https://dev.mysql.com/get/Downloads/MySQL-8.0/mysql-8.0.22-winx64.zip)
 
-  > 该链接指向的是截止 2020.12.2 最新版的 MySQL 社区版最新下载链接
+  > 该链接指向的是截至 2020.12.2 最新版的 MySQL 社区版最新下载链接
 
 - 下载完成后解压到你想把 MySQL 安装在的目录
 
@@ -18,7 +18,7 @@
   - 打开解压后的文件夹中的 bin 文件夹,单击 Windows 文件资源管理器左上角的`文件`->`打开Windows Powershell`->`以管理员身份打开Windows Powershell`
     > Win11 的话 `win+X` 选择 `Windows Powershell(管理员)` 打开, 使用
     ```powershell
-    cd 当前文件夹路径
+    cd [当前文件夹路径]
     ```
     转到当前文件夹路径
   - 输入
@@ -134,7 +134,7 @@
     - 我的就是`C:\Database\MySQL\mysql-8.0.22-winx64`
     - 打开该文件夹新建一个文本文档并**连同文件扩展名**一同改为`my.ini`
       - 打开`my.ini`,键入以下配置并保存退出
-        ```
+        ```ini
         [mysqld]
         character-set-server=utf8mb4
         bind-address=0.0.0.0
