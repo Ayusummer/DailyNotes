@@ -25,6 +25,9 @@ export default hopeTheme({
     // 文档存放的分值，默认为 "main"
     docsBranch: "main",
 
+    // 全屏
+    fullscreen: true,
+
     // 插件相关
     plugins: {
         // markdown 增强
