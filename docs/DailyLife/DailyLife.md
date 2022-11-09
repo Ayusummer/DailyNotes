@@ -505,6 +505,21 @@ pnputil /delete-driver oem110.inf
 
 ![image-20221101233113947](http://cdn.ayusummer233.top/img/202211012331979.png)
 
+---
+
+### 命令行重启文件资源管理器
+
+Windows 的任务栏和文件资源管理器(Explorer) 是一体的, 因此如果出现了任务栏莫名卡死或者消失的问题时可以在任务管理器中找到文件资源管理器并重启
+
+有时候可能在任务管理器中没能找到文件资源管理器, 或者查找比较困难, 那么此时也可以使用命令行或者 powershell 来终止并启动 explorer
+
+```powershell
+# 强制终止 explorer
+taskkill /IM explorer.exe /F
+# 启动 explorer
+explorer
+```
+
 ----
 # 小技能?
 
