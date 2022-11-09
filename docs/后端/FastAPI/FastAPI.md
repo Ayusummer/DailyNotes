@@ -1164,6 +1164,10 @@ def get_db():
 
 我们可以使用 `jsonable_encoder` , 它接收一个对象, 比如 Pydantic model, 并返回一个兼容 JSON 的版本
 
+::: tabs
+
+@tab:active Python 3.6~3.10
+
 ```python
 from datetime import datetime
 from typing import Optional
@@ -1191,7 +1195,11 @@ def update_item(id: str, item: Item):
 
 ```
 
-> Python 3.6+ < 3.10
+@tab 其它
+
+
+
+:::
 
 在这个实例中, 它将 Pydantic 模型转化为 dict, 将 `datetime` 转化为 `str`;
 
@@ -2402,6 +2410,10 @@ async def dependency_run_bg_task(q: str = Depends(continue_write_readme)):
 
 使用 `BackgroundTasks` 还可以与依赖注入系统一起工作, 你可以在多个层次上声明一个 `BackgroundTasks`  类型的参数(可以在 `path operation` 函数中, 在 `dependency(dependable)` 中, 亦可以在 `sub-dependency` 等处声明)
 
+::: tabs
+
+@tab:active Python 3.10 and above
+
 ```python
 # Python 3.10 and above
 from fastapi import BackgroundTasks, Depends, FastAPI
@@ -2431,6 +2443,8 @@ async def send_notification(
     return {"message": "Message sent"}
 
 ```
+
+:::
 
 ![image-20221031174537122](http://cdn.ayusummer233.top/img/202210311745358.png)
 
@@ -2645,6 +2659,10 @@ if __name__ == '__main__':
 
 `Union` type 允许 Model属性支持不同的类型,例如:
 
+::: tabs
+
+@tab:active Python 3.7~3.9
+
 ```python
 # Python 3.7-3.9
 from uuid import UUID
@@ -2656,7 +2674,13 @@ class User(BaseModel):
     name: str
 ```
 
+:::
+
 需要注意的是, **使用 `Union` 类型时, Pydantic 会尝试匹配其中的各种类型, 并且会使用其匹配到的第一个合适的类型**;因此在以上示例中, 由于 `UUID` 类型可以被解析为 `int` 类型, 因此 `pydantic` 会将其认定为 `int` 类型并不再向后排查类型; 因此, 以上示例应当改为:
+
+::: tabs
+
+@tab:active Python 3.7~3.9
 
 ```python
 # Python 3.7-3.9
@@ -2668,6 +2692,8 @@ class User(BaseModel):
     id: Union[UUID,int, str]
     name: str
 ```
+
+:::
 
 ---
 
