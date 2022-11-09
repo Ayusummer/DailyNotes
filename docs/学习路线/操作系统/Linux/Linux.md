@@ -95,7 +95,7 @@ fask -tf /dev/mapper/ubuntu--vg-root
 exit
 ```
 
-> [Linux fsck 命令 command not found fsck 未找到命令 fsck 命令详解 fsck 命令未找到 fsck 命令安装 - CommandNotFound ⚡️ 坑否](https://commandnotfound.cn/linux/1/451/fsck-命令#:~:text=fsck 命令选项： 1 -a：自动修复文件系统，不询问任何问题； 2 -A：依照 %2Fetc%2Ffstab 配置文件的内容，检查文件内,7 -s：依序执行检查作业，而非同时执行； 8 -t<文件系统类型>：指定要检查的文件系统类型； 9 -T：执行fsck指令时，不显示标题信息； 10 -V：显示指令执行过程。)
+> [Linux fsck 命令 command not found fsck 未找到命令 fsck 命令详解 fsck 命令未找到 fsck 命令安装 - CommandNotFound ⚡️ 坑否](https://commandnotfound.cn/linux/1/451/fsck-命令)
 >
 > - `-y`: 确认所有的 yes/no 选项
 > - `-f`: (force)  尽管目录被标记为 clean 也强制检查
