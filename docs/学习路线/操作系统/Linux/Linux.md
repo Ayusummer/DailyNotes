@@ -1,6 +1,4 @@
-# 通识
-
-## SHELL
+# SHELL
 
 > [Bash编程入门-1：Shell与Bash - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/56532223)
 
@@ -182,6 +180,64 @@ sudo chmod 700 ~/.ssh	# 修改目录权限
 ## Terminus
 
 
+
+---
+
+# 使用 root 登入 UI
+
+> [ubuntu20.04 使用root用户登录系统_COCO56（徐可可）的博客-CSDN博客_ubuntu使用root登录](https://blog.csdn.net/COCO56/article/details/107628019)
+>
+> ---
+
+> 不建议使用特权用户登入系统(一键扬掉系统.jpg)
+>
+> > [为什么sudo存在？为什么不将特权系统访问作为用户权限处理？ | 码农俱乐部 - Golang中国 - Go语言中文社区 (mlog.club)](https://mlog.club/article/4094413)
+>
+> ---
+
+首先设置好 root 密码, 然后改几个文件
+
+- `/usr/share/lightdm/lightdm.conf.d/50-ubuntu.conf`
+
+  在末尾加上
+
+  ```properties
+  # 手工输入登录系统的用户名和密码
+  greeter-show-manual-login=true
+  ```
+
+- `/etc/pam.d/gdm-autologin`
+
+  使用 # 注释第三行的限制 root 登录:
+
+  ```properties
+  # auth	required	pam_succeed_if.so user != root quiet_success
+  ```
+
+- `/etc/pam.d/gdm-password`
+
+  使用 # 注释第 3 行限制 root 登录的配置项:
+
+  ```properties
+  # auth	required	pam_succeed_if.so user != root quiet_success
+  ```
+
+- `/root/.profile`
+
+  使用 # 注释掉最后一行然后添加一行
+
+  ```properties
+  # mesg n 2> /dev/null || true
+  tty -s&&mesg n || true
+  ```
+
+- 重启设备然后即可使用 root 账户登入 UI 界面
+
+  ```bash
+  reboot
+  ```
+
+  > 然后就会看到不推荐使用特权用户登入系统
 
 ---
 
@@ -828,6 +884,32 @@ screen [-AmRvx -ls -wipe][-d <作业名称>][-h <行数>][-r <作业名称>][-s 
 如果，没有安装 `wget`，那么你可以右击以上链接，打开弹出菜单并选择 另存为。下载好文件之后，把它放到 */usr/local/share/applications*。
 
 你可以打开 [排障信息](https://support.mozilla.org/zh-CN/kb/使用故障排除信息页面来帮助解决Firefox的问题) 页面来验证安装是否成功。在 *应用基础* 部分，Application Binary 应该是 `/opt/firefox/firefox-bin`。
+
+---
+
+## 微信
+
+> [Ubuntu下如何使用微信 - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/413646220)
+>
+> [Ubuntu安装微信，三步到位_辞与不羡的博客-CSDN博客_ubuntu安装微信](https://blog.csdn.net/m0_50502579/article/details/126096484)
+>
+> ---
+
+安装 kylin.wine 封装版的微信
+
+与deepin一样，ubuntukylin（优麒麟）系统也第三方封装的ubuntu。
+
+```bash
+# 下载Wine环境包：
+wget http://archive.ubuntukylin.com/software/pool/partner/ukylin-wine_70.6.3.25_amd64.deb 
+# 下载微信（wine）包：
+wget http://archive.ubuntukylin.com/software/pool/partner/ukylin-wechat_3.0.0_amd64.deb 
+# 安装
+sudo apt-get install -f -y ./ukylin-wine_70.6.3.25_amd64.deb
+sudo apt-get install -f -y ./ukylin-wechat_3.0.0_amd64.deb
+```
+
+然后就可以在应用程序页面最后看到微信的图标了
 
 ---
 
