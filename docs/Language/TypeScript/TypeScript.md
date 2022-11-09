@@ -1,8 +1,15 @@
 # 安装
 
 - 首先要安装 [nodejs](https://nodejs.org/en/download/)
-- 命令行执行 `npm install –g typescript` 以全局安装 TypeScript
-- `tsc --version` 查看当前 TypeScript 版本
+
+- 在命令行执行如下命令以全局安装 TypeScript
+
+  ```bash
+  # 安装 typescript
+  npm install –g typescript
+  # 查看当前 typescript 版本
+  tsc --version
+  ```
 
 
 ---
