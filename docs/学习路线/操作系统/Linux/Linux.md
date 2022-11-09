@@ -86,7 +86,7 @@ apt update
 
 ## the root filesystem require a manual fsck
 
-> [boot - Root file system requires manual fsck - Ask Ubuntu](https://askubuntu.com/questions/885062/root-file-system-requires-manual-fsck#:~:text=The root  filesystem on %2Fdev%2Fsda1 requires a,Lets first check your file system for errors.)
+> [boot - Root file system requires manual fsck - Ask Ubuntu](https://askubuntu.com/questions/885062/root-file-system-requires-manual-fsck)
 
 ![image-20220810092901637](http://cdn.ayusummer233.top/img/202208100929766.png)
 
@@ -168,7 +168,7 @@ which
 
 ## 防火墙相关
 
-> [Debian/Ubuntu/Centos 防火墙放行指定端口 - SunPma'Blog](https://sunpma.com/555.html#:~:text=Debian%2FUbuntu 放行端口 安装iptables（通常系统都会自带，如果没有就需要安装） apt-get,update apt- get install iptables)
+> [Debian/Ubuntu/Centos 防火墙放行指定端口 - SunPma'Blog](https://sunpma.com/555.html)
 >
 > [ubuntu的ufw如何开放特定端口?_justheretobe的博客-CSDN博客_ufw开放端口](https://blog.csdn.net/justheretobe/article/details/51843178)
 
@@ -940,48 +940,5 @@ Postifx 是  `Wietse Venema` 在 IBM 的\ GPL 协议之下开发的 `MTA`（邮�
 如果，没有安装 `wget`，那么你可以右击以上链接，打开弹出菜单并选择 另存为。下载好文件之后，把它放到 */usr/local/share/applications*。
 
 你可以打开 [排障信息](https://support.mozilla.org/zh-CN/kb/使用故障排除信息页面来帮助解决Firefox的问题) 页面来验证安装是否成功。在 *应用基础* 部分，Application Binary 应该是 `/opt/firefox/firefox-bin`。
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
