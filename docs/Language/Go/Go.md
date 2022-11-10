@@ -1,12 +1,40 @@
-# Go
+# 参考书籍
 
-- [Go 语言圣经](https://gopl-zh.github.io/ch1/ch1-01.html)
+- 系统学习Go语言的基础知识
+
+  [Go 语言圣经](https://gopl-zh.github.io/ch1/ch1-01.html)
+
+- CGO、Go汇编语言等高级用法
+
+  [Go语言高级编程 - Go语言高级编程 (chai2010.cn)](https://chai2010.cn/advanced-go-programming-book/)
+
+- 深入学习Go语言语法树结构
+
+  [Go语言定制指南 - Go语言定制指南 (chai2010.cn)](https://chai2010.cn/go-ast-book/)
+
+- 了解Go2的最新动向
+
+  [Introduction · Go2编程指南 (golang-china.github.io)](https://golang-china.github.io/go2-book/)
+
+- 从头实现一个玩具Go语言
+
+  [µGo语言实现 - µGo语言实现 (wa-lang.org)](https://wa-lang.org/ugo-compiler-book/)
 
 ---
 
+- MicrosoftLearn 上的 Go 学习路线: [开始使用 Go - Training | Microsoft Learn](https://learn.microsoft.com/zh-cn/training/paths/go-first-steps/)
 
+---
+
+# 开发环境配置
 
 ## 安装
+
+> [Download and install - The Go Programming Language](https://go.dev/doc/install)
+>
+> ---
+
+可在 [Downloads - The Go Programming Language (google.cn)](https://golang.google.cn/dl/)  获取不同系统的 Go 安装包
 
 :::tabs
 
@@ -48,31 +76,166 @@
 
 @tab Windows
 
+在官网下载 Windows 版本的 Go 安装包并运行该 msi 文件进行安装
+
+安装完成后可在 cmd 或 powershell 中验证下版本号
+
+![image-20221110222548586](http://cdn.ayusummer233.top/img/202211102225614.png)
+
 :::
 
 ---
+
 ## 代理
 
 > [goproxy.cn/README.zh-CN.md at master · goproxy/goproxy.cn (github.com)](https://github.com/goproxy/goproxy.cn/blob/master/README.zh-CN.md)
+>
+> 由于中国政府的网络监管系统，Go 生态系统中有着许多中国 Gopher 们无法获取的模块，比如最著名的 `golang.org/x/...`。并且在中国大陆从 GitHub 获取模块的速度也有点慢。因此，我们创建了 Goproxy.cn，使在中国的 Gopher 们能更好地使用 Go 模块。事实上，由于 Goproxy.cn 已在全球范围内通过 CDN 加速，所以你可以在任何地方使用它。
+>
+> ---
 
-用法:
-- 在终端中执行:
-  ```bash
-  go env -w GO111MODULE=on
-  go env -w GOPROXY=https://goproxy.cn,direct
-  ```
-  
-- macOS 或 Linux
-  ```bash
-  export GO111MODULE=on
-  export GOPROXY=https://goproxy.cn
-  ```
+:::tabs
+
+@tab:active Windows
+
+在终端中执行:
+```bash
+go env -w GO111MODULE=on
+go env -w GOPROXY=https://goproxy.cn,direct
+```
+
+@tab Linux/MacOS
+
+```bash
+export GO111MODULE=on
+export GOPROXY=https://goproxy.cn
+```
+
+:::
 
 ---
 
-## 问题整理
+## VSCode 配置
 
-### go get 已弃用
+> [配置 Visual Studio Code for Go 开发 | Microsoft Learn](https://learn.microsoft.com/zh-cn/azure/developer/go/configure-visual-studio-code)
+>
+> ---
+
+### 安装 Go 扩展
+
+![image-20221111001128293](http://cdn.ayusummer233.top/img/202211110011319.png)
+
+---
+
+### 更新 Go 工具
+
+如果没有合适的科技手段的话那就先[加个 Go 模块代理](#代理)
+
+> 设置完后记得退出并重开 VSCode 加载环境变量
+
+---
+
+`Ctrl+Shift+P` 打开命令面板, 然后输入
+
+```
+Go: Install/Update tools
+```
+
+> ![image-20221111001341882](http://cdn.ayusummer233.top/img/202211110019859.png)
+
+单击进入该命令的提示项, 全选并确定, 之后会运行安装
+
+> ![image-20221111001322348](http://cdn.ayusummer233.top/img/202211110013368.png)
+>
+> ![image-20221111002439729](http://cdn.ayusummer233.top/img/202211110024764.png)
+>
+> > 悲ಥ_ಥ, 全装 C 盘去了, 不过还好 C 盘分配的空间比较多且性能相对好些, 就放这里了
+
+- `gotests`
+- `gomodifytags`
+- `impl`
+- `goplay`
+- `dlv`
+- `staticcheck`
+- `gopls`
+
+---
+
+创建一个新文件夹并使用 VSCode 打开此文件夹, 在终端运行如下命令初始化 Go 应用
+
+```powershell
+# go mod init [应用名], 例如:
+go mod init GoLearning
+```
+
+> ![image-20221111003208612](http://cdn.ayusummer233.top/img/202211110032630.png)
+>
+> ![image-20221111003240428](http://cdn.ayusummer233.top/img/202211110032449.png)
+
+---
+
+在当前文件夹根目录创建一个 `main.go`
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+    name := "Go Developers"
+    fmt.Println("Azure for", name)
+}
+```
+
+可以在 line 7 打个断点, 然后 F5 运行下程序, 鼠标悬停在 name 上即可看到此时变量 name 的值
+
+> ![image-20221111003534890](http://cdn.ayusummer233.top/img/202211110035920.png)
+
+继续运行可以看到如是输出
+
+> ![image-20221111003609799](http://cdn.ayusummer233.top/img/202211110036826.png)
+
+---
+
+
+# 概述
+
+Go语言有时候被描述为“类C语言”，或者是“21世纪的C语言”。Go从C语言继承了相似的表达式语法、控制流结构、基础数据类型、调用参数传值、指针等很多思想，还有C语言一直所看中的编译后机器码的运行效率以及和现有操作系统的无缝适配。
+
+---
+
+## Hello World
+
+需要先初始化一个 Go 应用
+
+```powershell
+# go mod init [应用名], 例如:
+go mod init GoLearning
+```
+
+比如新建一个 `HelloWorld.go`
+
+```go
+package main
+
+import "fmt"
+
+func main(){
+    fmt.Println("Hello World")
+}
+```
+
+终端执行 `go run HelloWorld.go` 或者利用 VSCode+Go 扩展 F5 直接运行此 go 程序文件
+
+> ![image-20221111005128048](http://cdn.ayusummer233.top/img/202211110051074.png)
+>
+> ![image-20221111005237588](http://cdn.ayusummer233.top/img/202211110052616.png)
+
+---
+
+# 问题整理
+
+## go get 已弃用
 
 > [Golang弃用go get工具 - 简书 (jianshu.com)](https://www.jianshu.com/p/b93567e0af09)
 >
