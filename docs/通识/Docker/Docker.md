@@ -2,13 +2,15 @@
 
 ## 安装
 
-### ubuntu 安装 docker
+:::tabs
+
+@tab:active Ubuntu
 
 > [ubuntu安装docker详细步骤 - 腾讯云开发者社区-腾讯云 (tencent.com)](https://cloud.tencent.com/developer/article/1854430)
 >
 > [Docker 入门指南：如何在 Ubuntu 上安装和使用 Docker - 卡拉云 (kalacloud.com)](https://kalacloud.com/blog/how-to-install-and-use-docker-on-ubuntu/)
-
-
+>
+> ---
 
 ```bash
 # 更新现有的软件包列表
@@ -31,11 +33,9 @@ sudo systemctl status docker
 sudo systemctl enable docker.service
 ```
 
-----
+@tab Debian
 
-### debian 安装 docker
-
-> [在Kali Linux版本中安装Docker（Docker CE社区版）和Docker Compose_Linux教程_云网牛站 (ywnz.com)](https://ywnz.com/linuxjc/6543.html#:~:text=要在Kali Linux上安装Docker CE，请运行以下命令： sudo apt install,docker-ce docker-ce-cli containerd.io 按y键开始在Kali Linux上安装Docker： 此安装会将docker组添加到系统中，而无需任何用户，将用户帐户添加到组中，以非特权用户身份运行docker命令：)
+> [在Kali Linux版本中安装Docker（Docker CE社区版）和Docker Compose_Linux教程_云网牛站 (ywnz.com)](https://ywnz.com/linuxjc/6543.html)
 >
 > ---
 
@@ -56,7 +56,7 @@ sudo apt install docker-ce docker-ce-cli containerd.io
 docker version
 ```
 
-
+:::
 
 ---
 
@@ -204,9 +204,13 @@ docker run [OPTIONS] IMAGE [COMMAND] [ARG...]
 docker run -it -d --name dvwa -p 8008:80 vuldocker/lamp
 ```
 
-tips:设置名字为dvwa，映射端口为8008 -i: 交互式操作。-t: 终端（一般与i一起）。 -d：后台运行。
-
-![image-20220923153129005](http://cdn.ayusummer233.top/img/image-20220923153129005.png)
+> 设置名字为dvwa，映射端口为8008 
+>
+> -i: 交互式操作。
+>
+> -t: 终端（一般与i一起）
+>
+>  -d：后台运行。
 
 从图中可以看到在执行
 
@@ -214,106 +218,47 @@ tips:设置名字为dvwa，映射端口为8008 -i: 交互式操作。-t: 终端�
 docker run -it -d --name dvwa -p 8008:80 vuldocker/lamp
 ```
 
-指令时出现了问题，说已经有container使用了dvwa这个名字（ The container name "/dvwa" is already in use by container "6e3fc590b41c9c6cf6c0d81de14730c127240edecb6a2a5e3debf1565eb3fe6b"），但是从图中也可以看到docker ps指令执行后没有正在运行的container,可以执行
+指令时出现了问题，说已经有container使用了dvwa这个名字（ `The container name "/dvwa" is already in use by container "6e3fc590b41c9c6cf6c0d81de14730c127240edecb6a2a5e3debf1565eb3fe6b"`），但是从图中也可以看到docker ps指令执行后没有正在运行的container,可以执行
 
 ---
 
-
-### 推送到远程仓库
+### 推送到 Habor
 
 **因为是在只有http  sql apach服务的镜像上跑的容器，在容器里配置了dvwa（并没有改变镜像）**
 
 **此时将原来的镜像推送还是只有http  sql apach服务的镜像，没有自己在容器里的所有配置  需要将容器保存为镜像再去推送才行**
 
-1、在本地实验室使用harbor搭建了docker 仓库的私服，使用的是HTTP 不安全传输协议（简化部署），地址10.182.235.200:8081
+在本地docker客户端--靶机进行如下配置：
 
-2、在本地docker客户端--靶机进行如下配置：
+```bash
+touch /etc/docker/daemon.json
+vim /etc/docker/daemon.json
+```
 
-a)   touch /etc/docker/daemon.json                  
+文件中如下配置
 
-b) vim /etc/docker/daemon.json
-
+```properties
 {
-
-"insecure-registries": ["10.182.235.200:8081"]  否则pull 10.182.235.200:8081的镜像时候不成功
-
+	"insecure-registries": ["habor-hostip:端口"]
 }
-
-c) sudo systemctl daemon-reload
-
-d) sudo systemctl restart docker
-
-3、方便进行项目上传，在docker客户端登录到harbor服务器
-
-**docker login 10.182.235.200:8081**
-
-Username: 用户名haihangyu
-
-Password:密码公司设置的密码_8月的
-
-Login Succeeded
-
-4、上传image
-
-第一步：先将本地的image新建1个新的tag
-
-docker tag SOURCE_IMAGE[:TAG] 10.182.235.200:8081/baji/REPOSITORY[:TAG]
-
-docker tag **本地镜像的REPOSITORY名称：本地镜像的TAG** **10.182.235.200:8081/项目名称/········[为希望展示的镜像的REPOSITORY名称]:希望展示的镜像的tag名称**
-
-例如： docker tag vuldocker/lamp:latest 10.182.235.200:8081/baji/dvwa:lets_go   就会在docker images里出现绑定了同一镜像的REPOSITORY
-
-希望删除绑定了相同镜像的多个REPOSITORY则使用docker rmi repository:tag 的组合来删除特殊的镜像;  [Docker - 两个id相同的镜像怎么删除_Joker_Wangx的博客-CSDN博客_docker 镜像重复](https://blog.csdn.net/wx940627/article/details/106821002)
-
-![image-20220830165203731](http://cdn.ayusummer233.top/img/image-20220830165203731.png)
-
-不要输错内容
-
-不然
-
-![image-20220923153314595](http://cdn.ayusummer233.top/img/image-20220923153314595.png)
-
-![image-20220923153331543](http://cdn.ayusummer233.top/img/image-20220923153331543.png)
-
-docker tag **本地镜像的REPOSITORY名称：本地镜像的TAG** 10.182.235.200:8081/项目名称/**希望展示的镜像的REPOSITORY名称:希望展示的镜像的tag名称**                    成功  
-
-其中（10.182.235.200:8081/项目名称/**希望展示的镜像的REPOSITORY名称 ----表示仓库的具体地址和名称）
-
-docker push 10.182.235.200:8081/**此前设置的希望展示的镜像的REPOSITORY名:希望展示的镜像的TAG名**
-
-```
- docker tag vuldocker/lamp:latest 10.182.235.200:8081/baji/dvwa:lets_go
 ```
 
-tag名称里不能包含特殊符号
-
-![image-20220923153345842](http://cdn.ayusummer233.top/img/image-20220923153345842.png)
-
-第二部：push image
-
-如：docker push 10.182.235.200:8081/baji/REPOSITORY[:TAG]
-
-docker push 10.182.235.200:8081/**此前设置的希望展示的镜像的REPOSITORY名:希望展示的镜像的TAG名**
-
-```
-docker push 10.182.235.200:8081/baji/dvwa:lets_go    网址表示希望推送收到的地址   所以需要在tag的时候指明REPOSITORY
+```bash
+sudo systemctl daemon-reload
+sudo systemctl restart docker
+# 登录 Habor (登录成功会提示 Login Succeeded)
+docker login [HaborHostip:端口]
+# 将本地的image新建1个新的tag
+docker tag SOURCE_IMAGE[:TAG] [HaborHostip]:[端口]/[目标路径][:TAG]
+# 推送镜像
+docker push [HaborHostip]:[端口]/[目标路径][:TAG]
 ```
 
-![image-20220830164732816](http://cdn.ayusummer233.top/img/image-20220830164732816.png)
+后续可以通过 `docker pull` 命令拉取镜像
 
-成功
-
-说明：baji项目是在harbor私服上创建了用于归档咱们靶机docker image镜像的项目，大家搭建的docker image靶机镜像可以上传到这个项目中，同时大家也可以自行到harbor仓库中创建自己的项目
-
-正确操作：
-
-![image-20220830164547694](http://cdn.ayusummer233.top/img/image-20220830164547694.png)
-
-5、下载image
-
-docker pull 10.182.235.200:8081/baji/vulhub/mysql:5.5.23
-
-
+```bash
+docker pull [HaborHostip]:[端口]/[目标路径][:TAG]
+```
 
 
 ---
