@@ -1,7 +1,5 @@
 # 编辑软件
 
-<BiliBili bvid="BV1kt411o7C3" />
-
 ## 在 VSCode 中编写 Markdown 文件
 
 - 安装 VSCode 扩展
