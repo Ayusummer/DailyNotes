@@ -1368,7 +1368,7 @@ echo "2 + 4 = " . sum(2,4);
 
 ## PHP创建匿名函数：creat_function
 
-[create_function任意代码执行 - osword's blog (zhzhdoai.github.io)](https://zhzhdoai.github.io/2019/03/18/create-function任意代码执行/#:~:text=create_function,是PHP中创建匿名函数的函数，其第一个参数是匿名函数的参数列表，第二个参数是匿名函数的内容。)
+[create_function任意代码执行 - osword's blog (zhzhdoai.github.io)](https://zhzhdoai.github.io/2019/03/18/create-function任意代码执行/)
 
 [PHP代码审计之create_function()函数 - My_Dreams - 博客园 (cnblogs.com)](https://www.cnblogs.com/zzjdbk/p/12980483.html)
 
