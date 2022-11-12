@@ -422,7 +422,7 @@ def post_request(
 
 > 这里精简了请求头, 因为在本题中后端只需要这些参数就够了, 甚至 `user-agent` 也可以不要, 不过全部保留也是可以的
 >
-> 关于 user-agent 参数, 这里是读取了[一个浏览器请求头的 json](./browsers.json) 文件, 意在每次发送求都用不同的 `user-agent`, 不过实际上需要配合其他伪装方式使用, 这里仅仅是因为有所了解所以加上了, 亦可以直接固定使用 burp 抓到的请求头
+> 关于 user-agent 参数, 这里是读取了[一个浏览器请求头的 json](https://github.com/Ayusummer/DailyNotes/blob/main/docs/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/Web%E5%AE%89%E5%85%A8/Web%E6%BC%8F%E6%B4%9E%E9%80%9A%E7%94%A8%E5%9E%8BPython%E5%A4%8D%E7%8E%B0%E8%84%9A%E6%9C%AC%E7%BC%96%E5%86%99%E6%8C%87%E5%8D%97/browsers.json) 文件, 意在每次发送求都用不同的 `user-agent`, 不过实际上需要配合其他伪装方式使用, 这里仅仅是因为有所了解所以加上了, 亦可以直接固定使用 burp 抓到的请求头
 >
 > 关于该 json 文件处理的函数如下
 >
@@ -520,7 +520,7 @@ def brute_force(
 
 至此, 暴力破解脚本已经完全函数化了, 只会需要的就是写个 `main` 函数, 然后把具体的参数传入即可
 
-完整的脚本文件可参阅 [pikachu_bruteForce.py](./pikachu_BruteForce.py)
+完整的脚本文件可参阅 [pikachu_bruteForce.py](https://github.com/Ayusummer/DailyNotes/blob/main/docs/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/Web%E5%AE%89%E5%85%A8/Web%E6%BC%8F%E6%B4%9E%E9%80%9A%E7%94%A8%E5%9E%8BPython%E5%A4%8D%E7%8E%B0%E8%84%9A%E6%9C%AC%E7%BC%96%E5%86%99%E6%8C%87%E5%8D%97/pikachu_BruteForce.py)
 
 ![image-20221112213146767](http://cdn.ayusummer233.top/img/202211122131789.png)
 
