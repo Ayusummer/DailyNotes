@@ -1,46 +1,9 @@
-<!--
- * @Author: your name
- * @Date: 2021-02-27 17:22:36
- * @LastEditTime: 2022-04-26 19:14:37
- * @LastEditors: 咸鱼型233
- * @Description: In User Settings Edit
- * @FilePath: \DailyNotes\通识\VSCode.md
--->
-> 用于记录 VSCode 使用的一些随笔
-
-# 目录
-
-- [目录](#目录)
-- [VSCode 下载](#vscode-下载)
-- [用户代码片段](#用户代码片段)
-	- [自用代码片段 stash](#自用代码片段-stash)
-	- [KoroFileHeader](#korofileheader)
-		- [快捷键](#快捷键)
-			- [文件头部注释快捷键](#文件头部注释快捷键)
-			- [函数注释注释快捷键](#函数注释注释快捷键)
-			- [多行函数参数鼠标选中后函数声明后按快捷键自动提取](#多行函数参数鼠标选中后函数声明后按快捷键自动提取)
-- [插件食用记录](#插件食用记录)
-	- [open](#open)
-	- [Python-autopep8](#python-autopep8)
-	- [Terminal](#terminal)
-	- [vscode-icons](#vscode-icons)
-	- [prettier + ESLint](#prettier--eslint)
-	- [Sourcery](#sourcery)
-	- [Thunder Client](#thunder-client)
-	- [CodeTour](#codetour)
-	- [markmap](#markmap)
-- [报错收集](#报错收集)
-	- [git Missing or invalid credentials.](#git-missing-or-invalid-credentials)
-
-
 # VSCode 下载
 > [VsCode下载，使用国内镜像秒下载_bielaiwuyang1999的博客-CSDN博客](https://blog.csdn.net/bielaiwuyang1999/article/details/117814237)
 
-官网下载 VSCode 速度比较慢, 可以在下载时将直链替换国内镜像地址, 以达到更快的下载速度.  
+[官网下载 VSCode](https://code.visualstudio.com/Download) 速度比较慢, 可以在下载时将直链替换国内镜像地址, 以达到更快的下载速度.  
 
-[VSCode 官网下载地址](https://code.visualstudio.com/Download)  
-
-点击下载后开始下载会获得一个 URL  
+在下载按钮上右键复制链接, 或者点击下载后在浏览器下载或者是其他下载工具中可以找到软件下载的直链
 
 ![20211119092740](http://cdn.ayusummer233.top/img/20211119092740.png)  
 
