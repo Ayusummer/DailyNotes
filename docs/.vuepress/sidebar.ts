@@ -64,6 +64,10 @@ let security_web = [
             },
         ],
     },
+    {
+        text: "Web漏洞通用型Python复现脚本编写指南",
+        link: "/网络安全/Web安全/Web漏洞通用型Python复现脚本编写指南/",
+    },
 ]
 
 /** language-python */
