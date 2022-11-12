@@ -175,7 +175,7 @@ Flask 的模板引擎 Jinja 非常关注 HTML。 因此，我们可以使用所�
 
 > [bootstrap和vue哪个好？ - 知乎 (zhihu.com)](https://www.zhihu.com/question/412680346)
 >
-> [vue与bootstrap有什么区别？ | w3c笔记 (w3cschool.cn)](https://www.w3cschool.cn/article/7600862.html#:~:text=vue与bootstrap有什么区别？ 在很多人眼里 bootstrap 和 vue,都是前端框架，其实他们还是有很多区别的，bootstrap 是前端页面框架，用于快速开发响应式页面，而 vue 是前端 js 库，把前端开发组件化。)
+> [vue与bootstrap有什么区别？ | w3c笔记 (w3cschool.cn)](https://www.w3cschool.cn/article/7600862.html)
 >
 > Bootstrap 上手快, 专为响应式页面而生, 所以此次初识 Flask 用其来布置页面
 

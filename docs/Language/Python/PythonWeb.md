@@ -4,7 +4,7 @@
 
 ## 前后端分离开发
 
-> [前后端分离和混合开发模式 - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/266015809#:~:text=前后端分离并不只是开发模式，而是web应用的一种架构模式。,在开发阶段，前后端工程师约定好数据交互接口，实现并行开发和测试；在运行阶段前后端分离模式需要对web应用进行分离部署，前后端之前使用HTTP或者其他协议进行交互请求。 在传统架构模式中，前后端代码存放于同一个代码库中，甚至是同一工程目录下。)
+> [前后端分离和混合开发模式 - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/266015809)
 
 ---
 
@@ -102,7 +102,7 @@ Vue 是一套用于构建用户界面的**渐进式框架**。与其它大型框
 >
 > [使用 python fastapi+vue 快速搭建网站 | elprup's blog](https://www.elprup.com/2020/09/19/fastapi_vue/)
 >
-> [请不要把 Flask 和 FastAPI 放到一起比较 - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/369591096#:~:text=苹果（Flask）应该和橙子（Starlette）比较，橙汁（FastAPI）当然也应该和苹果汁（基于 Flask 的 Web API 框架）进行比较。 也就是说，Flask 是一个通用型框架，和,依赖的 Starlette 一样，而 FastAPI 是添加 Web API 支持的二次框架。)
+> [请不要把 Flask 和 FastAPI 放到一起比较 - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/369591096)
 
 ---
 

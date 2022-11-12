@@ -182,11 +182,11 @@
     >
     > [数据标记是什么_机器学习模型训练-AWS云服务 (amazon.com)](https://aws.amazon.com/cn/sagemaker/groundtruth/what-is-data-labeling/)
     >
-    > [聚类算法 - fionaplanet - 博客园 (cnblogs.com)](https://www.cnblogs.com/fionacai/p/5873975.html#:~:text= 聚类是无监督学习的典型算法，不需要标记结果。,试图探索和发现一定的模式，用于发现共同的群体，按照内在相似性将数据划分为多个类别使得内内相似性大，内间相似性小。 有时候作为监督学习中稀疏特征的预处理（类似于降维，变成K类后，假设有6类，则每一行都可以表示为类似于000100、010000）。)
+    > [聚类算法 - fionaplanet - 博客园 (cnblogs.com)](https://www.cnblogs.com/fionacai/p/5873975.html)
     >
-    > [机器学习回归算法 - Crazymagic - 博客园 (cnblogs.com)](https://www.cnblogs.com/crazymagic/articles/12159242.html#:~:text=回归算法用于连续,离散的类别标签。)
+    > [机器学习回归算法 - Crazymagic - 博客园 (cnblogs.com)](https://www.cnblogs.com/crazymagic/articles/12159242.html)
     >
-    > [关联规则算法_百度百科 (baidu.com)](https://baike.baidu.com/item/关联规则算法/1252179#:~:text=关联规则算法，关,给定阈值的规则。)
+    > [关联规则算法_百度百科 (baidu.com)](https://baike.baidu.com/item/关联规则算法/1252179)
 
 12. 单选(5分)  ‎谷歌新闻每天收集非常多的新闻，并运用( )方法再将这些新闻分组，组成若干类有关联的新闻。于是，搜索时同一组新闻事件往往隶属同一主题的，所以显示到一起。
 
@@ -238,7 +238,7 @@
 
     > 机器学习（统计学习方法）的组成有三个要素：模**型、策略和**算法。
     >
-    > [机器学习·总览篇 IV 机器学习的三要素 - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/48914251#:~:text=从基本理论上看，如前一篇介绍统计推断的文章所说，统计推断是机器学习十分重要的理论基础，所以机器学习狭义上就是指代统计学习方法；从方法框架上看，机器学习（统计学习方法）的组成有三个要素：模型、策略和算法。. 我们通常接触到的所谓“深度学习”、“支持向量机”、“逻辑回归”、“决策树”等等，都离不开这三要素。. 毫不夸张的说，学习机器学习的关键，就是掌握它这三个要素。. 本文首发于我的知乎专栏 《机器怎么学习》,中 机器学习·总览篇 (4) 机器学习的三要素 ，转载请保留链接 %3B))
+    > [机器学习·总览篇 IV 机器学习的三要素 - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/48914251)
 
 16. 多选(5分)  ‏对于非概率模型而言，可按照判别函数线性与否分成线性模型与非线性模型。下面哪些模型属于线性模型？( AD )
 
@@ -286,7 +286,7 @@
     >
     > [带你理解朴素贝叶斯分类算法 - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/26262151)
     >
-    > [[ML\] 朴素贝叶斯分类模型 - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/84492126#:~:text=朴素贝叶斯 (Naive Bayes) 法是是一种分类方式，属于生成模型，即由数据学习联合概率分布，然后求出条件概率分布作为预测模型。,最重要的两点内容是： 贝叶斯定理 和 特征条件独立假设。)
+    > [[ML\] 朴素贝叶斯分类模型 - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/84492126)
 
 18. 判断(5分)  ‍根据肿瘤的体积、患者的年龄来判断良性或恶性，这是一个回归问题。
 

@@ -512,7 +512,7 @@ MIME 类型包含 `image` 的文件包含图像数据, 其子类型指定了具�
 | `image/svg+xml` |        Scalable Vector Graphics  (SVG 图片) (矢量图)         |
 |   image/webp    |                  Web Picture format (WEBP)                   |
 
-> [不一样的动图-APNG - 腾讯云开发者社区-腾讯云 (tencent.com)](https://cloud.tencent.com/developer/article/1114186#:~:text=APNG. APNG 全称是 Animated Portable Network Graphics ，,Android 上有 APNG View 等，iOS 上有 APNGKit 等。.)
+> [不一样的动图-APNG - 腾讯云开发者社区-腾讯云 (tencent.com)](https://cloud.tencent.com/developer/article/1114186)
 >
 > [APNG 那些事 - HelloWorld开发者社区](https://www.helloworld.net/p/5650557531)
 >
