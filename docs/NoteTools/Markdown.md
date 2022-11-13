@@ -50,7 +50,9 @@
 
 ## vnote
 
-[vnote-githubRepo](https://github.com/vnotex/vnote)
+> [vnote-githubRepo](https://github.com/vnotex/vnote)
+>
+> ----
 
 开始之初，VNote是一款专为Markdown设计的Vim风格笔记应用程序。它不仅仅是一个Markdown编辑器。VNote旨在成为一个带有便捷笔记管理的功能强大的Markdown编辑器，或者一个拥有舒适Markdown体验的笔记软件。
 
