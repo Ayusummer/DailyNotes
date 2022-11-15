@@ -19,6 +19,19 @@ echo $SHELL
 
 ---
 
+## 快捷键/命令
+
+- 类清屏
+
+  ```bash
+  # 清屏
+  clear
+  # 指针移到行尾
+  Ctrl+L
+  ```
+
+---
+
 # Ubuntu 的 source.list 文件
 
 > [Ubuntu | 对sources.list的总结 - 简书 (jianshu.com)](https://www.jianshu.com/p/5400722c369c)
@@ -53,6 +66,7 @@ apt update
 ---
 
 # SSH 工具
+
 
 ## VSCode: Remote-SSH
 
