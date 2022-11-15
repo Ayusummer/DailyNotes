@@ -209,7 +209,7 @@ ModuleNotFoundError: No module named '__main__.src_test1'; '__main__' is not a p
 
 ---
 
-## ImportErro
+## ImportError
 
 ```
 ImportError: attempted relative import with no known parent package 
@@ -219,9 +219,9 @@ ImportError: attempted relative import with no known parent package
 |--- test_main.py
 |--- src
   |--- __init__.py                                                              
-    |--- src_test1.py
-    |--- src_test2.pys
-    |--- test_src.py
+  |--- src_test1.py
+  |--- src_test2.pys
+  |--- test_src.py
 ```
 
 `src_test1.py`:
