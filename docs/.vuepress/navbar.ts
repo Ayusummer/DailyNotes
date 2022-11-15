@@ -132,6 +132,10 @@ let language = {
             text: "Java",
             link: "/Language/Java/Java.md",
         },
+        {
+            text: "PHP",
+            link: "/Language/PHP/PHP学习.md",
+        }
     ],
 };
 
