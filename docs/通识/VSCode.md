@@ -268,6 +268,16 @@ Sourcery-ai 可以给开发者提供 Python 代码的重构建议:
 
 ---
 
+## Resource Monitor
+
+显示设备当前的 CPU, 内存, 硬盘状态
+
+![image-20221118143151456](https://cdn.ayusummer233.top/img/image-20221118143151456.png)
+
+![image-20221118143221753](https://cdn.ayusummer233.top/img/image-20221118143221753.png)
+
+---
+
 # 报错收集
 
 ---
