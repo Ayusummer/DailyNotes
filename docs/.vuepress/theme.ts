@@ -32,7 +32,7 @@ export default hopeTheme({
         // markdown 增强
         mdEnhance: {
             tabs: true,
-            // mermaid: true,
+            mermaid: true,
             // 使用 KaTeX 启用 TeX 支持
             katex: true,
             // 与选项卡功能相同，但它是专门为代码块构建的。
