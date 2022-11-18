@@ -295,4 +295,24 @@ Sourcery-ai 可以给开发者提供 Python 代码的重构建议:
 ## remote-ssh 一直 waiting for server log
 
 > [vscode ssh连接失败_我歌月徘徊、的博客-CSDN博客_vscode连不上ssh](https://blog.csdn.net/myWorld001/article/details/119443079)
+>
+> ---
+
+解决方案为删掉对应的加锁文件
+
+```bash
+rm -rf ****/vscode-server/bin/****
+```
+
+---
+
+## Remote-SSH + tmux 每次 bash 命令执行完都会有红色报错 ``-bash: __vsc_prompt_cmd_original: command not found`
+
+> [visual studio code - VSCode Remote SSH Extension + tmux = -bash: __vsc_prompt_cmd_original: command not found - Stack Overflow](https://stackoverflow.com/questions/73421978/vscode-remote-ssh-extension-tmux-bash-vsc-prompt-cmd-original-command-n/73798469#73798469)
+>
+> ---
+
+![image-20221118232314707](http://cdn.ayusummer233.top/img/202211182323764.png)
+
+---
 
