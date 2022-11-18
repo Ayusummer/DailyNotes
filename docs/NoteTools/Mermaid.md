@@ -20,8 +20,6 @@ a-->b[2<br>3<br>3]
 
 # 显示支持
 
-- Github 需要安装[浏览器插件]([GitHub + Mermaid - Chrome 网上应用店 (google.com)](https://chrome.google.com/webstore/detail/github- -mermaid/goiiopgdnkogdbjmncgedmgpoajilohe))以支持显示 Mermaid 图像
-
 - VSCode 需要安装扩展-Markdown Preview Mermaid Support 以预览 Mermaid 图像
 
 ----
