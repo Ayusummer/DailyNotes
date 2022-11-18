@@ -163,3 +163,25 @@ jobs:
 
 ---
 
+## 配合 vuepress_theme_hope 食用
+
+> [主页 | vuepress-theme-hope](https://vuepress-theme-hope.github.io/v2/zh/)
+>
+> [安装/使用 | vuepress-theme-hope](https://vuepress-theme-hope.github.io/v2/zh/guide/get-started/install.html)
+>
+> ---
+
+```bash
+# 使用 vuepress_theme_hope 初始化一个 vuepress 项目
+pnpm create vuepress-theme-hope@next [dir]
+
+# 获取为当前项目添加 vuepress_theme_hope 支持
+pnpm install -D vuepress-theme-hope@next
+```
+
+> 这里的 `[dir]` 是一个参数，你需要使用真实的文件夹名称替换它，例如 `docs`、`src` 或其他你喜欢的名称。
+
+---
+
+
+
