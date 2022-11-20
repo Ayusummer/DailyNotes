@@ -56,6 +56,22 @@ sudo apt install docker-ce docker-ce-cli containerd.io
 docker version
 ```
 
+@tab wsl2
+
+> [docker wsl2启动不了_win10利用WSL2安装docker的2种方式_weixin_39786155的博客-CSDN博客](https://blog.csdn.net/weixin_39786155/article/details/110363154)
+
+```bash
+curl -fsSL https://get.docker.com -o get-docker.sh
+sudo sh get-docker.sh
+sudo service docker start
+```
+
+> wsl2-kali 是不支持以此种方式安装的, 可以在 Windows 上装 Docker Desktop 并启用 WSL2 访问
+>
+> ![image-20221120235620604](http://cdn.ayusummer233.top/img/202211202356631.png)
+>
+> ![image-20221121000717073](http://cdn.ayusummer233.top/img/202211210007112.png)
+
 :::
 
 ---
