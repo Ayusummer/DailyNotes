@@ -21,14 +21,32 @@ echo $SHELL
 
 ## 快捷键/命令
 
-- 类清屏
+### 类清屏
 
-  ```bash
+- ```bash
   # 清屏
   clear
   # 指针移到行尾
   Ctrl+L
   ```
+
+---
+
+### 查找文件
+
+- 使用 locate
+
+  > [Difference between locate and mlocate - Unix & Linux Stack Exchange](https://unix.stackexchange.com/questions/273182/difference-between-locate-and-mlocate)
+  >
+  > ---
+
+  ```bash
+  # 注意是 mlocate 而非 locate, 二者是不一样的
+  apt install mlocate
+  # 更新数据库
+  time updatedb
+  # 使用 mlocate 搜索文件(注意这里命令就是 locate 而非 mlocate)
+  locate [文件名]
 
 ---
 
@@ -351,6 +369,67 @@ which
 ---
 # WSL2
 
+---
+
+## 安装
+
+> [安装 WSL | Microsoft Learn](https://learn.microsoft.com/zh-cn/windows/wsl/install)
+>
+> [旧版 WSL 的手动安装步骤 | Microsoft Learn](https://learn.microsoft.com/zh-cn/windows/wsl/install-manual#step-3---enable-virtual-machine-feature)
+>
+> [win10 WSL2问题解决WslRegisterDistribution failed with error: 0x800701bc_first_Dance的博客-CSDN博客](https://blog.csdn.net/qq_18625805/article/details/109732122)
+>
+> ---
+
+安装 WSL 2 之前，必须启用“虚拟机平台”可选功能。 计算机需要[虚拟化功能](https://learn.microsoft.com/zh-cn/windows/wsl/troubleshooting#error-0x80370102-the-virtual-machine-could-not-be-started-because-a-required-feature-is-not-installed)才能使用此功能。
+
+以管理员身份打开 PowerShell 并运行：
+
+```powershell
+dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
+```
+
+**重新启动**计算机，以完成 WSL 安装并更新到 WSL 2。
+
+---
+
+下载 Linux 内核更新包并安装
+
+- [适用于 x64 计算机的 WSL2 Linux 内核更新包](https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi)
+
+  > 如果使用的是 ARM64 计算机，请下载 [ARM64 包](https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_arm64.msi)。 如果不确定自己计算机的类型，请打开命令提示符或 PowerShell，并输入：`systeminfo | find "System Type"`。 **Caveat：** 在非英文版 Windows 上，你可能必须修改搜索文本，对“System Type”字符串进行翻译。 你可能还需要对引号进行转义来用于 find 命令。 例如，在德语版中使用 `systeminfo | find '"Systemtyp"'`。
+
+---
+
+`Windows+X` 选择以管理员模式打开 Powershell, 执行如下命令安装 wsl2
+
+```powershell
+# 该命令默认安装 wsl2
+wsl --install
+```
+
+![image-20221120231039275](http://cdn.ayusummer233.top/img/202211202310305.png)
+
+```powershell
+wsl --install -d kali-linux
+```
+
+按照提示新建账户密码即可
+
+---
+
+## 卸载
+
+> [WSL 发行版卸载 - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/487091950)
+>
+> ---
+
+```powershell
+wslconfig /u kali-linux
+```
+
+---
+
 ## VSCode-ssh-remote
 
 使用 SSH-remote 插件连上 WSL 后如果不是以 root 用户登入的话,会在一些系统目录(如 `/etc`, `/dev`, `/root` 等)被限制编辑与增删, 不过在用户目录(如 `/ubuntu`, `/mnt`)的权限是足够的
@@ -386,6 +465,8 @@ which
   ![image-20210921163536793](http://cdn.ayusummer233.top/img/202109211635853.png)
 
   > 需要注意的是, 虽然看到的 `Distribution` 为 `Ubuntu-20.04`, 但是输入命令时要写成 `ubuntu2004`
+  >
+  > 相应的看到的是 `kali-linux`, 但是输入命令时要用 `kali`
 
 - 再打开相应 `WSL` 时就可以看到用户已经切换到相应设置的用户了
 
