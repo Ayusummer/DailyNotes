@@ -188,3 +188,11 @@ echo $a;
 
 ![image-20221021112925694](http://cdn.ayusummer233.top/img/202210211129809.png)
 
+---
+## 一些基本指令
+
+查看 PHP 版本
+
+```bash
+php -v
+```
