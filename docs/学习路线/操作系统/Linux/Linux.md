@@ -32,6 +32,35 @@ echo $SHELL
 
 ---
 
+### 运算符
+
+
+#### 管道运算符 `|`
+
+```bash
+command 1 | command 2
+```
+
+把第一个命令 `command 1` 执行的结果作为 `command 2`的输入传给 `command 2`
+
+例如:
+
+```bash
+ls -s|sort -nr
+```
+
+该命令列出当前目录中的文档(含size)，并把输出送给 sort 命令作为输入，sort 命令按数字递减的顺序把 ls 的输出排序。
+
+- `-s`: file size
+- `-n`: `numeric-sort`
+- `-r`: reverse，反转
+
+> ![image-20221122002954641](http://cdn.ayusummer233.top/img/202211220038780.png)
+
+
+
+---
+
 ### 查找文件
 
 - 使用 locate
