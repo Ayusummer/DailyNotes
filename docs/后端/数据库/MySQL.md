@@ -2,6 +2,10 @@
 
 ## 安装
 
+:::tabs
+
+@tab:active Windows
+
 > [MySQL的安装与配置——详细教程 - Winton-H - 博客园 (cnblogs.com)](https://www.cnblogs.com/winton-nfs/p/11524007.html)
 >
 > ---
@@ -160,6 +164,68 @@
   - 如果有空的话别忘了给博主点个`推荐`哦
 
     > 若忘记密码可以参考[这篇文章](https://www.cnblogs.com/syq816/p/12241136.html)
+
+---
+
+@tab:active kali
+
+> [kali自带mysql配置 - 腾讯云开发者社区-腾讯云 (tencent.com)](https://cloud.tencent.com/developer/article/1920635)
+
+kali 自带 MariaDB, 基本兼容 MySQL
+
+> 在部署 gshark时要安装 mysql, 且其只支持 mysql
+>
+> 搜索 linux 安装 mysql 多半出来的是 CentOS 的陈年教程
+>
+> 搜索 Debian 安装 mysql 找到了 [如何在Debian 10安装MySQL | myfreax](https://www.myfreax.com/how-to-install-mysql-on-debian-10/) 不过
+>
+> ![image-20221123144046127](http://cdn.ayusummer233.top/img/202211231606829.png)
+>
+> ---
+
+```bash
+# 启动 mysql 服务
+service mysql start
+```
+
+> ![image-20221123144229699](http://cdn.ayusummer233.top/img/202211231606894.png)
+
+```bash
+# 初始化密码
+mysql_secure_installation
+```
+
+> ![image-20221123144351106](http://cdn.ayusummer233.top/img/202211231606785.png)
+>
+> 然后可以一路 yes 下去(或者按照自己的需求选择配置)
+>
+> ![image-20221123144915315](http://cdn.ayusummer233.top/img/202211231606778.png)
+
+---
+
+@tab Debian
+
+> [如何在Debian 10安装MySQL | myfreax](https://www.myfreax.com/how-to-install-mysql-on-debian-10/)
+>
+> ---
+
+MySQL在默认的 Debian 存储库中不可用。 MariaDB 是 Debian 10中的默认数据库。
+
+要将MySQL存储库添加到您的系统，请访问[MySQL仓库下载页面](https://dev.mysql.com/downloads/repo/apt/)并使用[wget命令](https://www.myfreax.com/wget-command-examples/)下载最新MySQL。
+
+```bash
+wget https://repo.mysql.com//mysql-apt-config_0.8.24-1_all.deb
+# 安装此 deb 软件包
+apt install ./mysql-apt-config_0.8.24-1_all.deb 
+```
+
+
+
+
+
+
+
+:::
 
 ---
 
