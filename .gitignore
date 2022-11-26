@@ -8,6 +8,7 @@ docs/.vuepress/dist
 DailyLife/res
 DailyLife/test.ipynb
 **/output
+**/test
 
 # Latex 编译文件
 NoteTools/LaTex/latex/latex.aux
