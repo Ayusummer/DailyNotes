@@ -21,6 +21,19 @@ echo $SHELL
 
 ## 快捷键/命令
 
+---
+
+# 路由操作
+
+```bash
+route add -net [目的网段] netmask [掩码] gw [网关]
+route del -net [目的网段] netmask [掩码] gw [网关]
+```
+
+
+
+---
+
 ### 类清屏
 
 - ```bash
