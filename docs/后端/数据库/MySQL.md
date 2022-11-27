@@ -12,7 +12,15 @@
 
 - 下载[MySQL 免安装版](https://dev.mysql.com/get/Downloads/MySQL-8.0/mysql-8.0.22-winx64.zip)
 
-  > 该链接指向的是截至 2020.12.2 最新版的 MySQL 社区版最新下载链接
+  > 该链接指向的是截至 2020.12.2 最新版的 MySQL 社区版最新下载链接, 或者自行到 [MySQL :: MySQL Downloads](https://www.mysql.com/downloads/) 选择具体版本下载
+
+  ![image-20221128004735707](http://cdn.ayusummer233.top/img/202211280047742.png)
+
+  ![image-20221128004757314](http://cdn.ayusummer233.top/img/202211280047346.png)
+
+  ![image-20221128004839123](http://cdn.ayusummer233.top/img/202211280048162.png)
+
+  
 
 - 下载完成后解压到你想把 MySQL 安装在的目录
 
@@ -219,11 +227,43 @@ wget https://repo.mysql.com//mysql-apt-config_0.8.24-1_all.deb
 apt install ./mysql-apt-config_0.8.24-1_all.deb 
 ```
 
+---
 
+@tab Ubuntu
 
+> [如何在 Ubuntu 20.04 上安装 MySQL-阿里云开发者社区 (aliyun.com)](https://developer.aliyun.com/article/758177)
+>
+> ---
 
+```bash
+sudo apt update
+sudo apt install mysql-server
+# 安装完后会自动启动后, 可以执行如下命令查看其运行状态
+sudo systemctl status mysql
+# MySQL 安装文件附带了一个名为mysql_secure_installation的脚本，它允许你很容易地提高数据库服务器的安全性
+sudo mysql_secure_installation
+```
 
+---
 
+@tab Docker
+
+> [Docker配置MySQL容器+远程连接（全流程）_卷、就硬卷的博客-CSDN博客](https://blog.csdn.net/qq_43781399/article/details/112650755)
+>
+> ---
+
+```bash
+docker pull mysql
+docker run -d -p [宿主机端口]:3306 -e MYSQL_ROOT_PASSWORD=[初始化root密码] --name [自定义一个可辨识的容器名] mysql
+# 进入 docker 容器
+docker exec -it [上面自定义的可辨识的容器名] bash
+# 如果想远程连接且mysql在docker里的话可以执行
+alter user 'root'@'%' identified with mysql_native_password by 'root';
+```
+
+如果出现报错, 可以参考本文最后一节的报错收集中的相关条目
+
+---
 
 :::
 
@@ -361,4 +401,73 @@ mysql
 ```
 
 :::
+
+---
+
+## 报错收集
+
+---
+
+### MySQL Failed! Error: SET PASSWORD has no significance for user ‘root’@’localhost’ as the authentication method used doesn’t store authentication data in the MySQL server. Please consider using ALTER USER
+
+> [MySQL Failed! Error: SET PASSWORD has no significance for user 'root'@'localhost' as the authentication method used doesn't store authentication data in the MySQL server. Please consider using ALTER USER - Linux - nixCraft Linux/Unix Forum](https://www.nixcraft.com/t/mysql-failed-error-set-password-has-no-significance-for-user-root-localhost-as-the-authentication-method-used-doesnt-store-authentication-data-in-the-mysql-server-please-consider-using-alter-user/4233)
+>
+> ----
+
+```bash
+# 将 root 密码更改为 SetRootPasswordHere
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'SetRootPasswordHere';
+exit
+# 重新配置 mysql 安全项
+sudo mysql_secure_installation
+# 使用上面修改的密码(如SetRootPasswordHere) 登入然后修改配置项即可
+```
+
+---
+
+### ERROR 1819 (HY000): Your password does not satisfy the current policy requirements
+
+> [解决ERROR 1819 (HY000): Your password does not satisfy the current policy requirements - 慕尘 - 博客园 (cnblogs.com)](https://www.cnblogs.com/baby123/p/12221405.html)
+>
+> ---
+
+```bash
+SHOW VARIABLES LIKE 'validate_password%';
+set global validate_password_policy=0
+```
+
+> 简单来说就是更改密码策略为低, 不建议在公网上使用
+>
+> ---
+
+---
+
+### ERROR 1396 (HY000): Operation ALTER USER failed for 'root'@'%'
+
+> [linux mysql把root@localhost修改成root@% 的详细步骤谢谢_百度知道 (baidu.com)](https://zhidao.baidu.com/question/604727574.html)
+>
+> ---
+
+在远程访问 docker 中的 mysql 的需求的实现中, 需要修改 `root@%` 的密码, 不过之前设置数据库的用户名是 `root@localhost`, 当使用
+
+```bash
+alter user 'root'@'%' identified with mysql_native_password by '[密码]';
+```
+
+时报错 `ERROR 1396 (HY000): Operation ALTER USER failed for 'root'@'%'`
+
+```mysql
+use mysql;
+select user,host from user;
+```
+
+可以看到当前只有 `root@localhost` 所以要加一个 `root@%`
+
+```mysql
+grant all on *.* to 'root'@'%' identified by '[密码]' with grant option;
+```
+
+
+
+
 
