@@ -1,6 +1,6 @@
-# 编辑软件
+# Markdown 编辑软件
 
-## 在 VSCode 中编写 Markdown 文件
+## 在 VSCode 中编辑 Markdown 文件
 
 - 安装 VSCode 扩展
   - Markdown All in One / [Markdown Preview Enhanced](#Markdown Preview Enhanced)
@@ -22,22 +22,43 @@
 
 - Typora 编辑 markdown 文件也有如下顺手之处
   - 自动空行, 使得回车时确实能够换行书写
+  
+    > 编辑 markdown 源码时要实现预览时的话行需要在源码行尾输入两个空格或者是一个或多个空行
+  
   - 可视化编辑格式(尤其是表格的插入和编辑体验很好)
+  
+    > 直接编辑 Markdown 文件主要是看不到图片, 因此在 VSCode 中编辑 Markdown 时通常会开两个 tab, 一个编辑源码一个用来预览
+  
   - 配合 PicGo 也可以自动上传图片到个人图床, 截图完直接粘贴可以自动生成图链
+  
   - 超链接的生成比较灵活, 复制完网页链接之后直接粘贴会根据内容生成超链接及其文本, 对于参考链接的书写比较友好, 省下了不少自己打描述的时间
 
 ---
 
-### 踩坑
+### 配置项
+
+#### 图片
+
+可以如此配置图片选项使得粘贴图片到 Markdown 文档中时会自动将图片放在 `当前文档名.assets` 目录下并自动生成 markdown 图片引用语法
+
+![image-20221130204251249](http://cdn.ayusummer233.top/img/202212010920043.png)
+
+---
+
+### 报错收集
 
 ----
 #### image load failed
+
 - 自动上传图片后路径转义为:`http://cdn.ayusummer233.top/img/image-20210607155126647.png`无法正常显示, 解决方案为在`http:`后加上`//`
 
   > 实际上是 Picgo 的上传路径配置有问题, 少了个 `//`
+  >
+  > 因为之前用 VSCode 写时 `http:cnd......` 的形式是可以正常渲染图片的, 所以当时没注意到链接格式不全的问题
 
 ---
 #### 无法正常导出PDF
+
 - 导出 PDF 点保存后没有提示也没有导出成功
 - `解决方案` : 打开计算机`服务`菜单, `启动 Print Spooler`
 
@@ -67,9 +88,15 @@ VNote是免费、开源的。您可以获得适用于Linux，Windows和macOS的�
 ----
 # 个人图床(七牛云+阿里云域名+picgo)
 - [七牛云+阿里云域名+PicGo](https://blog.csdn.net/qq_45807032/article/details/113772697)
-- ![VSCode PicGo插件配置](http://cdn.ayusummer233.top/img/20210309122224.png)
+
+  ![VSCode PicGo插件配置](http://cdn.ayusummer233.top/img/20210309122224.png)
+
 - 使用说明  
   ![具体使用](http://cdn.ayusummer233.top/img/20210309122603.png)
+
+配置完七牛云和阿里云域名后也可以在 Picgo 的 Github 仓库下载 Windows 版本安装包, 安装并配置七牛云图床, 然后如此编辑 Typora 偏好设置来使粘贴到 markdown 文档的图片自动上传图床并自动生成 markdown 图片引用语法
+
+![image-20221130204604244](http://cdn.ayusummer233.top/img/202212010920489.png)
 
 ---
 
@@ -101,6 +128,7 @@ VNote是免费、开源的。您可以获得适用于Linux，Windows和macOS的�
   ![图片标识](图片地址)
   ```
   - 图片标识想起就起,不想起空着也行
+  
   - 图片地址可以填相对地址也可以填网络中的绝对地址
     - 相对地址
       - 也是本仓库推荐使用的一种地址
@@ -112,33 +140,65 @@ VNote是免费、开源的。您可以获得适用于Linux，Windows和macOS的�
         ```
         - 以当前文件为例`./`表示本仓库的根目录,如图
           <!-- ![](./res_-daily-notes/img/README/本仓库的根目录.png) -->
+      
     - 网络绝对地址
       - **一定别用本地**文件的绝对地址,你有这个路径不代表别人也有
-      - 原理是输入网上图床中图片的链接,所以你需要先将图片上传到图床上然后再获取图片的链接,可以借用Gitee的Issue中评论框粘贴图片直接生成图链
+      
+      - 原理是输入网上图床中图片的链接,所以你需要先将图片上传到图床上然后再获取图片的链接,可以借用Gitee 或 Github 的 Issue 中评论框粘贴图片直接生成图链
+      
+        > PS: Gitee 在年初更新了防盗链规则, 不推荐在 Gitee 站外使用 Gitee 图链, 否则就丢图了
+        >
+        > > 目前在 Gitee 站外引用的 Gitee 图链会变成一个  Gitee 图标
 
 ---
 - 插入表格
-  | 列1 | 列2 | 列3 |
-  | --- | --- | --- |
-  | 值1 | 值2 | 值3 |
+  
+  ```markdown
+  | 列1  | 列2  |  列3 |
+  | :--- | :--: | ---: |
+  | 值1  | 值2  |  值3 |
+  ```
+  
+  > `:---`, `:--:`, `---:` 分别对应左对齐, 居中对齐和右对齐(中间的 `-` 数量其实无所谓, 主要是用来对齐 `|` 这样源码比较美观)
+  
+  | 列1  | 列2  |  列3 |
+  | :--- | :--: | ---: |
+  | 值1  | 值2  |  值3 |
 
 ---
 - 插入数学公式
-  - 将公式用$$包围,例:
+  - 将公式用 `$$` 包围,例:
     - $y_1 = m_{11} + x^{12} + x^2$
   - [更多公式](https://blog.csdn.net/konglongdanfo1/article/details/85204312)
   - [希腊字母表](https://blog.csdn.net/krone_/article/details/99710062)
 
 ---
 ## 分页符
-```
+```html
 <div STYLE="page-break-after: always;"></div>
 ```
 
+直接在 markdown 源码中插入此行, 这样在导出 PDF 文件时会在此行处分页
+
+> 之所以有这个需求是因为经常出现一张长图片导致前一页或者后一页出现大面积空白或是一段源码在 PDF 中刚好分在了两页上, 这样阅读起来就比较别扭, 因此可以手动插入分页符进行调整
+>
+> > 不过后来分享 PDF 页数越来越多时手动插入分页符的操作非常耗费精力, 因此就引出了导出 HTML 分享的解决方案
+> >
+> > > 对应 [VNote 导出](#vnote)以及 [MPE 导出](#使用 MPE 导出 base64图片 && 带侧边目录的 HTML)
+> >
+> > 有了解决方案后又有了新的问题, 不是所有分享媒介都直接预览 HTML 文件(比如微盘和gitlab都不支持直接预览 HTML), 从而引出了新的解决方案: 
+> >
+> > - 对于 Gitlab 而言, 默认支持 markdown 文件的渲染显示
+> > - 对于微盘而言, 最终还是分享 markdown + 图片文件夹 +  PDF
+> > - 使用 VuePress, VitePress 等工具自己起个文档站点展示 markdown 文件
+
 -----
 ## 排版
+
 - markdown兼容html
-- <center>文字居中</center>
+
+  <center>文字居中</center>
+
 - 图像居中显示
   
   <div align=center><img src="http://cdn.ayusummer233.top/img/20210514111630.png" width="  "></div>
@@ -146,9 +206,18 @@ VNote是免费、开源的。您可以获得适用于Linux，Windows和macOS的�
 
 ----
 ## 字体格式
-- <font face="黑体">使用黑体</font>
-- <font face="黑体" size=10>我是黑体10号字</font>
-- <font color=red>红色</font>
+- ```markdown
+  <font face="黑体">使用黑体</font>
+  ```
+  <font face="黑体">使用黑体</font>
+- ```markdown
+  <font face="黑体" size=10>我是黑体10号字</font> 
+  ```
+  <font face="黑体" size=10>我是黑体10号字</font>  
+- ```markdown
+  <font color=red>红色</font>
+  ```
+  <font color=red>红色</font>
 
 
 ---
@@ -157,21 +226,31 @@ VNote是免费、开源的。您可以获得适用于Linux，Windows和macOS的�
   - ```html
     <font size = 5>示例</font>
     ```
-    - 预览
-      - <font size = 5>示例</font>
+    <font size = 5>示例</font>
 
 ----
 ## 公式
 
 ---
 ### 公式内部打空格
-- [怎么在LaTeX,Markdown和知乎上写数学公式时打出空格 - 知乎 (zhihu.com)
-- [![img](http://cdn.ayusummer233.top/img/20210628102451.jpeg)](https://zhuanlan.zhihu.com/p/265517357)
+
+> [怎么在LaTeX,Markdown和知乎上写数学公式时打出空格 - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/265517357)
+>
+> ----
+
+![img](http://cdn.ayusummer233.top/img/20210628102451.jpeg)
 
 ---
 ### 多行公式等号对齐
 
 NPV  = 现金流入现值和 - 现金流出现值和
+
+```markdown
+\begin{aligned}
+    NPV  &= CI - CO \\
+    	 &= \sum_{t=0}^n CI_t (P/F, i_0, t) - \sum_{t=0}^n CO_t (P/F, i_0, t)  \\
+\end{aligned}
+```
 
 $$
 \begin{aligned}
@@ -209,6 +288,8 @@ $$
 ## 矩阵
 
 > [如何在 markdown 中表示矩阵？ - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/269245898)
+>
+> ---
 
 ```markdown
 $$\begin{matrix}
@@ -227,8 +308,6 @@ $$\begin{matrix}
 \end{matrix}$$
 
 
-
-
 ----
 
 ## 内嵌 HTML
@@ -242,6 +321,8 @@ markdown 支持内嵌 HTML
 > [vscode markdownlint插件让你的markdown更加规范 -- Rules规则提示信息 一介布衣 (yijiebuyi.com)](https://yijiebuyi.com/blog/79347d0e8c1739bd1f9d9d7c1dcbcccf.html#md012---multiple-consecutive-blank-lines)
 >
 > [markdownlint取消部分html标签警告_sbwww的博客-CSDN博客](https://blog.csdn.net/qq_44926567/article/details/109167394)
+>
+> ---
 
 - 问题
 
@@ -272,15 +353,18 @@ markdown 支持内嵌 HTML
   
   其中 `"allowed_elements"` 的列表中填入不想提出警告的 html 标签, 保存修改后，markdownlint 将不再对 `"allowed_elements"` 中的 html 标签提出警告
   
-  
 
 
 ---
 # something interesting
 
 ## 徽章
-- [repo链接](https://github.com/RimoChan/unv-shield)   
-- ![](https://unv-shield.librian.net/api/unv_shield?code=1&url=https://avatars.githubusercontent.com/u/59549826&scale=2&txt=好!&border=4&barradius=999)
+
+> [RimoChan/unv-shield: 【幼盾】个性化图片徽章服务！ (github.com)](https://github.com/RimoChan/unv-shield)
+>
+> ---
+
+![](https://unv-shield.librian.net/api/unv_shield?code=1&url=https://avatars.githubusercontent.com/u/59549826&scale=2&txt=好!&border=4&barradius=999)
 
 ---
 # 工具
@@ -374,6 +458,8 @@ export_on_save:
 > [安装和使用Pandoc | typora中文网](https://www.typora.net/1193.html)
 >
 > [Pandoc 2.16.1-windows-x86_64.msi - OneDrive Share](https://ayusummer-my.sharepoint.com/:u:/g/personal/233_ayusummer_onmicrosoft_com/EfwTtm_9ifpOmU-DP6dVdT8BPsdarssrIctgWWs_cyv1zA?e=yT8wBM)
+>
+> ---
 
 Pandoc 是通用文档文本转换器。Typora 使用它来支持几种文件类型的文件导入/导出功能。
 
