@@ -128,8 +128,6 @@ apt update
 # SSH 工具
 
 
-## VSCode: Remote-SSH
-
 > [如何在 Ubuntu 20.04 启用 SSH-阿里云开发者社区 (aliyun.com)](https://developer.aliyun.com/article/763505)
 >
 > ---
@@ -190,6 +188,12 @@ update-rc.d ssh enable
 
 然后就可以使用 root 账户 ssh 该设备了
 
+---
+
+
+## VSCode: Remote-SSH
+
+
 VSCode 安装 Remote-SSH
 
 > ![image-20221110003106144](http://cdn.ayusummer233.top/img/202211100031215.png)
@@ -232,10 +236,6 @@ sudo chmod 700 ~/.ssh	# 修改目录权限
 
 然后重新连接远程主机, 就不需要输入密码了
 
----
-
-
-
 
 ---
 
@@ -253,7 +253,58 @@ sudo chmod 700 ~/.ssh	# 修改目录权限
 
 ## Terminus
 
+---
 
+## 远程图形化界面的本地显示
+
+> [ssh链接远程服务器 及 远程图形化界面的本地显示 - 掘金 (juejin.cn)](https://juejin.cn/post/7109647016086470669)
+>
+> [本地显示远程图形化界面、服务器配置图形化界面 - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/260189540)
+>
+> ---
+
+编辑 `/etc/ssh/sshd_config`
+
+![image-20221201165743295](http://cdn.ayusummer233.top/img/202212011718395.png)
+
+修改如下三条配置:
+
+```properties
+X11Forwarding yes
+#X11DisplayOffset 10
+X11UseLocalhost no
+#PermitTTY yes
+PrintMotd no
+#PrintLastLog yes
+#TCPKeepAlive yes
+```
+
+```bash
+# 重启 ssh
+service ssh reload
+# 安装 x11-apps
+sudo apt install x11-apps
+```
+
+到这里 MobaXterm 就可以在本地显示远程应用的 UI 了
+
+![image-20221201170353587](http://cdn.ayusummer233.top/img/202212011718703.png)
+
+但是 VSCode 没有 DISPLAY 环境变量, 需要在 MobaXterm 里执行下
+
+```bash
+env | grep DISPLAY
+```
+
+> ![image-20221201170530202](http://cdn.ayusummer233.top/img/202212011718613.png)
+
+对应得将如下配置添加到 `/root/.bashrc` 中:
+
+```properties
+export DISPLAY=localhost:11.0
+```
+
+![image-20221201170804190](http://cdn.ayusummer233.top/img/202212011718410.png)
 
 ---
 
