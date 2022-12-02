@@ -23,14 +23,29 @@ echo $SHELL
 
 ---
 
-# 路由操作
+## 路由操作
 
 ```bash
 route add -net [目的网段] netmask [掩码] gw [网关]
 route del -net [目的网段] netmask [掩码] gw [网关]
 ```
 
+这样加的路由是临时的, 每次重启都会掉路由, 可以通过在 `/root/.bashrc` 中写入如下命令
 
+```bash
+# 如果路由中没有到目的网段 [目的网段] 的路由则添加此条路由
+if ! ip route | grep -q [目的网段]; then
+    route add -net [目的网段] netmask [子网掩码] gw [网关ip]
+fi
+```
+
+由于每次打开 bash 都会加载 `~/.bashrc`, 而 VSCode SSH 连远程主机一般第一件事就是新建一个 bash, 所以这样也可以变相解决手动加路由的困扰
+
+> 不用 bash 的话也可以手动 source ~/.bashrc 来加载路由
+>
+> ---
+>
+> `-q` 参数使得 `ip route | grep [目的网段]` 命令不输出结果, 不使用 `-d` 的话每次新建 bash 都会看到该条命令的输出结果
 
 ---
 
@@ -305,6 +320,56 @@ export DISPLAY=localhost:11.0
 ```
 
 ![image-20221201170804190](http://cdn.ayusummer233.top/img/202212011718410.png)
+
+> PS: 这个 IDSPLAY 变量的值是会变的, 貌似是每次 MobaXterm SSH 连接设备都会变
+>
+> ![image-20221202133848680](http://cdn.ayusummer233.top/img/202212021823466.png)
+>
+> > [xorg - What is the $DISPLAY environment variable? - Ask Ubuntu](https://askubuntu.com/questions/432255/what-is-the-display-environment-variable)
+>>
+> > [使用 WSL2 + X11 转发 - 在 Windows10 中打造 GNU/Linux 学习生产环境 - Steins;Lab (steinslab.io)](https://steinslab.io/archives/2082#3_X11_Forwarding)
+> 
+> 折腾了一圈最后感觉还是开个 MobaXterm 然后用 VSCode 比较方便
+
+---
+
+### 一些软件命令行启动的命令
+
+```bash
+# 火狐浏览器直接在命令行里输入 firefox 并回车会在远程启动默认用户配置的 Firefox 窗口, 并不会在本地启动
+firefox
+# 如果要在本地启动的话需要用如下配置调起火狐用户配置, 然后新建一个用户配置并启动, 此时在本地就可以看到火狐的窗口了
+firefox -profilemanager
+```
+
+![image-20221201191455296](http://cdn.ayusummer233.top/img/202212021823418.png)
+
+> 不过远程启动火狐后使用体验不是很好, 比较卡, 找到的一篇相关文章也并没有复现成功, 于是就继续远程 windows 用浏览器了
+>
+> [为什么Firefox在SSH上这么慢？ - rebeca8 - 博客园 (cnblogs.com)](https://www.cnblogs.com/zafu/p/9392498.html)
+>
+> ---
+>
+> 从个人实际需求出发之后发现了一个比较好的替代方案
+>
+> 因为个人希望打开远程浏览器主要是为了访问局域网里的靶场, 然后通过 burp 拦截请求
+>
+> 那么可以用 VSCode 的端口转发功能, 将 BurpSuit 代理的端口(比如8080) 转发到本机, 然后在本机的 firefox 设置 localhost 8080 代理, 之后就可以在本机 firefox 中访问局域网靶场以及使用 burp 拦截请求了
+
+---
+
+```bash
+java -jar [burpsuitxxx.jar绝对路径]
+```
+
+> ![image-20221202093238590](http://cdn.ayusummer233.top/img/202212021823179.png)
+>
+> 就是分辨率有点奇怪, 可以在 `~/.bashrc` 加上 `GDK_SCALE` 参数来放大 [GDK_SCALE] 倍(只能是整数倍)
+>
+> ```bash
+> export GDK_SCALE=2
+> export GDK_DPI_SCALE=1
+> ```
 
 ---
 
