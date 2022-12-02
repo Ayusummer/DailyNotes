@@ -355,6 +355,16 @@ firefox -profilemanager
 > 因为个人希望打开远程浏览器主要是为了访问局域网里的靶场, 然后通过 burp 拦截请求
 >
 > 那么可以用 VSCode 的端口转发功能, 将 BurpSuit 代理的端口(比如8080) 转发到本机, 然后在本机的 firefox 设置 localhost 8080 代理, 之后就可以在本机 firefox 中访问局域网靶场以及使用 burp 拦截请求了
+>
+> ![image-20221202183951903](http://cdn.ayusummer233.top/img/202212021839812.png)
+>
+> ![image-20221202184032013](http://cdn.ayusummer233.top/img/202212021907976.png)
+>
+> ![image-20221202184101762](http://cdn.ayusummer233.top/img/202212021907666.png)
+>
+> ![image-20221202190638055](http://cdn.ayusummer233.top/img/202212021908693.png)
+>
+> ![image-20221202190726334](http://cdn.ayusummer233.top/img/202212021908052.png)
 
 ---
 
