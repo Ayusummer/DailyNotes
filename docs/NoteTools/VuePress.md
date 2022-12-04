@@ -183,5 +183,19 @@ pnpm install -D vuepress-theme-hope@next
 
 ---
 
+## 报错收集
+
+### `Vuepress Error: ENOSPC: System limit for number of file watchers reach`
+
+> [Error: ENOSPC: System limit for number of file watchers reached - Get Help - Vue Forum (vuejs.org)](https://forum.vuejs.org/t/error-enospc-system-limit-for-number-of-file-watchers-reached/107904/3)
+>
+> ---
+
+```bash
+echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
+```
+
+---
+
 
 
