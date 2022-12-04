@@ -356,6 +356,8 @@ firefox -profilemanager
 >
 > 那么可以用 VSCode 的端口转发功能, 将 BurpSuit 代理的端口(比如8080) 转发到本机, 然后在本机的 firefox 设置 localhost 8080 代理, 之后就可以在本机 firefox 中访问局域网靶场以及使用 burp 拦截请求了
 >
+> > PS: 单独设置 VSCode 的端口转发以及 FireFox 的代理并不能使 Firefox 访问局域网站点, 需要用 burp 也代理相同端口才能正常访问局域网站点
+>
 > ![image-20221202183951903](http://cdn.ayusummer233.top/img/202212021839812.png)
 >
 > ![image-20221202184032013](http://cdn.ayusummer233.top/img/202212021907976.png)
