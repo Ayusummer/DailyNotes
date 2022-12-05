@@ -10,9 +10,9 @@
 >
 > ---
 
-- 下载[MySQL 免安装版](https://dev.mysql.com/get/Downloads/MySQL-8.0/mysql-8.0.22-winx64.zip)
+- 下载[MySQL 免安装版](https://dev.MySQL.com/get/Downloads/MySQL-8.0/MySQL-8.0.22-winx64.zip)
 
-  > 该链接指向的是截至 2020.12.2 最新版的 MySQL 社区版最新下载链接, 或者自行到 [MySQL :: MySQL Downloads](https://www.mysql.com/downloads/) 选择具体版本下载
+  > 该链接指向的是截至 2020.12.2 最新版的 MySQL 社区版最新下载链接, 或者自行到 [MySQL :: MySQL Downloads](https://www.MySQL.com/downloads/) 选择具体版本下载
 
   ![image-20221128004735707](http://cdn.ayusummer233.top/img/202211280047742.png)
 
@@ -35,25 +35,25 @@
     转到当前文件夹路径
   - 输入
     ```powershell
-    .\mysqld --install
+    .\MySQLd --install
     ```
     并回车
   - 之后会显示安装成功的提示:`Service successfully installed.`
-- 初始化 mysql
+- 初始化 MySQL
   - 输入
     ```powershell
-    .\mysqld --initialize --console
+    .\MySQLd --initialize --console
     ```
     并回车
   - 将会显示几行文字,复制最后一行`root@localhost:`字样后面的字符串`o?0yxuffh?E.`
 
     > 这串字符串是初始化生成的随机密码
-- 开启 mysql 的服务
+- 开启 MySQL 的服务
 
   - 输入
 
     ```powershell
-    net start mysql
+    net start MySQL
     ```
 
     并回车
@@ -64,7 +64,7 @@
   - 输入
 
     ```powershell
-    .\mysql -u root -p
+    .\MySQL -u root -p
     ```
 
     并回车,将会让你输入密码
@@ -73,7 +73,7 @@
     >
     > 这里需要注意的是: 若刚才生成临时密码的时候最后有个`.`的话注意这里的`.` 不是句号,而是密码的一部分
 
-  - 登陆成功后当前光标前面会有`mysql>`
+  - 登陆成功后当前光标前面会有`MySQL>`
 - 修改密码
 
   - 登录成功后输入
@@ -101,7 +101,7 @@
       - 输入
 
         ```powershell
-        .\mysql -u root -p
+        .\MySQL -u root -p
         ```
 
         并回车,将会让你输入密码
@@ -120,13 +120,13 @@
 
   - 进入后上面是`用户变量`,下面是`系统变量`
     - 点击 `下面的新建按钮`, 新建一个`系统变量`
-      - 变量名填`mysql`
+      - 变量名填`MySQL`
       - 变量值填你将 MySQL 安装的位置
-        - 例如我填的是`C:\Database\MySQL\mysql-8.0.22-winx64`
+        - 例如我填的是`C:\Database\MySQL\MySQL-8.0.22-winx64`
       - 单击`确定`以完成新建
     - 进入`系统变量`的`Path`变量
       - 单击`新建`
-      - 输入`%mysql%\bin`
+      - 输入`%MySQL%\bin`
     - 完成后逐级确定以完成配置
 
 - 配置完系统变量之后要登录 MySQL 只需
@@ -136,23 +136,23 @@
   - 输入
 
     ```shell
-    mysql -u root -p
+    MySQL -u root -p
     ```
 
     并回车即可
 
-- 在 mysql 目录下创建一个 ini 或 cnf 配置文件，在这里我创建的是 ini 配置文件，里面写的代码是 mysql 的一些基本配置
-  - mysql 目录就是刚才配置环境变量时的 MySQL 安装位置
-    - 我的就是`C:\Database\MySQL\mysql-8.0.22-winx64`
+- 在 MySQL 目录下创建一个 ini 或 cnf 配置文件，在这里我创建的是 ini 配置文件，里面写的代码是 MySQL 的一些基本配置
+  - MySQL 目录就是刚才配置环境变量时的 MySQL 安装位置
+    - 我的就是`C:\Database\MySQL\MySQL-8.0.22-winx64`
     - 打开该文件夹新建一个文本文档并**连同文件扩展名**一同改为`my.ini`
       - 打开`my.ini`,键入以下配置并保存退出
         ```ini
-        [mysqld]
+        [MySQLd]
         character-set-server=utf8mb4
         bind-address=0.0.0.0
         port=3306
         default-storage-engine=INNODB
-        [mysql]
+        [MySQL]
         default-character-set=utf8mb4
         [client]
         default-character-set=utf8mb4
@@ -177,30 +177,30 @@
 
 @tab:active kali
 
-> [kali自带mysql配置 - 腾讯云开发者社区-腾讯云 (tencent.com)](https://cloud.tencent.com/developer/article/1920635)
+> [kali自带MySQL配置 - 腾讯云开发者社区-腾讯云 (tencent.com)](https://cloud.tencent.com/developer/article/1920635)
 
 kali 自带 MariaDB, 基本兼容 MySQL
 
-> 在部署 gshark时要安装 mysql, 且其只支持 mysql
+> 在部署 gshark时要安装 MySQL, 且其只支持 MySQL
 >
-> 搜索 linux 安装 mysql 多半出来的是 CentOS 的陈年教程
+> 搜索 linux 安装 MySQL 多半出来的是 CentOS 的陈年教程
 >
-> 搜索 Debian 安装 mysql 找到了 [如何在Debian 10安装MySQL | myfreax](https://www.myfreax.com/how-to-install-mysql-on-debian-10/) 不过
+> 搜索 Debian 安装 MySQL 找到了 [如何在Debian 10安装MySQL | myfreax](https://www.myfreax.com/how-to-install-MySQL-on-debian-10/) 不过
 >
 > ![image-20221123144046127](http://cdn.ayusummer233.top/img/202211231606829.png)
 >
 > ---
 
 ```bash
-# 启动 mysql 服务
-service mysql start
+# 启动 MySQL 服务
+service MySQL start
 ```
 
 > ![image-20221123144229699](http://cdn.ayusummer233.top/img/202211231606894.png)
 
 ```bash
 # 初始化密码
-mysql_secure_installation
+MySQL_secure_installation
 ```
 
 > ![image-20221123144351106](http://cdn.ayusummer233.top/img/202211231606785.png)
@@ -213,18 +213,18 @@ mysql_secure_installation
 
 @tab Debian
 
-> [如何在Debian 10安装MySQL | myfreax](https://www.myfreax.com/how-to-install-mysql-on-debian-10/)
+> [如何在Debian 10安装MySQL | myfreax](https://www.myfreax.com/how-to-install-MySQL-on-debian-10/)
 >
 > ---
 
 MySQL在默认的 Debian 存储库中不可用。 MariaDB 是 Debian 10中的默认数据库。
 
-要将MySQL存储库添加到您的系统，请访问[MySQL仓库下载页面](https://dev.mysql.com/downloads/repo/apt/)并使用[wget命令](https://www.myfreax.com/wget-command-examples/)下载最新MySQL。
+要将MySQL存储库添加到您的系统，请访问[MySQL仓库下载页面](https://dev.MySQL.com/downloads/repo/apt/)并使用[wget命令](https://www.myfreax.com/wget-command-examples/)下载最新MySQL。
 
 ```bash
-wget https://repo.mysql.com//mysql-apt-config_0.8.24-1_all.deb
+wget https://repo.MySQL.com//MySQL-apt-config_0.8.24-1_all.deb
 # 安装此 deb 软件包
-apt install ./mysql-apt-config_0.8.24-1_all.deb 
+apt install ./MySQL-apt-config_0.8.24-1_all.deb 
 ```
 
 ---
@@ -237,11 +237,11 @@ apt install ./mysql-apt-config_0.8.24-1_all.deb
 
 ```bash
 sudo apt update
-sudo apt install mysql-server
+sudo apt install MySQL-server
 # 安装完后会自动启动后, 可以执行如下命令查看其运行状态
-sudo systemctl status mysql
-# MySQL 安装文件附带了一个名为mysql_secure_installation的脚本，它允许你很容易地提高数据库服务器的安全性
-sudo mysql_secure_installation
+sudo systemctl status MySQL
+# MySQL 安装文件附带了一个名为MySQL_secure_installation的脚本，它允许你很容易地提高数据库服务器的安全性
+sudo MySQL_secure_installation
 ```
 
 ---
@@ -253,12 +253,12 @@ sudo mysql_secure_installation
 > ---
 
 ```bash
-docker pull mysql
-docker run -d -p [宿主机端口]:3306 -e MYSQL_ROOT_PASSWORD=[初始化root密码] --name [自定义一个可辨识的容器名] mysql
+docker pull MySQL
+docker run -d -p [宿主机端口]:3306 -e MYSQL_ROOT_PASSWORD=[初始化root密码] --name [自定义一个可辨识的容器名] MySQL
 # 进入 docker 容器
 docker exec -it [上面自定义的可辨识的容器名] bash
-# 如果想远程连接且mysql在docker里的话可以执行
-alter user 'root'@'%' identified with mysql_native_password by 'root';
+# 如果想远程连接且MySQL在docker里的话可以执行
+alter user 'root'@'%' identified with MySQL_native_password by 'root';
 ```
 
 如果出现报错, 可以参考本文最后一节的报错收集中的相关条目
@@ -271,7 +271,7 @@ alter user 'root'@'%' identified with mysql_native_password by 'root';
 
 ## MySQL 数据类型
 
-> [MySQL 数据类型 | 菜鸟教程 (runoob.com)](https://www.runoob.com/mysql/mysql-data-types.html)
+> [MySQL 数据类型 | 菜鸟教程 (runoob.com)](https://www.runoob.com/MySQL/MySQL-data-types.html)
 >
 > ---
 
@@ -303,7 +303,7 @@ alter user 'root'@'%' identified with mysql_native_password by 'root';
 
 - Navicat 中设计表时,数值类型数据的长度设置与字符类型的长度设置是不一样的
   
-  > [MySQL字段int类型的长度INT(M)_乖乖康少的博客-CSDN博客_mysql int 长度](https://blog.csdn.net/guaiguaiknl/article/details/105813770)
+  > [MySQL字段int类型的长度INT(M)_乖乖康少的博客-CSDN博客_MySQL int 长度](https://blog.csdn.net/guaiguaiknl/article/details/105813770)
   >
   > ---
   
@@ -362,9 +362,9 @@ alter user 'root'@'%' identified with mysql_native_password by 'root';
 
 > [MySql重置自增字段的起始值 - 简书 (jianshu.com)](https://www.jianshu.com/p/d3b225260042)
 >
-> [面试官:mysql如何重置自增id_wx6010cbc8d50ca的技术博客_51CTO博客](https://blog.51cto.com/u_15095774/2718785)
+> [面试官:MySQL如何重置自增id_wx6010cbc8d50ca的技术博客_51CTO博客](https://blog.51cto.com/u_15095774/2718785)
 >
-> [MySQL / MariaDB 重置自增 ID (AUTO_INCREMENT)教程 - 完美保留表数据的终极解决方案 - 卡拉云 (kalacloud.com)](https://kalacloud.com/blog/how-to-reset-auto-increment-in-mysql/#四-保留数据重置---直接删除-id-法)
+> [MySQL / MariaDB 重置自增 ID (AUTO_INCREMENT)教程 - 完美保留表数据的终极解决方案 - 卡拉云 (kalacloud.com)](https://kalacloud.com/blog/how-to-reset-auto-increment-in-MySQL/#四-保留数据重置---直接删除-id-法)
 
 ---
 
@@ -380,24 +380,24 @@ alter user 'root'@'%' identified with mysql_native_password by 'root';
 
 @tab:active Linux
 
-修改 `/etc/mysql/my.cnf` 文件
+修改 `/etc/MySQL/my.cnf` 文件
 
 > 也有可能在 `/etc/my.cnf`, 以实际目录为准
 > 
 
-在 `[mysqld]` 字段下新增如下内容并保存
+在 `[MySQLd]` 字段下新增如下内容并保存
 
 ```properties
 skip-grant-tables
 ```
 
-然后重启并进入 mysql
+然后重启并进入 MySQL
 
 ```bash
-# 重启 mysql
-service mysql restart
-# 进入 mysql
-mysql
+# 重启 MySQL
+service MySQL restart
+# 进入 MySQL
+MySQL
 ```
 
 :::
@@ -410,16 +410,16 @@ mysql
 
 ### MySQL Failed! Error: SET PASSWORD has no significance for user ‘root’@’localhost’ as the authentication method used doesn’t store authentication data in the MySQL server. Please consider using ALTER USER
 
-> [MySQL Failed! Error: SET PASSWORD has no significance for user 'root'@'localhost' as the authentication method used doesn't store authentication data in the MySQL server. Please consider using ALTER USER - Linux - nixCraft Linux/Unix Forum](https://www.nixcraft.com/t/mysql-failed-error-set-password-has-no-significance-for-user-root-localhost-as-the-authentication-method-used-doesnt-store-authentication-data-in-the-mysql-server-please-consider-using-alter-user/4233)
+> [MySQL Failed! Error: SET PASSWORD has no significance for user 'root'@'localhost' as the authentication method used doesn't store authentication data in the MySQL server. Please consider using ALTER USER - Linux - nixCraft Linux/Unix Forum](https://www.nixcraft.com/t/MySQL-failed-error-set-password-has-no-significance-for-user-root-localhost-as-the-authentication-method-used-doesnt-store-authentication-data-in-the-MySQL-server-please-consider-using-alter-user/4233)
 >
 > ----
 
 ```bash
 # 将 root 密码更改为 SetRootPasswordHere
-ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'SetRootPasswordHere';
+ALTER USER 'root'@'localhost' IDENTIFIED WITH MySQL_native_password BY 'SetRootPasswordHere';
 exit
-# 重新配置 mysql 安全项
-sudo mysql_secure_installation
+# 重新配置 MySQL 安全项
+sudo MySQL_secure_installation
 # 使用上面修改的密码(如SetRootPasswordHere) 登入然后修改配置项即可
 ```
 
@@ -444,26 +444,26 @@ set global validate_password_policy=0
 
 ### ERROR 1396 (HY000): Operation ALTER USER failed for 'root'@'%'
 
-> [linux mysql把root@localhost修改成root@% 的详细步骤谢谢_百度知道 (baidu.com)](https://zhidao.baidu.com/question/604727574.html)
+> [linux MySQL把root@localhost修改成root@% 的详细步骤谢谢_百度知道 (baidu.com)](https://zhidao.baidu.com/question/604727574.html)
 >
 > ---
 
-在远程访问 docker 中的 mysql 的需求的实现中, 需要修改 `root@%` 的密码, 不过之前设置数据库的用户名是 `root@localhost`, 当使用
+在远程访问 docker 中的 MySQL 的需求的实现中, 需要修改 `root@%` 的密码, 不过之前设置数据库的用户名是 `root@localhost`, 当使用
 
 ```bash
-alter user 'root'@'%' identified with mysql_native_password by '[密码]';
+alter user 'root'@'%' identified with MySQL_native_password by '[密码]';
 ```
 
 时报错 `ERROR 1396 (HY000): Operation ALTER USER failed for 'root'@'%'`
 
-```mysql
-use mysql;
+```MySQL
+use MySQL;
 select user,host from user;
 ```
 
 可以看到当前只有 `root@localhost` 所以要加一个 `root@%`
 
-```mysql
+```MySQL
 grant all on *.* to 'root'@'%' identified by '[密码]' with grant option;
 ```
 

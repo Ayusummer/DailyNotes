@@ -115,7 +115,7 @@ service docker restart
 
   ```bash
   # docker pull [镜像名]
-  # vuldocker/lamp映像包括（php＋apache+mysql），只需要下载dvwa源码即可
+  # vuldocker/lamp映像包括（php＋apache+MySQL），只需要下载dvwa源码即可
   docker pull vuldocker/lamp   
   ```
 
@@ -135,10 +135,10 @@ service docker restart
 
   ```bash
   # docker tag [镜像ID] [镜像名称]:[tag版本信息]
-  docker tag 8ef375298394 mysql:v5.7
+  docker tag 8ef375298394 MySQL:v5.7
   
   # docker tag [原tag][新tag]
-  docker tag mysql:v5.7 http://100.1.1.111:8080/mysql:v5.7
+  docker tag MySQL:v5.7 http://100.1.1.111:8080/MySQL:v5.7
   ```
 
 ---

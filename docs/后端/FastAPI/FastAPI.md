@@ -1616,7 +1616,7 @@ SQLALCHEMY_DATABASE_URL = "sqlite:///E:/ProgrammingLessons/Vue/vite/ViteLearning
 
 如果使用 `PostgreSQL` 的话可以如注释这般使用
 
-使用其他数据库的话把 `sqlite` 字段相应的换成  `mysql`, `mariadb` 等即可
+使用其他数据库的话把 `sqlite` 字段相应的换成  `MySQL`, `mariadb` 等即可
 
 ### 创建 SQLAlchemy engine
 
