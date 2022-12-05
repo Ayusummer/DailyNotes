@@ -112,6 +112,7 @@ VNote是免费、开源的。您可以获得适用于Linux，Windows和macOS的�
 
 ---
 # 基本用法
+
 ```markdown
 # 一级标题
 ## 二级标题
