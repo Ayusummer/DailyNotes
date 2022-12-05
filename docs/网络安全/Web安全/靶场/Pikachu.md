@@ -22,7 +22,7 @@ docker run --restart=always -d -p 9221:80 -p 9222:3306 area39/pikachu
   - `-d`: 后台运行容器，并返回容器ID；
   - `-p`: 指定端口映射，格式为：**主机(宿主)端口:容器端口**
 
-> 需要注意的是默认初始化完成之后密码是空的, 如果想要远程连接 docker 中的 mysql 则需要修改密码, 修改完密码之后需要重新初始化, 此时务必注意要初始化写的密码配置项有两个, 一个在 `/app/inc/config.inc.php` 对应主页面的配置, 另一个在 `/app/pkxss/inc/config.inc.php` 对应后台管理的配置
+> 需要注意的是默认初始化完成之后密码是空的, 如果想要远程连接 docker 中的 MySQL 则需要修改密码, 修改完密码之后需要重新初始化, 此时务必注意要初始化写的密码配置项有两个, 一个在 `/app/inc/config.inc.php` 对应主页面的配置, 另一个在 `/app/pkxss/inc/config.inc.php` 对应后台管理的配置
 
 ---
 

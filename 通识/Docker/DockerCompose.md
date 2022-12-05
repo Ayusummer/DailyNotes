@@ -631,8 +631,8 @@ restart: unless-stopped
 version: "3.1"
 services:
 
-mysql:
-  image: mysql
+MySQL:
+  image: MySQL
   environment:
     MYSQL_ROOT_PASSWORD_FILE: /run/secrets/my_secret
   secrets:
