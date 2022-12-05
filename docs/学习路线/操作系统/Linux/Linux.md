@@ -249,6 +249,13 @@ sudo chmod 700 ~/.ssh	# 修改目录权限
 
 然后打开 remote-ssh 配置文件, 在原来配置项的基础上加上一个 `IdentityFile` 字段, 填写上==本地私钥==路径即可
 
+```properties
+Host [为该主机随便起个有辨识度的名字]
+    HostName [主机ip]
+    User [root]
+    IdentityFile "[本地私钥路径]"
+```
+
 然后重新连接远程主机, 就不需要输入密码了
 
 
