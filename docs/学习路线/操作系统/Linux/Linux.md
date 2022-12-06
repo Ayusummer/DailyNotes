@@ -283,6 +283,8 @@ Host [为该主机随便起个有辨识度的名字]
 >
 > [本地显示远程图形化界面、服务器配置图形化界面 - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/260189540)
 >
+> [Installing and running an X Server on Windows — Aalto scientific computing](https://scicomp.aalto.fi/triton/quickstart/installxonwindows/)
+>
 > ---
 
 编辑 `/etc/ssh/sshd_config`
