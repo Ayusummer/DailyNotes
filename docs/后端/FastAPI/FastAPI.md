@@ -2697,5 +2697,46 @@ class User(BaseModel):
 
 ---
 
+# 报错收集
+
+## 文档站点加载不出来
+
+> [Python fastapi 内网访问swagger方法_高压锅_1220的博客-CSDN博客_fastapi swagger地址](https://blog.csdn.net/u014651560/article/details/116526653)
+>
+> ---
+
+一般是 `cdn.jsdelivr.net` 的资源加载不出来, 被 GFW 污染了
+
+找到当前运行 FastAPI 服务的 Python 环境中安装的 FastAPI 依赖包的本地目录下的 `openapi/docs.py`, 如:
+
+`xxx/.venv/lib/python3.10/site-packages/fastapi/openapi/docs.py`
+
+在 `get_swagger_ui_html` 函数中有如下几个参数指向了公网的 js 与 css 和 png 资源文件, 可以将其下载下来之后换上本地目录
+
+![image-20221206094438130](http://cdn.ayusummer233.top/DailyNotes/202212061102340.png)
+
+首先需要在主程序挂载一下静态资源目录
+
+```python
+from fastapi.staticfiles import StaticFiles
+app = FastAPI()
+# 挂载本地资源
+app.mount('/static', StaticFiles(directory=os.path.join('/home/xxx/', 'static')), name='static')
+```
+
+![image-20221206103105582](http://cdn.ayusummer233.top/DailyNotes/202212061103830.png)
+
+然后相应的将 `xxx/.venv/lib/python3.10/site-packages/fastapi/openapi/docs.py` 中的几个参数改为:
+
+```python
+swagger_js_url: str = "/static/js/swagger-ui-bundle.js",
+swagger_css_url: str = "/static/css/swagger-ui.css",
+swagger_favicon_url: str = "/static/img/favicon.png",
+```
+
+然后重启主程序即可
+
+---
+
 
 
