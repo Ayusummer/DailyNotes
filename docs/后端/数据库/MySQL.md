@@ -1,4 +1,4 @@
-# Mysql
+# mysql
 
 ## 安装
 
@@ -6,13 +6,13 @@
 
 @tab:active Windows
 
-> [MySQL的安装与配置——详细教程 - Winton-H - 博客园 (cnblogs.com)](https://www.cnblogs.com/winton-nfs/p/11524007.html)
+> [mysql的安装与配置——详细教程 - Winton-H - 博客园 (cnblogs.com)](https://www.cnblogs.com/winton-nfs/p/11524007.html)
 >
 > ---
 
-- 下载[MySQL 免安装版](https://dev.MySQL.com/get/Downloads/MySQL-8.0/MySQL-8.0.22-winx64.zip)
+- 下载[mysql 免安装版](https://dev.mysql.com/get/Downloads/mysql-8.0/mysql-8.0.22-winx64.zip)
 
-  > 该链接指向的是截至 2020.12.2 最新版的 MySQL 社区版最新下载链接, 或者自行到 [MySQL :: MySQL Downloads](https://www.MySQL.com/downloads/) 选择具体版本下载
+  > 该链接指向的是截至 2020.12.2 最新版的 mysql 社区版最新下载链接, 或者自行到 [mysql :: mysql Downloads](https://www.mysql.com/downloads/) 选择具体版本下载
 
   ![image-20221128004735707](http://cdn.ayusummer233.top/img/202211280047742.png)
 
@@ -22,11 +22,11 @@
 
   
 
-- 下载完成后解压到你想把 MySQL 安装在的目录
+- 下载完成后解压到你想把 mysql 安装在的目录
 
   > 该目录不可有中文与空格
 
-- 安装 MySQL 的服务
+- 安装 mysql 的服务
   - 打开解压后的文件夹中的 bin 文件夹,单击 Windows 文件资源管理器左上角的`文件`->`打开Windows Powershell`->`以管理员身份打开Windows Powershell`
     > Win11 的话 `win+X` 选择 `Windows Powershell(管理员)` 打开, 使用
     ```powershell
@@ -35,36 +35,36 @@
     转到当前文件夹路径
   - 输入
     ```powershell
-    .\MySQLd --install
+    .\mysqld --install
     ```
     并回车
   - 之后会显示安装成功的提示:`Service successfully installed.`
-- 初始化 MySQL
+- 初始化 mysql
   - 输入
     ```powershell
-    .\MySQLd --initialize --console
+    .\mysqld --initialize --console
     ```
     并回车
   - 将会显示几行文字,复制最后一行`root@localhost:`字样后面的字符串`o?0yxuffh?E.`
 
     > 这串字符串是初始化生成的随机密码
-- 开启 MySQL 的服务
+- 开启 mysql 的服务
 
   - 输入
 
     ```powershell
-    net start MySQL
+    net start mysql
     ```
 
     并回车
 
-  - 将会显示`MySQL 服务已经启动成功`的字样
+  - 将会显示`mysql 服务已经启动成功`的字样
 
-- 登录验证 MySQL 是否安装成功
+- 登录验证 mysql 是否安装成功
   - 输入
 
     ```powershell
-    .\MySQL -u root -p
+    .\mysql -u root -p
     ```
 
     并回车,将会让你输入密码
@@ -73,7 +73,7 @@
     >
     > 这里需要注意的是: 若刚才生成临时密码的时候最后有个`.`的话注意这里的`.` 不是句号,而是密码的一部分
 
-  - 登陆成功后当前光标前面会有`MySQL>`
+  - 登陆成功后当前光标前面会有`mysql>`
 - 修改密码
 
   - 登录成功后输入
@@ -94,14 +94,14 @@
       exit
       ```
 
-      并回车以退出 MySQL
+      并回车以退出 mysql
 
     - 验证密码
 
       - 输入
 
         ```powershell
-        .\MySQL -u root -p
+        .\mysql -u root -p
         ```
 
         并回车,将会让你输入密码
@@ -120,55 +120,55 @@
 
   - 进入后上面是`用户变量`,下面是`系统变量`
     - 点击 `下面的新建按钮`, 新建一个`系统变量`
-      - 变量名填`MySQL`
-      - 变量值填你将 MySQL 安装的位置
-        - 例如我填的是`C:\Database\MySQL\MySQL-8.0.22-winx64`
+      - 变量名填`mysql`
+      - 变量值填你将 mysql 安装的位置
+        - 例如我填的是`C:\Database\mysql\mysql-8.0.22-winx64`
       - 单击`确定`以完成新建
     - 进入`系统变量`的`Path`变量
       - 单击`新建`
-      - 输入`%MySQL%\bin`
+      - 输入`%mysql%\bin`
     - 完成后逐级确定以完成配置
 
-- 配置完系统变量之后要登录 MySQL 只需
+- 配置完系统变量之后要登录 mysql 只需
 
   - `Win + R`输入`cmd`并回车打开命令行窗口
 
   - 输入
 
     ```shell
-    MySQL -u root -p
+    mysql -u root -p
     ```
 
     并回车即可
 
-- 在 MySQL 目录下创建一个 ini 或 cnf 配置文件，在这里我创建的是 ini 配置文件，里面写的代码是 MySQL 的一些基本配置
-  - MySQL 目录就是刚才配置环境变量时的 MySQL 安装位置
-    - 我的就是`C:\Database\MySQL\MySQL-8.0.22-winx64`
+- 在 mysql 目录下创建一个 ini 或 cnf 配置文件，在这里我创建的是 ini 配置文件，里面写的代码是 mysql 的一些基本配置
+  - mysql 目录就是刚才配置环境变量时的 mysql 安装位置
+    - 我的就是`C:\Database\mysql\mysql-8.0.22-winx64`
     - 打开该文件夹新建一个文本文档并**连同文件扩展名**一同改为`my.ini`
       - 打开`my.ini`,键入以下配置并保存退出
         ```ini
-        [MySQLd]
+        [mysqld]
         character-set-server=utf8mb4
         bind-address=0.0.0.0
         port=3306
         default-storage-engine=INNODB
-        [MySQL]
+        [mysql]
         default-character-set=utf8mb4
         [client]
         default-character-set=utf8mb4
         ```
 - 到这里就已经配置完成了
 
-- 你可以在 Navicat 中连接配置好的 MySQL
+- 你可以在 Navicat 中连接配置好的 mysql
   - 打开 Navicat
-  - 左上`连接`->`MySQL`
+  - 左上`连接`->`mysql`
     - 连接名自拟
     - 主机:`localhost`
     - 端口:`3306`
     - 用户名:`root`
-    - 密码:你刚才配置好的 MySQL 的密码
-  - 输入完成并单击`确定`后会在当前窗口左栏出现一个你自拟的链接名,双击它,若它变绿了就说明连接上你配置的 MySQL 了
-- 到这里 MySQL 的安装,配置与连接就已经完成了,更详细的步骤以及**可能出现的问题**可以移步原博主的[博客链接](https://www.cnblogs.com/winton-nfs/p/11524007.html)查看
+    - 密码:你刚才配置好的 mysql 的密码
+  - 输入完成并单击`确定`后会在当前窗口左栏出现一个你自拟的链接名,双击它,若它变绿了就说明连接上你配置的 mysql 了
+- 到这里 mysql 的安装,配置与连接就已经完成了,更详细的步骤以及**可能出现的问题**可以移步原博主的[博客链接](https://www.cnblogs.com/winton-nfs/p/11524007.html)查看
   - 如果有空的话别忘了给博主点个`推荐`哦
 
     > 若忘记密码可以参考[这篇文章](https://www.cnblogs.com/syq816/p/12241136.html)
@@ -177,30 +177,30 @@
 
 @tab:active kali
 
-> [kali自带MySQL配置 - 腾讯云开发者社区-腾讯云 (tencent.com)](https://cloud.tencent.com/developer/article/1920635)
+> [kali自带mysql配置 - 腾讯云开发者社区-腾讯云 (tencent.com)](https://cloud.tencent.com/developer/article/1920635)
 
-kali 自带 MariaDB, 基本兼容 MySQL
+kali 自带 MariaDB, 基本兼容 mysql
 
-> 在部署 gshark时要安装 MySQL, 且其只支持 MySQL
+> 在部署 gshark时要安装 mysql, 且其只支持 mysql
 >
-> 搜索 linux 安装 MySQL 多半出来的是 CentOS 的陈年教程
+> 搜索 linux 安装 mysql 多半出来的是 CentOS 的陈年教程
 >
-> 搜索 Debian 安装 MySQL 找到了 [如何在Debian 10安装MySQL | myfreax](https://www.myfreax.com/how-to-install-MySQL-on-debian-10/) 不过
+> 搜索 Debian 安装 mysql 找到了 [如何在Debian 10安装mysql | myfreax](https://www.myfreax.com/how-to-install-mysql-on-debian-10/) 不过
 >
 > ![image-20221123144046127](http://cdn.ayusummer233.top/img/202211231606829.png)
 >
 > ---
 
 ```bash
-# 启动 MySQL 服务
-service MySQL start
+# 启动 mysql 服务
+service mysql start
 ```
 
 > ![image-20221123144229699](http://cdn.ayusummer233.top/img/202211231606894.png)
 
 ```bash
 # 初始化密码
-MySQL_secure_installation
+mysql_secure_installation
 ```
 
 > ![image-20221123144351106](http://cdn.ayusummer233.top/img/202211231606785.png)
@@ -213,52 +213,52 @@ MySQL_secure_installation
 
 @tab Debian
 
-> [如何在Debian 10安装MySQL | myfreax](https://www.myfreax.com/how-to-install-MySQL-on-debian-10/)
+> [如何在Debian 10安装mysql | myfreax](https://www.myfreax.com/how-to-install-mysql-on-debian-10/)
 >
 > ---
 
-MySQL在默认的 Debian 存储库中不可用。 MariaDB 是 Debian 10中的默认数据库。
+mysql在默认的 Debian 存储库中不可用。 MariaDB 是 Debian 10中的默认数据库。
 
-要将MySQL存储库添加到您的系统，请访问[MySQL仓库下载页面](https://dev.MySQL.com/downloads/repo/apt/)并使用[wget命令](https://www.myfreax.com/wget-command-examples/)下载最新MySQL。
+要将mysql存储库添加到您的系统，请访问[mysql仓库下载页面](https://dev.mysql.com/downloads/repo/apt/)并使用[wget命令](https://www.myfreax.com/wget-command-examples/)下载最新mysql。
 
 ```bash
-wget https://repo.MySQL.com//MySQL-apt-config_0.8.24-1_all.deb
+wget https://repo.mysql.com//mysql-apt-config_0.8.24-1_all.deb
 # 安装此 deb 软件包
-apt install ./MySQL-apt-config_0.8.24-1_all.deb 
+apt install ./mysql-apt-config_0.8.24-1_all.deb 
 ```
 
 ---
 
 @tab Ubuntu
 
-> [如何在 Ubuntu 20.04 上安装 MySQL-阿里云开发者社区 (aliyun.com)](https://developer.aliyun.com/article/758177)
+> [如何在 Ubuntu 20.04 上安装 mysql-阿里云开发者社区 (aliyun.com)](https://developer.aliyun.com/article/758177)
 >
 > ---
 
 ```bash
 sudo apt update
-sudo apt install MySQL-server
+sudo apt install mysql-server
 # 安装完后会自动启动后, 可以执行如下命令查看其运行状态
-sudo systemctl status MySQL
-# MySQL 安装文件附带了一个名为MySQL_secure_installation的脚本，它允许你很容易地提高数据库服务器的安全性
-sudo MySQL_secure_installation
+sudo systemctl status mysql
+# mysql 安装文件附带了一个名为mysql_secure_installation的脚本，它允许你很容易地提高数据库服务器的安全性
+sudo mysql_secure_installation
 ```
 
 ---
 
 @tab Docker
 
-> [Docker配置MySQL容器+远程连接（全流程）_卷、就硬卷的博客-CSDN博客](https://blog.csdn.net/qq_43781399/article/details/112650755)
+> [Docker配置mysql容器+远程连接（全流程）_卷、就硬卷的博客-CSDN博客](https://blog.csdn.net/qq_43781399/article/details/112650755)
 >
 > ---
 
 ```bash
-docker pull MySQL
-docker run -d -p [宿主机端口]:3306 -e MYSQL_ROOT_PASSWORD=[初始化root密码] --name [自定义一个可辨识的容器名] MySQL
+docker pull mysql
+docker run -d -p [宿主机端口]:3306 -e mysql_ROOT_PASSWORD=[初始化root密码] --name [自定义一个可辨识的容器名] mysql
 # 进入 docker 容器
 docker exec -it [上面自定义的可辨识的容器名] bash
-# 如果想远程连接且MySQL在docker里的话可以执行
-alter user 'root'@'%' identified with MySQL_native_password by 'root';
+# 如果想远程连接且mysql在docker里的话可以执行
+alter user 'root'@'%' identified with mysql_native_password by 'root';
 ```
 
 如果出现报错, 可以参考本文最后一节的报错收集中的相关条目
@@ -269,14 +269,14 @@ alter user 'root'@'%' identified with MySQL_native_password by 'root';
 
 ---
 
-## MySQL 数据类型
+## mysql 数据类型
 
-> [MySQL 数据类型 | 菜鸟教程 (runoob.com)](https://www.runoob.com/MySQL/MySQL-data-types.html)
+> [mysql 数据类型 | 菜鸟教程 (runoob.com)](https://www.runoob.com/mysql/mysql-data-types.html)
 >
 > ---
 
-- MySQL 中定义数据字段的类型对你数据库的优化是非常重要的。
-- MySQL 支持多种类型，大致可以分为三类：
+- mysql 中定义数据字段的类型对你数据库的优化是非常重要的。
+- mysql 支持多种类型，大致可以分为三类：
   - 数值
   - 日期/时间
   - 字符串(字符)类型。
@@ -285,13 +285,13 @@ alter user 'root'@'%' identified with MySQL_native_password by 'root';
 
 ### 数值类型
 
-- MySQL 支持所有标准 SQL 数值数据类型。
+- mysql 支持所有标准 SQL 数值数据类型。
   - 这些类型包括
     - 严格数值数据类型(INTEGER、SMALLINT、DECIMAL 和 NUMERIC)
     - 近似数值数据类型(FLOAT、REAL 和 DOUBLE PRECISION)。
 - 关键字 INT 是 INTEGER 的同义词，关键字 DEC 是 DECIMAL 的同义词。
 - BIT 数据类型保存位字段值，并且支持 MyISAM、MEMORY、InnoDB 和 BDB 表。
-- 作为 SQL 标准的扩展，MySQL 也支持整数类型 TINYINT、MEDIUMINT 和 BIGINT。
+- 作为 SQL 标准的扩展，mysql 也支持整数类型 TINYINT、MEDIUMINT 和 BIGINT。
 
 ---
 
@@ -303,7 +303,7 @@ alter user 'root'@'%' identified with MySQL_native_password by 'root';
 
 - Navicat 中设计表时,数值类型数据的长度设置与字符类型的长度设置是不一样的
   
-  > [MySQL字段int类型的长度INT(M)_乖乖康少的博客-CSDN博客_MySQL int 长度](https://blog.csdn.net/guaiguaiknl/article/details/105813770)
+  > [mysql字段int类型的长度INT(M)_乖乖康少的博客-CSDN博客_mysql int 长度](https://blog.csdn.net/guaiguaiknl/article/details/105813770)
   >
   > ---
   
@@ -325,7 +325,7 @@ alter user 'root'@'%' identified with MySQL_native_password by 'root';
 #### 日期和时间类型
 
 - 表示时间值的日期和时间类型为 DATETIME、DATE、TIMESTAMP、TIME 和 YEAR。
-- 每个时间类型有一个有效值范围和一个"零"值，当指定不合法的 MySQL 不能表示的值时使用"零"值。
+- 每个时间类型有一个有效值范围和一个"零"值，当指定不合法的 mysql 不能表示的值时使用"零"值。
 - TIMESTAMP 类型有专有的自动更新特性，将在后面描述。
 
 ---
@@ -360,44 +360,44 @@ alter user 'root'@'%' identified with MySQL_native_password by 'root';
 
 ## 重置自增量
 
-> [MySql重置自增字段的起始值 - 简书 (jianshu.com)](https://www.jianshu.com/p/d3b225260042)
+> [mysql重置自增字段的起始值 - 简书 (jianshu.com)](https://www.jianshu.com/p/d3b225260042)
 >
-> [面试官:MySQL如何重置自增id_wx6010cbc8d50ca的技术博客_51CTO博客](https://blog.51cto.com/u_15095774/2718785)
+> [面试官:mysql如何重置自增id_wx6010cbc8d50ca的技术博客_51CTO博客](https://blog.51cto.com/u_15095774/2718785)
 >
-> [MySQL / MariaDB 重置自增 ID (AUTO_INCREMENT)教程 - 完美保留表数据的终极解决方案 - 卡拉云 (kalacloud.com)](https://kalacloud.com/blog/how-to-reset-auto-increment-in-MySQL/#四-保留数据重置---直接删除-id-法)
+> [mysql / MariaDB 重置自增 ID (AUTO_INCREMENT)教程 - 完美保留表数据的终极解决方案 - 卡拉云 (kalacloud.com)](https://kalacloud.com/blog/how-to-reset-auto-increment-in-mysql/#四-保留数据重置---直接删除-id-法)
 
 ---
 
 ## 重置密码
 
-> [忘记MySQL数据库的root密码时如何重置密码 (aliyun.com)](https://help.aliyun.com/document_detail/42520.html)
+> [忘记mysql数据库的root密码时如何重置密码 (aliyun.com)](https://help.aliyun.com/document_detail/42520.html)
 >
 > ---
 
-如果忘记了 MySQL 的密码可以修改配置文件登录时跳过密码然后再在数据库中修改密码
+如果忘记了 mysql 的密码可以修改配置文件登录时跳过密码然后再在数据库中修改密码
 
 ::: tabs
 
 @tab:active Linux
 
-修改 `/etc/MySQL/my.cnf` 文件
+修改 `/etc/mysql/my.cnf` 文件
 
 > 也有可能在 `/etc/my.cnf`, 以实际目录为准
 > 
 
-在 `[MySQLd]` 字段下新增如下内容并保存
+在 `[mysqld]` 字段下新增如下内容并保存
 
 ```properties
 skip-grant-tables
 ```
 
-然后重启并进入 MySQL
+然后重启并进入 mysql
 
 ```bash
-# 重启 MySQL
-service MySQL restart
-# 进入 MySQL
-MySQL
+# 重启 mysql
+service mysql restart
+# 进入 mysql
+mysql
 ```
 
 :::
@@ -408,18 +408,18 @@ MySQL
 
 ---
 
-### MySQL Failed! Error: SET PASSWORD has no significance for user ‘root’@’localhost’ as the authentication method used doesn’t store authentication data in the MySQL server. Please consider using ALTER USER
+### mysql Failed! Error: SET PASSWORD has no significance for user ‘root’@’localhost’ as the authentication method used doesn’t store authentication data in the mysql server. Please consider using ALTER USER
 
-> [MySQL Failed! Error: SET PASSWORD has no significance for user 'root'@'localhost' as the authentication method used doesn't store authentication data in the MySQL server. Please consider using ALTER USER - Linux - nixCraft Linux/Unix Forum](https://www.nixcraft.com/t/MySQL-failed-error-set-password-has-no-significance-for-user-root-localhost-as-the-authentication-method-used-doesnt-store-authentication-data-in-the-MySQL-server-please-consider-using-alter-user/4233)
+> [mysql Failed! Error: SET PASSWORD has no significance for user 'root'@'localhost' as the authentication method used doesn't store authentication data in the mysql server. Please consider using ALTER USER - Linux - nixCraft Linux/Unix Forum](https://www.nixcraft.com/t/mysql-failed-error-set-password-has-no-significance-for-user-root-localhost-as-the-authentication-method-used-doesnt-store-authentication-data-in-the-mysql-server-please-consider-using-alter-user/4233)
 >
 > ----
 
 ```bash
 # 将 root 密码更改为 SetRootPasswordHere
-ALTER USER 'root'@'localhost' IDENTIFIED WITH MySQL_native_password BY 'SetRootPasswordHere';
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'SetRootPasswordHere';
 exit
-# 重新配置 MySQL 安全项
-sudo MySQL_secure_installation
+# 重新配置 mysql 安全项
+sudo mysql_secure_installation
 # 使用上面修改的密码(如SetRootPasswordHere) 登入然后修改配置项即可
 ```
 
@@ -444,26 +444,26 @@ set global validate_password_policy=0
 
 ### ERROR 1396 (HY000): Operation ALTER USER failed for 'root'@'%'
 
-> [linux MySQL把root@localhost修改成root@% 的详细步骤谢谢_百度知道 (baidu.com)](https://zhidao.baidu.com/question/604727574.html)
+> [linux mysql把root@localhost修改成root@% 的详细步骤谢谢_百度知道 (baidu.com)](https://zhidao.baidu.com/question/604727574.html)
 >
 > ---
 
-在远程访问 docker 中的 MySQL 的需求的实现中, 需要修改 `root@%` 的密码, 不过之前设置数据库的用户名是 `root@localhost`, 当使用
+在远程访问 docker 中的 mysql 的需求的实现中, 需要修改 `root@%` 的密码, 不过之前设置数据库的用户名是 `root@localhost`, 当使用
 
 ```bash
-alter user 'root'@'%' identified with MySQL_native_password by '[密码]';
+alter user 'root'@'%' identified with mysql_native_password by '[密码]';
 ```
 
 时报错 `ERROR 1396 (HY000): Operation ALTER USER failed for 'root'@'%'`
 
-```MySQL
-use MySQL;
+```mysql
+use mysql;
 select user,host from user;
 ```
 
 可以看到当前只有 `root@localhost` 所以要加一个 `root@%`
 
-```MySQL
+```mysql
 grant all on *.* to 'root'@'%' identified by '[密码]' with grant option;
 ```
 
