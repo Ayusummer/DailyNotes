@@ -335,7 +335,47 @@ docker cp ./data/test.db koko:/tmp/test.db
 
 在docker中，LAMP是指Linux（操作系统）、Apache HTTP服务器、MySQL（MariaDB等数据库软件）和PHP（Perl或Python）的组合方案，一般用来建立Web服务器环境。
 
-[docker中的lamp是什么-Docker-PHP中文网](https://www.php.cn/docker/488591.html)
+> [docker中的lamp是什么-Docker-PHP中文网](https://www.php.cn/docker/488591.html)
+
+---
+
+### 将容器重新打包成镜像
+
+> [Docker 使用-将容器打成镜像_谈谈1974的博客-CSDN博客_容器打包成镜像](https://blog.csdn.net/weixin_45505313/article/details/125020076)
+>
+> ---
+
+在使用 `docker-compose build` 命令时, 在有些镜像 build 完启动后发现其环境是并不完整的, 缺少了一些东西
+
+> 比如在复现 CVE-2015-3337 时需要安装一个 `elasticsearch-head` 的插件, 发现用 vulhub 仓库里的 dockerfile
+>
+> `docker-compose build` 构建进行时插件实际上并没有安装成功,  但是镜像成功 build 了
+
+进入启动的容器进行排错, 最终修复了问题后可以将目前用拥有完整环境的容器重新打包成镜像
+
+Docker 提供了 `commit` 命令支持将容器重新打成镜像文件，其命令格式如下所示
+
+```bash
+ docker commit [OPTIONS] CONTAINER [REPOSITORY[:TAG]]
+```
+
+| Option |              功能              |
+| :----: | :----------------------------: |
+|   -a   |         指定新镜像作者         |
+|   -c   | 使用 Dockerfile 指令来创建镜像 |
+|   -m   |     提交生成镜像的说明信息     |
+|   -p   |    在 commit 时，将容器暂停    |
+
+可以先查看下当前运行容器的 id
+
+```bash
+docker ps -a | grep [容器相关标识, 比如 cve-2015-3337 之类]
+```
+
+```bash
+# 添加描述信息并将容器打包成新的镜像(给个新tag)
+docker commit -m "add elasticsearch-head" 10f2daf4ead5 cve-2015-3337_es:v0
+```
 
 ---
 
@@ -380,3 +420,43 @@ sudo apt-key adv --recv-keys --keyserver keyserver.ubuntu.com [报错缺失的pu
 ```BASH
 apt-get update && apt-get install -y --no-install-recommends apt-utils
 ```
+
+---
+
+### 安装插件失败 - failed to extract plugin [/usr/share/elasticsearch/plugins/head.zip]: ZipException[zip file is empty]
+
+在使用 `docker-compose build` 时发现有些时候虽然 build 成功了但是实际上环境是不完整的, 比如在复现 `CVE-2015-3337` 时需要安装一个插件
+
+发现 vulhub 该 cve 目录下 `docker-compose build`  拉取了一个空的插件安装包并且解压==失败了==, 但是却成功 `build` 了
+
+![image-20221208103255765](http://cdn.ayusummer233.top/DailyNotes/202212081036240.png)
+
+观察上图中的输出信息可以看到在安装插件时向 ` http://download.elasticsearch.org/mobz/elasticsearch-head/elasticsearch-head-1.x.zip.` 请求了 zip 资源, 尝试在本地电脑上访问此链接发现下载不下来, 那么可以假定是指向链接出了问题, 那么现在就需要找到一个可用的插件安装链接
+
+在使用 `docker-compose up -d` 后进入该容器然后尝试为拉取插件配置一个不可用的代理
+
+```bash
+plugin -DproxyHost=192.168.1.33 -DproxyPort=7890 --install mobz/elasticsearch-head/1.x
+```
+
+此时会尝试从各个可能的地址拉取插件
+
+![image-20221208104125668](http://cdn.ayusummer233.top/DailyNotes/202212081041520.png)
+
+在本地机器上尝试这些链接, 最终找到可用链接 `https://codeload.github.com/mobz/elasticsearch-head/zip/refs/heads/1.x`
+
+于是可以使用该链接安装插件
+
+```bash
+bin/plugin --install mobz/elasticsearch-head/1.x -u https://codeload.github.com/mobz/elasticsearch-head/zip/refs/heads/1.x
+```
+
+![image-20221208095040475](http://cdn.ayusummer233.top/DailyNotes/202212081038831.png)
+
+验证插件是否安装成功:
+
+![image-20221208104020031](http://cdn.ayusummer233.top/DailyNotes/202212081046976.png)
+
+可以看到已经成功安装上了
+
+然后 [将容器重新打包成镜像](#将容器重新打包成镜像) 以便后续使用
