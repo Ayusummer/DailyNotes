@@ -112,3 +112,102 @@ update-alternatives --config javac
 
 ![image-20220923185210262](http://cdn.ayusummer233.top/img/202209231852362.png)
 
+---
+
+## Java 反射
+
+> [Java 反射详解 - YSOcean - 博客园 (cnblogs.com)](https://www.cnblogs.com/ysocean/p/6516248.html)
+>
+> ---
+
+Java反射就是在运行状态中，对于任意一个类，都能够知道这个类的所有属性和方法；对于任意一个对象，都能够调用它的任意方法和属性；并且能改变它的属性。而这也是Java被视为(准)动态语言的一个关键性质
+
+> 为啥要说是准动态，因为一般而言的动态语言定义是程序运行时，允许改变程序结构或变量类型，这种语言称为动态语言。从这个观点看，Perl，Python，Ruby是动态语言，C++，Java，C#不是动态语言。
+
+反射机制允许程序在运行时取得任何一个已知名称的class的内部信息，包括包括其modifiers(修饰符)，fields(属性)，methods(方法)等，并可于运行时改变fields内容或调用methods。那么我们便可以更灵活的编写代码，代码可以在运行时装配，无需在组件之间进行源代码链接，降低代码的耦合度；还有动态代理的实现等等；
+
+> 但是需要注意的是反射使用不当会造成很高的资源消耗！
+
+---
+
+### 得到 Class 的三种方式
+
+比如新建一个 Person 类
+
+```java
+package reflect;
+
+public class Person {
+    private String name = "Jacob";
+    public int age = 20;
+    public Person(){
+        System.out.println("Person()");
+    }
+    private void say(){
+        System.out.println("Hello World!");
+    }
+    public void work(){
+        System.out.println("I'm working!");
+    }
+}
+
+```
+
+![image-20221207152138868](http://cdn.ayusummer233.top/DailyNotes/202212071556647.png)
+
+现在要在其他类中获取一个 Person 对象的 class 可以使用如下三种方式:
+
+```java
+package reflect;
+
+public class reflect {
+    // 1. 通过对象调用 getClass() 方法获取 Person 的 Class;
+    // 通常用于传入一个 Object 对象, 但是不知道具体是什么类, 通过 getClass() 方法获取 Class 对象;
+    public void by_getClass() {
+        System.out.println("1. 通过对象调用 getClass() 方法获取 Person 的 Class;");
+        Person person1 = new Person();
+        Class c1 = person1.getClass();
+        System.out.println(c1.getName());
+    }
+
+    // 2.直接通过 类名.class 的方式得到,该方法最为安全可靠，程序性能更高
+    // 这说明每个类都有一个隐含的静态成员变量 class
+    public void by_class() {
+        System.out.println("2.直接通过 类名.class 的方式得到,该方法最为安全可靠，程序性能更高");
+        Class c2 = Person.class;
+        System.out.println(c2.getName());
+    }
+
+    // 3.通过 Class 类的静态方法 forName(String className) 得到
+    // 该方法将类的全名（包括包名）作为参数，返回对应的 Class 对象
+    // 用的最多, 但可能抛出 ClassNotFoundException 异常
+    public void by_forName() throws ClassNotFoundException {
+        System.out.println("3.通过 Class 类的静态方法 forName(String className) 得到");
+        Class c3 = Class.forName("reflect.Person");
+        System.out.println(c3.getName());
+    }
+
+}
+
+```
+
+```java
+import reflect.reflect;
+
+public class test {
+    public static void main(String[] args) {
+        System.out.println("Hello World!");
+        reflect r = new reflect();
+        r.by_getClass();
+        r.by_class();
+        try {
+            r.by_forName();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+![image-20221207155641124](http://cdn.ayusummer233.top/DailyNotes/202212071556151.png)
+
