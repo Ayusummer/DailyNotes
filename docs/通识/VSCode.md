@@ -14,6 +14,275 @@
   新地址: `https://vscode.cdn.azure.cn/stable/ccbaa2d27e38e5afa3e5c21c1c7bef4657064247/VSCodeUserSetup-x64-1.62.3.exe`  
   然后通过这个新地址下载即可
 
+
+---
+
+# 扩展食用记录
+
+## 基础使用
+
+### 汉化
+
+![image-20221209094145345](http://cdn.ayusummer233.top/DailyNotes/202212090941728.png)
+
+可以以中文模式显示 VSCode UI
+
+![image-20221209094224450](http://cdn.ayusummer233.top/DailyNotes/202212090942961.png)
+
+![image-20221209094235641](http://cdn.ayusummer233.top/DailyNotes/202212090942916.png)
+
+---
+
+### open
+
+![open插件](http://cdn.ayusummer233.top/DailyNotes/202212090939646.png "屏幕截图.png")
+
+用于从VSCode中使用系统默认应用打开文件
+
+![open插件使用演示](http://cdn.ayusummer233.top/DailyNotes/202212090939503.png "屏幕截图.png")
+
+装了`open`插件之后VSCode不支持打开的文件可以通过右键菜单调用系统默认应用打开该文件;这样既不用再打开文件资源浏览器中的该文件再打开了
+
+---
+
+### vscode-icons
+
+该扩展可以让左侧文档树文档类型更加明显
+
+![](http://cdn.ayusummer233.top/img/202204212054230.png)
+
+![image-20221210221817120](http://cdn.ayusummer233.top/img/202212102218612.png)
+
+
+---
+
+### Resource Monitor
+
+显示设备(可以是远程连接的设备)当前的 CPU, 内存, 硬盘状态
+
+![image-20221118143151456](https://cdn.ayusummer233.top/img/image-20221118143151456.png)
+
+![image-20221118143221753](https://cdn.ayusummer233.top/img/image-20221118143221753.png)
+
+---
+
+## Drawio Preview
+
+安装了 Drawio Preview 扩展后支持打开 `.drawio` 文件并开始绘图
+
+![image-20221209103532954](http://cdn.ayusummer233.top/DailyNotes/202212091035875.png)
+
+![image-20221209103632603](http://cdn.ayusummer233.top/DailyNotes/202212091037830.png)
+
+---
+
+
+
+---
+
+## CodeTour
+
+> [microsoft/codetour: VS Code extension that allows you to record and play back guided tours of codebases, directly within the editor. (github.com)](https://github.com/microsoft/codetour)
+>
+> ---
+
+该扩展可以用来写业务逻辑步骤或者代码分步骤讲解式引导
+
+![image-20220520220919634](http://cdn.ayusummer233.top/img/202205202209885.png)
+
+![image-20220520221430457](http://cdn.ayusummer233.top/img/202205202214733.png)
+
+---
+
+## Markdown 相关
+
+个人编辑 Markdown 文件更倾向于使用 Typora, VSCode 中更多用于预览仓库中的 Markdown 文件以及格式化 markdown 文本
+
+---
+
+---
+
+## 远程开发
+
+### Remote - SSH + Docker + Dev Containers
+
+以 Vulhub 为例
+
+使用 [Remote-SSH 链接远程主机](https://ayusummer.github.io/DailyNotes/%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/Linux/Linux.html#vscode-remote-ssh)
+
+![image-20221209094819132](http://cdn.ayusummer233.top/DailyNotes/202212090948481.png)
+
+安装了 Docker 插件后可以便捷地在左侧查看当前的容器以及镜像列表以及 Compose 列表
+
+![image-20221209095119504](http://cdn.ayusummer233.top/DailyNotes/202212090951840.png)
+
+![image-20221209095335524](http://cdn.ayusummer233.top/DailyNotes/202212090956072.png)
+
+> 图中没显示 stop 的容器是因为容器太多了, stop 的容器可能很久都不会用了所以直接全清了, 镜像基本全推过 Habor 了所以也没什么顾虑
+
+在安装了 Dev Containers 扩展后在任意一个容器上右键 `Attach Visual Studio Code`  会在页面上方弹出选择容器的菜单, 选择对应容器即可使用 VSCode 打开该容器
+
+![image-20221209095559457](http://cdn.ayusummer233.top/DailyNotes/202212090956480.png)
+
+![image-20221209095703833](http://cdn.ayusummer233.top/DailyNotes/202212090957188.png)
+
+![image-20221209095856499](http://cdn.ayusummer233.top/DailyNotes/202212090958494.png)
+
+像首次 SSH 连接远程主机一样, 首次进入该容器时也会在其内安装 server
+
+![image-20221209100015216](http://cdn.ayusummer233.top/DailyNotes/202212091000601.png)
+
+安装完 Server 后便连上了
+
+![image-20221209100109900](http://cdn.ayusummer233.top/DailyNotes/202212091001782.png)
+
+选择 `打开文件夹` 打开相应目录后即可像正常远程开发一样使用了
+
+![image-20221209100335268](http://cdn.ayusummer233.top/DailyNotes/202212091003613.png)
+
+---
+
+## 网络相关
+
+---
+
+### REST Client
+
+安装了 REST Client 扩展后可以直接发送 Burp 拦截的请求包, 比如 pikachu 靶场的 sql 宽字节注入:
+
+![image-20221209101309491](http://cdn.ayusummer233.top/DailyNotes/202212091013530.png)
+
+在当前窗口右键选择 `Copy Request As cURL` 还可以拷贝当前请求为 cURL 命令
+
+![image-20221209101348338](http://cdn.ayusummer233.top/DailyNotes/202212091013539.png)
+
+> 拷贝后的 cURL 命令可以直接在 Linux 上发, 也可以导入到 Thunder Client 或者利用 curlconvert 转换为代码
+
+----
+
+### curlconverter
+
+安装了 `curlconverter` 后可以将剪贴板上的 cURL 命令生成代码, 流程如下:
+
+使用 REST Client 将 Burp 拦截的请求转换为 cURL 命令后新建一个代码文件, 如 `xxx.py`, 打开该文件后右键可以看到 `Paste cURL As Python`, 点击后即可生成对应的 Python 代码
+
+![image-20221209101906926](http://cdn.ayusummer233.top/DailyNotes/202212091019127.png)
+
+> PS: 有些请求在被自定义修改后使用 REST Client 可能不见得能生成对应的 cURL 命令, 比如 SQL 注入的请求, 此时可以选择在修改前的请求上 copy cURL 命令
+
+![image-20221209102540506](http://cdn.ayusummer233.top/DailyNotes/202212091025957.png)
+
+> 实际上查看 curlconverter 扩展页面可以看到最下面有说受限于 VSCode, 该扩展可能比起官网的版本要老很多, 所以当认为该扩展不太好使时可以去其官网 [Convert curl commands to code (curlconverter.com)](https://curlconverter.com/) 试试
+>
+> ![image-20221209102648796](http://cdn.ayusummer233.top/DailyNotes/202212091026124.png)
+
+---
+
+### Thunder Client
+
+> [(95) I Don't Need Postman Anymore!! I Use VS Code Instead... - YouTube](https://www.youtube.com/watch?v=AbCTlemwZ1k)
+
+![image-20220517215708231](http://cdn.ayusummer233.top/img/202205172157643.png)
+
+![image-20220517215904117](http://cdn.ayusummer233.top/img/202205172159573.png)
+
+可以当成 Postman 的平替, 这样就不用多开一个软件调试接口了
+
+![image-20221209102833257](http://cdn.ayusummer233.top/DailyNotes/202212091028826.png)
+
+支持预览响应页
+
+![image-20221209102849877](http://cdn.ayusummer233.top/DailyNotes/202212091028162.png)
+
+支持将请求生成对应语言代码
+
+![image-20221209103032673](http://cdn.ayusummer233.top/DailyNotes/202212091030230.png)
+
+
+
+![image-20221209103104828](http://cdn.ayusummer233.top/DailyNotes/202212091031186.png)
+
+
+---
+
+## 编程相关
+
+---
+
+### Error Lens
+
+结合相关语言的语法提示扩展, 安装 `Error Lens` 扩展后可以在当前报错行显示报错/告警信息
+
+![image-20221209100440296](http://cdn.ayusummer233.top/DailyNotes/202212091004135.png)
+
+![image-20221209100717053](http://cdn.ayusummer233.top/DailyNotes/202212091007347.png)
+
+### Python
+
+---
+#### Python-autopep8
+- 自动按照pep8规范格式化python代码
+
+
+-----
+
+#### Sourcery
+
+> [Sourcery Documentation](https://docs.sourcery.ai/)
+
+![image-20220517211545800](http://cdn.ayusummer233.top/img/202205172115029.png)
+
+Sourcery-ai 可以给开发者提供 Python 代码的重构建议:
+
+![image-20220517212351093](http://cdn.ayusummer233.top/img/202205172123260.png)
+
+![image-20220517211830963](http://cdn.ayusummer233.top/img/202205172118184.png)
+
+
+---
+
+### 前端
+
+---
+
+#### prettier + ESLint
+
+> [Prettier · Opinionated Code Formatter](https://prettier.io/)
+>
+> [Prettier 文档](https://prettier.io/docs/en/index.html)
+>
+> [Prettier Playground v2.6.2](https://prettier.io/playground/)
+>
+> [ESLint - Pluggable JavaScript linter - ESLint中文](http://eslint.cn/)
+
+![](http://cdn.ayusummer233.top/img/202204212028180.png)
+
+![image-20220421202926005](http://cdn.ayusummer233.top/img/202204212029364.png)用 ESLint 做约束, 用 Prettier 做代码格式化
+
+----
+
+## 已弃用扩展
+
+---
+### ~~Terminal~~
+
+> PS: 新版本 VSCode 该扩展已弃用, 目前直接使用工具栏上的终端指令
+>
+> ![image-20221209094459551](http://cdn.ayusummer233.top/DailyNotes/202212090945117.png)
+
+- 命令行终端  
+  ![Terminal](http://cdn.ayusummer233.top/DailyNotes/202212090939597.png "屏幕截图.png")
+- 安装之后点击有效较的`Terminal`图标进行使用  
+  ![Terminal图标](http://cdn.ayusummer233.top/DailyNotes/202212090939498.png "屏幕截图.png")  
+  点开之后默认采用当前项目的根目录
+  ![输入图片说明](http://cdn.ayusummer233.top/DailyNotes/202212090939105.png "屏幕截图.png")
+
+清空终端信息
+
+1. ctrl+shift+p 呼出命令面板
+2. 搜索 open keyboard shortcuts
+3. 搜索 workbench.action.terminal.clea
+
 ---
 
 # 用户代码片段
@@ -160,265 +429,6 @@
 
 1. **鼠标左键选择多行函数声明区域，函数声明区域尽量精准**
 2. **按函数注释快捷键**
-
----
-
-# 扩展食用记录
-
-## 汉化
-
-![image-20221209094145345](http://cdn.ayusummer233.top/DailyNotes/202212090941728.png)
-
-可以以中文模式显示 VSCode UI
-
-![image-20221209094224450](http://cdn.ayusummer233.top/DailyNotes/202212090942961.png)
-
-![image-20221209094235641](http://cdn.ayusummer233.top/DailyNotes/202212090942916.png)
-
----
-
-## open
-![open插件](http://cdn.ayusummer233.top/DailyNotes/202212090939646.png "屏幕截图.png")
-
-用于从VSCode中使用系统默认应用打开文件
-
-![open插件使用演示](http://cdn.ayusummer233.top/DailyNotes/202212090939503.png "屏幕截图.png")
-
-装了`open`插件之后VSCode不支持打开的文件可以通过右键菜单调用系统默认应用打开该文件;这样既不用再打开文件资源浏览器中的该文件再打开了
-
----
-
-## Drawio Preview
-
-安装了 Drawio Preview 扩展后支持打开 `.drawio` 文件并开始绘图
-
-![image-20221209103532954](http://cdn.ayusummer233.top/DailyNotes/202212091035875.png)
-
-![image-20221209103632603](http://cdn.ayusummer233.top/DailyNotes/202212091037830.png)
-
----
-
-## vscode-icons
-
-![](http://cdn.ayusummer233.top/img/202204212054230.png)
-
----
-
-## CodeTour
-
-> [microsoft/codetour: VS Code extension that allows you to record and play back guided tours of codebases, directly within the editor. (github.com)](https://github.com/microsoft/codetour)
-
-![image-20220520220919634](http://cdn.ayusummer233.top/img/202205202209885.png)
-
-![image-20220520221430457](http://cdn.ayusummer233.top/img/202205202214733.png)
-
-可以用来写业务逻辑步骤或者代码分步骤讲解式引导
-
----
-
-## markmap
-
-> [Markmap - Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=gera2ld.markmap-vscode)
->
-> [Try markmap](https://markmap.js.org/repl)
->
-> [gera2ld/markmap: Visualize your Markdown as mindmaps with Markmap. (github.com)](https://github.com/gera2ld/markmap)
-
-能够将 markdown 文件根据目录层级转换为思维导图
-
-![image-20220814212254716](http://cdn.ayusummer233.top/img/202208142122676.png)
-
----
-
-## Resource Monitor
-
-显示设备当前的 CPU, 内存, 硬盘状态
-
-![image-20221118143151456](https://cdn.ayusummer233.top/img/image-20221118143151456.png)
-
-![image-20221118143221753](https://cdn.ayusummer233.top/img/image-20221118143221753.png)
-
----
-
-## Remote - SSH + Docker + Dev Containers
-
-以 Vulhub 为例
-
-使用 [Remote-SSH 链接远程主机](https://ayusummer.github.io/DailyNotes/%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/Linux/Linux.html#vscode-remote-ssh)
-
-![image-20221209094819132](http://cdn.ayusummer233.top/DailyNotes/202212090948481.png)
-
-安装了 Docker 插件后可以便捷地在左侧查看当前的容器以及镜像列表以及 Compose 列表
-
-![image-20221209095119504](http://cdn.ayusummer233.top/DailyNotes/202212090951840.png)
-
-![image-20221209095335524](http://cdn.ayusummer233.top/DailyNotes/202212090956072.png)
-
-> 图中没显示 stop 的容器是因为容器太多了, stop 的容器可能很久都不会用了所以直接全清了, 镜像基本全推过 Habor 了所以也没什么顾虑
-
-在安装了 Dev Containers 扩展后在任意一个容器上右键 `Attach Visual Studio Code`  会在页面上方弹出选择容器的菜单, 选择对应容器即可使用 VSCode 打开该容器
-
-![image-20221209095559457](http://cdn.ayusummer233.top/DailyNotes/202212090956480.png)
-
-![image-20221209095703833](http://cdn.ayusummer233.top/DailyNotes/202212090957188.png)
-
-![image-20221209095856499](http://cdn.ayusummer233.top/DailyNotes/202212090958494.png)
-
-像首次 SSH 连接远程主机一样, 首次进入该容器时也会在其内安装 server
-
-![image-20221209100015216](http://cdn.ayusummer233.top/DailyNotes/202212091000601.png)
-
-安装完 Server 后便连上了
-
-![image-20221209100109900](http://cdn.ayusummer233.top/DailyNotes/202212091001782.png)
-
-选择 `打开文件夹` 打开相应目录后即可像正常远程开发一样使用了
-
-![image-20221209100335268](http://cdn.ayusummer233.top/DailyNotes/202212091003613.png)
-
----
-
-## Error Lens
-
-结合相关语言的语法提示扩展, 安装 `Error Lens` 扩展后可以在当前报错行显示报错/告警信息
-
-![image-20221209100440296](http://cdn.ayusummer233.top/DailyNotes/202212091004135.png)
-
-![image-20221209100717053](http://cdn.ayusummer233.top/DailyNotes/202212091007347.png)
-
----
-
-## 网络相关
-
----
-
-### REST Client
-
-安装了 REST Client 扩展后可以直接发送 Burp 拦截的请求包, 比如 pikachu 靶场的 sql 宽字节注入:
-
-![image-20221209101309491](http://cdn.ayusummer233.top/DailyNotes/202212091013530.png)
-
-在当前窗口右键选择 `Copy Request As cURL` 还可以拷贝当前请求为 cURL 命令
-
-![image-20221209101348338](http://cdn.ayusummer233.top/DailyNotes/202212091013539.png)
-
-> 拷贝后的 cURL 命令可以直接在 Linux 上发, 也可以导入到 Thunder Client 或者利用 curlconvert 转换为代码
-
-----
-
-### curlconverter
-
-安装了 `curlconverter` 后可以将剪贴板上的 cURL 命令生成代码, 流程如下:
-
-使用 REST Client 将 Burp 拦截的请求转换为 cURL 命令后新建一个代码文件, 如 `xxx.py`, 打开该文件后右键可以看到 `Paste cURL As Python`, 点击后即可生成对应的 Python 代码
-
-![image-20221209101906926](http://cdn.ayusummer233.top/DailyNotes/202212091019127.png)
-
-> PS: 有些请求在被自定义修改后使用 REST Client 可能不见得能生成对应的 cURL 命令, 比如 SQL 注入的请求, 此时可以选择在修改前的请求上 copy cURL 命令
-
-![image-20221209102540506](http://cdn.ayusummer233.top/DailyNotes/202212091025957.png)
-
-> 实际上查看 curlconverter 扩展页面可以看到最下面有说受限于 VSCode, 该扩展可能比起官网的版本要老很多, 所以当认为该扩展不太好使时可以去其官网 [Convert curl commands to code (curlconverter.com)](https://curlconverter.com/) 试试
->
-> ![image-20221209102648796](http://cdn.ayusummer233.top/DailyNotes/202212091026124.png)
-
----
-
-### Thunder Client
-
-> [(95) I Don't Need Postman Anymore!! I Use VS Code Instead... - YouTube](https://www.youtube.com/watch?v=AbCTlemwZ1k)
-
-![image-20220517215708231](http://cdn.ayusummer233.top/img/202205172157643.png)
-
-![image-20220517215904117](http://cdn.ayusummer233.top/img/202205172159573.png)
-
-可以当成 Postman 的平替, 这样就不用多开一个软件调试接口了
-
-![image-20221209102833257](http://cdn.ayusummer233.top/DailyNotes/202212091028826.png)
-
-支持预览响应页
-
-![image-20221209102849877](http://cdn.ayusummer233.top/DailyNotes/202212091028162.png)
-
-支持将请求生成对应语言代码
-
-![image-20221209103032673](http://cdn.ayusummer233.top/DailyNotes/202212091030230.png)
-
-
-
-![image-20221209103104828](http://cdn.ayusummer233.top/DailyNotes/202212091031186.png)
-
-
----
-
-## 具体开发(语言)相关
-
-### Python
-
----
-#### Python-autopep8
-- 自动按照pep8规范格式化python代码
-
-
------
-
-#### Sourcery
-
-> [Sourcery Documentation](https://docs.sourcery.ai/)
-
-![image-20220517211545800](http://cdn.ayusummer233.top/img/202205172115029.png)
-
-Sourcery-ai 可以给开发者提供 Python 代码的重构建议:
-
-![image-20220517212351093](http://cdn.ayusummer233.top/img/202205172123260.png)
-
-![image-20220517211830963](http://cdn.ayusummer233.top/img/202205172118184.png)
-
-
----
-
-### 前端
-
----
-
-#### prettier + ESLint
-
-> [Prettier · Opinionated Code Formatter](https://prettier.io/)
->
-> [Prettier 文档](https://prettier.io/docs/en/index.html)
->
-> [Prettier Playground v2.6.2](https://prettier.io/playground/)
->
-> [ESLint - Pluggable JavaScript linter - ESLint中文](http://eslint.cn/)
-
-![](http://cdn.ayusummer233.top/img/202204212028180.png)
-
-![image-20220421202926005](http://cdn.ayusummer233.top/img/202204212029364.png)用 ESLint 做约束, 用 Prettier 做代码格式化
-
-----
-
-## 已弃用扩展
-
----
-### ~~Terminal~~
-
-> PS: 新版本 VSCode 该扩展已弃用, 目前直接使用工具栏上的终端指令
->
-> ![image-20221209094459551](http://cdn.ayusummer233.top/DailyNotes/202212090945117.png)
-
-- 命令行终端  
-  ![Terminal](http://cdn.ayusummer233.top/DailyNotes/202212090939597.png "屏幕截图.png")
-- 安装之后点击有效较的`Terminal`图标进行使用  
-  ![Terminal图标](http://cdn.ayusummer233.top/DailyNotes/202212090939498.png "屏幕截图.png")  
-  点开之后默认采用当前项目的根目录
-  ![输入图片说明](http://cdn.ayusummer233.top/DailyNotes/202212090939105.png "屏幕截图.png")
-
-清空终端信息
-
-1. ctrl+shift+p 呼出命令面板
-2. 搜索 open keyboard shortcuts
-3. 搜索 workbench.action.terminal.clea
-
 
 
 ---
