@@ -1,5 +1,32 @@
 import { sidebar } from "vuepress-theme-hope";
 
+let NoteTools = [
+    {
+        text: "VuePress",
+        link: "/笔记工具/VuePress.md",
+    },
+    {
+        text: "Markdown",
+        link: "/笔记工具/Markdown.md",
+    },
+    {
+        text: "Mermaid",
+        link: "/笔记工具/Mermaid.md",
+    },
+    {
+        text: "LaTeX",
+        link: "/笔记工具/LaTex/LateX.md",
+    },
+    {
+        text: "PlantUML",
+        link: "/笔记工具/PlantUML.md",
+    },
+    {
+        text: "VitePress",
+        link: "/笔记工具/VitePress.md",
+    },
+]
+
 let Docker = [
     {
         text: "Docker",
@@ -193,6 +220,7 @@ let frontend_vue = [
 
 
 export const Sidebar = sidebar({
+    "/NoteTools/": NoteTools,
     "/通识/Docker/":  Docker,
     "/网络安全/加密算法/": security_encrypt,
     "/网络安全/Web安全/": security_web,
