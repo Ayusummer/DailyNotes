@@ -1,4 +1,4 @@
-# 个人调试散点
+# Mermaid
 
 ---
 
@@ -18,13 +18,11 @@ a-->b[2<br>3<br>3]
 
 ----
 
-# 显示支持
+## 显示支持
 
 - VSCode 需要安装扩展-Markdown Preview Mermaid Support 以预览 Mermaid 图像
 
-----
-
-# 绘图
+---
 
 ## 甘特图
 
