@@ -1050,6 +1050,10 @@ reveal-md path_markdown_file
 >
 > ---
 
+```markdown
+![](https://unv-shield.librian.net/api/unv_shield?code=1&url=https://avatars.githubusercontent.com/u/59549826&scale=2&txt=好!&border=4&barradius=999)
+```
+
 ![](https://unv-shield.librian.net/api/unv_shield?code=1&url=https://avatars.githubusercontent.com/u/59549826&scale=2&txt=好!&border=4&barradius=999)
 
 ---
