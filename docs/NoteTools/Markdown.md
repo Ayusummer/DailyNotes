@@ -1,8 +1,3 @@
----
-headerDepth: 4
-sidebarDepth: 6
----
-
 # Markdown
 
 ## 目录
