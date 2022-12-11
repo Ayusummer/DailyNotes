@@ -12,14 +12,6 @@ export default defineUserConfig({
     // 站点配置, 设置为 /[仓库名]/
     base: "/DailyNotes/",
 
-    // markdown 配置
-    markdown: {
-        anchor: {
-            // 最多显示 6 级标题
-            level: [2, 3, 4, 5, 6],
-        },
-    },
-
     // 主题配置
     theme: hopeTheme({
         navbar: Navbar,
