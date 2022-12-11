@@ -3,6 +3,9 @@ import { Navbar } from "./navbar";
 import { Sidebar } from "./sidebar";
 
 export default hopeTheme({
+    // logo
+    logo: "/logo.png",
+
     // 主题色选择器
     themeColor: {
         blue: "#2196f3",
