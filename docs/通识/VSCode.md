@@ -1,4 +1,5 @@
-# VSCode 下载
+# VSCode
+## VSCode 下载
 > [VsCode下载，使用国内镜像秒下载_bielaiwuyang1999的博客-CSDN博客](https://blog.csdn.net/bielaiwuyang1999/article/details/117814237)
 
 [官网下载 VSCode](https://code.visualstudio.com/Download) 速度比较慢, 可以在下载时将直链替换国内镜像地址, 以达到更快的下载速度.  
@@ -17,11 +18,11 @@
 
 ---
 
-# 扩展食用记录
+## 扩展食用记录
 
-## 基础使用
+### 基础使用
 
-### 汉化
+#### 汉化
 
 ![image-20221209094145345](http://cdn.ayusummer233.top/DailyNotes/202212090941728.png)
 
@@ -33,7 +34,7 @@
 
 ---
 
-### open
+#### open
 
 ![open插件](http://cdn.ayusummer233.top/DailyNotes/202212090939646.png "屏幕截图.png")
 
@@ -45,7 +46,7 @@
 
 ---
 
-### vscode-icons
+#### vscode-icons
 
 该扩展可以让左侧文档树文档类型更加明显
 
@@ -56,7 +57,7 @@
 
 ---
 
-### Resource Monitor
+#### Resource Monitor
 
 显示设备(可以是远程连接的设备)当前的 CPU, 内存, 硬盘状态
 
@@ -66,7 +67,7 @@
 
 ---
 
-## Drawio Preview
+### Drawio Preview
 
 安装了 Drawio Preview 扩展后支持打开 `.drawio` 文件并开始绘图
 
@@ -80,7 +81,7 @@
 
 ---
 
-## CodeTour
+### CodeTour
 
 > [microsoft/codetour: VS Code extension that allows you to record and play back guided tours of codebases, directly within the editor. (github.com)](https://github.com/microsoft/codetour)
 >
@@ -94,7 +95,7 @@
 
 ---
 
-## Markdown 相关
+### Markdown 相关
 
 个人编辑 Markdown 文件更倾向于使用 Typora, VSCode 中更多用于预览仓库中的 Markdown 文件以及格式化 markdown 文本
 
@@ -102,9 +103,9 @@
 
 ---
 
-## 远程开发
+### 远程开发
 
-### Remote - SSH + Docker + Dev Containers
+#### Remote - SSH + Docker + Dev Containers
 
 以 Vulhub 为例
 
@@ -142,11 +143,11 @@
 
 ---
 
-## 网络相关
+### 网络相关
 
 ---
 
-### REST Client
+#### REST Client
 
 安装了 REST Client 扩展后可以直接发送 Burp 拦截的请求包, 比如 pikachu 靶场的 sql 宽字节注入:
 
@@ -160,7 +161,7 @@
 
 ----
 
-### curlconverter
+#### curlconverter
 
 安装了 `curlconverter` 后可以将剪贴板上的 cURL 命令生成代码, 流程如下:
 
@@ -178,7 +179,7 @@
 
 ---
 
-### Thunder Client
+#### Thunder Client
 
 > [(95) I Don't Need Postman Anymore!! I Use VS Code Instead... - YouTube](https://www.youtube.com/watch?v=AbCTlemwZ1k)
 
@@ -205,11 +206,11 @@
 
 ---
 
-## 编程相关
+### 编程相关
 
 ---
 
-### Error Lens
+#### Error Lens
 
 结合相关语言的语法提示扩展, 安装 `Error Lens` 扩展后可以在当前报错行显示报错/告警信息
 
@@ -217,16 +218,16 @@
 
 ![image-20221209100717053](http://cdn.ayusummer233.top/DailyNotes/202212091007347.png)
 
-### Python
+#### Python
 
 ---
-#### Python-autopep8
+##### Python-autopep8
 - 自动按照pep8规范格式化python代码
 
 
 -----
 
-#### Sourcery
+##### Sourcery
 
 > [Sourcery Documentation](https://docs.sourcery.ai/)
 
@@ -241,11 +242,11 @@ Sourcery-ai 可以给开发者提供 Python 代码的重构建议:
 
 ---
 
-### 前端
+#### 前端
 
 ---
 
-#### prettier + ESLint
+##### prettier + ESLint
 
 > [Prettier · Opinionated Code Formatter](https://prettier.io/)
 >
@@ -261,10 +262,10 @@ Sourcery-ai 可以给开发者提供 Python 代码的重构建议:
 
 ----
 
-## 已弃用扩展
+### 已弃用扩展
 
 ---
-### ~~Terminal~~
+#### ~~Terminal~~
 
 > PS: 新版本 VSCode 该扩展已弃用, 目前直接使用工具栏上的终端指令
 >
@@ -285,7 +286,7 @@ Sourcery-ai 可以给开发者提供 Python 代码的重构建议:
 
 ---
 
-# 用户代码片段
+## 用户代码片段
 
 > [Visual Studio Code 中的代码片段](https://code.visualstudio.com/docs/editor/userdefinedsnippets)
 
@@ -297,7 +298,7 @@ Sourcery-ai 可以给开发者提供 Python 代码的重构建议:
 
 ---
 
-## 自用代码片段 stash
+### 自用代码片段 stash
 
 `python.json`:
 
@@ -360,7 +361,7 @@ Sourcery-ai 可以给开发者提供 Python 代码的重构建议:
 
 ---
 
-## KoroFileHeader
+### KoroFileHeader
 
 > [配置字段 · OBKoro1/koro1FileHeader Wiki (github.com)](https://github.com/OBKoro1/koro1FileHeader/wiki/配置字段)
 >
@@ -408,16 +409,16 @@ Sourcery-ai 可以给开发者提供 Python 代码的重构建议:
   },
 ```
 
-### 快捷键
+#### 快捷键
 
-#### 文件头部注释快捷键
+##### 文件头部注释快捷键
 
 - 记录文件信息/文件的传参/出参，设置个性签名、留下QQ、微信联系方式、输入空行等等
 - 支持用户高度自定义注释选项, 适配各种需求的注释形式。
 - 保存文件的时候，自动更新最后的编辑时间和编辑人
 - `window`：`ctrl+win+i`,`mac`：`ctrl+cmd+i`, `linux`: `ctrl+meta+i`,`Ubuntu`: `ctrl+super+i`
 
-#### 函数注释注释快捷键
+##### 函数注释注释快捷键
 
 > 更多关于函数参数自动请查阅[配置-函数注释自动提取函数的参数](https://github.com/OBKoro1/koro1FileHeader/wiki/配置#函数注释自动提取函数的参数)文档
 
@@ -425,7 +426,7 @@ Sourcery-ai 可以给开发者提供 Python 代码的重构建议:
 - 自动解析函数参数，生成函数参数注释。
 - 快捷键：`window`：`ctrl+win+t`,`mac`：`ctrl+cmd+t`,`linux`: `ctrl+meta+t`, `Ubuntu`: `ctrl+super+t`
 
-#### 多行函数参数鼠标选中后函数声明后按快捷键自动提取
+##### 多行函数参数鼠标选中后函数声明后按快捷键自动提取
 
 1. **鼠标左键选择多行函数声明区域，函数声明区域尽量精准**
 2. **按函数注释快捷键**
@@ -433,11 +434,11 @@ Sourcery-ai 可以给开发者提供 Python 代码的重构建议:
 
 ---
 
-# 报错收集
+## 报错收集
 
 ---
 
-## git Missing or invalid credentials.
+### git Missing or invalid credentials.
 
 > [git Missing or invalid credentials. · Issue #107024 · microsoft/vscode (github.com)](https://github.com/microsoft/vscode/issues/107024)
 
@@ -447,7 +448,7 @@ Sourcery-ai 可以给开发者提供 Python 代码的重构建议:
 
 ---
 
-## remote-ssh 一直 waiting for server log
+### remote-ssh 一直 waiting for server log
 
 > [vscode ssh连接失败_我歌月徘徊、的博客-CSDN博客_vscode连不上ssh](https://blog.csdn.net/myWorld001/article/details/119443079)
 >
@@ -461,7 +462,7 @@ rm -rf ****/vscode-server/bin/****
 
 ---
 
-## Remote-SSH + tmux 每次 bash 命令执行完都会有红色报错 ``-bash: __vsc_prompt_cmd_original: command not found`
+### Remote-SSH + tmux 每次 bash 命令执行完都会有红色报错 ``-bash: __vsc_prompt_cmd_original: command not found`
 
 > [visual studio code - VSCode Remote SSH Extension + tmux = -bash: __vsc_prompt_cmd_original: command not found - Stack Overflow](https://stackoverflow.com/questions/73421978/vscode-remote-ssh-extension-tmux-bash-vsc-prompt-cmd-original-command-n/73798469#73798469)
 >
