@@ -3,27 +3,27 @@ import { sidebar } from "vuepress-theme-hope";
 let NoteTools = [
     {
         text: "VuePress",
-        link: "/笔记工具/VuePress.md",
+        link: "/NoteTools/VuePress.md",
     },
     {
         text: "Markdown",
-        link: "/笔记工具/Markdown.md",
+        link: "/NoteTools/Markdown.md",
     },
     {
         text: "Mermaid",
-        link: "/笔记工具/Mermaid.md",
+        link: "/NoteTools/Mermaid.md",
     },
     {
         text: "LaTeX",
-        link: "/笔记工具/LaTex/LateX.md",
+        link: "/NoteTools/LaTex/LateX.md",
     },
     {
         text: "PlantUML",
-        link: "/笔记工具/PlantUML.md",
+        link: "/NoteTools/PlantUML.md",
     },
     {
         text: "VitePress",
-        link: "/笔记工具/VitePress.md",
+        link: "/NoteTools/VitePress.md",
     },
 ]
 
