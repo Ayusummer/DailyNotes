@@ -286,6 +286,36 @@ Sourcery-ai 可以给开发者提供 Python 代码的重构建议:
 
 ---
 
+## 查找替换
+
+### 使用正则表达式
+
+> [VS Code正则匹配替换 - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/414806629)
+>
+> ---
+
+```
+(&#[0-9]{2,3};)
+`$1`
+```
+
+> 需要注意的是匹配部分的 `()` 可以划定分组, 在替换部分可以使用 `$x` 来指代匹配到的分组
+
+![image-20221213152425236](http://cdn.ayusummer233.top/DailyNotes/202212131524550.png)
+
+![image-20221213152552391](http://cdn.ayusummer233.top/DailyNotes/202212131525580.png)
+
+```
+(&[a-z]{2,6}[0-9]{0,2};)
+`$1`
+```
+
+![image-20221213152705815](http://cdn.ayusummer233.top/DailyNotes/202212131527487.png)
+
+![image-20221213152729921](http://cdn.ayusummer233.top/DailyNotes/202212131527100.png)
+
+---
+
 ## 用户代码片段
 
 > [Visual Studio Code 中的代码片段](https://code.visualstudio.com/docs/editor/userdefinedsnippets)
