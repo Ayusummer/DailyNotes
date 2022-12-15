@@ -188,10 +188,11 @@ return {"message": "Hello World"}
 from enum import Enum
 
 class CityName(str, Enum):
-    Beijing 
+    Beijing = 'Beijing'
+    Xian = 'Xian'
 ```
 
-需要注意的是定义整型枚举类型是在 FastAPI 中不可以用 (int, Enum) 或者仅仅是使用 Enum, 应当先从 enum 导入 IntEnum, 然后使用 IntEnum 来定义整型枚举类型
+需要注意的是定义整型枚举类型是在 FastAPI 中不可以用 `(int, Enum) ` 或者仅仅是使用 Enum, 应当先从 enum 导入 IntEnum, 然后使用 IntEnum 来定义整型枚举类型
 
 ```python
 # 引入枚举类
