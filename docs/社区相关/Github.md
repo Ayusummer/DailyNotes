@@ -348,27 +348,40 @@ mkdir /etc/nginx/ca && sudo cp nginx.pem nginx.key /etc/nginx/ca
 ---
 # Git配置
 - 设置用户名
-  ```
+  ```bash
   git config --global user.name "GitHub用户名"
   ```
   - 用户名随个人喜好即可,并非必须要Github的用户名,可以起一个能够代表当前修改环境的名字
 - 设置用户邮箱
-  ```
+  ```bash
   git config --global user.email "GitHub绑定邮箱"
   ```
   - GitHub绑定邮箱请根据自己注册的账号邮箱填写
 - 查看当前配置项列表
-  ```
+  ```bash
   git config --list
   ```
 - 删除某个配置项(以`user.name`为例)
-  ```
+  ```bash
   git config --global --unset user.name
   ```
 - 编辑某个配置项
-  ```
+  ```bash
   git config --global --edit user.name '用户名'
   ```
+
+---
+
+使用 VSCode 拉取更新与推送修改经常出错, 需要配置代理(以本地 7890 端口为例), 在本地项目根目录下打开命令行进行代理配置:
+
+```bash
+git config https.proxy http://127.0.0.1:7890
+git config https.proxy https://127.0.0.1:7890
+```
+
+然后重启 VSCode 即可
+
+> 可以配置全局代理, 但是由于本地还有在用内网的 gitlab, 所以不适合配全局, 这里是针对项目配的
 
 ----
 # Commit
