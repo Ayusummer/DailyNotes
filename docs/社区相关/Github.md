@@ -375,13 +375,20 @@ mkdir /etc/nginx/ca && sudo cp nginx.pem nginx.key /etc/nginx/ca
 使用 VSCode 拉取更新与推送修改经常出错, 需要配置代理(以本地 7890 端口为例), 在本地项目根目录下打开命令行进行代理配置:
 
 ```bash
-git config https.proxy http://127.0.0.1:7890
+git config http.proxy http://127.0.0.1:7890
 git config https.proxy https://127.0.0.1:7890
 ```
 
-然后重启 VSCode 即可
-
 > 可以配置全局代理, 但是由于本地还有在用内网的 gitlab, 所以不适合配全局, 这里是针对项目配的
+>
+> ---
+>
+> 取消代理配置如下:
+>
+> ```bash
+> git config --global --unset http.proxy
+> git config --global --unset https.proxy
+> ```
 
 ----
 # Commit
