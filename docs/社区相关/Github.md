@@ -347,6 +347,11 @@ mkdir /etc/nginx/ca && sudo cp nginx.pem nginx.key /etc/nginx/ca
 
 ---
 # Git配置
+
+> [GIt设置代理 - 简书 (jianshu.com)](https://www.jianshu.com/p/b481d2a42274)
+>
+> ---
+
 - 设置用户名
   ```bash
   git config --global user.name "GitHub用户名"
