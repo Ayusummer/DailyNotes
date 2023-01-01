@@ -1,4 +1,39 @@
-# SHELL
+# Linux
+
+## Ubuntu 的 source.list 文件
+
+> [Ubuntu | 对sources.list的总结 - 简书 (jianshu.com)](https://www.jianshu.com/p/5400722c369c)
+>
+> [详解Ubuntu的source.list文件_VinQin的博客-CSDN博客_sourcelist](https://blog.csdn.net/u012843189/article/details/80964287)
+
+### 换源
+
+> [vim - Ubuntu 20.04 Desktop 换源的两种方法_个人文章 - SegmentFault 思否](https://segmentfault.com/a/1190000040946515)
+
+换网易源:
+
+打开 `/etc/apt/sources.list` 在文件首部加上如下配置
+
+```
+# 镜像
+deb http://mirrors.163.com/ubuntu/ focal main restricted
+deb http://mirrors.163.com/ubuntu/ focal universe
+deb http://mirrors.163.com/ubuntu/ focal multiverse
+deb http://mirrors.163.com/ubuntu/ focal-updates main restricted
+deb http://mirrors.163.com/ubuntu/ focal-updates universe
+deb http://mirrors.163.com/ubuntu/ focal-updates multiverse
+deb http://mirrors.163.com/ubuntu/ focal-backports main restricted universe multiverse
+```
+
+然后注释掉相应后缀的源本的官方源之后更新下索引即可
+
+```bash
+apt update
+```
+
+---
+
+## SHELL
 
 > [Bash编程入门-1：Shell与Bash - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/56532223)
 
@@ -19,11 +54,11 @@ echo $SHELL
 
 ---
 
-## 快捷键/命令
+### 快捷键/命令
 
 ---
 
-## 路由操作
+### 路由操作
 
 ```bash
 route add -net [目的网段] netmask [掩码] gw [网关]
@@ -49,7 +84,7 @@ fi
 
 ---
 
-### 类清屏
+#### 类清屏
 
 - ```bash
   # 清屏
@@ -60,10 +95,10 @@ fi
 
 ---
 
-### 运算符
+#### 运算符
 
 
-#### 管道运算符 `|`
+###### 管道运算符 `|`
 
 ```bash
 command 1 | command 2
@@ -89,7 +124,7 @@ ls -s|sort -nr
 
 ---
 
-### 查找文件
+#### 查找文件
 
 - 使用 locate
 
@@ -107,40 +142,7 @@ ls -s|sort -nr
 
 ---
 
-# Ubuntu 的 source.list 文件
-
-> [Ubuntu | 对sources.list的总结 - 简书 (jianshu.com)](https://www.jianshu.com/p/5400722c369c)
->
-> [详解Ubuntu的source.list文件_VinQin的博客-CSDN博客_sourcelist](https://blog.csdn.net/u012843189/article/details/80964287)
-
-## 换源
-
-> [vim - Ubuntu 20.04 Desktop 换源的两种方法_个人文章 - SegmentFault 思否](https://segmentfault.com/a/1190000040946515)
-
-换清华源:
-
-打开 `/etc/apt/sources.list` 在文件首部加上如下配置
-
-```
-# 镜像
-deb http://mirrors.163.com/ubuntu/ focal main restricted
-deb http://mirrors.163.com/ubuntu/ focal universe
-deb http://mirrors.163.com/ubuntu/ focal multiverse
-deb http://mirrors.163.com/ubuntu/ focal-updates main restricted
-deb http://mirrors.163.com/ubuntu/ focal-updates universe
-deb http://mirrors.163.com/ubuntu/ focal-updates multiverse
-deb http://mirrors.163.com/ubuntu/ focal-backports main restricted universe multiverse
-```
-
-然后注释掉相应后缀的源本的官方源之后更新下索引即可
-
-```bash
-apt update
-```
-
----
-
-# SSH 工具
+## SSH 工具
 
 
 > [如何在 Ubuntu 20.04 启用 SSH-阿里云开发者社区 (aliyun.com)](https://developer.aliyun.com/article/763505)
@@ -206,7 +208,7 @@ update-rc.d ssh enable
 ---
 
 
-## VSCode: Remote-SSH
+### VSCode: Remote-SSH
 
 
 VSCode 安装 Remote-SSH
@@ -261,23 +263,23 @@ Host [为该主机随便起个有辨识度的名字]
 
 ---
 
-## MobaXterm
+### MobaXterm
 
 > [【MobaXterm】设置保持SSH连接_hitrjj的博客-CSDN博客_mobaeterm keepalive](https://blog.csdn.net/u014636245/article/details/83855860)
 
 ---
 
-## WindTerm
+### WindTerm
 
 
 
 ---
 
-## Terminus
+### Terminus
 
 ---
 
-## 远程图形化界面的本地显示
+### 远程图形化界面的本地显示
 
 > [ssh链接远程服务器 及 远程图形化界面的本地显示 - 掘金 (juejin.cn)](https://juejin.cn/post/7109647016086470669)
 >
@@ -342,7 +344,7 @@ export DISPLAY=localhost:11.0
 
 ---
 
-### 一些软件命令行启动的命令
+#### 一些软件命令行启动的命令
 
 ```bash
 # 火狐浏览器直接在命令行里输入 firefox 并回车会在远程启动默认用户配置的 Firefox 窗口, 并不会在本地启动
@@ -394,7 +396,7 @@ java -jar [burpsuitxxx.jar绝对路径]
 
 ---
 
-# 使用 root 登入 UI
+## 使用 root 登入 UI
 
 > [ubuntu20.04 使用root用户登录系统_COCO56（徐可可）的博客-CSDN博客_ubuntu使用root登录](https://blog.csdn.net/COCO56/article/details/107628019)
 >
@@ -452,9 +454,9 @@ java -jar [burpsuitxxx.jar绝对路径]
 
 ---
 
-# 常见问题
+## 常见问题
 
-## the root filesystem require a manual fsck
+### the root filesystem require a manual fsck
 
 > [boot - Root file system requires manual fsck - Ask Ubuntu](https://askubuntu.com/questions/885062/root-file-system-requires-manual-fsck)
 
@@ -472,7 +474,7 @@ exit
 
 ---
 
-## E: dpkg was interrupted, you must manually run 'dpkg --configure -a' to correct the problem.
+### E: dpkg was interrupted, you must manually run 'dpkg --configure -a' to correct the problem.
 
 执行 `dpkg --configure -a` 以修复
 
@@ -493,7 +495,7 @@ sudo rm /var/lib/dpkg/updates/*
 
 ---
 
-## E: Sub-process /usr/bin/dpkg returned an error code (1)
+### E: Sub-process /usr/bin/dpkg returned an error code (1)
 
 ![image-20220825102350086](http://cdn.ayusummer233.top/img/202208251023257.png)
 
@@ -501,15 +503,15 @@ sudo rm /var/lib/dpkg/updates/*
 
 ----
 
-# 软硬链接
+## 软硬链接
 
 > [软连接和硬链接区别 - matengfei - 博客园 (cnblogs.com)](https://www.cnblogs.com/matengfei123/p/12824422.html)
 
 ---
 
-# 常用命令
+## 常用命令
 
-## echo
+### echo
 
 > [How to use Echo Command in Linux (With Examples) (phoenixnap.com)](https://phoenixnap.com/kb/echo-command-linux)
 
@@ -525,7 +527,7 @@ echo [option] [string]
 
 ---
 
-## 查看软件安装位置
+### 查看软件安装位置
 
 > [Ubuntu中查看软件的安装位置及安装文件 - Macrored - 博客园 (cnblogs.com)](https://www.cnblogs.com/macrored/p/11757888.html)
 
@@ -536,7 +538,7 @@ which
 
 ---
 
-## 防火墙相关
+### 防火墙相关
 
 > [Debian/Ubuntu/Centos 防火墙放行指定端口 - SunPma'Blog](https://sunpma.com/555.html)
 >
@@ -544,7 +546,7 @@ which
 
 ---
 
-## 压缩与解压
+### 压缩与解压
 
 ```bash
 # 解压 zip 文件
@@ -562,11 +564,11 @@ unzip [option] [压缩包名]
 
 
 ---
-# WSL2
+## WSL2
 
 ---
 
-## 安装
+### 安装
 
 > [安装 WSL | Microsoft Learn](https://learn.microsoft.com/zh-cn/windows/wsl/install)
 >
@@ -613,7 +615,7 @@ wsl --install -d kali-linux
 
 ---
 
-## 卸载
+### 卸载
 
 > [WSL 发行版卸载 - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/487091950)
 >
@@ -625,7 +627,7 @@ wslconfig /u kali-linux
 
 ---
 
-## VSCode-ssh-remote
+### VSCode-ssh-remote
 
 使用 SSH-remote 插件连上 WSL 后如果不是以 root 用户登入的话,会在一些系统目录(如 `/etc`, `/dev`, `/root` 等)被限制编辑与增删, 不过在用户目录(如 `/ubuntu`, `/mnt`)的权限是足够的
 
@@ -673,7 +675,7 @@ wslconfig /u kali-linux
   
   ---
 
-## 端口映射
+### 端口映射
 
 正常情况下直接从本机 telnet  wsl2 的端口是不通的, 需要映射 wsl2 端口到本机
 
@@ -718,7 +720,7 @@ netsh interface portproxy show all
 
 
 ---
-## WSL2 DNS 服务异常
+### WSL2 DNS 服务异常
 
 无法正确解析域名, 直接 ping ip 可以 ping 通, 排查了一圈发现主网也 ping 不通
 
@@ -748,7 +750,7 @@ netsh interface portproxy show all
 
 ---
 
-## 报错收集
+### 报错收集
 
 > [WSL2 踩坑分享 – xiabee](https://xiabee.cn/coding/wsl2/)
 >
@@ -758,7 +760,7 @@ netsh interface portproxy show all
 
 ---
 
-### ssh 拒绝
+#### ssh 拒绝
 
 `ssh: connect to host localhost port 22: Connection refused`
 
@@ -780,7 +782,7 @@ service ssh restart
 
 ---
 
-### ping 的通 ip , ping 不通域名
+#### ping 的通 ip , ping 不通域名
 
 dns 解析错误
 
@@ -792,13 +794,13 @@ nameserver 8.8.8.8
 
 ---
 
-# 服务器
+## 服务器
 
-## 远程连接服务器
+### 远程连接服务器
 
 ---
 
-### remote-SSH
+#### remote-SSH
 
 先在控制台生成并绑定密钥(本地密钥妥善保管), 然后再重置 `root` 密码
 > ![20211122113415](http://cdn.ayusummer233.top/img/20211122113415.png)
@@ -847,7 +849,7 @@ Host CentOS
 
 ---
 
-## 文件下载
+### 文件下载
 
 - `VSCode` 连接到服务器确实可以在左栏 `资源管理器` 处选择文件(夹)右键下载, 不过服务器带宽小的话很容易断连
 - `Xshell + Xftp` 正版要付费且没必要为了下载个文件就多装一个软件专门做这件事
@@ -883,7 +885,7 @@ scp -r [user]@[ip]:[Linux 服务器上目标文件的路径] [指定下载到win
 
 ---
 
-## 腾讯云轻量
+### 腾讯云轻量
 
 ---
 
@@ -891,7 +893,7 @@ scp -r [user]@[ip]:[Linux 服务器上目标文件的路径] [指定下载到win
 
 ---
 
-### 内网 DNS
+#### 内网 DNS
 
 - yum 命令报错: `Could not resolve host: mirrors.tencentyun.com; Unknown error`
 
@@ -917,7 +919,7 @@ scp -r [user]@[ip]:[Linux 服务器上目标文件的路径] [指定下载到win
   ```
 
 ---
-### 使用密钥登录到 root 账户
+#### 使用密钥登录到 root 账户
 > [腾讯云 密钥直接登录root_Xav Pun的博客-CSDN博客](https://blog.csdn.net/weixin_39591031/article/details/118700963)
 
 - 腾讯云的 `ubuntu` 系统, 生成密钥后绑定服务器默认会绑定在 `ubuntu` 用户下, 若要通过密钥登录到 `root` 用户则需要将 `ubuntu` 用户下的密钥复制到 `root` 用户下:
@@ -928,7 +930,7 @@ scp -r [user]@[ip]:[Linux 服务器上目标文件的路径] [指定下载到win
 
 ---
 
-## 探针
+### 探针
 
 > [cokemine/ServerStatus-Hotaru: 云探针、多服务器探针、云监控、多服务器云监控 (github.com)](https://github.com/CokeMine/ServerStatus-Hotaru)
 
@@ -1018,13 +1020,13 @@ python status-psutil.py
 
 ---
 
-# 窗口工具
+## 窗口工具
 
-## Zellij
+### Zellij
 
 > [Zellij](https://zellij.dev/)
 
-### 安装
+#### 安装
 
 > [Linux Ubuntu添加环境变量_FarryNiu的博客-CSDN博客_ubuntu 添加环境变量](https://blog.csdn.net/qq_43474959/article/details/115028848)
 >
@@ -1076,7 +1078,7 @@ source ~/.bashrc
 
 ---
 
-### 使用
+#### 使用
 
 新建一个`session`
 
@@ -1108,13 +1110,13 @@ detach session: `ctrl + o, d`
 
 ---
 
-## Screen命令
+### Screen命令
 
 Linux screen命令用于多重视窗管理程序。
 
 screen为多重视窗管理程序。此处所谓的视窗，是指一个全屏幕的文字模式画面。通常只有在使用telnet登入主机或是使用老式的终端机时，才有可能用到screen程序。
 
-### 语法
+#### 语法
 
 ```
 screen [-AmRvx -ls -wipe][-d <作业名称>][-h <行数>][-r <作业名称>][-s <shell>][-S <作业名称>]
@@ -1139,9 +1141,9 @@ screen [-AmRvx -ls -wipe][-d <作业名称>][-h <行数>][-r <作业名称>][-s 
 
 ---
 
-# 软件
+## 软件
 
-## Firefox
+### Firefox
 
 > [在 Linux 中安装 Firefox | Firefox 帮助 (mozilla.org)](https://support.mozilla.org/zh-CN/kb/linux-firefox#w_cong-fa-xing-ban-ti-gong-de-bao-an-zhuang-tui-jian)
 >
@@ -1177,7 +1179,7 @@ screen [-AmRvx -ls -wipe][-d <作业名称>][-h <行数>][-r <作业名称>][-s 
 
 ---
 
-## 微信
+### 微信
 
 > [Ubuntu下如何使用微信 - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/413646220)
 >
@@ -1203,7 +1205,7 @@ sudo apt-get install -f -y ./ukylin-wechat_3.0.0_amd64.deb
 
 ---
 
-# Ubuntu 安装邮件服务器(TODO - 校验有问题且暂时不打算用, 已搁置)
+## Ubuntu 安装邮件服务器(TODO - 校验有问题且暂时不打算用, 已搁置)
 
 > [Ubuntu安装邮件服务器 - 简书 (jianshu.com)](https://www.jianshu.com/p/f438aa21069e)
 >
