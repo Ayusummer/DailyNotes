@@ -263,7 +263,7 @@ Host [为该主机随便起个有辨识度的名字]
 
 ## MobaXterm
 
-
+> [【MobaXterm】设置保持SSH连接_hitrjj的博客-CSDN博客_mobaeterm keepalive](https://blog.csdn.net/u014636245/article/details/83855860)
 
 ---
 
