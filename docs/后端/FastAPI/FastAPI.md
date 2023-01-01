@@ -2739,5 +2739,13 @@ swagger_favicon_url: str = "/static/img/favicon.png",
 
 ---
 
+如此配置好后访问交互式文档时可能还会报两个资源获取不到的问题, 是两个 `.map` 文件
 
+```
+https://cdn.jsdelivr.net/npm/swagger-ui-dist@4/swagger-ui-bundle.js.map
+https://cdn.jsdelivr.net/npm/swagger-ui-dist@4/swagger-ui.css.map
+```
 
+直接使用 `wget` 命令将其下载到对应位置即可:
+
+![image-20221230161204692](http://cdn.ayusummer233.top/img/202212301612040.png)
