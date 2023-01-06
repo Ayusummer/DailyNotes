@@ -2642,6 +2642,16 @@ if __name__ == '__main__':
     uvicorn_run('__main__:app', host=uvicorn_host, port=uvicorn_port, reload=uvicorn_reload)
 ```
 
+上 HTTPS
+
+```python
+uvicorn_run('__main__:app', host=uvicorn_host, port=uvicorn_port, reload=False, ssl_keyfile="./static/ssl/example.key", ssl_certfile="./static/ssl/example.crt")
+```
+
+- `ssl_ketfile` 与 `ssl_certfile` 分别为证书与私钥
+
+  > 这里我是用 openssl 创建的自签名 SSL 证书, 可参阅: [通识-创建自签名 SSL 证书 | DailyNotes (ayusummer.github.io)](https://ayusummer.github.io/DailyNotes/网络安全/通识.html#创建自签名-ssl-证书-1)
+
 ---
 
 # Pydantic
