@@ -670,6 +670,207 @@ func main() {
 
 ---
 
+### 查找重复的行
+
+> [查找重复的行 - Go语言圣经 (gopl-zh.github.io)](https://gopl-zh.github.io/ch1/ch1-03.html)
+
+对文件做拷贝、打印、搜索、排序、统计或类似事情的程序都有一个差不多的程序结构：一个处理输入的循环，在每个元素上执行计算处理，在处理的同时或最后产生输出。
+
+本节展示一个名为`dup` 的程序的三个版本；灵感来自于 Unix 的 `uniq` 命令，其寻找相邻的重复行。
+
+---
+
+`dup` 的第一个版本打印标准输入中多次出现的行，以重复次数开头。该程序将引入 `if` 语句，`map` 数据类型以及 `bufio` 包。
+
+```go
+package ch1
+
+import (
+	"bufio"
+	"fmt"
+	"os"
+)
+
+// 打印标准输入中多次出现的行, 以重复次数开头
+func Dup1() {
+	// 创建一个空的 map, 键为 string, 值为 int
+	counts := make(map[string]int)
+	// 创建一个从标准输入读取数据的 Scanner
+	input := bufio.NewScanner(os.Stdin)
+	// 逐行读取标准输入并更新 map counts
+	for input.Scan() {
+		// 遇到 0 时, input.Scan() 退出循环
+		if input.Text() == "0" {
+			break
+		}
+		counts[input.Text()]++
+
+	}
+	// 注意: 忽略input.Err()中可能的错误
+	for line, n := range counts {
+		if n > 1 {
+			fmt.Printf("%d\t%s\n", n, line)
+		}
+	}
+}
+
+```
+
+![image-20230108234453299](http://cdn.ayusummer233.top/img/202301082345766.png)
+
+- map 从功能上来说和 Python 的 dict 比较像, 都可以存储键值对
+
+  **map** 存储了键/值（key/value）的集合，对集合元素，提供常数时间的存、取或测试操作。
+
+  - 键可以是任意类型，只要其值能用 `==` 运算符比较，最常见的例子是字符串；
+  - 值则可以是任意类型。
+  - 这个例子中的键是字符串，值是整数。
+
+  内置函数 `make` 创建空 `map`
+
+  > 关于 Map 的其他用法学到 4.3 会有一章讲解: [Map - Go语言圣经 (gopl-zh.github.io)](https://gopl-zh.github.io/ch4/ch4-03.html)
+
+- `bufio` 包使处理输入和输出方便又高效。`Scanner` 类型是该包最有用的特性之一，它读取输入并将其拆成行或单词；通常是处理行形式的输入最简单的方法。
+
+  程序使用短变量声明创建 `bufio.Scanner` 类型的变量 `input`。
+
+  ```go
+  input := bufio.NewScanner(os.Stdin)
+  ```
+
+  该变量从程序的标准输入中读取内容。每次调用 `input.Scan()`，即读入下一行，并移除行末的换行符；读取的内容可以调用 `input.Text()` 得到。`Scan` 函数在读到一行时返回 `true`，不再有输入时返回 `false`。
+
+- if 后面跟的条件语句不用括号, 但是主体部分必须加花括号, 就算只有一行也要加
+
+  > ![image-20230109000500558](http://cdn.ayusummer233.top/img/202301090005852.png)
+
+- `map` 中不含某个键时不用担心，首次读到新行时，等号右边的表达式 `counts[line]` 的值将被计算为其类型的零值，对于 `int` 即 `0`。
+
+- 关于 Printf 格式化输出:
+
+  ```
+  %d          十进制整数
+  %x, %o, %b  十六进制，八进制，二进制整数。
+  %f, %g, %e  浮点数： 3.141593 3.141592653589793 3.141593e+00
+  %t          布尔：true或false
+  %c          字符（rune） (Unicode码点)
+  %s          字符串
+  %q          带双引号的字符串"abc"或带单引号的字符'c'
+  %v          变量的自然形式（natural format）
+  %T          变量的类型
+  %%          字面上的百分号标志（无操作数）
+  ```
+
+---
+
+很多程序要么从标准输入中读取数据，如上面的例子所示，要么从一系列具名文件中读取数据。`dup` 程序的下个版本读取标准输入或是使用 `os.Open` 打开各个具名文件，并操作它们。
+
+```go
+// 统计标准输入或文件中重复的行
+func countLines(f *os.File, counts map[string]int) {
+	input := bufio.NewScanner(f)
+	for input.Scan() {
+		// 遇到 -1 时, input.Scan() 退出循环
+		if input.Text() == "-1" {
+			break
+		}
+		counts[input.Text()]++
+	}
+	// 注意: 忽略input.Err()中可能的错误
+}
+
+// 读取标准输入或是使用 os.Open 打开各个具名文件，并操作它们
+func Dup2() {
+	counts := make(map[string]int)
+	files := os.Args[1:]
+	if len(files) == 0 {
+		countLines(os.Stdin, counts)
+	} else {
+		for _, arg := range files {
+			f, err := os.Open(arg)
+			if err != nil {
+				fmt.Fprintf(os.Stderr, "dup2: %v\n", err)
+				continue
+			}
+			countLines(f, counts)
+			f.Close()
+		}
+	}
+	for line, n := range counts {
+		if n > 1 {
+			fmt.Printf("%d\t%s\n", n, line)
+		}
+	}
+}
+```
+
+> ![](http://cdn.ayusummer233.top/img/202301090030819.png)
+
+- `os.Open` 函数返回两个值
+
+  - 第一个值是被打开的文件（`*os.File`），其后被 `Scanner` 读取。
+  - 第二个值是内置 `error` 类型的值
+    - 如果 `err` 等于内置值`nil`（相当于其它语言里的 `NULL`），那么文件被成功打开。读取文件，直到文件结束，然后调用 `Close` 关闭该文件，并释放占用的所有资源。
+    - 如果 `err` 的值不是 `nil`，说明打开文件时出错了。这种情况下，错误值描述了所遇到的问题; 在上面的程序中对于此种情况的处理只是简单地将错误输出了
+      - 在 Printf 中用了 `%v` 表示任意类型默认格式值
+      - `continue` 语句直接跳到 `for` 循环的下个迭代开始执行。
+
+- 关于 CountLines 函数, 其实放在 Dup2 函数后面声明也是可以正常调用的, 不过个人习惯还是写把 Dup2 中要用到的函数写在前面了
+
+  > 函数和包级别的变量（package-level entities）可以任意顺序声明，并不影响其被调用。
+
+- `map` 是一个由 `make` 函数创建的数据结构的==引用==。`map` 作为参数传递给某函数时，该函数接收这个==引用的一份拷贝==，被调用函数对 `map` 底层数据结构的任何修改，调用者函数都可以通过持有的 `map` 引用看到。在我们的例子中，`countLines` 函数向 `counts` 插入的值，也会被 `Dup2` 函数看到。
+
+---
+
+`dup` 的前两个版本以"流”模式读取输入，并根据需要拆分成多个行。理论上，这些程序可以处理任意数量的输入数据。
+
+还有另一个方法，就是一口气把全部输入数据读到内存中，一次分割为多行，然后处理它们。下面这个版本，`dup3`，就是这么操作的。这个例子引入了 `ReadFile` 函数（来自于`io/ioutil`包），其读取指定文件的全部内容，`strings.Split` 函数把字符串分割成子串的切片。（`Split` 的作用与前文提到的 `strings.Join` 相反。）
+
+```go
+// 一次性读取指定文件到内存中, 然后进行分割与计算重复行的操作
+func Dup3() {
+	counts := make(map[string]int)
+	for _, filename := range os.Args[1:] {
+		data, err := ioutil.ReadFile(filename)
+		if err != nil {
+			fmt.Fprintf(os.Stderr, "dup3: %v\n", err)
+			continue
+		}
+		for _, line := range strings.Split(string(data), "\n") {
+			counts[line]++
+		}
+	}
+	for line, n := range counts {
+		if n > 1 {
+			fmt.Printf("%d\t%s\n", n, line)
+		}
+	}
+}
+```
+
+> ![image-20230109005116705](http://cdn.ayusummer233.top/img/202301090051746.png)
+
+- `ReadFile` 函数返回一个字节切片（byte slice），必须把它转换为 `string`，才能用 `strings.Split` 分割。
+
+  > 在 3.5.4 章中会有对字符串和字节切片的详细讲解
+
+- 实现上，`bufio.Scanner`、`ioutil.ReadFile` 和 `ioutil.WriteFile` 都使用 `*os.File` 的 `Read` 和 `Write` 方法，但是，大多数程序员很少需要直接调用那些低级（lower-level）函数。高级（higher-level）函数，像 `bufio` 和 `io/ioutil` 包中所提供的那些，用起来要容易点。
+
+> 仔细看上图中的输出会发现 cmd3 只计算到了 2 次, 这是因为文件最后没有换行, 可以将所有键值对输出看看:
+>
+> ![image-20230109005755298](http://cdn.ayusummer233.top/img/202301090057333.png)
+>
+> 可以看到有两个 cmd3
+>
+> 这是因为我们使用的 `\n` 切分的字符串, Windows 下的默认行尾序列时 `CRLF` 也即 `\r\n`, VSCode 中可以调节行尾序列, 这里我用的 Windows 系统, VSCode 中默认也是 CRLF, 所以实际上最后三行切分的结果是: `cmd3\r`, `cmd3\r`, `cmd3`; 因此输出的时候会看到两个 cmd3
+>
+> 如果修改为根据 `\r\n` 切分的话就可以得到预期结果了:
+>
+> ![image-20230109005903573](http://cdn.ayusummer233.top/img/202301090059617.png)
+
+---
+
 ## 问题整理
 
 ### go get 已弃用
