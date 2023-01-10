@@ -869,6 +869,16 @@ func Dup3() {
 >
 > ![image-20230109005903573](http://cdn.ayusummer233.top/img/202301090059617.png)
 
+> 除此以外,在 Go 1.16 之后 io/ioutil 已经弃用了
+>
+> ![image-20230110230449977](http://cdn.ayusummer233.top/img/202301102304003.png)
+>
+> ![image-20230110230328271](http://cdn.ayusummer233.top/img/202301102303317.png)
+>
+> 这里可以直接使用 `os.ReadFile`, 效果是一样的:
+>
+> ![image-20230110230525093](http://cdn.ayusummer233.top/img/202301102305142.png)
+
 ---
 
 ### GIF 动画
