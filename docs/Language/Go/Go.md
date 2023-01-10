@@ -975,11 +975,11 @@ func lissajous(out io.Writer) {
   >
   > - [《Go语言圣经》 读书笔记与个人思考 ① 第一章、包括源码分析 - 小能日记 - 博客园 (cnblogs.com)](https://www.cnblogs.com/linxiaoxu/p/16187331.html)
   >
-  >   如果使用 powershellpowershell 重定向管道 `go run . > out.gif` 生成的 gifgif 图片将会出错无法打开。具体原因是 powershellpowershell 的标准输出流如果进行管道重定向会进行转换。
+  >   如果使用 powershell 重定向管道 `go run main.exe > out.gif` 生成的 gif 图片将会出错无法打开。具体原因是 powershell 的标准输出流如果进行管道重定向会进行转换。
   >
   >   > The GIF file (the gif data) is a binary format, not textual. Attempting to write it to the standard output and redirecting that to a file may suffer transformations. For example, the Windows PowerShell most likely converts some control characters (like `"\n"` to `"\r\n"`), so the resulting binary will not be identical to what [`gif.EncodeAll()`](https://golang.org/pkg/image/gif/#EncodeAll) writes to the standard output. Apparently `cmd.exe` does not do such transformations.
   >
-  >   解决方法可以用其他命令行工具比如 cmdcmd，或者在代码中明确使用 os.Fileos.File 创建文件等形式。
+  >   解决方法可以用其他命令行工具比如 cmd，或者在代码中明确使用 `os.File` 创建文件等形式。
 
 > TODO: 这节内容其实有一些代码没有完全理解, 后面学完 ch4 再回来看看
 
