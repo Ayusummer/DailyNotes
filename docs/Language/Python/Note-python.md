@@ -513,14 +513,129 @@ print(kw_dict(a=1,b=2,c=3))
 # {'a': 1, 'b': 2, 'c': 3}
 ```
 
+---
+
+### 函数装饰器
+
+> [装饰器 - 廖雪峰的官方网站 (liaoxuefeng.com)](https://www.liaoxuefeng.com/wiki/1016959663602400/1017451662295584)
+
+Python 一切皆对象, 函数也不例外, 可以通过将函数赋给变量, 这样通过该变量也可以调用该函数
+
+```python
+def Func1():
+    print("Hello")
+
+f = Func1
+f()
+```
+
+> ![image-20230111120942613](http://cdn.ayusummer233.top/DailyNotes/202301111209027.png)
+
+可以通过函数的 `__name__` 属性拿到函数名:
+
+> ![image-20230111121112484](http://cdn.ayusummer233.top/DailyNotes/202301111405747.png)
+
+如果现在有个需求是在每个函数执行时都要输出日志, 那么此时可以使用 decorator(装饰器), 比如如下装饰器:
+
+```python
+# %%
+# 输出日志的函数装饰器
+def log(func):
+    def wrapper(*args, **kwargs):
+        print(f'call {func.__name__}()')
+        return func(*asrgs, **kwargs)
+    return wrapper
+```
+
+要使用这个装饰器需要用 @ 语法将其置于被装饰函数的定义处, 如:
+
+```python
+@log
+def func2():
+    print("亻尔女子")
+
+func2()
+```
+
+> ![image-20230111140546691](http://cdn.ayusummer233.top/DailyNotes/202301111405889.png)
+
+将 `@log` 放在 `func2` 的定义处, 相当于执行了:
+
+```python
+func2 = log(func2)
+```
+
+由于 `log` 是个装饰器, 返回一个函数, 所以原来的 `func2` 依然存在, 只是同名的 `func2` 变量指向了新的函数, 于是使用 `func2()` 将会执行新的函数, 也即 `log()` 中返回的 `wrapper()`
+
+`wrapper()` 的参数为 `(*args, **kv)` 可以接收任一参数, 在 `wrapper()`  中先打印了日志接着调用了原本的函数
+
+---
+
+#### 带参数的三层装饰器
+
+如果装饰器本身需要传入参数的话则需要再多编一层函数, 比如给 log 加上自定义文本前缀
+
+```python
+# 给 log 加上自定义文本前缀
+def log(text):
+    def decorator(func):
+        def wrapper(*args, **kwargs):
+            print(f'{text}, {func.__name__}()')
+            return func(*args, **kwargs)
+        return wrapper
+    return decorator
+```
+
+用 `log` 装饰函数用法如下:
+
+```python
+@log('execute')
+def func3():
+    print('你好')
+
+func3()
+```
+
+> ![image-20230111143025404](http://cdn.ayusummer233.top/DailyNotes/202301111430311.png)
+
+---
+
+#### 对齐被装饰函数属性
+
+由于函数也是对象, 有 `__name__` 等属性, 使用上述写法的装饰器再调用装饰完的函数的 `__name__` 会发现已经变成 `wrapper` 了
+
+> ![image-20230111143620782](http://cdn.ayusummer233.top/DailyNotes/202301111436674.png)
+
+而有些依赖函数签名的代码使用这种装饰器的话就会报错, 此时需要将被装饰函数的属性也移过来, 不过倒不需要手动 `wrapper.__**__ = func.__**__`, python 有个内置的 `functools.wraps` 可以实现此操作:
+
+```python
+# 对齐属性
+import functools
 
 
+def log(text):
+    def decorator(func):
+        @functools.wraps(func)
+        def wrapper(*args, **kwargs):
+            print(f'{text}, {func.__name__}()')
+            return func(*args, **kwargs)
+        return wrapper
+    return decorator
 
+@log('执行')
+def func4():
+    print('hello')
+
+func4()
+func4.__name__
+```
+
+> ![image-20230111144110927](http://cdn.ayusummer233.top/DailyNotes/202301111441471.png)
 
 
 ---
 ## 可迭代序列
-- 第5节课
+
 ---
 ### 切片操作
 - 逆序
