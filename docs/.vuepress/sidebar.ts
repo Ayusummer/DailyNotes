@@ -158,6 +158,10 @@ let language_python = [
                 text: "turtle",
                 link: "/Language/Python/libs/turtle/turtle.md",
             },
+            {
+                text: "Rocketry",
+                link: "/Language/Python/libs/Rocketry/",
+            }
         ],
     },
 ]
