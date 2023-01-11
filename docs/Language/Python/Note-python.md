@@ -567,7 +567,7 @@ func2 = log(func2)
 
 由于 `log` 是个装饰器, 返回一个函数, 所以原来的 `func2` 依然存在, 只是同名的 `func2` 变量指向了新的函数, 于是使用 `func2()` 将会执行新的函数, 也即 `log()` 中返回的 `wrapper()`
 
-`wrapper()` 的参数为 `(*args, **kv)` 可以接收任一参数, 在 `wrapper()`  中先打印了日志接着调用了原本的函数
+`wrapper()` 的参数为 `(*args, **kwagrs)` 可以接收任一参数, 在 `wrapper()`  中先打印了日志接着调用了原本的函数
 
 ---
 
@@ -627,10 +627,9 @@ def func4():
     print('hello')
 
 func4()
-func4.__name__
 ```
 
-> ![image-20230111144110927](http://cdn.ayusummer233.top/DailyNotes/202301111441471.png)
+> ![image-20230111153207826](http://cdn.ayusummer233.top/DailyNotes/202301111532065.png)
 
 
 ---
