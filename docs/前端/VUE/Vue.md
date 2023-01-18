@@ -328,7 +328,7 @@ const app = Vue.createApp({
 
 打开 `start/index.html`
 
-在 `TODO: Import Vue app` 注释下添加以下脚本。
+在 `todo: Import Vue app` 注释下添加以下脚本。
 
 ```html
 <script src="./index.js"></script>
@@ -345,7 +345,7 @@ const app = Vue.createApp({
 
 创建并导入 Vue 应用程序后，即可创建信息的显示内容。
 
-在 `start/index.html` 文件的 `TODO: Add information display` 注释下面添加以下 HTML。
+在 `start/index.html` 文件的 `todo: Add information display` 注释下面添加以下 HTML。
 
 ```html
 <div id="app">
@@ -1253,12 +1253,12 @@ data() {
     }
 },
 
-// TODO: Add components
+// todo: Add components
 
-// TODO: Add methods
+// todo: Add methods
 ```
 
-`name` 字段设置组件的名称。 `data()` 部分将 `cruise` 对象注册为组件的数据。 稍后我们将使用 `bookings` 来存储巡航预订列表。 `TODO` 注释充当表示供未来使用的标记。
+`name` 字段设置组件的名称。 `data()` 部分将 `cruise` 对象注册为组件的数据。 稍后我们将使用 `bookings` 来存储巡航预订列表。 `todo` 注释充当表示供未来使用的标记。
 
 ---
 
@@ -1280,11 +1280,11 @@ data() {
 
     <div class="row">
         <div>
-            <!-- TODO: Add booking-form -->
+            <!-- todo: Add booking-form -->
 
         </div>
         <div>
-            <!-- TODO: Add booking-list -->
+            <!-- todo: Add booking-list -->
 
         </div>
     </div>
@@ -1589,15 +1589,15 @@ computed: {
 
    ```js
    import BookingList from './BookingList.vue';
-   // TODO: Register next component
+   // todo: Register next component
    ```
 
-4. 通过在 `TODO: Add components` 注释下添加以下代码（包括注释）来注册组件：
+4. 通过在 `todo: Add components` 注释下添加以下代码（包括注释）来注册组件：
 
    ```js
    components: {
        BookingList,
-       // TODO: Add next component
+       // todo: Add next component
    
    },
    ```
@@ -1612,7 +1612,7 @@ computed: {
 
 1. 打开 `src/components/Host.vue`
 
-2. 在 `TODO: Add booking-list` 注释下，添加以下代码以使用 `booking-list` 组件：
+2. 在 `todo: Add booking-list` 注释下，添加以下代码以使用 `booking-list` 组件：
 
    ```html
    <booking-list :bookings="bookings"></booking-list>
@@ -1812,19 +1812,19 @@ methods: {
 
 打开 `Host.vue`
 
-在 `TODO: Register next component` 注释后添加以下代码以导入 `BookingForm`：
+在 `todo: Register next component` 注释后添加以下代码以导入 `BookingForm`：
 
 ```js
 import BookingForm from './BookingForm.vue';
 ```
 
-通过在 `TODO: Add next component` 注释后添加以下代码，将 `BookingForm` 添加到可用组件列表中：
+通过在 `todo: Add next component` 注释后添加以下代码，将 `BookingForm` 添加到可用组件列表中：
 
 ```js
 BookingForm
 ```
 
-通过在 `TODO: Add methods` 注释后添加以下代码来添加用于处理 `bookingCreated` 自定义事件的方法：
+通过在 `todo: Add methods` 注释后添加以下代码来添加用于处理 `bookingCreated` 自定义事件的方法：
 
 ```js
 methods: {
@@ -1841,7 +1841,7 @@ methods: {
 
 `addBooking` 函数使用索引检索选定的客舱。 然后，该函数使用 `cabin.name` 和 `cabin.price` 新建一个 `booking` 对象。 接下来，将 `booking` 添加到 `bookings` 数组中。
 
-使用 `booking-form` 组件，使用方法为在 `TODO: Add booking-form` 注释后添加以下代码：
+使用 `booking-form` 组件，使用方法为在 `todo: Add booking-form` 注释后添加以下代码：
 
 ```html
 <booking-form @booking-created="addBooking" :cabins="cruise.cabins"></booking-form>
@@ -4891,7 +4891,7 @@ vue2 的时候就已经支持 jsx 写法，只不过不是很友好，随着 vue
   pnpm install @vitejs/plugin-vue-jsx -D
   ```
 
-> `TODO`: 感觉暂时没有上 JSX/TSX 的需求, 后面切实需要用到时再看看吧
+> `todo`: 感觉暂时没有上 JSX/TSX 的需求, 后面切实需要用到时再看看吧
 >
 > 至少目前大部分业务场景都可以直接 template 写
 
