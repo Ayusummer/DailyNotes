@@ -160,7 +160,7 @@
    Lab start  */
 
 // /*  EXERCISE 1
-//     TODO: Modify the code to add types to the variable declarations. 
+//     todo: Modify the code to add types to the variable declarations. 
 //     The resulting JavaScript should look the same as the original example when you're done. */
 
 // let firstName:string;
@@ -182,7 +182,7 @@
 // }
 
 // /* EXERCISE 2
-//     TODO: You can use types to ensure operation outcomes. Run the code as is and then modify 
+//     todo: You can use types to ensure operation outcomes. Run the code as is and then modify 
 //     it to have strongly typed variables. Then, address any errors you find so that the result 
 //     returned to a is 12. */
 
@@ -197,7 +197,7 @@
 // console.log(a);
 
 // /* EXERCISE 3
-//     TODO: In the following code, implement an enum type called Season that represents 
+//     todo: In the following code, implement an enum type called Season that represents 
 //     the constants "Fall", "Winter", "Spring", and "Summer". Then, update the function so 
 //     you can pass in the season by referencing an item in the enum, for example 
 //     Season.Fall, instead of the literal string "Fall". */
@@ -234,7 +234,7 @@
 
 
 // /* EXERCISE 4
-//     TODO: Declare the array as the type to match the type of the items in the array. */
+//     todo: Declare the array as the type to match the type of the items in the array. */
 
 // let randomNumbers:number[]=[];
 // let nextNumber:number;
