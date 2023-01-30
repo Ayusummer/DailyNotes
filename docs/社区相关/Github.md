@@ -452,6 +452,8 @@ git config https.proxy https://127.0.0.1:7890
 
   来 clone 仓库
 
+> 需要注意的是在 Linux 上使用不同的用户创建的 ssh-key 加入到 github 后也只有对应的用户可以使用, 当切换用户后需要将该用户的 ssh-key 也加入到 Github 的 SSH-key 中方可使用
+
 ---
 # Actions
 

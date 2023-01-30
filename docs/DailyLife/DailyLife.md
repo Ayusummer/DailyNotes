@@ -1,6 +1,8 @@
-# Programming
+# 日常
 
-## 行尾序列
+## Programming
+
+### 行尾序列
 
 - `LF` - 换行 - Unix/macOS(\n)
 - `CR` 回车 - Classic MacOS(\r)
@@ -19,9 +21,9 @@ CLion 编辑代码保存时会自动替换行尾为当前行尾序列。
 
 ---
 
-## 交流社区
+### 交流社区
 
-### HackerTalk
+#### HackerTalk
 
 > [黑客说 - 技术驱动优质交流 (hackertalk.net)](https://hackertalk.net/)
 
@@ -32,7 +34,7 @@ CLion 编辑代码保存时会自动替换行尾为当前行尾序列。
 
 
 ---
-# 证书
+## 证书
 
 > [从计算机专业学生到程序员大佬，都一定受用的计算机行业高含金量证书盘点！_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV1ZR4y1g7tD?spm_id_from=333.851.b_7265636f6d6d656e64.1)
 >
@@ -42,7 +44,7 @@ CLion 编辑代码保存时会自动替换行尾为当前行尾序列。
 
 ---
 
-## 软考证书
+### 软考证书
 
 > [中国计算机技术职业资格网](https://www.ruankao.org.cn/)
 
@@ -54,7 +56,7 @@ CLion 编辑代码保存时会自动替换行尾为当前行尾序列。
 > 打算在一线城市发展积分落户的话也有计分
 
 ---
-## 计算机程序设计能力考试(PAT)
+### 计算机程序设计能力考试(PAT)
 
 > [PAT 计算机程序设计能力测试 (patest.cn)](https://www.patest.cn/)
 
@@ -63,7 +65,7 @@ CLion 编辑代码保存时会自动替换行尾为当前行尾序列。
 
 
 ---
-## 项目管理职业资格认证(PMI)
+### 项目管理职业资格认证(PMI)
 
 > [首页-项目管理职业资格认证 (chinapmp.cn)](http://exam.chinapmp.cn/)
 
@@ -104,7 +106,7 @@ PMI 所有证书
 
 ---
 
-## 华为认证
+### 华为认证
 
 > [华为认证 (huawei.com)](https://cn.e-learning.huawei.com/#/huaweiTenant/Certification)
 
@@ -112,11 +114,11 @@ PMI 所有证书
 
 
 ---
-# 下载
+## 下载
 
 ---
 
-## IDM
+### IDM
 
 > [解决新版 Edge 浏览器无法使用 IDM 的问题_Xavier Jiezou的博客-CSDN博客_edge idm](https://blog.csdn.net/qq_42951560/article/details/120678847)
 
@@ -133,17 +135,17 @@ PMI 所有证书
 将 `IDMGCExt.crx` 拖动到 Edge 扩展界面即可安装扩展
 
 ---
-## aria2
+### aria2
 - 下载[aria2.exe]并将其移动至`C:\Windows\System32`文件夹
 - 复制`aria2`下载命令
 - 在本地你想下载到的位置，按住 `Shift` 右键点击空白处，选择在此打开命令行窗口(`Powershell`)
 - 将刚才复制的命令粘贴（鼠标右键点击即可，不要按 ctrl-V）;回车，然后等待下载完成
 
 ---
-## 超星相关
+### 超星相关
 
 ---
-### 没有下载选项的 PDF
+#### 没有下载选项的 PDF
 - [参考链接](https://www.zhihu.com/question/448827791/answer/1783365679)
 - `F12` 找到 `objectid` 然后替换下面的 `[objectid]` 并打开链接   
   `https://mooc1-1.chaoxing.com/ananas/status/[objectid]?flag=normal`
@@ -152,7 +154,7 @@ PMI 所有证书
 ---
 - 或者使用[这个插件](https://chrome.google.com/webstore/detail/%E8%B6%85%E6%98%9F%E5%AD%A6%E4%B9%A0%E9%80%9A%E8%BE%85%E5%8A%A9%E6%8F%92%E4%BB%B6/kejppjboemkbampcomibgpenbmdpimol/related)
 
-# 搜题目解析
+## 搜题目解析
 - 油猴插件:`AC-baidu-重定向优化百度搜狗谷歌必应搜索`
   <!-- - ![](res_-daily-notes/img/DailyLife/拦截域名.png) -->
 - 垃圾域名   
@@ -190,21 +192,21 @@ asklib.com
 ```
 
 ---
-# SQLite
+## SQLite
 - [Windows下安装SQLite](https://blog.csdn.net/jason_cdd/article/details/111302337)
 
 
 ---
-# 云盘
+## 云盘
 
 ---
-## OneDrive
+### OneDrive
 - 多次同步,挂起,取消链接账户可能会导致 Explorer 左栏快捷访问中存在多个指向相同的 OneDrive 快捷访问  
   [删除OneDrive for Bussiness导航栏快捷方式_根号负一的博客-CSDN博客](https://blog.csdn.net/u014389786/article/details/54095019)
 
 
 ---
-## E5
+### E5
 - [参考链接](https://www.bilibili.com/video/BV1B7411C7wb)
   
   ---
@@ -212,7 +214,7 @@ asklib.com
 - OD的单子账户容量最高15T,理论上可以注册25个子账户
 
 ----
-### 申请流程
+#### 申请流程
 - 进入[微软开发者中心](https://developer.microsoft.com/zh-cn/)并进入Office子项  
   ![20210403092546](http://cdn.ayusummer233.top/img/20210403092546.png)
 - 加入开发人员计划  
@@ -237,18 +239,18 @@ asklib.com
   - 当子账号>5 && 每个子账号的OD容量只剩0.5T时可以向微软提交工单扩容到25T 
 
 ---
-### 续期
+#### 续期
 - 理论上只需要调用Office365的API,可以部署OneIndex或者Cloudreve
 - 绑定 Github 账号并保持活跃
 
 ---
-#### OneIndex
+###### OneIndex
 - [参考视频](https://www.bilibili.com/video/BV1T64y1u7Z5)
 > 自己懒得搭了(  配合本地OneDriveBusiness当同步分享盘了  
 > ![20210403114429](http://cdn.ayusummer233.top/img/20210403114429.png)
 
 ---
-### 同步目录空格路径解决
+#### 同步目录空格路径解决
 
 默认情况下 OneDrive 的同步目录根目录所在文件夹名称是 `OneDrive - 组织名称` 的形式, 中间是有两个空格的, 这可太不优雅了, 可以通过创建符号链接的形式来解决这个问题  
 管理员模式打开 `CMD` 执行如下指令:
@@ -260,7 +262,7 @@ mklink /J OneDriveE5\mix "E:\OneDriveE5\mixon\OneDrive - ayusummer"
 - `OneDriveE5\mix` 目录在执行完命令后会自动创建
 
 ---
-## 将云盘挂载到本地(RaiDrive)
+### 将云盘挂载到本地(RaiDrive)
 - 云盘支持
   - `Personal` : GoogleDrive, `OneDrive`, Dropbox, Box, MEGA, PCloud, YandexDisk, Mail.ru.Cloud, GooglePhotos
     
@@ -291,20 +293,20 @@ mklink /J OneDriveE5\mix "E:\OneDriveE5\mixon\OneDrive - ayusummer"
 
 
 ---
-## 微软商店中的iCloud
+### 微软商店中的iCloud
 - 有点糟心,Microsoft Store里下载的iCloud只能装在系统盘,并且没有找到有效的方法能够将其移到非系统盘
 > 后记: 建议放弃在非apple设备上使用iCloud  
 > 有一说一,真的烂(  
 > [删除win10 删除icloud后资源管理器icloud图标无法删除？ - 知乎 (zhihu.com)](https://www.zhihu.com/question/393865503/answer/1307730087)
 
 ---
-## Cloudreve
+### Cloudreve
 
 > [快速开始 - Cloudreve](https://docs.cloudreve.org/getting-started/install)
 
 ---
 
-### WebDav 使用
+#### WebDav 使用
 
 可用于双向同步云盘和本地文件, 需要使用第三方 Webdav 客户端 Raidrive
 
@@ -324,19 +326,19 @@ mklink /J OneDriveE5\mix "E:\OneDriveE5\mixon\OneDrive - ayusummer"
 
 ---
 
-# Microsoft
+## Microsoft
 
 ---
-## Edge
+### Edge
 
 ---
-### 扩展
+#### 扩展
 - 默认安装目录 : `C:\Users\用户名\AppData\Local\Microsoft\Edge\User Data\Default\Extensions`
 
 ---
-## Windows
+### Windows
 
-### 内核隔离
+#### 内核隔离
 
 > [Windows 10中的核心隔离和内存完整性是什么？ | MOS86](https://mos86.com/95722.html)
 
@@ -465,7 +467,7 @@ pnputil /delete-driver oem110.inf
 > **WSL2 异常** 
 
 ---
-#### WSL2 DNS 服务异常
+###### WSL2 DNS 服务异常
 
 无法正确解析域名, 直接 ping ip 可以 ping 通, 排查了一圈发现主网也 ping 不通
 
@@ -491,7 +493,7 @@ pnputil /delete-driver oem110.inf
 
 ---
 
-### 针对某一软件关闭用户账户控制
+#### 针对某一软件关闭用户账户控制
 
 > [如何对某一程序取消用户账户控制_百度知道 (baidu.com)](https://zhidao.baidu.com/question/295265277.html)
 
@@ -506,7 +508,7 @@ pnputil /delete-driver oem110.inf
 
 ---
 
-### 命令行重启文件资源管理器
+#### 命令行重启文件资源管理器
 
 Windows 的任务栏和文件资源管理器(Explorer) 是一体的, 因此如果出现了任务栏莫名卡死或者消失的问题时可以在任务管理器中找到文件资源管理器并重启
 
@@ -520,17 +522,17 @@ explorer
 ```
 
 ----
-# 小技能?
+## 小技能?
 
 ----
-## 图片OCR->表格
+### 图片OCR->表格
 
 [白描](https://web.baimiaoapp.com/image-to-excel)
 
 ---
-## 英语学习
+### 英语学习
 
-### 背单词
+#### 背单词
 
 [沙拉查词](https://saladict.crimx.com/download.html)
 - [使用文档](https://saladict.crimx.com/manual.html)
@@ -541,7 +543,17 @@ explorer
 
 ---
 
-# 桌面显示器屏幕使用体验
+### clash
+
+> [Github/Dreamacro/clash](https://github.com/Dreamacro/clash)  
+> [Github/Dreamacro/clash-dashboard](https://github.com/Dreamacro/clash-dashboard)
+> [alvinkwok/clashForLinux安装配置](https://www.alvinkwok.cn/2022/01/29/2022/01/Clash%20For%20Linux%20Install%20Guide/)
+
+Windows 端的配置比较方便, Linux 端主要需要注意普通用户和root用户的区别以及需要多配置一个 dashboard 来管理
+
+---
+
+## 桌面显示器屏幕使用体验
 
 写这份随笔的时候已经入手 `小米 34英寸 WQHD` 这款带鱼屏一个月有余了, 实际体验下来确实比之前双屏三屏副屏的时候体验要好不少, 至少脖子没有那么不舒服了
 
@@ -613,19 +625,19 @@ windows 自带的分屏可以覆盖大多数应用场景
 
 ---
 
-## Win11 设置合盖不休眠
+### Win11 设置合盖不休眠
 
 `控制面板 -> 硬件和声音 -> 电源选项 -> 选择关闭笔记本计算机盖的功能 -> 关闭盖子时不采取任何操作`
 
 ![image-20220707003226256](http://cdn.ayusummer233.top/img/202207070032741.png)
 
 ----
-# Game
+## Game
 
-## Steam
+### Steam
 
 ---
-### steam工具箱
+#### steam工具箱
 - [steam工具箱@rmbadmin](https://github.com/SteamTools-Team/SteamTools/releases/tag/1.1.4)
 - 在`Releases`找最新的一次发行,下载第一个压缩文件,解压即可使用
 - ![steam工具箱使用示意](https://images.gitee.com/uploads/images/2021/0302/095303_d61c768b_7703072.png "屏幕截图.png")
@@ -639,9 +651,9 @@ windows 自带的分屏可以覆盖大多数应用场景
        ![输入图片说明](https://images.gitee.com/uploads/images/2021/0302/102428_6dfb9294_7703072.png "屏幕截图.png")
 
 ---
-## 手游模拟器
+### 手游模拟器
 
-### 蓝叠模拟器 5(支持 Hyper-V)
+#### 蓝叠模拟器 5(支持 Hyper-V)
 
 [如何在 Windows 上為 BlueStacks 5 開啟 Hyper-V](https://support.bluestacks.com/hc/zh-tw/articles/4412148150157-%E5%A6%82%E4%BD%95%E5%9C%A8-Windows-%E4%B8%8A%E7%82%BA-BlueStacks-5-%E9%96%8B%E5%95%9F-Hyper-V)
 
@@ -653,11 +665,11 @@ windows 自带的分屏可以覆盖大多数应用场景
 
 ---
 
-# PowerToys
+## PowerToys
 
 ----
 
-## 自定义窗口布局
+### 自定义窗口布局
 
 ![image-20220508084455471](http://cdn.ayusummer233.top/img/202205080844574.png)
 
@@ -675,7 +687,7 @@ windows 自带的分屏可以覆盖大多数应用场景
 
 ---
 
-## 调整图像大小
+### 调整图像大小
 
 ![image-20220508085743432](http://cdn.ayusummer233.top/img/202205080857567.png)
 
@@ -689,7 +701,7 @@ windows 自带的分屏可以覆盖大多数应用场景
 
 ---
 
-## 始终置项
+### 始终置项
 
 ![image-20220508090222743](http://cdn.ayusummer233.top/img/202205080902866.png)
 
@@ -701,13 +713,13 @@ windows 自带的分屏可以覆盖大多数应用场景
 
 ---
 
-## 文件资源管理器加载项
+### 文件资源管理器加载项
 
 enmmm, 本身 explorer 就比较卡, 平时能不打开Explorer就不打开Explorer, 因此对这项功能无感
 
 ---
 
-## 鼠标实用工具
+### 鼠标实用工具
 
 ![image-20220508091000734](http://cdn.ayusummer233.top/img/202205080910895.png)
 
@@ -719,11 +731,11 @@ enmmm, 本身 explorer 就比较卡, 平时能不打开Explorer就不打开Explo
 
 ---
 
-# 字体
+## 字体
 
 ---
 
-## 中易宋体和微软雅黑
+### 中易宋体和微软雅黑
 
 > [在打印文本的正文字体中，宋体（中易）和微软雅黑孰优孰劣？ - 知乎 (zhihu.com)](https://www.zhihu.com/question/19855799)
 >
@@ -738,9 +750,9 @@ enmmm, 本身 explorer 就比较卡, 平时能不打开Explorer就不打开Explo
 而且这两款windows自带的字体虽然使用频率很高, 但是并不能免费商用
 
 ---
-# 零散报错
+## 零散报错
 
-## Win11 下 QQ 调起文件资源管理器 C:\WINDOWS\SYSTEM32\ntdll.dll 报错
+### Win11 下 QQ 调起文件资源管理器 C:\WINDOWS\SYSTEM32\ntdll.dll 报错
 
 > [ntdll.dll故障_a874045的博客-CSDN博客_ntdll.dll错误](https://blog.csdn.net/a874045/article/details/105579478)  
 > [如何在Windows 10使用sfc /scannow命令？ - 都叫兽软件 | 都叫兽软件 (reneelab.com.cn)](https://www.reneelab.com.cn/windows-10-sfc-scannow.html)
