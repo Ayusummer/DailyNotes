@@ -1204,6 +1204,15 @@ sudo apt-get install -f -y ./ukylin-wechat_3.0.0_amd64.deb
 
 ---
 
+## game
+
+### 手游相关
+
+> [搭建Reroid](https://b.hui.ke/posts/build-redroid/)  
+> [remote-android/redroid-doc](https://github.com/remote-android/redroid-doc)  
+
+---
+
 ## Ubuntu 安装邮件服务器(TODO - 校验有问题且暂时不打算用, 已搁置)
 
 > [Ubuntu安装邮件服务器 - 简书 (jianshu.com)](https://www.jianshu.com/p/f438aa21069e)

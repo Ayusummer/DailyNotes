@@ -52,10 +52,6 @@ let general = {
             link: "/通识/外设.md",
         },
         {
-            text: "Git",
-            link: "/通识/Git.md",
-        },
-        {
             text: "VSCode",
             link: "/通识/VSCode.md",
         },
@@ -194,6 +190,10 @@ let community = {
     text: "社区相关",
     children: [
         {
+            text: "Git",
+            link: "/社区相关/Git.md",
+        },
+        {
             text: "Github",
             link: "/社区相关/Github.md",
         },
@@ -267,6 +267,6 @@ export const Navbar = navbar([
     frontend, // 前端
     community, // 社区相关
     bot, // Bot
-    CS, // 计算机科学
+    // CS, // 计算机科学
     learningRoad, // 学习路线
 ]);

@@ -15,6 +15,213 @@
   新地址: `https://vscode.cdn.azure.cn/stable/ccbaa2d27e38e5afa3e5c21c1c7bef4657064247/VSCodeUserSetup-x64-1.62.3.exe`  
   然后通过这个新地址下载即可
 
+---
+
+## 安装
+
+:::tabs
+
+@tab:active ubuntu
+
+```bash
+wget https://az764295.vo.msecnd.net/stable/97dec172d3256f8ca4bfb2143f3f76b503ca0534/code_1.74.3-1673284829_amd64.deb
+su root
+apt install ./code_1.74.3-1673284829_amd64.deb
+```
+
+> ps: 下载链接请参阅 [官网](https://code.visualstudio.com/)  
+> 直接 `sudo apt install ... ` 可能会报权限不够的问题，先 `su root` 似乎不会
+
+安装完成后需要使用
+
+```bash
+sudo code --no-sandbox --disable-gpu-sandbox --user-data-dir="~/.vscode"
+```
+
+来以管理员模式打开 VSCode, 但是似乎无法使用中文输入法(ubuntu2204)
+
+不用管理员模式, 直接打开 VSCode 的话似乎无法编辑系统盘之外硬盘的文件, 这是因为挂载硬盘的时候可能使用的 root 账户, 所以普通用户没有权限, 可以 `su root` 后使用 `chmod -R 777 [目标目录]` 来放通权限
+
+:::
+
+
+---
+
+## 查找替换
+
+### 使用正则表达式
+
+> [VS Code正则匹配替换 - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/414806629)
+>
+> ---
+
+```
+(&#[0-9]{2,3};)
+`$1`
+```
+
+> 需要注意的是匹配部分的 `()` 可以划定分组, 在替换部分可以使用 `$x` 来指代匹配到的分组
+
+![image-20221213152425236](http://cdn.ayusummer233.top/DailyNotes/202212131524550.png)
+
+![image-20221213152552391](http://cdn.ayusummer233.top/DailyNotes/202212131525580.png)
+
+```
+(&[a-z]{2,6}[0-9]{0,2};)
+`$1`
+```
+
+![image-20221213152705815](http://cdn.ayusummer233.top/DailyNotes/202212131527487.png)
+
+![image-20221213152729921](http://cdn.ayusummer233.top/DailyNotes/202212131527100.png)
+
+---
+
+## 用户代码片段
+
+> [Visual Studio Code 中的代码片段](https://code.visualstudio.com/docs/editor/userdefinedsnippets)
+
+`设置 -> 用户代码片段`
+
+<img src="http://cdn.ayusummer233.top/img/202204182056018.png" alt="image-20220418205657668"  />
+
+![image-20220418205804643](http://cdn.ayusummer233.top/img/202204182058812.png)
+
+---
+
+### 自用代码片段 stash
+
+`python.json`:
+
+```json
+{
+	// Place your snippets for python here. Each snippet is defined under a snippet name and has a prefix, body and 
+	// description. The prefix is what is used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
+	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. Placeholders with the 
+	// same ids are connected.
+	"python-template": {
+		"prefix": "py",
+		"body": [
+		  "'''",
+		  "-*- encoding: utf-8 -*-",
+		  "@文件: $RELATIVE_FILEPATH",
+		  "@时间: $CURRENT_YEAR/$CURRENT_MONTH/$CURRENT_DATE $CURRENT_HOUR:$CURRENT_MINUTE:$CURRENT_SECOND",
+		  "@作者: 咸鱼型233",
+		  "@说明: ",
+		  "'''",
+		],
+	  }
+}
+```
+
+`vue.json`:
+
+```json
+{
+	// Place your snippets for vue here. Each snippet is defined under a snippet name and has a prefix, body and 
+	// description. The prefix is what is used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
+	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. Placeholders with the 
+	// same ids are connected.
+	// Example:
+	// "Print to console": {
+	// 	"prefix": "log",
+	// 	"body": [
+	// 		"console.log('$1');",
+	// 		"$2"
+	// 	],
+	// 	"description": "Log output to console"
+	// }
+	"vue-template": {
+		"prefix": "vue3",
+		"body": [
+			"<script setup lang=\"ts\">",
+			"</script>",
+			"",
+			"<template>",
+			"<div>",
+			"</div>",
+			"</template>",
+			"",
+			"<style lang=\"less\" scoped>",
+			"</style>"
+		],
+		"description": "vue3 template"
+	}
+}
+```
+
+---
+
+### KoroFileHeader
+
+> [配置字段 · OBKoro1/koro1FileHeader Wiki (github.com)](https://github.com/OBKoro1/koro1FileHeader/wiki/配置字段)
+>
+> [安装和快速上手 · OBKoro1/koro1FileHeader Wiki (github.com)](https://github.com/OBKoro1/koro1FileHeader/wiki/安装和快速上手)
+
+可用于创建文件时自动生成注释
+
+个人配置 stash
+
+```json
+  // 头部注释
+  "fileheader.customMade": {
+    "Author": "咸鱼型233", // 创建文件的作者
+    "Date": "Do not edit", // 文件创建时间(不变)
+    "LastEditors": "咸鱼型233", // 文件最后编辑者
+    // 由于编辑文件就会变更最后编辑时间，多人协作中合并的时候会导致merge
+    // 可以将时间颗粒度改为周、或者月，这样冲突就减少很多。搜索变更时间格式: dateFormat
+    "LastEditTime": "Do not edit", // 文件最后编辑时间
+    // 输出相对路径，类似: /文件夹名称/src/index.js
+    "FilePath": "Do not edit", // 文件在项目中的相对路径 自动更新
+    // 插件会自动将光标移动到Description选项中 方便输入 Description字段可以在specialOptions更改
+    "Description": "", // 介绍文件的作用、文件的入参、出参。
+    // custom_string_obkoro1~custom_string_obkoro100都可以输出自定义信息
+    // 可以设置多条自定义信息 设置个性签名、留下QQ、微信联系方式、输入空行等
+    "custom_string_obkoro1": "",
+    // 版权声明 保留文件所有权利 自动替换年份
+    "custom_string_obkoro1_copyright": "Copyright (c) ${now_year} by 咸鱼型233, All Rights Reserved. "
+  },
+  // 函数注释
+  "fileheader.cursorMode": {
+    "description": "", // 函数注释生成之后，光标移动到这里
+    "param": "", // param 开启函数参数自动提取 需要将光标放在函数行或者函数上方的空白行
+    "return": "",
+  },
+  // 插件配置项
+  "fileheader.configObj": {
+    // 自动添加头部注释黑名单
+    "prohibitAutoAdd": [
+      "json"
+    ],
+    "folderBlacklist": [
+      "node_modules",
+      "README.md",
+    ], // 文件夹或文件名禁止自动添加头部注释
+  },
+```
+
+#### 快捷键
+
+##### 文件头部注释快捷键
+
+- 记录文件信息/文件的传参/出参，设置个性签名、留下QQ、微信联系方式、输入空行等等
+- 支持用户高度自定义注释选项, 适配各种需求的注释形式。
+- 保存文件的时候，自动更新最后的编辑时间和编辑人
+- `window`：`ctrl+win+i`,`mac`：`ctrl+cmd+i`, `linux`: `ctrl+meta+i`,`Ubuntu`: `ctrl+super+i`
+
+##### 函数注释注释快捷键
+
+> 更多关于函数参数自动请查阅[配置-函数注释自动提取函数的参数](https://github.com/OBKoro1/koro1FileHeader/wiki/配置#函数注释自动提取函数的参数)文档
+
+- 将光标放在函数行或者将光标放在函数上方的空白行。
+- 自动解析函数参数，生成函数参数注释。
+- 快捷键：`window`：`ctrl+win+t`,`mac`：`ctrl+cmd+t`,`linux`: `ctrl+meta+t`, `Ubuntu`: `ctrl+super+t`
+
+##### 多行函数参数鼠标选中后函数声明后按快捷键自动提取
+
+1. **鼠标左键选择多行函数声明区域，函数声明区域尽量精准**
+2. **按函数注释快捷键**
+
 
 ---
 
@@ -284,182 +491,6 @@ Sourcery-ai 可以给开发者提供 Python 代码的重构建议:
 2. 搜索 open keyboard shortcuts
 3. 搜索 workbench.action.terminal.clea
 
----
-
-## 查找替换
-
-### 使用正则表达式
-
-> [VS Code正则匹配替换 - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/414806629)
->
-> ---
-
-```
-(&#[0-9]{2,3};)
-`$1`
-```
-
-> 需要注意的是匹配部分的 `()` 可以划定分组, 在替换部分可以使用 `$x` 来指代匹配到的分组
-
-![image-20221213152425236](http://cdn.ayusummer233.top/DailyNotes/202212131524550.png)
-
-![image-20221213152552391](http://cdn.ayusummer233.top/DailyNotes/202212131525580.png)
-
-```
-(&[a-z]{2,6}[0-9]{0,2};)
-`$1`
-```
-
-![image-20221213152705815](http://cdn.ayusummer233.top/DailyNotes/202212131527487.png)
-
-![image-20221213152729921](http://cdn.ayusummer233.top/DailyNotes/202212131527100.png)
-
----
-
-## 用户代码片段
-
-> [Visual Studio Code 中的代码片段](https://code.visualstudio.com/docs/editor/userdefinedsnippets)
-
-`设置 -> 用户代码片段`
-
-<img src="http://cdn.ayusummer233.top/img/202204182056018.png" alt="image-20220418205657668"  />
-
-![image-20220418205804643](http://cdn.ayusummer233.top/img/202204182058812.png)
-
----
-
-### 自用代码片段 stash
-
-`python.json`:
-
-```json
-{
-	// Place your snippets for python here. Each snippet is defined under a snippet name and has a prefix, body and 
-	// description. The prefix is what is used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
-	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. Placeholders with the 
-	// same ids are connected.
-	"python-template": {
-		"prefix": "py",
-		"body": [
-		  "'''",
-		  "-*- encoding: utf-8 -*-",
-		  "@文件: $RELATIVE_FILEPATH",
-		  "@时间: $CURRENT_YEAR/$CURRENT_MONTH/$CURRENT_DATE $CURRENT_HOUR:$CURRENT_MINUTE:$CURRENT_SECOND",
-		  "@作者: 咸鱼型233",
-		  "@说明: ",
-		  "'''",
-		],
-	  }
-}
-```
-
-`vue.json`:
-
-```json
-{
-	// Place your snippets for vue here. Each snippet is defined under a snippet name and has a prefix, body and 
-	// description. The prefix is what is used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
-	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. Placeholders with the 
-	// same ids are connected.
-	// Example:
-	// "Print to console": {
-	// 	"prefix": "log",
-	// 	"body": [
-	// 		"console.log('$1');",
-	// 		"$2"
-	// 	],
-	// 	"description": "Log output to console"
-	// }
-	"vue-template": {
-		"prefix": "vue3",
-		"body": [
-			"<script setup lang=\"ts\">",
-			"</script>",
-			"",
-			"<template>",
-			"<div>",
-			"</div>",
-			"</template>",
-			"",
-			"<style lang=\"less\" scoped>",
-			"</style>"
-		],
-		"description": "vue3 template"
-	}
-}
-```
-
----
-
-### KoroFileHeader
-
-> [配置字段 · OBKoro1/koro1FileHeader Wiki (github.com)](https://github.com/OBKoro1/koro1FileHeader/wiki/配置字段)
->
-> [安装和快速上手 · OBKoro1/koro1FileHeader Wiki (github.com)](https://github.com/OBKoro1/koro1FileHeader/wiki/安装和快速上手)
-
-可用于创建文件时自动生成注释
-
-个人配置 stash
-
-```json
-  // 头部注释
-  "fileheader.customMade": {
-    "Author": "咸鱼型233", // 创建文件的作者
-    "Date": "Do not edit", // 文件创建时间(不变)
-    "LastEditors": "咸鱼型233", // 文件最后编辑者
-    // 由于编辑文件就会变更最后编辑时间，多人协作中合并的时候会导致merge
-    // 可以将时间颗粒度改为周、或者月，这样冲突就减少很多。搜索变更时间格式: dateFormat
-    "LastEditTime": "Do not edit", // 文件最后编辑时间
-    // 输出相对路径，类似: /文件夹名称/src/index.js
-    "FilePath": "Do not edit", // 文件在项目中的相对路径 自动更新
-    // 插件会自动将光标移动到Description选项中 方便输入 Description字段可以在specialOptions更改
-    "Description": "", // 介绍文件的作用、文件的入参、出参。
-    // custom_string_obkoro1~custom_string_obkoro100都可以输出自定义信息
-    // 可以设置多条自定义信息 设置个性签名、留下QQ、微信联系方式、输入空行等
-    "custom_string_obkoro1": "",
-    // 版权声明 保留文件所有权利 自动替换年份
-    "custom_string_obkoro1_copyright": "Copyright (c) ${now_year} by 咸鱼型233, All Rights Reserved. "
-  },
-  // 函数注释
-  "fileheader.cursorMode": {
-    "description": "", // 函数注释生成之后，光标移动到这里
-    "param": "", // param 开启函数参数自动提取 需要将光标放在函数行或者函数上方的空白行
-    "return": "",
-  },
-  // 插件配置项
-  "fileheader.configObj": {
-    // 自动添加头部注释黑名单
-    "prohibitAutoAdd": [
-      "json"
-    ],
-    "folderBlacklist": [
-      "node_modules",
-      "README.md",
-    ], // 文件夹或文件名禁止自动添加头部注释
-  },
-```
-
-#### 快捷键
-
-##### 文件头部注释快捷键
-
-- 记录文件信息/文件的传参/出参，设置个性签名、留下QQ、微信联系方式、输入空行等等
-- 支持用户高度自定义注释选项, 适配各种需求的注释形式。
-- 保存文件的时候，自动更新最后的编辑时间和编辑人
-- `window`：`ctrl+win+i`,`mac`：`ctrl+cmd+i`, `linux`: `ctrl+meta+i`,`Ubuntu`: `ctrl+super+i`
-
-##### 函数注释注释快捷键
-
-> 更多关于函数参数自动请查阅[配置-函数注释自动提取函数的参数](https://github.com/OBKoro1/koro1FileHeader/wiki/配置#函数注释自动提取函数的参数)文档
-
-- 将光标放在函数行或者将光标放在函数上方的空白行。
-- 自动解析函数参数，生成函数参数注释。
-- 快捷键：`window`：`ctrl+win+t`,`mac`：`ctrl+cmd+t`,`linux`: `ctrl+meta+t`, `Ubuntu`: `ctrl+super+t`
-
-##### 多行函数参数鼠标选中后函数声明后按快捷键自动提取
-
-1. **鼠标左键选择多行函数声明区域，函数声明区域尽量精准**
-2. **按函数注释快捷键**
 
 
 ---
@@ -501,4 +532,3 @@ rm -rf ****/vscode-server/bin/****
 ![image-20221118232314707](http://cdn.ayusummer233.top/img/202211182323764.png)
 
 ---
-
