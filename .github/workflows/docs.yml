@@ -43,6 +43,7 @@ jobs:
         run: |-
           pnpm run docs:build
           echo > docs/.vuepress/dist/.nojekyll
+          echo google-site-verification: google4ab89117f0f84be9.html > docs/.vuepress/dist/google4ab89117f0f84be9.html
 
 
       # 查看 workflow 的文档来获取更多信息
