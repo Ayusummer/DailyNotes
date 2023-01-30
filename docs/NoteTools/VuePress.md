@@ -165,11 +165,10 @@ jobs:
 
 ## 配合 vuepress_theme_hope 食用
 
-> [主页 | vuepress-theme-hope](https://vuepress-theme-hope.github.io/v2/zh/)
+> [主页 | vuepress-theme-hope (vuejs.press)](https://theme-hope.vuejs.press/zh/)
 >
-> [安装/使用 | vuepress-theme-hope](https://vuepress-theme-hope.github.io/v2/zh/guide/get-started/install.html)
+> > 直接看官方文档即可, 下面部分的笔记仅适用于个人更新依赖的时候瞄一眼需要更新的模块
 >
-> ---
 
 ```bash
 # 使用 vuepress_theme_hope 初始化一个 vuepress 项目
@@ -180,6 +179,44 @@ pnpm install -D vuepress-theme-hope@next
 ```
 
 > 这里的 `[dir]` 是一个参数，你需要使用真实的文件夹名称替换它，例如 `docs`、`src` 或其他你喜欢的名称。
+
+---
+
+### 搜索
+
+> [搜索 | vuepress-theme-hope (vuejs.press)](https://theme-hope.vuejs.press/zh/guide/feature/search.html#使用-vuepress-plugin-search-pro)
+
+```bash
+pnpm add -D vuepress-plugin-search-pro@next
+```
+
+---
+
+### sitemap
+
+> [主页 | Sitemap 生成器 (vuejs.press)](https://plugin-sitemap2.vuejs.press/zh/)
+>
+> [选项 | Sitemap 生成器 (vuejs.press)](https://plugin-sitemap2.vuejs.press/zh/config.html)
+
+```bash
+pnpm add -D vuepress-plugin-sitemap2
+```
+
+> PS: 抄配置时需要配下 hostname 这个必填项, 填入域名即可
+
+---
+
+### SEO
+
+> [主页 | SEO 增强 (vuejs.press)](https://plugin-seo2.vuejs.press/zh/)
+>
+> [选项 | SEO 增强 (vuejs.press)](https://plugin-seo2.vuejs.press/zh/config.html)
+
+```bash
+pnpm add -D vuepress-plugin-seo2
+```
+
+> PS: 抄配置时需要配下 hostname 这个必填项, 填入域名即可
 
 ---
 

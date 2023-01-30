@@ -6,6 +6,7 @@ specifiers:
   vue: ^3.2.45
   vuepress: 2.0.0-beta.60
   vuepress-plugin-search-pro: 2.0.0-beta.166
+  vuepress-plugin-seo2: 2.0.0-beta.166
   vuepress-plugin-sitemap2: 2.0.0-beta.166
   vuepress-theme-hope: 2.0.0-beta.166
 
@@ -15,8 +16,9 @@ devDependencies:
   vue: 3.2.45
   vuepress: 2.0.0-beta.60_dlgznq46b2nyvtu5wqobknojfm
   vuepress-plugin-search-pro: 2.0.0-beta.166_e7jwb2ulu5orbkux7obq5onfau
+  vuepress-plugin-seo2: 2.0.0-beta.166_e7jwb2ulu5orbkux7obq5onfau
   vuepress-plugin-sitemap2: 2.0.0-beta.166_e7jwb2ulu5orbkux7obq5onfau
-  vuepress-theme-hope: 2.0.0-beta.166_tqc74fi6fikt3y74lmdarr6p4u
+  vuepress-theme-hope: 2.0.0-beta.166_qaqtz5v53scszumu2qb47sy7zm
 
 packages:
 
@@ -5633,13 +5635,14 @@ packages:
       - supports-color
     dev: true
 
-  /vuepress-theme-hope/2.0.0-beta.166_tqc74fi6fikt3y74lmdarr6p4u:
+  /vuepress-theme-hope/2.0.0-beta.166_qaqtz5v53scszumu2qb47sy7zm:
     resolution: {integrity: sha512-10Yu9WsmmfCzF2ytQ6e1XN0VUFeyyOc+vUYs3Jm9EfUyL9FczNiJdyKrg5L5FCppoUrvggU4RSpdxldjzEgqKA==}
     engines: {node: ^14.18.0 || >=16.0.0, npm: '>=8', pnpm: '>=7'}
     peerDependencies:
       '@vuepress/client': 2.0.0-beta.60
       sass-loader: ^13.2.0
       vuepress: 2.0.0-beta.60
+      vuepress-plugin-seo2: 2.0.0-beta.166
       vuepress-plugin-sitemap2: 2.0.0-beta.166
       vuepress-vite: 2.0.0-beta.60
       vuepress-webpack: 2.0.0-beta.60
