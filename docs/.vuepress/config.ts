@@ -2,6 +2,7 @@ import { defineUserConfig } from "vuepress";
 import theme from "./theme";
 import { searchProPlugin } from "vuepress-plugin-search-pro";
 import { sitemapPlugin } from "vuepress-plugin-sitemap2";
+import { seoPlugin } from "vuepress-plugin-seo2";
 
 
 export default defineUserConfig({
@@ -31,6 +32,10 @@ export default defineUserConfig({
         }),
         sitemapPlugin({
             // 配置选项
+            hostname: "ayusummer.github.io",
+        }),
+        seoPlugin({
+            // 你的选项
             hostname: "ayusummer.github.io",
         }),
     ],
