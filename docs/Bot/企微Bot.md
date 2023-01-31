@@ -20,13 +20,7 @@
 >
 > [一日一技：FastAPI如何关闭接口文档？ - 腾讯云开发者社区-腾讯云 (tencent.com)](https://cloud.tencent.com/developer/article/1697199)
 
-这里使用 FastAPI 来写中转接口, 然后在接口中通过 requests 库将重新调整后的 json 通过调用企微 Bot Webhook 推送到企微群聊
-
-----
-
-
-
-
+这里使用 FastAPI 来写中转接口, 然后在接口中通过 requests 库将重新调整后的 json 通过调用企微 Bot Webhook 推送到企微群聊, 详见此仓库:[Ayusummer/webhook_Github_to_WXWork: 使用 FastAPI 实现的 Github Repo Webhook 推送到企微群的中转服务](https://github.com/Ayusummer/webhook_Github_to_WXWork)
 
 ---
 
