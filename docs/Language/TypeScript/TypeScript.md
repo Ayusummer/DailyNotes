@@ -1,4 +1,43 @@
-# 安装
+# TypeScript
+
+- [TypeScript](#typescript)
+  - [安装](#安装)
+  - [教程](#教程)
+  - [类型](#类型)
+    - [关键字](#关键字)
+      - [var, let 与 const](#var-let-与-const)
+    - [模板字符串](#模板字符串)
+    - [枚举](#枚举)
+    - [unknown 类型](#unknown-类型)
+    - [类型断言](#类型断言)
+    - [类型保护](#类型保护)
+    - [联合类型](#联合类型)
+    - [交叉类型](#交叉类型)
+    - [对象类型](#对象类型)
+      - [数组](#数组)
+      - [元组](#元组)
+  - [接口](#接口)
+    - [TypeScript 中的接口概述](#typescript-中的接口概述)
+      - [接口与类型别名的区别](#接口与类型别名的区别)
+    - [扩展接口](#扩展接口)
+      - [使用接口描述 JavaScript API](#使用接口描述-javascript-api)
+  - [函数](#函数)
+    - [命名函数](#命名函数)
+    - [匿名函数](#匿名函数)
+    - [箭头函数](#箭头函数)
+    - [参数](#参数)
+    - [定义函数类型](#定义函数类型)
+  - [Tips](#tips)
+    - [VSCode](#vscode)
+      - [扩展](#扩展)
+    - [在线编译运行](#在线编译运行)
+  - [Promise](#promise)
+    - [创建 Promise](#创建-promise)
+
+
+---
+
+## 安装
 
 - 首先要安装 [nodejs](https://nodejs.org/en/download/)
 
@@ -13,7 +52,7 @@
 
 
 ---
-# 教程
+## 教程
 
 ---
 
@@ -28,7 +67,7 @@
 
 ---
 
-# 类型
+## 类型
 
 > [基础类型 - TypeScript 中文手册 (bootcss.com)](https://typescript.bootcss.com/basic-types.html)
 >
@@ -43,9 +82,9 @@
 
 ---
 
-## 关键字
+### 关键字
 
-### var, let 与 const
+#### var, let 与 const
 
 > [TypeScript 使用let和const声明变量 - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/396435904)
 
@@ -89,7 +128,7 @@ const 与 let 的不同之处在于其声明的变量只能在声明时被赋值
 
 ---
 
-## 模板字符串
+### 模板字符串
 
 在 TypeScript 中，还可以使用模板字符串，该模板字符串可以跨越多行并具有嵌入式表达式。 这些字符串由反撇号/反引号 (\`) 字符括起，并且嵌入式表达式的形式为 `${ expr }`。
 
@@ -97,7 +136,7 @@ const 与 let 的不同之处在于其声明的变量只能在声明时被赋值
 
 ---
 
-## 枚举
+### 枚举
 
 > [练习 - 枚举 - Learn | Microsoft Docs](https://docs.microsoft.com/zh-cn/learn/modules/typescript-declare-variable-types/4-enums)
 >
@@ -141,7 +180,7 @@ console.log("233:" + Grade2[ayusummer2]);   // 根据枚举值获取枚举名称
 
 ---
 
-## unknown 类型
+### unknown 类型
 
 > [TypeScript 中的任何 any 和 unknown 类型 - Learn | Microsoft Docs](https://docs.microsoft.com/zh-cn/learn/modules/typescript-declare-variable-types/5-any-unknown)
 
@@ -166,7 +205,7 @@ randomValue.toUpperCase();      // Error: Object is of type unknown
 
 ---
 
-## 类型断言
+### 类型断言
 
 如果需要将变量视为其他数据类型，则可以使用类型断言。
 
@@ -201,7 +240,7 @@ if (typeof randomValue === "string") {
 
 ----
 
-## 类型保护
+### 类型保护
 
 前面的示例演示了在 `if` 块中使用 `typeof` 在运行时检查表达式的类型。 这称为“类型保护”。
 
@@ -220,7 +259,7 @@ if (typeof randomValue === "string") {
 
 ---
 
-## 联合类型
+### 联合类型
 
 > [TypeScript 中的联合类型和交叉类型 - Learn | Microsoft Docs](https://docs.microsoft.com/zh-cn/learn/modules/typescript-declare-variable-types/6-unions-intersections)
 
@@ -242,7 +281,7 @@ console.log(age1);
 
 ---
 
-## 交叉类型
+### 交叉类型
 
 > [TypeScript 中的联合类型和交叉类型 - Learn | Microsoft Docs](https://docs.microsoft.com/zh-cn/learn/modules/typescript-declare-variable-types/6-unions-intersections)
 
@@ -280,7 +319,7 @@ console.log(newManager.employeeID);
 
 ---
 
-## 对象类型
+### 对象类型
 
 > [TypeScript 中的集合类型 - Learn | Microsoft Docs](https://docs.microsoft.com/zh-cn/learn/modules/typescript-declare-variable-types/7-collection-types)
 
@@ -288,7 +327,7 @@ console.log(newManager.employeeID);
 
 ---
 
-### 数组
+#### 数组
 
 - 使用元素类型后跟方括号 (`[ ]`) 来表示该元素类型的数组：
 
@@ -312,7 +351,7 @@ console.log(newManager.employeeID);
 
 ---
 
-### 元组
+#### 元组
 
 拥有相同值类型的数组很有用，但有时一个数组可能包含混合类型的值。 为此，TypeScript 提供了元组类型。 若要声明元组，请使用语法 `variableName: [type, type, ...]`。
 
@@ -329,11 +368,11 @@ console.log(person1);
 
 
 ---
-# 接口
+## 接口
 
 ----
 
-## TypeScript 中的接口概述
+### TypeScript 中的接口概述
 
 - [TypeScript 中的接口概述 - Learn | Microsoft Docs](https://docs.microsoft.com/zh-cn/learn/modules/typescript-implement-interfaces/2-interfaces-typescript)
 
@@ -379,7 +418,7 @@ console.log(person1);
 
 ---
 
-### 接口与类型别名的区别
+#### 接口与类型别名的区别
 
 - 上述 `Employee` 接口还可以使用 `type` 键字表示为类型别名：
 
@@ -397,7 +436,7 @@ console.log(person1);
 
 ---
 
-## 扩展接口
+### 扩展接口
 
 - [练习 - 在 TypeScript 中扩展接口 - Learn | Microsoft Docs](https://docs.microsoft.com/zh-cn/learn/modules/typescript-implement-interfaces/4-extend-interface)
 
@@ -427,13 +466,13 @@ console.log(person1);
 
 ---
 
-## 使用接口的其他方法
+### 使用接口的其他方法
 
 - [在 Typescript 中使用接口的其他方法 - Learn | Microsoft Docs](https://docs.microsoft.com/zh-cn/learn/modules/typescript-implement-interfaces/5-use-interfaces)
 
 ---
 
-### 创建可索引类型
+#### 创建可索引类型
 
 - 你可以使用描述可编制索引的数组类型的接口。
 
@@ -456,7 +495,7 @@ console.log(myStr);
 
 ---
 
-### 使用接口描述 JavaScript API
+#### 使用接口描述 JavaScript API
 
 - JavaScript 和 TypeScript 开发人员面临一个共同的难点，即使用外部 JavaScript 库。 可以使用接口描述现有的 JavaScript API 并阐明函数参数和返回类型。 接口使你能够清楚地了解 API 的期望值和返回值。
 
@@ -492,7 +531,7 @@ showPost();
 
 -----
 
-# 函数
+## 函数
 
 > [在 TypeScript 中创建函数 - Learn | Microsoft Docs](https://docs.microsoft.com/zh-cn/learn/modules/typescript-develop-typed-functions/2-create-functions-typescript)
 
@@ -500,7 +539,7 @@ showPost();
 
 ---
 
-## 命名函数
+### 命名函数
 
 ```typescript
 function addNumbers(x: number, y: number): number {
@@ -511,7 +550,7 @@ console.log(addNumbers(1, 2))
 
 ---
 
-## 匿名函数
+### 匿名函数
 
 函数表达式（或匿名函数）是未预先加载到执行上下文中的函数，并且仅当代码遇到该函数时才会运行。 函数表达式是在运行时创建的，并且必须先声明才能调用。 （这意味着不会对它们进行提升，而命名函数声明在程序开始执行时就会进行提升，并且可以在其声明之前调用。）
 
@@ -538,7 +577,7 @@ console.log(total([1, 2, 3, 4, 5, 6, 7, 8, 9]))
 
 ---
 
-## 箭头函数
+### 箭头函数
 
 箭头函数（也称为 Lambda 或胖箭头函数，因为定义它们的是 `=>` 运算符）提供用于定义匿名函数的简写语法。 由于其简洁性，箭头函数通常用于简单的函数和某些事件处理场景。
 
@@ -557,7 +596,7 @@ console.log(addNumbers_arrow(3, 4))
 
 ---
 
-## 参数
+### 参数
 
 > [运用参数的乐趣 - Learn | Microsoft Docs](https://docs.microsoft.com/zh-cn/learn/modules/typescript-develop-typed-functions/4-parameters)
 
@@ -642,7 +681,7 @@ console.log(addNumbers_arrow(3, 4))
 
 ---
 
-## 定义函数类型
+### 定义函数类型
 
 可以使用类型别名来定义函数类型
 
@@ -699,15 +738,15 @@ console.log(doCalculation("substract")(1, 2))
 
 ---
 
-# Tips
+## Tips
 
 ---
 
-## VSCode
+### VSCode
 
 ---
 
-### 扩展
+#### 扩展
 
 - Live Server
 
@@ -729,7 +768,7 @@ console.log(doCalculation("substract")(1, 2))
 
 ----
 
-## 在线编译运行
+### 在线编译运行
 
 - [TypeScript: 游乐场 - 一个用于 TypeScript 和 JavaScript 的在线编辑器 (typescriptlang.org)](https://www.typescriptlang.org/zh/play#code/GYVwdgxgLglg9mABAQwCaoHIgLYCMCmATgM4AUAHgFxg4GEA0iAntbUQJQDeAUIn4oXxQQhJOUQBqZgG5uAX24QExOABt8AOlVwA5qTSY2JUgCIoAC0H4T9AGzt2QA)
 
@@ -741,7 +780,7 @@ console.log(doCalculation("substract")(1, 2))
 
 ----
 
-# Promise
+## Promise
 
 > [Promise · 深入挖掘 TypeScript (gitbooks.io)](https://rexdainiel.gitbooks.io/typescript/content/docs/promise.html)[**感觉文档比较生硬, 夹杂着很多奇怪的词汇, 看起来像是蹩脚的翻译**]
 >
@@ -769,7 +808,7 @@ console.log(doCalculation("substract")(1, 2))
 
 ---
 
-## 创建 Promise
+### 创建 Promise
 
 创建 `promise` 只需要简单地在 `Promise 构造器` 上调用 `new` 即可; `promise 构造器` 传入 `resolve` 和 `reject` 以控制 `promise 状态`
 

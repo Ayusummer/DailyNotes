@@ -1,5 +1,14 @@
 # JavaScript
 
+- [JavaScript](#javascript)
+  - [类](#类)
+  - [动画/动效](#动画动效)
+    - [sliderland](#sliderland)
+  - [模拟键盘输入](#模拟键盘输入)
+
+
+---
+
 - `toLocaleString()`
   - `toLocaleString()` 方法可根据本地时间把 Date 对象转换为字符串，并返回结果。
   - 以将数字变成千分位格式

@@ -1,6 +1,8 @@
-# Java 环境配置
+# Java
 
-## 安装 jdk
+## Java 环境配置
+
+### 安装 jdk
 
 :::tabs
 
@@ -104,9 +106,9 @@ update-alternatives --config javac
 
 ---
 
-## IDEA
+### IDEA
 
-### ubuntu 安装 IDEA
+#### ubuntu 安装 IDEA
 
 直接远程连接安装即可
 
@@ -114,7 +116,7 @@ update-alternatives --config javac
 
 ---
 
-## Java 反射
+### Java 反射
 
 > [Java 反射详解 - YSOcean - 博客园 (cnblogs.com)](https://www.cnblogs.com/ysocean/p/6516248.html)
 >
@@ -130,7 +132,7 @@ Java反射就是在运行状态中，对于任意一个类，都能够知道这�
 
 ---
 
-### 得到 Class 的三种方式
+#### 得到 Class 的三种方式
 
 比如新建一个 Person 类
 

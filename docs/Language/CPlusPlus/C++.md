@@ -1,8 +1,50 @@
-# VisualStudio2019 相关
+# C++
+
+- [C++](#c)
+  - [VisualStudio2019 相关](#visualstudio2019-相关)
+    - [为什么VS中会建议宏转换为constexpr？](#为什么vs中会建议宏转换为constexpr)
+      - [constexpr](#constexpr)
+          - [应该使用 constexpr 的场景](#应该使用-constexpr-的场景)
+          - [不应该使用 constexpr 的场景](#不应该使用-constexpr-的场景)
+      - [auto](#auto)
+    - [C4996](#c4996)
+      - [strcpy\_s](#strcpy_s)
+    - [#pragma once](#pragma-once)
+  - [VSCode](#vscode)
+    - [在 VSCode 中调试 C++ 程序](#在-vscode-中调试-c-程序)
+      - [使用 VS 的 cl.exe](#使用-vs-的-clexe)
+      - [使用 gcc](#使用-gcc)
+  - [实用工具](#实用工具)
+    - [快捷生成函数调用关系图](#快捷生成函数调用关系图)
+      - [callgraph](#callgraph)
+          - [Ubuntu](#ubuntu)
+      - [tceetree + cscope + Graphviz](#tceetree--cscope--graphviz)
+      - [VisualStudio Code Graph 扩展](#visualstudio-code-graph-扩展)
+      - [CppDepend](#cppdepend)
+  - [数据结构](#数据结构)
+    - [结构体](#结构体)
+      - [初始化](#初始化)
+          - [构造函数使用 `:` 快捷赋值](#构造函数使用--快捷赋值)
+          - [实例化时使用 {} 赋值初始化](#实例化时使用--赋值初始化)
+          - [老老实实写构造函数初始化](#老老实实写构造函数初始化)
+          - [支持将定义结构体和实例化结构体写在一起](#支持将定义结构体和实例化结构体写在一起)
+    - [字符串](#字符串)
+      - [std::strcmp](#stdstrcmp)
+      - [返回值](#返回值)
+      - [关于字符串与数字互相转换](#关于字符串与数字互相转换)
+  - [规范性](#规范性)
+    - [头文件源文件](#头文件源文件)
+    - [注释相关](#注释相关)
+  - [函数](#函数)
+    - [引用](#引用)
 
 ---
 
-## 为什么VS中会建议宏转换为constexpr？
+## VisualStudio2019 相关
+
+---
+
+### 为什么VS中会建议宏转换为constexpr？
 
 ![image-20210628184054251](http://cdn.ayusummer233.top/img/20210628184101.png)
 
@@ -14,7 +56,7 @@
 
 ---
 
-### constexpr 
+#### constexpr 
 
 [节选自:constexpr 的来龙去脉-云科普blog (winkp.com)](https://www.winkp.com/7505.html)
 
@@ -44,32 +86,32 @@
 
 ---
 
-####  应该使用 constexpr 的场景
+######  应该使用 constexpr 的场景
 
 - 只要允许，尽可能使用 **`constexpr`**，当值在编译时计算而不是运行时计算时，它能够使程序运行得更快，并使用更少的内存。
 
 ----
 
-#### 不应该使用 constexpr 的场景
+###### 不应该使用 constexpr 的场景
 
 - **`constexpr`** 是对象或者函数接口的一部分，所以如果你使用了 **`constexpr`** 但反悔了，移除 **`constexpr`** 可能会导致大量的调用代码编译失败。(比如添加 I/O 操作用于调试或者性能调优可能导致这样的问题，因为 I/O 语句通常不是在 **`constexpr`** 函数中执行的。)
 
 ---
 
-### auto
+#### auto
 
 - 从初始化表达中推导出已声明变量的类型。
 - 从 `Visual Studio 2010` 开始，**`auto`**关键字宣布一个变量，其类型是从声明的初始化表达中推断出的
 
 ---
 
-## C4996
+### C4996
 
 - 使用的函数是过时了已被弃用的函数
 
 ---
 
-### strcpy_s
+#### strcpy_s
 
 ` strcpy_s(str, strlen(str1)+1, str1);`
 
@@ -77,7 +119,7 @@
 
 ---
 
-## #pragma once
+### #pragma once
 
 - [once pragma | Microsoft Docs](https://docs.microsoft.com/en-us/cpp/preprocessor/once?view=msvc-160)
 
@@ -91,13 +133,13 @@
 
 ---
 
-# VSCode
+## VSCode
 
 ---
 
-## 在 VSCode 中调试 C++ 程序
+### 在 VSCode 中调试 C++ 程序
 
-### 使用 VS 的 cl.exe
+#### 使用 VS 的 cl.exe
 
 [VS Code：使用VS的cl.exe编译运行C/C++程序_北冥有鱼wyh的博客-CSDN博客](https://blog.csdn.net/qq_34801642/article/details/105453161)
 
@@ -204,7 +246,7 @@ json 文件内容如下:
 ![image-20210701215303198](http://cdn.ayusummer233.top/img/20210701215303.png)
 
 ---
-### 使用 gcc
+#### 使用 gcc
 > [配置VSCode中调试C/C++环境 | LeoJhon.Song's Blog (leojhonsong.github.io)](https://leojhonsong.github.io/zh-CN/2018/12/30/配置VSCode中调试C-C-环境/)  
 > [Get Started with C++ and Mingw-w64 in Visual Studio Code](https://code.visualstudio.com/docs/cpp/config-mingw)  
 > [C++ programming with Visual Studio Code](https://code.visualstudio.com/docs/languages/cpp)
@@ -301,21 +343,21 @@ json 文件内容如下:
 
 ----
 
-# 实用工具
+## 实用工具
 
 ---
 
-## 快捷生成函数调用关系图
+### 快捷生成函数调用关系图
 
 - 之前也接触过快速生成 python 文件的函数关系调用图, 记得是 [code2flow]([scottrogowski/code2flow: Pretty good call graphs for dynamic languages (github.com)](https://github.com/scottrogowski/code2flow))
 
 ---
 
-### callgraph
+#### callgraph
 
 ----
 
-#### Ubuntu
+###### Ubuntu
 
 - 目前在网上只找到了 Ubuntu 的使用方案
 
@@ -705,7 +747,7 @@ json 文件内容如下:
 
 -----
 
-### tceetree + cscope + Graphviz
+#### tceetree + cscope + Graphviz
 
 - 远古命令行操作, 貌似很旧了, 个人复现完成了但是没有完全完成, 所以只附个索引在这里(主要还是操作繁琐而且基本都是命令行操作, 我认为应该存在更有效的替代方式)
 - [官网Wiki: tceetree / Wiki / Home (sourceforge.net)](https://sourceforge.net/p/tceetree/wiki/Home/)
@@ -716,7 +758,7 @@ json 文件内容如下:
 
 -----
 
-### VisualStudio Code Graph 扩展
+#### VisualStudio Code Graph 扩展
 
 直接在 VS 扩展管理中搜索安装即可
 
@@ -732,7 +774,7 @@ json 文件内容如下:
 
 ----
 
-### CppDepend
+#### CppDepend
 
 - 安装按成后才发现是一款代码分析软件, 还挺新的, 有 [2021 的 FreeTrial 版本](https://www.cppdepend.com/thank-you-for-downloading-cppdepend?os=win_exe&email=1369661643@qq.com)
 
@@ -750,21 +792,21 @@ json 文件内容如下:
 
 ---
 
-# 数据结构
+## 数据结构
 
 ---
 
-## 结构体
+### 结构体
 
 ---
 
-### 初始化
+#### 初始化
 
 [c++结构体几种初始化方法_skywf的博客-CSDN博客_c++ 结构体初始化](https://blog.csdn.net/weixin_43914889/article/details/107869575)
 
 ---
 
-#### 构造函数使用 `:` 快捷赋值
+###### 构造函数使用 `:` 快捷赋值
 
 `结构体名（形参）： 成员变量1（形参1），成员变量2（形参2）{}；`
 
@@ -793,7 +835,7 @@ int main(){
 
 ---
 
-#### 实例化时使用 {} 赋值初始化
+###### 实例化时使用 {} 赋值初始化
 
 ```C++
 #include <iostream>
@@ -817,7 +859,7 @@ int main(){
 
 ---
 
-#### 老老实实写构造函数初始化
+###### 老老实实写构造函数初始化
 
 ```C++
 #include <iostream>
@@ -845,7 +887,7 @@ int main(){
 
 ----
 
-#### 支持将定义结构体和实例化结构体写在一起
+###### 支持将定义结构体和实例化结构体写在一起
 
 ```C++
 #include <iostream>
@@ -870,11 +912,11 @@ int main(){
 
 ----
 
-## 字符串
+### 字符串
 
 ---
 
-### std::strcmp
+#### std::strcmp
 
 - 定义于头文件 `<cstring>`
 
@@ -886,12 +928,12 @@ int main(){
 
   若 `lhs` 或 `rhs` 不是指向空终止字节字符串的指针，则行为未定义。
 
-- ### 参数
+- #### 参数
 
   | lhs, rhs | -   | 指向待比较的空终止字节字符串的指针 |
   | -------- | --- | ---------------------------------- |
 
-  ### 返回值
+  #### 返回值
 
   若字典序中 `lhs` 先出现于 `rhs` 则为负值。
 
@@ -901,7 +943,7 @@ int main(){
 
 ---
 
-### 关于字符串与数字互相转换
+#### 关于字符串与数字互相转换
 
 - 若当前字符串内容确实为整数, 那么可以通过 `当前字符 - '0'` 返回一个整数
 
@@ -920,11 +962,11 @@ int main(){
   
 
 ------
-# 规范性
+## 规范性
 
 ---
 
-## 头文件源文件
+### 头文件源文件
 
 - 函数和变量可以在头文件中声明然后在源文件中定义, 但是常量最好直接在头文件中声明并定义, 分离开的话容易报错
   - 在头文件中使用外部定义变量时, 在相应源文件中务必在函数外先进行一次初始化, 如果依赖函数进行初始化的话那也要先初始化为空, 否则会引起连接器错误;
@@ -937,7 +979,7 @@ int main(){
 
 ---
 
-## 注释相关
+### 注释相关
 
 ----
 
@@ -948,9 +990,9 @@ int main(){
   > 也就是说如果在头文件中声明在源文件中定义的话, 那么光标移到变量上看到的注释是源文件中定义变量时给出的注释
 
 ---
-# 函数
+## 函数
 
-## 引用
+### 引用
 
 > C++ Primer Plus Chapter8.2
 
