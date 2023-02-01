@@ -16,7 +16,6 @@
     - [超星相关](#超星相关)
       - [没有下载选项的 PDF](#没有下载选项的-pdf)
   - [搜题目解析](#搜题目解析)
-  - [SQLite](#sqlite)
   - [云盘](#云盘)
     - [OneDrive](#onedrive)
     - [E5](#e5)
@@ -36,10 +35,8 @@
           - [WSL2 DNS 服务异常](#wsl2-dns-服务异常)
       - [针对某一软件关闭用户账户控制](#针对某一软件关闭用户账户控制)
       - [命令行重启文件资源管理器](#命令行重启文件资源管理器)
-  - [小技能?](#小技能)
-    - [图片OCR-\>表格](#图片ocr-表格)
-    - [英语学习](#英语学习)
-      - [背单词](#背单词)
+  - [图片OCR-\>表格](#图片ocr-表格)
+  - [英语学习](#英语学习)
   - [clash](#clash)
   - [桌面显示器屏幕使用体验](#桌面显示器屏幕使用体验)
     - [Win11 设置合盖不休眠](#win11-设置合盖不休眠)
@@ -56,6 +53,7 @@
     - [鼠标实用工具](#鼠标实用工具)
   - [字体](#字体)
     - [中易宋体和微软雅黑](#中易宋体和微软雅黑)
+  - [活动监控](#活动监控)
   - [零散报错](#零散报错)
     - [Win11 下 QQ 调起文件资源管理器 C:\\WINDOWS\\SYSTEM32\\ntdll.dll 报错](#win11-下-qq-调起文件资源管理器-cwindowssystem32ntdlldll-报错)
 
@@ -250,10 +248,6 @@ nviv.cn
 30596.cn
 asklib.com
 ```
-
----
-## SQLite
-- [Windows下安装SQLite](https://blog.csdn.net/jason_cdd/article/details/111302337)
 
 
 ---
@@ -582,17 +576,15 @@ explorer
 ```
 
 ----
-## 小技能?
-
 ----
-### 图片OCR->表格
+## 图片OCR->表格
 
 [白描](https://web.baimiaoapp.com/image-to-excel)
 
 ---
-### 英语学习
+## 英语学习
 
-#### 背单词
+`背单词`:
 
 [沙拉查词](https://saladict.crimx.com/download.html)
 - [使用文档](https://saladict.crimx.com/manual.html)
@@ -866,6 +858,18 @@ enmmm, 本身 explorer 就比较卡, 平时能不打开Explorer就不打开Explo
 总的来说, 微软雅黑不适合印刷品, 中易宋体是一种印刷字体但是比较平庸
 
 而且这两款windows自带的字体虽然使用频率很高, 但是并不能免费商用
+
+---
+
+## 活动监控
+
+可以用  [WakaTime](https://wakatime.com) 做代码时间监控
+
+![image-20230201223505418](http://cdn.ayusummer233.top/img/202302012235552.png)
+
+对于窗口活动监控可以使用 [ActivityWatch/activitywatch: The best free and open-source automated time tracker. Cross-platform, extensible, privacy-focused. (github.com)](https://github.com/ActivityWatch/activitywatch)
+
+![image-20230201223638262](http://cdn.ayusummer233.top/img/202302012236308.png)
 
 ---
 ## 零散报错
