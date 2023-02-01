@@ -1,5 +1,22 @@
 # Flask
 
+- [Flask](#flask)
+  - [Microsoft Learn - 使用 Python 和 Flask 生成  AI Web 应用](#microsoft-learn---使用-python-和-flask-生成--ai-web-应用)
+    - [目标](#目标)
+    - [配置开发环境](#配置开发环境)
+    - [创建 Python 虚拟环境](#创建-python-虚拟环境)
+    - [安装 Flask 和其他库](#安装-flask-和其他库)
+    - [Flask 基础知识](#flask-基础知识)
+      - [使用路由响应用户请求](#使用路由响应用户请求)
+      - [方法或谓词](#方法或谓词)
+      - [模板](#模板)
+    - [创建应用](#创建应用)
+      - [创建核心应用程序](#创建核心应用程序)
+      - [添加路由](#添加路由)
+      - [为表单创建 HTML 模板](#为表单创建-html-模板)
+      - [测试应用程序](#测试应用程序)
+
+
 ## Microsoft Learn - 使用 Python 和 Flask 生成  AI Web 应用
 
 > [使用 Python 和 Flask 生成 AI Web 应用 | 简介 - Learn | Microsoft Docs](https://docs.microsoft.com/zh-cn/learn/modules/python-flask-build-ai-web-app/0-introduction)

@@ -1,5 +1,11 @@
 # SQLite
 
+- [SQLite](#sqlite)
+  - [virtual columns](#virtual-columns)
+  - [自增量归零](#自增量归零)
+  - [Litestream](#litestream)
+
+
 ## virtual columns
 
 > [JSON and virtual columns in SQLite (antonz.org)](https://antonz.org/json-virtual-columns/)

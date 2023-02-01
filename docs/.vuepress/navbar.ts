@@ -172,7 +172,7 @@ let frontend = {
         },
         {
             text: "HTML",
-            link: "/前端/HTML/DOM学习.md",
+            link: "/前端/HTML.md",
         },
         {
             text: "HTTP",
@@ -182,6 +182,18 @@ let frontend = {
             text: "Vue",
             link: "/前端/Vue/Vue.md",
         },
+        {
+            text: "CSS",
+            link: "/前端/CSS.md",
+        },
+        {
+            text: "Nodejs",
+            link: "/前端/Nodejs.md",
+        },
+        {
+            text: "Nginx",
+            link: "/前端/Nginx.md",
+        }
     ],
 };
 

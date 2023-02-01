@@ -2,6 +2,23 @@
 
 > [Git飞行规则-git-flight-rules/README_zh-CN.md at master · k88hudson/git-flight-rules (github.com)](https://github.com/k88hudson/git-flight-rules/blob/master/README_zh-CN.md#merge-conflict)
 
+- [Git](#git)
+  - [查看与升级版本](#查看与升级版本)
+  - [安装与配置相关](#安装与配置相关)
+    - [安装](#安装)
+      - [Linux](#linux)
+          - [PPA](#ppa)
+    - [配置](#配置)
+  - [仓库相关](#仓库相关)
+    - [常规操作](#常规操作)
+    - [分支操作](#分支操作)
+  - [relations](#relations)
+    - [code996](#code996)
+  - [learnGitBranching](#learngitbranching)
+  - [报错收集](#报错收集)
+    - [fatal: Authentication failed](#fatal-authentication-failed)
+
+
 ---
 
 ## 查看与升级版本
