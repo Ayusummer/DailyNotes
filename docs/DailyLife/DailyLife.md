@@ -1,5 +1,65 @@
 # 日常
 
+- [日常](#日常)
+  - [Programming](#programming)
+    - [行尾序列](#行尾序列)
+    - [交流社区](#交流社区)
+      - [HackerTalk](#hackertalk)
+  - [证书](#证书)
+    - [软考证书](#软考证书)
+    - [计算机程序设计能力考试(PAT)](#计算机程序设计能力考试pat)
+    - [项目管理职业资格认证(PMI)](#项目管理职业资格认证pmi)
+    - [华为认证](#华为认证)
+  - [下载](#下载)
+    - [IDM](#idm)
+    - [aria2](#aria2)
+    - [超星相关](#超星相关)
+      - [没有下载选项的 PDF](#没有下载选项的-pdf)
+  - [搜题目解析](#搜题目解析)
+  - [SQLite](#sqlite)
+  - [云盘](#云盘)
+    - [OneDrive](#onedrive)
+    - [E5](#e5)
+      - [申请流程](#申请流程)
+      - [续期](#续期)
+          - [OneIndex](#oneindex)
+      - [同步目录空格路径解决](#同步目录空格路径解决)
+    - [将云盘挂载到本地(RaiDrive)](#将云盘挂载到本地raidrive)
+    - [微软商店中的iCloud](#微软商店中的icloud)
+    - [Cloudreve](#cloudreve)
+      - [WebDav 使用](#webdav-使用)
+  - [Microsoft](#microsoft)
+    - [Edge](#edge)
+      - [扩展](#扩展)
+    - [Windows](#windows)
+      - [内核隔离](#内核隔离)
+          - [WSL2 DNS 服务异常](#wsl2-dns-服务异常)
+      - [针对某一软件关闭用户账户控制](#针对某一软件关闭用户账户控制)
+      - [命令行重启文件资源管理器](#命令行重启文件资源管理器)
+  - [小技能?](#小技能)
+    - [图片OCR-\>表格](#图片ocr-表格)
+    - [英语学习](#英语学习)
+      - [背单词](#背单词)
+  - [clash](#clash)
+  - [桌面显示器屏幕使用体验](#桌面显示器屏幕使用体验)
+    - [Win11 设置合盖不休眠](#win11-设置合盖不休眠)
+  - [Game](#game)
+    - [Steam](#steam)
+      - [steam工具箱](#steam工具箱)
+    - [手游模拟器](#手游模拟器)
+      - [蓝叠模拟器 5(支持 Hyper-V)](#蓝叠模拟器-5支持-hyper-v)
+  - [PowerToys](#powertoys)
+    - [自定义窗口布局](#自定义窗口布局)
+    - [调整图像大小](#调整图像大小)
+    - [始终置项](#始终置项)
+    - [文件资源管理器加载项](#文件资源管理器加载项)
+    - [鼠标实用工具](#鼠标实用工具)
+  - [字体](#字体)
+    - [中易宋体和微软雅黑](#中易宋体和微软雅黑)
+  - [零散报错](#零散报错)
+    - [Win11 下 QQ 调起文件资源管理器 C:\\WINDOWS\\SYSTEM32\\ntdll.dll 报错](#win11-下-qq-调起文件资源管理器-cwindowssystem32ntdlldll-报错)
+
+
 ## Programming
 
 ### 行尾序列
@@ -543,13 +603,71 @@ explorer
 
 ---
 
-### clash
+## clash
 
 > [Github/Dreamacro/clash](https://github.com/Dreamacro/clash)  
 > [Github/Dreamacro/clash-dashboard](https://github.com/Dreamacro/clash-dashboard)
 > [alvinkwok/clashForLinux安装配置](https://www.alvinkwok.cn/2022/01/29/2022/01/Clash%20For%20Linux%20Install%20Guide/)
 
 Windows 端的配置比较方便, Linux 端主要需要注意普通用户和root用户的区别以及需要多配置一个 dashboard 来管理
+
+下面主要记录下 ubuntu 上使用 clash 的随笔
+
+需要注意的是, 使用不同的用户进行操作生成的配置文件会在对应用户的 `.config` 目录下, 如下记录的是使用 root 用户登录时进行的操作(SSH 链接的 ubuntu 设备, 习惯了 root; 相应的桌面端的话一般是普通用户)
+
+在 `/root/.config/` 目录下新建一个 `clash` 目录
+
+在 [Releases · Dreamacro/clash (github.com)](https://github.com/Dreamacro/clash/releases) 下载对应的安装包, 这里我选择的是 [clash-linux-amd64-v1.13.0.gz](https://github.com/Dreamacro/clash/releases/download/v1.13.0/clash-linux-amd64-v1.13.0.gz) 
+
+```bash
+# 解压该 gz 包得到一个文件, 给该文件加上执行权限
+gunzip clash-linux-amd64-v1.13.0.gz
+chmod u+x clash-linux-amd64-v1.13.0
+```
+
+clone dashboard 仓库并切换到 gh-pages 分支:
+
+```bash
+git clone https://github.com/Dreamacro/clash-dashboard.git
+cd clash-dashboard
+git checkout -b gh-pages origin/gh-pages
+```
+
+> 尝试过使用镜像 clone, 但是在  `git checkout -b gh-pages origin/gh-pages` 这步会报错找不到 `origin/gh-pages` 分支, 由于裸连能 clone 下来所以没再处理
+
+下载配置信息
+
+```bash
+sudo wget -O config.yaml [订阅链接]
+sudo wget -O Country.mmdb https://www.sub-speeder.com/client-download/Country.mmdb
+```
+
+编辑 `config.yaml` 的如下三个属性, 分别对应页面端口, 访问密钥以及页面所在目录
+
+```yaml
+external-controller: '0.0.0.0:9090'
+secret: 'xxxxxxx'
+external-ui: '/root/.config/clash/clash-dashboard'
+```
+
+尝试运行 clash
+
+```bash
+screen -S clash
+./clash-linux-amd64-v1.13.0
+```
+
+访问 `[ip]:[port]/ui` 输入密钥登入
+
+到这里没问题的话就可以配置下系统代理了
+
+![image-20230201151825066](http://cdn.ayusummer233.top/DailyNotes/202302011518116.png)
+
+有些程序不走系统代理，需要单独配置，比如 git, 需要单独进行配置
+
+```bash
+git config --global http.proxy "http://127.0.0.1:7890"
+```
 
 ---
 
