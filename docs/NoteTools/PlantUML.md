@@ -1,10 +1,11 @@
-[TOC]
-
----
-
 # PlantUML
 
 > [官方中文教程](https://plantuml.com/zh/)
+
+- [PlantUML](#plantuml)
+  - [Work Breakdown Structure (WBS)](#work-breakdown-structure-wbs)
+  - [OrgMode syntax](#orgmode-syntax)
+
 
 ## Work Breakdown Structure (WBS)
 

@@ -14,6 +14,12 @@ Redis 通常被称为数据结构服务器，因为值（value）可以是字符
 
 > Redis is an open source (BSD licensed), in-memory **data structure store** used as a database, cache, message broker, and streaming engine. 
 
+- [Redis](#redis)
+  - [安装](#安装)
+    - [Ubuntu/Debian](#ubuntudebian)
+  - [常用命令](#常用命令)
+
+
 ---
 
 ## 安装

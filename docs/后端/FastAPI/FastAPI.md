@@ -1,11 +1,115 @@
-# 前言
+# FastAPI
+
+- [FastAPI](#fastapi)
+  - [前言](#前言)
+  - [起步](#起步)
+    - [导入 FastAPI](#导入-fastapi)
+    - [创建一个 FastAPI 实例](#创建一个-fastapi-实例)
+    - [创建一个路径操作](#创建一个路径操作)
+      - [路径](#路径)
+      - [操作](#操作)
+      - [定义一个路径操作装饰器](#定义一个路径操作装饰器)
+    - [定义路径操作函数](#定义路径操作函数)
+    - [返回内容](#返回内容)
+  - [请求模型](#请求模型)
+    - [路径参数和数据的解析验证](#路径参数和数据的解析验证)
+      - [枚举类型](#枚举类型)
+    - [查询参数和数据的解析, 验证](#查询参数和数据的解析-验证)
+      - [默认参数与可选参数](#默认参数与可选参数)
+      - [bool 参数](#bool-参数)
+      - [多个参数, 列表, 字符串验证, 正则, 参数别名](#多个参数-列表-字符串验证-正则-参数别名)
+    - [请求体及混合参数](#请求体及混合参数)
+      - [请求体和字段](#请求体和字段)
+      - [多参数混合](#多参数混合)
+    - [数据格式嵌套的请求体](#数据格式嵌套的请求体)
+    - [配置 Cookie 和 Header 参数](#配置-cookie-和-header-参数)
+      - [Cookie 校验](#cookie-校验)
+      - [Header 校验](#header-校验)
+  - [响应模型](#响应模型)
+    - [response\_model](#response_model)
+      - [复杂类型响应](#复杂类型响应)
+          - [直接搓 JSON](#直接搓-json)
+          - [封装 schema](#封装-schema)
+    - [响应状态码](#响应状态码)
+    - [表单数据处理](#表单数据处理)
+    - [文件上传及参数详解](#文件上传及参数详解)
+    - [静态文件的配置](#静态文件的配置)
+    - [路径操作配置](#路径操作配置)
+    - [FastAPI 配置项](#fastapi-配置项)
+    - [错误处理](#错误处理)
+      - [自定义异常处理](#自定义异常处理)
+  - [依赖注入](#依赖注入)
+    - [创建, 导入和声明依赖](#创建-导入和声明依赖)
+    - [类作为依赖项](#类作为依赖项)
+    - [子依赖的创建和调用](#子依赖的创建和调用)
+    - [路径操作装饰器中导入依赖](#路径操作装饰器中导入依赖)
+    - [FastAPI 框架中全局依赖的使用](#fastapi-框架中全局依赖的使用)
+    - [使用 yield 的依赖和子依赖](#使用-yield-的依赖和子依赖)
+  - [JSON Compatible Encoder](#json-compatible-encoder)
+    - [使用 `jsonable_encoder`](#使用-jsonable_encoder)
+  - [OAuth2.0 的授权模式](#oauth20-的授权模式)
+    - [密码授权模式(Resource Owner Password Credentials Grant)](#密码授权模式resource-owner-password-credentials-grant)
+    - [OAuth2 密码模式和 FastAPI 的 OAuth2PasswordBearer](#oauth2-密码模式和-fastapi-的-oauth2passwordbearer)
+    - [基于 Password 和 Bearer token 的 OAuth2 认证](#基于-password-和-bearer-token-的-oauth2-认证)
+    - [开发基于 JSON Web Tokens 的认证](#开发基于-json-web-tokens-的认证)
+  - [SQL(Relational) Databases](#sqlrelational-databases)
+    - [创建 SQLAlchemy](#创建-sqlalchemy)
+      - [引入 SQLAlchemy 库](#引入-sqlalchemy-库)
+      - [为 SQLAlchemy 创建 database URL](#为-sqlalchemy-创建-database-url)
+      - [创建 SQLAlchemy engine](#创建-sqlalchemy-engine)
+      - [创建一个 SessionLocal 类](#创建一个-sessionlocal-类)
+      - [创建一个 Base 类](#创建一个-base-类)
+    - [创建 database models](#创建-database-models)
+      - [从 Base 类创建 SQLAlchemy model](#从-base-类创建-sqlalchemy-model)
+      - [创建 model attributes/columns](#创建-model-attributescolumns)
+      - [创建 relationships](#创建-relationships)
+    - [创建 Pydantic model](#创建-pydantic-model)
+      - [创建 initial Pydantic models / schemas](#创建-initial-pydantic-models--schemas)
+          - [SQLAlchemy style 和 Pydantic style](#sqlalchemy-style-和-pydantic-style)
+      - [创建用于 reading / returning 的 Pydantic models / schemas](#创建用于-reading--returning-的-pydantic-models--schemas)
+      - [使用 Pydantic 的 orm\_mode](#使用-pydantic-的-orm_mode)
+          - [关于 ORM mode 的技术细节](#关于-orm-mode-的技术细节)
+    - [CRUD utils](#crud-utils)
+    - [Main FastAPI app](#main-fastapi-app)
+      - [创建数据库表](#创建数据库表)
+      - [创建 dependency](#创建-dependency)
+    - [Prisma](#prisma)
+  - [数据库操作(慕课网)](#数据库操作慕课网)
+    - [配置 SQLAlchemy ORM](#配置-sqlalchemy-orm)
+    - [DataBase Models](#database-models)
+  - [大型工程的目录结构设计](#大型工程的目录结构设计)
+  - [中间件](#中间件)
+  - [跨域资源共享](#跨域资源共享)
+    - [源](#源)
+    - [步骤](#步骤)
+    - [通配符](#通配符)
+    - [使用 CORSMiddleWare](#使用-corsmiddleware)
+      - [CORS 预检请求](#cors-预检请求)
+      - [简单请求](#简单请求)
+  - [后台任务](#后台任务)
+    - [与依赖注入一起使用](#与依赖注入一起使用)
+  - [高级用户指南](#高级用户指南)
+    - [启动和停止事件](#启动和停止事件)
+      - [`startup` 事件](#startup-事件)
+      - [`shutdown` 事件](#shutdown-事件)
+  - [测试用例](#测试用例)
+  - [运行](#运行)
+    - [放在主程序中运行](#放在主程序中运行)
+  - [Pydantic](#pydantic)
+    - [数据类型](#数据类型)
+      - [多种数据类型(Unions)](#多种数据类型unions)
+  - [报错收集](#报错收集)
+    - [文档站点加载不出来](#文档站点加载不出来)
+
+
+## 前言
 
 随笔有一部分内容基于慕课网 21 年发的一份 `FastAPI` 基础教程
 
 [【独家新技术】从0到1学习 FastAPI 框架的所有知识点_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV1iN411X72b?p=19&spm_id_from=333.1007.top_right_bar_window_history.content.click)
 
 ---
-# 起步
+## 起步
 
 > [第一步 - FastAPI (tiangolo.com)](https://fastapi.tiangolo.com/zh/tutorial/first-steps/)
 
@@ -40,7 +144,7 @@ uvicorn main:app --reload
   ![20220408094106](http://cdn.ayusummer233.top/img/20220408094106.png)
 
 
-## 导入 FastAPI
+### 导入 FastAPI
 
 ```python
 from fastapi import FastAPI
@@ -55,7 +159,7 @@ from fastapi import FastAPI
 
 可以通过 `FastAPI` 使用所有的 `Starlette` 的功能。
 
-## 创建一个 FastAPI 实例
+### 创建一个 FastAPI 实例
 
 ```python
 app = FastAPI()
@@ -71,9 +175,9 @@ app = FastAPI()
 uvicorn main:app --reload
 ```
 
-## 创建一个路径操作
+### 创建一个路径操作
 
-### 路径
+#### 路径
 
 > [路径 - FastAPI (tiangolo.com)](https://fastapi.tiangolo.com/zh/tutorial/first-steps/#_6)
 
@@ -85,7 +189,7 @@ uvicorn main:app --reload
 
 开发 API 时，「路径」是用来分离「关注点」和「资源」的主要手段。
 
-### 操作
+#### 操作
 
 > [操作 - FastAPI (tiangolo.com)](https://fastapi.tiangolo.com/zh/tutorial/first-steps/#_7)
 
@@ -117,7 +221,7 @@ uvicorn main:app --reload
 
 我们也打算称呼它们为「操作」。
 
-### 定义一个路径操作装饰器
+#### 定义一个路径操作装饰器
 
 > [定义一个路径操作装饰器 - FastAPI (tiangolo.com)](https://fastapi.tiangolo.com/zh/tutorial/first-steps/#_8)
 
@@ -135,7 +239,7 @@ uvicorn main:app --reload
 > 它是一个「路径操作装饰器」。  
 
 
-## 定义路径操作函数
+### 定义路径操作函数
 
 > [定义路径操作函数- FastAPI (tiangolo.com)](https://fastapi.tiangolo.com/zh/tutorial/first-steps/#4)
 
@@ -158,7 +262,7 @@ async def root():
 每当 FastAPI 接收一个使用 GET 方法访问 URL「/」的请求时这个函数会被调用。
 
 
-## 返回内容
+### 返回内容
 
 > [返回内容- FastAPI (tiangolo.com)](https://fastapi.tiangolo.com/zh/tutorial/first-steps/#5)
 
@@ -175,11 +279,11 @@ return {"message": "Hello World"}
 
 ---
 
-# 请求模型
+## 请求模型
 
-## 路径参数和数据的解析验证
+### 路径参数和数据的解析验证
 
-### 枚举类型
+#### 枚举类型
 
 可以使用枚举类型来指定参数范围
 
@@ -213,9 +317,9 @@ async def readStaffByDid(did: DidEnum):
 ```
 ---
 
-## 查询参数和数据的解析, 验证
+### 查询参数和数据的解析, 验证
 
-### 默认参数与可选参数
+#### 默认参数与可选参数
 
 ```python
 from typing import Optional
@@ -231,7 +335,7 @@ def page_limit(page: int=1, limit: Optional[int] = None):
 
 ---
 
-### bool 参数
+#### bool 参数
 
 ```python
 # bool 参数
@@ -248,7 +352,7 @@ async def type_conversion(param: bool=False):
 
 ---
 
-### 多个参数, 列表, 字符串验证, 正则, 参数别名
+#### 多个参数, 列表, 字符串验证, 正则, 参数别名
 
 ```python
 from typing import (
@@ -282,9 +386,9 @@ async def query_params_validate(
 
 ---
 
-## 请求体及混合参数
+### 请求体及混合参数
 
-### 请求体和字段
+#### 请求体和字段
 
 ```python
 from pydantic import (
@@ -292,7 +396,7 @@ from pydantic import (
     Field,  # 字段类, 用于构建数据模型
 )
 
-####### 请求体和混合参数 #######
+########## 请求体和混合参数 ##########
 
 class CityInfo(BaseModel):
     name: str = Field(..., example='Beijing')   # example 是注解作用, 值不会被验证
@@ -332,7 +436,7 @@ async def city_info(city: CityInfo):
 
 ---
 
-### 多参数混合
+#### 多参数混合
 
 ```python
 # 多参数混合
@@ -369,7 +473,7 @@ body 包括两个 CityInfo: city01, city02
 
 ---
 
-## 数据格式嵌套的请求体
+### 数据格式嵌套的请求体
 
 在使用 Pydantic 定义请求体数据的时候, 校验使用 pydantic.Field
 
@@ -381,7 +485,7 @@ body 包括两个 CityInfo: city01, city02
 # 引入日期类
 from datetime import date
 
-# ####### 数据格式嵌套的请求体 #######
+# ########## 数据格式嵌套的请求体 ##########
 
 class Data(BaseModel):
     city: List[CityInfo] = None # 定义数据格式嵌套的请求体
@@ -404,9 +508,9 @@ async def nested_models(data: Data):
 
 ---
 
-## 配置 Cookie 和 Header 参数
+### 配置 Cookie 和 Header 参数
 
-### Cookie 校验
+#### Cookie 校验
 
 ```python
 from fastapi import Cookie
@@ -422,7 +526,7 @@ async def cookie(cookie_id: Optional[str] =  Cookie(None)):
 
 ---
 
-### Header 校验
+#### Header 校验
 
 ```python
 from fastapi import Header
@@ -453,11 +557,11 @@ async def header(user_agent: Optional[str] = Header(
 
 ---
 
-# 响应模型
+## 响应模型
 
 ---
 
-## response_model
+### response_model
 
 使用 `pydantic.BaseModel` 派生子类创建响应模型类, 在写路由时使用 `response_model=xxx` 来指定 `xxx` 为响应模型, 这样返回的响应就是一个 `xxx` 实例
 
@@ -528,7 +632,7 @@ async def response_model_attributes(user: UserIn):
 
 ---
 
-### 复杂类型响应
+#### 复杂类型响应
 
 比如这种响应:
 
@@ -540,7 +644,7 @@ async def response_model_attributes(user: UserIn):
 
 ---
 
-#### 直接搓 JSON
+###### 直接搓 JSON
 
 ```python
 # 引入 jsonable_encoder
@@ -562,7 +666,7 @@ return JSONResponse(content={
 
 ---
 
-#### 封装 schema
+###### 封装 schema
 
 先用 `pydantic.BaseModel` 和 `staff schema` 封装一个响应模型类
 
@@ -627,7 +731,7 @@ async def get_staff_by_page(
 
 ---
 
-## 响应状态码
+### 响应状态码
 
 在路由中通过 `status_code` 进行指定, 其值为整型, 可以通过 `status.HTTP_xx_xx` 获得名称上的提示
 
@@ -648,7 +752,7 @@ async def status_attribute():
 
 ---
 
-## 表单数据处理
+### 表单数据处理
 
 引入 `fastapi.Form` 用于处理表单数据
 
@@ -669,7 +773,7 @@ async def login(username: str = Form(...), password: str = Form(...)):  # 定义
 
 ---
 
-## 文件上传及参数详解
+### 文件上传及参数详解
 
 引入 `fastapi.File & UploadFile`, 路由函数参数中使用 `File` 和 `UploadFile` 来注解参数
 
@@ -713,7 +817,7 @@ async def upload_files(files: List[UploadFile] = File(...)):
 
 ---
 
-## 静态文件的配置
+### 静态文件的配置
 
 静态文件一般放在 `static ` 文件夹中, 需要在 `main app` (而非 `APIRouter` 分路由) 中进行挂载方可使用
 
@@ -738,7 +842,7 @@ app.mount(path='/static', app=StaticFiles(directory=static_path), name='static')
 
 ---
 
-## 路径操作配置
+### 路径操作配置
 
 ```python 
 """Path Operation Configuration 路径操作配置"""
@@ -767,7 +871,7 @@ async def path_operation_configuration(user: UserIn):
 
 ---
 
-## FastAPI 配置项
+### FastAPI 配置项
 
 ```python
 # FastAPI 配置项
@@ -789,12 +893,12 @@ app = FastAPI(
 
 ---
 
-## 错误处理
+### 错误处理
 
 引入 `fastapi.HTTPException` 后在路由函数中进行使用
 
 ```python
-####### Handling Errors 错误处理 #######
+########## Handling Errors 错误处理 ##########
 # HTTP Exception 以及自定义异常处理器
 # from fastapi import HTTPException   # 用于处理HTTP异常
 
@@ -812,7 +916,7 @@ async def http_exception(city: str):
 
 ---
 
-### 自定义异常处理
+#### 自定义异常处理
 
 在 `main app` 中进行异常处理的重写
 
@@ -863,7 +967,7 @@ async def validation_exception_handler(request, exc):
 
 ---
 
-# 依赖注入
+## 依赖注入
 
 "依赖注入" 是指在编程中, 为保证代码成功运行, 先导入或声明其所需要的 "依赖", 如子函数, 数据库连接等
 
@@ -880,7 +984,7 @@ FastAPI 的兼容性
 
 ---
 
-## 创建, 导入和声明依赖
+### 创建, 导入和声明依赖
 
 将函数作为依赖进行注入操作(query)
 
@@ -889,7 +993,7 @@ from fastapi import (
     Depends,    # 引入依赖
 )
 
-####### Dependencies 创建、导入和声明依赖 #######
+########## Dependencies 创建、导入和声明依赖 ##########
 
 
 async def common_parameters(q: Optional[str] = None, page: int = 1, limit: int = 100):
@@ -916,7 +1020,7 @@ def dependency02(commons: dict = Depends(common_parameters)):
 
 ---
 
-## 类作为依赖项
+### 类作为依赖项
 
 ```python
 # 假设这是一个从数据库中获取的数据
@@ -953,10 +1057,10 @@ async def classes_as_dependencies(commons=Depends(CommonQueryParams)):
 
 ---
 
-## 子依赖的创建和调用
+### 子依赖的创建和调用
 
 ```python
-####### Sub-dependencies 子依赖 #######
+########## Sub-dependencies 子依赖 ##########
 
 
 def query(q: Optional[str] = None):
@@ -987,10 +1091,10 @@ async def sub_dependency(final_query: str = Depends(sub_query, use_cache=True)):
 
 ---
 
-## 路径操作装饰器中导入依赖
+### 路径操作装饰器中导入依赖
 
 ```python
-####### Dependencies in path operation decorators 路径操作装饰器中的多依赖 #######
+########## Dependencies in path operation decorators 路径操作装饰器中的多依赖 ##########
 
 
 async def verify_token(x_token: str = Header(...)):
@@ -1026,7 +1130,7 @@ async def dependency_in_path_operation():
 
 ---
 
-## FastAPI 框架中全局依赖的使用
+### FastAPI 框架中全局依赖的使用
 
 假设现在有一个子依赖需要在应用的任何地方使用(或者某个组件内部的所有地方), 那么可以使用全局依赖
 
@@ -1070,7 +1174,7 @@ app = FastAPI(
 
 ---
 
-## 使用 yield 的依赖和子依赖
+### 使用 yield 的依赖和子依赖
 
 `yield` 关键字在依赖中的使用 
 
@@ -1084,7 +1188,7 @@ Python3.6需要pip install async-exit-stack async-generator
 
 
 ```python
-####### Dependencies with yield 带yield的依赖 #######
+########## Dependencies with yield 带yield的依赖 ##########
 
 
 # 这个需要Python3.7才支持，Python3.6需要pip install async-exit-stack async-generator
@@ -1143,7 +1247,7 @@ def get_db():
 
 ---
 
-# JSON Compatible Encoder
+## JSON Compatible Encoder
 
 > [JSON Compatible Encoder - FastAPI (tiangolo.com)](https://fastapi.tiangolo.com/zh/tutorial/encoder/)
 
@@ -1153,7 +1257,7 @@ def get_db():
 
 ---
 
-## 使用 `jsonable_encoder`
+### 使用 `jsonable_encoder`
 
 我们假设当前我们有一个只接受 JSON 兼容数据的数据库 `fake_db`.
 
@@ -1210,7 +1314,7 @@ def update_item(id: str, item: Item):
 
 -----
 
-# OAuth2.0 的授权模式
+## OAuth2.0 的授权模式
 
 - 授权码授权模式（Authorization Code Grant）
 - 隐式授权模式（Implicit Grant）
@@ -1219,20 +1323,20 @@ def update_item(id: str, item: Item):
 
 ---
 
-## 密码授权模式(Resource Owner Password Credentials Grant)
+### 密码授权模式(Resource Owner Password Credentials Grant)
 
 ![image-20220430201704453](http://cdn.ayusummer233.top/img/202204302017634.png)
 
 ---
 
-## OAuth2 密码模式和 FastAPI 的 OAuth2PasswordBearer
+### OAuth2 密码模式和 FastAPI 的 OAuth2PasswordBearer
 
 ```python
 from fastapi.security import (
     OAuth2PasswordBearer,   # OAuth2的认证方式
 )
 
-####### OAuth2 密码模式和 FastAPI 的 OAuth2PasswordBearer #######
+########## OAuth2 密码模式和 FastAPI 的 OAuth2PasswordBearer ##########
 
 """
 OAuth2PasswordBearer是接收URL作为参数的一个类: 
@@ -1255,10 +1359,10 @@ async def oauth2_password_bearer(token: str = Depends(oauth2_schema)):
 
 ---
 
-## 基于 Password 和 Bearer token 的 OAuth2 认证
+### 基于 Password 和 Bearer token 的 OAuth2 认证
 
 ```python
-####### 基于 Password 和 Bearer token 的 OAuth2 认证 #######
+########## 基于 Password 和 Bearer token 的 OAuth2 认证 ##########
 
 # 模拟数据库信息
 fake_users_db = {
@@ -1405,7 +1509,7 @@ flowchart LR
 
 ---
 
-## 开发基于 JSON Web Tokens 的认证
+### 开发基于 JSON Web Tokens 的认证
 
 > [【独家新技术】从0到1学习 FastAPI 框架的所有知识点_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV1iN411X72b?p=32)
 
@@ -1569,7 +1673,7 @@ async def jwt_read_users_me(current_user: User = Depends(jwt_get_current_active_
 ![image-20220430225118757](http://cdn.ayusummer233.top/img/202204302251027.png)
 
 ---
-# SQL(Relational) Databases
+## SQL(Relational) Databases
 
 示例项目结构:
 
@@ -1584,7 +1688,7 @@ async def jwt_read_users_me(current_user: User = Depends(jwt_get_current_active_
 > `__init__.py` 是个空文件，它只是为了让 Python 识别这是一个 module。
 
 
-## 创建 SQLAlchemy
+### 创建 SQLAlchemy
 
 > [SQLAlchemy](https://www.sqlalchemy.org/)
 
@@ -1596,7 +1700,7 @@ pip install sqlalchemy
 
 编辑 `database.py` 文件
 
-### 引入 SQLAlchemy 库
+#### 引入 SQLAlchemy 库
 
 ```python
 from sqlalchemy import create_engine
@@ -1604,7 +1708,7 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 ```
 
-### 为 SQLAlchemy 创建 database URL
+#### 为 SQLAlchemy 创建 database URL
 
 ```python
 SQLALCHEMY_DATABASE_URL = "sqlite:///E:/ProgrammingLessons/Vue/vite/ViteLearningBackend/ViteLearningBackend.db"
@@ -1619,7 +1723,7 @@ SQLALCHEMY_DATABASE_URL = "sqlite:///E:/ProgrammingLessons/Vue/vite/ViteLearning
 
 使用其他数据库的话把 `sqlite` 字段相应的换成  `MySQL`, `mariadb` 等即可
 
-### 创建 SQLAlchemy engine
+#### 创建 SQLAlchemy engine
 
 ```python
 engine = create_engine(
@@ -1635,7 +1739,7 @@ engine = create_engine(
 > 
 > 但是在 FastAPI 的函数中, 不止一个 thread 可以向 database 发起请求, 所以我们需要让 SQLIte 知道它应当通过  `connect_args = {"check_same_thread": False}` 允许这些 thread 向数据库发请求
 
-### 创建一个 SessionLocal 类
+#### 创建一个 SessionLocal 类
 
 SessionLocal 类的每个实例都是一个 database session, 不过该类本身并非 database session(数据库会话)
 
@@ -1649,7 +1753,7 @@ SessionLocal 类的每个实例都是一个 database session, 不过该类本身
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 ```
 
-### 创建一个 Base 类
+#### 创建一个 Base 类
 
 使用 declarative_base 来返回一个类赋给 Base
 
@@ -1659,11 +1763,11 @@ SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 Base = declarative_base()
 ```
 
-## 创建 database models
+### 创建 database models
 
 编辑 `models.py`
 
-### 从 Base 类创建 SQLAlchemy model
+#### 从 Base 类创建 SQLAlchemy model
 
 > SQLAlchemy 使用术语 "model" 来指代这些与数据库交互的 class 及 instance
 > 
@@ -1711,7 +1815,7 @@ class Good(Base):
 
 ---
 
-### 创建 model attributes/columns
+#### 创建 model attributes/columns
 
 创建所有 model 的 attribute
 
@@ -1726,7 +1830,7 @@ class Good(Base):
 
 ---
 
-### 创建 relationships
+#### 创建 relationships
 
 > 个人写的示例中没有定义外键, 因为后面要加速开发原型, 所以个人示例比较简略
 > 
@@ -1746,7 +1850,7 @@ class Good(Base):
 
 ---
 
-## 创建 Pydantic model
+### 创建 Pydantic model
 
 编辑 `schemas.py`
 
@@ -1756,7 +1860,7 @@ class Good(Base):
 
 > 因此，这将有助于我们避免在使用二者时可能产生的混淆
 
-### 创建 initial Pydantic models / schemas
+#### 创建 initial Pydantic models / schemas
 
 创建一个 `StaffBase Pydantic model` (或者说 `schema`)  一遍在创建和读取数据时由公共属性
 
@@ -1766,7 +1870,7 @@ class Good(Base):
 
 ---
 
-#### SQLAlchemy style 和 Pydantic style
+###### SQLAlchemy style 和 Pydantic style
 
 在 SQLAlchemy models 中定义属性时使用的是 `=`, 并将类型作为参数传给 `Column`, 如下:
 
@@ -1782,7 +1886,7 @@ name: str
 
 ---
 
-### 创建用于 reading / returning 的 Pydantic models / schemas
+#### 创建用于 reading / returning 的 Pydantic models / schemas
 
 创建 Pydantic models(schemas), 当从 API 返回数据时, 将在读取数据时使用它
 
@@ -1792,7 +1896,7 @@ name: str
 
 ---
 
-### 使用 Pydantic 的 orm_mode
+#### 使用 Pydantic 的 orm_mode
 
 现在, 在 Pydantic models 中为了方便读取, 给 Staff 类添加一个内部的 Config 类
 
@@ -1824,7 +1928,7 @@ id = data.id
 
 ---
 
-#### 关于 ORM mode 的技术细节
+###### 关于 ORM mode 的技术细节
 
 [关于 ORM mode 的技术细节](https://fastapi.tiangolo.com/zh/tutorial/sql-databases/#technical-details-about-orm-mode)
 
@@ -1849,7 +1953,7 @@ current_user.items
 
 ---
 
-## CRUD utils
+### CRUD utils
 
 编辑 `crud.py`
 
@@ -1959,14 +2063,14 @@ def delete_staff(db: Session, id: int):
 
 ---
 
-## Main FastAPI app
+### Main FastAPI app
 
 编辑 `main.py`
 
 
 ---
 
-### 创建数据库表
+#### 创建数据库表
 
 用一种非常简单的方式创建数据库表
 
@@ -1976,7 +2080,7 @@ models.Base.metadata.create_all(bind=engine)
 
 ---
 
-### 创建 dependency
+#### 创建 dependency
 
 现在使用我们在 `sql_app/databases.py` 文件中创建的 `SessionLocal` 类创建一个依赖项。
 
@@ -2009,7 +2113,7 @@ def get_db():
 
 ---
 
-## Prisma
+### Prisma
 
 > [What is the best tool or ORM to manage database in Fast API? · Issue #4659 · tiangolo/fastapi (github.com)](https://github.com/tiangolo/fastapi/issues/4659#issuecomment-1143744431)
 >
@@ -2027,9 +2131,9 @@ def get_db():
 
 ---
 
-# 数据库操作(慕课网)
+## 数据库操作(慕课网)
 
-## 配置 SQLAlchemy ORM
+### 配置 SQLAlchemy ORM
 
 ```python
 from sqlalchemy import create_engine
@@ -2071,7 +2175,7 @@ Base = declarative_base()
 
 ---
 
-## DataBase Models
+### DataBase Models
 
 > [【独家新技术】从0到1学习 FastAPI 框架的所有知识点_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV1iN411X72b?p=35)
 
@@ -2186,7 +2290,7 @@ class User(Base):
 
 ---
 
-# 大型工程的目录结构设计
+## 大型工程的目录结构设计
 
 应用文件拆分
 
@@ -2207,7 +2311,7 @@ class User(Base):
 
 
 
-# 中间件
+## 中间件
 
 > [【独家新技术】从0到1学习 FastAPI 框架的所有知识点_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV1iN411X72b?p=38)
 
@@ -2239,7 +2343,7 @@ async def add_process_time_header(request: Request, call_next):
 
 ---
 
-# 跨域资源共享
+## 跨域资源共享
 
 > [CORS（跨域资源共享） - FastAPI (tiangolo.com)](https://fastapi.tiangolo.com/zh/tutorial/cors/)
 
@@ -2247,7 +2351,7 @@ async def add_process_time_header(request: Request, call_next):
 
 ---
 
-## 源
+### 源
 
 源是协议（`http`，`https`）、域（`myapp.com`，`localhost`，`localhost.tiangolo.com`）以及端口（`80`、`443`、`8080`）的组合。
 
@@ -2261,7 +2365,7 @@ async def add_process_time_header(request: Request, call_next):
 
 ---
 
-## 步骤
+### 步骤
 
 假设你的浏览器中有一个前端运行在 `https://localhost:3100`，并且它的 JavaScript 正在尝试与运行在 `http://localhost:8000` 的后端通信
 
@@ -2273,7 +2377,7 @@ async def add_process_time_header(request: Request, call_next):
 
 ---
 
-## 通配符
+### 通配符
 
 也可以使用 `"*"`（一个「通配符」）声明这个列表，表示全部都是允许的。
 
@@ -2283,7 +2387,7 @@ async def add_process_time_header(request: Request, call_next):
 
 ---
 
-## 使用 CORSMiddleWare
+### 使用 CORSMiddleWare
 
 你可以在 **FastAPI** 应用中使用 `CORSMiddleware` 来配置它。
 
@@ -2335,7 +2439,7 @@ app.add_middleware(
 
 ---
 
-### CORS 预检请求
+#### CORS 预检请求
 
 这是些带有 `Origin` 和 `Access-Control-Request-Method` 请求头的 `OPTIONS` 请求。
 
@@ -2343,13 +2447,13 @@ app.add_middleware(
 
 ---
 
-### 简单请求
+#### 简单请求
 
 任何带有 `Origin` 请求头的请求。在这种情况下，中间件将像平常一样传递请求，但是在响应中包含适当的 CORS headers。
 
 ---
 
-# 后台任务
+## 后台任务
 
 > [【独家新技术】从0到1学习 FastAPI 框架的所有知识点_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV1iN411X72b?p=41)
 >
@@ -2362,7 +2466,7 @@ app.add_middleware(
 引入 `fastapi.BackgroundTask` 后通过在异步函数中调用其中的 `add_task` 来添加后台任务
 
 ```python
-####### Background Tasks 后台任务 #######
+########## Background Tasks 后台任务 ##########
 import os
 from fastapi import APIRouter, BackgroundTasks, Depends
 
@@ -2371,7 +2475,7 @@ file_path = os.path.abspath(os.path.join(os.path.dirname(__file__), './README.md
 def bg_task(framework: str):
     """已续写的形式用 utf-8 编码写入README.md"""
     with open(file_path, mode="a", encoding="utf-8") as f:
-        f.write(f"\n## {framework} 框架精讲")
+        f.write(f"\n### {framework} 框架精讲")
 
 
 @app08.post("/background_tasks")
@@ -2403,7 +2507,7 @@ async def dependency_run_bg_task(q: str = Depends(continue_write_readme)):
 
 ---
 
-## 与依赖注入一起使用
+### 与依赖注入一起使用
 
 > [Background Tasks - FastAPI (tiangolo.com)](https://fastapi.tiangolo.com/zh/tutorial/background-tasks/#dependency-injection)
 >
@@ -2457,9 +2561,9 @@ async def send_notification(
 
 ---
 
-# 高级用户指南
+## 高级用户指南
 
-## 启动和停止事件
+### 启动和停止事件
 
 > [Events: startup - shutdown - FastAPI (tiangolo.com)](https://fastapi.tiangolo.com/zh/advanced/events/?h=log#events-startup-shutdown)
 >
@@ -2473,7 +2577,7 @@ async def send_notification(
 
 ---
 
-### `startup` 事件
+#### `startup` 事件
 
 如果你需要在应用开始前执行一个函数, 那么可以使用 `startup` 事件来定义这样一个函数
 
@@ -2518,7 +2622,7 @@ async def startup_event():
 
 ---
 
-### `shutdown` 事件
+#### `shutdown` 事件
 
  与 `startup` 事件类似, 你也可以通过 `shutdown` 事件定义一个函数以在应用关闭后执行
 
@@ -2550,7 +2654,7 @@ async def read_items():
 
 ---
 
-# 测试用例
+## 测试用例
 
 > [Testing - FastAPI (tiangolo.com)](https://fastapi.tiangolo.com/zh/tutorial/testing/)
 >
@@ -2567,7 +2671,7 @@ from fastapi.testclient import TestClient
 
 from .run import app
 
-####### Testing 测试用例 #######
+########## Testing 测试用例 ##########
 
 client = TestClient(app)  # 先pip install pytest
 
@@ -2601,7 +2705,7 @@ def test_dependency_run_bg_task_q():
 
 ---
 
-# 运行
+## 运行
 
 ```bash
 uvicorn app.mian:app --reload --host 'xxx' --port xxx
@@ -2635,7 +2739,7 @@ uvicorn app.mian:app --reload --host 'xxx' --port xxx
 
 ---
 
-## 放在主程序中运行
+### 放在主程序中运行
 
 ```python
 if __name__ == '__main__':
@@ -2654,15 +2758,15 @@ uvicorn_run('__main__:app', host=uvicorn_host, port=uvicorn_port, reload=False, 
 
 ---
 
-# Pydantic
+## Pydantic
 
 > [pydantic (helpmanual.io)](https://pydantic-docs.helpmanual.io/)
 >
 > [Python笔记：Pydantic库简介_Espresso Macchiato的博客-CSDN博客_pydantic](https://blog.csdn.net/codename_cys/article/details/107675748#pydantic库简介)
 
-## 数据类型
+### 数据类型
 
-### 多种数据类型(Unions)
+#### 多种数据类型(Unions)
 
 > [Field Types - pydantic (helpmanual.io)](https://pydantic-docs.helpmanual.io/usage/types/#unions)
 >
@@ -2708,9 +2812,9 @@ class User(BaseModel):
 
 ---
 
-# 报错收集
+## 报错收集
 
-## 文档站点加载不出来
+### 文档站点加载不出来
 
 > [Python fastapi 内网访问swagger方法_高压锅_1220的博客-CSDN博客_fastapi swagger地址](https://blog.csdn.net/u014651560/article/details/116526653)
 >

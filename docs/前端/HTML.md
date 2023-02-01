@@ -1,4 +1,95 @@
-# HTML DOM
+# HTML
+
+- [HTML](#html)
+  - [`label`](#label)
+  - [`form`](#form)
+    - [`action`](#action)
+  - [HTML URL 编码](#html-url-编码)
+  - [DOM](#dom)
+    - [HTML DOM 树形结构](#html-dom-树形结构)
+    - [HTML DOM简介](#html-dom简介)
+      - [什么是DOM](#什么是dom)
+      - [什么是 XML DOM？](#什么是-xml-dom)
+      - [什么是 HTML DOM？](#什么是-html-dom)
+    - [HTML DOM节点](#html-dom节点)
+      - [HTML Nodes-节点](#html-nodes-节点)
+      - [HTML DOM 节点树](#html-dom-节点树)
+      - [节点父、子和同胞](#节点父子和同胞)
+      - [警告！](#警告)
+    - [HTML DOM方法](#html-dom方法)
+      - [编程接口](#编程接口)
+      - [getElementById() 方法](#getelementbyid-方法)
+      - [HTML DOM 对象 - 方法和属性](#html-dom-对象---方法和属性)
+      - [一些DOM的对象方法](#一些dom的对象方法)
+    - [HTML DOM属性](#html-dom属性)
+      - [innerHTML 属性](#innerhtml-属性)
+      - [nodeName属性](#nodename属性)
+      - [nodeValue 属性](#nodevalue-属性)
+      - [nodeType 属性](#nodetype-属性)
+    - [HTML DOM 访问](#html-dom-访问)
+      - [访问 HTML 元素（节点）](#访问-html-元素节点)
+      - [getElementById() 方法](#getelementbyid-方法-1)
+      - [getElementsByTagName() 方法](#getelementsbytagname-方法)
+      - [The getElementsByClassName()方法](#the-getelementsbyclassname方法)
+    - [HTML DOM修改](#html-dom修改)
+
+---
+
+## `label`
+
+> [`<label>` - HTML（超文本标记语言） | MDN (mozilla.org)](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/label)
+
+将一个 `<label>` 和一个 `<input>` 元素相关联主要有这些优点：
+
+- 标签文本不仅与其相应的文本输入元素在视觉上相关联，程序中也是如此。 这意味着，当用户聚焦到这个表单输入元素时，屏幕阅读器可以读出标签，让使用辅助技术的用户更容易理解应输入什么数据。
+- 你可以点击关联的标签来聚焦或者激活这个输入元素，就像直接点击输入元素一样。这扩大了元素的可点击区域，让包括使用触屏设备在内的用户更容易激活这个元素。
+
+> ![image-20211108215755125](http://cdn.ayusummer233.top/img/202111082157257.png)
+
+
+
+---
+
+## `form`
+
+### `action`
+
+> [form的action属性作用 - 脚本小娃子 - 博客园 (cnblogs.com)](https://www.cnblogs.com/shengulong/p/7418456.html)
+>
+> [HTML form action 属性 | 菜鸟教程 (runoob.com)](https://www.runoob.com/tags/att-form-action.html)
+
+action 属性规定当提交表单时，向何处发送表单数据。
+
+```html
+<form action="URL">
+```
+
+> 在 HTML5 中，action 属性不再是必需的。
+
+`action=""`　和 `action="#"` 以及没有action属性的作用相同，都是提交到当前页面(也就是 `document.location.href`)
+
+---
+
+## HTML URL 编码
+
+> [HTML URL 编码参考手册_w3cschool](https://www.w3cschool.cn/htmltags/html-urlencode.html)
+
+---
+
+
+---
+
+## DOM
+
+> [老说的 DOM 到底是什么？？_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV1w64y147yM?spm_id_from=333.337.search-card.all.click)
+>
+> [理解DOM到底是什么_chinadbo的博客-CSDN博客_dom到底是什么](https://blog.csdn.net/chinadbo/article/details/104678569)
+
+`文档对象模型(Document Object Model)` 是 HTML 文档的接口, 被浏览器用作确定在视口中呈现内容的第一步, 并通过 JS 程序来修改页面内容/结构/样式;
+
+DOM 总是与当前 HTML 保持一致, 当当前页面的 HTML 发生变动时, DOM 也会做出相应改变, 可以通过 JS 来手动操作 DOM
+
+---
 
 DOM (Document Object Model) 译为**文档对象模型**，是 HTML 和 XML 文档的编程接口。
 
@@ -6,7 +97,7 @@ HTML DOM 定义了访问和操作 HTML 文档的标准方法。
 
 DOM 以树结构表达 HTML 文档。
 
-## HTML DOM 树形结构
+### HTML DOM 树形结构
 
 ![DOM HTML tree](http://cdn.ayusummer233.top/img/htmltree.gif)
 
@@ -14,11 +105,11 @@ DOM 以树结构表达 HTML 文档。
 
 [HTML DOM 参考手册](https://www.runoob.com/jsref/jsref-tutorial.html)
 
-## HTML DOM简介
+### HTML DOM简介
 
 HTML DOM定义了访问和操作HTML文档的标准
 
-### 什么是DOM
+#### 什么是DOM
 
 DOM 是 W3C（万维网联盟）的标准。
 
@@ -34,13 +125,13 @@ W3C DOM 标准被分为 3 个不同的部分：
 
 **编者注：**DOM 是 Document Object Model（文档对象模型）的缩写。
 
-### 什么是 XML DOM？
+#### 什么是 XML DOM？
 
 XML DOM 定义了所有 XML 元素的*对象*和*属性*，以及访问它们的*方法*。
 
 如果您需要学习 XML DOM，请访问我们的 [XML DOM 教程](https://www.runoob.com/dom/)。
 
-### 什么是 HTML DOM？
+#### 什么是 HTML DOM？
 
 HTML DOM 是：
 
@@ -52,11 +143,11 @@ HTML DOM 定义了所有 HTML 元素的*对象*和*属性*，以及访问它们�
 
 *换言之，HTML DOM 是关于如何获取、修改、添加或删除 HTML 元素的标准。*
 
-## HTML DOM节点
+### HTML DOM节点
 
 在 HTML DOM 中，所有事物都是节点。DOM 是被视为节点树的 HTML。
 
-### HTML Nodes-节点
+#### HTML Nodes-节点
 
 根据 W3C 的 HTML DOM 标准，HTML 文档中的所有内容都是节点：
 
@@ -66,13 +157,13 @@ HTML DOM 定义了所有 HTML 元素的*对象*和*属性*，以及访问它们�
 - 每个 HTML 属性是属性节点
 - 注释是注释节点
 
-### HTML DOM 节点树
+#### HTML DOM 节点树
 
 HTML DOM 将 HTML 文档视作树结构。这种结构被称为**节点树**：
 
 ![DOM HTML tree](http://cdn.ayusummer233.top/img/ct_htmltree.gif)
 
-### 节点父、子和同胞
+#### 节点父、子和同胞
 
 节点树中的节点彼此拥有层级关系。
 
@@ -122,7 +213,7 @@ HTML DOM 将 HTML 文档视作树结构。这种结构被称为**节点树**：
 - `<h1>` 元素是 `<body>` 元素的首个子节点
 - `<p>` 元素是 `<body>` 元素的最后一个子节点
 
-### 警告！
+#### 警告！
 
 DOM 处理中的常见错误是希望元素节点包含文本。
 
@@ -132,13 +223,13 @@ DOM 处理中的常见错误是希望元素节点包含文本。
 
 您将在稍后的章节中学习更多有关 innerHTML 属性的知识。
 
-## HTML DOM方法
+### HTML DOM方法
 
 HTML DOM 方法是我们可以在节点（HTML 元素）上执行的动作。
 
 HTML DOM 属性是我们可以在节点（HTML 元素）设置和修改的值。
 
-### 编程接口
+#### 编程接口
 
 可通过 JavaScript （以及其他编程语言）对 HTML DOM 进行访问。
 
@@ -148,7 +239,7 @@ HTML DOM 属性是我们可以在节点（HTML 元素）设置和修改的值。
 
 属性是您能够获取或设置的值（比如节点的名称或内容）。
 
-### getElementById() 方法
+#### getElementById() 方法
 
 getElementById() 方法返回带有指定 ID 的元素：
 
@@ -158,7 +249,7 @@ var element=document.getElementById("intro");
 
 ![image-20220826160916543](http://cdn.ayusummer233.top/img/image-20220826160916543.png)
 
-### HTML DOM 对象 - 方法和属性
+#### HTML DOM 对象 - 方法和属性
 
 一些常用的 HTML DOM 方法：
 
@@ -173,7 +264,7 @@ var element=document.getElementById("intro");
 - childNodes - 节点（元素）的子节点
 - attributes - 节点（元素）的属性节点
 
-### 一些DOM的对象方法
+#### 一些DOM的对象方法
 
 | 方法                     | 描述                                                         |
 | :----------------------- | :----------------------------------------------------------- |
@@ -190,11 +281,11 @@ var element=document.getElementById("intro");
 | getAttribute()           | 返回指定的属性值。                                           |
 | setAttribute()           | 把指定属性设置或修改为指定的值。                             |
 
-## HTML DOM属性
+### HTML DOM属性
 
 属性是节点（HTML 元素）的值，您能够获取或设置。
 
-### innerHTML 属性
+#### innerHTML 属性
 
 获取**元素内容——节点的标签内的内容，包括子节点的标签等，不只是文本内容**的最简单方法是使用 innerHTML 属性。
 
@@ -223,7 +314,7 @@ document.write(txt);
 
  innerHTML 属性可用于获取或改变任意 HTML 元素，包括 `<html>` 和 `<body>`。
 
-### nodeName属性
+#### nodeName属性
 
 nodeName 属性规定节点的名称。
 
@@ -237,7 +328,7 @@ nodeName 属性规定节点的名称。
 
 ![image-20220826162223182](http://cdn.ayusummer233.top/img/image-20220826162223182.png)
 
-### nodeValue 属性
+#### nodeValue 属性
 
 nodeValue 属性规定节点的值。
 
@@ -253,7 +344,7 @@ nodeValue 属性规定节点的值。
 
 ![image-20220826162641829](http://cdn.ayusummer233.top/img/image-20220826162641829.png)
 
-### nodeType 属性
+#### nodeType 属性
 
 nodeType 属性返回节点的类型。nodeType 是只读的。
 
@@ -267,11 +358,11 @@ nodeType 属性返回节点的类型。nodeType 是只读的。
 | 注释     | 8        |
 | 文档     | 9        |
 
-## HTML DOM 访问
+### HTML DOM 访问
 
 访问 HTML DOM - 查找 HTML 元素。
 
-### 访问 HTML 元素（节点）
+#### 访问 HTML 元素（节点）
 
 访问 HTML 元素等同于访问节点
 
@@ -281,7 +372,7 @@ nodeType 属性返回节点的类型。nodeType 是只读的。
 - 通过使用 getElementsByTagName() 方法
 - 通过使用 getElementsByClassName() 方法
 
-### getElementById() 方法
+#### getElementById() 方法
 
 getElementById() 方法返回带有指定 ID 的元素引用：
 
@@ -293,7 +384,7 @@ document.getElementById("intro");    innerhtml是标签内的所有字符
 
 ![image-20220829103410001](http://cdn.ayusummer233.top/img/image-20220829103410001.png)
 
-### getElementsByTagName() 方法
+#### getElementsByTagName() 方法
 
 getElementsByTagName() 返回带有指定标签名的所有元素。
 
@@ -311,7 +402,7 @@ document.getElementById("main").getElementsByTagName("p");
 
 ![image-20220829103701597](http://cdn.ayusummer233.top/img/image-20220829103701597.png)
 
-### The getElementsByClassName()方法
+#### The getElementsByClassName()方法
 
 如果您希望查找带有相同类名的所有 HTML 元素，请使用这个方法：
 
@@ -321,4 +412,4 @@ document.getElementsByClassName("intro");
 
 **注意：**getElementsByClassName() 在 Internet Explorer 5,6,7,8 中无效。
 
-## HTML DOM修改
+### HTML DOM修改

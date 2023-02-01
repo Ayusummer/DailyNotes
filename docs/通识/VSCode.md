@@ -1,4 +1,7 @@
 # VSCode
+
+---
+
 ## VSCode 下载
 > [VsCode下载，使用国内镜像秒下载_bielaiwuyang1999的博客-CSDN博客](https://blog.csdn.net/bielaiwuyang1999/article/details/117814237)
 

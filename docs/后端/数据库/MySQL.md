@@ -1,5 +1,19 @@
 # mysql
 
+- [mysql](#mysql)
+  - [安装](#安装)
+  - [mysql 数据类型](#mysql-数据类型)
+    - [数值类型](#数值类型)
+      - [日期和时间类型](#日期和时间类型)
+      - [字符串类型](#字符串类型)
+  - [重置自增量](#重置自增量)
+  - [重置密码](#重置密码)
+  - [报错收集](#报错收集)
+    - [mysql Failed! Error: SET PASSWORD has no significance for user ‘root’@’localhost’ as the authentication method used doesn’t store authentication data in the mysql server. Please consider using ALTER USER](#mysql-failed-error-set-password-has-no-significance-for-user-rootlocalhost-as-the-authentication-method-used-doesnt-store-authentication-data-in-the-mysql-server-please-consider-using-alter-user)
+    - [ERROR 1819 (HY000): Your password does not satisfy the current policy requirements](#error-1819-hy000-your-password-does-not-satisfy-the-current-policy-requirements)
+    - [ERROR 1396 (HY000): Operation ALTER USER failed for 'root'@'%'](#error-1396-hy000-operation-alter-user-failed-for-root)
+
+
 ## 安装
 
 :::tabs

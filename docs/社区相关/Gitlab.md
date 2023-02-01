@@ -1,5 +1,15 @@
 # Gitlab
 
+- [Gitlab](#gitlab)
+  - [配置 `access_token` 使用 https clone 仓库](#配置-access_token-使用-https-clone-仓库)
+  - [Gitlab 搭建(想了想不想维护, 就没再搭了)](#gitlab-搭建想了想不想维护-就没再搭了)
+    - [配置参考](#配置参考)
+    - [创建工作目录](#创建工作目录)
+    - [安装 docker 并拉取官方镜像](#安装-docker-并拉取官方镜像)
+
+
+---
+
 ## 配置 `access_token` 使用 https clone 仓库
 
 > [git - Using GitLab token to clone without authentication - Stack Overflow](https://stackoverflow.com/questions/25409700/using-gitlab-token-to-clone-without-authentication)  

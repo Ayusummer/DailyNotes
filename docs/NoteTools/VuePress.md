@@ -1,5 +1,15 @@
 # VuePress
 
+- [VuePress](#vuepress)
+  - [pnpm,Github Actions, Github Pages 自动化部署文档](#pnpmgithub-actions-github-pages-自动化部署文档)
+  - [配合 vuepress\_theme\_hope 食用](#配合-vuepress_theme_hope-食用)
+    - [搜索](#搜索)
+    - [sitemap](#sitemap)
+    - [SEO](#seo)
+  - [报错收集](#报错收集)
+    - [`Vuepress Error: ENOSPC: System limit for number of file watchers reach`](#vuepress-error-enospc-system-limit-for-number-of-file-watchers-reach)
+
+
 ## pnpm,Github Actions, Github Pages 自动化部署文档
 
 > [快速上手 | VuePress (vuejs.org)](https://v2.vuepress.vuejs.org/zh/guide/getting-started.html)
