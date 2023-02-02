@@ -17,6 +17,11 @@
 
 ## 结点内文字换行
 
+```
+graph LR;
+a-->b[2<br>3<br>3]
+```
+
 ```mermaid
 graph LR;
 a-->b[2<br>3<br>3]
@@ -39,6 +44,18 @@ a-->b[2<br>3<br>3]
 
 ## 甘特图
 
+```
+gantt
+dateFormat  YYYY-MM-DD
+title 甘特图
+excludes weekdays 2014-01-10
+
+Completed task  : des1, 2014-01-06,2014-01-08
+Active task     : des2, 2014-01-09, 2d
+Future task     : des3, after des2, 5d
+Future task2    : des4, after des3, 5d
+```
+
 ```mermaid
 gantt
 dateFormat  YYYY-MM-DD
@@ -56,6 +73,13 @@ Future task2    : des4, after des3, 5d
 ## 流程图
 
 > [Flowchart (mermaid-js.github.io)](https://mermaid-js.github.io/mermaid/#/flowchart?id=graph)
+
+```
+flowchart TD
+    Start --> Stop
+```
+
+
 
 ```mermaid
 flowchart TD
@@ -82,6 +106,23 @@ flowchart TD
 
 > [Flowchart (mermaid-js.github.io)](https://mermaid-js.github.io/mermaid/#/flowchart?id=node-shapes)
 
+```
+flowchart LR
+  id1(round edges)
+  id2([stadium-shaped])
+  id3[[subroutine shape]]
+  id4[(A node in a cylindrical shape)]
+  id5((A node in the form of a circle))
+  id6>A node in an asymmetric shape]
+  id7{A node rhombus}
+  id8{{A hexagon node}}
+  id9[/Parallelogram/]
+  id10[\Parallelogram alt\]
+  id11[/Trapezoid\]
+```
+
+
+
 ```mermaid
 flowchart LR
   id1(round edges)
@@ -102,6 +143,38 @@ flowchart LR
 ### 连接线形状
 
 > [Flowchart (mermaid-js.github.io)](https://mermaid-js.github.io/mermaid/#/flowchart?id=links-between-nodes)
+
+```
+flowchart LR
+  A --> B
+  A --实线单箭头--> B
+  A -->|实线单箭头|C
+  
+  B --- C
+  B --实线--- C
+  B ---|实线|D
+  
+  C -.-|虚线|D
+  C -.->|虚线单箭头|D
+  
+  D ==> E
+  D ==>|粗实线单箭头|E
+  
+  E --> F & G --> H
+  
+  H & I --> J & K
+  
+  L --o|实线圆头|M
+  M --x|实线x头|N
+  
+  N <--> |双向箭头|O
+  O o--o P
+  P x--x Q
+  
+  R -------|横线越多越长| S
+```
+
+
 
 ```mermaid
 flowchart LR
@@ -139,6 +212,11 @@ flowchart LR
 
 > [Flowchart (mermaid-js.github.io)](https://mermaid-js.github.io/mermaid/#/flowchart?id=special-characters-that-break-syntax)
 
+```
+flowchart LR
+  A["结点内使用(括号)"]
+```
+
 ```mermaid
 flowchart LR
   A["结点内使用(括号)"]
@@ -151,6 +229,29 @@ flowchart LR
 > [Sequence diagram (mermaid-js.github.io)](https://mermaid-js.github.io/mermaid/#/sequenceDiagram)
 >
 > [Mermaid之时序图语法_Feng乍起的博客-CSDN博客_时序图语法](https://blog.csdn.net/qq_37196887/article/details/112764646)
+
+```
+sequenceDiagram
+participant C as Client.discard(9)
+participant S as Server.47660
+C ->> S: [SYN] 请求建立 TCP 连接
+S ->> C: [SYN ACK] 确认建立 TCP 连接
+C ->> S: [ACK] 确认收到确认建立 TCP 连接
+
+Note over C,S: ↑ 3 次握手
+
+loop 数据传输(不分片情况)
+C ->> S: [PSH ACK] 发送数据
+S ->> C: [ACK]确认接收数据
+end
+
+Note over C,S: ↓ 4 次挥手
+
+C ->> S: [FIN, ACK] 发起终止连接请求
+S ->> C: [ACK] 确认终止连接请求
+S ->> C: [FIN, ACK] 发起终止连接请求
+C ->> S: [ACK] 确认终止连接请求
+```
 
 ```mermaid
 sequenceDiagram
