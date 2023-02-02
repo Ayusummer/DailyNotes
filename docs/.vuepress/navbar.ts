@@ -86,6 +86,10 @@ let security = {
             link: "/网络安全/编码.md",
         },
         {
+            text: "抓包发包",
+            link: "/网络安全/抓包发包.md",
+        },
+        {
             text: "漏扫工具",
             link: "/网络安全/漏扫工具/AWVS.md",
         },
