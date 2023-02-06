@@ -104,6 +104,8 @@ update-alternatives --config java
 update-alternatives --config javac
 ```
 
+:::
+
 ---
 
 ### IDEA
