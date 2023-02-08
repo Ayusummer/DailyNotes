@@ -175,7 +175,21 @@ git push
 git merge bugFix
 ```
 
+---
 
+### 查看某个文件变动的所有历史记录
+
+> [[小技巧\] git 中查看某个文件是什么时候被删除的_HaveFunInLinux的博客-CSDN博客_git 查看某个文件什么时候被删除](https://blog.csdn.net/robertsong2004/article/details/46891695)
+
+```bash
+git log -- [file_path]
+```
+
+![image-20230208164141402](http://cdn.ayusummer233.top/DailyNotes/202302081649671.png)
+
+得到 commit id 之后就可以根据这个 id 查询对应的提交记录了
+
+![image-20230208171115272](http://cdn.ayusummer233.top/DailyNotes/202302081711208.png)
 
 ---
 
