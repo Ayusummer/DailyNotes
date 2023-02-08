@@ -139,6 +139,19 @@ ls -s|sort -nr
   time updatedb
   # 使用 mlocate 搜索文件(注意这里命令就是 locate 而非 mlocate)
   locate [文件名]
+  ```
+
+---
+
+`使用 find` 命令
+
+比如查找 success 文件
+
+```bash
+find / -name "success"
+```
+
+
 
 ---
 
