@@ -1,5 +1,69 @@
 # Linux
 
+- [Linux](#linux)
+  - [Ubuntu 的 source.list 文件](#ubuntu-的-sourcelist-文件)
+    - [换源](#换源)
+  - [SHELL](#shell)
+    - [快捷键/命令](#快捷键命令)
+    - [路由操作](#路由操作)
+      - [类清屏](#类清屏)
+- [清屏](#清屏)
+- [指针移到行尾](#指针移到行尾)
+      - [查找文件](#查找文件)
+  - [SSH 工具](#ssh-工具)
+    - [VSCode: Remote-SSH](#vscode-remote-ssh)
+    - [MobaXterm](#mobaxterm)
+    - [WindTerm](#windterm)
+    - [Terminus](#terminus)
+    - [远程图形化界面的本地显示](#远程图形化界面的本地显示)
+      - [一些软件命令行启动的命令](#一些软件命令行启动的命令)
+  - [使用 root 登入 UI](#使用-root-登入-ui)
+  - [软硬链接](#软硬链接)
+  - [常用命令](#常用命令)
+    - [echo](#echo)
+    - [查看软件安装位置](#查看软件安装位置)
+    - [防火墙相关](#防火墙相关)
+    - [压缩与解压](#压缩与解压)
+  - [网络](#网络)
+    - [IP 转换](#ip-转换)
+    - [防火墙](#防火墙)
+      - [iptables](#iptables)
+        - [添加规则](#添加规则)
+  - [WSL2](#wsl2)
+    - [安装](#安装)
+    - [卸载](#卸载)
+    - [VSCode-ssh-remote](#vscode-ssh-remote)
+    - [端口映射](#端口映射)
+    - [WSL2 DNS 服务异常](#wsl2-dns-服务异常)
+    - [报错收集](#报错收集)
+      - [ssh 拒绝](#ssh-拒绝)
+      - [ping 的通 ip , ping 不通域名](#ping-的通-ip--ping-不通域名)
+  - [服务器](#服务器)
+    - [远程连接服务器](#远程连接服务器)
+      - [remote-SSH](#remote-ssh)
+    - [文件下载](#文件下载)
+    - [腾讯云轻量](#腾讯云轻量)
+      - [内网 DNS](#内网-dns)
+      - [使用密钥登录到 root 账户](#使用密钥登录到-root-账户)
+    - [探针](#探针)
+  - [窗口工具](#窗口工具)
+    - [Zellij](#zellij)
+      - [安装](#安装-1)
+      - [使用](#使用)
+    - [Screen命令](#screen命令)
+      - [语法](#语法)
+  - [软件](#软件)
+    - [Firefox](#firefox)
+    - [微信](#微信)
+  - [常见问题](#常见问题)
+    - [the root filesystem require a manual fsck](#the-root-filesystem-require-a-manual-fsck)
+    - [E: dpkg was interrupted, you must manually run 'dpkg --configure -a' to correct the problem.](#e-dpkg-was-interrupted-you-must-manually-run-dpkg---configure--a-to-correct-the-problem)
+    - [E: Sub-process /usr/bin/dpkg returned an error code (1)](#e-sub-process-usrbindpkg-returned-an-error-code-1)
+  - [game](#game)
+    - [手游相关](#手游相关)
+  - [Ubuntu 安装邮件服务器(TODO - 校验有问题且暂时不打算用, 已搁置)](#ubuntu-安装邮件服务器todo---校验有问题且暂时不打算用-已搁置)
+
+
 ## Ubuntu 的 source.list 文件
 
 > [Ubuntu | 对sources.list的总结 - 简书 (jianshu.com)](https://www.jianshu.com/p/5400722c369c)
@@ -465,56 +529,8 @@ java -jar [burpsuitxxx.jar绝对路径]
 
   > 然后就会看到不推荐使用特权用户登入系统
 
----
-
-## 常见问题
-
-### the root filesystem require a manual fsck
-
-> [boot - Root file system requires manual fsck - Ask Ubuntu](https://askubuntu.com/questions/885062/root-file-system-requires-manual-fsck)
-
-![image-20220810092901637](http://cdn.ayusummer233.top/img/202208100929766.png)
-
-```bash
-fask -tf /dev/mapper/ubuntu--vg-root
-exit
-```
-
-> [Linux fsck 命令 command not found fsck 未找到命令 fsck 命令详解 fsck 命令未找到 fsck 命令安装 - CommandNotFound ⚡️ 坑否](https://commandnotfound.cn/linux/1/451/fsck-命令)
->
-> - `-y`: 确认所有的 yes/no 选项
-> - `-f`: (force)  尽管目录被标记为 clean 也强制检查
 
 ---
-
-### E: dpkg was interrupted, you must manually run 'dpkg --configure -a' to correct the problem.
-
-执行 `dpkg --configure -a` 以修复
-
-若执行后出现 
-
-```bash
-dpkg: error: parsing file '/var/lib/dpkg/updates/0000' near line 0:
- newline in field name '▒v▒▒'
-```
-
-则
-
-```bash
-sudo rm /var/lib/dpkg/updates/*
-```
-
-即可
-
----
-
-### E: Sub-process /usr/bin/dpkg returned an error code (1)
-
-![image-20220825102350086](http://cdn.ayusummer233.top/img/202208251023257.png)
-
-> [E: Sub-process /usr/bin/dpkg returned an error code (1)解决办法_Mr.Stick的博客-CSDN博客](https://blog.csdn.net/stickmangod/article/details/85316142)
-
-----
 
 ## 软硬链接
 
@@ -574,6 +590,87 @@ unzip [option] [压缩包名]
 |     -v      | 查看压缩文件的详细信息，包括压缩文件中包含的文件大小、文件名以及压缩比等，但并不做解压操作。 |
 |     -t      |              测试压缩文件有无损坏，但并不解压。              |
 | -x 文件列表 |           解压文件，但不包含文件列表中指定的文件。           |
+
+---
+
+## 网络
+
+### IP 转换
+
+> [/proc/sys/net/ipv4/ip_forward - ailx10 - 博客园 (cnblogs.com)](https://www.cnblogs.com/ailx10/p/5535943.html)
+
+IP地址分公有地址和私有地址
+
+- public address是由INIC(internet network information center)负责，这些ip地址分配给注册并向INIC提出申请的组织机构。通过它访问internet
+
+- private address是属于非注册地址，专门为组织内部使用;
+
+  private ip address是不可能直接用来跟WAN通信的，要么利用帧来通信（FRE帧中继，HDLC,PPP）,要么需要路由的NAT功能把私有地址转换为一个公有ip
+
+选择一台电脑（有两个网卡或者用单网卡然后用软件虚拟多一个网卡）充当网关，一个网卡(eth0)连接外网ISP，另一网卡(eth1)连接内网(即局域网)。局域网内的ip地址都是私用地址，只能在内部使用，在公网上是不可见的，所以局域网电脑要上网必须修改ip，这就是网关的工作。
+
+- 工作原理：
+
+  内网主机向公网发送数据包时，由于目的主机跟源主机不在同一网段，所以数据包暂时发往内网默认网关处理，而本网段的主机对此数据包不做任何回应。
+
+  由于源主机ip是私有的，禁止在公网使用，所以必须将数据包的源发送地址修改成公网上的可用ip，这就是网关收到数据包之后首先要做的工作--ip转换。
+
+  然后网关再把数据包发往目的主机。目的主机收到数据包之后，只认为这是网关发送的请求，并不知道内网主机的存在，也没必要知道，目的主机处理完请求，把回应信息发还给网关。网关收到后，将目的主机发还的数据包的目的ip地址修改为发出请求的内网主机的ip地址，并将其发给内网主机。这就是网关的第二个工作--数据包的路由转发。
+
+  内网的主机只要查看数据包的目的ip与发送请求的源主机ip地址相同，就会回应，这就完成了一次请求。
+
+出于安全考虑，Linux系统默认是禁止数据包转发的。所谓转发即当主机拥有多于一块的网卡时，其中一块收到数据包，根据数据包的目的ip地址将包发往本机另一网卡，该网卡根据路由表继续发送数据包。这通常就是路由器所要实现的功能。
+配置Linux系统的ip转发功能，首先保证硬件连通，然后打开系统的转发功能
+
+```bash
+less /proc/sys/net/ipv4/ip_forward
+```
+
+> [Linux less 命令 | 菜鸟教程 (runoob.com)](https://www.runoob.com/linux/linux-comm-less.html)
+>
+> less 与 more 类似，less 可以随意浏览文件，支持翻页和搜索，支持向上翻页和向下翻页。
+
+该文件内容为0，表示禁止数据包转发，1表示允许，将其修改为1。可使用命令
+
+```bash
+echo "1" > /proc/sys/net/ipv4/ip_forward
+```
+
+ 修改文件内容，重启网络服务或主机后效果不再。
+
+若要其自动执行，可将命令 `echo "1" > /proc/sys/net/ipv4/ip_forward` 写入脚本 `/etc/rc.d/rc.local` 或者 在 `/etc/sysconfig/network` 脚本中添加 `FORWARD_IPV4="YES"`
+
+---
+
+### 防火墙
+
+#### iptables
+
+> [Linux iptables 命令 - sparkdev - 博客园 (cnblogs.com)](https://www.cnblogs.com/sparkdev/p/9340924.html)
+
+iptables 是 Linux 管理员用来设置 IPv4 数据包过滤条件和 NAT 的命令行工具。iptables 工具运行在用户态，主要是设置各种规则。而 netfilter 则运行在内核态，执行那些设置好的规则。
+
+---
+
+##### 添加规则
+
+我们可以通过规则来匹配数据包，具体的匹配条件包括 IP、网段、网络接口(interface)和传输协议(tcp、udp 等)。
+添加规则的命令格式如下：
+
+```bash
+iptables [-AI chain] [-io interface] [-p 协议] [-s 来源 IP] [-d 目标 IP] -j [ACCEPT,DROP,REJECT,LOG]
+```
+
+`-A`：针对某个规则链添加一条规则，新添加的规则排在现有规则的后面。
+`-I`：针对某个规则链插入一条规则，可以为新插入的规则指定在链中的序号。如果不指定序号，则新的规则会变成第一条规则。
+`-i`：指定数据包进入的那个网络接口，比如 eth0、lo 等，需要与 INPUT 链配合使用。
+`-o`: 指定传出数据包的那个网络接口，需要与 OUTPUT 链配合使用。
+`-p`: 指定此规则适用于那种网络协议(常用的协议有 tcp、udp、icmp，all 指适用于所有的协议)。
+`-s`：指定数据包的来源 IP/网段，可以指定单个 IP，如 192.168.1.100，也可以指定一个网段，如 192.168.1.0/24。还可以通过 ！表示非的意思，如 ! 192.168.1.0/24 表示除了 192.168.1.0/24 之外的数据包。
+`-d`：指定数据包的目标 IP/网段，其它与 -s 选项相同。
+`-j`：指定匹配成功后的行为，主要有 ACCEPT、DROP、REJECT 和 LOG。
+
+
 
 
 ---
@@ -1217,12 +1314,64 @@ sudo apt-get install -f -y ./ukylin-wechat_3.0.0_amd64.deb
 
 ---
 
+## 常见问题
+
+### the root filesystem require a manual fsck
+
+> [boot - Root file system requires manual fsck - Ask Ubuntu](https://askubuntu.com/questions/885062/root-file-system-requires-manual-fsck)
+
+![image-20220810092901637](http://cdn.ayusummer233.top/img/202208100929766.png)
+
+```bash
+fask -tf /dev/mapper/ubuntu--vg-root
+exit
+```
+
+> [Linux fsck 命令 command not found fsck 未找到命令 fsck 命令详解 fsck 命令未找到 fsck 命令安装 - CommandNotFound ⚡️ 坑否](https://commandnotfound.cn/linux/1/451/fsck-命令)
+>
+> - `-y`: 确认所有的 yes/no 选项
+> - `-f`: (force)  尽管目录被标记为 clean 也强制检查
+
+---
+
+### E: dpkg was interrupted, you must manually run 'dpkg --configure -a' to correct the problem.
+
+执行 `dpkg --configure -a` 以修复
+
+若执行后出现 
+
+```bash
+dpkg: error: parsing file '/var/lib/dpkg/updates/0000' near line 0:
+ newline in field name '▒v▒▒'
+```
+
+则
+
+```bash
+sudo rm /var/lib/dpkg/updates/*
+```
+
+即可
+
+---
+
+### E: Sub-process /usr/bin/dpkg returned an error code (1)
+
+![image-20220825102350086](http://cdn.ayusummer233.top/img/202208251023257.png)
+
+> [E: Sub-process /usr/bin/dpkg returned an error code (1)解决办法_Mr.Stick的博客-CSDN博客](https://blog.csdn.net/stickmangod/article/details/85316142)
+
+
+
+---
+
 ## game
 
 ### 手游相关
 
 > [搭建Reroid](https://b.hui.ke/posts/build-redroid/)  
 > [remote-android/redroid-doc](https://github.com/remote-android/redroid-doc)  
+
 
 ---
 
