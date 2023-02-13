@@ -8,6 +8,14 @@
 
 Rocketry is a modern statement-based scheduling framework for Python. It is simple, clean and extensive. It is suitable for small and big projects.
 
+
+- [Rocketry](#rocketry)
+  - [Quick Start](#quick-start)
+  - [条件表达式](#条件表达式)
+    - [API](#api)
+      - [Cron](#cron)
+
+
 ---
 
 ## Quick Start
@@ -181,3 +189,25 @@ def do_main():
 
 > PS: 因为描述都比较明确, 能看出大致用法, 所以贴上来了, 等到后面再结合具体使用场景进行记录
 
+
+----
+## 条件表达式
+
+### API
+
+#### Cron
+
+> [Cron Scheduling — Rocketry](https://rocketry.readthedocs.io/en/stable/handbooks/conditions/api/cron.html#id1)
+
+```python
+from rocketry.conds import cron
+
+@app.task(cron('* * * * *'))
+def do_minutely():
+    ...
+
+@app.task(cron('*/2 12-18 * Oct Fri'))
+def do_complex():
+    "Run at every 2nd minute past every hour from 12 through 18 on Friday in October."
+    ...
+```
