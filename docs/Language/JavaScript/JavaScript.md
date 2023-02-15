@@ -13,6 +13,7 @@
   - [动画/动效](#动画动效)
     - [sliderland](#sliderland)
   - [模拟键盘输入](#模拟键盘输入)
+  - [IIFE(立即调用函数表达式)](#iife立即调用函数表达式)
 
 
 ---
@@ -231,4 +232,34 @@ let passwdDom = document.getElementById('password');		//普通JS获取输入框D
 changeReactInputValue(userIdDom,'username');			//改变React的输入框的值
 changeReactInputValue(passwdDom,'passwd');			//改变React的输入框的值
 ```
+
+---
+
+## IIFE(立即调用函数表达式)
+
+> [IIFE - MDN Web Docs Glossary: Definitions of Web-related terms | MDN (mozilla.org)](https://developer.mozilla.org/en-US/docs/Glossary/IIFE)
+
+**IIFE**（立即调用函数表达式）是一个在定义时就会立即执行的 [JavaScript](https://developer.mozilla.org/zh-CN/docs/Glossary/JavaScript) [函数](https://developer.mozilla.org/zh-CN/docs/Glossary/Function)。
+
+```JavaScript
+(function () {
+  // …
+})();
+
+(() => {
+  // …
+})();
+
+(async () => {
+  // …
+})();
+```
+
+> ![image-20230214145357266](http://cdn.ayusummer233.top/DailyNotes/202302141454393.png)
+
+这是一个被称为 [自执行匿名函数](https://developer.mozilla.org/zh-CN/docs/Glossary/Self-Executing_Anonymous_Function) 的设计模式，主要包含两部分。第一部分是包围在 [`圆括号运算符`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Grouping) `()` 里的一个匿名函数，这个匿名函数拥有独立的词法作用域。这不仅避免了外界访问此 IIFE 中的变量，而且又不会污染全局作用域。
+
+第二部分再一次使用 `()` 创建了一个立即执行函数表达式，JavaScript 引擎到此将直接执行函数。
+
+---
 
