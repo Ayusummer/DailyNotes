@@ -12,6 +12,7 @@
       - [ubuntu 安装 yarn](#ubuntu-安装-yarn)
     - [pnpm](#pnpm)
       - [换源](#换源-1)
+      - [代理](#代理)
       - [报错收集](#报错收集)
         - [ ERROR  Unable to find the global bin directory](#error-unable-to-find-the-global-bin-directory)
         - [ EBUSY  EBUSY: resource busy or locked, symlink](#ebusy-ebusy-resource-busy-or-locked-symlink)
