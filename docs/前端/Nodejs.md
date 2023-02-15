@@ -199,6 +199,21 @@ https://registry.npmjs.org/
 
 ---
 
+#### 代理
+
+> [.npmrc | pnpm](https://pnpm.io/zh/npmrc#proxy)
+
+在项目根目录下创建 `.npmrc` 文件， 写入代理配置， 比如：
+
+```properties
+proxy=http://127.0.0.1:7890
+https-proxy=http://127.0.0.1:7890
+```
+
+然后正常装包即可
+
+---
+
 #### 报错收集
 
 #####  ERROR  Unable to find the global bin directory
