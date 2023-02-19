@@ -2,24 +2,16 @@
 
 - [Github](#github)
   - [加速](#加速)
-    - [PC网页端用户头像加载不出来](#pc网页端用户头像加载不出来)
-    - [.git过大](#git过大)
-    - [github连接超时问题](#github连接超时问题)
-    - [Branch](#branch)
     - [Github 镜像](#github-镜像)
-      - [Official](#official)
       - [Mirrors](#mirrors)
           - [镜像测速](#镜像测速)
-    - [Nginx 反代 Github(TODO: mark下, 没成功跑起来)](#nginx-反代-githubtodo-mark下-没成功跑起来)
-      - [安装 Nginx 和 OpenSSL](#安装-nginx-和-openssl)
-      - [制作 CA 证书与签名证书](#制作-ca-证书与签名证书)
-      - [安装证书](#安装证书)
-      - [配置 Nginx](#配置-nginx)
+    - [PC网页端用户头像加载不出来](#pc网页端用户头像加载不出来)
   - [Git配置](#git配置)
-  - [Commit](#commit)
-    - [规范](#规范)
-  - [Issues](#issues)
-  - [Pull Request](#pull-request)
+  - [简介](#简介)
+    - [Commit](#commit)
+      - [规范](#规范)
+    - [Issues](#issues)
+    - [Pull Request](#pull-request)
   - [SSH Key](#ssh-key)
   - [Actions](#actions)
     - [基本概念](#基本概念)
@@ -29,79 +21,31 @@
   - [webhooks](#webhooks)
     - [借助钉钉的Github机器人将仓库变动通知到钉钉群里](#借助钉钉的github机器人将仓库变动通知到钉钉群里)
   - [开源许可证选择](#开源许可证选择)
+  - [常见问题](#常见问题)
+    - [.git过大](#git过大)
+    - [腾讯云 github 连接超时问题](#腾讯云-github-连接超时问题)
   - [报错处理](#报错处理)
     - [`Failed to connect to github.com port 443 after 21063 ms: Timed out`](#failed-to-connect-to-githubcom-port-443-after-21063-ms-timed-out)
     - [`OpenSSL SSL_read: Connection was reset, errno 10054`](#openssl-ssl_read-connection-was-reset-errno-10054)
+  - [未成功归档/TODO](#未成功归档todo)
+    - [Nginx 反代 Github(TODO: mark下, 没成功跑起来)](#nginx-反代-githubtodo-mark下-没成功跑起来)
+      - [安装 Nginx 和 OpenSSL](#安装-nginx-和-openssl)
+      - [制作 CA 证书与签名证书](#制作-ca-证书与签名证书)
+      - [安装证书](#安装证书)
+      - [配置 Nginx](#配置-nginx)
 
 
 ---
 
 ## 加速
 
----
-### PC网页端用户头像加载不出来
-- [解决Github网页上图片显示失败的问题](https://zhuanlan.zhihu.com/p/139219691)[参考链接]
-- 当前无法显示用户头像的页面下`Ctrl+Shift+C`打开元素选择器选择未加载出的头像定位到其在源码中的标签并记下其域名
-  <!-- - ![](../res_-daily-notes/img/Github/获取缺失图片域名.png) -->
-- 打开`https://www.ipaddress.com/`输入域名并回车得到一个ip
-  <!-- - ![](../res_-daily-notes/img/Github/获取ip.png) -->
-- 打开路径`C:\Windows\System32\drivers\etc`
-- 修改该路径下的`host`文件的文件属性中的`安全`一栏中的`Users`组的权限,勾选`完全控制`
-- 用记事本打开`host`文件,在末尾粘贴以下文字并保存退出,返回原网页刷新即可
-    ```
-    # GitHub Start(更新于2021.1.22) 
-    140.82.113.3      github.com
-    140.82.114.20     gist.github.com
-    
-    199.232.96.133    assets-cdn.github.com
-    199.232.96.133    raw.githubusercontent.com
-    199.232.96.133    gist.githubusercontent.com
-    199.232.96.133    cloud.githubusercontent.com
-    199.232.96.133    camo.githubusercontent.com
-    199.232.96.133    avatars.githubusercontent.com
-    199.232.68.133     avatars.githubusercontent.com
-    199.232.96.133    avatars0.githubusercontent.com
-    199.232.68.133     avatars0.githubusercontent.com
-    199.232.28.133     avatars1.githubusercontent.com
-    199.232.96.133    avatars1.githubusercontent.com
-    199.232.96.133    avatars2.githubusercontent.com
-    199.232.28.133     avatars2.githubusercontent.com
-    199.232.96.133    avatars3.githubusercontent.com
-    199.232.68.133     avatars3.githubusercontent.com
-    199.232.96.133    avatars4.githubusercontent.com
-    199.232.68.133     avatars4.githubusercontent.com
-    199.232.96.133    avatars5.githubusercontent.com
-    199.232.68.133     avatars5.githubusercontent.com
-    199.232.96.133    avatars6.githubusercontent.com
-    199.232.68.133     avatars6.githubusercontent.com
-    199.232.96.133    avatars7.githubusercontent.com
-    199.232.68.133     avatars7.githubusercontent.com
-    199.232.96.133    avatars8.githubusercontent.com
-    199.232.68.133     avatars8.githubusercontent.com
-    
-    # GitHub End
-    ```
-  > 如若你得到的ip并非`199.232.96.133`则只需把上面代码中的`199.232.96.133`利用查找替换替换为你得到的ip即可(当再次无法看到头像时可以试着重查一次ip然后替换掉原ip)
+通用的加速方案最好的措施就是用代理
 
----
-### .git过大
-- 初用git时有时会错把资源文件传到源码仓库里去,这样下来仓库本身就会变得特别大,即使是后来删掉了资源文件也会导致`.git`文件过大从而直接`clone`的时候可能会因为仓库过大而失败
-- 提交次数过多也会让`.git`越来越大
-- **解决方法[@Ever-Lose](https://www.cnblogs.com/everlose/p/12826025.html)**:如果确定之前的提交对现在已经没有用了,那么在`clone`仓库的时候在最后加上`--depth 1`只克隆最后一次`commit`
+对于不方便使用代理的场景, 如果是 clone 或者下载项目压缩包, releases 的场景, 可以使用镜像
 
+除此以外, watt Toolkit 等工具也可以用
 
----
-### github连接超时问题
-- 使用腾讯云北京的轻量应用服务器推送更新时总是连接超时,最终找到了有效的如下[解决方案](https://cloud.tencent.com/developer/article/1704705)
-- 打开 ipaddress.com,查询github.com域名，记录下其对应的ip(IP Address项内容)
-- 修改并保存`/etc/hosts`:末尾加上 
-  ```
-  查询到的域名 github.com
-  ```
-
----
-### Branch
-- 多分支适用于开发环境, 签出多个分支以同时推进多个任务, 提高开发效率
+最不济可以手动改 host
 
 ---
 
@@ -110,10 +54,6 @@
 > [eryajf/Thanks-Mirror: 整理记录各个包管理器，系统镜像，以及常用软件的好用镜像，Thanks Mirror。 走过路过，如觉不错，麻烦点个赞👆🌟 (github.com)](https://github.com/eryajf/Thanks-Mirror#github)
 
 ---
-
-#### Official
-
-- [https://github.com](https://github.com/)
 
 #### Mirrors
 
@@ -247,143 +187,58 @@ if __name__ == '__main__':
     sort_sources(source_path, target_path)
 ```
 
----
-
-### Nginx 反代 Github(TODO: mark下, 没成功跑起来)
-
-> 本地测试环境 - ubuntu 20.04 LTS
->
-> [nginx本地反代github - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/411165246)
->
-> ---
-
-#### 安装 Nginx 和 OpenSSL
-
-> [如何在 Ubuntu 20.04 上安装 Nginx - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/138007915)
->
-> ---
-
-```bash
-sudo apt update
-sudo apt install nginx
-```
-
-一旦安装完成，Nginx 将会自动被启动。你可以运行下面的命令来验证它：
-
-```bash
-sudo systemctl status nginx
-```
-
-在你已经在你的服务器上安装和运行了 Nginx，你需要确保你的防火墙被配置好，允许流量通过 HTTP（`80`）和 HTTPS（`443`）端口。
 
 ---
-
-- 假设你正在使用`UFW`,你可以做的是启用 ‘Nginx Full’ profile，它包含了这两个端口：
-
-  ```bash
-  sudo ufw allow 'Nginx Full'
-  ```
-
-  想要验证状态，输入：
-
-  ```bash
-  sudo ufw status
-  ```
-
-- 而如果使用的是厂商的云服务器则需要在服务器的控制面板的防火墙管理面板处放通端口(一般都是默认放通的)
-
-  ![image-20221012223741767](http://cdn.ayusummer233.top/img/202210122237943.png)
-
----
-
-> [2.2.1 linux下的安装_OpenSSL 中文手册](https://www.openssl.net.cn/docs/8.html)
->
-> ---
-
-服务器默认已经安装了 OpenSSL, 可以使用如下命令查看其版本及位置
-
-```bash
-openssl version
-whereis openssl
-```
-
----
-
-#### 制作 CA 证书与签名证书
-
-```bash
-#### 制作CA证书，如果你没有CA证书的话，必须执行
-openssl genrsa 2048 > ca.key # 这是你的CA证书，你可以选择要不要信任CA证书
-
-#### CA证书的公钥，用于信任CA证书，这样你就不必亲自信任每一个用这个CA签名的证书了
-export SUBJ="/C=CN/ST=ST$RANDOM/O=O$RANDOM/OU=OU$RANDOM/CN=CN$RANDOM/emailAddress=$RANDOM@localhost"
-# $SUB这一行的意思请稍后自行领悟,这里RANDOM的用意是，防止大家生成重复的CA然后产生未知问题
-# 如果不知道-subj是什么，不要改。CN写0CN是为了让证书好找（会排到最前面）
-openssl req -new -x509 -days `expr \( \`date -d 99991231 +%s\` - \`date +%s\` \) / 86400 + 1` \
-  -key ca.key -out ca.pem -subj $SUBJ -extensions v3_ca
-# 上面这节其实是一整行命令（用\换行，于是显示成了两行）
-# 这里 `expr \( \`date -d 99991231 +%s\` - \`date +%s\` \) / 86400 + 1` 是计算当前时间到yyyymmdd=99991231的日期
-# 整段内容的意思是，让这个证书的有效期到9999年12月31日
-# 我保证RSA失效日期一定比这个日期早……
-# 请不要学习这个把签名签到9999年的坏习惯，涉及网络活动的，最好每年换一个签名。
-# 这里签到9999年的原因是……谁闲着没事监听你的nginx拿到只有你用的证书之后会对你开展中间人攻击呢？
-
-#### 生成nginx需要的证书
-openssl genrsa 1024 > nginx.key # 密钥
-openssl req -new -nodes -key nginx.key -out nginx.csr -subj $SUBJ
-
-#### CA签名
-openssl x509 -req -days `expr \( \`date -d 99991231 +%s\` - \`date +%s\` \) / 86400 + 1` \
- -in nginx.csr -out nginx.pem -CA ca.pem -CAkey ca.key -set_serial 0 -extensions CUSTOM_STRING_LIKE_SAN_KU\
- -extfile <( cat << EOF
-[CUSTOM_STRING_LIKE_SAN_KU]
-subjectAltName=IP:127.0.0.1, IP: ::1 ,DNS:github.com, DNS:*.github.com, DNS:githubusercontent.com, DNS:*.githubusercontent.com
-keyUsage = nonRepudiation, digitalSignature, keyEncipherment
-EOF
-)
-
-# 这里，使用-extfile对配置文件做临时修改
-# 这样就完成了签名工作
-# 事实上，这里可以多写几个subjectAltName，比如subjectAltName=IP:127.0.0.1, IP: ::1 ,DNS:ads-pixiv.net, DNS:*.ads-pixiv.net, DNS:akamaihd.net, DNS:*.akamaihd.net, DNS:arkoselabs.com, DNS:*.arkoselabs.com, DNS:artstation.com, DNS:*.artstation.com, DNS:discordapp.com, DNS:*.discordapp.com, DNS:discordapp.net, DNS:*.discordapp.net, DNS:discord.com, DNS:*.discord.com, DNS:ext-twitch.tv, DNS:*.ext-twitch.tv, DNS:github.com, DNS:*.github.com, DNS:githubusercontent.com, DNS:*.githubusercontent.com, DNS:google.com, DNS:*.google.com, DNS:hcaptcha.com, DNS:*.hcaptcha.com, DNS:pinimg.com, DNS:*.pinimg.com, DNS:pinterest.com, DNS:*.pinterest.com, DNS:pixiv.net, DNS:*.pixiv.net, DNS:pixivsketch.net, DNS:*.pixivsketch.net, DNS:pximg.net, DNS:*.pximg.net, DNS:steam-chat.com, DNS:*.steam-chat.com, DNS:steamcommunity.com, DNS:*.steamcommunity.com, DNS:steampowered.com, DNS:*.steampowered.com, DNS:steamstatic.com, DNS:*.steamstatic.com, DNS:twitch.tv, DNS:*.twitch.tv, DNS:ubi.com, DNS:*.ubi.com, DNS:v2ex.com, DNS:*.v2ex.com
-# 多写几个的好处就不说了，说多了可能犯法[狗头]
-
-# openssl x509 -noout -text -in nginx.pem
-# 如果你需要检查你生成的pem，或者
-# ( openssl x509 -noout -text -in nginx.pem && cat nginx.pem ) > nginx.crt
-# 上面这句没测试，也不是本讲的内容……
-```
-
----
-
-#### 安装证书
-
-> [如何将证书颁发机构（CA）添加到Ubuntu？ (qastack.cn)](https://qastack.cn/superuser/437330/how-do-you-add-a-certificate-authority-ca-to-ubuntu)
->
-> [Ubuntu安装系统根证书_孙海峰VIP的博客-CSDN博客_ubuntu安装根证书](https://blog.csdn.net/shf4715/article/details/52804689)
->
-> ---
-
-```bash
-cp ca.pem /usr/local/share/ca-certificates/ca.crt
-update-ca-certificates
-mkdir /etc/nginx/ca && sudo cp nginx.pem nginx.key /etc/nginx/ca
-```
-
-> ![image-20221012231958789](http://cdn.ayusummer233.top/img/202210122319905.png)
-
----
-
-#### 配置 Nginx
+### PC网页端用户头像加载不出来
 
 
-
-
-
-
+- [解决Github网页上图片显示失败的问题](https://zhuanlan.zhihu.com/p/139219691)[参考链接]
+- 当前无法显示用户头像的页面下`Ctrl+Shift+C`打开元素选择器选择未加载出的头像定位到其在源码中的标签并记下其域名
+  <!-- - ![](../res_-daily-notes/img/Github/获取缺失图片域名.png) -->
+- 打开`https://www.ipaddress.com/`输入域名并回车得到一个ip
+  <!-- - ![](../res_-daily-notes/img/Github/获取ip.png) -->
+- 打开路径`C:\Windows\System32\drivers\etc`
+- 修改该路径下的`host`文件的文件属性中的`安全`一栏中的`Users`组的权限,勾选`完全控制`
+- 用记事本打开`host`文件,在末尾粘贴以下文字并保存退出,返回原网页刷新即可
+    ```
+    # GitHub Start(更新于2021.1.22) 
+    140.82.113.3      github.com
+    140.82.114.20     gist.github.com
+    
+    199.232.96.133    assets-cdn.github.com
+    199.232.96.133    raw.githubusercontent.com
+    199.232.96.133    gist.githubusercontent.com
+    199.232.96.133    cloud.githubusercontent.com
+    199.232.96.133    camo.githubusercontent.com
+    199.232.96.133    avatars.githubusercontent.com
+    199.232.68.133     avatars.githubusercontent.com
+    199.232.96.133    avatars0.githubusercontent.com
+    199.232.68.133     avatars0.githubusercontent.com
+    199.232.28.133     avatars1.githubusercontent.com
+    199.232.96.133    avatars1.githubusercontent.com
+    199.232.96.133    avatars2.githubusercontent.com
+    199.232.28.133     avatars2.githubusercontent.com
+    199.232.96.133    avatars3.githubusercontent.com
+    199.232.68.133     avatars3.githubusercontent.com
+    199.232.96.133    avatars4.githubusercontent.com
+    199.232.68.133     avatars4.githubusercontent.com
+    199.232.96.133    avatars5.githubusercontent.com
+    199.232.68.133     avatars5.githubusercontent.com
+    199.232.96.133    avatars6.githubusercontent.com
+    199.232.68.133     avatars6.githubusercontent.com
+    199.232.96.133    avatars7.githubusercontent.com
+    199.232.68.133     avatars7.githubusercontent.com
+    199.232.96.133    avatars8.githubusercontent.com
+    199.232.68.133     avatars8.githubusercontent.com
+    
+    # GitHub End
+    ```
+  > 如若你得到的ip并非`199.232.96.133`则只需把上面代码中的`199.232.96.133`利用查找替换替换为你得到的ip即可(当再次无法看到头像时可以试着重查一次ip然后替换掉原ip)
 
 
 
 ---
+
 ## Git配置
 
 > [GIt设置代理 - 简书 (jianshu.com)](https://www.jianshu.com/p/b481d2a42274)
@@ -419,7 +274,7 @@ mkdir /etc/nginx/ca && sudo cp nginx.pem nginx.key /etc/nginx/ca
 
 ```bash
 git config http.proxy http://127.0.0.1:7890
-git config https.proxy https://127.0.0.1:7890
+git config https.proxy http://127.0.0.1:7890
 ```
 
 > 可以配置全局代理, 但是由于本地还有在用内网的 gitlab, 所以不适合配全局, 这里是针对项目配的
@@ -430,15 +285,19 @@ git config https.proxy https://127.0.0.1:7890
 >
 > ```bash
 > git config --global --unset http.proxy
-> git config --global --unset https.proxy
+> git config --global --unset http.proxy
 > ```
 
+---
+
+## 简介
+
 ----
-## Commit
+### Commit
 - 提交代码
 
 ---
-### 规范
+#### 规范
 
 [UvDream/git-commit-lint-vscode: vscode一款git 规范化提交插件 (github.com)](https://github.com/UvDream/git-commit-lint-vscode)
 
@@ -448,11 +307,11 @@ git config https.proxy https://127.0.0.1:7890
 
 
 ----
-## Issues
+### Issues
 
 
 ---
-## Pull Request
+### Pull Request
 - [参考链接](https://www.zhihu.com/question/21682976)
 - 以下为文章原文:
 - 我尝试用类比的方法来解释一下 pull reqeust。想想我们中学考试，老师改卷的场景吧。
@@ -629,9 +488,6 @@ workflow 文件的配置字段非常多，详见[官方文档](https://help.gith
   - `jobs.<job_id>.steps.run`：该步骤运行的命令或者 action。
   - `jobs.<job_id>.steps.env`：该步骤所需的环境变量。
 
-  
-
-  
 
 ---
 
@@ -679,6 +535,29 @@ workflow 文件的配置字段非常多，详见[官方文档](https://help.gith
 
 ---
 
+## 常见问题
+
+### .git过大
+- 初用git时有时会错把资源文件传到源码仓库里去,这样下来仓库本身就会变得特别大,即使是后来删掉了资源文件也会导致`.git`文件过大从而直接`clone`的时候可能会因为仓库过大而失败
+- 提交次数过多也会让`.git`越来越大
+- **解决方法[@Ever-Lose](https://www.cnblogs.com/everlose/p/12826025.html)**:如果确定之前的提交对现在已经没有用了,那么在`clone`仓库的时候在最后加上`--depth 1`只克隆最后一次`commit`
+
+
+---
+
+### 腾讯云 github 连接超时问题
+
+- 使用腾讯云北京的轻量应用服务器推送更新时总是连接超时,最终找到了有效的如下[解决方案](https://cloud.tencent.com/developer/article/1704705)
+- 打开 ipaddress.com,查询github.com域名，记录下其对应的ip(IP Address项内容)
+- 修改并保存`/etc/hosts`:末尾加上 
+  ```
+  查询到的域名 github.com
+  ```
+
+
+
+----
+
 ## 报错处理
 
 ### `Failed to connect to github.com port 443 after 21063 ms: Timed out`
@@ -697,5 +576,144 @@ workflow 文件的配置字段非常多，详见[官方文档](https://help.gith
 git config --global user.email "xxx"
 ```
 
+---
+
+## 未成功归档/TODO
+
+---
+
+### Nginx 反代 Github(TODO: mark下, 没成功跑起来)
+
+> 本地测试环境 - ubuntu 20.04 LTS
+>
+> [nginx本地反代github - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/411165246)
+>
+> ---
+
+#### 安装 Nginx 和 OpenSSL
+
+> [如何在 Ubuntu 20.04 上安装 Nginx - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/138007915)
+>
+> ---
+
+```bash
+sudo apt update
+sudo apt install nginx
+```
+
+一旦安装完成，Nginx 将会自动被启动。你可以运行下面的命令来验证它：
+
+```bash
+sudo systemctl status nginx
+```
+
+在你已经在你的服务器上安装和运行了 Nginx，你需要确保你的防火墙被配置好，允许流量通过 HTTP（`80`）和 HTTPS（`443`）端口。
+
+---
+
+- 假设你正在使用`UFW`,你可以做的是启用 ‘Nginx Full’ profile，它包含了这两个端口：
+
+  ```bash
+  sudo ufw allow 'Nginx Full'
+  ```
+
+  想要验证状态，输入：
+
+  ```bash
+  sudo ufw status
+  ```
+
+- 而如果使用的是厂商的云服务器则需要在服务器的控制面板的防火墙管理面板处放通端口(一般都是默认放通的)
+
+  ![image-20221012223741767](http://cdn.ayusummer233.top/img/202210122237943.png)
+
+---
+
+> [2.2.1 linux下的安装_OpenSSL 中文手册](https://www.openssl.net.cn/docs/8.html)
+>
+> ---
+
+服务器默认已经安装了 OpenSSL, 可以使用如下命令查看其版本及位置
+
+```bash
+openssl version
+whereis openssl
+```
+
+---
+
+#### 制作 CA 证书与签名证书
+
+```bash
+#### 制作CA证书，如果你没有CA证书的话，必须执行
+openssl genrsa 2048 > ca.key # 这是你的CA证书，你可以选择要不要信任CA证书
+
+#### CA证书的公钥，用于信任CA证书，这样你就不必亲自信任每一个用这个CA签名的证书了
+export SUBJ="/C=CN/ST=ST$RANDOM/O=O$RANDOM/OU=OU$RANDOM/CN=CN$RANDOM/emailAddress=$RANDOM@localhost"
+# $SUB这一行的意思请稍后自行领悟,这里RANDOM的用意是，防止大家生成重复的CA然后产生未知问题
+# 如果不知道-subj是什么，不要改。CN写0CN是为了让证书好找（会排到最前面）
+openssl req -new -x509 -days `expr \( \`date -d 99991231 +%s\` - \`date +%s\` \) / 86400 + 1` \
+  -key ca.key -out ca.pem -subj $SUBJ -extensions v3_ca
+# 上面这节其实是一整行命令（用\换行，于是显示成了两行）
+# 这里 `expr \( \`date -d 99991231 +%s\` - \`date +%s\` \) / 86400 + 1` 是计算当前时间到yyyymmdd=99991231的日期
+# 整段内容的意思是，让这个证书的有效期到9999年12月31日
+# 我保证RSA失效日期一定比这个日期早……
+# 请不要学习这个把签名签到9999年的坏习惯，涉及网络活动的，最好每年换一个签名。
+# 这里签到9999年的原因是……谁闲着没事监听你的nginx拿到只有你用的证书之后会对你开展中间人攻击呢？
+
+#### 生成nginx需要的证书
+openssl genrsa 1024 > nginx.key # 密钥
+openssl req -new -nodes -key nginx.key -out nginx.csr -subj $SUBJ
+
+#### CA签名
+openssl x509 -req -days `expr \( \`date -d 99991231 +%s\` - \`date +%s\` \) / 86400 + 1` \
+ -in nginx.csr -out nginx.pem -CA ca.pem -CAkey ca.key -set_serial 0 -extensions CUSTOM_STRING_LIKE_SAN_KU\
+ -extfile <( cat << EOF
+[CUSTOM_STRING_LIKE_SAN_KU]
+subjectAltName=IP:127.0.0.1, IP: ::1 ,DNS:github.com, DNS:*.github.com, DNS:githubusercontent.com, DNS:*.githubusercontent.com
+keyUsage = nonRepudiation, digitalSignature, keyEncipherment
+EOF
+)
+
+# 这里，使用-extfile对配置文件做临时修改
+# 这样就完成了签名工作
+# 事实上，这里可以多写几个subjectAltName，比如subjectAltName=IP:127.0.0.1, IP: ::1 ,DNS:ads-pixiv.net, DNS:*.ads-pixiv.net, DNS:akamaihd.net, DNS:*.akamaihd.net, DNS:arkoselabs.com, DNS:*.arkoselabs.com, DNS:artstation.com, DNS:*.artstation.com, DNS:discordapp.com, DNS:*.discordapp.com, DNS:discordapp.net, DNS:*.discordapp.net, DNS:discord.com, DNS:*.discord.com, DNS:ext-twitch.tv, DNS:*.ext-twitch.tv, DNS:github.com, DNS:*.github.com, DNS:githubusercontent.com, DNS:*.githubusercontent.com, DNS:google.com, DNS:*.google.com, DNS:hcaptcha.com, DNS:*.hcaptcha.com, DNS:pinimg.com, DNS:*.pinimg.com, DNS:pinterest.com, DNS:*.pinterest.com, DNS:pixiv.net, DNS:*.pixiv.net, DNS:pixivsketch.net, DNS:*.pixivsketch.net, DNS:pximg.net, DNS:*.pximg.net, DNS:steam-chat.com, DNS:*.steam-chat.com, DNS:steamcommunity.com, DNS:*.steamcommunity.com, DNS:steampowered.com, DNS:*.steampowered.com, DNS:steamstatic.com, DNS:*.steamstatic.com, DNS:twitch.tv, DNS:*.twitch.tv, DNS:ubi.com, DNS:*.ubi.com, DNS:v2ex.com, DNS:*.v2ex.com
+# 多写几个的好处就不说了，说多了可能犯法[狗头]
+
+# openssl x509 -noout -text -in nginx.pem
+# 如果你需要检查你生成的pem，或者
+# ( openssl x509 -noout -text -in nginx.pem && cat nginx.pem ) > nginx.crt
+# 上面这句没测试，也不是本讲的内容……
+```
+
+---
+
+#### 安装证书
+
+> [如何将证书颁发机构（CA）添加到Ubuntu？ (qastack.cn)](https://qastack.cn/superuser/437330/how-do-you-add-a-certificate-authority-ca-to-ubuntu)
+>
+> [Ubuntu安装系统根证书_孙海峰VIP的博客-CSDN博客_ubuntu安装根证书](https://blog.csdn.net/shf4715/article/details/52804689)
+>
+> ---
+
+```bash
+cp ca.pem /usr/local/share/ca-certificates/ca.crt
+update-ca-certificates
+mkdir /etc/nginx/ca && sudo cp nginx.pem nginx.key /etc/nginx/ca
+```
+
+> ![image-20221012231958789](http://cdn.ayusummer233.top/img/202210122319905.png)
+
+---
+
+#### 配置 Nginx
 
 
+
+
+
+
+
+
+
+---
