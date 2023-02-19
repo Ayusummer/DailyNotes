@@ -575,6 +575,18 @@ taskkill /IM explorer.exe /F
 explorer
 ```
 
+---
+
+## 你需要来自 S-1-5-21-XXXX-XXX-XXX 的权限才能对此文件夹进行更改
+
+> [你需要来自 S-1-5-21-XXXX-XXX-XXX - Microsoft Community](https://answers.microsoft.com/zh-hans/windows/forum/all/你需要来自-s-1/8fab1a9a-412a-44f9-915b-6743d8b8dffb)
+>
+> [Win10无法删除文件提示“你需要来自system的权限”的解决方案－系统城·电脑系统下载之家 (xitongcheng.com)](https://www.xitongcheng.com/jiaocheng/win10_article_14750.html)
+
+重装系统但是没格式化其他盘符， 在同步 Onedrive 时发现没有文件操作权限， 尝试删除提示需要来自 S-1-5-21-xxxx 的权限才能删除， 猜测是原本系统用户创建的文件， 在系统被扬了之后用户找不到了就变成 S-1-5-xx 这种不可读的形式了
+
+解决方案为 `右键文件夹->属性->安全->高级` 可以看到所有者是 `S-1-5-xxx`, 勾选
+
 ----
 ----
 ## 图片OCR->表格
