@@ -530,7 +530,7 @@ workflow 文件的配置字段非常多，详见[官方文档](https://help.gith
   - 这时候就会有钉~的提醒啦
 
 ## 开源许可证选择
-![开源许可证选择](https://images.gitee.com/uploads/images/2021/0213/173905_ce78c29a_7703072.png "屏幕截图.png")
+![开源许可证选择](http://cdn.ayusummer233.top/DailyNotes/202302191539879.png "屏幕截图.png")
 > [from 阮一峰-2011.5.2](http://www.ruanyifeng.com/blog/2011/05/how_to_choose_free_software_licenses.html)
 
 ---
