@@ -224,24 +224,23 @@ let community = {
     ],
 };
 
-/** Bot */
-let bot = {
-    text: "Bot",
+/** 娱乐 */
+let entertainment = {
+    text: "娱乐",
     children: [
         {
             text: "Bot",
-            link: "/Bot/",
+            link: "/娱乐/Bot/",
         },
         {
-            text: "频道Bot",
-            link: "/Bot/频道Bot.md",
-        },
-        {
-            text: "企微Bot",
-            link: "/Bot/企微Bot.md",
+            text: "sovits",
+            link: "/娱乐/sovits/sovits_32k.md",
         },
     ],
 };
+
+
+
 
 /** 计算机科学 */
 let CS = {
@@ -282,7 +281,8 @@ export const Navbar = navbar([
     backend, // 后端
     frontend, // 前端
     community, // 社区相关
-    bot, // Bot
+    entertainment, // 娱乐
+    // bot, // Bot
     // CS, // 计算机科学
     learningRoad, // 学习路线
 ]);
