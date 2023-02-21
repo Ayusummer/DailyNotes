@@ -453,3 +453,6 @@ AssetStudio 解出来的 AudioCllip 目录下有个 `op_short.wav`  是 Desire, 
 python .\inference_main.py
 ```
 
+然后就可以在 results 目录下看到推理结果了
+
+![image-20230221220253748](http://cdn.ayusummer233.top/DailyNotes/202302212202765.png)
