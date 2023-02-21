@@ -25,7 +25,7 @@ let NoteTools = [
         text: "VitePress",
         link: "/NoteTools/VitePress.md",
     },
-]
+];
 
 let Docker = [
     {
@@ -36,7 +36,7 @@ let Docker = [
         text: "Harbor",
         link: "/通识/Docker/Harbor.md",
     },
-]
+];
 
 /** 加密算法侧边栏 */
 let security_encrypt = [
@@ -48,7 +48,7 @@ let security_encrypt = [
         text: "HMAC",
         link: "/网络安全/加密算法/HMAC.md",
     },
-]
+];
 
 /** 网络安全-web安全侧边栏 */
 let security_web = [
@@ -95,7 +95,7 @@ let security_web = [
         text: "Web漏洞通用型Python复现脚本编写指南",
         link: "/网络安全/Web安全/Web漏洞通用型Python复现脚本编写指南/",
     },
-]
+];
 
 /** language-python */
 let language_python = [
@@ -161,10 +161,10 @@ let language_python = [
             {
                 text: "Rocketry",
                 link: "/Language/Python/libs/Rocketry/",
-            }
+            },
         ],
     },
-]
+];
 
 /** language-java */
 let language_java = [
@@ -180,10 +180,10 @@ let language_java = [
         text: "JavaWeb",
         link: "/Language/Java/JavaWeb.md",
     },
-]
+];
 
 /** 后端-数据库 */
-let backend_database =  [
+let backend_database = [
     {
         text: "数据库",
         link: "/后端/数据库/数据库.md",
@@ -204,7 +204,7 @@ let backend_database =  [
         text: "SQLAlchemy",
         link: "/后端/数据库/SQLAlchemy.md",
     },
-]
+];
 
 /** 前端-Vue */
 let frontend_vue = [
@@ -220,16 +220,32 @@ let frontend_vue = [
         text: "vue-admin-template",
         link: "/前端/VUE/vue-admin-template.md",
     },
-]
+];
 
+/** Bot */
+let Bot = [
+    {
+        text: "Bot",
+        link: "/娱乐/Bot/",
+    },
+    {
+        text: "频道Bot",
+        link: "/娱乐/Bot/频道Bot.md",
+    },
+    {
+        text: "企微Bot",
+        link: "/娱乐/Bot/企微Bot.md",
+    },
+];
 
 export const Sidebar = sidebar({
     "/NoteTools/": NoteTools,
-    "/通识/Docker/":  Docker,
+    "/通识/Docker/": Docker,
     "/网络安全/加密算法/": security_encrypt,
     "/网络安全/Web安全/": security_web,
     "/Language/Python/": language_python,
     "/Language/Java/": language_java,
     "/后端/数据库/": backend_database,
     "/前端/VUE/": frontend_vue,
+    "/娱乐/Bot/": Bot,
 });
