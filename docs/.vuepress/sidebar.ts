@@ -238,6 +238,21 @@ let Bot = [
     },
 ];
 
+
+/** sovits */
+let sovits = [
+    {
+        text: "sovits_32k",
+        link: "/娱乐/sovits/sovits_32k.md",
+    },
+    {
+        text: "sovits_4",
+        link: "/娱乐/sovits/sovits_4.md",
+    },
+];
+
+
+
 export const Sidebar = sidebar({
     "/NoteTools/": NoteTools,
     "/通识/Docker/": Docker,
@@ -248,4 +263,5 @@ export const Sidebar = sidebar({
     "/后端/数据库/": backend_database,
     "/前端/VUE/": frontend_vue,
     "/娱乐/Bot/": Bot,
+    "/娱乐/sovits/": sovits,
 });
