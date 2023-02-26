@@ -92,6 +92,25 @@ CLion 编辑代码保存时会自动替换行尾为当前行尾序列。
 
 
 ---
+## 路由器
+
+> [公共DNS推荐及dns测速 - fogwu - 博客园 (cnblogs.com)](https://www.cnblogs.com/fogwang/p/10735487.html)
+
+小米路由器 DNS DHCP 后使用 EDGE 浏览器似乎经常显示 `无法访问 Internet`, 具体原因不清楚
+
+手动将 DNS 改为
+
+```
+首选：119.29.29.29
+备选：182.254.116.116
+```
+
+后新建页面后似乎可以恢复正常
+
+> 上述 DNS 为 DNSPod的 Public DNS+, 是目前国内第一家支持ECS的公共DNS，是DNSPod推出的公共域名解析服务，可以为全网用户提供域名的公共递归解析服务
+
+---
+
 ## 证书
 
 > [从计算机专业学生到程序员大佬，都一定受用的计算机行业高含金量证书盘点！_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV1ZR4y1g7tD?spm_id_from=333.851.b_7265636f6d6d656e64.1)
