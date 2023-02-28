@@ -224,6 +224,48 @@ flowchart LR
 
 ---
 
+### 子图
+
+`语法`:
+
+```markdown
+subgraph title
+    graph definition
+end
+```
+
+`示例`:
+
+```markdown
+flowchart TB
+    c1-->a2
+    subgraph one
+    a1-->a2
+    end
+    subgraph two
+    b1-->b2
+    end
+    subgraph three
+    c1-->c2
+    end
+```
+
+```mermaid
+flowchart TB
+    c1-->a2
+    subgraph one
+    a1-->a2
+    end
+    subgraph two
+    b1-->b2
+    end
+    subgraph three
+    c1-->c2
+    end
+```
+
+---
+
 ## 时序图
 
 > [Sequence diagram (mermaid-js.github.io)](https://mermaid-js.github.io/mermaid/#/sequenceDiagram)
