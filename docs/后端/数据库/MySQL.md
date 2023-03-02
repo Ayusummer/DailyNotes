@@ -382,7 +382,21 @@ alter user 'root'@'%' identified with mysql_native_password by 'root';
 
 ---
 
-## 重置密码
+## 密码
+
+### 修改密码
+
+```mysql
+# 修改 root@localhost 密码为 new_password
+ALTER USER 'root'@'localhost' IDENTIFIED BY 'new_password';
+
+# 上述指令只允许本地登录, 如果需要远程连接 mysql 的话还需要
+ALTER USER 'root'@'%' IDENTIFIED BY 'new_password';
+```
+
+---
+
+### 重置密码
 
 > [忘记mysql数据库的root密码时如何重置密码 (aliyun.com)](https://help.aliyun.com/document_detail/42520.html)
 >
