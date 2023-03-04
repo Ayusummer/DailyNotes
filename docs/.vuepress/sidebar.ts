@@ -252,16 +252,42 @@ let sovits = [
 ];
 
 
+/** 内网渗透 */
+let penetration = [
+    {
+        text: "内网渗透",
+        link: "/网络安全/内网渗透/",
+    },
+    {
+        text: "代理转发",
+        link: "/网络安全/内网渗透/代理转发.md",
+    },
+];
+
+/** 信息收集 */
+let information_collection = [
+    {
+        text: "端口扫描",
+        link: "/网络安全/信息收集/端口扫描/nmap.md",
+    },
+    {
+        text: "漏扫工具",
+        link: "/网络安全/信息收集/漏扫工具/AWVS.md",
+    },
+];
+
 
 export const Sidebar = sidebar({
     "/NoteTools/": NoteTools,
     "/通识/Docker/": Docker,
-    "/网络安全/加密算法/": security_encrypt,
-    "/网络安全/Web安全/": security_web,
     "/Language/Python/": language_python,
     "/Language/Java/": language_java,
     "/后端/数据库/": backend_database,
     "/前端/VUE/": frontend_vue,
     "/娱乐/Bot/": Bot,
     "/娱乐/sovits/": sovits,
+    "/网络安全/加密算法/": security_encrypt,
+    "/网络安全/Web安全/": security_web,
+    "/网络安全/内网渗透/": penetration,
+    "/网络安全/信息收集/": information_collection,
 });
