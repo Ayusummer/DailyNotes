@@ -126,7 +126,35 @@ if __name__ == '__main__':
 >
 > ![image-20220908164325366](http://cdn.ayusummer233.top/img/202209081643429.png)
 
+---
 
+## 远程桌面连接
+
+> [如何使用远程桌面连接(RDP)至Kali/Ubuntu图形化桌面？ - 掘金 (juejin.cn)](https://juejin.cn/post/7090421599781781512)
+
+```bash
+apt-get install kali-desktop-xfce
+apt-get install xorg
+apt-get install xfce4
+apt-get install xrdp
+```
+
+```bash
+sed -i 's/port=3389/port=3399/g' /etc/xrdp/xrdp.ini
+echo xfce4-session >~/.xsession
+service xrdp restart
+```
+
+```bash
+# 以 1920*1080 的分辨率连接到本地远程桌面(使用Mobaxterm自带的xserver)
+rdesktop 127.0.0.1:3399 -g 1920x1080
+```
+
+![image-20230306173257148](http://cdn.ayusummer233.top/DailyNotes/202303061735760.png)
+
+![image-20230306173612503](http://cdn.ayusummer233.top/DailyNotes/202303061736408.png)
+
+![image-20230306174040608](http://cdn.ayusummer233.top/DailyNotes/202303061740221.png)
 
 ---
 
