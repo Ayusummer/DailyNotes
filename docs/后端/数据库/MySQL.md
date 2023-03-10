@@ -386,6 +386,8 @@ alter user 'root'@'%' identified with mysql_native_password by 'root';
 
 ### 修改密码
 
+> [MySQL修改密码的3种方式 (biancheng.net)](http://c.biancheng.net/view/7152.html#:~:text=步骤 1)
+
 ```mysql
 # 修改 root@localhost 密码为 new_password
 ALTER USER 'root'@'localhost' IDENTIFIED BY 'new_password';
