@@ -238,7 +238,6 @@ let Bot = [
     },
 ];
 
-
 /** sovits */
 let sovits = [
     {
@@ -250,7 +249,6 @@ let sovits = [
         link: "/娱乐/sovits/sovits_4.md",
     },
 ];
-
 
 /** 内网渗透 */
 let penetration = [
@@ -276,6 +274,17 @@ let information_collection = [
     },
 ];
 
+/** Go */
+let Go = [
+    {
+        text: "Go",
+        link: "/Language/Go/",
+    },
+    {
+        text: "Go语言圣经学习随笔",
+        link: "/Language/Go/Go语言圣经学习随笔.md",
+    },
+];
 
 export const Sidebar = sidebar({
     "/NoteTools/": NoteTools,
@@ -290,4 +299,5 @@ export const Sidebar = sidebar({
     "/网络安全/Web安全/": security_web,
     "/网络安全/内网渗透/": penetration,
     "/网络安全/信息收集/": information_collection,
+    "/Language/Go/": Go,
 });
