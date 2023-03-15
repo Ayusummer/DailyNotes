@@ -126,7 +126,7 @@ let language = {
         },
         {
             text: "Go",
-            link: "/Language/Go/Go.md",
+            link: "/Language/Go/",
         },
         {
             text: "JavaScript",
