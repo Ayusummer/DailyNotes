@@ -1082,8 +1082,68 @@ func PrintResponseBody_Copy() {
     - `log.Print` 可以从多个 `goroutine` 安全地调用, 而后者需要使用同步机制来避免竞争条件
 
     > ![image-20230317004239769](http://cdn.ayusummer233.top/DailyNotes/202303170042807.png)
+    >
+    > ![image-20230317005650011](http://cdn.ayusummer233.top/DailyNotes/202303170056062.png)
 
 ---
+
+#### 练习 1.8 补充前缀
+
+修改 `fetch` 这个范例，如果输入的url参数没有 `http://` 前缀的话，为这个url加上该前缀。你可能会用到 `strings.HasPrefix` 这个函数。
+
+```go
+/*
+练习 1.8
+修改fetch这个范例，如果输入的url参数没有 http:// 前缀的话，为这个url加上该前缀。
+你可能会用到strings.HasPrefix这个函数。
+*/
+package ch1
+
+import (
+	"fmt"
+	"io"
+	"log"
+	"net/http"
+	"os"
+	"strings"
+)
+
+func PrintResponseBody_Copy_Prefix() {
+	for _, url := range os.Args[1:] { // 遍历命令行参数中的每个URL
+		// 如果输入的url参数没有 http:// 前缀的话，为这个url加上该前缀
+		if !strings.HasPrefix(url, "http://") {
+			url = "http://" + url
+			fmt.Printf("输入的url参数没有 http:// 前缀,已为该url加上该前缀\n当前url为: %s\n", url)
+		}
+		resp, err := http.Get(url) // 发送HTTP GET请求并获取响应
+		// 如果有错误发生，打印错误信息并退出程序并返回错误码1
+		if err != nil {
+			fmt.Fprintf(os.Stderr, "fetch: %v\n", err)
+			os.Exit(1)
+		}
+		defer resp.Body.Close() // 关闭响应体
+
+		n, err := io.Copy(os.Stdout, resp.Body) // 读取响应体
+		if err != nil {
+			log.Fatal(err)
+		}
+		fmt.Printf("Copied %d bytes \n", n)
+	}
+}
+
+```
+
+> ![image-20230317010022530](http://cdn.ayusummer233.top/DailyNotes/202303170100608.png)
+
+- `strings.HasPrefix` 函数用于判断一个字符串是否包含指定前缀, 如果包含则返回 `true`, 否则返回 `false`, 其使用方式为:
+
+  ```go
+  strings.HasPrefix(s string, prefix string) bool
+  ```
+
+  其中 `s` 为需要判断的字符串, `prefix` 为要检查的前缀
+
+----
 
 
 
