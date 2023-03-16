@@ -988,7 +988,7 @@ func PrintResponseBody() {
 >         log.Fatal(err)
 >     }
 >     defer resp.Body.Close()
->     
+>             
 >     if resp.StatusCode == http.StatusOK {
 >         bodyBytes, err := io.ReadAll(resp.Body)
 >         // if u want to read the body many time
@@ -1012,6 +1012,78 @@ func PrintResponseBody() {
 >   >
 >   > ![image-20230316010211279](http://cdn.ayusummer233.top/DailyNotes/202303160102329.png)
 >
+
+---
+
+#### 练习 1.7 使用 `io.Copy` 替代 `io.outil.ReadAll`
+
+函数调用 `io.Copy(dst, src)` 会从 src 中读取内容，并将读到的结果写入到dst中，使用这个函数替代掉例子中的 `ioutil.ReadAll` 来拷贝响应结构体到 `os.Stdout`，避免申请一个缓冲区（例子中的b）来存储。记得处理 `io.Copy` 返回结果中的错误。
+
+```go
+/*
+练习 1.7：
+
+函数调用io.Copy(dst, src)会从src中读取内容，并将读到的结果写入到dst中，
+使用这个函数替代掉例子中的 ioutil.ReadAll 来拷贝响应结构体到 os.Stdout，避免申请一个缓冲区（例子中的b）来存储。
+记得处理io.Copy返回结果中的错误。
+*/
+package ch1
+
+import (
+	"fmt"
+	"io"
+	"log"
+	"net/http"
+	"os"
+)
+
+func PrintResponseBody_Copy() {
+	for _, url := range os.Args[1:] { // 遍历命令行参数中的每个URL
+		resp, err := http.Get(url) // 发送HTTP GET请求并获取响应
+		// 如果有错误发生，打印错误信息并退出程序并返回错误码1
+		if err != nil {
+			fmt.Fprintf(os.Stderr, "fetch: %v\n", err)
+			os.Exit(1)
+		}
+		defer resp.Body.Close() // 关闭响应体
+
+		n, err := io.Copy(os.Stdout, resp.Body) // 读取响应体
+		if err != nil {
+			log.Fatal(err)
+		}
+		fmt.Printf("Copied %d bytes", n)
+	}
+}
+
+```
+
+- `io.Copy` 函数是从一个 `io.Reader` 接口读取数据, 并写到一个 `io.Writter` 接口, 直到读取完毕或发生错误
+
+  使用 `io.Copy` 的一般格式是 
+
+  ```go
+  n, err := io.Copy(dst, src)
+  ```
+
+  - `n`   字节数
+  - `err`  复制过程中遇到的错误
+  - `(dst, src)`   `(目标的 io.Writter, 源的 io.Reader)`
+
+- `log.Fatal` 函数用于在但因输出内容后, 退出应用程序
+
+  相当于调用了 `log.Print` 和 `os.Exit(1)` 两个函数, 通常用于处理无法回复的错误情况 
+
+  -  `log.Print` 用于在标准错误输出 `os.Stderr` 上打印一条日志信息, 相当于调用了 `fmt.FPrint(v ... interface[])` 
+
+    其与 `fmt.Printf(os.Stderr)` 有如下区别
+
+    -  `log.Print` 会自动添加当前日期和时间作为前缀, 而后者不会
+    - `log.Print` 会自动添加换行符作为后缀, 而后者不会
+    - `log.Print` 可以从多个 `goroutine` 安全地调用, 而后者需要使用同步机制来避免竞争条件
+
+    > ![image-20230317004239769](http://cdn.ayusummer233.top/DailyNotes/202303170042807.png)
+
+---
 
 
 
