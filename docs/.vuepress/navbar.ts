@@ -122,7 +122,7 @@ let language = {
         },
         {
             text: "C++",
-            link: "/Language/CPlusPlus/C++.md",
+            link: "/Language/CPlusPlus/CPP.md",
         },
         {
             text: "Go",
