@@ -1122,6 +1122,10 @@ Gitlab 仓库中的图片可以通过 `仓库链接/raw/{分支名}/pictures/{�
 
 需要注意的是可能上传时会报错 `Error: Client network socket disconnected before secure TLS connection was established`  这可能是由于 Picgo 挂了本地代理, 将其关掉即可
 
+![image-20230323093607447](http://cdn.ayusummer233.top/DailyNotes/image-20230323093607447.png)
+
+![image-20230323093615890](http://cdn.ayusummer233.top/DailyNotes/image-20230323093615890.png)
+
 ---
 
 如果报错 `Request failed with status code 403` 可能是 token 给的权限不够, 看下是不是只给了 Guest 权限
