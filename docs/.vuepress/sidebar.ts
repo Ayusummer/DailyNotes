@@ -54,20 +54,7 @@ let security_encrypt = [
 let security_web = [
     {
         text: "web安全",
-        link: "/网络安全/Web安全/web安全.md",
-    },
-    {
-        text: "靶场",
-        children: [
-            {
-                text: "DVWA",
-                link: "/网络安全/Web安全/靶场/DVWA.md",
-            },
-            {
-                text: "Pikachu",
-                link: "/网络安全/Web安全/靶场/Pikachu.md",
-            },
-        ],
+        link: "/网络安全/Web安全/",
     },
     {
         text: "漏洞类型",
