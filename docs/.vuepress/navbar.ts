@@ -74,10 +74,6 @@ let security = {
             link: "/网络安全/通识.md",
         },
         {
-            text: "工具整理",
-            link: "/网络安全/工具整理.md",
-        },
-        {
             text: "kali",
             link: "/网络安全/kali.md",
         },
@@ -103,11 +99,7 @@ let security = {
         },
         {
             text: "Web安全",
-            link: "/网络安全/Web安全/web安全.md",
-        },
-        {
-            text: "随笔",
-            link: "/网络安全/随笔.md",
+            link: "/网络安全/Web安全/",
         },
     ],
 };
