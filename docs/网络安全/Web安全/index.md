@@ -284,6 +284,40 @@ docker run --restart=always -d -p 9221:80 -p 9222:3306 area39/pikachu
 
 ---
 
+### VULFOCUS
+
+> [fofapro/vulfocus: 🚀Vulfocus 是一个漏洞集成平台，将漏洞环境 docker 镜像，放入即可使用，开箱即用。 (github.com)](https://github.com/fofapro/vulfocus)
+>
+> [安装 (fofapro.github.io)](https://fofapro.github.io/vulfocus/#/INSTALL)
+
+#### 使用 docker-compose 安装 VULFCOUS
+
+```bash
+git clone https://github.com/fofapro/vulfocus.git
+cd vulfocus
+```
+
+将 `docker-compose.yaml` 中如下的两个 `VUL_IP` 改成本机 IP 即可
+
+![image-20230328005609764](http://cdn.ayusummer233.top/DailyNotes/202303280056842.png)
+
+```bash
+# 启动并后台运行 VULFOCUS 容器
+docker-compose up -d
+```
+
+![image-20230328010058301](http://cdn.ayusummer233.top/DailyNotes/202303280100357.png)
+
+![image-20230328010131947](http://cdn.ayusummer233.top/DailyNotes/202303280101984.png)
+
+访问默认的 80 端口服务即可看到 VULFOCUS 登录页
+
+![image-20230328010326881](http://cdn.ayusummer233.top/DailyNotes/202303280103017.png)
+
+默认账密 `admin/admin`
+
+---
+
 ## 工具整理
 
 ### 资源库知识库类
