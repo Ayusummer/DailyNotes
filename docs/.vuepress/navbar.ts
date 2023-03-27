@@ -40,6 +40,10 @@ let general = {
             link: "/通识/通识.md",
         },
         {
+            text: "Linux",
+            link: "/通识/Linux.md",
+        },
+        {
             text: "Docker",
             link: "/通识/Docker/Docker.md",
         },
@@ -257,10 +261,6 @@ let CS = {
 let learningRoad = {
     text: "学习路线",
     children: [
-        {
-            text: "操作系统",
-            link: "/学习路线/操作系统/Linux/Linux.md",
-        },
         {
             text: "机器学习",
             link: "/学习路线/机器学习/机器学习.md",
