@@ -47,6 +47,7 @@
       - [报错收集](#报错收集)
         - [image load failed](#image-load-failed)
         - [无法正常导出PDF](#无法正常导出pdf)
+        - [无法显示局域网https图片](#无法显示局域网https图片)
       - [LaTeX 相关](#latex-相关)
     - [在 VSCode 中编辑 Markdown 文件](#在-vscode-中编辑-markdown-文件)
       - [Markdown All in One](#markdown-all-in-one)
@@ -817,6 +818,17 @@ Typora 中最常用的快捷键是
 
 打开计算机`服务`菜单, `启动 Print Spooler` 即可
 
+---
+
+##### 无法显示局域网https图片
+
+如果图链源自自签名的https局域网站点, 那么需要为 Typora 的启动项添加 `--ignore-certificate-errors` 参数, 具体如图所示
+
+![image-20230414005417928](http://cdn.ayusummer233.top/DailyNotes/202304140100968.png)
+
+![image-20230414010122695](http://cdn.ayusummer233.top/DailyNotes/202304140101720.png)
+
+> exe 路径加引号后点击应用可能会自动把引号删掉, 应该不影响使用
 
 ----
 #### LaTeX 相关
