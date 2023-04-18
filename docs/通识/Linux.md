@@ -4,12 +4,12 @@
   - [Ubuntu 的 source.list 文件](#ubuntu-的-sourcelist-文件)
     - [换源](#换源)
   - [SHELL](#shell)
-    - [快捷键/命令](#快捷键命令)
     - [路由操作](#路由操作)
-      - [类清屏](#类清屏)
+    - [类清屏](#类清屏)
 - [清屏](#清屏)
 - [指针移到行尾](#指针移到行尾)
-      - [查找文件](#查找文件)
+    - [单引号, 双引号与反引号](#单引号-双引号与反引号)
+    - [查找文件](#查找文件)
   - [SSH 工具](#ssh-工具)
     - [VSCode: Remote-SSH](#vscode-remote-ssh)
     - [MobaXterm](#mobaxterm)
@@ -28,6 +28,7 @@
       - [各字段含义](#各字段含义)
       - [常用 Cron 表达式](#常用-cron-表达式)
   - [网络](#网络)
+    - [启用与禁用网卡](#启用与禁用网卡)
     - [IP 转换](#ip-转换)
     - [防火墙](#防火墙)
       - [iptables](#iptables)
@@ -160,7 +161,7 @@ fi
 
 ### 运算符
 
-###### 管道运算符 `|`
+#### 管道运算符 `|`
 
 ```bash
 command 1 | command 2
@@ -182,11 +183,42 @@ ls -s|sort -nr
 
 > ![image-20221122002954641](http://cdn.ayusummer233.top/img/202211220038780.png)
 
+---
+### 单引号, 双引号与反引号
+
+> [Shell（Bash）单引号、双引号和反引号用法详解 (biancheng.net)](http://c.biancheng.net/view/951.html)
+
+单引号和双引号用于变量值出现空格时，比如 `name=zhang san` 这样执行就会出现问题，而必须用引号括起来，比如 `name="zhang san"`。
+
+单引号和双引号的区别在于
+- 单引号中的字符仅仅表示它本身，不会被解释，比如 `name='zhang san'`，那么 `echo $name` 就会输出 `zhang san`。
+- 双引号中括起来的字符, `$` 和 `\` 以及反引号是拥有特殊意义的
+
+```bash
+#定义变量name的值是sc
+name=sc
+# 如果输出时使用单引号，则$name原封不动地输出
+echo '$name'
+#如果输出时使用双引号，则会输出变量name的值sc
+echo "$name"
+# 使用反引号调用 date 函数获取当前时间
+echo `date`
+# 使用 $() 调用 date 函数获取当前时间
+echo $(date)
+# 使用单引号括起来的反引号会将反引号中的命令当作字符串输出
+echo '`date`'
+# 使用双引号括起来的反引号会将反引号中的命令执行后的结果输出
+echo "`date`"
+# \ 可以用来转义特殊字符, 如在 " 中输出 $, 可以使用 \$
+echo "\$ \`"
+```
+
+![](http://cdn.ayusummer233.top/DailyNotes/202304171500058.png)
 
 
 ---
 
-#### 查找文件
+### 查找文件
 
 - 使用 locate
 
