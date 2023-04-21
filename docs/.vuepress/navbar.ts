@@ -97,6 +97,10 @@ let security = {
             text: "信息收集",
             link: "/网络安全/信息收集/端口扫描/nmap.md",
         },
+        {   
+            text: "ATTCK",
+            link: "/网络安全/ATTCK/",
+        },
         {
             text: "加密算法",
             link: "/网络安全/加密算法/Hash.md",
