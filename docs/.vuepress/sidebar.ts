@@ -84,6 +84,18 @@ let security_web = [
     },
 ];
 
+/** 网络安全-ATTCK 侧边栏 */
+let security_ATTCK = [
+    {
+        text: "ATTCK",
+        link: "/网络安全/ATTCK/",
+    },
+    {
+        text: "TA0001-InitialAccess",
+        link: "/网络安全/ATTCK/TA0001-InitialAccess.md",
+    },
+];
+
 /** language-python */
 let language_python = [
     {
@@ -283,6 +295,7 @@ export const Sidebar = sidebar({
     "/娱乐/Bot/": Bot,
     "/娱乐/sovits/": sovits,
     "/网络安全/加密算法/": security_encrypt,
+    "/网络安全/ATTCK/": security_ATTCK,
     "/网络安全/Web安全/": security_web,
     "/网络安全/内网渗透/": penetration,
     "/网络安全/信息收集/": information_collection,
