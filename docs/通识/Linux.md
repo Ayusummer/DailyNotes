@@ -10,13 +10,14 @@
 - [指针移到行尾](#指针移到行尾)
     - [单引号, 双引号与反引号](#单引号-双引号与反引号)
     - [查找文件](#查找文件)
-  - [SSH 工具](#ssh-工具)
+  - [SSH](#ssh)
     - [VSCode: Remote-SSH](#vscode-remote-ssh)
     - [MobaXterm](#mobaxterm)
     - [WindTerm](#windterm)
     - [Terminus](#terminus)
     - [远程图形化界面的本地显示](#远程图形化界面的本地显示)
       - [一些软件命令行启动的命令](#一些软件命令行启动的命令)
+    - [使用 SSH 做端口转发让服务器用本地的clash代理](#使用-ssh-做端口转发让服务器用本地的clash代理)
   - [使用 root 登入 UI](#使用-root-登入-ui)
   - [软硬链接](#软硬链接)
   - [常用命令](#常用命令)
@@ -249,7 +250,7 @@ find / -name "success"
 
 ---
 
-## SSH 工具
+## SSH 
 
 
 > [如何在 Ubuntu 20.04 启用 SSH-阿里云开发者社区 (aliyun.com)](https://developer.aliyun.com/article/763505)
@@ -500,6 +501,29 @@ java -jar [burpsuitxxx.jar绝对路径]
 > export GDK_SCALE=2
 > export GDK_DPI_SCALE=1
 > ```
+
+---
+
+### 使用 SSH 做端口转发让服务器用本地的clash代理
+
+> 直接在服务器上起 clash 等应用似乎会被警告, 所以考虑使用本地的 clash 代理
+
+首先在本地将 Clash 的 `Allow Lan` 打开
+
+使用 SSH 创建端口转发
+
+```bash
+ssh -fNR 7890:localhost:7890 -i [ssh私钥绝对路径] [用户名]@[服务器IP]
+```
+
+- `-f` 后台运行
+- `-N` 不执行远程命令, 仅做端口转发
+- `-R` 远程端口转发
+
+如此一来就可以在服务器上使用本地的 Clash 代理了
+
+- `http代理`: `http://localhost:7890`
+- `socks5代理`: `socks5://localhost:7890`
 
 ---
 
