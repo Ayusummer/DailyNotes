@@ -506,8 +506,6 @@ java -jar [burpsuitxxx.jar绝对路径]
 
 ### 使用 SSH 做端口转发让服务器用本地的clash代理
 
-> 直接在服务器上起 clash 等应用似乎会被警告, 所以考虑使用本地的 clash 代理
-
 首先在本地将 Clash 的 `Allow Lan` 打开
 
 使用 SSH 创建端口转发
