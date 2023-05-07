@@ -24,7 +24,9 @@ Redis 通常被称为数据结构服务器，因为值（value）可以是字符
 
 ## 安装
 
-### Ubuntu/Debian
+:::tabs
+
+@tab:active Ubuntu/Debian
 
 ```bash
 sudo apt install lsb-release
@@ -37,6 +39,18 @@ echo "deb [signed-by=/usr/share/keyrings/redis-archive-keyring.gpg] https://pack
 sudo apt-get update
 sudo apt-get install redis
 ```
+
+:::
+
+@tab windows
+
+到 [Releases · tporadowski/redis --- 发布 · tporadowski/redis (github.com)](https://github.com/tporadowski/redis/releases) 下载 `msi` 文件进行安装即可
+
+进入 redis 安装目录, 以管理员方式运行 `redis-server.exe` 即可
+
+:::
+
+
 
 ---
 
