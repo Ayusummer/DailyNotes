@@ -235,6 +235,10 @@ let Bot = [
         text: "企微Bot",
         link: "/娱乐/Bot/企微Bot.md",
     },
+    {
+        text: "云崽",
+        link: "/娱乐/Bot/云崽.md",
+    },
 ];
 
 /** sovits */
