@@ -60,6 +60,50 @@ apt-get install -y nodejs
 
 ---
 
+### nvm
+
+> [coreybutler/nvm-windows: A node.js version management utility for Windows. Ironically written in Go. --- coreybutler/nvm-windows：Windows 的 node.js 版本管理实用程序。具有讽刺意味的是用 Go 编写的。 (github.com)](https://github.com/coreybutler/nvm-windows)
+
+在 [coreybutler/nvm-windows: A node.js version management utility for Windows. Ironically written in Go. --- coreybutler/nvm-windows：Windows 的 node.js 版本管理实用程序。具有讽刺意味的是用 Go 编写的。 (github.com)](https://github.com/coreybutler/nvm-windows/releases) 下载可执行程序进行安装即可
+
+> 请务必使用 ==管理员模式== 启动安装程序, 否则可能导致符号链接建立出问题而且不会报错, 直到后面使用 nvm use 命令启用对应版本 node 时会报错找不到 node
+
+安装完成后打开命令行输入 `nvm version` 可以看到 nvm 版本号
+
+![image-20230507141230949](http://cdn.ayusummer233.top/DailyNotes/202305071412962.png)
+
+使用 nvm 安装下 `node v16.16.0`
+
+```bash
+nvm install 16.16.0
+```
+
+![image-20230507141515448](http://cdn.ayusummer233.top/DailyNotes/202305071415483.png)
+
+使用 `nvm list` 可以看到当前在 nvm 管理下的 node 版本:
+
+![image-20230507142108544](http://cdn.ayusummer233.top/DailyNotes/202305071421559.png)
+
+使用 `node v16.16.0`
+
+```bash
+nvm use 16.16.0
+```
+
+按理来说此时 `node -v` 会显示 `16.16.0`, 但是我显示 node 不可用
+
+> 原因可能是因为安装 nvm 时没有用管理员模式启动安装程序导致符号链接建立上有问题? 总之使用管理员模式重新安装 nvm 解决了此问题
+
+![image-20230507144939140](http://cdn.ayusummer233.top/DailyNotes/202305071449170.png)
+
+
+
+
+
+
+
+---
+
 ## 换源
 
 - [winrey/EasyConnectedInChina: 汇总apt，pip，nodejs等各种工具国内镜像源和设置镜像源的方法 (github.com)](https://github.com/winrey/EasyConnectedInChina#npm)
