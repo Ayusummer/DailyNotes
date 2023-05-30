@@ -13,7 +13,7 @@ export default defineUserConfig({
     description: "233的日常学习记录",
     // 站点配置, 设置为 /[仓库名]/
     base: "/DailyNotes/",
-
+    
     // 主题配置
     theme: hopeTheme({
         navbar: Navbar,
