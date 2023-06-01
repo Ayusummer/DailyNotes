@@ -4,7 +4,7 @@ import { Sidebar } from "./sidebar";
 
 export default hopeTheme({
   // logo
-  logo: "/logo.png",
+  logo: "/logo.svg",
 
   // 主题色选择器
   themeColor: true,
