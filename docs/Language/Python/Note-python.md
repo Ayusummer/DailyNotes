@@ -125,8 +125,6 @@
 - 创建 Python 的初衷是，通过屏蔽更多与硬件的复杂交互来简化软件开发。 缺点是 Python 对这些交互的控制力较弱。 因此，Python 可能不适合某些占用大量处理器时间的应用。
 - 其他编程语言可以更好地控制与硬件的复杂交互。 如果使用得当，它们的性能比 Python 更好。 但它们可能更难以理解。 许多软件应用不需要通过这种程度的优化来提高性能。
 
-
-
 ----
 
 #### 什么是编译
@@ -146,9 +144,22 @@
 
 - Python 解释器可用于许多计算机平台。 例如，如果在 Linux 上编写了 Python 代码，该代码也将在 macOS 和 Windows 上运行。 无需为特定计算平台编译源代码就可以运行程序。
 
+---
+
+### 当前 python 各版本的使用情况
+
+> [Python Developers Survey 2021 Results (jetbrains.com)](https://lp.jetbrains.com/python-developers-survey-2021/?_gl=1*s6u21r*_ga*NDkwNzc2NS4xNjg1NTgzNDI2*_ga_9J976DJZ68*MTY4NTY5OTA1MC4zLjAuMTY4NTY5OTA1Mi4wLjAuMA..&_ga=2.133418318.1969808276.1685699051-4907765.1685583426#PythonVersions)
+>
+> [Python Developers Survey 2022 Results (jetbrains.com)](https://lp.jetbrains.com/python-developers-survey-2022/)
+
+![image-20230605112255365](http://cdn.ayusummer233.top/DailyNotes/202306051122506.png)
+
+![image-20230605112325787](http://cdn.ayusummer233.top/DailyNotes/202306051123863.png)
+
 
 ---
 ## 换源操作
+
 - [参考文档](https://github.com/winrey/EasyConnectedInChina)
 ```python
 py -3.8 -m pip install -i https://pypi.tuna.tsinghua.edu.cn/simple opencc  
