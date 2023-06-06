@@ -74,8 +74,8 @@ let security = {
     text: "网络安全",
     children: [
         {
-            text: "通识",
-            link: "/网络安全/通识.md",
+            text: "网络安全",
+            link: "/网络安全/",
         },
         {
             text: "kali",
