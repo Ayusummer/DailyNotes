@@ -40,6 +40,53 @@
 
 ---
 
+## 靶场
+
+### vulhub
+
+> [vulhub/README.zh-cn.md at master · vulhub/vulhub · GitHub](https://github.com/vulhub/vulhub)
+
+
+
+---
+
+#### vulhub 捉虫
+
+- `elasticsearch/CVE-2015-3337/Dockerfile`
+
+  ```dockerfile
+  FROM vulhub/elasticsearch:1.4.4
+  
+  LABEL maintainer="phithon <root@leavesongs.com>"
+  
+  RUN set -ex \
+      && plugin --install mobz/elasticsearch-head/1.x -u https://codeload.github.com/mobz/elasticsearch-head/zip/refs/heads/1.x
+  ```
+
+  原来是如下这样, 是无法成功拉取的
+
+  ```dockerfile
+  RUN set -ex \
+      && plugin -install mobz/elasticsearch-head/1.x
+  ```
+
+  官方的解决方案:
+
+  ```dockerfile
+  RUN set -ex \
+      && plugin -install mobz/elasticsearch-head
+  ```
+
+  
+
+
+
+
+
+
+
+---
+
 ## 使用 OpenSSL 创建自签名  SSL 证书
 
 > [如何创建自签名SSL证书 | myfreax](https://www.myfreax.com/creating-a-self-signed-ssl-certificate/)
