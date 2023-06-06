@@ -1140,6 +1140,22 @@ Gitlab 仓库中的图片可以通过 `仓库链接/raw/{分支名}/pictures/{�
 
 ---
 
+如果报错 `RequestError: **Error**: self signed certificate` 那么可能是 gitlab 地址用了自签名的 SSL 证书, 忽略自签名即可, 具体操作如下
+
+打开插件主程序 js 文件, 该文件默认为: `C:\Users\[Username]\AppData\Roaming\picgo\node_modules\picgo-plugin-gitlab-files\dist\index.js`
+
+使用 `process.env` 对象来临时修改环境变量，来忽略自签名证书错误, 然后，你就可以在后面的代码中发送HTTPS请求，而忽略自签名证书错误。
+
+> PS: 这种方法只会影响当前Node.js进程，不会永久改变环境变量。
+
+```js
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
+```
+
+![image-20230606100829892](http://cdn.ayusummer233.top/DailyNotes/202306061008982.png)
+
+---
+
 如果报错 `Request failed with status code 403` 可能是 token 给的权限不够, 看下是不是只给了 Guest 权限
 
 ---
