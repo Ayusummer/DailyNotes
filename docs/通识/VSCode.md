@@ -530,8 +530,24 @@ rm -rf ****/vscode-server/bin/****
 
 > [visual studio code - VSCode Remote SSH Extension + tmux = -bash: __vsc_prompt_cmd_original: command not found - Stack Overflow](https://stackoverflow.com/questions/73421978/vscode-remote-ssh-extension-tmux-bash-vsc-prompt-cmd-original-command-n/73798469#73798469)
 >
+> [Avoid "-bash: __vsc_prompt_cmd_original: command not found" when launching Terminal from Python in macOS - Stack Overflow](https://stackoverflow.com/questions/75723868/avoid-bash-vsc-prompt-cmd-original-command-not-found-when-launching-termi)
+>
 > ---
 
 ![image-20221118232314707](http://cdn.ayusummer233.top/img/202211182323764.png)
+
+使用 VSCode 的 Remote SSH 扩展连接到远程服务器时, 其会在服务器 bash 环境中设置一个变量 `PROMPT_COMMAND` 用于显示 VSCode 的状态栏
+
+当在服务器上使用了 tmux 或者其他终端复用工具时, 他们可能会覆盖或者清除 `PROMPT_COMMAND` 变量, 导致 bash 无法找到 `__vsc_prompt_cmd_original` 函数
+
+```bash
+unset PROMPT_COMMAND
+```
+
+> ![](http://cdn.ayusummer233.top/DailyNotes/202306081118210.png)
+
+```bash
+source ~/.bashrc
+```
 
 ---
