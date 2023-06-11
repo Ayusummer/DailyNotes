@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script
+      type="text/javascript"
+      src="https://www.gstatic.com/charts/loader.js"
+    ></script>
+    <script type="text/javascript">
+      google.charts.load("current", { packages: ["timeline"] });
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var container = document.getElementById("timeline");
+        var chart = new google.visualization.Timeline(container);
+        var dataTable = new google.visualization.DataTable();
+
+        dataTable.addColumn({ type: "string", id: "Task" });
+        dataTable.addColumn({ type: "string", id: "Type" });
+        dataTable.addColumn({ type: "date", id: "Start" });
+        dataTable.addColumn({ type: "date", id: "End" });
+        dataTable.addRows([
+          [
+            "地锅鸡",
+            "烧一壶温水",
+            new Date(2023, 6, 11, 0, 0, 0),
+            new Date(2023, 6, 11, 0, 5, 0),
+          ],
+          [
+            "地锅鸡",
+            "揉面醒面10分钟",
+            new Date(2023, 6, 11, 0, 5, 0),
+            new Date(2023, 6, 11, 0, 20, 0),
+          ],
+          [
+            "地锅鸡",
+            "烧壶开水",
+            new Date(2023, 6, 11, 0, 20, 0),
+            new Date(2023, 6, 11, 0, 30, 0),
+          ],
+          [
+            "地锅鸡",
+            "鸡肉剪块清洗控水",
+            new Date(2023, 6, 11, 0, 20, 0),
+            new Date(2023, 6, 11, 0, 30, 0),
+          ],
+          [
+            "地锅鸡",
+            "油热下鸡块, 炒至微黄",
+            new Date(2023, 6, 11, 0, 30, 0),
+            new Date(2023, 6, 11, 0, 40, 0),
+          ],
+          [
+            "地锅鸡",
+            "下一把花椒炒香, 下其他香料炒香",
+            new Date(2023, 6, 11, 0, 40, 0),
+            new Date(2023, 6, 11, 0, 50, 0),
+          ],
+          [
+            "地锅鸡",
+            "料酒,豆瓣酱,白糖,生抽,耗油",
+            new Date(2023, 6, 11, 0, 50, 0),
+            new Date(2023, 6, 11, 1, 0, 0),
+          ],
+          [
+            "地锅鸡",
+            "加开水没过鸡块, 大火烧10分钟",
+            new Date(2023, 6, 11, 1, 0, 0),
+            new Date(2023, 6, 11, 1, 10, 0),
+          ],
+          [
+            "地锅鸡",
+            "加入土豆, 干豆角, 半勺味极鲜, 胡椒粉, 中小火炖20分钟",
+            new Date(2023, 6, 11, 1, 10, 0),
+            new Date(2023, 6, 11, 1, 30, 0),
+          ],
+          [
+            "地锅鸡",
+            "取出醒好的面团, 切块搓球放入温水泡10分钟",
+            new Date(2023, 6, 11, 1, 20, 0),
+            new Date(2023, 6, 11, 1, 30, 0),
+          ],
+          [
+            "地锅鸡",
+            "下一把粉丝, 取出面团搓饼贴饼",
+            new Date(2023, 6, 11, 1, 30, 0),
+            new Date(2023, 6, 11, 1, 40, 0),
+          ],
+          [
+            "地锅鸡",
+            "中小火炖15分钟",
+            new Date(2023, 6, 11, 1, 40, 0),
+            new Date(2023, 6, 11, 1, 55, 0),
+          ],
+          [
+            "地锅鸡",
+            "青红椒切段,蒜苗香菜切碎",
+            new Date(2023, 6, 11, 1, 40, 0),
+            new Date(2023, 6, 11, 1, 55, 0),
+          ],
+          [
+            "地锅鸡",
+            "点缀出锅",
+            new Date(2023, 6, 11, 1, 55, 0),
+            new Date(2023, 6, 11, 2, 0, 0),
+          ],
+        ]);
+
+        chart.draw(dataTable);
+      }
+    </script>
+  </head>
+  <body>
+    <div id="timeline" style="height: 500px"></div>
+  </body>
+</html>

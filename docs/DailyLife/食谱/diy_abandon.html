@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['timeline']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      var dataTable;
+
+      function drawChart() {
+        var container = document.getElementById('timeline');
+        var chart = new google.visualization.Timeline(container);
+        
+        dataTable = new google.visualization.DataTable();
+        dataTable.addColumn({ type: 'string', id: 'Task' });
+        dataTable.addColumn({ type: 'string', id: 'Type' });
+        dataTable.addColumn({ type: 'date', id: 'Start' });
+        dataTable.addColumn({ type: 'date', id: 'End' });
+        dataTable.addRows([
+          [ 'Task 1', 'Type 1', new Date(2020, 0, 1, 9, 0, 0), new Date(2020, 0, 1, 10, 0, 0) ],
+          [ 'Task 1', 'Type 2', new Date(2020, 0, 1, 10, 0, 0), new Date(2020, 0, 1, 11, 0, 0) ]
+        ]);
+
+        chart.draw(dataTable);
+      }
+
+      function addTask() {
+        var task = document.getElementById("task").value;
+        var type = document.getElementById("type").value;
+        var start = new Date(document.getElementById("start").value);
+        var end = new Date(document.getElementById("end").value);
+
+        dataTable.addRow([task, type, start, end]);
+        drawChart();
+      }
+
+      function deleteTask() {
+        var task = document.getElementById("task").value;
+
+        var rowIndex = dataTable.getFilteredRows([{column: 0, value: task}]);
+        dataTable.removeRows(rowIndex);
+        drawChart();
+      }
+
+    </script>
+  </head>
+  <body>
+    <div id="timeline" style="height: 500px;"></div>
+    
+    <form id="taskForm">
+      <label for="task">Task:</label><br>
+      <input type="text" id="task" name="task"><br>
+      <label for="type">Type:</label><br>
+      <input type="text" id="type" name="type"><br>
+      <label for="start">Start (YYYY-MM-DD):</label><br>
+      <input type="text" id="start" name="start"><br>
+      <label for="end">End (YYYY-MM-DD):</label><br>
+      <input type="text" id="end" name="end"><br>
+      <button type="button" onclick="addTask()">Add task</button>
+      <button type="button" onclick="deleteTask()">Delete task</button>
+    </form>
+  </
