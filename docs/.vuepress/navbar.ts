@@ -67,7 +67,19 @@ let general = {
 };
 
 /** 日常 */
-let daily = { text: "日常", link: "/DailyLife/DailyLife.md" };
+let daily = { 
+    text: "日常", 
+    children:[
+        {
+            text: "日常",
+            link: "/DailyLife/DailyLife.md" ,
+        },
+        {
+            text: "食谱",
+            link: "/DailyLife/食谱/" ,
+        },
+    ]
+};
 
 /** 网络安全 */
 let security = {
