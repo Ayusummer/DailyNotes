@@ -259,7 +259,21 @@ json 文件内容如下:
   gdb --version
   ```
   
-  如果没有返回版本信息则说明未安装或配置其环境变量, 参阅 [C++ programming with Visual Studio Code-example-install-mingwx64](https://code.visualstudio.com/docs/languages/cpp#_example-install-mingwx64)  完成其安装及环境变量的配置
+  如果没有返回版本信息则说明未安装或配置其环境变量, 参阅 [C++ programming with Visual Studio Code --- 使用 Visual Studio Code 进行 C++ 编程](https://code.visualstudio.com/docs/languages/cpp) [C++ programming with Visual Studio Code-example-install-mingwx64](https://code.visualstudio.com/docs/languages/cpp#_example-install-mingwx64)  完成其安装及环境变量的配置
+  
+  简单来说就是下载 [msys](https://objects.githubusercontent.com/github-production-release-asset-2e65be/80988227/4fdf0417-d097-4519-854b-133188c60e38?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20230613%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20230613T095929Z&X-Amz-Expires=300&X-Amz-Signature=e434be09c0fc8a6700ce1027ae10bea8e2078b50c4f75167a9ed1f0895b82fcc&X-Amz-SignedHeaders=host&actor_id=59549826&key_id=0&repo_id=80988227&response-content-disposition=attachment%3B filename%3Dmsys2-x86_64-20220603.exe&response-content-type=application%2Foctet-stream), 在弹出的窗口中使用 `pacman -S --needed base-devel mingw-w64-x86_64-toolchain` 安装工具链
+  
+  > MSYS (Minimal SYStem) 是一个轻量级的类 Unix 环境，是为 Windows 平台提供的一个集成开发环境。它是一种方便 Windows 用户模拟 Linux 环境和使用一些 Linux 工具的解决方案。
+  >
+  > MSYS 最初是为了支持 MinGW (Minimalist GNU for Windows) 而创建的。MinGW 是一个用于生成 Windows 应用程序的 GCC 编译器的轻量级分发版，它不依赖于任何 Unix 系统，而 MSYS 提供了一些帮助 MinGW 工作的 Unix 工具，如 bash shell，以及许多常见 Unix 工具如 grep，sed，awk 等。
+  >
+  > 总的来说，MSYS 是一个简化的 POSIX/SUS 兼容的 Bourne shell 命令行解释器环境。使用它，开发者可以在 Windows 上运行自动化构建脚本，例如 Bash 脚本和 Makefile 等，从而使在 Windows 上编译 Unix 和 Linux 软件变得更加容易。
+  
+  ![image-20230613182822283](http://cdn.ayusummer233.top/DailyNotes/202306131828445.png)
+  
+  将 `msys64\mingw64\bin` 加到 `Path` 环境变量中重启 VSCode 加载环境变量即可
+  
+  
   
 - 安装 C++ 扩展
 
@@ -272,8 +286,6 @@ json 文件内容如下:
     ![Select g++.exe task](http://cdn.ayusummer233.top/img/202111250936260.png)
 
   - 如果没有看到检测到的项目而是让自定义配置文件的话那么可以参考 [配置VSCode中调试C/C++环境 | LeoJhon.Song's Blog (leojhonsong.github.io)](https://leojhonsong.github.io/zh-CN/2018/12/30/配置VSCode中调试C-C-环境/) 中的配置项
-
-
 
 配置备份:
 - `tasks.json`
