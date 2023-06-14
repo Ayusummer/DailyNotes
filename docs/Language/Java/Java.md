@@ -118,6 +118,20 @@ update-alternatives --config javac
 
 ---
 
+### Tomcat
+
+> [Apache Tomcat® - Apache Tomcat 8 Software Downloads --- Apache Tomcat® - Apache Tomcat 8 软件下载](https://tomcat.apache.org/download-80.cgi)
+
+![image-20230613111231319](http://cdn.ayusummer233.top/DailyNotes/202306131112390.png)
+
+Windows 下直接下 Installer 版本即可
+
+![image-20230613111315190](http://cdn.ayusummer233.top/DailyNotes/202306131113262.png)
+
+安装时会默认 `Server Shutdown Port ` 为 `-1`, 意味着关闭了监听 shutdown 命令的端口, 后续启停可以在 Windows 服务(`services.msc`)中进行操作
+
+---
+
 ### Java 反射
 
 > [Java 反射详解 - YSOcean - 博客园 (cnblogs.com)](https://www.cnblogs.com/ysocean/p/6516248.html)
