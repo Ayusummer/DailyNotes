@@ -132,7 +132,7 @@ Windows 下直接下 Installer 版本即可
 
 ---
 
-### Java 反射
+## Java 反射
 
 > [Java 反射详解 - YSOcean - 博客园 (cnblogs.com)](https://www.cnblogs.com/ysocean/p/6516248.html)
 >
@@ -148,7 +148,7 @@ Java反射就是在运行状态中，对于任意一个类，都能够知道这�
 
 ---
 
-#### 得到 Class 的三种方式
+### 得到 Class 的三种方式
 
 比如新建一个 Person 类
 
@@ -228,4 +228,97 @@ public class test {
 ```
 
 ![image-20221207155641124](http://cdn.ayusummer233.top/DailyNotes/202212071556151.png)
+
+---
+
+## 命令执行
+
+正常写法
+
+```java
+java.lang.Runtime.getRuntime().exec("calc");
+```
+
+---
+
+反射写法:
+
+```java
+try {
+    Class<?> cls = Class.forName("java.lang.Runtime");
+    Method method = cls.getMethod("getRuntime");
+    Runtime runtime = (Runtime) method.invoke(null);
+    runtime.exec("calc");
+} catch (Exception e) {
+    e.printStackTrace();
+}
+```
+
+- `line3` 的 `Method` 指的是 `java.lang.reflect.Method` 类, 在 Java 中，`java.lang.reflect.Method` 类提供了关于类或接口上单个方法的信息和访问权限。可以使用 `java.lang.reflect.Method` 类的实例来获取方法的信息（如返回类型、参数类型、访问修饰符等）或者对它进行调用。
+- `line3` 的 `getMethod` 方法被用来获取名为 `getRuntime` 的方法(这是 `java.lang.Runtime` 类的一个静态方法)。然后，`invoke` 方法被用来调用这个获取到的方法。
+- 因为 `getRuntime` 是一个无参数的方法，所以 `invoke` 方法被调用时只传入了一个 `null` 参数，这个 `null` 参数表示当前正在调用的是一个不需要实例对象的方法(即静态方法)。
+
+---
+
+将反射写法写为一行:
+
+```java
+((Runtime) Class.forName("java.lang.Runtime").getMethod("getRuntime").invoke(null)).exec("calc");
+```
+
+需要注意的是 `Class.getMethod` 的返回类型是 `java.lang.reflect.Method`，而 `Method.invoke()` 的返回类型是 `java.lang.Object`。
+
+因此，当你试图在返回的 Object 类型上调用 `exec` 方法时，编译器无法找到 `exec` 方法，因为 `java.lang.Object` 类没有定义 `exec` 方法。
+
+所以这里用的 `(Runtime)` 来将 `invoke` 的返回值强制类型转换为 `Runtime` 类型，因为 `exec` 是 `Runtime` 类的方法
+
+---
+
+不加强制类型转换的话可以这样写:
+
+```java
+Class.forName("java.lang.Runtime").getMethod("exec", String.class).invoke(
+        Class.forName("java.lang.Runtime").getMethod("getRuntime").invoke(null),
+        "calc"
+);
+```
+
+首先获取 `exec` 方法的 `Method` 对象，然后再调用 `invoke` 方法，其第一个参数传递了 `exec` 方法的调用者（`Runtime` 对象），第二个参数传递了 `exec` 方法的参数（`calc`）。
+
+或者通过 `String对象.getClass()` 来获取 `Class` 也可以:
+
+```java
+"va".getClass().forName("java.lang.Runtime").getMethod("exec", String.class).invoke(
+        "va".getClass().forName("java.lang.Runtime").getMethod("getRuntime").invoke(null),
+        "calc"
+);
+```
+
+以及这里的字符串是可以拆分再拼接的, 下面这种写法也是可以正确执行的:
+
+```java
+Class.forName("java"+".lang.Runtime").getMethod("exec", String.class).invoke(
+        Class.forName("java.la"+"ng.Runtime").getMethod("getRuntime").invoke(null),
+        "calc"
+);
+```
+
+```java
+"va".getClass().forName("java.lan"+"g.Runtime").getMethod("exec", String.class).invoke(
+        "va".getClass().forName("java.l"+"ang.Runtime").getMethod("getRuntime").invoke(null),
+        "calc"
+);`
+```
+
+---
+
+
+
+
+
+
+
+
+
+
 
