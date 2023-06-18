@@ -379,6 +379,36 @@ docker commit -m "add elasticsearch-head" 10f2daf4ead5 cve-2015-3337_es:v0
 
 ---
 
+## 渗透相关
+
+### 反弹 shell 中如何判断自己是否在 docker 容器中
+
+- 看当前反弹 shell 的主机名称, 一堆数字字母的则可能是 docker 容器 id
+
+  ![image-20230619000402010](http://cdn.ayusummer233.top/DailyNotes/202306190004059.png)
+
+- 查看根目录下有没有 `.dockerenv` 文件, 如果有的话则可能在 docker 环境中
+
+  ```bash
+  ls -alh /.dockerenv
+  ```
+
+  ![image-20230618230722588](http://cdn.ayusummer233.top/DailyNotes/202306182307643.png)
+
+----
+
+### 反弹shell到特权模式的docker容器后进一步获取宿主机权限
+
+在判断当前反弹shell位置为docker后可以尝试查看下系统中的所有银盘分区表信息
+
+```bash
+fdisk -l
+```
+
+
+
+---
+
 ## 常见问题
 
 ### ERROR: could not find an available, non-overlapping IPv4 address pool among the defaults to assign to the network
