@@ -405,7 +405,62 @@ docker commit -m "add elasticsearch-head" 10f2daf4ead5 cve-2015-3337_es:v0
 fdisk -l
 ```
 
+如果没有输出则不是特权模式启动的 Docker 容器
 
+![image-20230619095827529](http://cdn.ayusummer233.top/DailyNotes/202306190958112.png)
+
+如果有输出则可以观察 Device 了
+
+![image-20230619100109506](http://cdn.ayusummer233.top/DailyNotes/202306191001591.png)
+
+![image-20230619100145688](http://cdn.ayusummer233.top/DailyNotes/202306191001794.png)
+
+上图Type 为 Linux 的这条即为宿主机的系统分区
+
+> 遇到过宿主是实体机固态装系统+一块机械时, 特权容器启动的 docker 能看到机械硬盘所在的分区, 系统分区显示的 ` /dev/nvme0n1p1` 和 ` /dev/nvme0n1p2`, 一个 PE 一个 LinuxVM 似乎(也许不是 LinuxVM, 不过一定不是LINUX, TODO: 记得确认下), 此时只能再用 `lvdisplay` 找逻辑卷, 不过这条命令 Docker 容器中不一定有
+
+看到系统分区后可以在容器中新建一个目录然后挂载该分区
+
+```bash
+mkdir /joker
+mount /dev/sda5 /joker
+```
+
+![image-20230619101649612](http://cdn.ayusummer233.top/DailyNotes/202306191016670.png)
+
+> 很多博客有提到可以写计划任务反弹 shell , 但是我写了计划任务后并不能弹过来, 因此放弃了反弹 shell
+
+可以尝试写 root 账户的公钥
+
+![image-20230619102252795](http://cdn.ayusummer233.top/DailyNotes/202306191022850.png)
+
+在本机新建一对密钥
+
+```bash
+ssh-keygen -t rsa -C "xxl-job"
+```
+
+> `-C(comment)` 随便填, 有辨识度就行
+
+在命令执行的交互中可以设置密钥存放的路径, 然后根据回显找到 `.pub` 公钥
+
+![image-20230619102802288](http://cdn.ayusummer233.top/DailyNotes/202306191028353.png)
+
+然后直接用 `echo >>` 来续写即可
+
+![image-20230619102953093](http://cdn.ayusummer233.top/DailyNotes/202306191029155.png)
+
+然后就可以 cat 看下了, 顺利的话已经写进去了
+
+![image-20230619103048603](http://cdn.ayusummer233.top/DailyNotes/202306191030673.png)
+
+然后可以直接 ssh 连接到宿主机了
+
+```bash
+ssh -i id_rsa root@xxx
+```
+
+![image-20230619103459517](http://cdn.ayusummer233.top/DailyNotes/202306191034575.png)
 
 ---
 
