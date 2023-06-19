@@ -46,7 +46,19 @@
 
 > [vulhub/README.zh-cn.md at master · vulhub/vulhub · GitHub](https://github.com/vulhub/vulhub)
 
+---
 
+在 Ubuntu2204 上安装 Docker
+
+```bash
+# Install the latest version docker
+curl -s https://get.docker.com/ | sh
+
+# Run docker service
+systemctl start docker
+```
+
+然后拉取 vulhub 仓库按照相应漏洞中的 README 文件操作即可
 
 ---
 
@@ -77,7 +89,42 @@
       && plugin -install mobz/elasticsearch-head
   ```
 
-  
+
+---
+
+---
+
+### VULFOCUS
+
+> [fofapro/vulfocus: 🚀Vulfocus 是一个漏洞集成平台，将漏洞环境 docker 镜像，放入即可使用，开箱即用。 (github.com)](https://github.com/fofapro/vulfocus)
+>
+> [安装 (fofapro.github.io)](https://fofapro.github.io/vulfocus/#/INSTALL)
+
+#### 使用 docker-compose 安装 VULFCOUS
+
+```bash
+git clone https://github.com/fofapro/vulfocus.git
+cd vulfocus
+```
+
+将 `docker-compose.yaml` 中如下的两个 `VUL_IP` 改成本机 IP 即可
+
+![image-20230328005609764](http://cdn.ayusummer233.top/DailyNotes/202303280056842.png)
+
+```bash
+# 启动并后台运行 VULFOCUS 容器
+docker-compose up -d
+```
+
+![image-20230328010058301](http://cdn.ayusummer233.top/DailyNotes/202303280100357.png)
+
+![image-20230328010131947](http://cdn.ayusummer233.top/DailyNotes/202303280101984.png)
+
+访问默认的 80 端口服务即可看到 VULFOCUS 登录页
+
+![image-20230328010326881](http://cdn.ayusummer233.top/DailyNotes/202303280103017.png)
+
+默认账密 `admin/admin`
 
 
 
