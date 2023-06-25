@@ -125,6 +125,41 @@ echo $SHELL
 
 ### 路由操作
 
+#### ip route
+
+- 查看路由表
+
+  ```bash
+  ip route show
+  ```
+
+- 添加一条路由
+
+  ```bash
+  ip route add [目的网段/掩码] via [网关] dev [网卡]
+  ip route add 192.0.2.0/24 via 10.0.0.1 dev eth0
+  ```
+
+- 删除一条路由
+
+  ```bash
+  ip route del [目标网段/掩码] via [网关] dev [网卡]
+  ip route del 192.0.2.0/24 via 10.0.0.1 dev eth0
+  ```
+
+- 查看某个目的的路由信息
+
+  ```bash
+  ip route get 192.0.2.1
+  ```
+
+---
+
+#### route(deprecated)
+
+> `ip route` 命令是属于 iproute2 套件的一部分，这个套件在现代的 Linux 系统中已经成为了网络配置的标准工具。
+> 相较于旧的 `route` 命令，`ip route` 提供了更多的功能并且在设计上更加灵活和强大。
+
 ```bash
 route add -net [目的网段] netmask [掩码] gw [网关]
 route del -net [目的网段] netmask [掩码] gw [网关]
