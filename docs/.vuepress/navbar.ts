@@ -101,26 +101,31 @@ let security = {
             text: "抓包发包",
             link: "/网络安全/抓包发包.md",
         },
-        {
-            text: "内网渗透",
-            link: "/网络安全/内网渗透/",
-        },
-        {
-            text: "信息收集",
-            link: "/网络安全/信息收集/端口扫描/nmap.md",
-        },
         {   
             text: "ATTCK",
             link: "/网络安全/ATTCK/",
         },
         {
-            text: "加密算法",
-            link: "/网络安全/加密算法/Hash.md",
+            text: "信息收集",
+            link: "/网络安全/信息收集/端口扫描/nmap.md",
         },
         {
             text: "Web安全",
             link: "/网络安全/Web安全/",
         },
+        {
+            text: "端点安全",
+            link: "/网络安全/端点安全/",
+        },
+        {
+            text: "内网渗透",
+            link: "/网络安全/内网渗透/",
+        },
+        {
+            text: "加密算法",
+            link: "/网络安全/加密算法/Hash.md",
+        },
+
     ],
 };
 

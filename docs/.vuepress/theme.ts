@@ -1,4 +1,6 @@
 import { hopeTheme } from "vuepress-theme-hope";
+import { createRequire } from "node:module";
+import { fs, theme } from "docs-shared";
 import { Navbar } from "./navbar";
 import { Sidebar } from "./sidebar";
 
@@ -26,9 +28,9 @@ export default hopeTheme({
   // 全屏
   fullscreen: true,
 
-
   // 插件相关
   plugins: {
+    seo: true,
     // markdown 增强
     mdEnhance: {
       tabs: true,
@@ -43,6 +45,5 @@ export default hopeTheme({
       // 支持标记 使用 == == 进行标记。请注意两边需要有空格
       mark: true,
     },
-    seo: true,
   },
 });
