@@ -4,34 +4,34 @@
   - [简介](#简介)
     - [MVC](#mvc)
       - [MV\*](#mv)
-      - [Vue框架的特点](#vue框架的特点)
+      - [Vue 框架的特点](#vue框架的特点)
       - [常见的插件](#常见的插件)
       - [与 Vue2 对比](#与-vue2-对比)
-          - [Options API 与 Composition API](#options-api-与-composition-api)
+        - [Options API 与 Composition API](#options-api-与-composition-api)
   - [Microsoft Learn | 开始使用 Vue.js](#microsoft-learn--开始使用-vuejs)
-      - [Vue 入门](#vue-入门)
-          - [简介](#简介-1)
-          - [Vue.js 入门](#vuejs-入门)
-          - [通过使用 Vue.js 创建应用](#通过使用-vuejs-创建应用)
-          - [属性绑定](#属性绑定)
-      - [通过 Vue.js 动态显示界面](#通过-vuejs-动态显示界面)
-          - [目标](#目标)
-          - [Render lists](#render-lists)
-          - [使用条件呈现(Use conditional rendering)](#使用条件呈现use-conditional-rendering)
-      - [处理 Vue.js 中的数据和事件](#处理-vuejs-中的数据和事件)
-          - [动态数据和事件概述](#动态数据和事件概述)
-          - [使用窗体](#使用窗体)
-          - [处理事件](#处理事件)
-          - [了解计算属性](#了解计算属性)
-      - [Vue.js 中的 Vue CLI 和单文件组件入门](#vuejs-中的-vue-cli-和单文件组件入门)
-          - [Vue CLI 入门](#vue-cli-入门)
-          - [使用 Vue CLI 创建应用程序](#使用-vue-cli-创建应用程序)
-          - [Vue 组件入门](#vue-组件入门)
-          - [创建组件](#创建组件)
-          - [组件属性](#组件属性)
-          - [向组件添加属性](#向组件添加属性)
-          - [组件的自定义事件](#组件的自定义事件)
-          - [向组件添加自定义事件](#向组件添加自定义事件)
+    - [Vue 入门](#vue-入门)
+      - [简介](#简介-1)
+      - [Vue.js 入门](#vuejs-入门)
+      - [通过使用 Vue.js 创建应用](#通过使用-vuejs-创建应用)
+      - [属性绑定](#属性绑定)
+    - [通过 Vue.js 动态显示界面](#通过-vuejs-动态显示界面)
+      - [目标](#目标)
+      - [Render lists](#render-lists)
+      - [使用条件呈现(Use conditional rendering)](#使用条件呈现use-conditional-rendering)
+    - [处理 Vue.js 中的数据和事件](#处理-vuejs-中的数据和事件)
+      - [动态数据和事件概述](#动态数据和事件概述)
+      - [使用窗体](#使用窗体)
+      - [处理事件](#处理事件)
+      - [了解计算属性](#了解计算属性)
+    - [Vue.js 中的 Vue CLI 和单文件组件入门](#vuejs-中的-vue-cli-和单文件组件入门)
+      - [Vue CLI 入门](#vue-cli-入门)
+      - [使用 Vue CLI 创建应用程序](#使用-vue-cli-创建应用程序)
+      - [Vue 组件入门](#vue-组件入门)
+      - [创建组件](#创建组件)
+      - [组件属性](#组件属性)
+      - [向组件添加属性](#向组件添加属性)
+      - [组件的自定义事件](#组件的自定义事件)
+      - [向组件添加自定义事件](#向组件添加自定义事件)
   - [安装](#安装)
     - [pnpm](#pnpm)
     - [命令行工具(CLI)](#命令行工具cli)
@@ -44,7 +44,7 @@
     - [开发工具](#开发工具)
       - [项目创建](#项目创建)
       - [DevTools](#devtools)
-          - [DevTools 无法加载源映射](#devtools-无法加载源映射)
+        - [DevTools 无法加载源映射](#devtools-无法加载源映射)
   - [Vite](#vite)
     - [目录结构](#目录结构)
     - [路径别名配置](#路径别名配置)
@@ -56,13 +56,11 @@
       - [本地测试应用](#本地测试应用)
     - [环境变量与模式](#环境变量与模式)
       - [环境变量](#环境变量)
-          - [生产环境替换](#生产环境替换)
+        - [生产环境替换](#生产环境替换)
       - [.env 文件](#env-文件)
-          - [TypeScript 智能提示](#typescript-智能提示)
+        - [TypeScript 智能提示](#typescript-智能提示)
       - [模式](#模式)
-    - [报错收集](#报错收集)
-          - [`listen EACCES: permission denied 127.0.0.1:3000`](#listen-eacces-permission-denied-1270013000)
-          - [`找不到模块“vue”或其相应的类型声明。ts(2307)`](#找不到模块vue或其相应的类型声明ts2307)
+    - [报错收集](#报错收集) - [`listen EACCES: permission denied 127.0.0.1:3000`](#listen-eacces-permission-denied-1270013000) - [`找不到模块“vue”或其相应的类型声明。ts(2307)`](#找不到模块vue或其相应的类型声明ts2307)
   - [ESLint](#eslint)
     - [安装](#安装-1)
     - [配置文件](#配置文件)
@@ -127,13 +125,13 @@
   - [自定义全局插件](#自定义全局插件)
   - [组件系统](#组件系统)
     - [生命周期](#生命周期)
-    - [单文件组件SFC(Single File Component)](#单文件组件sfcsingle-file-component)
+    - [单文件组件 SFC(Single File Component)](#单文件组件sfcsingle-file-component)
       - [基本语法](#基本语法)
     - [模板语法](#模板语法)
       - [`v-on`](#v-on)
-          - [`.stop`](#stop)
+        - [`.stop`](#stop)
       - [`v-model`](#v-model)
-          - [计算器示例](#计算器示例)
+        - [计算器示例](#计算器示例)
       - [`v-bind`](#v-bind)
     - [父子组件传参](#父子组件传参)
       - [传递字符串](#传递字符串)
@@ -169,26 +167,25 @@
       - [ref](#ref)
     - [内置组件](#内置组件)
       - [`transition`](#transition)
-          - [结合 Animate.css 使用](#结合-animatecss-使用)
-          - [生命周期 和 GSAP](#生命周期-和-gsap)
-          - [appear](#appear)
+        - [结合 Animate.css 使用](#结合-animatecss-使用)
+        - [生命周期 和 GSAP](#生命周期-和-gsap)
+        - [appear](#appear)
       - [`transition-group`](#transition-group)
-          - [平面过渡动画](#平面过渡动画)
-          - [状态过渡](#状态过渡)
+        - [平面过渡动画](#平面过渡动画)
+        - [状态过渡](#状态过渡)
       - [`keep-alive`](#keep-alive)
       - [`slot`](#slot)
     - [响应性 API](#响应性-api)
       - [响应性基础 API](#响应性基础-api)
-          - [reactive](#reactive)
+        - [reactive](#reactive)
       - [Refs](#refs)
-          - [ref](#ref-1)
+        - [ref](#ref-1)
       - [`Computed` 与 `watch`](#computed-与-watch)
-          - [`computed`](#computed)
-          - [watch](#watch)
-          - [watchEffect](#watcheffect)
+        - [`computed`](#computed)
+        - [watch](#watch)
+        - [watchEffect](#watcheffect)
     - [组合式 API](#组合式-api)
     - [Provide/inject](#provideinject)
-
 
 ---
 
@@ -196,7 +193,7 @@
 
 > [介绍 — Vue.js (vuejs.org)](https://cn.vuejs.org/v2/guide/)
 >
-> [学习Vue3 第一章_qq1195566313的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/122768533)
+> [学习 Vue3 第一章\_qq1195566313 的博客-CSDN 博客](https://blog.csdn.net/qq1195566313/article/details/122768533)
 
 `Vue` 是一套用于构建用户界面的**渐进式框架**。与其它大型框架不同的是，Vue 被设计为可以自底向上逐层应用。Vue 的核心库只关注视图层，不仅易于上手，还便于与第三方库或既有项目整合。另一方面，当与[现代化的工具链](https://cn.vuejs.org/v2/guide/single-file-components.html)以及各种[支持类库](https://github.com/vuejs/awesome-vue#libraries--plugins)结合使用时，Vue 也完全能够为复杂的单页应用提供驱动。
 
@@ -212,9 +209,9 @@
 
 MVC 主要作用是降低了视图与业务逻辑间的双向偶合。
 
-MVC 不是一种设计模式，MVC 是一种架构模式，不同的MVC存在差异。
+MVC 不是一种设计模式，MVC 是一种架构模式，不同的 MVC 存在差异。
 
-- `Model（模型)`: 数据模型，提供要展示的数据，因此包含数据和行为，可以认为是领域模型或 JavaBean 组件（包含数据和行为)，不过现在一般都分离开来:Value Object（数据Dao）和服务层（行为Service)。也就是模型提供了模型数据查询和模型数据的状态更新等功能，包括数据和业务。
+- `Model（模型)`: 数据模型，提供要展示的数据，因此包含数据和行为，可以认为是领域模型或 JavaBean 组件（包含数据和行为)，不过现在一般都分离开来:Value Object（数据 Dao）和服务层（行为 Service)。也就是模型提供了模型数据查询和模型数据的状态更新等功能，包括数据和业务。
 
 - `View（视图)`: 负责进行模型的展示，一般就是我们见到的用户界面，客户想看到的东西。
 
@@ -224,21 +221,21 @@ MVC 不是一种设计模式，MVC 是一种架构模式，不同的MVC存在差
 
 ---
 
-#### MV*
+#### MV\*
 
-> [01-Vue的介绍和vue-cli | 千古前端图文教程 (qianguyihao.com)](https://web.qianguyihao.com/12-Vue基础/01-Vue的介绍和vue-cli.html#介绍)
+> [01-Vue 的介绍和 vue-cli | 千古前端图文教程 (qianguyihao.com)](https://web.qianguyihao.com/12-Vue基础/01-Vue的介绍和vue-cli.html#介绍)
 
 ![img](http://cdn.ayusummer233.top/img/202201241034343.png)
 
 - Model：负责数据存储
 - View：负责页面展示
-- View Model：负责业务逻辑处理（比如Ajax请求等），对数据进行加工后交给视图展示
+- View Model：负责业务逻辑处理（比如 Ajax 请求等），对数据进行加工后交给视图展示
 
 ![img](http://cdn.ayusummer233.top/img/202201241033942.png)
 
-Vue框架中，没有控制器。
+Vue 框架中，没有控制器。
 
-Vue 本身并不是一个框架，Vue结合周边生态构成一个灵活的、渐进式的框架。
+Vue 本身并不是一个框架，Vue 结合周边生态构成一个灵活的、渐进式的框架。
 
 Vue 以及大型 Vue 项目所需的周边技术，构成了生态。
 
@@ -246,22 +243,22 @@ Vue 以及大型 Vue 项目所需的周边技术，构成了生态。
 
 ![img](http://cdn.ayusummer233.top/img/202201241112260.png)
 
-#### Vue框架的特点
+#### Vue 框架的特点
 
-> [01-Vue的介绍和vue-cli | 千古前端图文教程 (qianguyihao.com)](https://web.qianguyihao.com/12-Vue基础/01-Vue的介绍和vue-cli.html#vue框架的特点)
+> [01-Vue 的介绍和 vue-cli | 千古前端图文教程 (qianguyihao.com)](https://web.qianguyihao.com/12-Vue基础/01-Vue的介绍和vue-cli.html#vue框架的特点)
 
 - 模板渲染：基于 html 的模板语法，学习成本低。
 - 响应式的更新机制：数据改变之后，视图会自动刷新。【重要】
 - 渐进式框架
 - 组件化/模块化
-- 轻量：开启 gzip压缩后，可以达到 20kb 大小。（React 达到 35kb，AngularJS 达到 60kb）。
+- 轻量：开启 gzip 压缩后，可以达到 20kb 大小。（React 达到 35kb，AngularJS 达到 60kb）。
 
 #### 常见的插件
 
 - Webpack：代码模块化构建打包工具。
 - Gulp：基于流的自动化构建工具。
 - Babel：使用最新的 规范来编写 js。
-- Vue：构建数据驱动的Web界面的渐进式框架
+- Vue：构建数据驱动的 Web 界面的渐进式框架
 - Express：基于 Node.js 平台，快速、开放、极简的 Web 开发框架。
 
 以上这些包，都可以通过 NPM 这个包管理工具来安装。
@@ -276,15 +273,13 @@ Vue 以及大型 Vue 项目所需的周边技术，构成了生态。
 
 - `Options API`
 
-  `在vue2中`，我们会在一个vue文件中methods，computed，watch，data中等等定义属性和方法，共同处理页面逻辑，我们称这种方式为Options API
+  `在vue2中`，我们会在一个 vue 文件中 methods，computed，watch，data 中等等定义属性和方法，共同处理页面逻辑，我们称这种方式为 Options API
 
-  `缺点`： 一个功能往往需要在不同的vue配置项中定义属性和方法，`比较分散`，项目小还好，清晰明了，但是`项目大了后，一个methods中可能包含很多个方法`，你往往分不清哪个方法对应着哪个功能
+  `缺点`： 一个功能往往需要在不同的 vue 配置项中定义属性和方法，`比较分散`，项目小还好，清晰明了，但是`项目大了后，一个methods中可能包含很多个方法`，你往往分不清哪个方法对应着哪个功能
 
 - `Composition API`
 
-  在 `vue3 Composition API` 中，我们的代码是根据逻辑功能来组织的，`一个功能所定义的所有api会放在一起（更加的高内聚，低耦合）`，这样做，即时项目很大，功能很多，我们都能`快速的定位到这个功能所用到的所有API`，而不像vue2 Options API 中一个功能所用到的API都是分散的，需要改动功能，到处找API的过程是很费劲的
-
-
+  在 `vue3 Composition API` 中，我们的代码是根据逻辑功能来组织的，`一个功能所定义的所有api会放在一起（更加的高内聚，低耦合）`，这样做，即时项目很大，功能很多，我们都能`快速的定位到这个功能所用到的所有API`，而不像 vue2 Options API 中一个功能所用到的 API 都是分散的，需要改动功能，到处找 API 的过程是很费劲的
 
 ---
 
@@ -294,7 +289,7 @@ Vue 以及大型 Vue 项目所需的周边技术，构成了生态。
 >
 > **重要标记: 以下内容为以上述链接(MSLearn)为蓝本的删减, 修改, 扩充, 注释**
 
-----
+---
 
 #### Vue 入门
 
@@ -353,7 +348,7 @@ Vue 最初创建的目的是让开发人员能够通过添加一组将软件组�
 
 ```javascript
 const App = Vue.createApp({
-    // methods and content go here
+  // methods and content go here
 });
 ```
 
@@ -377,12 +372,12 @@ Vue.js 调用 `data()` 方法。 相应的，Vue.js 需要接收一个 JavaScrip
 ```javascript
 // a sample app object
 const App = Vue.createApp({
-    data() {
-        return {
-            firstName: 'Christopher',
-            lastName: 'Harrison'
-        };
-    }
+  data() {
+    return {
+      firstName: "Christopher",
+      lastName: "Harrison",
+    };
+  },
 });
 ```
 
@@ -398,23 +393,21 @@ const App = Vue.createApp({
 
 ```html
 <!-- the HTML element which will host our app -->
-<div id='app'>
-</div>
+<div id="app"></div>
 
 <script src="https://unpkg.com/vue@next"></script>
 <script>
-    const App = Vue.createApp({
-        data() {
-            return {
-                firstName: 'Christopher',
-                lastName: 'Harrison'
-            };
-        }
-    });
-    // Registering and mounting our app
-    App.mount('#app');
+  const App = Vue.createApp({
+    data() {
+      return {
+        firstName: "Christopher",
+        lastName: "Harrison",
+      };
+    },
+  });
+  // Registering and mounting our app
+  App.mount("#app");
 </script>
-
 ```
 
 在运行时，`id= 'app'` 元素的内容将替换为 Vue.js 应用程序的内容。
@@ -431,22 +424,20 @@ const App = Vue.createApp({
 
 ```html
 <!-- the HTML element which will host our app -->
-<div id='app'>
-    {{ lastName }} {{ firstName }}
-</div>
+<div id="app">{{ lastName }} {{ firstName }}</div>
 <!-- 开发环境版本，包含了有帮助的命令行警告 -->
 <script src="https://unpkg.com/vue@next"></script>
 <script>
-    const App = Vue.createApp({
-        data() {
-            return {
-                firstName: '233',
-                lastName: 'ayusummer'
-            };
-        }
-    });
-    // Registering and mounting our app
-    App.mount('#app');
+  const App = Vue.createApp({
+    data() {
+      return {
+        firstName: "233",
+        lastName: "ayusummer",
+      };
+    },
+  });
+  // Registering and mounting our app
+  App.mount("#app");
 </script>
 ```
 
@@ -477,7 +468,7 @@ cd mslearn-vue-get-started/start
 code .
 ```
 
-----
+---
 
 **链接到 HTML 文件中的 Vue 核心库**
 
@@ -502,15 +493,14 @@ code .
 
 ```javascript
 const app = Vue.createApp({
-    data() {
-        return {
-            productName: 'Book a Cruise to the Moon',
-            productDescription: 'Cruise to the moon in our luxurious shuttle. Watch the astronauts working outside the International Space Station.',
-            // additional properties later
-
-
-        }
-    },
+  data() {
+    return {
+      productName: "Book a Cruise to the Moon",
+      productDescription:
+        "Cruise to the moon in our luxurious shuttle. Watch the astronauts working outside the International Space Station.",
+      // additional properties later
+    };
+  },
 });
 ```
 
@@ -527,7 +517,7 @@ const app = Vue.createApp({
 ```html
 <script src="./index.js"></script>
 <script>
-    app.mount('#app');
+  app.mount("#app");
 </script>
 ```
 
@@ -543,8 +533,8 @@ const app = Vue.createApp({
 
 ```html
 <div id="app">
-    <h2>{{ productName }}</h2>
-    <div>{{ productDescription }}</div>
+  <h2>{{ productName }}</h2>
+  <div>{{ productDescription }}</div>
 </div>
 ```
 
@@ -554,7 +544,7 @@ const app = Vue.createApp({
 >
 > ![image-20211107155939506](http://cdn.ayusummer233.top/img/202111071559582.png)
 >
->  通常，在调用用于更改 DOM 内容或结构的外部脚本文件之前，最好先加载 HTML 页面。
+> 通常，在调用用于更改 DOM 内容或结构的外部脚本文件之前，最好先加载 HTML 页面。
 
 ---
 
@@ -566,7 +556,7 @@ const app = Vue.createApp({
 
 > 到此处为止, 学会了将 Vue 代码放在单独的 JavaScript 文件中, 在 HTML 文件中导入 Vue 应用程序并使用 {{}} 获取数据
 
-----
+---
 
 ###### 属性绑定
 
@@ -592,18 +582,18 @@ const app = Vue.createApp({
 
 ```html
 <div id="app">
-    <img v-bind:src="imageSource" />
+  <img v-bind:src="imageSource" />
 </div>
 
 <script src="https://unpkg.com/vue@next"></script>
 <script>
-    Vue.createApp({
-        data() {
-            return {
-                imageSource: './media/sample.jpg'
-            }
-        }
-    }).mount('#app');
+  Vue.createApp({
+    data() {
+      return {
+        imageSource: "./media/sample.jpg",
+      };
+    },
+  }).mount("#app");
 </script>
 ```
 
@@ -763,9 +753,9 @@ const app = Vue.createApp({
 
 > `ul` 标签用于定义无序列表
 >
-> `<li>`  标签定义列表项目。
+> `<li>` 标签定义列表项目。
 >
-> `<li>`  标签可用在有序列表 (`<ol>`) 和无序列表 (`<ul>`) 中。
+> `<li>` 标签可用在有序列表 (`<ol>`) 和无序列表 (`<ul>`) 中。
 
 > ![image-20211107200537559](http://cdn.ayusummer233.top/img/202111072005698.png)
 
@@ -806,10 +796,10 @@ const app = Vue.createApp({
 以下示例显示了将 `v-show` 与计算结果为 `true` 或 `false` 的表达式一起使用：
 
 ```html
-    <div v-if="new Date().getMonth() < 3">当前为第一季度</div>
-    <div v-else-if="new Date().getMonth() < 6">当前为第二季度</div>
-    <div v-else-if="new Date().getMonth() < 9">当前为第三季度</div>
-    <div v-else>当前为第四季度</div>
+<div v-if="new Date().getMonth() < 3">当前为第一季度</div>
+<div v-else-if="new Date().getMonth() < 6">当前为第二季度</div>
+<div v-else-if="new Date().getMonth() < 9">当前为第三季度</div>
+<div v-else>当前为第四季度</div>
 ```
 
 > 你可以在任何指令中或双括号 ({{ }}) 内使用有效的 JavaScript。
@@ -850,20 +840,16 @@ Vue 应用或组件中的 `data()` 函数所返回的数据一般称为“状态
 
 ```js
 Vue.createApp({
-    data() {
-        return {
-            name: 'Cheryl',
-            status: -1,
-            active: true,
-            benefitsSelected: 'yes',
-            statusList: [
-                'full-time',
-                'part-time',
-                'contractor'
-            ]
-        }
-    }
-})
+  data() {
+    return {
+      name: "Cheryl",
+      status: -1,
+      active: true,
+      benefitsSelected: "yes",
+      statusList: ["full-time", "part-time", "contractor"],
+    };
+  },
+});
 ```
 
 ---
@@ -893,7 +879,13 @@ Vue.createApp({
 有时，切换不是布尔值。 相反，你可能有两种选择，如“是”和“否”。 在这种情况下，可以使用 `true-value` 和 `false-value` 来指示所选 (true) 或未选 (false) 复选框的关联值。
 
 ```html
-<input type="checkbox" v-model="benefitsSelected" true-value="yes" false-value="no"> Benefits selected: {{ benefitsSelected }}
+<input
+  type="checkbox"
+  v-model="benefitsSelected"
+  true-value="yes"
+  false-value="no"
+/>
+Benefits selected: {{ benefitsSelected }}
 ```
 
 > ![image-20211108170153693](http://cdn.ayusummer233.top/img/202111081701888.png)
@@ -910,33 +902,28 @@ Vue.createApp({
 - **标识值**。 需要为创建的各选项标识值。 例如，如果列表只是一个字符串数组，则应将字符串或所选索引存储为值。 下面是一个示例：
 
 ```html
-        <select v-model="selectedIndex">
-            <option v-for="(stringItem, index) in statusList" 
-            :value="index"> 
-            {{stringItem}}
-            </option>
-         </select>
+<select v-model="selectedIndex">
+  <option v-for="(stringItem, index) in statusList" :value="index">
+    {{stringItem}}
+  </option>
+</select>
 ```
 
 `vue.js` 相应的加上一个下拉列表索引变量
 
 ```js
 const app = Vue.createApp({
-    data() {
-        return {
-            name: 'Cheryl',
-            status: -1,
-            active: true,
-            benefitsSelected: 'yes',
-            statusList: [
-                'full-time',
-                'part-time',
-                'contractor'
-            ],
-            // 下拉列表索引
-            selectedIndex:'0',
-        }
-    }
+  data() {
+    return {
+      name: "Cheryl",
+      status: -1,
+      active: true,
+      benefitsSelected: "yes",
+      statusList: ["full-time", "part-time", "contractor"],
+      // 下拉列表索引
+      selectedIndex: "0",
+    };
+  },
 });
 ```
 
@@ -1015,17 +1002,17 @@ Vue.js 提供了一个名为 `v-on` 的指令，你可以将其绑定到任何�
 
 ```js
 const app = Vue.createApp({
-    data() {
-        return {
-            name: 'Cheryl'
-        }
-    },
+  data() {
+    return {
+      name: "Cheryl",
+    };
+  },
 
-    methods: {
-        displayName() {
-            console.log(this.name);
-        }
-    }
+  methods: {
+    displayName() {
+      console.log(this.name);
+    },
+  },
 });
 ```
 
@@ -1065,19 +1052,18 @@ const app = Vue.createApp({
 
 ```js
 const app = Vue.createApp({
-    data() {
-        return {
-            firstName: 'Cheryl',
-            lastName: 'Smith',
-        }
+  data() {
+    return {
+      firstName: "Cheryl",
+      lastName: "Smith",
+    };
+  },
+  computed: {
+    fullName() {
+      return `${this.lastName} ${this.firstName}`;
     },
-    computed: {
-        fullName(){
-            return `${this.lastName} ${this.firstName}`
-        }
-    }
+  },
 });
-
 ```
 
 字符串字面量将连接 `lastName` 和 `firstName` 字段。
@@ -1115,6 +1101,7 @@ Vue CLI 提供了一套开发工具，包括用于项目基架构建和快速原
 **启动**
 
 Vue CLI 的核心功能是启动应用程序。 Create 脚本供一个向导，你可以在其中选择一些最常见的配置，包括：
+
 - **Lint 分析选项**：确保所有代码看上去一致。 这些选项还可帮助发现错误。
 - **应用程序类型**：选择是否添加渐进式 Web 应用支持。
 - **Babel 支持**： Babel 的任务是当需要在较旧版本的浏览器中使用应用时，将较新的 JavaScript 语法转换为旧式 JavaScript 语法。
@@ -1227,10 +1214,10 @@ vue create relecloud
    > `@vue/cli-service` 部分负责生成应用程序和运行开发服务器。
 
 4. 请注意两个脚本：
-   
+
    - `serve` 脚本用于启动开发服务器。
    - `build` 脚本用于在你准备好发布项目时，创建 JavaScript、HTML 或 CSS。
-   
+
 5. 打开将托管 Vue 应用程序的 `public/index.html`。
 
    ![image-20211110204149015](http://cdn.ayusummer233.top/img/202111102041133.png)
@@ -1308,7 +1295,7 @@ Vue 组件包含三个主要部分：`style`、`script` 和 `template`。
 
 > `Verdana` 是一套无衬线字体, 它在小字上有结构清晰端整、阅读辨识容易等高品质表现，成为许多领域爱用的标准字型之一。
 
-----
+---
 
 **脚本**
 
@@ -1316,16 +1303,16 @@ Vue 组件包含三个主要部分：`style`、`script` 和 `template`。
 
 ```html
 <script>
-export default {
+  export default {
     data() {
-        return {
-            product: {
-                name: 'Cruise to the moon',
-                description: 'A cool cruise to the moon!'
-            }
-        }
-    }
-}
+      return {
+        product: {
+          name: "Cruise to the moon",
+          description: "A cool cruise to the moon!",
+        },
+      };
+    },
+  };
 </script>
 ```
 
@@ -1381,7 +1368,7 @@ export default {
 
 ```html
 <template>
-    <div>Hello, world</div>
+  <div>Hello, world</div>
 </template>
 <script src="./hello.js"></script>
 <style src="./style.css"></style>
@@ -1393,7 +1380,7 @@ export default {
 
 我们要创建一个应用程序，使用户能预订月球巡航。 在接下来的几个练习中，你将为创建一个组件作为用户为创建预订而填写的窗体；然后创建另一个组件，用于显示创建的预订的列表。 你要创建的第一个组件将托管两个子组件。
 
-----
+---
 
 **安装 Visual Studio Code 扩展**
 
@@ -1464,25 +1451,23 @@ data() {
 
 ```html
 <section>
-<div class="nav-bar"></div>
-<h1>Relecloud Galaxy Tours</h1>
+  <div class="nav-bar"></div>
+  <h1>Relecloud Galaxy Tours</h1>
 
-<div>
+  <div>
     <h2>{{ cruise.name }}</h2>
     <div>{{ cruise.description }}</div>
     <hr />
 
     <div class="row">
-        <div>
-            <!-- todo: Add booking-form -->
-
-        </div>
-        <div>
-            <!-- todo: Add booking-list -->
-
-        </div>
+      <div>
+        <!-- todo: Add booking-form -->
+      </div>
+      <div>
+        <!-- todo: Add booking-list -->
+      </div>
     </div>
-</div>
+  </div>
 </section>
 ```
 
@@ -1496,29 +1481,29 @@ data() {
 
 ```css
 body {
-    background-color: #f2f2f2;
-    margin: 0, 5%;
-    font-family: tahoma;
+  background-color: #f2f2f2;
+  margin: 0, 5%;
+  font-family: tahoma;
 }
 
 .row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    vertical-align: middle;
-    margin: 2em;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  vertical-align: middle;
+  margin: 2em;
 }
 
 .button {
-    background-color: #39495c;
-    border-radius: 5px;
-    color: white;
-    text-align: center;
+  background-color: #39495c;
+  border-radius: 5px;
+  color: white;
+  text-align: center;
 }
 
 .nav-bar {
-    background: linear-gradient(-50deg, #010801, #0d0d60);
-    height: 60px;
-    margin-bottom: 25px;
+  background: linear-gradient(-50deg, #010801, #0d0d60);
+  height: 60px;
+  margin-bottom: 25px;
 }
 ```
 
@@ -1533,10 +1518,10 @@ Vue CLI 创建一个 `main.js` 文件，该文件将 `App.vue` 作为入口点�
 打开 `main.js`，然后使用以下代码替换内容：
 
 ```js
-import { createApp } from 'vue'
-import Host from './components/Host.vue'
+import { createApp } from "vue";
+import Host from "./components/Host.vue";
 
-createApp(Host).mount('#app')
+createApp(Host).mount("#app");
 ```
 
 ---
@@ -1549,7 +1534,7 @@ createApp(Host).mount('#app')
 
 到此为止完成了在 Vue.js 中创建了你的第一个单文件组件！
 
-----
+---
 
 ###### 组件属性
 
@@ -1566,10 +1551,10 @@ HTML 元素是用于创建页面的构建基块。 可通过将特性设置为�
 ```html
 <!-- UserDisplay component -->
 <script>
-export default {
-    name: 'UserDisplay',
-    props: ['name', 'age']
-}
+  export default {
+    name: "UserDisplay",
+    props: ["name", "age"],
+  };
 </script>
 ```
 
@@ -1578,15 +1563,15 @@ export default {
 ```html
 <!-- inside parent component -->
 <template>
-    <user-display name='Cheryl' age='28'></user-display>
+  <user-display name="Cheryl" age="28"></user-display>
 </template>
 <script>
-import UserDisplay from './UserDisplay.vue';
-export default {
+  import UserDisplay from "./UserDisplay.vue";
+  export default {
     components: {
-        UserDisplay
-    }
-}
+      UserDisplay,
+    },
+  };
 </script>
 ```
 
@@ -1605,13 +1590,13 @@ export default {
 ```html
 <!-- UserDisplay component script -->
 <script>
-export default {
-    name: 'UserDisplay',
+  export default {
+    name: "UserDisplay",
     props: {
-        name: String,
-        age: Number
-    }
-}
+      name: String,
+      age: Number,
+    },
+  };
 </script>
 ```
 
@@ -1619,7 +1604,7 @@ export default {
 
 ```html
 <!-- inside parent component -->
-<user-display name='Cheryl' age='28'></user-display>
+<user-display name="Cheryl" age="28"></user-display>
 ```
 
 但是，如果将数据类型设置为与架构不匹配的值（例如向 `name` 传入数字），你会在控制台中收到一条警告。 该警告将要求你采取措施。
@@ -1635,15 +1620,15 @@ export default {
 ```html
 <!-- UserDisplay component script -->
 <script>
-export default {
-    name: 'UserDisplay',
+  export default {
+    name: "UserDisplay",
     props: {
-        user: {
-            name: String,
-            age: Number
-        }
-    }
-}
+      user: {
+        name: String,
+        age: Number,
+      },
+    },
+  };
 </script>
 ```
 
@@ -1652,24 +1637,24 @@ export default {
 ```html
 <!-- parent component -->
 <template>
-<user-display :user="user"></user-display>
+  <user-display :user="user"></user-display>
 </template>
 
 <script>
-import UserInfo from './UserInfo.vue';
-export default {
+  import UserInfo from "./UserInfo.vue";
+  export default {
     data() {
-        return {
-            user: {
-                firstName: 'Cheryl',
-                age: 28
-            }
-        }
+      return {
+        user: {
+          firstName: "Cheryl",
+          age: 28,
+        },
+      };
     },
     components: {
-        UserDisplay
-    }
-}
+      UserDisplay,
+    },
+  };
 </script>
 ```
 
@@ -1681,19 +1666,19 @@ export default {
 
 ```html
 <template>
-    <div>Name: {{ user.name }}</div>
-    <div>Age: {{ user.age }}</div>
+  <div>Name: {{ user.name }}</div>
+  <div>Age: {{ user.age }}</div>
 </template>
 <script>
-export default {
-    name: 'UserDisplay',
+  export default {
+    name: "UserDisplay",
     props: {
-        user: {
-            name: String,
-            age: Number
-        }
-    }
-}
+      user: {
+        name: String,
+        age: Number,
+      },
+    },
+  };
 </script>
 ```
 
@@ -1731,7 +1716,7 @@ computed: {
     totalDisplay() {
         let totalCost = 0;
         if (this.bookings && this.bookings.length > 0) {
-            totalCost = 
+            totalCost =
                 this.bookings.map(b => b.price)
                             .reduce((a, b) => a + b);
         }
@@ -1753,17 +1738,13 @@ computed: {
 
 ```html
 <section>
-<h2>
-    Here's your current bookings:
-</h2>
+  <h2>Here's your current bookings:</h2>
 
-<div class="row" v-for="(booking, index) in bookings" :key="index">
-    <div>{{ booking.cabin }} </div>
-</div>
+  <div class="row" v-for="(booking, index) in bookings" :key="index">
+    <div>{{ booking.cabin }}</div>
+  </div>
 
-<h3 class="row">
-    Total: {{ totalDisplay }}
-</h3>
+  <h3 class="row">Total: {{ totalDisplay }}</h3>
 </section>
 ```
 
@@ -1782,7 +1763,7 @@ computed: {
 3. 添加以下代码（包括注释）以导入 `BookingList` 组件：
 
    ```js
-   import BookingList from './BookingList.vue';
+   import BookingList from "./BookingList.vue";
    // todo: Register next component
    ```
 
@@ -1792,7 +1773,7 @@ computed: {
    components: {
        BookingList,
        // todo: Add next component
-   
+
    },
    ```
 
@@ -1837,10 +1818,10 @@ HTML 元素可基于用户交互引发事件。 使用组件发射事件也能�
 ```html
 <!-- inside the component's vue file -->
 <script>
-export default {
-    name: 'Demo',
-    emits: ['userUpdated']
-}
+  export default {
+    name: "Demo",
+    emits: ["userUpdated"],
+  };
 </script>
 ```
 
@@ -1853,7 +1834,7 @@ export default {
 ```html
 <!-- inside the component's vue file -->
 <template>
-    <button @click="$emit('userUpdated')">Save user</button>
+  <button @click="$emit('userUpdated')">Save user</button>
 </template>
 ```
 
@@ -1864,23 +1845,23 @@ export default {
 ```html
 <!-- inside the component's vue file -->
 <template>
-    <button @click="saveUser">Save user</button>
+  <button @click="saveUser">Save user</button>
 </template>
 <script>
-export default {
-    name: 'UserDialog',
-    emits: ['userUpdated'],
+  export default {
+    name: "UserDialog",
+    emits: ["userUpdated"],
     methods: {
-        saveUser() {
-            // perform other operations
-            this.$emit('userUpdated'); // emits event
-        }
-    }
-}
+      saveUser() {
+        // perform other operations
+        this.$emit("userUpdated"); // emits event
+      },
+    },
+  };
 </script>
 ```
 
-----
+---
 
 **发射带有数据的事件**
 
@@ -1943,7 +1924,7 @@ export default {
 
 使用默认模板创建 `BookingForm` 组件
 
-----
+---
 
 **为组件添加代码**
 
@@ -1980,21 +1961,21 @@ methods: {
 
 ```html
 <section>
-<h2>Book now!</h2>
-<form>
+  <h2>Book now!</h2>
+  <form>
     <div class="row">
-        <label for="cruise-cabin">Select class:</label>
-        <select id="cruise-cabin" v-model="cabinIndex">
-            <option disabled value="-1">Select a cabin</option>
-            <option v-for="(cabin, index) in cabins" :value="index" :key="index">
-                {{ cabin.name }} $ {{ cabin.price.toLocaleString('en-US') }}
-            </option>
-        </select>
+      <label for="cruise-cabin">Select class:</label>
+      <select id="cruise-cabin" v-model="cabinIndex">
+        <option disabled value="-1">Select a cabin</option>
+        <option v-for="(cabin, index) in cabins" :value="index" :key="index">
+          {{ cabin.name }} $ {{ cabin.price.toLocaleString('en-US') }}
+        </option>
+      </select>
     </div>
     <div class="row">
-        <button class="button" type="button" @click="bookCabin">Book now!</button>
+      <button class="button" type="button" @click="bookCabin">Book now!</button>
     </div>
-</form>
+  </form>
 </section>
 ```
 
@@ -2009,13 +1990,13 @@ methods: {
 在 `todo: Register next component` 注释后添加以下代码以导入 `BookingForm`：
 
 ```js
-import BookingForm from './BookingForm.vue';
+import BookingForm from "./BookingForm.vue";
 ```
 
 通过在 `todo: Add next component` 注释后添加以下代码，将 `BookingForm` 添加到可用组件列表中：
 
 ```js
-BookingForm
+BookingForm;
 ```
 
 通过在 `todo: Add methods` 注释后添加以下代码来添加用于处理 `bookingCreated` 自定义事件的方法：
@@ -2038,7 +2019,10 @@ methods: {
 使用 `booking-form` 组件，使用方法为在 `todo: Add booking-form` 注释后添加以下代码：
 
 ```html
-<booking-form @booking-created="addBooking" :cabins="cruise.cabins"></booking-form>
+<booking-form
+  @booking-created="addBooking"
+  :cabins="cruise.cabins"
+></booking-form>
 ```
 
 我们将 `addBooking` 函数连接到 `booking-created` 事件，并传递要显示的客舱列表。
@@ -2075,7 +2059,7 @@ pnpm install vue@next
 
 大多数情况下，我们更倾向于使用 Vue CLI 来创建一个配置最小化的 webpack 构建版本
 
-> 本质上，*webpack* 是一个现代 JavaScript 应用程序的 *静态模块打包器(module bundler)*。当 webpack 处理应用程序时，它会递归地构建一个*依赖关系图(dependency graph)*，其中包含应用程序需要的每个模块，然后将所有这些模块打包成一个或多个 *bundle*。
+> 本质上，_webpack_ 是一个现代 JavaScript 应用程序的 _静态模块打包器(module bundler)_。当 webpack 处理应用程序时，它会递归地构建一个*依赖关系图(dependency graph)*，其中包含应用程序需要的每个模块，然后将所有这些模块打包成一个或多个 _bundle_。
 >
 > [概念 | webpack 中文网 (webpackjs.com)](https://www.webpackjs.com/concepts/)
 
@@ -2103,7 +2087,7 @@ pnpm install -g @vue/cli
 >
 > 选择 `创建` 后根据界面提示完成项目的创建
 >
-> > [pnpm安装以及安装@vue/cli_cxrlover的博客-CSDN博客_安装pnpm](https://blog.csdn.net/weixin_43852058/article/details/113752494)
+> > [pnpm 安装以及安装@vue/cli*cxrlover 的博客-CSDN 博客*安装 pnpm](https://blog.csdn.net/weixin_43852058/article/details/113752494)
 
 然后在 Vue 项目中运行
 
@@ -2121,7 +2105,7 @@ vue upgrade --next
 
 ---
 
-###  NPM 包中的官方声明
+### NPM 包中的官方声明
 
 随着应用的增长，静态类型系统可以帮助防止许多潜在的运行时错误，这就是为什么 Vue 3 是用 TypeScript 编写的。这意味着在 Vue 中使用 TypeScript 不需要任何其他工具——它具有一等公民支持。
 
@@ -2155,35 +2139,34 @@ vue upgrade --next
 
 ```json
 {
-	// Place your snippets for vue here. Each snippet is defined under a snippet name and has a prefix, body and 
-	// description. The prefix is what is used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
-	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. Placeholders with the 
-	// same ids are connected.
-	// Example:
-	// "Print to console": {
-	// 	"prefix": "log",
-	// 	"body": [
-	// 		"console.log('$1');",
-	// 		"$2"
-	// 	],
-	// 	"description": "Log output to console"
-	// }
-	"vue-template":{
-		"prefix": "vue3",
-		"body": [
-			"<script setup lang=\"ts\">",
-			"</script>",
-			"",
-			"<template>",
-			"</template>",
-			"",
-			"<style lang=\"less\" scoped>",
-			"</style>"
-		],
-		"description": "vue3 template"
-	}
+  // Place your snippets for vue here. Each snippet is defined under a snippet name and has a prefix, body and
+  // description. The prefix is what is used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
+  // $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. Placeholders with the
+  // same ids are connected.
+  // Example:
+  // "Print to console": {
+  // 	"prefix": "log",
+  // 	"body": [
+  // 		"console.log('$1');",
+  // 		"$2"
+  // 	],
+  // 	"description": "Log output to console"
+  // }
+  "vue-template": {
+    "prefix": "vue3",
+    "body": [
+      "<script setup lang=\"ts\">",
+      "</script>",
+      "",
+      "<template>",
+      "</template>",
+      "",
+      "<style lang=\"less\" scoped>",
+      "</style>"
+    ],
+    "description": "vue3 template"
+  }
 }
-
 ```
 
 ---
@@ -2241,7 +2224,7 @@ vue add typescript
 
 ###### DevTools 无法加载源映射
 
-> [DevTools 无法加载 SourceMap：XXXX.map 的内容:HTTP 错误: 状态代码 404，net::ERR_UNKNOWN_URL_SCHEM_caesarding07-CSDN博客_devtools 无法加载源映射](https://blog.csdn.net/qq_44628595/article/details/116061062)
+> [DevTools 无法加载 SourceMap：XXXX.map 的内容:HTTP 错误: 状态代码 404，net::ERR_UNKNOWN_URL_SCHEM_caesarding07-CSDN 博客\_devtools 无法加载源映射](https://blog.csdn.net/qq_44628595/article/details/116061062)
 
 ![image-20220107101932334](http://cdn.ayusummer233.top/img/202201071019476.png)
 
@@ -2252,6 +2235,7 @@ vue add typescript
 关掉就好了
 
 ---
+
 ## Vite
 
 > [开始 | Vite 官方中文文档 (vitejs.dev)](https://cn.vitejs.dev/guide/)
@@ -2265,15 +2249,15 @@ vue add typescript
 >
 > 你可以在 [为什么选 Vite](https://cn.vitejs.dev/guide/why.html) 中了解更多关于项目的设计初衷。
 
-> [学习Vue3 第二章（配置环境）_qq1195566313的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/122769982)
+> [学习 Vue3 第二章（配置环境）\_qq1195566313 的博客-CSDN 博客](https://blog.csdn.net/qq1195566313/article/details/122769982)
 
 - `vite` 的优势
 
-  `冷服务`:  默认的构建目标浏览器是能 [在 script 标签上支持原生 ESM](https://caniuse.com/es6-module) 和 [原生 ESM 动态导入](https://caniuse.com/es6-module-dynamic-import)
+  `冷服务`: 默认的构建目标浏览器是能 [在 script 标签上支持原生 ESM](https://caniuse.com/es6-module) 和 [原生 ESM 动态导入](https://caniuse.com/es6-module-dynamic-import)
 
   HMR 速度快到惊人的 [模块热更新（HMR）](https://vitejs.cn/guide/features.html#hot-module-replacement)
 
-  Rollup打包 它使用 [Rollup](https://rollupjs.org/) 打包你的代码，并且它是预配置的 并且支持大部分rollup插件
+  Rollup 打包 它使用 [Rollup](https://rollupjs.org/) 打包你的代码，并且它是预配置的 并且支持大部分 rollup 插件
 
 ```powershell
 pnpm create v
@@ -2283,7 +2267,7 @@ pnpm create v
 
 ### 目录结构
 
-> [学习Vue3 第三章（Vite目录 & Vue单文件组件）_qq1195566313的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/122771007)
+> [学习 Vue3 第三章（Vite 目录 & Vue 单文件组件）\_qq1195566313 的博客-CSDN 博客](https://blog.csdn.net/qq1195566313/article/details/122771007)
 
 - `public` - 不会被编译, 放置静态资源
 
@@ -2295,36 +2279,35 @@ pnpm create v
 
 - `main.ts` - 全局 ts 文件
 
-- `index.html` - 非常重要的入口文件**（webpack，rollup 他们的入口文件都是enrty input 是一个 js文件 而 Vite 的入口文件是一个 html 文件，他刚开始不会编译这些js文件 只有当你用到的时候 如script src="xxxxx.js" 会发起一个请求被vite拦截这时候才会解析js文件）**
+- `index.html` - 非常重要的入口文件**（webpack，rollup 他们的入口文件都是 enrty input 是一个 js 文件 而 Vite 的入口文件是一个 html 文件，他刚开始不会编译这些 js 文件 只有当你用到的时候 如 script src="xxxxx.js" 会发起一个请求被 vite 拦截这时候才会解析 js 文件）**
 
 - `vite.config.ts` - vite 配置项
 
 - `tsconfig.json` - TS 编译器配置
 
-  > [详解TypeScript项目中的tsconfig.json配置 - 简书 (jianshu.com)](https://www.jianshu.com/p/0383bbd61a6b)
+  > [详解 TypeScript 项目中的 tsconfig.json 配置 - 简书 (jianshu.com)](https://www.jianshu.com/p/0383bbd61a6b)
 
 ---
 
 ### 路径别名配置
 
-> [(32) vite配置项目路径别名 - SegmentFault 思否](https://segmentfault.com/a/1190000041417219)
+> [(32) vite 配置项目路径别名 - SegmentFault 思否](https://segmentfault.com/a/1190000041417219)
 
 `vite.config.ts`:
 
 ```typescript
 // vite.config.js/ts
 import { join } from "path";
-import { defineConfig } from 'vite'
+import { defineConfig } from "vite";
 
 // https://vitejs.dev/config/
 export default defineConfig({
   resolve: {
     alias: {
-      '@': join(__dirname, "src"),
-    }
-  }
-})
-
+      "@": join(__dirname, "src"),
+    },
+  },
+});
 ```
 
 `tsconfig.json`
@@ -2344,13 +2327,11 @@ export default defineConfig({
 
 ```
 
-如果你是刚创建的TypeScript项目，有可能会遇到`找不到模块“path”或其相应的类型声明`的错误提示，安装`@types/node`即可。
+如果你是刚创建的 TypeScript 项目，有可能会遇到`找不到模块“path”或其相应的类型声明`的错误提示，安装`@types/node`即可。
 
 ```shell
 pnpm install @types/node --save-dev
 ```
-
-
 
 ---
 
@@ -2467,7 +2448,7 @@ Vite 在一个特殊的 **`import.meta.env`** 对象上暴露环境变量。这�
 
 在生产环境中，这些环境变量会在构建时被**静态替换**，因此，在引用它们时请使用**完全静态的字符串**。动态的 key 将无法生效。例如，动态 key 取值 `import.meta.env[key]` 是无效的。
 
-它还将替换出现在 JavaScript 和 Vue 模板中的字符串。这本应是非常少见的，但也可能是不小心为之的。在这种情况下你可能会看到类似 `Missing Semicolon` 或 `Unexpected token` 等错误，例如当 `"process.env.NODE_ENV"` 被替换为 `""development": "`。有一些方法可以避免这个问题：
+它还将替换出现在 JavaScript 和 Vue 模板中的字符串。这本应是非常少见的，但也可能是不小心为之的。在这种情况下你可能会看到类似 `Missing Semicolon` 或 `Unexpected token` 等错误，例如当 `"process.env.NODE_ENV"` 被替换为 `"development": ""`。有一些方法可以避免这个问题：
 
 - 对于 JavaScript 字符串，你可以使用 unicode 零宽度空格 **`\u200b`** (一个看不见的分隔符)来分割这个字符串，例如： `'import.meta\u200b.env.MODE'`。
 - 对于 Vue 模板或其他编译到 JavaScript 字符串的 HTML，你可以使用 [\<wbr> 标签](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/wbr)，例如：`import.meta.<wbr>env.MODE`。
@@ -2530,12 +2511,12 @@ VITE_SOME_KEY=123
 /// <reference types="vite/client" />
 
 interface ImportMetaEnv {
-  readonly VITE_APP_TITLE: string
+  readonly VITE_APP_TITLE: string;
   // 更多环境变量...
 }
 
 interface ImportMeta {
-  readonly env: ImportMetaEnv
+  readonly env: ImportMetaEnv;
 }
 ```
 
@@ -2604,15 +2585,15 @@ VITE_APP_TITLE=My App (staging)
 
 ![image-20220212003136197](http://cdn.ayusummer233.top/img/202202120031251.png)
 
-原因在于 typescript 只能理解 .ts 文件，无法理解 .vue文件
+原因在于 typescript 只能理解 .ts 文件，无法理解 .vue 文件
 
 解决方案: 在项目根目录或 `src` 文件夹下创建一个后缀为 `.d.ts` 的文件，并写入以下内容：
 
 ```typescript
-declare module '*.vue' {
-  import { ComponentOptions } from 'vue'
-  const componentOptions: ComponentOptions
-  export default componentOptions
+declare module "*.vue" {
+  import { ComponentOptions } from "vue";
+  const componentOptions: ComponentOptions;
+  export default componentOptions;
 }
 ```
 
@@ -2620,13 +2601,13 @@ declare module '*.vue' {
 
 ![image-20220212004458873](http://cdn.ayusummer233.top/img/202202120044180.png)
 
-重启窗口后再看 `HelloWorld.vue`, 报错消失了😅
+重启窗口后再看 `HelloWorld.vue`, 报错消失了 😅
 
 ![image-20220212004613823](http://cdn.ayusummer233.top/img/202202120046085.png)
 
 > PS: `App.vue` 里的错误是 `vuter` 报的, 使用 vue3 开发的话可以禁用 `vuter`, 使用 `volar`
 >
-> > [Volar - vue终极开发神器！ - 掘金 (juejin.cn)](https://juejin.cn/post/6966106927990308872)
+> > [Volar - vue 终极开发神器！ - 掘金 (juejin.cn)](https://juejin.cn/post/6966106927990308872)
 
 ---
 
@@ -2666,14 +2647,9 @@ pnpm i eslint @typescript-eslint/parser @typescript-eslint/eslint-plugin -D
 ```js
 module.exports = {
   root: true,
-  parser: '@typescript-eslint/parser',
-  plugins: [
-    '@typescript-eslint',
-  ],
-  extends: [
-    'eslint:recommended',
-    'plugin:@typescript-eslint/recommended',
-  ],
+  parser: "@typescript-eslint/parser",
+  plugins: ["@typescript-eslint"],
+  extends: ["eslint:recommended", "plugin:@typescript-eslint/recommended"],
 };
 ```
 
@@ -2682,11 +2658,11 @@ module.exports = {
 > - `parser: '@typescript-eslint/parser,'`
 >
 >   告诉 `ESLint` 使用 `@typescript-eslint/parser` 作为 `parser package`
->   
+>
 >   这可以使 `ESLint` 可以理解 `TypeScript` 语法
->   
+>
 >   不这样写的话会使 `ESLint` 像往常解析 `JS` 一样解析 `TS`, 自然就会报错
->   
+>
 > - ```js
 >   plugins: [
 >       '@typescript-eslint',
@@ -2704,12 +2680,12 @@ module.exports = {
 >       ],
 >   ```
 >
->   `extends` 属性告诉 `ESLint` 你的配置 `extends(扩展)`  了给定配置
+>   `extends` 属性告诉 `ESLint` 你的配置 `extends(扩展)` 了给定配置
 >
 >   - `'eslint:recommended'` 是 `ESLint` 内置的 "推荐配置" ---- 他给出一个小的,合理的 `rules` 集, 这些 `rules` 是众所周知的最佳实践的 `lint`
 >   - `'plugin:@typescript-eslint/recommended'` 是官方的 "建议配置" --- 它就像 `eslint:recomment` 一样, 只不过它只针对 `TypeScript-specific` 插件中的 `rules`
 >
-> ----
+> ---
 >
 > `module` 报错: `'module' is not defined. eslint(no-undef)`
 >
@@ -2721,21 +2697,15 @@ module.exports = {
 >
 > ```js
 > module.exports = {
->     root: true,
->     parser: '@typescript-eslint/parser',         // Specifies the ESLint parser
->     plugins: [
->         '@typescript-eslint',
->     ],
->     extends: [
->         'eslint:recommended',
->         'plugin:@typescript-eslint/recommended',
->     ],
->     env: {
->         node: true  // 解决 module 报错
->     }
+>   root: true,
+>   parser: "@typescript-eslint/parser", // Specifies the ESLint parser
+>   plugins: ["@typescript-eslint"],
+>   extends: ["eslint:recommended", "plugin:@typescript-eslint/recommended"],
+>   env: {
+>     node: true, // 解决 module 报错
+>   },
 > };
 > ```
->
 
 ---
 
@@ -2747,8 +2717,6 @@ module.exports = {
 # don't lint build output (make sure it's set to your correct build folder name)
 dist
 ```
-
-
 
 ---
 
@@ -2795,36 +2763,45 @@ pnpm install vue-router@4
 
 ```typescript
 //引入路由对象
-import { createRouter, createWebHistory, createWebHashHistory, createMemoryHistory, RouteRecordRaw } from 'vue-router'
+import {
+  createRouter,
+  createWebHistory,
+  createWebHashHistory,
+  createMemoryHistory,
+  RouteRecordRaw,
+} from "vue-router";
 
 //路由数组的类型 RouteRecordRaw
 // 定义一些路由
 // 每个路由都需要映射到一个组件。
-const routes: Array<RouteRecordRaw> = [{
-    path: '/',
-    component: () => import('../components/HelloWorld.vue')
-}, {
-    path: '/marquee',
-    component: () => import('../components/Marquee.vue')
-}]
+const routes: Array<RouteRecordRaw> = [
+  {
+    path: "/",
+    component: () => import("../components/HelloWorld.vue"),
+  },
+  {
+    path: "/marquee",
+    component: () => import("../components/Marquee.vue"),
+  },
+];
 
 // 创建 router
 const router = createRouter({
-    history: createWebHistory(),
-    routes
-})
+  history: createWebHistory(),
+  routes,
+});
 
 //导出router
-export default router
+export default router;
 ```
 
 在 `main.ts` 中引入并使用:
 
 ```typescript
 // 引入 vue-router
-import router from './router'
+import router from "./router";
 // 使用 router
-app.use(router)
+app.use(router);
 ```
 
 在 `App,vue` 中展示
@@ -2849,19 +2826,17 @@ app.use(router)
 
 > [不同的历史模式 | Vue Router (vuejs.org)](https://router.vuejs.org/zh/guide/essentials/history-mode.html)
 >
-> [小满Router（第一章入门）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123585949?spm=1001.2014.3001.5502)
+> [小满 Router（第一章入门）\_小满 zs 的博客-CSDN 博客](https://blog.csdn.net/qq1195566313/article/details/123585949?spm=1001.2014.3001.5502)
 
 在创建路由器实例时，`history` 配置允许我们在不同的历史模式中进行选择。
 
 ```typescript
 // 创建 router
 const router = createRouter({
-    history: createWebHistory(),
-    routes
-})
+  history: createWebHistory(),
+  routes,
+});
 ```
-
-
 
 `Vue2 -> Vue3` 路由模式名称变化
 
@@ -2877,7 +2852,7 @@ const router = createRouter({
 
 它在内部传递的实际 URL 之前使用了一个哈希字符（`#`）。由于这部分 URL 从未被发送到服务器，所以它不需要在服务器层面上进行任何特殊处理。不过，**它在 SEO 中确实有不好的影响**。如果你担心这个问题，可以使用 HTML5 模式。
 
-> [搜索引擎优化（搜索优化）_百度百科 (baidu.com)](https://baike.baidu.com/item/搜索引擎优化/3132)
+> [搜索引擎优化（搜索优化）\_百度百科 (baidu.com)](https://baike.baidu.com/item/搜索引擎优化/3132)
 
 ---
 
@@ -2897,7 +2872,7 @@ const router = createRouter({
 
 > [命名路由 | Vue Router (vuejs.org)](https://router.vuejs.org/zh/guide/essentials/named-routes.html)
 >
-> [小满Router（第二章-命名路由-编程式导航）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123589648)
+> [小满 Router（第二章-命名路由-编程式导航）\_小满 zs 的博客-CSDN 博客](https://blog.csdn.net/qq1195566313/article/details/123589648)
 
 除了 `path` 之外，你还可以为任何路由提供 `name`。这有以下优点：
 
@@ -2907,15 +2882,18 @@ const router = createRouter({
 - 绕过路径排序（如显示一个）
 
 ```typescript
-const routes: Array<RouteRecordRaw> = [{
-    path: '/',
-    name: 'helloWorld',
-    component: () => import('../components/HelloWorld.vue')
-}, {
-    path: '/marquee',
-    name: 'marquee',
-    component: () => import('../components/Marquee.vue')
-}]
+const routes: Array<RouteRecordRaw> = [
+  {
+    path: "/",
+    name: "helloWorld",
+    component: () => import("../components/HelloWorld.vue"),
+  },
+  {
+    path: "/marquee",
+    name: "marquee",
+    component: () => import("../components/Marquee.vue"),
+  },
+];
 ```
 
 官方示例:
@@ -2923,21 +2901,24 @@ const routes: Array<RouteRecordRaw> = [{
 ```typescript
 const routes = [
   {
-    path: '/user/:username',
-    name: 'user',
-    component: User
-  }
-]
+    path: "/user/:username",
+    name: "user",
+    component: User,
+  },
+];
 ```
 
 要链接到一个命名的路由，可以向 `router-link` 组件的 `to` 属性传递一个对象：
 
 ```html
-  <el-button>
-    <router-link :to="{
+<el-button>
+  <router-link
+    :to="{
       name: 'marquee'
-    }">跑马灯组件跳转</router-link>
-  </el-button>
+    }"
+    >跑马灯组件跳转</router-link
+  >
+</el-button>
 ```
 
 ```html
@@ -2949,36 +2930,37 @@ const routes = [
 这跟代码调用 `router.push()` 是一回事：
 
 ```js
-router.push({ name: 'user', params: { username: 'erina' } })
+router.push({ name: "user", params: { username: "erina" } });
 ```
 
 在这两种情况下，路由将导航到路径 `/user/erina`。
 
 > 还可以使用 a 标签进行跳转
+>
 > ```html
 > <!-- 使用 a 标签跳转 -->
 > <el-button>
->  <a href="/marquee">使用a标签跳转到跑马灯</a>
+>   <a href="/marquee">使用a标签跳转到跑马灯</a>
 > </el-button>
 > ```
 >
 > 使用 `router.push` 进行跳转
 >
 > ```html
->   <!-- 使用 router.push 跳转 -->
->   <el-button @click="switchToMarquee">使用router.push跳转到跑马灯</el-button>
+> <!-- 使用 router.push 跳转 -->
+> <el-button @click="switchToMarquee">使用router.push跳转到跑马灯</el-button>
 > ```
 >
 > ```typescript
 > // 引入 vue-router
-> import router from '@/router'
+> import router from "@/router";
 > // 使用 router.push 跳转到跑马灯页面
 > const switchToMarquee = (): void => {
->   router.push('/marquee')
-> }
+>   router.push("/marquee");
+> };
 > ```
 >
-> 三种跳转方式中只有使用 a 标签进行跳转是在重新加载界面的情况下更改URL
+> 三种跳转方式中只有使用 a 标签进行跳转是在重新加载界面的情况下更改 URL
 >
 > ![image-20220409211757607](http://cdn.ayusummer233.top/img/202204092118935.png)
 
@@ -2988,7 +2970,7 @@ router.push({ name: 'user', params: { username: 'erina' } })
 
 > [编程式导航 | Vue Router (vuejs.org)](https://router.vuejs.org/zh/guide/essentials/navigation.html#编程式导航)
 >
-> [小满Router（第二章-命名路由-编程式导航）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123589648)
+> [小满 Router（第二章-命名路由-编程式导航）\_小满 zs 的博客-CSDN 博客](https://blog.csdn.net/qq1195566313/article/details/123589648)
 
 ---
 
@@ -3008,44 +2990,44 @@ router.push({ name: 'user', params: { username: 'erina' } })
 
 ```js
 // 字符串路径
-router.push('/users/eduardo')
+router.push("/users/eduardo");
 
 // 带有路径的对象
-router.push({ path: '/users/eduardo' })
+router.push({ path: "/users/eduardo" });
 
 // 命名的路由，并加上参数，让路由建立 url
-router.push({ name: 'user', params: { username: 'eduardo' } })
+router.push({ name: "user", params: { username: "eduardo" } });
 
 // 带查询参数，结果是 /register?plan=private
-router.push({ path: '/register', query: { plan: 'private' } })
+router.push({ path: "/register", query: { plan: "private" } });
 
 // 带 hash，结果是 /about#team
-router.push({ path: '/about', hash: '#team' })
+router.push({ path: "/about", hash: "#team" });
 ```
 
 **注意**：如果提供了 `path`，`params` 会被忽略，上述例子中的 `query` 并不属于这种情况。取而代之的是下面例子的做法，你需要提供路由的 `name` 或手写完整的带有参数的 `path` ：
 
 ```js
-const username = 'eduardo'
+const username = "eduardo";
 // 我们可以手动建立 url，但我们必须自己处理编码
-router.push(`/user/${username}`) // -> /user/eduardo
+router.push(`/user/${username}`); // -> /user/eduardo
 // 同样
-router.push({ path: `/user/${username}` }) // -> /user/eduardo
+router.push({ path: `/user/${username}` }); // -> /user/eduardo
 // 如果可能的话，使用 `name` 和 `params` 从自动 URL 编码中获益
-router.push({ name: 'user', params: { username } }) // -> /user/eduardo
+router.push({ name: "user", params: { username } }); // -> /user/eduardo
 // `params` 不能与 `path` 一起使用
-router.push({ path: '/user', params: { username } }) // -> /user
+router.push({ path: "/user", params: { username } }); // -> /user
 ```
 
 由于属性 `to` 与 `router.push` 接受的对象种类相同，所以两者的规则完全相同。
 
-`router.push` 和所有其他导航方法都会返回一个 *Promise*，让我们可以等到导航完成后才知道是成功还是失败。在官方文档的 [Navigation Handling](https://router.vuejs.org/zh/guide/advanced/navigation-failures.html) 中有详细介绍。
+`router.push` 和所有其他导航方法都会返回一个 _Promise_，让我们可以等到导航完成后才知道是成功还是失败。在官方文档的 [Navigation Handling](https://router.vuejs.org/zh/guide/advanced/navigation-failures.html) 中有详细介绍。
 
 ---
 
 ### 历史记录
 
-> [小满Router（第三章-历史记录）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123590884)
+> [小满 Router（第三章-历史记录）\_小满 zs 的博客-CSDN 博客](https://blog.csdn.net/qq1195566313/article/details/123590884)
 
 使用 `replace` 可以在不留下历史记录的情况下跳转页面
 
@@ -3054,13 +3036,15 @@ router.push({ path: '/user', params: { username } }) // -> /user
 ```typescript
 // 不留示例记录跳转
 const switchToMarquee_no_record = (): void => {
-  router.replace('/marquee')
-}
+  router.replace("/marquee");
+};
 ```
 
 ```html
-  <!-- 不留历史记录跳转 -->
-  <el-button @click="switchToMarquee_no_record">不留历史记录跳转到跑马灯</el-button>
+<!-- 不留历史记录跳转 -->
+<el-button @click="switchToMarquee_no_record"
+  >不留历史记录跳转到跑马灯</el-button
+>
 ```
 
 > ![msedge_cSoLw6uzxb](http://cdn.ayusummer233.top/img/202204100815795.gif)
@@ -3070,22 +3054,22 @@ const switchToMarquee_no_record = (): void => {
 ```typescript
 // 前进 1 级界面
 const forward = (): void => {
-  router.forward()
+  router.forward();
   // 或者 router.go(1)
-}
+};
 
 // 回退 1 级界面
 const back = (): void => {
-  router.back()
+  router.back();
   // 或者 router.go(-1)
-}
+};
 ```
 
 ```html
-  <!-- 前进 1 级界面 -->
-  <el-button @click="forward">前进 1 级界面</el-button>
-  <!-- 回退 1 级界面 -->
-  <el-button @click="back">回退 1 级界面</el-button>
+<!-- 前进 1 级界面 -->
+<el-button @click="forward">前进 1 级界面</el-button>
+<!-- 回退 1 级界面 -->
+<el-button @click="back">回退 1 级界面</el-button>
 ```
 
 > ![msedge_3pZIvCuV6y](http://cdn.ayusummer233.top/img/202204100824354.gif)
@@ -3094,16 +3078,16 @@ const back = (): void => {
 
 ### 路由传参
 
-> [小满Router（第四章-路由传参）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123613595)
+> [小满 Router（第四章-路由传参）\_小满 zs 的博客-CSDN 博客](https://blog.csdn.net/qq1195566313/article/details/123613595)
 >
 > [将 props 传递给路由组件 | Vue Router (vuejs.org)](https://router.vuejs.org/zh/guide/essentials/passing-props.html)
 
 query 传参和 params 传参的区别
 
-- query 传参配置的是 path，而 params 传参配置的是name，在 params中配置 path 无效
+- query 传参配置的是 path，而 params 传参配置的是 name，在 params 中配置 path 无效
 - query 在路由配置不需要设置参数，而 params 必须设置
 - query 传递的参数会显示在地址栏中
-- params传参刷新会无效，但是 query 会保存传递过来的值，刷新不变 ;
+- params 传参刷新会无效，但是 query 会保存传递过来的值，刷新不变 ;
 - 路由配置
 
 ---
@@ -3114,50 +3098,46 @@ query 传参和 params 传参的区别
 
 ```vue
 <script setup lang="ts">
-import router from '@/router'
-import { data } from './goods.json'
+import router from "@/router";
+import { data } from "./goods.json";
 
 type good = {
-    id: number;
-    name: string;
-    price: number;
-}
+  id: number;
+  name: string;
+  price: number;
+};
 
 // 转到商品详情页_path+query
 const toGoodsDetail = (good: good) => {
-    router.push({
-        path: '/goodInfo',
-        query: good
-    })
-}
-
-
-
+  router.push({
+    path: "/goodInfo",
+    query: good,
+  });
+};
 </script>
 
 <template>
-    <div>
-        <el-table :data=data>
-            <el-table-column label="商品名称" prop="name" width="180">
-            </el-table-column>
-            <el-table-column label="商品价格" prop="price" width="180">
-            </el-table-column>
-            <!-- 商品id -->
-            <el-table-column label="商品id" prop="id" width="180">
-            </el-table-column>
-            <el-table-column label="操作" width="180">
-                <!-- 跳转到商品详情页 -->
-                <template #default="scope">
-                    <el-button @click="toGoodsDetail(scope.row)" type="text">查看详情</el-button>
-                </template>
-            </el-table-column>
-        </el-table>
-    </div>
+  <div>
+    <el-table :data="data">
+      <el-table-column label="商品名称" prop="name" width="180">
+      </el-table-column>
+      <el-table-column label="商品价格" prop="price" width="180">
+      </el-table-column>
+      <!-- 商品id -->
+      <el-table-column label="商品id" prop="id" width="180"> </el-table-column>
+      <el-table-column label="操作" width="180">
+        <!-- 跳转到商品详情页 -->
+        <template #default="scope">
+          <el-button @click="toGoodsDetail(scope.row)" type="text"
+            >查看详情</el-button
+          >
+        </template>
+      </el-table-column>
+    </el-table>
+  </div>
 </template>
 
-<style lang="less" scoped>
-</style>
-
+<style lang="less" scoped></style>
 ```
 
 > `el-table` 中可以使用插槽来获取单行数据
@@ -3166,31 +3146,25 @@ const toGoodsDetail = (good: good) => {
 
 ```vue
 <script setup lang="ts">
-import { useRoute, useRouter } from 'vue-router';
+import { useRoute, useRouter } from "vue-router";
 
 const route = useRoute();
 const router = useRouter();
-
 </script>
 
 <template>
-    <div>
-        <!-- 返回商品货仓界面 -->
-        <el-button @click="router.push('/goodsWarehouse')">返回商品货仓界面</el-button>
-        <el-row>
-            id: {{ route.query.id }}
-        </el-row>
-        <el-row>
-            商品名称 {{ route.query.name }}
-        </el-row>
-        <el-row>
-            商品价格: {{ route.query.price }}
-        </el-row>
-    </div>
+  <div>
+    <!-- 返回商品货仓界面 -->
+    <el-button @click="router.push('/goodsWarehouse')"
+      >返回商品货仓界面</el-button
+    >
+    <el-row> id: {{ route.query.id }} </el-row>
+    <el-row> 商品名称 {{ route.query.name }} </el-row>
+    <el-row> 商品价格: {{ route.query.price }} </el-row>
+  </div>
 </template>
 
-<style lang="less" scoped>
-</style>
+<style lang="less" scoped></style>
 ```
 
 > 子界面使用 `useRoute().query.xx`获取传入数据
@@ -3204,31 +3178,25 @@ const router = useRouter();
 ```typescript
 // 转到商品详情页_name+params
 const toGoodsDetail_params = (good: good) => {
-    router.push({
-        name: 'goodInfo',
-        params: good
-    })
-}
+  router.push({
+    name: "goodInfo",
+    params: good,
+  });
+};
 ```
 
 ```html
-        <!-- params 传参, route.params 接收参数 -->
-        <el-card>
-            <template #header>
-                <div class="card-header">params 传参, route.params 接收参数</div>
-            </template>
-            <div>
-                <el-row>
-                    id: {{ route.params?.id }}
-                </el-row>
-                <el-row>
-                    商品名称 {{ route.params?.name }}
-                </el-row>
-                <el-row>
-                    商品价格: {{ route.params?.price }}
-                </el-row>
-            </div>
-        </el-card>
+<!-- params 传参, route.params 接收参数 -->
+<el-card>
+  <template #header>
+    <div class="card-header">params 传参, route.params 接收参数</div>
+  </template>
+  <div>
+    <el-row> id: {{ route.params?.id }} </el-row>
+    <el-row> 商品名称 {{ route.params?.name }} </el-row>
+    <el-row> 商品价格: {{ route.params?.price }} </el-row>
+  </div>
+</el-card>
 ```
 
 > ![msedge_6mAt4yKKUJ](http://cdn.ayusummer233.top/img/202204132106174.gif)
@@ -3252,58 +3220,52 @@ const toGoodsDetail_params = (good: good) => {
 ```typescript
 // 转到商品详情页_动态路由传id
 const toGoodsDetail_dynamic = (good: good) => {
-    router.push({
-        name: 'goodInfo',
-        params: {
-            id: good.id
-        }
-    })
-}
+  router.push({
+    name: "goodInfo",
+    params: {
+      id: good.id,
+    },
+  });
+};
 ```
 
 ```typescript
-import { useRoute, useRouter } from 'vue-router';
-import { data } from './goods.json'
+import { useRoute, useRouter } from "vue-router";
+import { data } from "./goods.json";
 
 const route = useRoute();
 const router = useRouter();
 
-const item = data.find(v => v.id === Number(route.params.id))
+const item = data.find((v) => v.id === Number(route.params.id));
 ```
 
 ```html
-        <!-- 动态路由传参, 导入数据结合传入id提取目标数据 -->
-        <el-card>
-            <template #header>
-                <div class="card-header">动态路由传参, 导入数据结合传入id提取目标数据</div>
-            </template>
-            <div>
-                <el-row>
-                    id: {{ item?.id }}
-                </el-row>
-                <el-row>
-                    商品名称 {{ item?.name }}
-                </el-row>
-                <el-row>
-                    商品价格: {{ item?.price }}
-                </el-row>
-            </div>
-        </el-card>
+<!-- 动态路由传参, 导入数据结合传入id提取目标数据 -->
+<el-card>
+  <template #header>
+    <div class="card-header">动态路由传参, 导入数据结合传入id提取目标数据</div>
+  </template>
+  <div>
+    <el-row> id: {{ item?.id }} </el-row>
+    <el-row> 商品名称 {{ item?.name }} </el-row>
+    <el-row> 商品价格: {{ item?.price }} </el-row>
+  </div>
+</el-card>
 ```
 
 > ![msedge_CVTuOI2ofJ](http://cdn.ayusummer233.top/img/202204132143962.gif)
 
 > 动态路由传参也是通过 Params, 因此除了根据 id 定位 data 中的相应条目数据
 >
-> params 直接传一个 good 对象即可(good对象中有id属性, 默认会赋给id)
+> params 直接传一个 good 对象即可(good 对象中有 id 属性, 默认会赋给 id)
 >
-> > 只传 id 然后结合 data 取值可以通过网址直接访问具体商品的详情(网址里传了id)
+> > 只传 id 然后结合 data 取值可以通过网址直接访问具体商品的详情(网址里传了 id)
 
 ---
 
 ### 嵌套路由
 
-> [小满Router（第五章-嵌套路由）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123618719)
+> [小满 Router（第五章-嵌套路由）\_小满 zs 的博客-CSDN 博客](https://blog.csdn.net/qq1195566313/article/details/123618719)
 
 比如导航菜单栏做成父路由, 具体内容做成子路由
 
@@ -3338,28 +3300,32 @@ const item = data.find(v => v.id === Number(route.params.id))
 
 ```vue
 <script setup lang="ts">
-import router from '@/router'
+import router from "@/router";
 </script>
 
 <template>
-    <el-card>
-        <template #header>
-            <div class="card-header">我是父路由</div>
-            <div class="card-header">
-                <!-- 跳转到货仓主界面 -->
-                <el-button @click="router.push('/goodsWarehouse')">返回货仓主界面</el-button>
-                <!-- 前往商品1详情页 -->
-                <el-button @click="router.push('/goodInfo/1')">前往商品1详情页</el-button>
-            </div>
-        </template>
-        <router-view></router-view>
-    </el-card>
+  <el-card>
+    <template #header>
+      <div class="card-header">我是父路由</div>
+      <div class="card-header">
+        <!-- 跳转到货仓主界面 -->
+        <el-button @click="router.push('/goodsWarehouse')"
+          >返回货仓主界面</el-button
+        >
+        <!-- 前往商品1详情页 -->
+        <el-button @click="router.push('/goodInfo/1')"
+          >前往商品1详情页</el-button
+        >
+      </div>
+    </template>
+    <router-view></router-view>
+  </el-card>
 </template>
 
 <style lang="less" scoped>
 .card-header {
-    // 文字居中
-    text-align: center;
+  // 文字居中
+  text-align: center;
 }
 </style>
 ```
@@ -3372,7 +3338,7 @@ import router from '@/router'
 
 ### 命名视图
 
-> [小满Router（第六章-命名视图）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123671069)
+> [小满 Router（第六章-命名视图）\_小满 zs 的博客-CSDN 博客](https://blog.csdn.net/qq1195566313/article/details/123671069)
 >
 > [命名路由 | Vue Router (vuejs.org)](https://router.vuejs.org/zh/guide/essentials/named-routes.html)
 
@@ -3393,7 +3359,7 @@ const router = createRouter({
   history: createWebHashHistory(),
   routes: [
     {
-      path: '/',
+      path: "/",
       components: {
         default: Home,
         // LeftSidebar: LeftSidebar 的缩写
@@ -3403,7 +3369,7 @@ const router = createRouter({
       },
     },
   ],
-})
+});
 ```
 
 ---
@@ -3439,23 +3405,21 @@ const router = createRouter({
 `root.vue`:
 
 ```vue
-<script setup lang="ts">
-</script>
+<script setup lang="ts"></script>
 
 <template>
-    <!-- 返回主界面 -->
-    <el-button @click="$router.push('/')">返回主界面</el-button>
-    <!-- 跳转到 user1 -->
-    <el-button @click="$router.push('/namedView/user1')">跳转到 user1</el-button>
-    <!-- 跳转到 user2 -->
-    <el-button @click="$router.push('/namedView/user2')">跳转到 user2</el-button>
-    <router-view></router-view>
-    <router-view name="b"></router-view>
-    <router-view name="c"></router-view>
+  <!-- 返回主界面 -->
+  <el-button @click="$router.push('/')">返回主界面</el-button>
+  <!-- 跳转到 user1 -->
+  <el-button @click="$router.push('/namedView/user1')">跳转到 user1</el-button>
+  <!-- 跳转到 user2 -->
+  <el-button @click="$router.push('/namedView/user2')">跳转到 user2</el-button>
+  <router-view></router-view>
+  <router-view name="b"></router-view>
+  <router-view name="c"></router-view>
 </template>
 
-<style lang="less" scoped>
-</style>
+<style lang="less" scoped></style>
 ```
 
 > ![image-20220416095535247](http://cdn.ayusummer233.top/img/202204160955467.png)
@@ -3481,7 +3445,7 @@ const router = createRouter({
 
 ### 重定向和别名
 
-> [小满Router（第七章-重定向-别名）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123697904)
+> [小满 Router（第七章-重定向-别名）\_小满 zs 的博客-CSDN 博客](https://blog.csdn.net/qq1195566313/article/details/123697904)
 >
 > [重定向和别名 | Vue Router (vuejs.org)](https://router.vuejs.org/zh/guide/essentials/redirect-and-alias.html)
 >
@@ -3572,7 +3536,7 @@ alias: ['/namedView1', '/namedView2'],
 
 > [导航守卫 | Vue Router (vuejs.org)](https://router.vuejs.org/zh/guide/advanced/navigation-guards.html)
 >
-> [小满Router（第八章-导航守卫）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123699583)
+> [小满 Router（第八章-导航守卫）\_小满 zs 的博客-CSDN 博客](https://blog.csdn.net/qq1195566313/article/details/123699583)
 >
 > [Navigation Guards | Vue Router (vuejs.org)](https://router.vuejs.org/guide/advanced/navigation-guards.html)
 
@@ -3588,18 +3552,18 @@ vue-router 提供的导航守卫主要用来通过跳转或取消的方式守卫
 
 ```typescript
 // 定义路由白名单
-const whiteList = ['/login', '/404', '/401', '/lock']
+const whiteList = ["/login", "/404", "/401", "/lock"];
 
 //  使用导航守卫
 router.beforeEach((to, from, next) => {
-    // 若路由在白名单内或者已经登录(有token), 则放通
-    if (whiteList.indexOf(to.path) !== -1 || localStorage.getItem('token')) {
-        next()
-    } else {
-        // 否则跳转到登录页面
-        next('/login')
-    }
-})
+  // 若路由在白名单内或者已经登录(有token), 则放通
+  if (whiteList.indexOf(to.path) !== -1 || localStorage.getItem("token")) {
+    next();
+  } else {
+    // 否则跳转到登录页面
+    next("/login");
+  }
+});
 ```
 
 路由表:
@@ -3624,117 +3588,123 @@ router.beforeEach((to, from, next) => {
 
 ```vue
 <script setup lang="ts">
-import { reactive, ref, Ref } from 'vue'
-import type { FormInstance, FormItemRule } from 'element-plus'
-import { ElMessage } from 'element-plus'
-import router from '@/router'
+import { reactive, ref, Ref } from "vue";
+import type { FormInstance, FormItemRule } from "element-plus";
+import { ElMessage } from "element-plus";
+import router from "@/router";
 
 // 定义表单数据类型
 type FormData = {
-    account: string,
-    password: string
-}
+  account: string;
+  password: string;
+};
 
 // 定义表单验证规则
-const form = ref<FormInstance>()
+const form = ref<FormInstance>();
 
 // 定义规则类型
 type Rules = {
-    [K in keyof FormData]?: Array<FormItemRule>
-}
+  [K in keyof FormData]?: Array<FormItemRule>;
+};
 
 // 定义表单数据
 const formLabelAlign = reactive<FormData>({
-    // 账号
-    account: '',
-    // 密码
-    password: '',
-})
+  // 账号
+  account: "",
+  // 密码
+  password: "",
+});
 
 // 定义规则
 const rules = reactive<Rules>({
-    account: [
-        {
-            required: true,
-            message: '请输入账号',
-            type: 'string',
-        },
-    ],
-    password: [
-        {
-            required: true,
-            message: '请输入密码',
-            type: 'string',
-        },
-    ],
-})
+  account: [
+    {
+      required: true,
+      message: "请输入账号",
+      type: "string",
+    },
+  ],
+  password: [
+    {
+      required: true,
+      message: "请输入密码",
+      type: "string",
+    },
+  ],
+});
 
 // 密码输入框的显示状态
-const showPassword: Ref<boolean> = ref(false)
-
+const showPassword: Ref<boolean> = ref(false);
 
 //  登录函数
 const login = (): void => {
-    form.value?.validate((validate) => {
-        if (validate) {
-            // 跳转到首页
-            router.push('/navigation')
-            // 设置token
-            localStorage.setItem('token', '1')
-        } else {
-            // 提示错误
-            ElMessage.error('请检查表单错误')
-        }
-    })
-}
-
+  form.value?.validate((validate) => {
+    if (validate) {
+      // 跳转到首页
+      router.push("/navigation");
+      // 设置token
+      localStorage.setItem("token", "1");
+    } else {
+      // 提示错误
+      ElMessage.error("请检查表单错误");
+    }
+  });
+};
 </script>
 
 <template>
-    <div class="login">
-        <el-card class="box-card">
-            <template #header>
-                <div class="card-header">
-                    <!-- 返回主界面 -->
-                    <el-button @click="$router.push('/')">返回主界面</el-button>
-                    Login
-                </div>
-            </template>
-            <el-form :model="formLabelAlign" :rules="rules" ref="form">
-                <el-form-item label="账号:" prop="account">
-                    <el-input v-model="formLabelAlign.account" placeholder="请输入账号"></el-input>
-                </el-form-item>
-                <el-form-item label="密码:" prop="password">
-                    <!-- <el-input type="password" v-model="formLabelAlign.password" /> -->
-                    <el-input v-model="formLabelAlign.password" type="password" show-password show-password-icon
-                        @click="showPassword = !showPassword" placeholder="请输入密码" />
-                </el-form-item>
-                <el-form-item>
-                    <!-- 登录按钮 -->
-                    <el-button type="primary" @click="login">登录</el-button>
-                </el-form-item>
-
-            </el-form>
-        </el-card>
-    </div>
+  <div class="login">
+    <el-card class="box-card">
+      <template #header>
+        <div class="card-header">
+          <!-- 返回主界面 -->
+          <el-button @click="$router.push('/')">返回主界面</el-button>
+          Login
+        </div>
+      </template>
+      <el-form :model="formLabelAlign" :rules="rules" ref="form">
+        <el-form-item label="账号:" prop="account">
+          <el-input
+            v-model="formLabelAlign.account"
+            placeholder="请输入账号"
+          ></el-input>
+        </el-form-item>
+        <el-form-item label="密码:" prop="password">
+          <!-- <el-input type="password" v-model="formLabelAlign.password" /> -->
+          <el-input
+            v-model="formLabelAlign.password"
+            type="password"
+            show-password
+            show-password-icon
+            @click="showPassword = !showPassword"
+            placeholder="请输入密码"
+          />
+        </el-form-item>
+        <el-form-item>
+          <!-- 登录按钮 -->
+          <el-button type="primary" @click="login">登录</el-button>
+        </el-form-item>
+      </el-form>
+    </el-card>
+  </div>
 </template>
 
 <style lang="less" scoped>
 .login {
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .card-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .box-card {
-    width: 480px;
+  width: 480px;
 }
 </style>
 ```
@@ -3751,8 +3721,8 @@ const login = (): void => {
 
 ```js
 router.afterEach((to, from) => {
-  sendToAnalytics(to.fullPath)
-})
+  sendToAnalytics(to.fullPath);
+});
 ```
 
 它们对于分析、更改页面标题、声明页面等辅助功能以及许多其他事情都很有用。
@@ -3761,8 +3731,8 @@ router.afterEach((to, from) => {
 
 ```js
 router.afterEach((to, from, failure) => {
-  if (!failure) sendToAnalytics(to.fullPath)
-})
+  if (!failure) sendToAnalytics(to.fullPath);
+});
 ```
 
 ---
@@ -3771,7 +3741,7 @@ router.afterEach((to, from, failure) => {
 
 > [路由元信息 | Vue Router (vuejs.org)](https://router.vuejs.org/zh/guide/advanced/meta.html)
 >
-> [小满Router（第九章-路由元信息）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123766639)
+> [小满 Router（第九章-路由元信息）\_小满 zs 的博客-CSDN 博客](https://blog.csdn.net/qq1195566313/article/details/123766639)
 
 通过路由记录的 `meta` 属性可以定义路由的**元信息**。使用路由元信息可以在路由中附加自定义的数据，例如：
 
@@ -3807,9 +3777,9 @@ router.afterEach((to, from, failure) => {
     },
     component: () => import("@/components/Navigation/Navigation.vue")
 },
-    
+
 // .....其他路由meta
-    
+
 // 定义 meta 中的属性类型, 以免后面使用时报类型错误
 declare module 'vue-router' {
     interface RouteMeta {
@@ -3841,7 +3811,7 @@ router.beforeEach((to, from, next) => {
 
 > [过渡动效 | Vue Router (vuejs.org)](https://router.vuejs.org/zh/guide/advanced/transitions.html)
 >
-> [小满Router（第十章-路由过渡动效）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123767240)
+> [小满 Router（第十章-路由过渡动效）\_小满 zs 的博客-CSDN 博客](https://blog.csdn.net/qq1195566313/article/details/123767240)
 
 想要在路径组件上使用转场，并对导航进行动画处理，你需要使用 [v-slot API](https://router.vuejs.org/zh/api/#router-view-s-v-slot)：
 
@@ -3880,7 +3850,7 @@ router.beforeEach((to, from, next) => {
     },
     component: () => import("@/components/Navigation/Navigation.vue")
 },
-    
+
     // ... 其他路由 transition.....
 ```
 
@@ -3890,7 +3860,7 @@ router.beforeEach((to, from, next) => {
 
 ```typescript
 <script setup lang="ts">
-import 'animate.css'
+  import 'animate.css'
 </script>
 ```
 
@@ -3898,7 +3868,9 @@ import 'animate.css'
 <template>
   <!-- route 即路由信息, Component 即当前 VNode -->
   <router-view #default="{ route, Component }">
-    <transition :enter-active-class="`animate__animated ${route.meta.transition}`">
+    <transition
+      :enter-active-class="`animate__animated ${route.meta.transition}`"
+    >
       <component :is="Component"></component>
     </transition>
   </router-view>
@@ -3913,7 +3885,7 @@ import 'animate.css'
 
 > [滚动行为 | Vue Router (vuejs.org)](https://router.vuejs.org/zh/guide/advanced/scroll-behavior.html#滚动行为)
 >
-> [小满Router（第十一章-滚动行为）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123770440)
+> [小满 Router（第十一章-滚动行为）\_小满 zs 的博客-CSDN 博客](https://blog.csdn.net/qq1195566313/article/details/123770440)
 
 使用前端路由，当切换到新路由时，想要页面滚到顶部，或者是保持原先的滚动位置，就像重新加载页面那样。 vue-router 能做到，而且更好，它让你可以自定义路由切换时页面如何滚动。
 
@@ -3938,17 +3910,17 @@ const router = createRouter({
 ```typescript
 // 创建 router
 const router = createRouter({
-    history: createWebHistory(),
-    routes,
-    scrollBehavior(to, from, savedPosition) {
-        console.log("savaPosition", savedPosition);
-        if (savedPosition) {
-            return savedPosition
-        } else {
-            return { top: 0 }
-        }
+  history: createWebHistory(),
+  routes,
+  scrollBehavior(to, from, savedPosition) {
+    console.log("savaPosition", savedPosition);
+    if (savedPosition) {
+      return savedPosition;
+    } else {
+      return { top: 0 };
     }
-})
+  },
+});
 ```
 
 > ![msedge_QUnJhZJs4x](http://cdn.ayusummer233.top/img/202204181005323.gif)
@@ -3957,7 +3929,7 @@ const router = createRouter({
 
 ### 动态路由
 
-> [小满Router（第十二章-动态路由）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123783173)
+> [小满 Router（第十二章-动态路由）\_小满 zs 的博客-CSDN 博客](https://blog.csdn.net/qq1195566313/article/details/123783173)
 >
 > [动态路由 | Vue Router (vuejs.org)](https://router.vuejs.org/zh/guide/advanced/dynamic-routing.html)
 
@@ -3983,13 +3955,13 @@ const router = createRouter({
 
 ## Pinia
 
-> [pinia_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/category_11672479.html)
+> [pinia\_小满 zs 的博客-CSDN 博客](https://blog.csdn.net/qq1195566313/category_11672479.html)
 >
 > [Introduction | Pinia (vuejs.org)](https://pinia.vuejs.org/introduction.html)
 >
-> [技术胖-Pinia入门视频教程 全新一代状态管理工具Pinia -Vue3全家桶系列 (jspang.com)](https://jspang.com/article/82)
+> [技术胖-Pinia 入门视频教程 全新一代状态管理工具 Pinia -Vue3 全家桶系列 (jspang.com)](https://jspang.com/article/82)
 
-Pinia是Vue生态里Vuex的代替者，一个全新Vue的状态管理库, 是 Vue3 中推荐的状态管理库
+Pinia 是 Vue 生态里 Vuex 的代替者，一个全新 Vue 的状态管理库, 是 Vue3 中推荐的状态管理库
 
 > Pinia 也是 Vuex 的开发团队开发的
 
@@ -4017,28 +3989,25 @@ pnpm install pinia
 `main.ts`:
 
 ```typescript
-import { createApp } from 'vue'
-import App from './App.vue'
-import {createPinia} from 'pinia'
- 
-const store = createPinia()
-let app = createApp(App)
- 
- 
-app.use(store)
- 
-app.mount('#app')
+import { createApp } from "vue";
+import App from "./App.vue";
+import { createPinia } from "pinia";
+
+const store = createPinia();
+let app = createApp(App);
+
+app.use(store);
+
+app.mount("#app");
 ```
 
 ---
 
 ### 使用
 
-> [技术胖-Pinia入门视频教程 全新一代状态管理工具Pinia -Vue3全家桶系列 (jspang.com)](https://jspang.com/article/82)
+> [技术胖-Pinia 入门视频教程 全新一代状态管理工具 Pinia -Vue3 全家桶系列 (jspang.com)](https://jspang.com/article/82)
 >
-> [学习Pinia 第二章（初始化仓库Store）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123342785)
->
-> 
+> [学习 Pinia 第二章（初始化仓库 Store）\_小满 zs 的博客-CSDN 博客](https://blog.csdn.net/qq1195566313/article/details/123342785)
 
 在 main.ts 中引入完 pinia 后就可以创建状态管理库了
 
@@ -4053,51 +4022,46 @@ app.mount('#app')
 `@/store/store-names.ts`:
 
 ```typescript
-export const enum Names{
-    TEST = 'TEST'
+export const enum Names {
+  TEST = "TEST",
 }
 ```
 
 `@/store/index.ts`
 
 ```typescript
-import { defineStore } from 'pinia'
-import { Names} from './store-name'
+import { defineStore } from "pinia";
+import { Names } from "./store-name";
 
 export const useTestStore = defineStore(Names.TEST, {
-    // state 存储全局状态
-    state: () => {
-        return {
-            current: 1,
-            name:'233'
-        }
-    },
-    // computed like, 修饰一些值, 用于监视(计算)状态变化, 有缓存的功能
-    getters: {
-        
-    },
-    // methods, 可做同步异步, 提交state(用于修改 state 全局状态数据)
-    actions: {
-        
-    }
-})
+  // state 存储全局状态
+  state: () => {
+    return {
+      current: 1,
+      name: "233",
+    };
+  },
+  // computed like, 修饰一些值, 用于监视(计算)状态变化, 有缓存的功能
+  getters: {},
+  // methods, 可做同步异步, 提交state(用于修改 state 全局状态数据)
+  actions: {},
+});
 ```
 
 `PiniaTest.vue`:
 
 ```vue
 <script setup lang="ts">
-import { useTestStore } from '@/store';
+import { useTestStore } from "@/store";
 
-const useTest = useTestStore()
+const useTest = useTestStore();
 </script>
 
 <template>
-    <div>pinia:{{ useTest.current }} -- {{ useTest.name }}</div>
+  <div>pinia:{{ useTest.current }} -- {{ useTest.name }}</div>
 </template>
 
-<style lang="less" scoped>
-</style>
+<style lang="less" scoped></style>
 ```
 
 > ![image-20220403224742834](http://cdn.ayusummer233.top/img/202204032247528.png)
@@ -4111,81 +4075,78 @@ const useTest = useTestStore()
 `@store/index.ts`
 
 ```typescript
-import { defineStore } from 'pinia'
-import { Names} from './store-name'
+import { defineStore } from "pinia";
+import { Names } from "./store-name";
 
 export const useTestStore = defineStore(Names.TEST, {
-    // state 存储全局状态
-    state: () => {
-        return {
-            current: 1,
-            name:'Cola'
-        }
+  // state 存储全局状态
+  state: () => {
+    return {
+      current: 1,
+      name: "Cola",
+    };
+  },
+  // computed like, 修饰一些值, 用于监视(计算)状态变化, 有缓存的功能
+  getters: {},
+  // methods, 可做同步异步, 提交state(用于修改 state 全局状态数据)
+  actions: {
+    // current++
+    currentIncrement() {
+      this.current++;
     },
-    // computed like, 修饰一些值, 用于监视(计算)状态变化, 有缓存的功能
-    getters: {
-        
-    },
-    // methods, 可做同步异步, 提交state(用于修改 state 全局状态数据)
-    actions: {
-        // current++
-        currentIncrement() {
-            this.current++
-        },
-    }
-})
+  },
+});
 ```
 
 `PiniaTest.vue`
 
 ```vue
 <script setup lang="ts">
-import { useTestStore } from '@/store';
+import { useTestStore } from "@/store";
 
-const useTest = useTestStore()
+const useTest = useTestStore();
 
 // 直接修改属性值实现 useTest.current++
 const useTestChange1 = () => {
-  useTest.current++
-}
+  useTest.current++;
+};
 // 方法2: 通过$patch 批量修改属性值
 const useTestChange2 = () => {
   useTest.$patch({
-    name: '马克杯',
-    current: 10
-  })
-}
+    name: "马克杯",
+    current: 10,
+  });
+};
 // 方法3: $patch 函数式写法
 const useTestChange3 = () => {
-  useTest.$patch( (state) => {
-    state.name = '立牌'
-    state.current = 5
-  })
-}
+  useTest.$patch((state) => {
+    state.name = "立牌";
+    state.current = 5;
+  });
+};
 // 方法4: 通过原始对象修改整个实例(缺点在于需要修改state所有属性, 因此一般不建议使用)
 const useTestChange4 = () => {
   useTest.$state = {
-    name: '小夜灯',
-    current: 7
-  }
-}
+    name: "小夜灯",
+    current: 7,
+  };
+};
 // 方法5: 通过 actions 修改
 const useTestChange5 = () => {
-  useTest.currentIncrement()
-}
+  useTest.currentIncrement();
+};
 </script>
 
 <template>
-    <div>pinia: {{ useTest.name }} -- ${{ useTest.current }}</div>
-    <button @click="useTestChange1">increment-直接修改属性值</button>
-    <button @click="useTestChange2">通过$patch批量修改属性</button>
-    <button @click="useTestChange3">$patch的函数式写法</button>
-    <button @click="useTestChange4">通过原始对象修改整个实例</button>
-    <button @click="useTestChange5">通过 actions 修改</button>
+  <div>pinia: {{ useTest.name }} -- ${{ useTest.current }}</div>
+  <button @click="useTestChange1">increment-直接修改属性值</button>
+  <button @click="useTestChange2">通过$patch批量修改属性</button>
+  <button @click="useTestChange3">$patch的函数式写法</button>
+  <button @click="useTestChange4">通过原始对象修改整个实例</button>
+  <button @click="useTestChange5">通过 actions 修改</button>
 </template>
 
-<style lang="less" scoped>
-</style>
+<style lang="less" scoped></style>
 ```
 
 > ![image-20220404091331349](http://cdn.ayusummer233.top/img/202204040913862.png)
@@ -4196,9 +4157,9 @@ const useTestChange5 = () => {
 
 ### 解构 store
 
-> [学习Pinia 第四章（解构store）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123365751)
+> [学习 Pinia 第四章（解构 store）\_小满 zs 的博客-CSDN 博客](https://blog.csdn.net/qq1195566313/article/details/123365751)
 >
-> [技术胖-Pinia入门视频教程 全新一代状态管理工具Pinia -Vue3全家桶系列 (jspang.com)](https://jspang.com/article/82#toc5)
+> [技术胖-Pinia 入门视频教程 全新一代状态管理工具 Pinia -Vue3 全家桶系列 (jspang.com)](https://jspang.com/article/82#toc5)
 >
 > [Using a store outside of a component | Pinia (vuejs.org)](https://pinia.vuejs.org/core-concepts/outside-component-usage.html#single-page-applications)
 
@@ -4206,65 +4167,68 @@ const useTestChange5 = () => {
 
 ```vue
 <script setup lang="ts">
-import { useTestStore } from '@/store';
+import { useTestStore } from "@/store";
 // 导入 storeToRefs 以从 store 中获取响应式数据
-import { storeToRefs } from 'pinia';
-const useTest = useTestStore()
+import { storeToRefs } from "pinia";
+const useTest = useTestStore();
 
 // 直接结构 useTest 不具有响应式特性
-const { current, name } = useTest
+const { current, name } = useTest;
 // 通过 storeToRefs 将 store 中的数据转换为响应式数据
-const { current: currentRef, name: nameRef } = storeToRefs(useTest)
-
+const { current: currentRef, name: nameRef } = storeToRefs(useTest);
 
 // 直接修改属性值实现 useTest.current++
 const useTestChange1 = () => {
-    useTest.current++
-}
+  useTest.current++;
+};
 // 方法2: 通过$patch 批量修改属性值
 const useTestChange2 = () => {
-    useTest.$patch({
-        name: '马克杯',
-        current: 10
-    })
-}
+  useTest.$patch({
+    name: "马克杯",
+    current: 10,
+  });
+};
 // 方法3: $patch 函数式写法
 const useTestChange3 = () => {
-    useTest.$patch((state) => {
-        state.name = '立牌'
-        state.current = 5
-    })
-}
+  useTest.$patch((state) => {
+    state.name = "立牌";
+    state.current = 5;
+  });
+};
 // 方法4: 通过原始对象修改整个实例(缺点在于需要修改state所有属性, 因此一般不建议使用)
 const useTestChange4 = () => {
-    useTest.$state = {
-        name: '小夜灯',
-        current: 7
-    }
-}
+  useTest.$state = {
+    name: "小夜灯",
+    current: 7,
+  };
+};
 // 方法5: 通过 actions 修改
 const useTestChange5 = () => {
-    useTest.currentIncrement()
-}
+  useTest.currentIncrement();
+};
 </script>
 
 <template>
+  <div>
+    <div>pinia: {{ useTest.name }} -- ${{ useTest.current }}</div>
+    <button @click="useTestChange1">increment-直接修改属性值</button>
+    <button @click="useTestChange2">通过$patch批量修改属性</button>
+    <button @click="useTestChange3">$patch的函数式写法</button>
+    <button @click="useTestChange4">通过原始对象修改整个实例</button>
+    <button @click="useTestChange5">通过 actions 修改</button>
+  </div>
+  <div>
     <div>
-        <div>pinia: {{ useTest.name }} -- ${{ useTest.current }}</div>
-        <button @click="useTestChange1">increment-直接修改属性值</button>
-        <button @click="useTestChange2">通过$patch批量修改属性</button>
-        <button @click="useTestChange3">$patch的函数式写法</button>
-        <button @click="useTestChange4">通过原始对象修改整个实例</button>
-        <button @click="useTestChange5">通过 actions 修改</button>
+      直接解构: name: {{ name }} --- current: {{ current }} --- 不具有响应式特性
     </div>
     <div>
-        <div>直接解构: name: {{ name }} --- current: {{ current }} --- 不具有响应式特性</div>
-        <div>通过 storeToRefs 解构: name: {{ nameRef }} --- current: {{ currentRef }} --- 具有响应式特性</div>
+      通过 storeToRefs 解构: name: {{ nameRef }} --- current:
+      {{ currentRef }} --- 具有响应式特性
     </div>
+  </div>
 </template>
 
-<style lang="less" scoped>
-</style>
+<style lang="less" scoped></style>
 ```
 
 > ![](http://cdn.ayusummer233.top/img/202204041739489.gif)
@@ -4278,71 +4242,69 @@ const useTestChange5 = () => {
 `store-name.ts`:
 
 ```typescript
-export const enum Names{
-    TEST = 'TEST',
-    STUDENT = 'STUDENT'
+export const enum Names {
+  TEST = "TEST",
+  STUDENT = "STUDENT",
 }
 ```
 
 `student.ts`:
 
 ```typescript
-import { defineStore } from 'pinia'
-import { Names } from './store-name'
+import { defineStore } from "pinia";
+import { Names } from "./store-name";
 
 export const studentStore = defineStore(Names.STUDENT, {
-    state: () => {
-        return {
-            stuNames: ['张三', '李四', '王五', '赵六', '田七']
-        }
-    }
-})
+  state: () => {
+    return {
+      stuNames: ["张三", "李四", "王五", "赵六", "田七"],
+    };
+  },
+});
 ```
 
 `index.ts`:
 
 ```typescript
-import { defineStore } from 'pinia'
-import { Names } from './store-name'
-import { studentStore } from './student'
+import { defineStore } from "pinia";
+import { Names } from "./store-name";
+import { studentStore } from "./student";
 
 export const useTestStore = defineStore(Names.TEST, {
-    // state 存储全局状态
-    state: () => {
-        return {
-            current: 1,
-            name:'Cola'
-        }
+  // state 存储全局状态
+  state: () => {
+    return {
+      current: 1,
+      name: "Cola",
+    };
+  },
+  // computed like, 修饰一些值, 用于监视(计算)状态变化, 有缓存的功能
+  getters: {},
+  // methods, 可做同步异步, 提交state(用于修改 state 全局状态数据)
+  actions: {
+    // current++
+    currentIncrement() {
+      this.current++;
     },
-    // computed like, 修饰一些值, 用于监视(计算)状态变化, 有缓存的功能
-    getters: {
-        
+    // 打印 studentStore 的 name
+    printStudentState() {
+      console.log(studentStore().stuNames);
     },
-    // methods, 可做同步异步, 提交state(用于修改 state 全局状态数据)
-    actions: {
-        // current++
-        currentIncrement() {
-            this.current++
-        },
-        // 打印 studentStore 的 name
-        printStudentState() {
-            console.log(studentStore().stuNames)
-        }
-    }
-})
+  },
+});
 ```
 
 `PiniaTest.vue` 代码片段:
 
 ```typescript
-import { useTestStore } from '@/store';
+import { useTestStore } from "@/store";
 // 导入 storeToRefs 以从 store 中获取响应式数据
-import { storeToRefs } from 'pinia';
-const useTest = useTestStore()
+import { storeToRefs } from "pinia";
+const useTest = useTestStore();
 
 // 调用 useTest actions 中的  printStudentState() 函数打印 studentSTore 中的 name
-console.log('studentStoreName:')
-useTest.printStudentState()
+console.log("studentStoreName:");
+useTest.printStudentState();
 ```
 
 > ![image-20220404175644156](http://cdn.ayusummer233.top/img/202204041756354.png)
@@ -4351,83 +4313,80 @@ useTest.printStudentState()
 
 ### Actions, getters
 
-> [学习Pinia 第五章（Actions，getters）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123376269)
+> [学习 Pinia 第五章（Actions，getters）\_小满 zs 的博客-CSDN 博客](https://blog.csdn.net/qq1195566313/article/details/123376269)
 >
 > [Getters | Pinia (vuejs.org)](https://pinia.vuejs.org/core-concepts/getters.html)
 >
 > [Actions | Pinia (vuejs.org)](https://pinia.vuejs.org/core-concepts/actions.html)
 >
-> [技术胖-Pinia入门视频教程 全新一代状态管理工具Pinia -Vue3全家桶系列 (jspang.com)](https://jspang.com/article/82#toc4)
+> [技术胖-Pinia 入门视频教程 全新一代状态管理工具 Pinia -Vue3 全家桶系列 (jspang.com)](https://jspang.com/article/82#toc4)
 
 #### `Actions` 同步写法
 
 `store-name.ts` 片段:
 
 ```typescript
-export const enum Names{
-    USER = 'USER'
+export const enum Names {
+  USER = "USER",
 }
 ```
 
 `User.ts`:
 
 ```typescript
-import { defineStore } from 'pinia'
-import { Names } from './store-name'
-import { studentStore } from './student'
+import { defineStore } from "pinia";
+import { Names } from "./store-name";
+import { studentStore } from "./student";
 
 type User = {
-    name: string,
-    age: number
-}
+  name: string;
+  age: number;
+};
 
 let result: User = {
-    name: "233",
-    age: 21
-}
+  name: "233",
+  age: 21,
+};
 
 export const userStore = defineStore(Names.USER, {
-    // state 存储全局状态
-    state: () => {
-        return {
-            user: <User>{},
-            name:""
-        }
+  // state 存储全局状态
+  state: () => {
+    return {
+      user: <User>{},
+      name: "",
+    };
+  },
+  // computed like, 修饰一些值, 用于监视(计算)状态变化, 有缓存的功能
+  getters: {},
+  // methods, 可做同步异步, 提交state(用于修改 state 全局状态数据)
+  actions: {
+    // 写个同步方法, setuser
+    setUser() {
+      console.log("设置user");
+      this.user = result;
     },
-    // computed like, 修饰一些值, 用于监视(计算)状态变化, 有缓存的功能
-    getters: {
-
-    },
-    // methods, 可做同步异步, 提交state(用于修改 state 全局状态数据)
-    actions: {
-        // 写个同步方法, setuser
-        setUser() {
-            console.log("设置user")
-            this.user = result
-        }
-    }
-})
+  },
+});
 ```
 
 `PiniaTest.vue` 片段:
 
 ```typescript
-import { userStore } from '@/store/User'
-const userTest = userStore()
+import { userStore } from "@/store/User";
+const userTest = userStore();
 // 调用 userTest 中的 setUser 函数设置 user
 const changeUserByAction = () => {
-    userTest.setUser()
-}
-
+  userTest.setUser();
+};
 ```
 
 ```html
-    <div>
-        <p>actions-user: {{ userTest.user }}</p>
-        <p>actions-name: {{ userTest.name }}</p>
-        <p>getters:</p>
-        <button @click="changeUserByAction">通过 action 修改 user</button>
-    </div>
+<div>
+  <p>actions-user: {{ userTest.user }}</p>
+  <p>actions-name: {{ userTest.name }}</p>
+  <p>getters:</p>
+  <button @click="changeUserByAction">通过 action 修改 user</button>
+</div>
 ```
 
 > ![image-20220404215502780](http://cdn.ayusummer233.top/img/202204042155736.png)
@@ -4456,122 +4415,139 @@ const changeUserByAction = () => {
 
 ```vue
 <script setup lang="ts">
-import { useTestStore } from '@/store';
-import { userStore } from '@/store/User'
+import { useTestStore } from "@/store";
+import { userStore } from "@/store/User";
 // 导入 storeToRefs 以从 store 中获取响应式数据
-import { storeToRefs } from 'pinia';
+import { storeToRefs } from "pinia";
 // element-plus button 相关依赖
 import {
-    Check,
-    Delete,
-    Edit,
-    Message,
-    Search,
-    Star,
-} from '@element-plus/icons-vue'
+  Check,
+  Delete,
+  Edit,
+  Message,
+  Search,
+  Star,
+} from "@element-plus/icons-vue";
 
-const userTest = userStore()
+const userTest = userStore();
 // 调用 userTest 中的 setUser 函数设置 user
 const changeUserByAction = () => {
-    userTest.setUser()
-}
+  userTest.setUser();
+};
 
 // 调用 userTest 中的 setUserAsync 函数设置 user
 const changeUserByActionAsync = () => {
-    userTest.setUserAsync()
-}
-const useTest = useTestStore()
+  userTest.setUserAsync();
+};
+const useTest = useTestStore();
 // 调用 useTest actions 中的  printStudentState() 函数打印 studentSTore 中的 name
-console.log('studentStoreName:')
-useTest.printStudentState()
+console.log("studentStoreName:");
+useTest.printStudentState();
 
 // 直接结构 useTest 不具有响应式特性
-const { current, name } = useTest
+const { current, name } = useTest;
 // 通过 storeToRefs 将 store 中的数据转换为响应式数据
-const { current: currentRef, name: nameRef } = storeToRefs(useTest)
-
+const { current: currentRef, name: nameRef } = storeToRefs(useTest);
 
 // 直接修改属性值实现 useTest.current++
 const useTestChange1 = () => {
-    useTest.current++
-}
+  useTest.current++;
+};
 // 方法2: 通过$patch 批量修改属性值
 const useTestChange2 = () => {
-    useTest.$patch({
-        name: '马克杯',
-        current: 10
-    })
-}
+  useTest.$patch({
+    name: "马克杯",
+    current: 10,
+  });
+};
 // 方法3: $patch 函数式写法
 const useTestChange3 = () => {
-    useTest.$patch((state) => {
-        state.name = '立牌'
-        state.current = 5
-    })
-}
+  useTest.$patch((state) => {
+    state.name = "立牌";
+    state.current = 5;
+  });
+};
 // 方法4: 通过原始对象修改整个实例(缺点在于需要修改state所有属性, 因此一般不建议使用)
 const useTestChange4 = () => {
-    useTest.$state = {
-        name: '小夜灯',
-        current: 7
-    }
-}
+  useTest.$state = {
+    name: "小夜灯",
+    current: 7,
+  };
+};
 // 方法5: 通过 actions 修改
 const useTestChange5 = () => {
-    useTest.currentIncrement()
-}
+  useTest.currentIncrement();
+};
 </script>
 
 <template>
-    <div>
-        <el-card class="box-card">
-            <template #header>
-                <div class="card-header">基础 state 修改测试, actions 测试</div>
-            </template>
-            <el-row>pinia: {{ useTest.name }} -- ${{ useTest.current }}</el-row>
-            <el-row>直接解构: name: {{ name }} --- current: {{ current }} --- 不具有响应式特性</el-row>
-            <el-row>通过 storeToRefs 解构: name: {{ nameRef }} --- current: {{ currentRef }} --- 具有响应式特性</el-row>
-            <el-row>
-                <el-button type="primary" @click="useTestChange1">increment-直接修改属性值</el-button>
-                <el-button type="primary" @click="useTestChange2">通过$patch批量修改属性</el-button>
-                <el-button type="primary" @click="useTestChange3">$patch的函数式写法</el-button>
-            </el-row>
-            <el-row>
-                <el-button type="primary" @click="useTestChange4">通过原始对象修改整个实例</el-button>
-                <el-button type="primary" @click="useTestChange5">通过 actions 修改 current++</el-button>
-            </el-row>
-        </el-card>
-    </div>
-    <div>
-        <el-card class="box-card">
-            <template #header>
-                <div class="card-header">actions 同/异步写法, getters 测试</div>
-            </template>
-            <p>actions-user: {{ userTest.user }}</p>
-            <p>actions-name: {{ userTest.name }}</p>
-            <p>getters:</p>
-            <el-button @click="changeUserByAction">通过 action 修改 user</el-button>
-            <el-button @click="changeUserByActionAsync">通过 action 异步修改 user</el-button>
-        </el-card>
-    </div>
+  <div>
+    <el-card class="box-card">
+      <template #header>
+        <div class="card-header">基础 state 修改测试, actions 测试</div>
+      </template>
+      <el-row>pinia: {{ useTest.name }} -- ${{ useTest.current }}</el-row>
+      <el-row
+        >直接解构: name: {{ name }} --- current: {{ current }} ---
+        不具有响应式特性</el-row
+      >
+      <el-row
+        >通过 storeToRefs 解构: name: {{ nameRef }} --- current:
+        {{ currentRef }} --- 具有响应式特性</el-row
+      >
+      <el-row>
+        <el-button type="primary" @click="useTestChange1"
+          >increment-直接修改属性值</el-button
+        >
+        <el-button type="primary" @click="useTestChange2"
+          >通过$patch批量修改属性</el-button
+        >
+        <el-button type="primary" @click="useTestChange3"
+          >$patch的函数式写法</el-button
+        >
+      </el-row>
+      <el-row>
+        <el-button type="primary" @click="useTestChange4"
+          >通过原始对象修改整个实例</el-button
+        >
+        <el-button type="primary" @click="useTestChange5"
+          >通过 actions 修改 current++</el-button
+        >
+      </el-row>
+    </el-card>
+  </div>
+  <div>
+    <el-card class="box-card">
+      <template #header>
+        <div class="card-header">actions 同/异步写法, getters 测试</div>
+      </template>
+      <p>actions-user: {{ userTest.user }}</p>
+      <p>actions-name: {{ userTest.name }}</p>
+      <p>getters:</p>
+      <el-button @click="changeUserByAction">通过 action 修改 user</el-button>
+      <el-button @click="changeUserByActionAsync"
+        >通过 action 异步修改 user</el-button
+      >
+    </el-card>
+  </div>
 </template>
 
 <style lang="less" scoped>
 .card-header {
-    // 文字居中
-    text-align: center;
+  // 文字居中
+  text-align: center;
 }
 
 .text {
-    font-size: 14px;
+  font-size: 14px;
 }
 
 .item {
-    margin-bottom: 18px;
+  margin-bottom: 18px;
 }
 
 .box-card {
-    width: 620px;
+  width: 620px;
 }
 </style>
 ```
@@ -4603,16 +4579,18 @@ actions 可用于修改 state, 而 getters 可用于修饰 state 并返回修饰
 `PiniaTest.vue`代码片段:
 
 ```html
-        <el-card class="box-card">
-            <template #header>
-                <div class="card-header">actions 同/异步写法, getters 测试</div>
-            </template>
-            <p>actions-user: {{ userTest.user }}</p>
-            <p>actions-name: {{ userTest.name }}</p>
-            <p>getters: {{ userTest.newName }}</p>
-            <el-button @click="changeUserByAction">通过 action 修改 user</el-button>
-            <el-button @click="changeUserByActionAsync">通过 action 异步修改 user</el-button>
-        </el-card>
+<el-card class="box-card">
+  <template #header>
+    <div class="card-header">actions 同/异步写法, getters 测试</div>
+  </template>
+  <p>actions-user: {{ userTest.user }}</p>
+  <p>actions-name: {{ userTest.name }}</p>
+  <p>getters: {{ userTest.newName }}</p>
+  <el-button @click="changeUserByAction">通过 action 修改 user</el-button>
+  <el-button @click="changeUserByActionAsync"
+    >通过 action 异步修改 user</el-button
+  >
+</el-card>
 ```
 
 > ![](http://cdn.ayusummer233.top/img/202204050826567.gif)
@@ -4621,77 +4599,81 @@ actions 可用于修改 state, 而 getters 可用于修饰 state 并返回修饰
 
 ### PInia 插件
 
->[学习Pinia 第七章（pinia插件）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123431769)
+> [学习 Pinia 第七章（pinia 插件）\_小满 zs 的博客-CSDN 博客](https://blog.csdn.net/qq1195566313/article/details/123431769)
 
 pinia 和 vuex 都有一个通病 页面刷新状态会丢失, 所以要做下持久化插件
 
 `main.ts` 代码片段:
 
 ```typescript
-import { createApp, toRaw } from 'vue'
+import { createApp, toRaw } from "vue";
 
-import { createPinia, PiniaPluginContext } from 'pinia'
-
+import { createPinia, PiniaPluginContext } from "pinia";
 
 type Options = {
-    key?:string
-}
+  key?: string;
+};
 // 默认配置
-const __piniaKey__ = 'yusummer'
+const __piniaKey__ = "yusummer";
 
 // 将 key 存入 localstorage
 const setStorage = (key: string, value: any) => {
-    localStorage.setItem(key, JSON.stringify(value))
-}
+  localStorage.setItem(key, JSON.stringify(value));
+};
 
 // 根据 key 从 localstorage 获取数据
 const getStorage = (key: string) => {
-    return localStorage.getItem(key) ? JSON.parse(localStorage.getItem(key) as string) : null
-}
+  return localStorage.getItem(key)
+    ? JSON.parse(localStorage.getItem(key) as string)
+    : null;
+};
 
 // 定义 pinia 插件
-const piniaPlugin = (options:Options) => {
-    return (context: PiniaPluginContext) => {
-        const { store } = context;
-        // 从 localstorage 获取数据
-        const data = getStorage(`${options.key ?? __piniaKey__}-${store.$id}`) 
-        console.log(data)
-        // state 有变化时, 将数据存入 localstorage
-        store.$subscribe(() => {
-            setStorage(`${options.key ?? __piniaKey__}-${store.$id}`, toRaw(store.$state))
-        })
-        
-        console.log("store", store)
+const piniaPlugin = (options: Options) => {
+  return (context: PiniaPluginContext) => {
+    const { store } = context;
+    // 从 localstorage 获取数据
+    const data = getStorage(`${options.key ?? __piniaKey__}-${store.$id}`);
+    console.log(data);
+    // state 有变化时, 将数据存入 localstorage
+    store.$subscribe(() => {
+      setStorage(
+        `${options.key ?? __piniaKey__}-${store.$id}`,
+        toRaw(store.$state)
+      );
+    });
 
-        return {
-            ...data
-        }
-    }
-}
+    console.log("store", store);
+
+    return {
+      ...data,
+    };
+  };
+};
 
 // export const app = createApp(App)
-const app = createApp(App)
+const app = createApp(App);
 // 使用 ElementPlus 插件
-app.use(ElementPlus)
+app.use(ElementPlus);
 
 // 引入 pinia
-const store = createPinia()
-store.use(piniaPlugin({
-    key: 'pinia'
-}))
+const store = createPinia();
+store.use(
+  piniaPlugin({
+    key: "pinia",
+  })
+);
 ```
 
 > [DailyNotes/HTML&CSS.md at main · Ayusummer/DailyNotes (github.com)](https://github.com/Ayusummer/DailyNotes/blob/main/前端/HTML%26CSS.md#windowlocalstorage)
 >
 > ![msedge_2RktLwJ26F](http://cdn.ayusummer233.top/img/202204071059859.gif)
 
-
-
 ---
 
 ### API
 
-> [学习Pinia 第六章（API）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123402377)
+> [学习 Pinia 第六章（API）\_小满 zs 的博客-CSDN 博客](https://blog.csdn.net/qq1195566313/article/details/123402377)
 
 ---
 
@@ -4700,7 +4682,9 @@ store.use(piniaPlugin({
 无参函数, 用于重置 state 状态
 
 ```html
-<el-button @click="userTest.$reset()">通过 $reset 重置 userTest 到初始状态</el-button>
+<el-button @click="userTest.$reset()"
+  >通过 $reset 重置 userTest 到初始状态</el-button
+>
 ```
 
 > ![](http://cdn.ayusummer233.top/img/202204050927720.gif)
@@ -4716,14 +4700,14 @@ store.use(piniaPlugin({
 ```typescript
 // 通过 $subscribe 订阅 state 的改变
 userTest.$subscribe((args, state) => {
-    console.log(args)
-    console.log('userTest state:', state)
-})
+  console.log(args);
+  console.log("userTest state:", state);
+});
 ```
 
 > ![](http://cdn.ayusummer233.top/img/202204050929731.gif)
 >
-> `$subscribe` 还有第二个参数, 目前暂时没用到就没做记录, 详见[学习Pinia 第六章（API）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123402377)
+> `$subscribe` 还有第二个参数, 目前暂时没用到就没做记录, 详见[学习 Pinia 第六章（API）\_小满 zs 的博客-CSDN 博客](https://blog.csdn.net/qq1195566313/article/details/123402377)
 
 ---
 
@@ -4736,41 +4720,39 @@ userTest.$subscribe((args, state) => {
 ```typescript
 // 当有 action 执行时便会执行 $onAction 函数
 userTest.$onAction((args) => {
-    console.log("有 action 执行了 ↓")
-    console.log(args)
-    console.log("有 action 执行了 ↑")
-})
+  console.log("有 action 执行了 ↓");
+  console.log(args);
+  console.log("有 action 执行了 ↑");
+});
 ```
 
 > ![](http://cdn.ayusummer233.top/img/202204050939211.gif)
 >
-> `$onAction` 还有第二个参数, 目前暂时没用到就没做记录, 详见[学习Pinia 第六章（API）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123402377)
+> `$onAction` 还有第二个参数, 目前暂时没用到就没做记录, 详见[学习 Pinia 第六章（API）\_小满 zs 的博客-CSDN 博客](https://blog.csdn.net/qq1195566313/article/details/123402377)
 
 ---
 
 ## Less
 
-> [学习Vue3 第十三章（实操组件和认识less 和 scoped）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/122832888)
+> [学习 Vue3 第十三章（实操组件和认识 less 和 scoped）\_小满 zs 的博客-CSDN 博客](https://blog.csdn.net/qq1195566313/article/details/122832888)
 >
 > [Less 快速入门 | Less.js 中文文档 - Less 中文网 (bootcss.com)](https://less.bootcss.com/#概览)
 >
-> [十分钟看懂Css、less和Sass（SCSS）的区别 - IT界新人 - 博客园 (cnblogs.com)](https://www.cnblogs.com/a1231230/p/12107592.html)
+> [十分钟看懂 Css、less 和 Sass（SCSS）的区别 - IT 界新人 - 博客园 (cnblogs.com)](https://www.cnblogs.com/a1231230/p/12107592.html)
 
 **Less （Leaner Style Sheets 的缩写） 是一门向后兼容的 CSS 扩展语言。**
 
 `Less` 和 `CSS` 非常像, 且仅对 `CSS` 增加了少许方便的扩展, 比较容易学习
 
-- *有关 Less 语言特性的详细文档，请参阅 [Less 语言特性](https://less.bootcss.com/features/) 章节*
-- *有关 Less 内置函数的列表，请参阅 [Less 函数手册](https://less.bootcss.com/functions/) 章节*
-- *有关详细的使用说明，请参阅 [Less.js 用法](https://less.bootcss.com/usage/) 章节*
-- *有关第三方工具的详细信息，请参阅 [工具](https://less.bootcss.com/tools/) 章节*
+- _有关 Less 语言特性的详细文档，请参阅 [Less 语言特性](https://less.bootcss.com/features/) 章节_
+- _有关 Less 内置函数的列表，请参阅 [Less 函数手册](https://less.bootcss.com/functions/) 章节_
+- _有关详细的使用说明，请参阅 [Less.js 用法](https://less.bootcss.com/usage/) 章节_
+- _有关第三方工具的详细信息，请参阅 [工具](https://less.bootcss.com/tools/) 章节_
 
 在 `vue` 文件中使用 `less` 只需要在 `style` 标签中注明即可
 
 ```vue
-<style lang="less">
- 
-</style>
+<style lang="less"></style>
 ```
 
 > 关于 `scoped`:
@@ -4803,8 +4785,6 @@ lessc styles.less styles.css
 <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/3.11.1/less.min.js" ></script>
 ```
 
-
-
 ---
 
 ### 实例
@@ -4821,7 +4801,7 @@ pnpm install less less-loader -D
 
 > ![image-20220402134322239](http://cdn.ayusummer233.top/img/202204021343407.png)
 >
-> 可能会报缺少 webpack, 可以在开发环境下装下webpack
+> 可能会报缺少 webpack, 可以在开发环境下装下 webpack
 >
 > ```shell
 > pnpm i webpack -D
@@ -4831,85 +4811,160 @@ pnpm install less less-loader -D
 
 - `src\assets\css\reset.less` 清除原生样式:
 
-    ```less
-    /* http://meyerweb.com/eric/tools/css/reset/ 
-       v2.0 | 20110126
-       License: none (public domain)
-    */
-    
-    html, body, div, span, applet, object, iframe,
-    h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-    a, abbr, acronym, address, big, cite, code,
-    del, dfn, em, img, ins, kbd, q, s, samp,
-    small, strike, strong, sub, sup, tt, var,
-    b, u, i, center,
-    dl, dt, dd, ol, ul, li,
-    fieldset, form, label, legend,
-    table, caption, tbody, tfoot, thead, tr, th, td,
-    article, aside, canvas, details, embed, 
-    figure, figcaption, footer, header, hgroup, 
-    menu, nav, output, ruby, section, summary,
-    time, mark, audio, video {
-        margin: 0;
-        padding: 0;
-        border: 0;
-        font-size: 100%;
-        font: inherit;
-        vertical-align: baseline;
-    }
-    /* HTML5 display-role reset for older browsers */
-    article, aside, details, figcaption, figure, 
-    footer, header, hgroup, menu, nav, section {
-        display: block;
-    }
-    ol, ul {
-        list-style: none;
-    }
-    
-    ```
+  ```less
+  /* http://meyerweb.com/eric/tools/css/reset/ 
+     v2.0 | 20110126
+     License: none (public domain)
+  */
+
+  html,
+  body,
+  div,
+  span,
+  applet,
+  object,
+  iframe,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  blockquote,
+  pre,
+  a,
+  abbr,
+  acronym,
+  address,
+  big,
+  cite,
+  code,
+  del,
+  dfn,
+  em,
+  img,
+  ins,
+  kbd,
+  q,
+  s,
+  samp,
+  small,
+  strike,
+  strong,
+  sub,
+  sup,
+  tt,
+  var,
+  b,
+  u,
+  i,
+  center,
+  dl,
+  dt,
+  dd,
+  ol,
+  ul,
+  li,
+  fieldset,
+  form,
+  label,
+  legend,
+  table,
+  caption,
+  tbody,
+  tfoot,
+  thead,
+  tr,
+  th,
+  td,
+  article,
+  aside,
+  canvas,
+  details,
+  embed,
+  figure,
+  figcaption,
+  footer,
+  header,
+  hgroup,
+  menu,
+  nav,
+  output,
+  ruby,
+  section,
+  summary,
+  time,
+  mark,
+  audio,
+  video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+  }
+  /* HTML5 display-role reset for older browsers */
+  article,
+  aside,
+  details,
+  figcaption,
+  figure,
+  footer,
+  header,
+  hgroup,
+  menu,
+  nav,
+  section {
+    display: block;
+  }
+  ol,
+  ul {
+    list-style: none;
+  }
+  ```
 
 - `src\main.ts` 引入 `reset.less`:
 
   ```typescript
-  import { createApp } from 'vue'
-  import App from './App.vue'
-  import './assets/css/reset.less'
-  
-  createApp(App).mount('#app')
-  
+  import { createApp } from "vue";
+  import App from "./App.vue";
+  import "./assets/css/reset.less";
+
+  createApp(App).mount("#app");
   ```
 
 - `src\layout_less\less_layout.vue`:
 
   ```vue
   <script setup lang="ts">
-  import lessMenu from './Menu/lessMenu.vue'
-  import lessHeader from './Header/lessHeader.vue'
-  import lessContent from './Content/lessContent.vue'
-  
+  import lessMenu from "./Menu/lessMenu.vue";
+  import lessHeader from "./Header/lessHeader.vue";
+  import lessContent from "./Content/lessContent.vue";
   </script>
-  
+
   <template>
-      <div class="layout_less">
-          <lessMenu />
-          <div class="layout_less-right">
-              <lessHeader />
-              <lessContent />
-          </div>
+    <div class="layout_less">
+      <lessMenu />
+      <div class="layout_less-right">
+        <lessHeader />
+        <lessContent />
       </div>
+    </div>
   </template>
-  
+
   <style lang="less" scoped>
   .layout_less {
+    display: flex;
+    height: 60%;
+    overflow: hidden;
+    border: 1px solid #ccc;
+    &-right {
       display: flex;
-      height: 60%;
-      overflow: hidden;
-      border: 1px solid #ccc;
-      &-right {
-          display: flex;
-          flex-direction: column; // 垂直方向
-          flex: 1;
-      }
+      flex-direction: column; // 垂直方向
+      flex: 1;
+    }
   }
   </style>
   ```
@@ -4917,17 +4972,16 @@ pnpm install less less-loader -D
 - `src\layout_less\Menu\lessMenu.vue`:
 
   ```vue
-  <script setup lang="ts">
-  </script>
-  
+  <script setup lang="ts"></script>
+
   <template>
-      <div class="menu_less">菜单区域</div>
+    <div class="menu_less">菜单区域</div>
   </template>
-  
+
   <style lang="less" scoped>
   .menu_less {
-      width: 200px;
-      border-right: 1px solid #ccc;
+    width: 200px;
+    border-right: 1px solid #ccc;
   }
   </style>
   ```
@@ -4935,17 +4989,16 @@ pnpm install less less-loader -D
 - `src\layout_less\Header\lessHeader.vue`:
 
   ```vue
-  <script setup lang="ts">
-  </script>
-  
+  <script setup lang="ts"></script>
+
   <template>
-      <div class="header_layout">头部区域</div>
+    <div class="header_layout">头部区域</div>
   </template>
-  
+
   <style lang="less" scoped>
   .header_layout {
-      height: 60px;
-      border-bottom: 1px solid #ccc;
+    height: 60px;
+    border-bottom: 1px solid #ccc;
   }
   </style>
   ```
@@ -4953,25 +5006,26 @@ pnpm install less less-loader -D
 - `src\layout_less\Content\lessContent.vue`:
 
   ```vue
-  <script setup lang="ts">
-  </script>
-  
+  <script setup lang="ts"></script>
+
   <template>
-      <div class="content_layout">
-          <div class="content_layout-items" :key="item" v-for="item in 100">{{ item }}</div>
+    <div class="content_layout">
+      <div class="content_layout-items" :key="item" v-for="item in 100">
+        {{ item }}
       </div>
+    </div>
   </template>
-  
+
   <style lang="less" scoped>
   .content_layout {
-      flex: 1;
-      margin: 20px;
+    flex: 1;
+    margin: 20px;
+    border: 1px solid #ccc;
+    overflow: auto;
+    &-items {
+      padding: 20px;
       border: 1px solid #ccc;
-      overflow: auto;
-      &-items {
-          padding: 20px;
-          border: 1px solid #ccc;
-      }
+    }
   }
   </style>
   ```
@@ -4994,7 +5048,7 @@ pnpm install animate.css
 使用 `pnpm` 安装在组建中导入 `css` 即可使用
 
 ```typescript
-import 'animate.css'
+import "animate.css";
 ```
 
 ---
@@ -5004,15 +5058,15 @@ import 'animate.css'
 安装了依赖并在组建中导入后在使用 `<transition>` 时指定 `enter-active-class` 与 `leave-active-class` 来使用 `animate.css` 的动效, 如:
 
 ```html
-    <transition 
-        enter-active-class="animate__animated animate__bounce"
-        leave-active-class="animate__animated animate__fadeOut"
-    >
-        <div v-if="flag" class="box"></div>
-    </transition>
+<transition
+  enter-active-class="animate__animated animate__bounce"
+  leave-active-class="animate__animated animate__fadeOut"
+>
+  <div v-if="flag" class="box"></div>
+</transition>
 ```
 
-> 完整代码详见 [内置组件-transition中的相关内容](#结合 Animate.css 使用)
+> 完整代码详见 [内置组件-transition 中的相关内容](#结合 Animate.css 使用)
 >
 > ![](http://cdn.ayusummer233.top/img/202203291950307.gif)
 
@@ -5020,7 +5074,7 @@ import 'animate.css'
 
 ## GreenSock
 
-> [学习Vue3 第二十一章（transition动画组件）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123000653)
+> [学习 Vue3 第二十一章（transition 动画组件）\_小满 zs 的博客-CSDN 博客](https://blog.csdn.net/qq1195566313/article/details/123000653)
 >
 > [GreenSock | Docs | GSAP](https://greensock.com/docs/v3/GSAP)
 
@@ -5061,21 +5115,19 @@ Lodash 是一个一致性、模块化、高性能的 JavaScript 实用工具库�
   pnpm install @vueuse/core
   ```
 
-  
-
 ---
 
 ## TSX
 
-> [JSX · TypeScript中文网 · TypeScript——JavaScript的超集 (tslang.cn)](https://www.tslang.cn/docs/handbook/jsx.html)
+> [JSX · TypeScript 中文网 · TypeScript——JavaScript 的超集 (tslang.cn)](https://www.tslang.cn/docs/handbook/jsx.html)
 >
-> [学习Vue3 第二十五章（TSX）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123172735)
+> [学习 Vue3 第二十五章（TSX）\_小满 zs 的博客-CSDN 博客](https://blog.csdn.net/qq1195566313/article/details/123172735)
 >
 > [(为什么 Vue3 的组件库都在使用 jsx/tsx？ - 知乎 (zhihu.com)](https://www.zhihu.com/question/436260027)
 
-[JSX](https://facebook.github.io/jsx/)是一种嵌入式的类似XML的语法。 它可以被转换成合法的JavaScript，尽管转换的语义是依据不同的实现而定的。 JSX因[React](https://reactjs.org/)框架而流行，但也存在其它的实现。 TypeScript支持内嵌，类型检查以及将JSX直接编译为JavaScript。
+[JSX](https://facebook.github.io/jsx/)是一种嵌入式的类似 XML 的语法。 它可以被转换成合法的 JavaScript，尽管转换的语义是依据不同的实现而定的。 JSX 因[React](https://reactjs.org/)框架而流行，但也存在其它的实现。 TypeScript 支持内嵌，类型检查以及将 JSX 直接编译为 JavaScript。
 
-在此之前使用的是 Template去写模板。现在可以扩展另一种风格: `TSX风格`
+在此之前使用的是 Template 去写模板。现在可以扩展另一种风格: `TSX风格`
 
 vue2 的时候就已经支持 jsx 写法，只不过不是很友好，随着 vue3 对[typescript](https://so.csdn.net/so/search?q=typescript&spm=1001.2101.3001.7020)的支持度，tsx 写法越来越被接受
 
@@ -5095,7 +5147,7 @@ vue2 的时候就已经支持 jsx 写法，只不过不是很友好，随着 vue
 
 > [antfu/unplugin-auto-import: Auto import APIs on-demand for Vite, Webpack and Rollup (github.com)](https://github.com/antfu/unplugin-auto-import)
 >
-> [学习Vue3 第二十六章（深入v-model）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123187523)
+> [学习 Vue3 第二十六章（深入 v-model）\_小满 zs 的博客-CSDN 博客](https://blog.csdn.net/qq1195566313/article/details/123187523)
 
 - 安装
 
@@ -5106,17 +5158,21 @@ vue2 的时候就已经支持 jsx 写法，只不过不是很友好，随着 vue
 - `vite 配置`
 
   ```typescript
-  import { defineConfig } from 'vite'
-  import vue from '@vitejs/plugin-vue'
-  import VueJsx from '@vitejs/plugin-vue-jsx'
-  import AutoImport from 'unplugin-auto-import/vite'
+  import { defineConfig } from "vite";
+  import vue from "@vitejs/plugin-vue";
+  import VueJsx from "@vitejs/plugin-vue-jsx";
+  import AutoImport from "unplugin-auto-import/vite";
   // https://vitejs.dev/config/
   export default defineConfig({
-    plugins: [vue(),VueJsx(),AutoImport({
-      imports:['vue'],
-      dts:"src/auto-import.d.ts"
-    })]
-  })
+    plugins: [
+      vue(),
+      VueJsx(),
+      AutoImport({
+        imports: ["vue"],
+        dts: "src/auto-import.d.ts",
+      }),
+    ],
+  });
   ```
 
 ---
@@ -5135,9 +5191,8 @@ vue2 的时候就已经支持 jsx 写法，只不过不是很友好，随着 vue
 - `main.ts` 引入
 
   ```typescript
-  import ElementPlus from 'element-plus'
-  import 'element-plus/dist/index.css'
-  
+  import ElementPlus from "element-plus";
+  import "element-plus/dist/index.css";
   ```
 
 使用的时候直接在官网 cpoy 代码使用即可(可能有的组件会要求再装一些库)
@@ -5146,7 +5201,7 @@ vue2 的时候就已经支持 jsx 写法，只不过不是很友好，随着 vue
 
 ### backtop 踩坑记录
 
-> [Element-ui Backtop组件使用正确姿势 - 简书 (jianshu.com)](https://www.jianshu.com/p/b40d98535c10)
+> [Element-ui Backtop 组件使用正确姿势 - 简书 (jianshu.com)](https://www.jianshu.com/p/b40d98535c10)
 >
 > [Backtop 回到顶部 | Element Plus (gitee.io)](https://element-plus.gitee.io/zh-CN/component/backtop.html#自定义内容)
 >
@@ -5165,12 +5220,13 @@ vue2 的时候就已经支持 jsx 写法，只不过不是很友好，随着 vue
 ![msedge_ppd2EOEtd3](http://cdn.ayusummer233.top/img/202204062115589.gif)
 
 ```html
-        <el-backtop
-            target=".page-component__scroll, .el-scrollbar__wrap"
-            :right="40"
-            :bottom="40"
-            :visibility-height="40"
-        >UP</el-backtop>
+<el-backtop
+  target=".page-component__scroll, .el-scrollbar__wrap"
+  :right="40"
+  :bottom="40"
+  :visibility-height="40"
+  >UP</el-backtop
+>
 ```
 
 如果滚动对象是 `div` 的话可以将 `target` 定位到 `div` 的 `class`
@@ -5178,7 +5234,9 @@ vue2 的时候就已经支持 jsx 写法，只不过不是很友好，随着 vue
 ![image-20220406211804219](http://cdn.ayusummer233.top/img/202204062118528.png)
 
 ```html
-<el-backtop target=".box" :right="40" :bottom="40" :visibility-height="1">UP</el-backtop>
+<el-backtop target=".box" :right="40" :bottom="40" :visibility-height="1"
+  >UP</el-backtop
+>
 ```
 
 ![msedge_b09VxKHBwD](http://cdn.ayusummer233.top/img/202204062119433.gif)
@@ -5195,13 +5253,11 @@ vue2 的时候就已经支持 jsx 写法，只不过不是很友好，随着 vue
 pnpm i async-validator
 ```
 
-
-
 ---
 
 ## Scoped 与样式穿透
 
-> [学习Vue3 第三十二章（详解Scoped和样式 穿透）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123319462)
+> [学习 Vue3 第三十二章（详解 Scoped 和样式 穿透）\_小满 zs 的博客-CSDN 博客](https://blog.csdn.net/qq1195566313/article/details/123319462)
 >
 > [SFC CSS Features | Vue.js (vuejs.org)](https://vuejs.org/api/sfc-css-features.html#scoped-css)
 
@@ -5213,11 +5269,11 @@ pnpm i async-validator
 
 - 给 HTML 的 DOM 节点加一个不重复 data 属性来表示其唯一性
 
-- 在每句 css 选择器的末尾（编译后的生成的css语句）加一个当前组件的 data 属性选择器来私有化样式
+- 在每句 css 选择器的末尾（编译后的生成的 css 语句）加一个当前组件的 data 属性选择器来私有化样式
 
-- 如果组件内部包含有其他组件，只会给其他组件的最外层标签加上当前组件的data属性
+- 如果组件内部包含有其他组件，只会给其他组件的最外层标签加上当前组件的 data 属性
 
-PostCSS 会给一个组件中的所有 dom 添加一个独一无二的动态属性 data-v-xxxx，然后，给 CSS 选择器额外添加一个对应的属性选择器来选择该组件中 dom，这种做法使得样式只作用于含有该属性的 dom——组件内部dom, 从而达到了'样式模块化'的效果.
+PostCSS 会给一个组件中的所有 dom 添加一个独一无二的动态属性 data-v-xxxx，然后，给 CSS 选择器额外添加一个对应的属性选择器来选择该组件中 dom，这种做法使得样式只作用于含有该属性的 dom——组件内部 dom, 从而达到了'样式模块化'的效果.
 
 直接修改样式的话会因为 scoped 把元素选择器位置默认放在最后而无法成功修改样式, 可以通过 `:deep(xxx)` 的形式来修改具体样式
 
@@ -5231,19 +5287,18 @@ PostCSS 会给一个组件中的所有 dom 添加一个独一无二的动态属�
 <!-- IDE: WebStorm -->
 <!-- 创建者: 233 -->
 <template>
-<div style="margin:200px;">
-  <el-input class="ipt"></el-input>
-</div>
+  <div style="margin:200px;">
+    <el-input class="ipt"></el-input>
+  </div>
 </template>
 
-<script setup lang="ts">
-</script>
+<script setup lang="ts"></script>
 
 <style scoped lang="less">
-.ipt{
+.ipt {
   // 样式穿透修改 input 样式
-  :deep(input){
-    background-color:red;
+  :deep(input) {
+    background-color: red;
   }
 }
 </style>
@@ -5255,7 +5310,7 @@ PostCSS 会给一个组件中的所有 dom 添加一个独一无二的动态属�
 
 ## 自定义全局插件
 
-> [学习Vue3 第三十章（编写Vue3插件）_小满zs的博客-CSDN博客_vue3插件写法](https://blog.csdn.net/qq1195566313/article/details/123300264)
+> [学习 Vue3 第三十章（编写 Vue3 插件）\_小满 zs 的博客-CSDN 博客\_vue3 插件写法](https://blog.csdn.net/qq1195566313/article/details/123300264)
 >
 > [插件 | Vue.js (vuejs.org)](https://staging-cn.vuejs.org/guide/reusability/plugins.html#plugins)
 >
@@ -5268,13 +5323,13 @@ PostCSS 会给一个组件中的所有 dom 添加一个独一无二的动态属�
 - 会用插件
 
   ```typescript
-  import { createApp } from 'vue'
-  
-  const app = createApp({})
-  
+  import { createApp } from "vue";
+
+  const app = createApp({});
+
   app.use(myPlugin, {
     /* 可选的选项 */
-  })
+  });
   ```
 
 插件是一个拥有 `install()` 方法的对象, 或者简单的就只是一个函数, 它自己就是安装函数
@@ -5285,8 +5340,8 @@ PostCSS 会给一个组件中的所有 dom 添加一个独一无二的动态属�
 const myPlugin = {
   install(app, options) {
     // 配置此应用
-  }
-}
+  },
+};
 ```
 
 ---
@@ -5297,43 +5352,43 @@ const myPlugin = {
 
 ```vue
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref } from "vue";
 
-let isShow = ref<boolean>(false)
+let isShow = ref<boolean>(false);
 
 const show = () => {
-    isShow.value = true
-}
+  isShow.value = true;
+};
 
 const hide = () => {
-    isShow.value = false
-}
+  isShow.value = false;
+};
 
 defineExpose({
-    show,
-    hide,
-    isShow
-})
+  show,
+  hide,
+  isShow,
+});
 </script>
 
 <template>
-    <div v-if="isShow" class="loading">
-        <div class="loading-content">loading...</div>
-    </div>
+  <div v-if="isShow" class="loading">
+    <div class="loading-content">loading...</div>
+  </div>
 </template>
 
 <style lang="less" scoped>
 .loading {
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.8);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    &-content {
-        font-size: 30px;
-        color: #fff;
-    }
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &-content {
+    font-size: 30px;
+    color: #fff;
+  }
 }
 </style>
 ```
@@ -5341,102 +5396,97 @@ defineExpose({
 `AnotherLoading.ts`
 
 ```typescript
-import {App, createVNode, VNode, render} from 'vue'
-import AnotherLoading from './AnotherLoading.vue'
+import { App, createVNode, VNode, render } from "vue";
+import AnotherLoading from "./AnotherLoading.vue";
 
 export default {
-    install(app: App) {
-        const vnode: VNode = createVNode(AnotherLoading)
-        render(vnode, document.body)
-        console.log(AnotherLoading)
-        console.log(vnode.component?.exposed)
-        app.config.globalProperties.$AnotherLoading = {
-            show: vnode.component?.exposed?.show,
-            hide: vnode.component?.exposed?.hide
-        }
-        // app.config.globalProperties.$AnotherLoading.show()
-    }
-}
+  install(app: App) {
+    const vnode: VNode = createVNode(AnotherLoading);
+    render(vnode, document.body);
+    console.log(AnotherLoading);
+    console.log(vnode.component?.exposed);
+    app.config.globalProperties.$AnotherLoading = {
+      show: vnode.component?.exposed?.show,
+      hide: vnode.component?.exposed?.hide,
+    };
+    // app.config.globalProperties.$AnotherLoading.show()
+  },
+};
 ```
 
 `main.ts`
 
 ```typescript
-import { createApp } from 'vue'
-import App from './App.vue'
-import './assets/css/reset.less'
-import Card from './components/Card.vue'
-import AnotherLoading from './components/AnotherLoading/AnotherLoading'
+import { createApp } from "vue";
+import App from "./App.vue";
+import "./assets/css/reset.less";
+import Card from "./components/Card.vue";
+import AnotherLoading from "./components/AnotherLoading/AnotherLoading";
 
 // export const app = createApp(App)
-const app = createApp(App)
-
+const app = createApp(App);
 
 // 定义 Filter 类型, 作为 $filters 的返回类型
 type Filter = {
-    format: <T>(str: T) => string
-}
+  format: <T>(str: T) => string;
+};
 
 // Loading 插件类型定义
 type ALP = {
-    show: () => void,
-    hide: () => void
-}
+  show: () => void;
+  hide: () => void;
+};
 
 // 添加声明
-declare module '@vue/runtime-core' {
-    export interface ComponentCustomProperties {
-        $filters: Filter,
-        $env: string
-        // Loading 插件
-        $AnotherLoading: ALP
-    }
+declare module "@vue/runtime-core" {
+  export interface ComponentCustomProperties {
+    $filters: Filter;
+    $env: string;
+    // Loading 插件
+    $AnotherLoading: ALP;
+  }
 }
 
 // 注册全局过滤器
 app.config.globalProperties.$filters = {
-    format<T>(str: T): string {
-        return `233${str}`;
-    }
-}
+  format<T>(str: T): string {
+    return `233${str}`;
+  },
+};
 
-app.config.globalProperties.$env = 'dev'
+app.config.globalProperties.$env = "dev";
 
 // 注册 Loading 插件
-app.use(AnotherLoading)
+app.use(AnotherLoading);
 
 // 注册全局组件以及别名
-app.component('Card', Card)
-    .mount('#app')
-
-
+app.component("Card", Card).mount("#app");
 ```
 
 `AnotherLoadingTest.vue`
 
 ```vue
 <script setup lang="ts">
-import { ComponentInternalInstance, getCurrentInstance } from 'vue';
+import { ComponentInternalInstance, getCurrentInstance } from "vue";
 
-const { appContext } = getCurrentInstance() as ComponentInternalInstance
+const { appContext } = getCurrentInstance() as ComponentInternalInstance;
 
 const showLoading = () => {
-    console.log(appContext)
-    appContext.config.globalProperties.$AnotherLoading.show()
-    setTimeout(() => {
-        appContext.config.globalProperties.$AnotherLoading.hide()
-    }, 2000)
-}
+  console.log(appContext);
+  appContext.config.globalProperties.$AnotherLoading.show();
+  setTimeout(() => {
+    appContext.config.globalProperties.$AnotherLoading.hide();
+  }, 2000);
+};
 </script>
 
 <template>
-    <div>
-        <button @click="showLoading">切换</button>
-    </div>
+  <div>
+    <button @click="showLoading">切换</button>
+  </div>
 </template>
 
-<style lang="less" scoped>
-</style>
+<style lang="less" scoped></style>
 ```
 
 > ![](http://cdn.ayusummer233.top/img/202204021731338.gif)
@@ -5447,7 +5497,7 @@ const showLoading = () => {
 
 > [介绍 | Vue.js (vuejs.org)-组件化应用构建](https://v3.cn.vuejs.org/guide/introduction.html#组件化应用构建)
 >
-> [学习Vue3 第十二章（认识组件&Vue3生命周期）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/122811060)
+> [学习 Vue3 第十二章（认识组件&Vue3 生命周期）\_小满 zs 的博客-CSDN 博客](https://blog.csdn.net/qq1195566313/article/details/122811060)
 
 组件系统是 Vue 的另一个重要概念，因为它是一种抽象，允许我们使用小型、独立和通常可复用的组件构建大型应用。仔细想想，几乎任意类型的应用界面都可以抽象为一个组件树：
 
@@ -5464,7 +5514,6 @@ const showLoading = () => {
 > ![image-20220214183148443](http://cdn.ayusummer233.top/img/202202141831137.png)
 >
 > ![image-20220214183318826](http://cdn.ayusummer233.top/img/202202141833363.png)
->
 
 ---
 
@@ -5476,11 +5525,11 @@ const showLoading = () => {
 
 ---
 
-### 单文件组件SFC(Single File Component)
+### 单文件组件 SFC(Single File Component)
 
-> [学习Vue3 第三章（Vite目录 & Vue单文件组件）_qq1195566313的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/122771007)
+> [学习 Vue3 第三章（Vite 目录 & Vue 单文件组件）\_qq1195566313 的博客-CSDN 博客](https://blog.csdn.net/qq1195566313/article/details/122771007)
 >
-> [单文件组件  | Vue.js (vuejs.org)](https://v3.cn.vuejs.org/api/sfc-script-setup.html)
+> [单文件组件 | Vue.js (vuejs.org)](https://v3.cn.vuejs.org/api/sfc-script-setup.html)
 
 `<script setup>` 是在单文件组件 (SFC) 中使用组合式 API 的编译时语法糖。相比于普通的 `<script>` 语法，它具有更多优势：
 
@@ -5496,16 +5545,13 @@ const showLoading = () => {
 - `<template>`
   - 每个 `*.vue` 文件最多可同时包含一个顶层 `<template>` 块。
   - 其中的内容会被提取出来并传递给 `@vue/compiler-dom`，预编译为 JavaScript 的渲染函数，并附属到导出的组件上作为其 `render` 选项。
-  
 - `<script>`
   - 每一个 `*.vue` 文件最多可同时包含一个 `<script>` 块(不包括`<script setup>`)
   - 该脚本将作为 ES Module 来执行。
   - 其**默认导出**的内容应该是 Vue 组件选项对象，它要么是一个普通的对象，要么是 [defineComponent](https://v3.cn.vuejs.org/api/global-api.html#definecomponent) 的返回值。
-  
 - `<script setup>`
   - 每个 `*.vue` 文件最多可同时包含一个 `<script setup>` 块 (不包括常规的 `<script>`)
-  - 该脚本会被预处理并作为组件的 `setup()` 函数使用，也就是说它会在每个组件实例中执行。`<script setup>` 的顶层绑定会自动暴露给模板。更多详情请查看[单文件组件  | Vue.js (vuejs.org)](https://v3.cn.vuejs.org/api/sfc-script-setup)
-  
+  - 该脚本会被预处理并作为组件的 `setup()` 函数使用，也就是说它会在每个组件实例中执行。`<script setup>` 的顶层绑定会自动暴露给模板。更多详情请查看[单文件组件 | Vue.js (vuejs.org)](https://v3.cn.vuejs.org/api/sfc-script-setup)
 - `<style>`
 
   > [单文件组件样式特性 | Vue.js (vuejs.org)](https://v3.cn.vuejs.org/api/sfc-style.html)
@@ -5519,13 +5565,11 @@ const showLoading = () => {
 
 ```vue
 <script setup>
-console.log('hello script setup')
+console.log("hello script setup");
 </script>
 ```
 
 里面的代码会被编译成组件 `setup()` 函数的内容。这意味着与普通的 `<script>` 只在组件被首次引入的时候执行一次不同，`<script setup>` 中的代码会在**每次组件实例被创建的时候执行**
-
- 
 
 ---
 
@@ -5533,9 +5577,9 @@ console.log('hello script setup')
 
 #### `v-on`
 
-> [Web/03-v-on的事件修饰符.md at master · qianguyihao/Web (github.com)](https://github.com/qianguyihao/web/blob/master/12-Vue基础/03-v-on的事件修饰符.md)
+> [Web/03-v-on 的事件修饰符.md at master · qianguyihao/Web (github.com)](https://github.com/qianguyihao/web/blob/master/12-Vue基础/03-v-on的事件修饰符.md)
 >
-> [JS事件冒泡 (biancheng.net)](http://c.biancheng.net/view/8245.html)
+> [JS 事件冒泡 (biancheng.net)](http://c.biancheng.net/view/8245.html)
 >
 > [指令 | Vue.js (vuejs.org)](https://v3.cn.vuejs.org/api/directives.html#v-on)
 
@@ -5565,7 +5609,7 @@ console.log('hello script setup')
 
 此代码冲存在冒泡现象, 当点击字标签(绿色区域)时父标签也被触发, 如果不想让字标签的点击事件冒泡到父标签可以给字标签添加一个事件修饰符 `.stop` 阻止冒泡
 
-> 事件冒泡：当一个元素接收到事件时，会把它接收到的事件逐级向上传播给它的祖先元素，一直传到顶层的 window 对象（关于最后传播到的顶层对象，不同浏览器有可能不同，例如 IE9 及其以上的 IE、FireFox、Chrome、Safari 等浏览器，事件冒泡的顶层对象为 window 对象，而 IE7/8 顶层对象则为 document对象）。
+> 事件冒泡：当一个元素接收到事件时，会把它接收到的事件逐级向上传播给它的祖先元素，一直传到顶层的 window 对象（关于最后传播到的顶层对象，不同浏览器有可能不同，例如 IE9 及其以上的 IE、FireFox、Chrome、Safari 等浏览器，事件冒泡的顶层对象为 window 对象，而 IE7/8 顶层对象则为 document 对象）。
 >
 > 例如，在 Chrome 浏览器中，当用户单击了 `<div>`元素，click 事件将按照 `<div>→<body>→<html>→document→window` 的顺序进行传播，如图 1 所示。事件冒泡可以形象地比喻为把一块石头投入水中，泡泡会一直从水底冒出水面，也就是说从下向上开始传播。
 >
@@ -5575,7 +5619,7 @@ console.log('hello script setup')
 
 ![image-20220224094027373](http://cdn.ayusummer233.top/img/202202240940558.png)
 
-> 只是不想触发父组件的单击事件时也可以使用 `.self` 将父组件的单击事件设置为仅当自己被点击时触发 
+> 只是不想触发父组件的单击事件时也可以使用 `.self` 将父组件的单击事件设置为仅当自己被点击时触发
 >
 > ![image-20220224095055036](http://cdn.ayusummer233.top/img/202202240950223.png)
 
@@ -5595,58 +5639,54 @@ console.log('hello script setup')
 ```vue
 <!-- v-model 实现简易计算器, v-model 双向绑定示例 -->
 <script setup lang="ts">
-import { ref, Ref } from 'vue'
+import { ref, Ref } from "vue";
 
-const n1: Ref<number> = ref(0)
-const n2: Ref<number> = ref(0)
-const result: Ref<number> = ref(0)
-const opt: Ref<string> = ref('+')
+const n1: Ref<number> = ref(0);
+const n2: Ref<number> = ref(0);
+const result: Ref<number> = ref(0);
+const opt: Ref<string> = ref("+");
 
-const message: Ref<string> = ref("v-model字符串")
+const message: Ref<string> = ref("v-model字符串");
 
 const calculate = (): void => {
-    switch (opt.value) {
-        case '+':
-            result.value = n1.value + n2.value
-            break
-        case '-':
-            result.value = n1.value - n2.value
-            break
-        case '*':
-            result.value = n1.value * n2.value
-            break
-        case '/':
-            result.value = n1.value / n2.value
-            break
-        default:
-            break
-    }
-}
-
+  switch (opt.value) {
+    case "+":
+      result.value = n1.value + n2.value;
+      break;
+    case "-":
+      result.value = n1.value - n2.value;
+      break;
+    case "*":
+      result.value = n1.value * n2.value;
+      break;
+    case "/":
+      result.value = n1.value / n2.value;
+      break;
+    default:
+      break;
+  }
+};
 </script>
 
 <template>
-    {{ result }}
-    <input type="number" v-model="n1" />
-    <select v-model="opt">
-        <option value="+">+</option>
-        <option value="-">-</option>
-        <option value="*">*</option>
-        <option value="/">/</option>
-    </select>
-    <input type="number" v-model="n2" />
-    <input type="button" value="=" @click="calculate" />
-    <input type="number" v-model="result" />
+  {{ result }}
+  <input type="number" v-model="n1" />
+  <select v-model="opt">
+    <option value="+">+</option>
+    <option value="-">-</option>
+    <option value="*">*</option>
+    <option value="/">/</option>
+  </select>
+  <input type="number" v-model="n2" />
+  <input type="button" value="=" @click="calculate" />
+  <input type="number" v-model="result" />
 
-    <input v-model="message" type="text" />
-    <div>{{ message }}</div>
+  <input v-model="message" type="text" />
+  <div>{{ message }}</div>
 </template>
 
-<style scoped>
-</style> 
+<style scoped></style>
 ```
-
-
 
 ![image-20220228153518969](http://cdn.ayusummer233.top/img/202202281535505.png)
 
@@ -5656,66 +5696,63 @@ const calculate = (): void => {
 
 #### `v-bind`
 
-> [学习Vue3 第四章（模板语法 & vue指令）_qq1195566313的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/122773486)
+> [学习 Vue3 第四章（模板语法 & vue 指令）\_qq1195566313 的博客-CSDN 博客](https://blog.csdn.net/qq1195566313/article/details/122773486)
 
 `v-bind` 绑定 `style` 样例:
 
 ```vue
 <!-- v-bind 示例 -->
 <script setup lang="ts">
-import { ref, Ref } from 'vue'
+import { ref, Ref } from "vue";
 
-let flag: Ref<boolean> = ref(false)
+let flag: Ref<boolean> = ref(false);
 
 type Cls = {
-    other: boolean,
-    h: boolean
-}
+  other: boolean;
+  h: boolean;
+};
 
 const flag1: Cls = {
-    other: false,
-    h: true
-}
-
+  other: false,
+  h: true,
+};
 
 type Style = {
-    height: string,
-    color: string
-}
+  height: string;
+  color: string;
+};
 
 const style: Style = {
-    height: "300px",
-    color: "blue"
-}
-
+  height: "300px",
+  color: "blue",
+};
 </script>
 
 <template>
-    <!-- v-model 下拉菜单绑定 flag -->
-    <select v-model="flag">
-        <option type="string" value="true">true</option>
-        <option type="string" value="false">false</option>
-    </select>
-    <!-- 绑定样式 -->
-    <div :class="[flag ? 'active' : 'other', 'h']">12323</div>
-    <!-- 利用元组进行样式绑定 -->
-    <div :class="flag1">{{ flag1 }}</div>
-    <div :style="style">2222</div>
+  <!-- v-model 下拉菜单绑定 flag -->
+  <select v-model="flag">
+    <option type="string" value="true">true</option>
+    <option type="string" value="false">false</option>
+  </select>
+  <!-- 绑定样式 -->
+  <div :class="[flag ? 'active' : 'other', 'h']">12323</div>
+  <!-- 利用元组进行样式绑定 -->
+  <div :class="flag1">{{ flag1 }}</div>
+  <div :style="style">2222</div>
 </template>
 
 <style scoped>
 .active {
-    color: red;
+  color: red;
 }
 .other {
-    color: blue;
+  color: blue;
 }
 .h {
-    height: 300px;
-    border: 1px solid #ccc;
+  height: 300px;
+  border: 1px solid #ccc;
 }
 </style>
-
 ```
 
 ![image-20220228223823608](http://cdn.ayusummer233.top/img/202202282238402.png)
@@ -5734,38 +5771,37 @@ const style: Style = {
 
 ```vue
 <script setup lang="ts">
-import lessMenu from './Menu/lessMenu.vue'
-import lessHeader from './Header/lessHeader.vue'
-import lessContent from './Content/lessContent.vue'
-
+import lessMenu from "./Menu/lessMenu.vue";
+import lessHeader from "./Header/lessHeader.vue";
+import lessContent from "./Content/lessContent.vue";
 </script>
 
 <template>
-    <div class="layout_less">
-        <lessMenu message="传递一个字符串" />
-        <div class="layout_less-right">
-            <lessHeader />
-            <lessContent />
-        </div>
+  <div class="layout_less">
+    <lessMenu message="传递一个字符串" />
+    <div class="layout_less-right">
+      <lessHeader />
+      <lessContent />
     </div>
+  </div>
 </template>
 
 <style lang="less" scoped>
 .layout_less {
+  display: flex;
+  height: 60%;
+  overflow: hidden;
+  border: 1px solid #ccc;
+  &-right {
     display: flex;
-    height: 60%;
-    overflow: hidden;
-    border: 1px solid #ccc;
-    &-right {
-        display: flex;
-        flex-direction: column; // 垂直方向
-        flex: 1;
-    }
+    flex-direction: column; // 垂直方向
+    flex: 1;
+  }
 }
 </style>
 ```
 
-子组件 `lessMenu`  则通过 `defineProps` 来接收父组件传递过来的值
+子组件 `lessMenu` 则通过 `defineProps` 来接收父组件传递过来的值
 
 > `defineProps` 是无需引入的直接使用即可
 
@@ -5774,23 +5810,21 @@ import lessContent from './Content/lessContent.vue'
 ```vue
 <script setup lang="ts">
 defineProps<{
-    message: string
-}>()
-
-
+  message: string;
+}>();
 </script>
 
 <template>
-    <div class="menu_less">
-        菜单区域
-        {{ message }}
-    </div>
+  <div class="menu_less">
+    菜单区域
+    {{ message }}
+  </div>
 </template>
 
 <style lang="less" scoped>
 .menu_less {
-    width: 200px;
-    border-right: 1px solid #ccc;
+  width: 200px;
+  border-right: 1px solid #ccc;
 }
 </style>
 ```
@@ -5803,36 +5837,35 @@ defineProps<{
 
 ```vue
 <script setup lang="ts">
-import lessMenu from './Menu/lessMenu.vue'
-import lessHeader from './Header/lessHeader.vue'
-import lessContent from './Content/lessContent.vue'
-import { reactive } from 'vue'
+import lessMenu from "./Menu/lessMenu.vue";
+import lessHeader from "./Header/lessHeader.vue";
+import lessContent from "./Content/lessContent.vue";
+import { reactive } from "vue";
 
-const data_array = reactive<number[]>([1, 2, 3])
-
+const data_array = reactive<number[]>([1, 2, 3]);
 </script>
 
 <template>
-    <div class="layout_less">
-        <lessMenu message="传递一个字符串" v-bind:data_array="data_array" />
-        <div class="layout_less-right">
-            <lessHeader />
-            <lessContent />
-        </div>
+  <div class="layout_less">
+    <lessMenu message="传递一个字符串" v-bind:data_array="data_array" />
+    <div class="layout_less-right">
+      <lessHeader />
+      <lessContent />
     </div>
+  </div>
 </template>
 
 <style lang="less" scoped>
 .layout_less {
+  display: flex;
+  height: 60%;
+  overflow: hidden;
+  border: 1px solid #ccc;
+  &-right {
     display: flex;
-    height: 60%;
-    overflow: hidden;
-    border: 1px solid #ccc;
-    &-right {
-        display: flex;
-        flex-direction: column; // 垂直方向
-        flex: 1;
-    }
+    flex-direction: column; // 垂直方向
+    flex: 1;
+  }
 }
 </style>
 ```
@@ -5842,67 +5875,64 @@ const data_array = reactive<number[]>([1, 2, 3])
 ```vue
 <script setup lang="ts">
 defineProps<{
-    message: string
-    data_array: number[]
-}>()
-
-
+  message: string;
+  data_array: number[];
+}>();
 </script>
 
 <template>
-    <div class="menu_less">
-        菜单区域
-        {{ message }}
-        <div v-for="item in data_array" :key="item">{{ item }}</div>
-    </div>
+  <div class="menu_less">
+    菜单区域
+    {{ message }}
+    <div v-for="item in data_array" :key="item">{{ item }}</div>
+  </div>
 </template>
 
 <style lang="less" scoped>
 .menu_less {
-    width: 200px;
-    border-right: 1px solid #ccc;
+  width: 200px;
+  border-right: 1px solid #ccc;
 }
 </style>
 ```
 
 ---
 
-####  参数默认值
+#### 参数默认值
 
 TS 特有的默认值方式
 
-withDefaults是个函数也是无须引入开箱即用接受一个props函数第二个参数是一个对象设置默认值
+withDefaults 是个函数也是无须引入开箱即用接受一个 props 函数第二个参数是一个对象设置默认值
 
 例如:
 
 ```vue
 <script setup lang="ts">
 type Props = {
-    message?: string
-    data_array?: number[]
-    omit?: string
-}
+  message?: string;
+  data_array?: number[];
+  omit?: string;
+};
 withDefaults(defineProps<Props>(), {
-    message: 'Hello World',
-    data_array: () => [1, 2, 3],
-    omit: 'omit'
-})
-
+  message: "Hello World",
+  data_array: () => [1, 2, 3],
+  omit: "omit",
+});
 </script>
 
 <template>
-    <div class="menu_less">
-        菜单区域
-        {{ message }}
-        <div v-for="item in data_array" :key="item">{{ item }}</div>
-        {{ omit }}
-    </div>
+  <div class="menu_less">
+    菜单区域
+    {{ message }}
+    <div v-for="item in data_array" :key="item">{{ item }}</div>
+    {{ omit }}
+  </div>
 </template>
 
 <style lang="less" scoped>
 .menu_less {
-    width: 200px;
-    border-right: 1px solid #ccc;
+  width: 200px;
+  border-right: 1px solid #ccc;
 }
 </style>
 ```
@@ -5911,47 +5941,46 @@ withDefaults(defineProps<Props>(), {
 
 #### 子组件给父组件传参
 
-在子组件绑定一个 `click` 事件, 然后通过 `defineEmits` 注册一个自定义事件,  点击 click 触发 emit 调用注册的时间然后传递参数
+在子组件绑定一个 `click` 事件, 然后通过 `defineEmits` 注册一个自定义事件, 点击 click 触发 emit 调用注册的时间然后传递参数
 
 ```vue
 <script setup lang="ts">
-import { reactive } from 'vue'
+import { reactive } from "vue";
 
 /* 子组件给父组件传参 */
-const list = reactive<number[]>([4, 5, 6])
-const emit = defineEmits(['onclickTap'])
+const list = reactive<number[]>([4, 5, 6]);
+const emit = defineEmits(["onclickTap"]);
 const clickTap = () => {
-    emit('onclickTap', list)
-}
+  emit("onclickTap", list);
+};
 
 // 参数默认值
 type Props = {
-    message?: string
-    data_array?: number[]
-    omit?: string
-}
+  message?: string;
+  data_array?: number[];
+  omit?: string;
+};
 withDefaults(defineProps<Props>(), {
-    message: 'Hello World',
-    data_array: () => [1, 2, 3],
-    omit: 'omit'
-})
-
+  message: "Hello World",
+  data_array: () => [1, 2, 3],
+  omit: "omit",
+});
 </script>
 
 <template>
-    <div class="menu_less">
-        菜单区域
-        {{ message }}
-        <div v-for="item in data_array" :key="item">{{ item }}</div>
-        {{ omit }}
-        <button @click="clickTap">派发给父组件</button>
-    </div>
+  <div class="menu_less">
+    菜单区域
+    {{ message }}
+    <div v-for="item in data_array" :key="item">{{ item }}</div>
+    {{ omit }}
+    <button @click="clickTap">派发给父组件</button>
+  </div>
 </template>
 
 <style lang="less" scoped>
 .menu_less {
-    width: 200px;
-    border-right: 1px solid #ccc;
+  width: 200px;
+  border-right: 1px solid #ccc;
 }
 </style>
 ```
@@ -5960,46 +5989,45 @@ withDefaults(defineProps<Props>(), {
 
 ```vue
 <script setup lang="ts">
-import lessMenu from './Menu/lessMenu.vue'
-import lessHeader from './Header/lessHeader.vue'
-import lessContent from './Content/lessContent.vue'
-import { reactive } from 'vue'
+import lessMenu from "./Menu/lessMenu.vue";
+import lessHeader from "./Header/lessHeader.vue";
+import lessContent from "./Content/lessContent.vue";
+import { reactive } from "vue";
 
-const data_array = reactive<number[]>([1, 2, 3])
+const data_array = reactive<number[]>([1, 2, 3]);
 
 // 父组件接收子组件传参
 const getList = (list: number[]) => {
-    console.log(list, "父组件接收子组件")
-}
-
+  console.log(list, "父组件接收子组件");
+};
 </script>
 
 <template>
-    <div class="layout_less">
-        <lessMenu
-            message="传递一个字符串"
-            v-bind:data_array="data_array"
-            @onclickTap="getList"
-            omit="233"
-        />
-        <div class="layout_less-right">
-            <lessHeader />
-            <lessContent />
-        </div>
+  <div class="layout_less">
+    <lessMenu
+      message="传递一个字符串"
+      v-bind:data_array="data_array"
+      @onclickTap="getList"
+      omit="233"
+    />
+    <div class="layout_less-right">
+      <lessHeader />
+      <lessContent />
     </div>
+  </div>
 </template>
 
 <style lang="less" scoped>
 .layout_less {
+  display: flex;
+  height: 60%;
+  overflow: hidden;
+  border: 1px solid #ccc;
+  &-right {
     display: flex;
-    height: 60%;
-    overflow: hidden;
-    border: 1px solid #ccc;
-    &-right {
-        display: flex;
-        flex-direction: column; // 垂直方向
-        flex: 1;
-    }
+    flex-direction: column; // 垂直方向
+    flex: 1;
+  }
 }
 </style>
 ```
@@ -6016,50 +6044,48 @@ const getList = (list: number[]) => {
 
 ```vue
 <script setup lang="ts">
-import { reactive } from 'vue'
+import { reactive } from "vue";
 
 /* 子组件通过 defineExpose 将内部属性 exposeArray 暴露给父组件 */
-const exposeArray = reactive<number[]>([7, 8, 9])
+const exposeArray = reactive<number[]>([7, 8, 9]);
 defineExpose({
-    exposeArray
-})
-
+  exposeArray,
+});
 
 /* 子组件给父组件传参 */
-const list = reactive<number[]>([4, 5, 6])
-const emit = defineEmits(['onclickTap'])
+const list = reactive<number[]>([4, 5, 6]);
+const emit = defineEmits(["onclickTap"]);
 const clickTap = () => {
-    emit('onclickTap', list)
-}
+  emit("onclickTap", list);
+};
 
 // 参数默认值
 type Props = {
-    message?: string
-    data_array?: number[]
-    omit?: string
-}
+  message?: string;
+  data_array?: number[];
+  omit?: string;
+};
 withDefaults(defineProps<Props>(), {
-    message: 'Hello World',
-    data_array: () => [1, 2, 3],
-    omit: 'omit'
-})
-
+  message: "Hello World",
+  data_array: () => [1, 2, 3],
+  omit: "omit",
+});
 </script>
 
 <template>
-    <div class="menu_less">
-        菜单区域
-        {{ message }}
-        <div v-for="item in data_array" :key="item">{{ item }}</div>
-        {{ omit }}
-        <button @click="clickTap">派发给父组件</button>
-    </div>
+  <div class="menu_less">
+    菜单区域
+    {{ message }}
+    <div v-for="item in data_array" :key="item">{{ item }}</div>
+    {{ omit }}
+    <button @click="clickTap">派发给父组件</button>
+  </div>
 </template>
 
 <style lang="less" scoped>
 .menu_less {
-    width: 200px;
-    border-right: 1px solid #ccc;
+  width: 200px;
+  border-right: 1px solid #ccc;
 }
 </style>
 ```
@@ -6068,50 +6094,49 @@ withDefaults(defineProps<Props>(), {
 
 ```vue
 <script setup lang="ts">
-import lessMenu from './Menu/lessMenu.vue'
-import lessHeader from './Header/lessHeader.vue'
-import lessContent from './Content/lessContent.vue'
-import { reactive, ref } from 'vue'
+import lessMenu from "./Menu/lessMenu.vue";
+import lessHeader from "./Header/lessHeader.vue";
+import lessContent from "./Content/lessContent.vue";
+import { reactive, ref } from "vue";
 
-const exposeArrayFromMenu = ref(null)
+const exposeArrayFromMenu = ref(null);
 
-const data_array = reactive<number[]>([1, 2, 3])
+const data_array = reactive<number[]>([1, 2, 3]);
 
 // 父组件接收子组件传参
 const getList = (list: number[]) => {
-    console.log(list, "父组件接收子组件")
-}
-
+  console.log(list, "父组件接收子组件");
+};
 </script>
 
 <template>
-    <div class="layout_less">
-        {{ exposeArrayFromMenu }}
-        <lessMenu
-            message="传递一个字符串"
-            v-bind:data_array="data_array"
-            @onclickTap="getList"
-            omit="233"
-            ref="exposeArrayFromMenu"
-        />
-        <div class="layout_less-right">
-            <lessHeader />
-            <lessContent />
-        </div>
+  <div class="layout_less">
+    {{ exposeArrayFromMenu }}
+    <lessMenu
+      message="传递一个字符串"
+      v-bind:data_array="data_array"
+      @onclickTap="getList"
+      omit="233"
+      ref="exposeArrayFromMenu"
+    />
+    <div class="layout_less-right">
+      <lessHeader />
+      <lessContent />
     </div>
+  </div>
 </template>
 
 <style lang="less" scoped>
 .layout_less {
+  display: flex;
+  height: 60%;
+  overflow: hidden;
+  border: 1px solid #ccc;
+  &-right {
     display: flex;
-    height: 60%;
-    overflow: hidden;
-    border: 1px solid #ccc;
-    &-right {
-        display: flex;
-        flex-direction: column; // 垂直方向
-        flex: 1;
-    }
+    flex-direction: column; // 垂直方向
+    flex: 1;
+  }
 }
 </style>
 ```
@@ -6120,7 +6145,7 @@ const getList = (list: number[]) => {
 
 ### 兄弟组件传参
 
-> [学习Vue3 第二十四章（兄弟组件传参和Bus）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123158620)
+> [学习 Vue3 第二十四章（兄弟组件传参和 Bus）\_小满 zs 的博客-CSDN 博客](https://blog.csdn.net/qq1195566313/article/details/123158620)
 
 ---
 
@@ -6131,30 +6156,30 @@ const getList = (list: number[]) => {
 ```vue
 <!-- 与 B 组件互为兄弟组件 -->
 <script setup lang="ts">
-import { ref, Ref } from 'vue'
+import { ref, Ref } from "vue";
 
-const emit = defineEmits(['transferFlag'])
-let flag: Ref<boolean> = ref(false)
+const emit = defineEmits(["transferFlag"]);
+let flag: Ref<boolean> = ref(false);
 
 const emitFlag = () => {
-    flag.value = !flag.value
-    console.log("A组件待传值flag:" + flag.value + "到父组件")
-    emit('transferFlag', flag.value)
-}
+  flag.value = !flag.value;
+  console.log("A组件待传值flag:" + flag.value + "到父组件");
+  emit("transferFlag", flag.value);
+};
 </script>
 
 <template>
-    <div class="BCTP_A">
-        <button @click="emitFlag">flag 取反并传给 parent</button>
-    </div>
+  <div class="BCTP_A">
+    <button @click="emitFlag">flag 取反并传给 parent</button>
+  </div>
 </template>
 
 <style lang="less" scoped>
 .BCTP_A {
-    width: 200px;
-    height: 200px;
-    background: blue;
-    color: #fff;
+  width: 200px;
+  height: 200px;
+  background: blue;
+  color: #fff;
 }
 </style>
 ```
@@ -6164,27 +6189,26 @@ const emitFlag = () => {
 ```vue
 <!-- 兄弟组件传参-父组件 -->
 <script setup lang="ts">
-import BCTP_A from './BCTP_A.vue'
-import BCTP_B from './BCTP_B.vue'
-import { Ref, ref } from 'vue'
+import BCTP_A from "./BCTP_A.vue";
+import BCTP_B from "./BCTP_B.vue";
+import { Ref, ref } from "vue";
 // 定义一个 ref 变量, 用于接收 BCTP_A 组件的 flag 值, 并且设置默认值为 false
-let BCTP_A_flag: Ref<boolean> = ref(false)
+let BCTP_A_flag: Ref<boolean> = ref(false);
 // 接收 BCTP_A 组件传递过来的 flag 值
 const getFlag = (flag: boolean) => {
-    BCTP_A_flag.value = flag
-    console.log('父组件接收到 A 组件的传值为:', BCTP_A_flag.value)
-}
+  BCTP_A_flag.value = flag;
+  console.log("父组件接收到 A 组件的传值为:", BCTP_A_flag.value);
+};
 </script>
 
 <template>
-    <div>
-        <BCTP_A @transferFlag="getFlag"></BCTP_A>
-        <BCTP_B :flag="BCTP_A_flag"></BCTP_B>
-    </div>
+  <div>
+    <BCTP_A @transferFlag="getFlag"></BCTP_A>
+    <BCTP_B :flag="BCTP_A_flag"></BCTP_B>
+  </div>
 </template>
 
-<style lang="less" scoped>
-</style>
+<style lang="less" scoped></style>
 ```
 
 `BCTP_B.vue`
@@ -6193,21 +6217,21 @@ const getFlag = (flag: boolean) => {
 <!-- 与 A 组件互为兄弟组件 -->
 <script setup lang="ts">
 type Props = {
-    flag: boolean
-}
-defineProps<Props>()
+  flag: boolean;
+};
+defineProps<Props>();
 </script>
 
 <template>
-    <div class="BCTP_B">B 组件接收到父组件传过来的值为: {{ flag }}</div>
+  <div class="BCTP_B">B 组件接收到父组件传过来的值为: {{ flag }}</div>
 </template>
 
 <style lang="less" scoped>
 .BCTP_B {
-    width: 200px;
-    height: 200px;
-    background: green;
-    color: #fff;
+  width: 200px;
+  height: 200px;
+  background: green;
+  color: #fff;
 }
 </style>
 ```
@@ -6220,38 +6244,38 @@ defineProps<Props>()
 
 #### 通过发布订阅模式传参
 
-> [学习Vue3 第二十四章（兄弟组件传参和Bus）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123158620)
+> [学习 Vue3 第二十四章（兄弟组件传参和 Bus）\_小满 zs 的博客-CSDN 博客](https://blog.csdn.net/qq1195566313/article/details/123158620)
 
 `Bus.ts`
 
 ```typescript
 type BusClass<T> = {
-    emit: (name: T) => void
-    on: (name: T, callback: Function) => void
-}
-type BusParams = string | number | symbol
+  emit: (name: T) => void;
+  on: (name: T, callback: Function) => void;
+};
+type BusParams = string | number | symbol;
 type List = {
-    [key: BusParams]: Array<Function>
-}
+  [key: BusParams]: Array<Function>;
+};
 class Bus<T extends BusParams> implements BusClass<T> {
-    list: List
-    constructor() {
-        this.list = {}
-    }
-    emit(name: T, ...args: Array<any>) {
-        let eventName: Array<Function> = this.list[name]
-        eventName.forEach(ev => {
-            ev.apply(this, args)
-        })
-    }
-    on(name: T, callback: Function) {
-        let fn: Array<Function> = this.list[name] || [];
-        fn.push(callback)
-        this.list[name] = fn
-    }
+  list: List;
+  constructor() {
+    this.list = {};
+  }
+  emit(name: T, ...args: Array<any>) {
+    let eventName: Array<Function> = this.list[name];
+    eventName.forEach((ev) => {
+      ev.apply(this, args);
+    });
+  }
+  on(name: T, callback: Function) {
+    let fn: Array<Function> = this.list[name] || [];
+    fn.push(callback);
+    this.list[name] = fn;
+  }
 }
 
-export default new Bus<string>()
+export default new Bus<string>();
 ```
 
 `BCTP_A.vue`:
@@ -6259,38 +6283,38 @@ export default new Bus<string>()
 ```vue
 <!-- 与 B 组件互为兄弟组件 -->
 <script setup lang="ts">
-import { ref, Ref } from 'vue'
-import Bus from '../../Bus'
+import { ref, Ref } from "vue";
+import Bus from "../../Bus";
 
-const emit = defineEmits(['transferFlag'])
-let flag: Ref<boolean> = ref(false)
+const emit = defineEmits(["transferFlag"]);
+let flag: Ref<boolean> = ref(false);
 
 const emitFlag = () => {
-    flag.value = !flag.value
-    console.log("A组件待传值flag:" + flag.value + "到父组件")
-    emit('transferFlag', flag.value)
-}
+  flag.value = !flag.value;
+  console.log("A组件待传值flag:" + flag.value + "到父组件");
+  emit("transferFlag", flag.value);
+};
 
 // 使用 bus 传值给 B 组件
 const emitFlagToBByBus = () => {
-    flag.value = !flag.value
-    Bus.emit('transferFlagToBByBus', flag.value)
-}
+  flag.value = !flag.value;
+  Bus.emit("transferFlagToBByBus", flag.value);
+};
 </script>
 
 <template>
-    <div class="BCTP_A">
-        <button @click="emitFlag">flag 取反并传给 parent</button>
-        <button @click="emitFlagToBByBus">flag 取反并通过 Bus 派发给 B 组件</button>
-    </div>
+  <div class="BCTP_A">
+    <button @click="emitFlag">flag 取反并传给 parent</button>
+    <button @click="emitFlagToBByBus">flag 取反并通过 Bus 派发给 B 组件</button>
+  </div>
 </template>
 
 <style lang="less" scoped>
 .BCTP_A {
-    width: 200px;
-    height: 200px;
-    background: blue;
-    color: #fff;
+  width: 200px;
+  height: 200px;
+  background: blue;
+  color: #fff;
 }
 </style>
 ```
@@ -6300,36 +6324,36 @@ const emitFlagToBByBus = () => {
 ```vue
 <!-- 与 A 组件互为兄弟组件 -->
 <script setup lang="ts">
-import Bus from '../../Bus'
-import { ref, Ref } from 'vue'
+import Bus from "../../Bus";
+import { ref, Ref } from "vue";
 
-let flagB = ref(false)  // 定义一个 ref 变量, 用于接收 A 组件的 flag 值, 并且设置默认值为 false
+let flagB = ref(false); // 定义一个 ref 变量, 用于接收 A 组件的 flag 值, 并且设置默认值为 false
 
 type Props = {
-    flag: boolean
-}
-defineProps<Props>()
+  flag: boolean;
+};
+defineProps<Props>();
 
 // 利用 Bus 接收 A 组件派发的 flag
-Bus.on('transferFlagToBByBus', (flag: boolean) => {
-    flagB.value = flag
-    console.log('B 组件接收到 A 组件的传值为:', flagB.value)
-})
+Bus.on("transferFlagToBByBus", (flag: boolean) => {
+  flagB.value = flag;
+  console.log("B 组件接收到 A 组件的传值为:", flagB.value);
+});
 </script>
 
 <template>
-    <div class="BCTP_B">
-        <div>B 组件接收到父组件传过来的值为: {{ flag }}</div>
-        <div>B 组件从 Bus 接收到从 A 组件传过来的值为: {{ flagB }}</div>
-    </div>
+  <div class="BCTP_B">
+    <div>B 组件接收到父组件传过来的值为: {{ flag }}</div>
+    <div>B 组件从 Bus 接收到从 A 组件传过来的值为: {{ flagB }}</div>
+  </div>
 </template>
 
 <style lang="less" scoped>
 .BCTP_B {
-    width: 200px;
-    height: 200px;
-    background: green;
-    color: #fff;
+  width: 200px;
+  height: 200px;
+  background: green;
+  color: #fff;
 }
 </style>
 ```
@@ -6340,7 +6364,7 @@ Bus.on('transferFlagToBByBus', (flag: boolean) => {
 
 ### 全局组件
 
-> [学习Vue3 第十五章（全局组件，局部组件，递归组件）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/122862736)
+> [学习 Vue3 第十五章（全局组件，局部组件，递归组件）\_小满 zs 的博客-CSDN 博客](https://blog.csdn.net/qq1195566313/article/details/122862736)
 >
 > [组件注册 | Vue.js (vuejs.org)](https://v3.cn.vuejs.org/guide/component-registration.html#全局注册)
 
@@ -6358,25 +6382,24 @@ Bus.on('transferFlagToBByBus', (flag: boolean) => {
 > > <script setup lang="ts">
 > > // This starter template is using Vue 3 <script setup> SFCs
 > > // Check out https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup
-> > import HelloWorld from './components/HelloWorld.vue'
-> > import Marquee from './components/Marquee.vue';
-> > import VueOn from './components/vueon.vue';
-> > import VueModel from './components/vuemodel.vue';
-> > import VueBind from './components/vuebind.vue';
-> > import VueComputed from './components/vuecomputed.vue';
-> > import VueComputedT from './components/vuecomputedt_test.vue';
-> > import VueWatch from './components/vuewatch.vue';
-> > import Vuewatch from './components/vuewatch.vue';
-> > import Vuewatcheffect from './components/vuewatcheffect.vue';
-> > import lessLayout from './layout_less/less_layout.vue';
-> > 
+> > import HelloWorld from "./components/HelloWorld.vue";
+> > import Marquee from "./components/Marquee.vue";
+> > import VueOn from "./components/vueon.vue";
+> > import VueModel from "./components/vuemodel.vue";
+> > import VueBind from "./components/vuebind.vue";
+> > import VueComputed from "./components/vuecomputed.vue";
+> > import VueComputedT from "./components/vuecomputedt_test.vue";
+> > import VueWatch from "./components/vuewatch.vue";
+> > import Vuewatch from "./components/vuewatch.vue";
+> > import Vuewatcheffect from "./components/vuewatcheffect.vue";
+> > import lessLayout from "./layout_less/less_layout.vue";
 > > </script>
-> > 
+> >
 > > <template>
 > >   <div class="vueLogo">
 > >     <img alt="Vue logo" src="./assets/logo.png" />
 > >   </div>
-> > 
+> >
 > >   <!-- <HelloWorld msg="Hello Vue 3 + TypeScript + Vite" /> -->
 > >   <!-- <HelloWorld msg="233" /> -->
 > >   <!-- <Marquee /> -->
@@ -6389,7 +6412,7 @@ Bus.on('transferFlagToBByBus', (flag: boolean) => {
 > >   <!-- <vuewatcheffect /> -->
 > >   <lessLayout />
 > > </template>
-> > 
+> >
 > > <style lang="less">
 > > html,
 > > body,
@@ -6403,13 +6426,12 @@ Bus.on('transferFlagToBByBus', (flag: boolean) => {
 > >   height: 100%;
 > >   overflow: hidden;
 > > }
-> > 
+> >
 > > .vueLogo {
 > >   height: 40%;
 > >   border: 1px solid #ccc;
 > > }
 > > </style>
-> > 
 > > ```
 
 例如: 封装一个 `Card` 组件
@@ -6419,50 +6441,46 @@ Bus.on('transferFlagToBByBus', (flag: boolean) => {
 ```vue
 <!-- 全局组件学习: 封装一个 Card 组件 -->
 <script setup lang="ts">
-
 type Props = {
-    content: string
-}
-defineProps<Props>()
+  content: string;
+};
+defineProps<Props>();
 
 // 两种写法是一致的
 // defineProps<{
 //     content: string
 // }>()
-
 </script>
 
 <template>
-    <div class="card">
-        <div class="card-header">
-            <div>标题</div>
-            <div>副标题</div>
-        </div>
-        <div v-if="content" class="card-content">{{ content }}</div>
+  <div class="card">
+    <div class="card-header">
+      <div>标题</div>
+      <div>副标题</div>
     </div>
+    <div v-if="content" class="card-content">{{ content }}</div>
+  </div>
 </template>
-
-
 
 <style lang="less" scoped>
 @border: #ccc;
 .card {
-    width: 300px;
-    border: 1px solid @border;
-    border-radius: 3px;
-    &:hover {
-        box-shadow: 0 0 10px @border;
-    }
+  width: 300px;
+  border: 1px solid @border;
+  border-radius: 3px;
+  &:hover {
+    box-shadow: 0 0 10px @border;
+  }
 
-    &-content {
-        padding: 10px;
-    }
-    &-header {
-        display: flex;
-        justify-content: space-between;
-        padding: 10px;
-        border-bottom: 1px solid @border;
-    }
+  &-content {
+    padding: 10px;
+  }
+  &-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom: 1px solid @border;
+  }
 }
 </style>
 ```
@@ -6476,15 +6494,12 @@ defineProps<Props>()
 `main.ts`
 
 ```typescript
-import { createApp } from 'vue'
-import App from './App.vue'
-import './assets/css/reset.less'
-import Card from './components/Card.vue'
+import { createApp } from "vue";
+import App from "./App.vue";
+import "./assets/css/reset.less";
+import Card from "./components/Card.vue";
 
-createApp(App)
-    .component('Card', Card)
-    .mount('#app')
-
+createApp(App).component("Card", Card).mount("#app");
 ```
 
 如此一来在其他 vue 页面无需引入 `card 组件` 可以直接使用
@@ -6495,18 +6510,17 @@ createApp(App)
 <script setup lang="ts">
 // This starter template is using Vue 3 <script setup> SFCs
 // Check out https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup
-import HelloWorld from './components/HelloWorld.vue'
-import Marquee from './components/Marquee.vue';
-import VueOn from './components/vueon.vue';
-import VueModel from './components/vuemodel.vue';
-import VueBind from './components/vuebind.vue';
-import VueComputed from './components/vuecomputed.vue';
-import VueComputedT from './components/vuecomputedt_test.vue';
-import VueWatch from './components/vuewatch.vue';
-import Vuewatch from './components/vuewatch.vue';
-import Vuewatcheffect from './components/vuewatcheffect.vue';
-import lessLayout from './layout_less/less_layout.vue';
-
+import HelloWorld from "./components/HelloWorld.vue";
+import Marquee from "./components/Marquee.vue";
+import VueOn from "./components/vueon.vue";
+import VueModel from "./components/vuemodel.vue";
+import VueBind from "./components/vuebind.vue";
+import VueComputed from "./components/vuecomputed.vue";
+import VueComputedT from "./components/vuecomputedt_test.vue";
+import VueWatch from "./components/vuewatch.vue";
+import Vuewatch from "./components/vuewatch.vue";
+import Vuewatcheffect from "./components/vuewatcheffect.vue";
+import lessLayout from "./layout_less/less_layout.vue";
 </script>
 
 <template>
@@ -6547,7 +6561,6 @@ body,
   border: 1px solid #ccc;
 }
 </style>
-
 ```
 
 ![image-20220321211051296](http://cdn.ayusummer233.top/img/202203212110626.png)
@@ -6564,13 +6577,12 @@ body,
 
 ```vue
 <script setup lang="ts">
-import { ref } from 'vue'
-import { defineProps } from 'vue'
+import { ref } from "vue";
+import { defineProps } from "vue";
 
-defineProps<{ msg: string }>()
+defineProps<{ msg: string }>();
 
-const count = ref(0)
-
+const count = ref(0);
 </script>
 
 <template>
@@ -6589,7 +6601,9 @@ const count = ref(0)
   </p>
 
   <p>
-    <a href="https://vitejs.dev/guide/features.html" target="_blank">Vite Docs</a>
+    <a href="https://vitejs.dev/guide/features.html" target="_blank"
+      >Vite Docs</a
+    >
     |
     <a href="https://v3.vuejs.org/" target="_blank">Vue 3 Docs</a>
   </p>
@@ -6620,7 +6634,6 @@ code {
   color: #304455;
 }
 </style>
-
 ```
 
 `App.vue`:
@@ -6629,18 +6642,17 @@ code {
 <script setup lang="ts">
 // This starter template is using Vue 3 <script setup> SFCs
 // Check out https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup
-import HelloWorld from './components/HelloWorld.vue'
-import Marquee from './components/Marquee.vue';
-import VueOn from './components/vueon.vue';
-import VueModel from './components/vuemodel.vue';
-import VueBind from './components/vuebind.vue';
-import VueComputed from './components/vuecomputed.vue';
-import VueComputedT from './components/vuecomputedt_test.vue';
-import VueWatch from './components/vuewatch.vue';
-import Vuewatch from './components/vuewatch.vue';
-import Vuewatcheffect from './components/vuewatcheffect.vue';
-import lessLayout from './layout_less/less_layout.vue';
-
+import HelloWorld from "./components/HelloWorld.vue";
+import Marquee from "./components/Marquee.vue";
+import VueOn from "./components/vueon.vue";
+import VueModel from "./components/vuemodel.vue";
+import VueBind from "./components/vuebind.vue";
+import VueComputed from "./components/vuecomputed.vue";
+import VueComputedT from "./components/vuecomputedt_test.vue";
+import VueWatch from "./components/vuewatch.vue";
+import Vuewatch from "./components/vuewatch.vue";
+import Vuewatcheffect from "./components/vuewatcheffect.vue";
+import lessLayout from "./layout_less/less_layout.vue";
 </script>
 
 <template>
@@ -6681,7 +6693,6 @@ body,
   border: 1px solid #ccc;
 }
 </style>
-
 ```
 
 ![image-20220321210853862](http://cdn.ayusummer233.top/img/202203212108166.png)
@@ -6690,9 +6701,9 @@ body,
 
 ### 递归组件
 
-> [学习Vue3 第十五章（全局组件，局部组件，递归组件）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/122862736)
+> [学习 Vue3 第十五章（全局组件，局部组件，递归组件）\_小满 zs 的博客-CSDN 博客](https://blog.csdn.net/qq1195566313/article/details/122862736)
 >
-> [递归组件  | Vue.js (vuejs.org)](https://v3.cn.vuejs.org/api/sfc-script-setup.html#递归组件)
+> [递归组件 | Vue.js (vuejs.org)](https://v3.cn.vuejs.org/api/sfc-script-setup.html#递归组件)
 
 递归组件自己调用自己, 通过一个条件来结束递归(否则将导致内存泄露)
 
@@ -6702,56 +6713,55 @@ body,
 
 ```vue
 <script setup lang="ts">
-
 type TreeList = {
-    name: string;
-    icon?: string;
-    children?: TreeList[] | [];
-}
+  name: string;
+  icon?: string;
+  children?: TreeList[] | [];
+};
 
-type  Props = {
-    dataTreeList?: TreeList[]    
-}
-defineProps<Props>()
+type Props = {
+  dataTreeList?: TreeList[];
+};
+defineProps<Props>();
 
-const emit = defineEmits(['on-click'])
+const emit = defineEmits(["on-click"]);
 
-const ClickItem = (item:TreeList) =>{
-    console.log(item, 2333);
-    emit('on-click', item)
-}
-
+const ClickItem = (item: TreeList) => {
+  console.log(item, 2333);
+  emit("on-click", item);
+};
 </script>
 
 <script lang="ts">
-export default{
-    name: "Tree"
-}
-
+export default {
+  name: "Tree",
+};
 </script>
 
-
 <template>
-    <div style="margin-left: 10px;">
-        <!-- {{dataTreeList}} -->
-        <div 
-            :key="index" v-for="(item, index) in dataTreeList" 
-            @click.stop="ClickItem(item)">
-            {{item.name}}
-            <Tree 
-                v-if="item?.children?.length" :dataTreeList="item.children"
-                @on-click="ClickItem" />
-        </div>
+  <div style="margin-left: 10px;">
+    <!-- {{dataTreeList}} -->
+    <div
+      :key="index"
+      v-for="(item, index) in dataTreeList"
+      @click.stop="ClickItem(item)"
+    >
+      {{ item.name }}
+      <Tree
+        v-if="item?.children?.length"
+        :dataTreeList="item.children"
+        @on-click="ClickItem"
+      />
     </div>
+  </div>
 </template>
 
-<style lang="less" scoped>
-</style>
+<style lang="less" scoped></style>
 ```
 
 > `item?.children?.length`:
 >
-> 当读 `item` 和 `item.children` 时读出 `undefined` 或 `null`  时不会继续调用 `.length` 而是直接返回 `undefined`, 这样就避免了读 `undefined.length` 导致的报错
+> 当读 `item` 和 `item.children` 时读出 `undefined` 或 `null` 时不会继续调用 `.length` 而是直接返回 `undefined`, 这样就避免了读 `undefined.length` 导致的报错
 >
 > 可以配合 `??` 使用: `item?.children?.length ?? []`:
 >
@@ -6761,93 +6771,92 @@ export default{
 
 ```vue
 <script setup lang="ts">
-import { reactive } from 'vue'
-import Tree from '../../components/Tree.vue'
+import { reactive } from "vue";
+import Tree from "../../components/Tree.vue";
 
 /* 子组件通过 defineExpose 将内部属性 exposeArray 暴露给父组件 */
-const exposeArray = reactive<number[]>([7, 8, 9])
+const exposeArray = reactive<number[]>([7, 8, 9]);
 defineExpose({
-    exposeArray
-})
-
+  exposeArray,
+});
 
 /* 子组件给父组件传参 */
-const list = reactive<number[]>([4, 5, 6])
-const emit = defineEmits(['onclickTap'])
+const list = reactive<number[]>([4, 5, 6]);
+const emit = defineEmits(["onclickTap"]);
 const clickTap = () => {
-    emit('onclickTap', list)
-}
+  emit("onclickTap", list);
+};
 
 // 参数默认值
 type Props = {
-    message?: string
-    data_array?: number[]
-    omit?: string
-}
+  message?: string;
+  data_array?: number[];
+  omit?: string;
+};
 withDefaults(defineProps<Props>(), {
-    message: 'Hello World',
-    data_array: () => [1, 2, 3],
-    omit: 'omit'
-})
+  message: "Hello World",
+  data_array: () => [1, 2, 3],
+  omit: "omit",
+});
 
 // 递归组件测试
 type TreeList = {
-    name: string;
-    icon?: string;
-    children?: TreeList[] | [];
-}
+  name: string;
+  icon?: string;
+  children?: TreeList[] | [];
+};
 const dataArrayTreeList = reactive<TreeList[]>([
-    {
-        name: "no.1",
+  {
+    name: "no.1",
+    children: [
+      {
+        name: "no.1-1",
         children: [
-            {
-                name: "no.1-1",
-                children: [
-                    {
-                        name: "no.1-1-1",
-                    },
-                ],
-            },
+          {
+            name: "no.1-1-1",
+          },
         ],
-    },
-    {
-        name: "no.2",
-        children: [
-            {
-                name: "no.2-1",
-            },
-        ],
-    },
-    {
-        name: "no.3",
-    }
-])
+      },
+    ],
+  },
+  {
+    name: "no.2",
+    children: [
+      {
+        name: "no.2-1",
+      },
+    ],
+  },
+  {
+    name: "no.3",
+  },
+]);
 
 const getItem = (item: TreeList) => {
-    console.log("父组件的item"+item.name);
-}
+  console.log("父组件的item" + item.name);
+};
 </script>
 
 <template>
-    <div class="menu_less">
-        <div>菜单区域</div>
-        {{ message }}
-        <div v-for="item in data_array" :key="item">{{ item }}</div>
-        {{ omit }}
-        <button @click="clickTap">派发给父组件</button>
-        <Card content="测试字符串"/>    
-        <Tree :dataTreeList="dataArrayTreeList" @on-click="getItem"/>
-    </div>
+  <div class="menu_less">
+    <div>菜单区域</div>
+    {{ message }}
+    <div v-for="item in data_array" :key="item">{{ item }}</div>
+    {{ omit }}
+    <button @click="clickTap">派发给父组件</button>
+    <Card content="测试字符串" />
+    <Tree :dataTreeList="dataArrayTreeList" @on-click="getItem" />
+  </div>
 </template>
 
 <style lang="less" scoped>
 .menu_less {
-    width: 200px;
-    border-right: 1px solid #ccc;
-    display: flex;
-    flex-direction: column; // 垂直方向
-    flex: 1;
-    overflow: auto;
+  width: 200px;
+  border-right: 1px solid #ccc;
+  display: flex;
+  flex-direction: column; // 垂直方向
+  flex: 1;
+  overflow: auto;
 }
 </style>
 ```
@@ -6856,54 +6865,51 @@ const getItem = (item: TreeList) => {
 
 ```vue
 <script setup lang="ts">
-import lessMenu from './Menu/lessMenu.vue'
-import lessHeader from './Header/lessHeader.vue'
-import lessContent from './Content/lessContent.vue'
-import { reactive, ref } from 'vue'
+import lessMenu from "./Menu/lessMenu.vue";
+import lessHeader from "./Header/lessHeader.vue";
+import lessContent from "./Content/lessContent.vue";
+import { reactive, ref } from "vue";
 
-const exposeArrayFromMenu = ref(null)
+const exposeArrayFromMenu = ref(null);
 
-const data_array = reactive<number[]>([1, 2, 3])
+const data_array = reactive<number[]>([1, 2, 3]);
 
 // 父组件接收子组件传参
 const getList = (list: number[]) => {
-    console.log(list, "父组件接收子组件")
-}
-
+  console.log(list, "父组件接收子组件");
+};
 </script>
 
 <template>
-    <div class="layout_less">
-        <!-- <div>{{ exposeArrayFromMenu }}</div> -->
-        <lessMenu
-            message="传递一个字符串"
-            v-bind:data_array="data_array"
-            @onclickTap="getList"
-            ref="exposeArrayFromMenu"
-        />
-        <div class="layout_less-right">
-            <lessHeader />
-            <lessContent />
-        </div>
+  <div class="layout_less">
+    <!-- <div>{{ exposeArrayFromMenu }}</div> -->
+    <lessMenu
+      message="传递一个字符串"
+      v-bind:data_array="data_array"
+      @onclickTap="getList"
+      ref="exposeArrayFromMenu"
+    />
+    <div class="layout_less-right">
+      <lessHeader />
+      <lessContent />
     </div>
+  </div>
 </template>
 
 <style lang="less" scoped>
 .layout_less {
+  display: flex;
+  height: 60%;
+  overflow: hidden;
+  border: 1px solid #ccc;
+  &-right {
     display: flex;
-    height: 60%;
-    overflow: hidden;
-    border: 1px solid #ccc;
-    &-right {
-        display: flex;
-        flex-direction: column; // 垂直方向
-        flex: 1;
-    }
+    flex-direction: column; // 垂直方向
+    flex: 1;
+  }
 }
 </style>
 ```
-
-
 
 `App.vue`
 
@@ -6911,18 +6917,17 @@ const getList = (list: number[]) => {
 <script setup lang="ts">
 // This starter template is using Vue 3 <script setup> SFCs
 // Check out https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup
-import HelloWorld from './components/HelloWorld.vue'
-import Marquee from './components/Marquee.vue';
-import VueOn from './components/vueon.vue';
-import VueModel from './components/vuemodel.vue';
-import VueBind from './components/vuebind.vue';
-import VueComputed from './components/vuecomputed.vue';
-import VueComputedT from './components/vuecomputedt_test.vue';
-import VueWatch from './components/vuewatch.vue';
-import Vuewatch from './components/vuewatch.vue';
-import Vuewatcheffect from './components/vuewatcheffect.vue';
-import lessLayout from './layout_less/less_layout.vue';
-
+import HelloWorld from "./components/HelloWorld.vue";
+import Marquee from "./components/Marquee.vue";
+import VueOn from "./components/vueon.vue";
+import VueModel from "./components/vuemodel.vue";
+import VueBind from "./components/vuebind.vue";
+import VueComputed from "./components/vuecomputed.vue";
+import VueComputedT from "./components/vuecomputedt_test.vue";
+import VueWatch from "./components/vuewatch.vue";
+import Vuewatch from "./components/vuewatch.vue";
+import Vuewatcheffect from "./components/vuewatcheffect.vue";
+import lessLayout from "./layout_less/less_layout.vue";
 </script>
 
 <template>
@@ -6963,7 +6968,6 @@ body,
   border: 1px solid #ccc;
 }
 </style>
-
 ```
 
 ![image-20220322224213121](http://cdn.ayusummer233.top/img/202203222242790.png)
@@ -6972,7 +6976,7 @@ body,
 
 ### 动态组件
 
-> [学习Vue3 第十六章（动态组件）_小满zs的博客-CSDN博客_vue3 动态组件](https://blog.csdn.net/qq1195566313/article/details/122891279)
+> [学习 Vue3 第十六章（动态组件）\_小满 zs 的博客-CSDN 博客\_vue3 动态组件](https://blog.csdn.net/qq1195566313/article/details/122891279)
 
 动态组件就是让多个组件使用同一个挂载点并动态切换
 
@@ -6980,8 +6984,7 @@ body,
 
 ```vue
 <!-- 引入组件 -->
-import A from './A.vue'
-import B from './B.vue'
+import A from './A.vue' import B from './B.vue'
 <!-- 通过 is 切换 A B 组件 -->
 <component :is="A"></component>
 ```
@@ -6993,64 +6996,54 @@ import B from './B.vue'
 `A.vue`:
 
 ```vue
-<script setup lang="ts">
-</script>
+<script setup lang="ts"></script>
 
 <template>
-<div class = "styleA">A组件内容</div>
+  <div class="styleA">A组件内容</div>
 </template>
 
 <style lang="less" scoped>
 .styleA {
-    background: red;
-    height: 300px;
-    border: 1px solid #ccc;
+  background: red;
+  height: 300px;
+  border: 1px solid #ccc;
 }
-
 </style>
 ```
 
 `B.vue`
 
 ```vue
-<script setup lang="ts">
-</script>
+<script setup lang="ts"></script>
 
 <template>
-    <div class="styleB">
-        B组件内容
-    </div>
+  <div class="styleB">B组件内容</div>
 </template>
 
 <style lang="less" scoped>
 .styleB {
-    background: greenyellow;
-    height: 300px;
-    border: 1px solid #ccc;
+  background: greenyellow;
+  height: 300px;
+  border: 1px solid #ccc;
 }
-
 </style>
 ```
 
 `C.vue`
 
 ```vue
-<script setup lang="ts">
-</script>
+<script setup lang="ts"></script>
 
 <template>
-    <div class="styleC">
-        C组件内容
-    </div>
+  <div class="styleC">C组件内容</div>
 </template>
 
 <style lang="less" scoped>
 .styleC {
-    background: burlywood;
-    height: 300px;
-    border: 1px solid #ccc;
+  background: burlywood;
+  height: 300px;
+  border: 1px solid #ccc;
 }
-
 </style>
 ```
 
@@ -7058,84 +7051,81 @@ import B from './B.vue'
 
 ```vue
 <script setup lang="ts">
-import A from './A.vue'
-import B from './B.vue'
-import C from './C.vue'
-import {reactive, markRaw} from 'vue'
+import A from "./A.vue";
+import B from "./B.vue";
+import C from "./C.vue";
+import { reactive, markRaw } from "vue";
 
 type Tabs = {
-    name: string,
-    comName:any
-}
+  name: string;
+  comName: any;
+};
 
-type Com = Pick<Tabs, 'comName'>
+type Com = Pick<Tabs, "comName">;
 
 const data = reactive<Tabs[]>([
-    {
-        name: '我是 A 组件',
-        comName: markRaw(A)
-    },
-    {
-        name: '我是 B 组件',
-        comName: markRaw(B)
-    },
-    {
-        name: '我是 C 组件',
-        comName: markRaw(C)
-    }
-])
-
+  {
+    name: "我是 A 组件",
+    comName: markRaw(A),
+  },
+  {
+    name: "我是 B 组件",
+    comName: markRaw(B),
+  },
+  {
+    name: "我是 C 组件",
+    comName: markRaw(C),
+  },
+]);
 
 let current = reactive<Com>({
-    comName: data[0].comName
-})
+  comName: data[0].comName,
+});
 
-const switchCom =(item: Tabs) =>{
-    current.comName = item.comName
-}
+const switchCom = (item: Tabs) => {
+  current.comName = item.comName;
+};
 </script>
 
 <template>
-    <div class="content_layout">
-        <div class = "tab">
-            <div :key="item.name" v-for="item in data"
-                @click="switchCom(item)">
-                {{item.name}}
-            </div>
-        </div>
-        <component :is="current.comName" />
-        <div class="content_layout-items" 
-            :key="item" v-for="item in 100">
-                {{ item }}
-        </div>      
+  <div class="content_layout">
+    <div class="tab">
+      <div :key="item.name" v-for="item in data" @click="switchCom(item)">
+        {{ item.name }}
+      </div>
     </div>
+    <component :is="current.comName" />
+    <div class="content_layout-items" :key="item" v-for="item in 100">
+      {{ item }}
+    </div>
+  </div>
 </template>
 
 <style lang="less" scoped>
 .content_layout {
-    flex: 1;
-    margin: 20px;
+  flex: 1;
+  margin: 20px;
+  border: 1px solid #ccc;
+  overflow: auto;
+  &-items {
+    padding: 20px;
     border: 1px solid #ccc;
-    overflow: auto;
-    &-items {
-        padding: 20px;
-        border: 1px solid #ccc;
-    }
+  }
 }
 
-.tab{
-    display: flex;
-    flex:1;
-    flex-direction: row;
-    div{
-        flex: 1;
-        padding: 10px;
-        border: 1px solid #ccc;
-        cursor: pointer;
-        &:hover{
-            background: #eee;
-        }
+.tab {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  div {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    &:hover {
+      background: #eee;
     }
+  }
 }
 </style>
 ```
@@ -7147,7 +7137,7 @@ const switchCom =(item: Tabs) =>{
 > - 在 `Vue2` 的时候 `:is` 是通过组件名称切换的, 而在 `Vue3 setup` 中是通过组件实例切换的
 >
 > - 如果把组件实例放到 `Reactive` 中那么 `Vue` 会给你一个警告 `runtime-core.esm-bundler.js:38 [Vue warn]: Vue received a Component which was made a reactive object. This can lead to unnecessary performance overhead, and should be avoided by marking the component with markRaw or using  shallowRef instead of  ref.
->   Component that was made reactive: `
+Component that was made reactive: `
 >
 >   ![image-20220323102616021](http://cdn.ayusummer233.top/img/202203231026284.png)
 >
@@ -7161,7 +7151,7 @@ const switchCom =(item: Tabs) =>{
 
 > [动态组件 & 异步组件 | Vue.js (vuejs.org)](https://v3.cn.vuejs.org/guide/component-dynamic-async.html#异步组件)
 >
-> [学习Vue3 第十八章（异步组件&代码分包&suspense）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/122909360)
+> [学习 Vue3 第十八章（异步组件&代码分包&suspense）\_小满 zs 的博客-CSDN 博客](https://blog.csdn.net/qq1195566313/article/details/122909360)
 
 在大型应用中，我们可能需要将应用分割成小一些的代码块，并且只在需要的时候才从服务器加载一个模块。为了实现这个效果，Vue 有一个 `defineAsyncComponent` 方法配合 `Suspense 及其插槽`可以使用异步组件
 
@@ -7171,18 +7161,18 @@ const switchCom =(item: Tabs) =>{
 
 ```json
 [
-    {
-        "name": "张三"
-    },
-    {
-        "name": "李四"
-    },
-    {
-        "name": "王五"
-    },
-    {
-        "name": "赵六"
-    }
+  {
+    "name": "张三"
+  },
+  {
+    "name": "李四"
+  },
+  {
+    "name": "王五"
+  },
+  {
+    "name": "赵六"
+  }
 ]
 ```
 
@@ -7190,177 +7180,165 @@ const switchCom =(item: Tabs) =>{
 
 ```vue
 <script setup lang="ts">
-import {axios} from './server'
+import { axios } from "./server";
 
-const list = await axios('./data.json')
-console.log(list)
+const list = await axios("./data.json");
+console.log(list);
 </script>
 
 <template>
-    <div v-for="item in list"> 
-        {{item.name}}
-    </div>
+  <div v-for="item in list">
+    {{ item.name }}
+  </div>
 </template>
 
-<style lang="less" scoped>
-</style>
+<style lang="less" scoped></style>
 ```
 
 `server.ts`
 
 ```typescript
 type NameList = {
-    name: string
-}
+  name: string;
+};
 
-export const axios = (url: string):Promise<NameList[]> => {
-    return new Promise((resolve)=> {
-        let xhr: XMLHttpRequest = new XMLHttpRequest()
-        
-        xhr.open('GET', url)
-        
-        xhr.onreadystatechange = () => {
-            if (xhr.readyState === 4 && xhr.status === 200) {
-                // 等 2s 返回信息
-                setTimeout(() => {
-                    resolve(JSON.parse(xhr.responseText))
-                }, 2000);
-                
-            }
-        }
+export const axios = (url: string): Promise<NameList[]> => {
+  return new Promise((resolve) => {
+    let xhr: XMLHttpRequest = new XMLHttpRequest();
 
-        xhr.send()
-    })
-    
-}
+    xhr.open("GET", url);
+
+    xhr.onreadystatechange = () => {
+      if (xhr.readyState === 4 && xhr.status === 200) {
+        // 等 2s 返回信息
+        setTimeout(() => {
+          resolve(JSON.parse(xhr.responseText));
+        }, 2000);
+      }
+    };
+
+    xhr.send();
+  });
+};
 ```
 
 `lessContent.vue`
 
 ```vue
 <script setup lang="ts">
-import A from './A.vue'
-import B from './B.vue'
-import C from './C.vue'
-import Dialog from '../../components/Dialog.vue'
+import A from "./A.vue";
+import B from "./B.vue";
+import C from "./C.vue";
+import Dialog from "../../components/Dialog.vue";
 // import Loading from '../../components/Loading/loading.vue' 异步化组件后就不能这样直接引入使用了
-import {reactive, markRaw, ref, defineAsyncComponent} from 'vue'
+import { reactive, markRaw, ref, defineAsyncComponent } from "vue";
 
-const Loading = defineAsyncComponent(() => import('../../components/Loading/loading.vue'))
+const Loading = defineAsyncComponent(
+  () => import("../../components/Loading/loading.vue")
+);
 
 type Tabs = {
-    name: string,
-    comName:any
-}
+  name: string;
+  comName: any;
+};
 
-type Com = Pick<Tabs, 'comName'>
+type Com = Pick<Tabs, "comName">;
 
 const data = reactive<Tabs[]>([
-    {
-        name: '我是 A 组件',
-        comName: markRaw(A)
-    },
-    {
-        name: '我是 B 组件',
-        comName: markRaw(B)
-    },
-    {
-        name: '我是 C 组件',
-        comName: markRaw(C)
-    }
-])
-
+  {
+    name: "我是 A 组件",
+    comName: markRaw(A),
+  },
+  {
+    name: "我是 B 组件",
+    comName: markRaw(B),
+  },
+  {
+    name: "我是 C 组件",
+    comName: markRaw(C),
+  },
+]);
 
 let current = reactive<Com>({
-    comName: data[0].comName
-})
+  comName: data[0].comName,
+});
 
-const switchCom =(item: Tabs) =>{
-    current.comName = item.comName
-}
+const switchCom = (item: Tabs) => {
+  current.comName = item.comName;
+};
 
 // 动态插槽相关
-let name = ref('dialog_header')
+let name = ref("dialog_header");
 </script>
 
 <template>
-    <div class="content_layout">
-        <!-- 异步组件测试 -->
-        <Suspense>
-            <template #default>
-                <Loading></Loading>
-            </template>
-            <template #fallback>
-                <div>加载中...</div>
-            </template>
-        </Suspense>
-        <!-- 插槽测试 -->
-        <Dialog>
-            <!-- 具名插槽 -->
-            <template v-slot:dialog_header>
-                <div>
-                    摆
-                </div>
-            </template>
-            <!-- 匿名插槽 -->
-            <!-- <template v-slot="{data}"> -->
-            <!-- 简写: -->
-            <template #default="{data}">
-                <div>
-                    姓名: {{data.name}} 年龄: {{data.age}}
-                </div>
-            </template>
-            <!-- 具名插槽 -->
-            <!-- 简写: -->
-            <template #dialog_footer>
-                <div>
-                    摸了
-                </div>
-            </template>
-            <!-- 动态插槽 -->
-            <template #[name]>
-                动态插槽演示
-            </template>
-        </Dialog>
-        <div class = "tab">
-            <div :key="item.name" v-for="item in data"
-                @click="switchCom(item)">
-                {{item.name}}
-            </div>
-        </div>
-        <component :is="current.comName" />
-        <div class="content_layout-items" 
-            :key="item" v-for="item in 100">
-                {{ item }}
-        </div>      
+  <div class="content_layout">
+    <!-- 异步组件测试 -->
+    <Suspense>
+      <template #default>
+        <Loading></Loading>
+      </template>
+      <template #fallback>
+        <div>加载中...</div>
+      </template>
+    </Suspense>
+    <!-- 插槽测试 -->
+    <Dialog>
+      <!-- 具名插槽 -->
+      <template v-slot:dialog_header>
+        <div>摆</div>
+      </template>
+      <!-- 匿名插槽 -->
+      <!-- <template v-slot="{data}"> -->
+      <!-- 简写: -->
+      <template #default="{ data }">
+        <div>姓名: {{ data.name }} 年龄: {{ data.age }}</div>
+      </template>
+      <!-- 具名插槽 -->
+      <!-- 简写: -->
+      <template #dialog_footer>
+        <div>摸了</div>
+      </template>
+      <!-- 动态插槽 -->
+      <template #[name]> 动态插槽演示 </template>
+    </Dialog>
+    <div class="tab">
+      <div :key="item.name" v-for="item in data" @click="switchCom(item)">
+        {{ item.name }}
+      </div>
     </div>
+    <component :is="current.comName" />
+    <div class="content_layout-items" :key="item" v-for="item in 100">
+      {{ item }}
+    </div>
+  </div>
 </template>
 
 <style lang="less" scoped>
 .content_layout {
-    flex: 1;
-    margin: 20px;
+  flex: 1;
+  margin: 20px;
+  border: 1px solid #ccc;
+  overflow: auto;
+  &-items {
+    padding: 20px;
     border: 1px solid #ccc;
-    overflow: auto;
-    &-items {
-        padding: 20px;
-        border: 1px solid #ccc;
-    }
+  }
 }
 
-.tab{
-    display: flex;
-    flex:1;
-    flex-direction: row;
-    div{
-        flex: 1;
-        padding: 10px;
-        border: 1px solid #ccc;
-        cursor: pointer;
-        &:hover{
-            background: #eee;
-        }
+.tab {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  div {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    &:hover {
+      background: #eee;
     }
+  }
 }
 </style>
 ```
@@ -7377,7 +7355,7 @@ let name = ref('dialog_header')
 
 > [组件基础 | Vue.js (vuejs.org)](https://v3.cn.vuejs.org/guide/component-basics.html#通过插槽分发内容)
 >
-> [学习Vue3 第十七章（插槽slot）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/122904105)
+> [学习 Vue3 第十七章（插槽 slot）\_小满 zs 的博客-CSDN 博客](https://blog.csdn.net/qq1195566313/article/details/122904105)
 
 插槽就是子组件中的提供给父组件使用的一个[占位符](https://so.csdn.net/so/search?q=占位符&spm=1001.2101.3001.7020)，用 `<slot></slot> ` 表示，父组件可以在这个占位符中填充任何模板代码，如 HTML、组件等，填充的内容会替换子组件的 `<slot></slot>` 标签。
 
@@ -7391,16 +7369,16 @@ let name = ref('dialog_header')
 
 ```vue
 <template>
-    <div>
-       <slot></slot>
-    </div>
+  <div>
+    <slot></slot>
+  </div>
 </template>
 ```
 
 在父组件中使用插槽并给其填充内容:
 
 ```vue
-        <Dialog>
+<Dialog>
            <template v-slot>
                <div>寄</div>
            </template>
@@ -7414,7 +7392,7 @@ let name = ref('dialog_header')
 给插槽起个名字, 父组件中通过不同的插槽名调用不同插槽
 
 ```vue
-    <div>
+<div>
         <slot name="header"></slot>
         <slot></slot>
  
@@ -7423,7 +7401,7 @@ let name = ref('dialog_header')
 ```
 
 ```vue
-        <Dialog>
+<Dialog>
             <!-- 具名插槽 -->
             <template v-slot:dialog_header>
                 <div>
@@ -7447,45 +7425,43 @@ let name = ref('dialog_header')
 
 ```vue
 <script setup lang="ts">
-import {reactive} from 'vue'
+import { reactive } from "vue";
 
 type names = {
-    name: string,
-    age:number
-}
+  name: string;
+  age: number;
+};
 const data = reactive<names[]>([
-    {
-        name: '张三',
-        age: 18
-    },
-    {
-        name: '李四',
-        age: 20
-    },
-    {
-        name: '王五',
-        age: 22
-    }
-])
-
+  {
+    name: "张三",
+    age: 18,
+  },
+  {
+    name: "李四",
+    age: 20,
+  },
+  {
+    name: "王五",
+    age: 22,
+  },
+]);
 </script>
 
 <template>
-	<div>
-        <main class="main">
-            <div v-for="item in data">
-                <slot :data="item"></slot>
-            </div>
-        </main>
-    </div>
+  <div>
+    <main class="main">
+      <div v-for="item in data">
+        <slot :data="item"></slot>
+      </div>
+    </main>
+  </div>
 </template>
-
 ```
 
 通过结构方式取值
 
 ```vue
-        <Dialog>
+<Dialog>
             <!-- 匿名插槽 -->
             <!-- <template v-slot="{data}"> -->
             <!-- 简写: -->
@@ -7513,7 +7489,6 @@ const name = ref('header')
         </div>
     </template>
 </Dialog>
-
 ```
 
 ---
@@ -7522,60 +7497,59 @@ const name = ref('header')
 
 ```vue
 <script setup lang="ts">
-import {reactive} from 'vue'
+import { reactive } from "vue";
 
 type names = {
-    name: string,
-    age:number
-}
+  name: string;
+  age: number;
+};
 const data = reactive<names[]>([
-    {
-        name: '张三',
-        age: 18
-    },
-    {
-        name: '李四',
-        age: 20
-    },
-    {
-        name: '王五',
-        age: 22
-    }
-])
-
+  {
+    name: "张三",
+    age: 18,
+  },
+  {
+    name: "李四",
+    age: 20,
+  },
+  {
+    name: "王五",
+    age: 22,
+  },
+]);
 </script>
 
 <template>
-    <div>
-        <header class="header">
-            <slot name="dialog_header" />
-        </header>
-        <main class="main">
-            <div v-for="item in data">
-                <slot :data="item"></slot>
-            </div>
-        </main>
-        <footer class="footer">
-            <slot name="dialog_footer" />
-        </footer>
-    </div>
+  <div>
+    <header class="header">
+      <slot name="dialog_header" />
+    </header>
+    <main class="main">
+      <div v-for="item in data">
+        <slot :data="item"></slot>
+      </div>
+    </main>
+    <footer class="footer">
+      <slot name="dialog_footer" />
+    </footer>
+  </div>
 </template>
 
 <style lang="less" scoped>
-.header{
-    height: 100px;
-    background: red;
-    color: #fff;
+.header {
+  height: 100px;
+  background: red;
+  color: #fff;
 }
-.main{
-    height: 100px;
-    background: green;
-    color: #fff;
+.main {
+  height: 100px;
+  background: green;
+  color: #fff;
 }
-.footer{
-    height: 100px;
-    background: blue;
-    color: #fff;
+.footer {
+  height: 100px;
+  background: blue;
+  color: #fff;
 }
 </style>
 ```
@@ -7584,115 +7558,104 @@ const data = reactive<names[]>([
 
 ```vue
 <script setup lang="ts">
-import A from './A.vue'
-import B from './B.vue'
-import C from './C.vue'
-import Dialog from '../../components/Dialog.vue'
-import {reactive, markRaw, ref} from 'vue'
+import A from "./A.vue";
+import B from "./B.vue";
+import C from "./C.vue";
+import Dialog from "../../components/Dialog.vue";
+import { reactive, markRaw, ref } from "vue";
 
 type Tabs = {
-    name: string,
-    comName:any
-}
+  name: string;
+  comName: any;
+};
 
-type Com = Pick<Tabs, 'comName'>
+type Com = Pick<Tabs, "comName">;
 
 const data = reactive<Tabs[]>([
-    {
-        name: '我是 A 组件',
-        comName: markRaw(A)
-    },
-    {
-        name: '我是 B 组件',
-        comName: markRaw(B)
-    },
-    {
-        name: '我是 C 组件',
-        comName: markRaw(C)
-    }
-])
-
+  {
+    name: "我是 A 组件",
+    comName: markRaw(A),
+  },
+  {
+    name: "我是 B 组件",
+    comName: markRaw(B),
+  },
+  {
+    name: "我是 C 组件",
+    comName: markRaw(C),
+  },
+]);
 
 let current = reactive<Com>({
-    comName: data[0].comName
-})
+  comName: data[0].comName,
+});
 
-const switchCom =(item: Tabs) =>{
-    current.comName = item.comName
-}
+const switchCom = (item: Tabs) => {
+  current.comName = item.comName;
+};
 
 // 动态插槽相关
-let name = ref('dialog_header')
+let name = ref("dialog_header");
 </script>
 
 <template>
-    <div class="content_layout">
-        <Dialog>
-            <!-- 具名插槽 -->
-            <template v-slot:dialog_header>
-                <div>
-                    摆
-                </div>
-            </template>
-            <!-- 匿名插槽 -->
-            <!-- <template v-slot="{data}"> -->
-            <!-- 简写: -->
-            <template #default="{data}">
-                <div>
-                    姓名: {{data.name}} 年龄: {{data.age}}
-                </div>
-            </template>
-            <!-- 具名插槽 -->
-            <!-- 简写: -->
-            <template #dialog_footer>
-                <div>
-                    摸了
-                </div>
-            </template>
-            <!-- 动态插槽 -->
-            <template #[name]>
-                动态插槽演示
-            </template>
-        </Dialog>
-        <div class = "tab">
-            <div :key="item.name" v-for="item in data"
-                @click="switchCom(item)">
-                {{item.name}}
-            </div>
-        </div>
-        <component :is="current.comName" />
-        <div class="content_layout-items" 
-            :key="item" v-for="item in 100">
-                {{ item }}
-        </div>      
+  <div class="content_layout">
+    <Dialog>
+      <!-- 具名插槽 -->
+      <template v-slot:dialog_header>
+        <div>摆</div>
+      </template>
+      <!-- 匿名插槽 -->
+      <!-- <template v-slot="{data}"> -->
+      <!-- 简写: -->
+      <template #default="{ data }">
+        <div>姓名: {{ data.name }} 年龄: {{ data.age }}</div>
+      </template>
+      <!-- 具名插槽 -->
+      <!-- 简写: -->
+      <template #dialog_footer>
+        <div>摸了</div>
+      </template>
+      <!-- 动态插槽 -->
+      <template #[name]> 动态插槽演示 </template>
+    </Dialog>
+    <div class="tab">
+      <div :key="item.name" v-for="item in data" @click="switchCom(item)">
+        {{ item.name }}
+      </div>
     </div>
+    <component :is="current.comName" />
+    <div class="content_layout-items" :key="item" v-for="item in 100">
+      {{ item }}
+    </div>
+  </div>
 </template>
 
 <style lang="less" scoped>
 .content_layout {
-    flex: 1;
-    margin: 20px;
+  flex: 1;
+  margin: 20px;
+  border: 1px solid #ccc;
+  overflow: auto;
+  &-items {
+    padding: 20px;
     border: 1px solid #ccc;
-    overflow: auto;
-    &-items {
-        padding: 20px;
-        border: 1px solid #ccc;
-    }
+  }
 }
 
-.tab{
-    display: flex;
-    flex:1;
-    flex-direction: row;
-    div{
-        flex: 1;
-        padding: 10px;
-        border: 1px solid #ccc;
-        cursor: pointer;
-        &:hover{
-            background: #eee;
-        }
+.tab {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  div {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    &:hover {
+      background: #eee;
     }
+  }
 }
 </style>
 ```
@@ -7705,7 +7668,7 @@ let name = ref('dialog_header')
 
 ### Teleport
 
-> [学习Vue3 第十九章（Teleport传送组件）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/122916261)
+> [学习 Vue3 第十九章（Teleport 传送组件）\_小满 zs 的博客-CSDN 博客](https://blog.csdn.net/qq1195566313/article/details/122916261)
 >
 > [Teleport | Vue.js (vuejs.org)](https://v3.cn.vuejs.org/guide/teleport.html#teleport)
 
@@ -7720,20 +7683,18 @@ Teleport 可以将模板渲染至指定 DOM 节点，不受父级 style、v-show
 ```html
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite-vue-ts 学习</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <link rel="icon" href="/favicon.ico" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Vite-vue-ts 学习</title>
-</head>
-
-<body>
-  <div id="app"></div>
-  <div class="teleport_class_test"></div>
-  <script type="module" src="/src/main.ts"></script>
-</body>
-
+  <body>
+    <div id="app"></div>
+    <div class="teleport_class_test"></div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
 </html>
 ```
 
@@ -7741,140 +7702,129 @@ Teleport 可以将模板渲染至指定 DOM 节点，不受父级 style、v-show
 
 ```vue
 <script setup lang="ts">
-import A from './A.vue'
-import B from './B.vue'
-import C from './C.vue'
-import Dialog from '../../components/Dialog.vue'
+import A from "./A.vue";
+import B from "./B.vue";
+import C from "./C.vue";
+import Dialog from "../../components/Dialog.vue";
 // import Loading from '../../components/Loading/loading.vue' 异步化组件后就不能这样直接引入使用了
-import {reactive, markRaw, ref, defineAsyncComponent} from 'vue'
+import { reactive, markRaw, ref, defineAsyncComponent } from "vue";
 
-const Loading = defineAsyncComponent(() => import('../../components/Loading/loading.vue'))
+const Loading = defineAsyncComponent(
+  () => import("../../components/Loading/loading.vue")
+);
 
 type Tabs = {
-    name: string,
-    comName:any
-}
+  name: string;
+  comName: any;
+};
 
-type Com = Pick<Tabs, 'comName'>
+type Com = Pick<Tabs, "comName">;
 
 const data = reactive<Tabs[]>([
-    {
-        name: '我是 A 组件',
-        comName: markRaw(A)
-    },
-    {
-        name: '我是 B 组件',
-        comName: markRaw(B)
-    },
-    {
-        name: '我是 C 组件',
-        comName: markRaw(C)
-    }
-])
-
+  {
+    name: "我是 A 组件",
+    comName: markRaw(A),
+  },
+  {
+    name: "我是 B 组件",
+    comName: markRaw(B),
+  },
+  {
+    name: "我是 C 组件",
+    comName: markRaw(C),
+  },
+]);
 
 let current = reactive<Com>({
-    comName: data[0].comName
-})
+  comName: data[0].comName,
+});
 
-const switchCom =(item: Tabs) =>{
-    current.comName = item.comName
-}
+const switchCom = (item: Tabs) => {
+  current.comName = item.comName;
+};
 
 // 动态插槽相关
-let name = ref('dialog_header')
+let name = ref("dialog_header");
 </script>
 
 <template>
-    <div class="content_layout">
-        <teleport to='.teleport_class_test'>
-            <div class="loading">
-                loading...
-            </div>
-        </teleport>
-        <!-- 异步组件测试 -->
-        <Suspense>
-            <template #default>
-                <Loading></Loading>
-            </template>
-            <template #fallback>
-                <div>加载中...</div>
-            </template>
-        </Suspense>
-        <!-- 插槽测试 -->
-        <Dialog>
-            <!-- 具名插槽 -->
-            <template v-slot:dialog_header>
-                <div>
-                    摆
-                </div>
-            </template>
-            <!-- 匿名插槽 -->
-            <!-- <template v-slot="{data}"> -->
-            <!-- 简写: -->
-            <template #default="{data}">
-                <div>
-                    姓名: {{data.name}} 年龄: {{data.age}}
-                </div>
-            </template>
-            <!-- 具名插槽 -->
-            <!-- 简写: -->
-            <template #dialog_footer>
-                <div>
-                    摸了
-                </div>
-            </template>
-            <!-- 动态插槽 -->
-            <template #[name]>
-                动态插槽演示
-            </template>
-        </Dialog>
-        <div class = "tab">
-            <div :key="item.name" v-for="item in data"
-                @click="switchCom(item)">
-                {{item.name}}
-            </div>
-        </div>
-        <component :is="current.comName" />
-        <div class="content_layout-items" 
-            :key="item" v-for="item in 100">
-                {{ item }}
-        </div>      
+  <div class="content_layout">
+    <teleport to=".teleport_class_test">
+      <div class="loading">loading...</div>
+    </teleport>
+    <!-- 异步组件测试 -->
+    <Suspense>
+      <template #default>
+        <Loading></Loading>
+      </template>
+      <template #fallback>
+        <div>加载中...</div>
+      </template>
+    </Suspense>
+    <!-- 插槽测试 -->
+    <Dialog>
+      <!-- 具名插槽 -->
+      <template v-slot:dialog_header>
+        <div>摆</div>
+      </template>
+      <!-- 匿名插槽 -->
+      <!-- <template v-slot="{data}"> -->
+      <!-- 简写: -->
+      <template #default="{ data }">
+        <div>姓名: {{ data.name }} 年龄: {{ data.age }}</div>
+      </template>
+      <!-- 具名插槽 -->
+      <!-- 简写: -->
+      <template #dialog_footer>
+        <div>摸了</div>
+      </template>
+      <!-- 动态插槽 -->
+      <template #[name]> 动态插槽演示 </template>
+    </Dialog>
+    <div class="tab">
+      <div :key="item.name" v-for="item in data" @click="switchCom(item)">
+        {{ item.name }}
+      </div>
     </div>
+    <component :is="current.comName" />
+    <div class="content_layout-items" :key="item" v-for="item in 100">
+      {{ item }}
+    </div>
+  </div>
 </template>
 
 <style lang="less" scoped>
 .content_layout {
-    flex: 1;
-    margin: 20px;
+  flex: 1;
+  margin: 20px;
+  border: 1px solid #ccc;
+  overflow: auto;
+  &-items {
+    padding: 20px;
     border: 1px solid #ccc;
-    overflow: auto;
-    &-items {
-        padding: 20px;
-        border: 1px solid #ccc;
-    }
+  }
 }
 
-.tab{
-    display: flex;
-    flex:1;
-    flex-direction: row;
-    div{
-        flex: 1;
-        padding: 10px;
-        border: 1px solid #ccc;
-        cursor: pointer;
-        &:hover{
-            background: #eee;
-        }
+.tab {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  div {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    &:hover {
+      background: #eee;
     }
+  }
 }
 
-.loading{
-    position: absolute;
-    right: 10px;
-    top: 10px;
-    background: greenyellow;
+.loading {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  background: greenyellow;
 }
 </style>
 ```
@@ -7895,7 +7845,7 @@ let name = ref('dialog_header')
 
 > [Application API | Vue.js (vuejs.org)](https://vuejs.org/api/application.html#app-config-globalproperties)
 >
-> [学习Vue3 第二十九章（Vue3定义全局函数和变量）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123292042)
+> [学习 Vue3 第二十九章（Vue3 定义全局函数和变量）\_小满 zs 的博客-CSDN 博客](https://blog.csdn.net/qq1195566313/article/details/123292042)
 
 Vue3 没有 Prototype 属性, 使用 `app.config.globalProperties` 代替, 然后去自定义变量和函数
 
@@ -7904,8 +7854,6 @@ Vue3 没有 Prototype 属性, 使用 `app.config.globalProperties` 代替, 然�
 以字符串修饰为例:
 
 `main.ts`
-
-
 
 ---
 
@@ -7919,7 +7867,7 @@ Vue3 没有 Prototype 属性, 使用 `app.config.globalProperties` 代替, 然�
 
 > [应用 API-directive | Vue.js (vuejs.org)](https://v3.cn.vuejs.org/api/application-api.html#directive)
 >
-> [学习Vue3 第二十七章（自定义指令directive）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123228132)
+> [学习 Vue3 第二十七章（自定义指令 directive）\_小满 zs 的博客-CSDN 博客](https://blog.csdn.net/qq1195566313/article/details/123228132)
 
 `directive` 是 `vue3` 的一项破坏性更新, 通过 `directive` 我们可以根据自己的需要自定义 vue 指令
 
@@ -7961,55 +7909,57 @@ Vue3 没有 Prototype 属性, 使用 `app.config.globalProperties` 代替, 然�
 <!-- 组件拖曳示例 -->
 <script setup lang="ts">
 // 导入 directive 相关模块
-import { ref, Directive, DirectiveBinding } from 'vue'
+import { ref, Directive, DirectiveBinding } from "vue";
 // 自定义 v-move 指令进行组件拖曳
-const vMove: Directive<any, void> = (el: HTMLDivElement, binding: DirectiveBinding) => {
-    // 取当前元素的第一个子元素作为拖曳元素
-    let moveElement: HTMLDivElement = el.firstElementChild as HTMLDivElement
-    console.log(moveElement)
-    // 定义鼠标按下事件(拖动)
-    const mouseDown = (e: MouseEvent) => {
-        let X = e.clientX - el.offsetLeft
-        let Y = e.clientY - el.offsetTop
-        const move = (e: MouseEvent) => {
-            console.log(e)
-            el.style.left = e.clientX - X + 'px'
-            el.style.top = e.clientY - Y + 'px'
-        }
-        document.addEventListener('mousemove', move)
-        document.addEventListener('mouseup', () => {
-            document.removeEventListener('mousemove', move)
-        })
-    }
-    // 绑定鼠标按下拖曳事件
-    moveElement.addEventListener('mousedown', mouseDown)
-}
-
+const vMove: Directive<any, void> = (
+  el: HTMLDivElement,
+  binding: DirectiveBinding
+) => {
+  // 取当前元素的第一个子元素作为拖曳元素
+  let moveElement: HTMLDivElement = el.firstElementChild as HTMLDivElement;
+  console.log(moveElement);
+  // 定义鼠标按下事件(拖动)
+  const mouseDown = (e: MouseEvent) => {
+    let X = e.clientX - el.offsetLeft;
+    let Y = e.clientY - el.offsetTop;
+    const move = (e: MouseEvent) => {
+      console.log(e);
+      el.style.left = e.clientX - X + "px";
+      el.style.top = e.clientY - Y + "px";
+    };
+    document.addEventListener("mousemove", move);
+    document.addEventListener("mouseup", () => {
+      document.removeEventListener("mousemove", move);
+    });
+  };
+  // 绑定鼠标按下拖曳事件
+  moveElement.addEventListener("mousedown", mouseDown);
+};
 </script>
 
 <template>
-    <div v-move class="box">
-        <div class="header"></div>
-        <div>内容</div>
-    </div>
+  <div v-move class="box">
+    <div class="header"></div>
+    <div>内容</div>
+  </div>
 </template>
 
 <style lang="less" scoped>
 .box {
-    // box 内容区域样式定义
-    position: fixed;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    width: 200px;
-    height: 200px;
-    border: 3px solid #000;
-    // 拖曳 header 样式定义
-    .header {
-        width: 100%;
-        height: 50px;
-        background: rgb(5, 5, 5);
-    }
+  // box 内容区域样式定义
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 200px;
+  height: 200px;
+  border: 3px solid #000;
+  // 拖曳 header 样式定义
+  .header {
+    width: 100%;
+    height: 50px;
+    background: rgb(5, 5, 5);
+  }
 }
 </style>
 ```
@@ -8022,7 +7972,7 @@ const vMove: Directive<any, void> = (el: HTMLDivElement, binding: DirectiveBindi
 
 > [应用 API-mixin | Vue.js (vuejs.org)](https://v3.cn.vuejs.org/api/application-api.html#mixin)
 >
-> [学习Vue3 第二十八章（自定义Hooks）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123271189)
+> [学习 Vue3 第二十八章（自定义 Hooks）\_小满 zs 的博客-CSDN 博客](https://blog.csdn.net/qq1195566313/article/details/123271189)
 
 - **参数：**
 
@@ -8042,14 +7992,14 @@ const vMove: Directive<any, void> = (el: HTMLDivElement, binding: DirectiveBindi
 
 #### 自定义 Hook
 
-> [学习Vue3 第二十八章（自定义Hooks）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123271189)
+> [学习 Vue3 第二十八章（自定义 Hooks）\_小满 zs 的博客-CSDN 博客](https://blog.csdn.net/qq1195566313/article/details/123271189)
 >
 > [应用 API-mixin | Vue.js (vuejs.org)](https://v3.cn.vuejs.org/api/application-api.html#mixin)
 
 vue3 的自定义 hook 主要用来处理复用代码逻辑的一些封装
 
-- Vue3 的 hook函数 相当于 vue2 的 mixin, 不同在与 hooks 是函数
-- Vue3 的 hook函数 可以帮助我们提高代码的复用性, 让我们能在不同的组件中都利用 hooks 函数
+- Vue3 的 hook 函数 相当于 vue2 的 mixin, 不同在与 hooks 是函数
+- Vue3 的 hook 函数 可以帮助我们提高代码的复用性, 让我们能在不同的组件中都利用 hooks 函数
 
 以获取图片元素 base64 为例:
 
@@ -8057,39 +8007,40 @@ vue3 的自定义 hook 主要用来处理复用代码逻辑的一些封装
 
 ```typescript
 // 将图片信息转 base64 的一个 hook
-import { onMounted } from 'vue'
+import { onMounted } from "vue";
 
 // 定义 hook 参数类型
 type Options = {
-    el: string
-}
+  el: string;
+};
 
 export default function (options: Options): Promise<{ baseUrl: string }> {
-    return new Promise((resolve) => {
-        onMounted(() => {
-            let img: HTMLImageElement = document.querySelector(options.el) as HTMLImageElement
-            console.log(img, "=====>")
-            img.onload = () => {
-                resolve({
-                    baseUrl: base64(img)
-                })
-            }
-        })
-        // 将图片转 base64
-        const base64 = (el: HTMLImageElement) => {
-            // 定义画布
-            const canvas = document.createElement('canvas')
-            // 建立一个 CanvasRenderingContext2D 二维渲染上下文。
-            const ctx = canvas.getContext('2d')
-            canvas.width = el.width
-            canvas.height = el.height
-            ctx?.drawImage(el, 0, 0, el.width, el.height)
-            // 方法返回一个包含图片展示的 data URI 
-            return canvas.toDataURL('image/png')
-        }
-    })
+  return new Promise((resolve) => {
+    onMounted(() => {
+      let img: HTMLImageElement = document.querySelector(
+        options.el
+      ) as HTMLImageElement;
+      console.log(img, "=====>");
+      img.onload = () => {
+        resolve({
+          baseUrl: base64(img),
+        });
+      };
+    });
+    // 将图片转 base64
+    const base64 = (el: HTMLImageElement) => {
+      // 定义画布
+      const canvas = document.createElement("canvas");
+      // 建立一个 CanvasRenderingContext2D 二维渲染上下文。
+      const ctx = canvas.getContext("2d");
+      canvas.width = el.width;
+      canvas.height = el.height;
+      ctx?.drawImage(el, 0, 0, el.width, el.height);
+      // 方法返回一个包含图片展示的 data URI
+      return canvas.toDataURL("image/png");
+    };
+  });
 }
-
 ```
 
 > [Promise - 廖雪峰的官方网站 (liaoxuefeng.com)](https://www.liaoxuefeng.com/wiki/1022910821149312/1023024413276544)
@@ -8107,21 +8058,19 @@ export default function (options: Options): Promise<{ baseUrl: string }> {
 ```vue
 <!-- 自定义hook使用测试 -->
 <script setup lang="ts">
-import useBase64 from '../../hooks/ImageToBase64'
-useBase64({ el: '#img' }).then(res => {
-    console.log(res.baseUrl)
-})
-
+import useBase64 from "../../hooks/ImageToBase64";
+useBase64({ el: "#img" }).then((res) => {
+  console.log(res.baseUrl);
+});
 </script>
 
 <template>
-    <div>
-        <img id="img" width="512" height="512" src="../../assets/M4.png" alt="M4" />
-    </div>
+  <div>
+    <img id="img" width="512" height="512" src="../../assets/M4.png" alt="M4" />
+  </div>
 </template>
 
-<style lang="less" scoped>
-</style>
+<style lang="less" scoped></style>
 ```
 
 > [Promise.prototype.then() - JavaScript | MDN (mozilla.org)](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise/then)
@@ -8134,7 +8083,7 @@ useBase64({ el: '#img' }).then(res => {
 
 #### v-model
 
-> [学习Vue3 第二十六章（深入v-model）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123187523)
+> [学习 Vue3 第二十六章（深入 v-model）\_小满 zs 的博客-CSDN 博客](https://blog.csdn.net/qq1195566313/article/details/123187523)
 >
 > [指令 | Vue.js (vuejs.org)](https://v3.cn.vuejs.org/api/directives.html#v-model)
 
@@ -8146,62 +8095,66 @@ useBase64({ el: '#img' }).then(res => {
 
 ```vue
 <script setup lang="ts">
-import { ref, Ref } from 'vue'
+import { ref, Ref } from "vue";
 type Props = {
-    flag: boolean,
-    title: string
-    modelModifiers?: {
-        change: boolean,
-    }
-}
-const PropsData = defineProps<Props>()
-console.log(PropsData)
+  flag: boolean;
+  title: string;
+  modelModifiers?: {
+    change: boolean;
+  };
+};
+const PropsData = defineProps<Props>();
+console.log(PropsData);
 
 // 改值:
-const emit = defineEmits(['update:flag', 'update:title', 'update:modelModifiers', 'update:peopleModifiers'])
+const emit = defineEmits([
+  "update:flag",
+  "update:title",
+  "update:modelModifiers",
+  "update:peopleModifiers",
+]);
 const close = () => {
-    if (PropsData.modelModifiers?.change) {
-        emit("update:title", "子组件已接收回传change")
-    } else {
-        console.log(PropsData.modelModifiers?.change)
-        emit("update:title", "子组件未接收到change信号")
-    }
-    emit('update:flag', false)
-    // emit('update:title', '咸鱼型')
-}
-
+  if (PropsData.modelModifiers?.change) {
+    emit("update:title", "子组件已接收回传change");
+  } else {
+    console.log(PropsData.modelModifiers?.change);
+    emit("update:title", "子组件未接收到change信号");
+  }
+  emit("update:flag", false);
+  // emit('update:title', '咸鱼型')
+};
 </script>
 
 <template>
-    <div v-if="flag" class="Dialog_vmodel">
-        <div class="Dialog_vmodel-header">
-            <span>标题---{{ title }}</span>
-            <span @click="close">X</span>
-        </div>
-        <div class="Dialog_vmodel-content">
-            <span>内容</span>
-        </div>
+  <div v-if="flag" class="Dialog_vmodel">
+    <div class="Dialog_vmodel-header">
+      <span>标题---{{ title }}</span>
+      <span @click="close">X</span>
     </div>
+    <div class="Dialog_vmodel-content">
+      <span>内容</span>
+    </div>
+  </div>
 </template>
 
 <style lang="less" scoped>
 .Dialog_vmodel {
-    width: 300px;
-    height: 300px;
-    border: 1px solid #ccc;
-    position: fixed;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    &-header {
-        header-bottom: 1px solid #ccc;
-        display: flex;
-        justify-content: space-between;
-        padding: 10px;
-    }
-    &-content {
-        padding: 10px;
-    }
+  width: 300px;
+  height: 300px;
+  border: 1px solid #ccc;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  &-header {
+    header-bottom: 1px solid #ccc;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+  }
+  &-content {
+    padding: 10px;
+  }
 }
 </style>
 ```
@@ -8210,21 +8163,25 @@ const close = () => {
 
 ```vue
 <script setup lang="ts">
-import DialogVModel from './Dialog_vmodel.vue'
-import { ref, Ref } from 'vue'
+import DialogVModel from "./Dialog_vmodel.vue";
+import { ref, Ref } from "vue";
 
-let flag: Ref<boolean> = ref<boolean>(true)
-let title: Ref<string> = ref<string>("咸鱼型233")
-let change: Ref<boolean> = ref<boolean>(false)
+let flag: Ref<boolean> = ref<boolean>(true);
+let title: Ref<string> = ref<string>("咸鱼型233");
+let change: Ref<boolean> = ref<boolean>(false);
 </script>
 
 <template>
-    <div>
-        <button @click="flag = !flag">change {{ flag }}</button>
-        <div>标题:{{ title }}</div>
-        <!-- 单个双向绑定可以直接 v-model="xxx" 多个的时候可以用 v-model:xxx="xxx" -->
-        <DialogVModel v-model:flag="flag" v-model:title="title" v-model.change="change" />
-    </div>
+  <div>
+    <button @click="flag = !flag">change {{ flag }}</button>
+    <div>标题:{{ title }}</div>
+    <!-- 单个双向绑定可以直接 v-model="xxx" 多个的时候可以用 v-model:xxx="xxx" -->
+    <DialogVModel
+      v-model:flag="flag"
+      v-model:title="title"
+      v-model.change="change"
+    />
+  </div>
 </template>
 
 <style lang="less" scoped></style>
@@ -8248,10 +8205,6 @@ let change: Ref<boolean> = ref<boolean>(false)
 
 `ref` 用于给元素或者子组件注册一个 `reference`
 
-
-
-
-
 ---
 
 ### 内置组件
@@ -8260,9 +8213,9 @@ let change: Ref<boolean> = ref<boolean>(false)
 
 > [内置组件-transition | Vue.js (vuejs.org)](https://v3.cn.vuejs.org/api/built-in-components.html#component)
 >
-> [学习Vue3 第二十一章（transition动画组件）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123000653)
+> [学习 Vue3 第二十一章（transition 动画组件）\_小满 zs 的博客-CSDN 博客](https://blog.csdn.net/qq1195566313/article/details/123000653)
 >
-> [ css 动画中 ease,seae-in,ease-in-out,ease-out,效果区别_小赞赞No1的博客-CSDN博客_ease-in-out](https://blog.csdn.net/Candy_10181/article/details/80611009)
+> [ css 动画中 ease,seae-in,ease-in-out,ease-out,效果区别\_小赞赞 No1 的博客-CSDN 博客\_ease-in-out](https://blog.csdn.net/Candy_10181/article/details/80611009)
 
 使用 `v-if` 或 `v-show` 切换组件的显示隐藏比较生硬, 使用 `transition` 配合 css 可以实现一些动效
 
@@ -8270,25 +8223,24 @@ let change: Ref<boolean> = ref<boolean>(false)
 
 ```vue
 <script setup lang="ts">
-import {ref} from 'vue'
+import { ref } from "vue";
 
 // 定义状态切换标记
-const flag = ref<boolean>(true)
-
+const flag = ref<boolean>(true);
 </script>
 
 <template>
-<div>
-    <button @click="flag=!flag"> switch </button>
+  <div>
+    <button @click="flag = !flag">switch</button>
     <div v-if="flag" class="box"></div>
-</div>
+  </div>
 </template>
 
 <style lang="less" scoped>
 .box {
-    width: 400px;
-    height: 400px;
-    background: red;
+  width: 400px;
+  height: 400px;
+  background: red;
 }
 </style>
 ```
@@ -8305,208 +8257,204 @@ const flag = ref<boolean>(true)
 
 ```vue
 <script setup lang="ts">
-import {ref} from 'vue'
+import { ref } from "vue";
 
 // 定义状态切换标记
-const flag = ref<boolean>(true)
-
+const flag = ref<boolean>(true);
 </script>
 
 <template>
-<div>
-    <button @click="flag=!flag"> switch </button>
+  <div>
+    <button @click="flag = !flag">switch</button>
     <transition name="boxFade">
-        <div v-if="flag" class="box"></div>
+      <div v-if="flag" class="box"></div>
     </transition>
-</div>
+  </div>
 </template>
 
 <style lang="less" scoped>
 .box {
-    width: 400px;
-    height: 400px;
-    background: red;
+  width: 400px;
+  height: 400px;
+  background: red;
 }
 // 区域显示起点样式
-.boxFade-enter-from{
-    width: 0px;
-    height: 0px;
+.boxFade-enter-from {
+  width: 0px;
+  height: 0px;
 }
 
 // 区域显示过渡曲线
-.boxFade-enter-active{
-    // 动画执行 1.5s, 速度由快到慢(ease)[PS: 除了ease外还有 linear ease-in ease-out ease-in-out]
-    transition: all 1.5s ease;
+.boxFade-enter-active {
+  // 动画执行 1.5s, 速度由快到慢(ease)[PS: 除了ease外还有 linear ease-in ease-out ease-in-out]
+  transition: all 1.5s ease;
 }
 
 // 区域显示终点样式(一般与标签内定义样式这里就是与 box 一致)
-.boxFade-enter-to{
-    width: 400px;
-    height: 400px;
+.boxFade-enter-to {
+  width: 400px;
+  height: 400px;
 }
 
 // 区域隐藏起点样式(一般与标签内定义样式这里就是与 box 一致)
-.boxFade-leave-from{
-    width: 400px;
-    height: 400px;
+.boxFade-leave-from {
+  width: 400px;
+  height: 400px;
 }
 
 // 区域隐藏过渡曲线
-.boxFade-leave-active{
-    transition: all 2s ease;
+.boxFade-leave-active {
+  transition: all 2s ease;
 }
 
 // 区域隐藏终点样式
-.boxFade-leave-to{
-    width: 0px;
-    height: 0px;
+.boxFade-leave-to {
+  width: 0px;
+  height: 0px;
 }
 </style>
 ```
 
->  - `ease`
+> - `ease`
 >
->     ![image-20220329102544982](http://cdn.ayusummer233.top/img/202203291025134.png)
+>   ![image-20220329102544982](http://cdn.ayusummer233.top/img/202203291025134.png)
 >
->    默认值, 元素样式从初始状态过渡到终止状态时速度由快到慢, 逐渐变慢
+>   默认值, 元素样式从初始状态过渡到终止状态时速度由快到慢, 逐渐变慢
 >
->    ![](http://cdn.ayusummer233.top/img/202203291019719.gif)  
+>   ![](http://cdn.ayusummer233.top/img/202203291019719.gif)
 >
+> - `linear`
 >
->  - `linear`
+>   ![image-20220329102857044](http://cdn.ayusummer233.top/img/202203291028209.png)
 >
->    ![image-20220329102857044](http://cdn.ayusummer233.top/img/202203291028209.png)
+>   元素样式从初始状态过渡到到终止状态速度是恒速（等于 cubic-bezier(0,0,1,1)）。(匀速)
 >
->    元素样式从初始状态过渡到到终止状态速度是恒速（等于 cubic-bezier(0,0,1,1)）。(匀速)
+>   ![](http://cdn.ayusummer233.top/img/202203291022664.gif)
 >
->    ![](http://cdn.ayusummer233.top/img/202203291022664.gif)
+> - `ease-in`
 >
->  - `ease-in`
+>   ![image-20220329103142854](http://cdn.ayusummer233.top/img/202203291031023.png)
 >
->    ![image-20220329103142854](http://cdn.ayusummer233.top/img/202203291031023.png)
+>   规定以慢速开始的过渡效果（等于 cubic-bezier(0.42,0,1,1)）（相对于匀速，开始的时候慢，之后快）。
 >
->    规定以慢速开始的过渡效果（等于 cubic-bezier(0.42,0,1,1)）（相对于匀速，开始的时候慢，之后快）。
+>   呈加速状态, 常称这种效果为渐显效果 ![](http://cdn.ayusummer233.top/img/202203291024226.gif)
 >
->    呈加速状态, 常称这种效果为渐显效果 ![](http://cdn.ayusummer233.top/img/202203291024226.gif)
+> - `ease-out`
 >
->  - `ease-out`
+>   ![image-20220329103155504](http://cdn.ayusummer233.top/img/202203291031664.png)
 >
->    ![image-20220329103155504](http://cdn.ayusummer233.top/img/202203291031664.png)
+>   规定以慢速结束的过渡效果（等于 cubic-bezier(0,0,0.58,1)）（相对于匀速，开始时快，结束时候间慢，）。
 >
->    规定以慢速结束的过渡效果（等于 cubic-bezier(0,0,0.58,1)）（相对于匀速，开始时快，结束时候间慢，）。
+>   呈减速状态, 常称这种效果为渐隐效果
 >
->    呈减速状态, 常称这种效果为渐隐效果
+>   ![](http://cdn.ayusummer233.top/img/202203291040141.gif)
 >
->    ![](http://cdn.ayusummer233.top/img/202203291040141.gif)
+> - `ease-in-out`
 >
->  - `ease-in-out`
+>   ![image-20220329103207973](http://cdn.ayusummer233.top/img/202203291032144.png)
 >
->    ![image-20220329103207973](http://cdn.ayusummer233.top/img/202203291032144.png)
+>   规定以慢速开始和结束的过渡效果（等于 cubic-bezier(0.42,0,0.58,1)）（相对于匀速，（开始和结束都慢）两头慢）。
 >
->    规定以慢速开始和结束的过渡效果（等于 cubic-bezier(0.42,0,0.58,1)）（相对于匀速，（开始和结束都慢）两头慢）。
+>   先加速再减速, 常称这种效果为渐显渐隐效果
 >
->    先加速再减速, 常称这种效果为渐显渐隐效果
->    
->    ![](http://cdn.ayusummer233.top/img/202203291042203.gif)
+>   ![](http://cdn.ayusummer233.top/img/202203291042203.gif)
 >
->  - `cubic-bezier(n,n,n,n)`
+> - `cubic-bezier(n,n,n,n)`
 >
->    在 cubic-bezier 函数中定义自己的值。可能的值是 0 至 1 之间的数值。
->
+>   在 cubic-bezier 函数中定义自己的值。可能的值是 0 至 1 之间的数值。
 
 还可以再加点花里胡哨的效果, 比如旋转:
 
 ```less
 // 区域显示起点样式
-.boxFade-enter-from{
-    width: 0px;
-    height: 0px;
-    // 来点花里胡哨的 360° 旋转
-    transform: rotate(360deg);
+.boxFade-enter-from {
+  width: 0px;
+  height: 0px;
+  // 来点花里胡哨的 360° 旋转
+  transform: rotate(360deg);
 }
 
 // 区域隐藏起点样式(一般与标签内定义样式这里就是与 box 一致)
-.boxFade-leave-from{
-    width: 400px;
-    height: 400px;
-    // 来点花里胡哨的 360° 旋转
-    transform: rotate(360deg);
+.boxFade-leave-from {
+  width: 400px;
+  height: 400px;
+  // 来点花里胡哨的 360° 旋转
+  transform: rotate(360deg);
 }
 ```
 
->   ![](http://cdn.ayusummer233.top/img/202203291046959.gif)
+> ![](http://cdn.ayusummer233.top/img/202203291046959.gif)
 
 样式表里不光可以使用 `name-xxx` 的形式, 也支持自定义, 比如:
 
 ```vue
 <script setup lang="ts">
-import {ref} from 'vue'
+import { ref } from "vue";
 
 // 定义状态切换标记
-const flag = ref<boolean>(true)
-
+const flag = ref<boolean>(true);
 </script>
 
 <template>
-<div>
-    <button @click="flag=!flag"> switch </button>
-    <transition 
-        name="boxFade"
-        enter-from-class="boxEF"
-        enter-active-class="boxEA"
-        enter-to-class="boxET"
-        leave-from-class="boxLF"
-        leave-active-class="boxLA"
-        leave-to-class="boxLT"
-        >
-        <div v-if="flag" class="box"></div>
+  <div>
+    <button @click="flag = !flag">switch</button>
+    <transition
+      name="boxFade"
+      enter-from-class="boxEF"
+      enter-active-class="boxEA"
+      enter-to-class="boxET"
+      leave-from-class="boxLF"
+      leave-active-class="boxLA"
+      leave-to-class="boxLT"
+    >
+      <div v-if="flag" class="box"></div>
     </transition>
-</div>
+  </div>
 </template>
 
 <style lang="less" scoped>
 .box {
-    width: 400px;
-    height: 400px;
-    background: red;
+  width: 400px;
+  height: 400px;
+  background: red;
 }
 // 区域显示起点样式
-.boxEF{
-    width: 0px;
-    height: 0px;
-    // 来点花里胡哨的 360° 旋转
-    transform: rotate(360deg);
+.boxEF {
+  width: 0px;
+  height: 0px;
+  // 来点花里胡哨的 360° 旋转
+  transform: rotate(360deg);
 }
 
 // 区域显示过渡曲线
-.boxEA{
-    // 动画执行 1.5s, 速度由快到慢(ease)[PS: 除了ease外还有 linear ease-in ease-out ease-in-out]
-    transition: all 1.5s ease-in-out;
+.boxEA {
+  // 动画执行 1.5s, 速度由快到慢(ease)[PS: 除了ease外还有 linear ease-in ease-out ease-in-out]
+  transition: all 1.5s ease-in-out;
 }
 
 // 区域显示终点样式(一般与标签内定义样式这里就是与 box 一致)
-.boxET{
-    width: 400px;
-    height: 400px;
+.boxET {
+  width: 400px;
+  height: 400px;
 }
 
 // 区域隐藏起点样式(一般与标签内定义样式这里就是与 box 一致)
-.boxLF{
-    width: 400px;
-    height: 400px;
-    // 来点花里胡哨的 360° 旋转
-    transform: rotate(360deg);
+.boxLF {
+  width: 400px;
+  height: 400px;
+  // 来点花里胡哨的 360° 旋转
+  transform: rotate(360deg);
 }
 
 // 区域隐藏过渡曲线
-.boxLA{
-    transition: all 1.5s ease-in-out;
+.boxLA {
+  transition: all 1.5s ease-in-out;
 }
 
 // 区域隐藏终点样式
-.boxLT{
-    width: 0px;
-    height: 0px;
+.boxLT {
+  width: 0px;
+  height: 0px;
 }
 </style>
 ```
@@ -8523,44 +8471,42 @@ const flag = ref<boolean>(true)
 
 ```vue
 <script setup lang="ts">
-import {ref} from 'vue'
+import { ref } from "vue";
 // 引入 animate.css
-import 'animate.css'
+import "animate.css";
 
 // 定义状态切换标记
-const flag = ref<boolean>(true)
-
+const flag = ref<boolean>(true);
 </script>
 
 <template>
-<div>
-    <button @click="flag=!flag"> switch </button>
-    <transition 
-        enter-active-class="animate__animated animate__bounce"
-        leave-active-class="animate__animated animate__fadeOut"
+  <div>
+    <button @click="flag = !flag">switch</button>
+    <transition
+      enter-active-class="animate__animated animate__bounce"
+      leave-active-class="animate__animated animate__fadeOut"
     >
-        <div v-if="flag" class="box"></div>
+      <div v-if="flag" class="box"></div>
     </transition>
-</div>
+  </div>
 </template>
 
 <style lang="less" scoped>
 .box {
-    width: 400px;
-    height: 400px;
-    background: red;
+  width: 400px;
+  height: 400px;
+  background: red;
 }
 </style>
 ```
 
-> 
-![](http://cdn.ayusummer233.top/img/202203291950307.gif)
+> ![](http://cdn.ayusummer233.top/img/202203291950307.gif)
 
 ---
 
 ###### 生命周期 和 GSAP
 
-> [学习Vue3 第二十一章（transition动画组件）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123000653)
+> [学习 Vue3 第二十一章（transition 动画组件）\_小满 zs 的博客-CSDN 博客](https://blog.csdn.net/qq1195566313/article/details/123000653)
 >
 > [GreenSock | Docs | GSAP](https://greensock.com/docs/v3/GSAP)
 
@@ -8585,61 +8531,57 @@ const flag = ref<boolean>(true)
 
 ```vue
 <script setup lang="ts">
-import {ref} from 'vue'
+import { ref } from "vue";
 // 引入 gsap
-import gsap from 'gsap'
+import gsap from "gsap";
 
 // 定义状态切换标记
-const flag = ref<boolean>(true)
+const flag = ref<boolean>(true);
 
-const EnterFrom = (el:Element) =>{
-    gsap.set(el, {
-        width:0,
-        height:0
-    })
-}
+const EnterFrom = (el: Element) => {
+  gsap.set(el, {
+    width: 0,
+    height: 0,
+  });
+};
 
-const EnterActive = (el:Element, done:gsap.Callback) =>{
-    gsap.to(el, {
-        width:400,
-        height:400,
-        onComplete:done
-    })
-}
+const EnterActive = (el: Element, done: gsap.Callback) => {
+  gsap.to(el, {
+    width: 400,
+    height: 400,
+    onComplete: done,
+  });
+};
 
-const leave = (el:Element, done:gsap.Callback) =>{
-    gsap.to(el, {
-        width:0,
-        height:0,
-        onComplete:done
-    })
-}
-
+const leave = (el: Element, done: gsap.Callback) => {
+  gsap.to(el, {
+    width: 0,
+    height: 0,
+    onComplete: done,
+  });
+};
 </script>
 
 <template>
-<div>
-    <button @click="flag=!flag"> switch </button>
-    <transition 
-        @before-enter="EnterFrom"
-        @enter="EnterActive"
-        @leave="leave"
-    >
-        <div v-if="flag" class="box"></div>
+  <div>
+    <button @click="flag = !flag">switch</button>
+    <transition @before-enter="EnterFrom" @enter="EnterActive" @leave="leave">
+      <div v-if="flag" class="box"></div>
     </transition>
-</div>
+  </div>
 </template>
 
 <style lang="less" scoped>
 .box {
-    width: 400px;
-    height: 400px;
-    background: red;
+  width: 400px;
+  height: 400px;
+  background: red;
 }
 </style>
 ```
 
->  ![](http://cdn.ayusummer233.top/img/202203292030940.gif)
+> ![](http://cdn.ayusummer233.top/img/202203292030940.gif)
+
 ---
 
 ###### appear
@@ -8647,10 +8589,7 @@ const leave = (el:Element, done:gsap.Callback) =>{
 通过这个属性可以设置初始节点过度 就是页面加载完成就开始动画 对应三个状态
 
 ```html
-appear-active-class=""
-appear-from-class=""
-appear-to-class=""
-appear
+appear-active-class="" appear-from-class="" appear-to-class="" appear
 ```
 
 可以结合 `Animate.css` 调用一些高级的动效:
@@ -8659,38 +8598,33 @@ appear
 
 ```vue
 <script setup lang="ts">
-import {ref} from 'vue'
+import { ref } from "vue";
 // 引入 animate.css
-import 'animate.css'
+import "animate.css";
 
 // 定义状态切换标记
-const flag = ref<boolean>(true)
-
+const flag = ref<boolean>(true);
 </script>
 
 <template>
-<div>
-    <button @click="flag=!flag"> switch </button>
-    <transition 
-        appear
-        appear-active-class="animate__animated animate__bounce"
-    >
-        <div v-if="flag" class="box"></div>
+  <div>
+    <button @click="flag = !flag">switch</button>
+    <transition appear appear-active-class="animate__animated animate__bounce">
+      <div v-if="flag" class="box"></div>
     </transition>
-</div>
+  </div>
 </template>
 
 <style lang="less" scoped>
 .box {
-    width: 400px;
-    height: 400px;
-    background: red;
+  width: 400px;
+  height: 400px;
+  background: red;
 }
 </style>
 ```
 
-> 
-![](http://cdn.ayusummer233.top/img/202203292044079.gif)
+> ![](http://cdn.ayusummer233.top/img/202203292044079.gif)
 
 ---
 
@@ -8698,7 +8632,7 @@ const flag = ref<boolean>(true)
 
 > [内置组件-transition-group | Vue.js (vuejs.org)](https://v3.cn.vuejs.org/api/built-in-components.html#transition-group)
 >
-> [学习Vue3 第二十二章（transition-group过度列表）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123058884)
+> [学习 Vue3 第二十二章（transition-group 过度列表）\_小满 zs 的博客-CSDN 博客](https://blog.csdn.net/qq1195566313/article/details/123058884)
 
 - **Props：**
 
@@ -8720,9 +8654,7 @@ const flag = ref<boolean>(true)
 
 ```html
 <transition-group tag="ul" name="slide">
-  <li v-for="item in items" :key="item.id">
-    {{ item.text }}
-  </li>
+  <li v-for="item in items" :key="item.id">{{ item.text }}</li>
 </transition-group>
 ```
 
@@ -8732,46 +8664,46 @@ const flag = ref<boolean>(true)
 
 ```vue
 <script setup lang="ts">
-import {ref, reactive} from 'vue'
-import 'animate.css'
+import { ref, reactive } from "vue";
+import "animate.css";
 
-const list = reactive<number[]>([1, 2, 3, 4, 5, 6])
+const list = reactive<number[]>([1, 2, 3, 4, 5, 6]);
 
 const add = () => {
-    list.push(list.length + 1)
-}
+  list.push(list.length + 1);
+};
 
 const dec = () => {
-    list.pop()
-}
+  list.pop();
+};
 </script>
 
 <template>
-<div>
+  <div>
     <button @click="add">添加</button>
     <button @click="dec">删除</button>
     <div class="wraps">
-        <transition-group 
-            enter-active-class="animate__animated animate__bounce"
-            leave-active-class="animate__animated animate__fadeOut"
-        >
-            <div v-for="item in list" :key="item" class="box">
-                {{item}}
-            </div>
-        </transition-group>
+      <transition-group
+        enter-active-class="animate__animated animate__bounce"
+        leave-active-class="animate__animated animate__fadeOut"
+      >
+        <div v-for="item in list" :key="item" class="box">
+          {{ item }}
+        </div>
+      </transition-group>
     </div>
-</div>
+  </div>
 </template>
 
 <style lang="less" scoped>
 .wraps {
-    display: flex;
-    flex-wrap: wrap;
-    word-break: break-all;  // 不换行
-    border: 1px solid #ccc;
-    .box{
-        margin: 10px;
-    }
+  display: flex;
+  flex-wrap: wrap;
+  word-break: break-all; // 不换行
+  border: 1px solid #ccc;
+  .box {
+    margin: 10px;
+  }
 }
 </style>
 ```
@@ -8782,7 +8714,7 @@ const dec = () => {
 
 ###### 平面过渡动画
 
-> [学习Vue3 第二十二章（transition-group过度列表）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123058884)
+> [学习 Vue3 第二十二章（transition-group 过度列表）\_小满 zs 的博客-CSDN 博客](https://blog.csdn.net/qq1195566313/article/details/123058884)
 >
 > [Lodash](#Lodash)
 
@@ -8792,49 +8724,53 @@ const dec = () => {
 
 ```vue
 <script setup lang="ts">
-import { ref } from 'vue'
-import _ from 'lodash'
+import { ref } from "vue";
+import _ from "lodash";
 
-let list = ref(Array.apply(null, { length: 81 } as number[]).map((_, index) => {
+let list = ref(
+  Array.apply(null, { length: 81 } as number[]).map((_, index) => {
     return {
-        id: index,
-        number: (index % 9) + 1
-    }
-}))
+      id: index,
+      number: (index % 9) + 1,
+    };
+  })
+);
 
-console.log(list.value)
+console.log(list.value);
 
 const random = () => {
-    list.value = _.shuffle(list.value)
-}
+  list.value = _.shuffle(list.value);
+};
 </script>
 
 <template>
-    <div>
-        <button @click="random">random</button>
-        <transition-group move-class="move_active" class="wraps" tag="div">
-            <div class="items" v-for="item in list" :key="item.id">{{ item.number }}</div>
-        </transition-group>
-    </div>
+  <div>
+    <button @click="random">random</button>
+    <transition-group move-class="move_active" class="wraps" tag="div">
+      <div class="items" v-for="item in list" :key="item.id">
+        {{ item.number }}
+      </div>
+    </transition-group>
+  </div>
 </template>
 
 <style lang="less" scoped>
 .wraps {
+  display: flex;
+  flex-wrap: wrap;
+  width: calc(25px * 10 + 9px);
+  .items {
+    width: 25px;
+    height: 25px;
+    border: 1px solid #ccc;
     display: flex;
-    flex-wrap: wrap;
-    width: calc(25px * 10 + 9px);
-    .items {
-        width: 25px;
-        height: 25px;
-        border: 1px solid #ccc;
-        display: flex;
-        justify-content: center; // 居中
-        align-items: center; // 垂直居中
-    }
+    justify-content: center; // 居中
+    align-items: center; // 垂直居中
+  }
 }
 
 .move_active {
-    transition: all 1.5s ease-in-out;
+  transition: all 1.5s ease-in-out;
 }
 </style>
 ```
@@ -8845,7 +8781,7 @@ const random = () => {
 
 ###### 状态过渡
 
->  [学习Vue3 第二十二章（transition-group过度列表）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123058884)
+> [学习 Vue3 第二十二章（transition-group 过度列表）\_小满 zs 的博客-CSDN 博客](https://blog.csdn.net/qq1195566313/article/details/123058884)
 >
 > [GSAP](#GreenSock)
 
@@ -8854,37 +8790,39 @@ const random = () => {
 ```vue
 <!-- 状态过渡 -->
 <script setup lang="ts">
-import gsap from 'gsap'
-import { reactive, watch } from 'vue'
+import gsap from "gsap";
+import { reactive, watch } from "vue";
 
 const num = reactive({
-    current: 0,
-    tweenedNumber: 0
-})
+  current: 0,
+  tweenedNumber: 0,
+});
 
-watch(() => num.current, (newVal, oldVal) => {
+watch(
+  () => num.current,
+  (newVal, oldVal) => {
     gsap.to(num, {
-        duration: 1,
-        tweenedNumber: newVal,
-        onUpdate: () => {
-            console.log(num.tweenedNumber)
-        }
-    })
-})
+      duration: 1,
+      tweenedNumber: newVal,
+      onUpdate: () => {
+        console.log(num.tweenedNumber);
+      },
+    });
+  }
+);
 </script>
 
 <template>
-    <div>
-        <input v-model="num.current" step="20" type="number" />
-        <div>{{ num.tweenedNumber.toFixed(0) }}</div>
-    </div>
+  <div>
+    <input v-model="num.current" step="20" type="number" />
+    <div>{{ num.tweenedNumber.toFixed(0) }}</div>
+  </div>
 </template>
 
-<style lang="less" scoped>
-</style>
+<style lang="less" scoped></style>
 ```
 
->  ![](http://cdn.ayusummer233.top/img/202203300846915.gif)
+> ![](http://cdn.ayusummer233.top/img/202203300846915.gif)
 
 ---
 
@@ -8892,7 +8830,7 @@ watch(() => num.current, (newVal, oldVal) => {
 
 > [内置组件-keep-alive | Vue.js (vuejs.org)](https://v3.cn.vuejs.org/api/built-in-components.html#keep-alive)
 >
-> [学习Vue3 第二十章（keep-alive缓存组件）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/122953072)
+> [学习 Vue3 第二十章（keep-alive 缓存组件）\_小满 zs 的博客-CSDN 博客](https://blog.csdn.net/qq1195566313/article/details/122953072)
 
 有时候我们不希望组件被重新渲染影响使用体验；或者处于性能考虑，避免多次重复渲染降低性能。而是希望组件可以缓存下来,维持当前的状态。这时候就需要用到`keep-alive`组件。
 
@@ -8910,63 +8848,71 @@ watch(() => num.current, (newVal, oldVal) => {
 ```vue
 <!-- 登录组件 -->
 <script setup lang="ts">
-import {reactive, onMounted, onUnmounted, onActivated, onDeactivated} from 'vue'
+import {
+  reactive,
+  onMounted,
+  onUnmounted,
+  onActivated,
+  onDeactivated,
+} from "vue";
 // 只有使用了 keep-alive 组件才会有 onActivated 和 onDeactivated 事件
 
 // 登录表单
 const form = reactive({
-    login:"",
-    password:""
-})
+  login: "",
+  password: "",
+});
 
 // 登录按钮触发事件
 const submit = () => {
-    console.log(form)
-}
+  console.log(form);
+};
 
 onMounted(() => {
-    console.log("login mounted")
-})
+  console.log("login mounted");
+});
 
 onUnmounted(() => {
-    console.log("login unmounted")
-})
+  console.log("login unmounted");
+});
 
 onActivated(() => {
-    console.log("login activated")
-})
+  console.log("login activated");
+});
 
 onDeactivated(() => {
-    console.log("login deactivated")
-})
+  console.log("login deactivated");
+});
 </script>
 
 <template>
-<div>
+  <div>
     <!-- 账密输入表单 -->
     <table>
-        <!-- 账号输入区域 -->
-        <tr>
-            <td>账号</td>
-            <td>
-                <input type="text" v-model="form.login" placeholder="请输入账号">
-            </td>
-        </tr>
-        <!-- 密码输入区域 -->
-        <tr>
-            <td>密码</td>
-            <td>
-                <input type="password" v-model="form.password" placeholder="请输入密码">
-            </td>
-        </tr>
+      <!-- 账号输入区域 -->
+      <tr>
+        <td>账号</td>
+        <td>
+          <input type="text" v-model="form.login" placeholder="请输入账号" />
+        </td>
+      </tr>
+      <!-- 密码输入区域 -->
+      <tr>
+        <td>密码</td>
+        <td>
+          <input
+            type="password"
+            v-model="form.password"
+            placeholder="请输入密码"
+          />
+        </td>
+      </tr>
     </table>
     <button @click="submit">登录</button>
-
-</div>
+  </div>
 </template>
 
-<style lang="less" scoped>
-</style>
+<style lang="less" scoped></style>
 ```
 
 > 只有使用了 `keep-alive` 组件才会有 `onActivated` 和 `onDeactivated` 事件
@@ -8984,54 +8930,56 @@ onDeactivated(() => {
 ```vue
 <!-- 登录组件 -->
 <script setup lang="ts">
-import {reactive} from 'vue'
+import { reactive } from "vue";
 
 // 登录表单
 const form = reactive({
-    login:"",
-    password:"",
-    code:""
-})
+  login: "",
+  password: "",
+  code: "",
+});
 
 // 登录按钮触发事件
 const submit = () => {
-    console.log(form)
-}
+  console.log(form);
+};
 </script>
 
 <template>
-<div>
+  <div>
     <!-- 账密输入表单 -->
     <table>
-        <!-- 账号输入区域 -->
-        <tr>
-            <td>账号</td>
-            <td>
-                <input type="text" v-model="form.login" placeholder="请输入账号">
-            </td>
-        </tr>
-        <!-- 密码输入区域 -->
-        <tr>
-            <td>密码</td>
-            <td>
-                <input type="password" v-model="form.password" placeholder="请输入密码">
-            </td>
-        </tr>
-        <!-- 验证码输入区域 -->
-        <tr>
-            <td>验证码</td>
-            <td>
-                <input type="text" v-model="form.code" placeholder="请输入验证码">
-            </td>
-        </tr>
+      <!-- 账号输入区域 -->
+      <tr>
+        <td>账号</td>
+        <td>
+          <input type="text" v-model="form.login" placeholder="请输入账号" />
+        </td>
+      </tr>
+      <!-- 密码输入区域 -->
+      <tr>
+        <td>密码</td>
+        <td>
+          <input
+            type="password"
+            v-model="form.password"
+            placeholder="请输入密码"
+          />
+        </td>
+      </tr>
+      <!-- 验证码输入区域 -->
+      <tr>
+        <td>验证码</td>
+        <td>
+          <input type="text" v-model="form.code" placeholder="请输入验证码" />
+        </td>
+      </tr>
     </table>
     <button @click="submit">注册</button>
-
-</div>
+  </div>
 </template>
 
-<style lang="less" scoped>
-</style>
+<style lang="less" scoped></style>
 ```
 
 > 在登录组件中演示了使用 `keep-alive` 后组件声明周期的变化, 可以得知如果想在切换组件的时候做些什么, 那么应当修改 `onActivated` 和 `onDeactivated` 方法
@@ -9041,10 +8989,10 @@ const submit = () => {
 > ```typescript
 > // 设置切换到登录界面时, 注册界面的验证码会清空
 > onDeactivated(() => {
->     console.log("register deactivated")
->     form.code=""
->     console.log("验证码已清空")
-> })
+>   console.log("register deactivated");
+>   form.code = "";
+>   console.log("验证码已清空");
+> });
 > ```
 >
 > ![](http://cdn.ayusummer233.top/img/202203282137692.gif)
@@ -9053,155 +9001,144 @@ const submit = () => {
 
 ```vue
 <script setup lang="ts">
-import A from './A.vue'
-import B from './B.vue'
-import C from './C.vue'
-import Dialog from '../../components/Dialog.vue'
+import A from "./A.vue";
+import B from "./B.vue";
+import C from "./C.vue";
+import Dialog from "../../components/Dialog.vue";
 // import Loading from '../../components/Loading/loading.vue' 异步化组件后就不能这样直接引入使用了
 // 引入登录组件
-import Login from '../../components/login/login.vue'
+import Login from "../../components/login/login.vue";
 // 引入注册组件
-import Register from '../../components/register/register.vue'
-import {reactive, markRaw, ref, defineAsyncComponent} from 'vue'
+import Register from "../../components/register/register.vue";
+import { reactive, markRaw, ref, defineAsyncComponent } from "vue";
 
-const Loading = defineAsyncComponent(() => import('../../components/Loading/loading.vue'))
+const Loading = defineAsyncComponent(
+  () => import("../../components/Loading/loading.vue")
+);
 
 type Tabs = {
-    name: string,
-    comName:any
-}
+  name: string;
+  comName: any;
+};
 
-type Com = Pick<Tabs, 'comName'>
+type Com = Pick<Tabs, "comName">;
 
 const data = reactive<Tabs[]>([
-    {
-        name: '我是 A 组件',
-        comName: markRaw(A)
-    },
-    {
-        name: '我是 B 组件',
-        comName: markRaw(B)
-    },
-    {
-        name: '我是 C 组件',
-        comName: markRaw(C)
-    }
-])
-
+  {
+    name: "我是 A 组件",
+    comName: markRaw(A),
+  },
+  {
+    name: "我是 B 组件",
+    comName: markRaw(B),
+  },
+  {
+    name: "我是 C 组件",
+    comName: markRaw(C),
+  },
+]);
 
 let current = reactive<Com>({
-    comName: data[0].comName
-})
+  comName: data[0].comName,
+});
 
-const switchCom =(item: Tabs) =>{
-    current.comName = item.comName
-}
+const switchCom = (item: Tabs) => {
+  current.comName = item.comName;
+};
 
 // 动态插槽相关
-let name = ref('dialog_header')
+let name = ref("dialog_header");
 
 // 切换登录注册表单页面
-const flag = ref(true)
+const flag = ref(true);
 const switchLoginRegist = () => {
-    flag.value = !flag.value
-}
+  flag.value = !flag.value;
+};
 </script>
 
 <template>
-    <div class="content_layout">
-        <button @click="switchLoginRegist">切换</button>
-        <keep-alive>
-            <Login v-if="flag"></Login>
-            <Register v-else></Register>
-        </keep-alive>
-        <teleport to='.teleport_class_test'>
-            <div class="loading">
-                loading...
-            </div>
-        </teleport>
-        <!-- 异步组件测试 -->
-        <Suspense>
-            <template #default>
-                <Loading></Loading>
-            </template>
-            <template #fallback>
-                <div>加载中...</div>
-            </template>
-        </Suspense>
-        <!-- 插槽测试 -->
-        <Dialog>
-            <!-- 具名插槽 -->
-            <template v-slot:dialog_header>
-                <div>
-                    摆
-                </div>
-            </template>
-            <!-- 匿名插槽 -->
-            <!-- <template v-slot="{data}"> -->
-            <!-- 简写: -->
-            <template #default="{data}">
-                <div>
-                    姓名: {{data.name}} 年龄: {{data.age}}
-                </div>
-            </template>
-            <!-- 具名插槽 -->
-            <!-- 简写: -->
-            <template #dialog_footer>
-                <div>
-                    摸了
-                </div>
-            </template>
-            <!-- 动态插槽 -->
-            <template #[name]>
-                动态插槽演示
-            </template>
-        </Dialog>
-        <div class = "tab">
-            <div :key="item.name" v-for="item in data"
-                @click="switchCom(item)">
-                {{item.name}}
-            </div>
-        </div>
-        <component :is="current.comName" />
-        <div class="content_layout-items" 
-            :key="item" v-for="item in 100">
-                {{ item }}
-        </div>      
+  <div class="content_layout">
+    <button @click="switchLoginRegist">切换</button>
+    <keep-alive>
+      <Login v-if="flag"></Login>
+      <Register v-else></Register>
+    </keep-alive>
+    <teleport to=".teleport_class_test">
+      <div class="loading">loading...</div>
+    </teleport>
+    <!-- 异步组件测试 -->
+    <Suspense>
+      <template #default>
+        <Loading></Loading>
+      </template>
+      <template #fallback>
+        <div>加载中...</div>
+      </template>
+    </Suspense>
+    <!-- 插槽测试 -->
+    <Dialog>
+      <!-- 具名插槽 -->
+      <template v-slot:dialog_header>
+        <div>摆</div>
+      </template>
+      <!-- 匿名插槽 -->
+      <!-- <template v-slot="{data}"> -->
+      <!-- 简写: -->
+      <template #default="{ data }">
+        <div>姓名: {{ data.name }} 年龄: {{ data.age }}</div>
+      </template>
+      <!-- 具名插槽 -->
+      <!-- 简写: -->
+      <template #dialog_footer>
+        <div>摸了</div>
+      </template>
+      <!-- 动态插槽 -->
+      <template #[name]> 动态插槽演示 </template>
+    </Dialog>
+    <div class="tab">
+      <div :key="item.name" v-for="item in data" @click="switchCom(item)">
+        {{ item.name }}
+      </div>
     </div>
+    <component :is="current.comName" />
+    <div class="content_layout-items" :key="item" v-for="item in 100">
+      {{ item }}
+    </div>
+  </div>
 </template>
 
 <style lang="less" scoped>
 .content_layout {
-    flex: 1;
-    margin: 20px;
+  flex: 1;
+  margin: 20px;
+  border: 1px solid #ccc;
+  overflow: auto;
+  &-items {
+    padding: 20px;
     border: 1px solid #ccc;
-    overflow: auto;
-    &-items {
-        padding: 20px;
-        border: 1px solid #ccc;
-    }
+  }
 }
 
-.tab{
-    display: flex;
-    flex:1;
-    flex-direction: row;
-    div{
-        flex: 1;
-        padding: 10px;
-        border: 1px solid #ccc;
-        cursor: pointer;
-        &:hover{
-            background: #eee;
-        }
+.tab {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  div {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    &:hover {
+      background: #eee;
     }
+  }
 }
 
-.loading{
-    position: absolute;
-    right: 10px;
-    top: 10px;
-    background: greenyellow;
+.loading {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  background: greenyellow;
 }
 </style>
 ```
@@ -9211,10 +9148,10 @@ const switchLoginRegist = () => {
 例如, 如果想让上面的 `keep-alive 标签` 内的两个组件 `Login` 和 `Register` 只有前者应用 `keep-alive` 的话可以如此书写:
 
 ```html
-        <keep-alive :include="['Login']">
-            <Login v-if="flag"></Login>
-            <Register v-else></Register>
-        </keep-alive>
+<keep-alive :include="['Login']">
+  <Login v-if="flag"></Login>
+  <Register v-else></Register>
+</keep-alive>
 ```
 
 > 这样写法需要注意的是定位 `Login 组件` 使用的 `“”` 字符串, 那么在使用 `vue3 setup 语法糖` 的情况下应当在 `Login 组件` 中添加一个 `script 标签` 并在其中定义组件别名:
@@ -9238,19 +9175,17 @@ const switchLoginRegist = () => {
 > <keep-alive include="a,b">
 >   <component :is="view"></component>
 > </keep-alive>
-> 
+>
 > <!-- regex (使用 `v-bind`) -->
 > <keep-alive :include="/a|b/">
 >   <component :is="view"></component>
 > </keep-alive>
-> 
+>
 > <!-- Array (使用 `v-bind`) -->
 > <keep-alive :include="['a', 'b']">
 >   <component :is="view"></component>
 > </keep-alive>
 > ```
-
-
 
 除此以外 `max` prop 的作用是决定最多可以缓存多少组件实例, 一旦这个数字达到了，在新实例被创建之前，已缓存组件中**最久没有被访问的实例**会被销毁掉。
 
@@ -9261,11 +9196,12 @@ const switchLoginRegist = () => {
 ```
 
 ---
+
 #### `slot`
 
 > [内置组件 | Vue.js (vuejs.org)](https://v3.cn.vuejs.org/api/built-in-components.html#slot)
 >
-> [学习Vue3 第十七章（插槽slot）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/122904105)
+> [学习 Vue3 第十七章（插槽 slot）\_小满 zs 的博客-CSDN 博客](https://blog.csdn.net/qq1195566313/article/details/122904105)
 
 详见 [通过插槽分发内容](#通过插槽分发内容)
 
@@ -9282,7 +9218,7 @@ const switchLoginRegist = () => {
 返回对象的响应式副本
 
 ```js
-const obj = reactive({ count: 0 })
+const obj = reactive({ count: 0 });
 ```
 
 响应式转换是“深层”的——它影响所有嵌套 property。在基于 [ES2015 Proxy](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Proxy) 的实现中，返回的 proxy 是**不**等于原始对象的。建议只使用响应式 proxy，避免依赖原始对象。
@@ -9290,29 +9226,29 @@ const obj = reactive({ count: 0 })
 **类型声明：**
 
 ```typescript
-function reactive<T extends object>(target: T): UnwrapNestedRefs<T>
+function reactive<T extends object>(target: T): UnwrapNestedRefs<T>;
 ```
 
-> 提示: 
+> 提示:
 >
 > `reactive` 将解包所有深层的 [refs](https://v3.cn.vuejs.org/api/refs-api.html#ref)，同时维持 ref 的响应性。
 >
 > ```typescript
-> const count = ref(1)
-> const obj = reactive({ count })
-> 
+> const count = ref(1);
+> const obj = reactive({ count });
+>
 > // ref 会被解包
-> console.log(obj.count === count.value) // true
-> 
+> console.log(obj.count === count.value); // true
+>
 > // 它会更新 `obj.count`
-> count.value++
-> console.log(count.value) // 2
-> console.log(obj.count) // 2
-> 
+> count.value++;
+> console.log(count.value); // 2
+> console.log(obj.count); // 2
+>
 > // 它也会更新 `count` ref
-> obj.count++
-> console.log(obj.count) // 3
-> console.log(count.value) // 3
+> obj.count++;
+> console.log(obj.count); // 3
+> console.log(count.value); // 3
 > ```
 >
 > ---
@@ -9324,13 +9260,13 @@ function reactive<T extends object>(target: T): UnwrapNestedRefs<T>
 > 当将 [ref](https://v3.cn.vuejs.org/api/refs-api.html#ref) 分配给 `reactive` property 时，ref 将被自动解包。
 >
 > ```typescript
-> const count = ref(1)
-> const obj = reactive({})
-> 
-> obj.count = count
-> 
-> console.log(obj.count) // 1
-> console.log(obj.count === count.value) // true
+> const count = ref(1);
+> const obj = reactive({});
+>
+> obj.count = count;
+>
+> console.log(obj.count); // 1
+> console.log(obj.count === count.value); // true
 > ```
 
 > 官方建议定义数据的时候, `reactive` 定义复杂的数据类型的数据, `ref` 推荐定义基本数据类型,
@@ -9348,11 +9284,11 @@ function reactive<T extends object>(target: T): UnwrapNestedRefs<T>
 `示例`:
 
 ```js
-const count = ref(0)
-console.log(count.value) // 0
+const count = ref(0);
+console.log(count.value); // 0
 
-count.value++
-console.log(count.value) // 1
+count.value++;
+console.log(count.value); // 1
 ```
 
 ![image-20220214182536248](http://cdn.ayusummer233.top/img/202202141825974.png)
@@ -9365,26 +9301,26 @@ console.log(count.value) // 1
 
 ```ts
 interface Ref<T> {
-  value: T
+  value: T;
 }
 
-function ref<T>(value: T): Ref<T>
+function ref<T>(value: T): Ref<T>;
 ```
 
 有时我们可能需要为 ref 的内部值指定复杂类型。可以在调用 `ref` 时传递一个泛型参数以覆盖默认推断，从而简洁地做到这一点：
 
 ```ts
-const foo = ref<string | number>('foo') // foo 的类型：Ref<string | number>
+const foo = ref<string | number>("foo"); // foo 的类型：Ref<string | number>
 
-foo.value = 123 // ok!
+foo.value = 123; // ok!
 ```
 
 如果泛型的类型未知，则建议将 `ref` 转换为 `Ref<T>`：
 
 ```ts
 function useState<State extends string>(initial: State) {
-  const state = ref(initial) as Ref<State> // state.value -> State extends string
-  return state
+  const state = ref(initial) as Ref<State>; // state.value -> State extends string
+  return state;
 }
 ```
 
@@ -9396,58 +9332,58 @@ function useState<State extends string>(initial: State) {
 
 > [Computed 与 watch | Vue.js (vuejs.org)](https://v3.cn.vuejs.org/api/computed-watch-api.html#computed)
 >
-> [Vue+TypeScript中如何处理computed_语霖BABA的博客-CSDN博客](https://blog.csdn.net/weixin_45614615/article/details/112057767)
+> [Vue+TypeScript 中如何处理 computed\_语霖 BABA 的博客-CSDN 博客](https://blog.csdn.net/weixin_45614615/article/details/112057767)
 >
 > [TypeScript 支持 | Vue.js (vuejs.org)](https://v3.cn.vuejs.org/guide/typescript-support.html#注解返回类型)
 
-**「computed」** 是[Vue](https://so.csdn.net/so/search?q=Vue&spm=1001.2101.3001.7020)中提供的一个计算属性。它被混入到Vue实例中，所有的getter和setter的this上下文自动的绑定为Vue实例。计算属性的结果会被缓存，除非依赖的响应式property变化才会从新计算。
+**「computed」** 是[Vue](https://so.csdn.net/so/search?q=Vue&spm=1001.2101.3001.7020)中提供的一个计算属性。它被混入到 Vue 实例中，所有的 getter 和 setter 的 this 上下文自动的绑定为 Vue 实例。计算属性的结果会被缓存，除非依赖的响应式 property 变化才会从新计算。
 
 由于 Vue 声明文件的循环特性，TypeScript 可能难以推断 computed 的类型。因此，你可能需要**注解**计算属性的返回类型。
 
 ```typescript
-import { defineComponent } from 'vue'
+import { defineComponent } from "vue";
 
 const Component = defineComponent({
   data() {
     return {
-      message: 'Hello!'
-    }
+      message: "Hello!",
+    };
   },
   computed: {
     // 需要注解
     greeting(): string {
-      return this.message + '!'
+      return this.message + "!";
     },
 
     // 在使用 setter 进行计算时，需要对 getter 进行注解
     greetingUppercased: {
       get(): string {
-        return this.greeting.toUpperCase()
+        return this.greeting.toUpperCase();
       },
       set(newValue: string) {
-        this.message = newValue.toUpperCase()
-      }
-    }
-  }
-})
+        this.message = newValue.toUpperCase();
+      },
+    },
+  },
+});
 ```
 
 **类型声明 computed**
 
 ```typescript
-import { defineComponent, ref, computed } from 'vue'
+import { defineComponent, ref, computed } from "vue";
 
 export default defineComponent({
-  name: 'CounterButton',
+  name: "CounterButton",
   setup() {
-    let count = ref(0)
+    let count = ref(0);
 
     // 只读
-    const doubleCount = computed(() => count.value * 2)
+    const doubleCount = computed(() => count.value * 2);
 
-    const result = doubleCount.value.split('') // => Property 'split' does not exist on type 'number'
-  }
-})
+    const result = doubleCount.value.split(""); // => Property 'split' does not exist on type 'number'
+  },
+});
 ```
 
 ![image-20220302173614712](http://cdn.ayusummer233.top/img/202203021736254.png)
@@ -9471,52 +9407,54 @@ export default defineComponent({
 
 ```vue
 <script setup lang="ts">
-import { ref, watch, reactive } from 'vue'
+import { ref, watch, reactive } from "vue";
 
 let message = ref({
-    nav: {
-        bar: {
-            name: "233"
-        }
-    }
-})
+  nav: {
+    bar: {
+      name: "233",
+    },
+  },
+});
 
 let message2 = reactive({
-    nav: {
-        bar: {
-            title: "233"
-        }
-    }
-})
+  nav: {
+    bar: {
+      title: "233",
+    },
+  },
+});
 
-watch(message, (newVal, oldVal) => {
-    console.log("message新值:" + newVal + "，旧值：" + oldVal)
-},
-    {
-        deep: true
-    }
-)
+watch(
+  message,
+  (newVal, oldVal) => {
+    console.log("message新值:" + newVal + "，旧值：" + oldVal);
+  },
+  {
+    deep: true,
+  }
+);
 
-watch(() => message2.nav.bar.title, (newVal, oldVal) => {
-    console.log("message2新值:" + newVal + "，旧值：" + oldVal)
-})
-
-
+watch(
+  () => message2.nav.bar.title,
+  (newVal, oldVal) => {
+    console.log("message2新值:" + newVal + "，旧值：" + oldVal);
+  }
+);
 </script>
 
 <template>
-    <div>
-        message.nav.bar.name:
-        <input v-model="message.nav.bar.name" type="text" />
-    </div>
-    <div>
-        message2.nav.bar.title:
-        <input v-model="message2.nav.bar.title" type="text" />
-    </div>
+  <div>
+    message.nav.bar.name:
+    <input v-model="message.nav.bar.name" type="text" />
+  </div>
+  <div>
+    message2.nav.bar.title:
+    <input v-model="message2.nav.bar.title" type="text" />
+  </div>
 </template>
 
-<style>
-</style>
+<style></style>
 ```
 
 ![image-20220316184424436](http://cdn.ayusummer233.top/img/202203161844749.png)
@@ -9527,7 +9465,7 @@ watch(() => message2.nav.bar.title, (newVal, oldVal) => {
 
 > [Computed 与 watch | Vue.js (vuejs.org)](https://v3.cn.vuejs.org/api/computed-watch-api.html#watcheffect)
 >
-> [学习Vue3 第十一章（认识watchEffect高级侦听器）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/122802130)
+> [学习 Vue3 第十一章（认识 watchEffect 高级侦听器）\_小满 zs 的博客-CSDN 博客](https://blog.csdn.net/qq1195566313/article/details/122802130)
 
 立即执行传入的一个函数，同时响应式追踪其依赖，并在其依赖变更时重新运行该函数
 
@@ -9575,7 +9513,7 @@ const stopWatch = () => stop()
 
 ![image-20220317143305226](http://cdn.ayusummer233.top/img/202203171433600.png)
 
-- 副作用刷新时机 flush 一般使用post
+- 副作用刷新时机 flush 一般使用 post
 
 |          |        pre         |         sync         |        post        |
 | :------: | :----------------: | :------------------: | :----------------: |
@@ -9591,7 +9529,7 @@ const stopWatch = () => stop()
 
 > [组合式 API | Vue.js (vuejs.org)](https://v3.cn.vuejs.org/api/composition-api.html#provide-inject)
 >
-> [学习Vue3 第二十三章（依赖注入Provide / Inject）_小满zs的博客-CSDN博客](https://blog.csdn.net/qq1195566313/article/details/123143981)
+> [学习 Vue3 第二十三章（依赖注入 Provide / Inject）\_小满 zs 的博客-CSDN 博客](https://blog.csdn.net/qq1195566313/article/details/123143981)
 
 `provide` 和 `inject` 启用依赖注入。这两者只能在使用当前活动实例的 [`setup()`](https://v3.cn.vuejs.org/api/composition-api.html#setup) 期间被调用。
 
@@ -9603,25 +9541,25 @@ const stopWatch = () => stop()
 
 ```vue
 <script setup lang="ts">
-import PIB from './PI_B.vue'
-import { provide, ref } from 'vue'
+import PIB from "./PI_B.vue";
+import { provide, ref } from "vue";
 
-provide('flag', ref(false))  // 两个参数, 前者是 key 后者是 value
+provide("flag", ref(false)); // 两个参数, 前者是 key 后者是 value
 </script>
 
 <template>
-    <div class="PI_A">
-        <div>A 组件内容区域</div>
-        <PIB></PIB>
-    </div>
+  <div class="PI_A">
+    <div>A 组件内容区域</div>
+    <PIB></PIB>
+  </div>
 </template>
 
 <style lang="less" scoped>
 .PI_A {
-    width: 300px;
-    height: 300px;
-    background: red;
-    color: #fff;
+  width: 300px;
+  height: 300px;
+  background: red;
+  color: #fff;
 }
 </style>
 ```
@@ -9630,26 +9568,26 @@ provide('flag', ref(false))  // 两个参数, 前者是 key 后者是 value
 
 ```vue
 <script setup lang="ts">
-import PIC from './PI_C.vue'
-import { inject } from 'vue'
+import PIC from "./PI_C.vue";
+import { inject } from "vue";
 
-let data = inject('flag')
+let data = inject("flag");
 </script>
 
 <template>
-    <div class="PI_B">
-        <h1>B 组件内容区域</h1>
-        <div>{{ data }}</div>
-        <PIC></PIC>
-    </div>
+  <div class="PI_B">
+    <h1>B 组件内容区域</h1>
+    <div>{{ data }}</div>
+    <PIC></PIC>
+  </div>
 </template>
 
 <style lang="less" scoped>
 .PI_B {
-    width: 300px;
-    height: 300px;
-    background: blue;
-    color: #fff;
+  width: 300px;
+  height: 300px;
+  background: blue;
+  color: #fff;
 }
 </style>
 ```
@@ -9658,26 +9596,26 @@ let data = inject('flag')
 
 ```vue
 <script setup lang="ts">
-import { inject, Ref, ref } from 'vue'
+import { inject, Ref, ref } from "vue";
 
-let data = inject<Ref<boolean>>('flag', ref(false)) // 两个参数, 前者是 key 后者是 默认值
+let data = inject<Ref<boolean>>("flag", ref(false)); // 两个参数, 前者是 key 后者是 默认值
 </script>
 
 <template>
-    <div class="PI_C">
-        <!-- 通过按钮改变 data 接受的 flag 值(取反)-->
-        <button @click="data = !data">改变 flag</button>
-        <h1>C 组件内容区域</h1>
-        <h1>{{ data }}</h1>
-    </div>
+  <div class="PI_C">
+    <!-- 通过按钮改变 data 接受的 flag 值(取反)-->
+    <button @click="data = !data">改变 flag</button>
+    <h1>C 组件内容区域</h1>
+    <h1>{{ data }}</h1>
+  </div>
 </template>
 
 <style lang="less" scoped>
 .PI_C {
-    width: 300px;
-    height: 300px;
-    background: green;
-    color: #fff;
+  width: 300px;
+  height: 300px;
+  background: green;
+  color: #fff;
 }
 </style>
 ```
@@ -9685,4 +9623,3 @@ let data = inject<Ref<boolean>>('flag', ref(false)) // 两个参数, 前者是 k
 > ![](http://cdn.ayusummer233.top/img/202203301011461.gif)
 
 > 底层逻辑是使用类似对象继承的方式实现的, 构造子对象的时候会自动继承父级的属性
-
