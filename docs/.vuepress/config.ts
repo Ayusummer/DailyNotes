@@ -1,9 +1,7 @@
 import { defineUserConfig } from "vuepress";
 import theme from "./theme";
-import { searchProPlugin } from "vuepress-plugin-search-pro";
 import { sitemapPlugin } from "vuepress-plugin-sitemap2";
-import { seoPlugin } from "vuepress-plugin-seo2";
-import { cut } from "nodejs-jieba";
+import { searchProPlugin } from "vuepress-plugin-search-pro";
 
 export default defineUserConfig({
   lang: "zh-CN",
@@ -16,19 +14,7 @@ export default defineUserConfig({
 
   plugins: [
     searchProPlugin({
-      // 索引全部内容
-      indexContent: true,
-      hotReload: true,
-      customFields: [
-        {
-          getter: ({ frontmatter }) => frontmatter.tag as string[],
-          formatter: `Tag: $content`,
-        },
-      ],
-      indexOptions: {
-        tokenize: (text, fieldName) =>
-          fieldName === "id" ? [text] : cut(text, true),
-      },
+      // 配置选项
     }),
     sitemapPlugin({
       // 配置选项

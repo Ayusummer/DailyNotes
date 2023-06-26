@@ -1,24 +1,28 @@
 {
-  "devDependencies": {
-    "@vuepress/client": "2.0.0-beta.62",
-    "@vuepress/plugin-search": "2.0.0-beta.62",
-    "vue": "^3.3.4",
-    "vuepress": "2.0.0-beta.62",
-    "vuepress-plugin-search-pro": "2.0.0-beta.216",
-    "vuepress-plugin-seo2": "2.0.0-beta.216",
-    "vuepress-plugin-sitemap2": "2.0.0-beta.216",
-    "vuepress-theme-hope": "2.0.0-beta.216",
-    "nodejs-jieba": "0.0.2"
+  "name": "ayusummer-dailyNotes",
+  "description": "233 daily notes",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:Ayusummer/DailyNotes.git"
   },
+  "license": "MIT",
+  "private": true,
+  "packageManager": "pnpm@8.6.0",
   "scripts": {
-    "docs:serve": "http-server -a localhost dist -o",
-    "docs:vite-build": "vuepress-vite build src",
-    "docs:vite-clean-dev": "vuepress-vite dev src --clean-cache",
-    "docs:vite-dev": "vuepress-vite dev src",
-    "docs:webpack-build": "vuepress-webpack build src",
-    "docs:webpack-clean-dev": "vuepress-webpack dev src --clean-cache",
-    "docs:webpack-dev": "vuepress-webpack dev src",
+    "docs:clean-dev": "vuepress dev docs --clean-cache",
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs"
+  },
+  "devDependencies": {
+    "@vuepress/client": "2.0.0-beta.62",
+    "nodejs-jieba": "0.0.2",
+    "vue": "3.3.4",
+    "vuepress": "2.0.0-beta.62",
+    "vuepress-plugin-search-pro": "2.0.0-beta.222",
+    "vuepress-plugin-seo2": "2.0.0-beta.222",
+    "vuepress-plugin-sitemap2": "2.0.0-beta.222",
+    "vuepress-theme-hope": "2.0.0-beta.222",
+    "vuepress-vite": "2.0.0-beta.62",
+    "vuepress-webpack": "2.0.0-beta.62"
   }
 }
