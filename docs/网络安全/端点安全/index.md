@@ -54,7 +54,26 @@
 
   ![image-20230625161949403](http://cdn.ayusummer233.top/DailyNotes/202306251619476.png)
 
-  
 
 ---
+
+### Sysmon
+
+- 查看 Sysmon 运行状态
+
+  ```powershell
+  Get-Service -Name Sysmon
+  ```
+
+  ![image-20230705150949454](http://cdn.ayusummer233.top/DailyNotes/202307051509753.png)
+
+- 停止 Sysmon
+
+  ```cmd
+  sc stop Sysmon
+  ```
+
+  ![image-20230705153607522](http://cdn.ayusummer233.top/DailyNotes/202307051536745.png)
+
+  ![image-20230705153619818](http://cdn.ayusummer233.top/DailyNotes/202307051536930.png)
 
