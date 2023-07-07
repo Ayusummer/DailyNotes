@@ -395,7 +395,35 @@ mklink /J OneDriveE5\mix "E:\OneDriveE5\mixon\OneDrive - ayusummer"
 
 ![image-20220829111044719](http://cdn.ayusummer233.top/img/202208291110794.png)
 
+---
 
+### Nextcloud
+
+#### 服务器搭建
+
+> Docker 搭建可以参考: [nextcloud/all-in-one: Nextcloud AIO stands for Nextcloud All-in-One and provides easy deployment and maintenance with most features included in this one Nextcloud instance. --- nextcloud/all-in-one：Nextcloud AIO 代表 Nextcloud All-in-One，通过该 Nextcloud 实例中包含的大多数功能提供轻松的部署和维护。 (github.com)](https://github.com/nextcloud/all-in-one#nextcloud-all-in-one)
+
+ubuntu: 
+
+```bash
+sudo snap install nextcloud
+```
+
+安装完成后访问 80 端口配置管理员账密即可使用
+
+---
+
+#### 配置
+
+当有多张网卡时, 似乎默认情况下只允许了第一张网卡访问 web 页面, 可以手动到 `/var/snap/nextcloud/current/nextcloud/config/config.php` 配置 `trusted_domains` 以允许通过其他网卡访问web
+
+```php
+  'trusted_domains' => 
+  array (
+    0 => '10.10.10.21',
+    1 => '192.168.1.21',
+  ),
+```
 
 ---
 
