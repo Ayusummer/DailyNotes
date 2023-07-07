@@ -20,9 +20,89 @@
 
 @tab:active Windows
 
+### 官方安装包
+
+> [MySQL :: Download MySQL Installer --- MySQL :: 下载 MySQL 安装程序](https://dev.mysql.com/downloads/installer/)
+
+在 [MySQL :: MySQL Downloads --- MySQL :: MySQL 下载](https://www.mysql.com/downloads/) 找到 Community 版本入口
+
+![image-20230704175739573](http://cdn.ayusummer233.top/DailyNotes/202307041757855.png)
+
+![image-20230704175902000](http://cdn.ayusummer233.top/DailyNotes/202307041759098.png)
+
+![image-20230704175932855](http://cdn.ayusummer233.top/DailyNotes/202307041759982.png)
+
+直接装的话可能会卡在这一步:
+
+![image-20230704180643186](http://cdn.ayusummer233.top/DailyNotes/202307041806306.png)
+
+需要到 [Latest supported Visual C++ Redistributable downloads | Microsoft Learn --- 最新支持的 Visual C++ Redistributable 下载 |微软学习](https://learn.microsoft.com/en-US/cpp/windows/latest-supported-vc-redist?view=msvc-170) 进行下载
+
+![image-20230704180957590](http://cdn.ayusummer233.top/DailyNotes/202307041809722.png)
+
+![image-20230704181012782](http://cdn.ayusummer233.top/DailyNotes/202307041810896.png)
+
+安装完 `VC++` 后再次运行安装程序会发现还需要装 Python
+
+![image-20230705094434308](http://cdn.ayusummer233.top/DailyNotes/202307050944685.png)
+
+在 22 年, `Python 3.10` 的保有量就比较大了, 因此这里选择了安装 Python3.10
+
+![image-20230605112325787](http://cdn.ayusummer233.top/DailyNotes/202306051123863.png)
+
+> ![image-20230705100419828](http://cdn.ayusummer233.top/DailyNotes/202307051004072.png)
+
+安装完 Python 后再次运行 MySQL 安装程序
+
+![image-20230705100857573](http://cdn.ayusummer233.top/DailyNotes/202307051008686.png)
+
+![image-20230705100921051](http://cdn.ayusummer233.top/DailyNotes/202307051009187.png)
+
+![image-20230705101652493](http://cdn.ayusummer233.top/DailyNotes/202307051016653.png)
+
+![image-20230705102552702](http://cdn.ayusummer233.top/DailyNotes/202307051025990.png)
+
+![image-20230705102931456](http://cdn.ayusummer233.top/DailyNotes/202307051029698.png)
+
+![image-20230705105214364](http://cdn.ayusummer233.top/DailyNotes/202307051052788.png)
+
+> 这里设置了一个比较弱的密码是有相关需求, 正常使用应当设置一个强密码
+
+![image-20230705112338025](http://cdn.ayusummer233.top/DailyNotes/202307051123220.png)
+
+![image-20230705112358941](http://cdn.ayusummer233.top/DailyNotes/202307051123099.png)
+
+![image-20230705112414758](http://cdn.ayusummer233.top/DailyNotes/202307051124928.png)
+
+![image-20230705112608601](http://cdn.ayusummer233.top/DailyNotes/202307051126751.png)
+
+![image-20230705112626119](http://cdn.ayusummer233.top/DailyNotes/202307051126285.png)
+
+![image-20230705112713093](http://cdn.ayusummer233.top/DailyNotes/202307051127285.png)
+
+![image-20230705112728676](http://cdn.ayusummer233.top/DailyNotes/202307051127823.png)
+
+使用刚才创建的 root 密码 check 一下链接再 `Next`
+
+![image-20230705112821210](http://cdn.ayusummer233.top/DailyNotes/202307051128404.png)
+
+![image-20230705112833612](http://cdn.ayusummer233.top/DailyNotes/202307051128765.png)
+
+![image-20230705112902125](http://cdn.ayusummer233.top/DailyNotes/202307051129292.png)
+
+![image-20230705112916504](http://cdn.ayusummer233.top/DailyNotes/202307051129658.png)
+
+![image-20230705132804828](http://cdn.ayusummer233.top/DailyNotes/202307051328049.png)\
+
+![image-20230705132851148](http://cdn.ayusummer233.top/DailyNotes/202307051328358.png)
+
+![image-20230705132903178](http://cdn.ayusummer233.top/DailyNotes/202307051329273.png)
+
+---
+
+### 手动配置
+
 > [mysql的安装与配置——详细教程 - Winton-H - 博客园 (cnblogs.com)](https://www.cnblogs.com/winton-nfs/p/11524007.html)
->
-> ---
 
 - 下载[mysql 免安装版](https://dev.mysql.com/get/Downloads/mysql-8.0/mysql-8.0.22-winx64.zip)
 
@@ -280,6 +360,41 @@ alter user 'root'@'%' identified with mysql_native_password by 'root';
 ---
 
 :::
+
+---
+
+## 启用远程访问权限
+
+> [MySQL开启远程访问权限-阿里云开发者社区 (aliyun.com)](https://developer.aliyun.com/article/801237)
+
+默认情况下, MySQL 只允许本地登录, 因此远程连接的话需要修改配置
+
+打开 MySQL Command Line
+
+![image-20230705182142666](http://cdn.ayusummer233.top/DailyNotes/202307051821200.png)
+
+输入密码以登入, 然后
+
+```sql
+use mysql
+select  User,authentication_string,Host from user;
+```
+
+![image-20230705182202275](http://cdn.ayusummer233.top/DailyNotes/202307051822368.png)
+
+可以看到当前只有一个 root 用户绑定在 localhost 上, 可以直接将此表中 root 对应的 Host 改为 % 来允许远程登录
+
+```sql
+update user set host='%' where user='root';
+# 需要通过FLUSH PRIVILEGES刷新权限表使修改生效
+FLUSH PRIVILEGES;
+```
+
+![image-20230705182531468](http://cdn.ayusummer233.top/DailyNotes/202307051825656.png)
+
+然后就可以远程连接了:
+
+![image-20230705185530429](http://cdn.ayusummer233.top/DailyNotes/202307051855583.png)
 
 ---
 
