@@ -275,6 +275,7 @@ if __name__ == '__main__':
 ```bash
 git config http.proxy http://127.0.0.1:7890
 git config https.proxy http://127.0.0.1:7890
+git config core.gitPorxy socks5://127.0.0.1:7890
 ```
 
 > 可以配置全局代理, 但是由于本地还有在用内网的 gitlab, 所以不适合配全局, 这里是针对项目配的
@@ -286,6 +287,7 @@ git config https.proxy http://127.0.0.1:7890
 > ```bash
 > git config --global --unset http.proxy
 > git config --global --unset https.proxy
+> git config --global --unset core.gitPorxy
 > ```
 
 ---
