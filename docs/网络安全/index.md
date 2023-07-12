@@ -2,7 +2,7 @@
 
 ## 常见概念
 
-> [计算机漏洞安全相关的概念POC 、EXP 、VUL 、CVE 、0DAY_www.xpshuai.cn的博客-CSDN博客_poc漏洞 什么意思](https://blog.csdn.net/qq_37622608/article/details/88048847)
+> [计算机漏洞安全相关的概念 POC 、EXP 、VUL 、CVE 、0DAY_www.xpshuai.cn 的博客-CSDN 博客\_poc 漏洞 什么意思](https://blog.csdn.net/qq_37622608/article/details/88048847)
 
 ---
 
@@ -12,10 +12,10 @@
 
 - `VUL`: `Vulnerability` 的缩写，泛指`漏洞`。
 
-- `CVE漏洞编号`: `Common Vulnerabilities & Exposures` 
+- `CVE漏洞编号`: `Common Vulnerabilities & Exposures`
 
-  - 公共漏洞和暴露，例如CVE-2015-0057、CVE-1999-0001等等。CVE就好像是一个字典表，为广泛认同的信息安全漏洞或者已经暴露出来的弱点给出一个公共的名称。如果在一个漏洞报告中指明的一个漏洞，如果有CVE名称，你就可以快速地在任何其它 CVE 兼容的数据库中找到相应修补的信息，解决安全问题。
-  - 可以在 [CVE - CVE (mitre.org)](https://cve.mitre.org/) 网站根据漏洞的CVE编号搜索该漏洞的介绍。
+  - 公共漏洞和暴露，例如 CVE-2015-0057、CVE-1999-0001 等等。CVE 就好像是一个字典表，为广泛认同的信息安全漏洞或者已经暴露出来的弱点给出一个公共的名称。如果在一个漏洞报告中指明的一个漏洞，如果有 CVE 名称，你就可以快速地在任何其它 CVE 兼容的数据库中找到相应修补的信息，解决安全问题。
+  - 可以在 [CVE - CVE (mitre.org)](https://cve.mitre.org/) 网站根据漏洞的 CVE 编号搜索该漏洞的介绍。
 
 - `0DAY`
 
@@ -32,11 +32,11 @@
 
 - `CNNVD`: 中国国家信息安全漏洞库。是中国信息安全测评中心为切实履行漏洞分析和风险评估的职能，负责建设运维的国家信息安全漏洞库，为我国信息安全保障提供基础服务
 
-- `CVSS`: `(Common Vulnerability Scoring System)` 通用漏洞评分系统，行业公开标准，用来评测漏洞的严重程度，0-10分值越高越严重,美国国家漏洞数据库官网：[NVD - Search and Statistics (nist.gov)](https://nvd.nist.gov/vuln/search) 可查询 CVE 对应 CVSS 分值
+- `CVSS`: `(Common Vulnerability Scoring System)` 通用漏洞评分系统，行业公开标准，用来评测漏洞的严重程度，0-10 分值越高越严重,美国国家漏洞数据库官网：[NVD - Search and Statistics (nist.gov)](https://nvd.nist.gov/vuln/search) 可查询 CVE 对应 CVSS 分值
 
-  > *PS：评分会受时间和空间影响，如随着时间推移，漏洞相关补丁越多，可被利用性越低；漏洞存在不同的环境，也会影响漏洞的威胁程度*
+  > _PS：评分会受时间和空间影响，如随着时间推移，漏洞相关补丁越多，可被利用性越低；漏洞存在不同的环境，也会影响漏洞的威胁程度_
 
-- `CPE`: `（Common Platform Enumeration）`  以标准化方式为软件应用程序、操作系统及硬件命名的方法
+- `CPE`: `（Common Platform Enumeration）` 以标准化方式为软件应用程序、操作系统及硬件命名的方法
 
 ---
 
@@ -68,9 +68,9 @@ systemctl start docker
 
   ```dockerfile
   FROM vulhub/elasticsearch:1.4.4
-  
+
   LABEL maintainer="phithon <root@leavesongs.com>"
-  
+
   RUN set -ex \
       && plugin --install mobz/elasticsearch-head/1.x -u https://codeload.github.com/mobz/elasticsearch-head/zip/refs/heads/1.x
   ```
@@ -88,7 +88,6 @@ systemctl start docker
   RUN set -ex \
       && plugin -install mobz/elasticsearch-head
   ```
-
 
 ---
 
@@ -113,7 +112,7 @@ cd vulfocus
 
 ```bash
 # 启动并后台运行 VULFOCUS 容器
-docker-compose up -d
+docker compose up -d
 ```
 
 ![image-20230328010058301](http://cdn.ayusummer233.top/DailyNotes/202303280100357.png)
@@ -148,7 +147,7 @@ docker-compose up -d
 
 #### 安装域服务并提升到域控
 
-打开 `服务管理器 -> 仪表板 -> 添加角色和功能` 
+打开 `服务管理器 -> 仪表板 -> 添加角色和功能`
 
 ![image-20230703182211445](http://cdn.ayusummer233.top/DailyNotes/202307031822572.png)
 
@@ -158,11 +157,11 @@ docker-compose up -d
 
 ![image-20230703182328445](http://cdn.ayusummer233.top/DailyNotes/202307031823593.png)
 
-> 如果这里 IP 地址显示 169.254 的话, 可能是配置的静态IP没有生效, 可以尝试重启一下计算机
+> 如果这里 IP 地址显示 169.254 的话, 可能是配置的静态 IP 没有生效, 可以尝试重启一下计算机
 
 勾选 `AD域服务` 以及可能会用到的服务, 然后 `下一步`:
 
-> Web服务器也是我手动勾选的, 后续可能会用到就先勾上了
+> Web 服务器也是我手动勾选的, 后续可能会用到就先勾上了
 
 ![image-20230703182441294](http://cdn.ayusummer233.top/DailyNotes/202307031824409.png)
 
@@ -200,7 +199,7 @@ docker-compose up -d
 
 ![image-20230704093833253](http://cdn.ayusummer233.top/DailyNotes/202307040938376.png)
 
-由于本次创建的是单个域, 不需要管理子域之类的操作, 因此这里的 DNS  委派也是非必须的, 直接下一步即可
+由于本次创建的是单个域, 不需要管理子域之类的操作, 因此这里的 DNS 委派也是非必须的, 直接下一步即可
 
 > [域控制器部署疑难解答 | Microsoft Learn](https://learn.microsoft.com/zh-cn/windows-server/identity/ad-ds/deploy/troubleshooting-domain-controller-deployment)
 >
@@ -306,8 +305,6 @@ docker-compose up -d
 ![image-20230707111903644](http://cdn.ayusummer233.top/DailyNotes/202307071119826.png)
 
 ![image-20230707111917300](http://cdn.ayusummer233.top/DailyNotes/202307071119429.png)
-
-
 
 > 最开始搜教程, 直接是`右键域名 -> 新建 -> 用户`, 这样创建的用户最后在域名页面就能看到了, 感觉不是很合适, 就有了上面的过程截图
 >
@@ -483,17 +480,15 @@ docker-compose up -d
 
 ![image-20230707135012984](http://cdn.ayusummer233.top/DailyNotes/202307071350068.png)
 
-
-
 ---
 
-## 使用 OpenSSL 创建自签名  SSL 证书
+## 使用 OpenSSL 创建自签名 SSL 证书
 
-> [如何创建自签名SSL证书 | myfreax](https://www.myfreax.com/creating-a-self-signed-ssl-certificate/)
+> [如何创建自签名 SSL 证书 | myfreax](https://www.myfreax.com/creating-a-self-signed-ssl-certificate/)
 
 > 最近有给站点上 HTTPS 的需求, 且在内网使用, 所以有了自签名证书的需求
 
-自签名SSL证书是由创建它的人而不是受信任的证书颁发机构签名的证书。自签名证书可以与受信任的CA签名SSL证书具有相同的加密级别。
+自签名 SSL 证书是由创建它的人而不是受信任的证书颁发机构签名的证书。自签名证书可以与受信任的 CA 签名 SSL 证书具有相同的加密级别。
 
 在浏览器中访问自签名证书的 HTTPS 站点时会提示不安全的链接
 
@@ -523,7 +518,7 @@ sudo yum install openssl
 
 ### 创建自签名 SSL 证书
 
-可以使用 `openssl req`创建自签名  SSL 证书
+可以使用 `openssl req`创建自签名 SSL 证书
 
 ```bash
 openssl req -newkey rsa:4096 \
@@ -535,15 +530,15 @@ openssl req -newkey rsa:4096 \
             -keyout example.key
 ```
 
-- `-newkey rsa:4096`-创建新的证书请求和4096位RSA密钥。默认值为2048位。
-- `-x509` -创建X.509证书。
-- `-sha256` -使用265位SHA（安全哈希算法）。
-- `-days 3650` -认证证书的天数。 3650是10年。您可以使用任何正整数。
+- `-newkey rsa:4096`-创建新的证书请求和 4096 位 RSA 密钥。默认值为 2048 位。
+- `-x509` -创建 X.509 证书。
+- `-sha256` -使用 265 位 SHA（安全哈希算法）。
+- `-days 3650` -认证证书的天数。 3650 是 10 年。您可以使用任何正整数。
 - `-nodes` -创建没有密码的密钥。
 - `-out example.crt` -指定将新创建的证书写入的文件名。您可以指定任何文件名。
 - `-keyout example.key` -指定要写入新创建的私钥的文件名。您可以指定任何文件名。
 
-> 有关`openssl req`命令选项的更多信息，请访问[ OpenSSL req文档页面。](https://www.openssl.org/docs/manmaster/man1/openssl-req.html)
+> 有关`openssl req`命令选项的更多信息，请访问[ OpenSSL req 文档页面。](https://www.openssl.org/docs/manmaster/man1/openssl-req.html)
 
 回车后可以看到如下回显:
 
