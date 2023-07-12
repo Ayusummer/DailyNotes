@@ -1,37 +1,36 @@
 # Go 语言圣经学习随笔
 
 - [Go 语言圣经学习随笔](#go-语言圣经学习随笔)
-	- [CH1 入门](#ch1-入门)
-		- [ch1.1 Hello World](#ch11-hello-world)
-			- [包管理](#包管理)
-				- [package main](#package-main)
-			- [function](#function)
-			- [分号的问题](#分号的问题)
-			- [引号的问题](#引号的问题)
-			- [代码格式](#代码格式)
-		- [ch1.2 命令行参数](#ch12-命令行参数)
-			- [优化上述 echo 程序](#优化上述-echo-程序)
-		- [ch1.3 查找重复的行](#ch13-查找重复的行)
-		- [ch1.4 GIF 动画](#ch14-gif-动画)
-		- [ch1.5 获取 URL](#ch15-获取-url)
-			- [练习 1.7 使用 `io.Copy` 替代 `io.outil.ReadAll`](#练习-17-使用-iocopy-替代-iooutilreadall)
-			- [练习 1.8 补充前缀](#练习-18-补充前缀)
-			- [练习 1.9 输出状态码](#练习-19-输出状态码)
-
+  - [CH1 入门](#ch1-入门)
+    - [ch1.1 Hello World](#ch11-hello-world)
+      - [包管理](#包管理)
+        - [package main](#package-main)
+      - [function](#function)
+      - [分号的问题](#分号的问题)
+      - [引号的问题](#引号的问题)
+      - [代码格式](#代码格式)
+    - [ch1.2 命令行参数](#ch12-命令行参数)
+      - [优化上述 echo 程序](#优化上述-echo-程序)
+    - [ch1.3 查找重复的行](#ch13-查找重复的行)
+    - [ch1.4 GIF 动画](#ch14-gif-动画)
+    - [ch1.5 获取 URL](#ch15-获取-url)
+      - [练习 1.7 使用 `io.Copy` 替代 `io.outil.ReadAll`](#练习-17-使用-iocopy-替代-iooutilreadall)
+      - [练习 1.8 补充前缀](#练习-18-补充前缀)
+      - [练习 1.9 输出状态码](#练习-19-输出状态码)
 
 ## CH1 入门
 
-> [入门 - Go语言圣经 (gopl-zh.github.io)](https://gopl-zh.github.io/ch1/ch1.html)
+> [入门 - Go 语言圣经 (gopl-zh.github.io)](https://gopl-zh.github.io/ch1/ch1.html)
 >
 > ---
 
-Go语言有时候被描述为“类C语言”，或者是“21世纪的C语言”。Go从C语言继承了相似的表达式语法、控制流结构、基础数据类型、调用参数传值、指针等很多思想，还有C语言一直所看中的编译后机器码的运行效率以及和现有操作系统的无缝适配。
+Go 语言有时候被描述为“类 C 语言”，或者是“21 世纪的 C 语言”。Go 从 C 语言继承了相似的表达式语法、控制流结构、基础数据类型、调用参数传值、指针等很多思想，还有 C 语言一直所看中的编译后机器码的运行效率以及和现有操作系统的无缝适配。
 
 在第一章会介绍 Go 语言的基础组件, 提供足够的信息以及示例程序, 目的在于帮助读者尽快入门, 写出有用的程序
 
 ### ch1.1 Hello World
 
-> [Hello, World - Go语言圣经 (gopl-zh.github.io)](https://gopl-zh.github.io/ch1/ch1-01.html)
+> [Hello, World - Go 语言圣经 (gopl-zh.github.io)](https://gopl-zh.github.io/ch1/ch1-01.html)
 >
 > ---
 
@@ -93,7 +92,7 @@ Go 的标准库提供了 100 多个 `package`, 以支持常见功能，如输入
 
   `Println` 是其中一个基础函数，可以打印以空格间隔的一个或多个值，并在最后添加一个换行符，从而输出一整行。
 
-----
+---
 
 ##### package main
 
@@ -139,11 +138,11 @@ Go 的标准库提供了 100 多个 `package`, 以支持常见功能，如输入
 > >
 > >   ![image-20221113222244698](http://cdn.ayusummer233.top/img/202211132222731.png)
 > >
-> > - 在 `main.go` 中引入了 `GoLearning/pkg/hello` 并给了它一个别名 `hello` 
+> > - 在 `main.go` 中引入了 `GoLearning/pkg/hello` 并给了它一个别名 `hello`
 > >
 > >   > [Relative imports in Go - Stack Overflow](https://stackoverflow.com/questions/38517593/relative-imports-in-go)
 > >   >
-> >   > ---
+> >   > ***
 > >
 > >   > 在 [Hello World](https://ayusummer.github.io/DailyNotes/Language/Go/Go.html#hello-world) 章节最开始做的第一步就是初始化了一个 Go 应用, 在这个过程里就定义了应用名
 > >   >
@@ -162,7 +161,7 @@ Go 的标准库提供了 100 多个 `package`, 以支持常见功能，如输入
 > >
 > >   > [go - func not exported by package. - SegmentFault 思否](https://segmentfault.com/q/1010000041390281)
 > >   >
-> >   > ---
+> >   > ***
 > >
 > >   ![image-20221113222851217](http://cdn.ayusummer233.top/img/202211132228251.png)
 >
@@ -178,11 +177,11 @@ Go 的标准库提供了 100 多个 `package`, 以支持常见功能，如输入
 >
 >   > `_test` 在 Go 中似乎有特殊含义, 随手写模块时需要注意(这部分内容在 Go 语言圣经第 11 章会讲)
 >   >
->   > > [go test - Go语言圣经 (gopl-zh.github.io)](https://gopl-zh.github.io/ch11/ch11-01.html)
+>   > > [go test - Go 语言圣经 (gopl-zh.github.io)](https://gopl-zh.github.io/ch11/ch11-01.html)
 >   > >
->   > > [测试函数 - Go语言圣经 (gopl-zh.github.io)](https://gopl-zh.github.io/ch11/ch11-02.html)
+>   > > [测试函数 - Go 语言圣经 (gopl-zh.github.io)](https://gopl-zh.github.io/ch11/ch11-02.html)
 >   > >
->   > > ---
+>   > > ***
 >   >
 >   > ![image-20221122223908189](http://cdn.ayusummer233.top/img/202211222239244.png)
 
@@ -218,7 +217,7 @@ Go 语言不需要在语句或者声明的末尾添加分号，除非一行上�
 > >
 > > ![image-20221113224224293](http://cdn.ayusummer233.top/img/202211132242322.png)
 
-----
+---
 
 #### 引号的问题
 
@@ -231,11 +230,11 @@ Go 语言不需要在语句或者声明的末尾添加分号，除非一行上�
 - `单引号` 表示 byte 类型或 rune 类型，对应 uint8 和 int32 类型，默认是 rune 类型。
 
   - byte 用来强调数据是 raw data，而不是数字；
-  - rune 用来表示 Unicode 的 code point。 
+  - rune 用来表示 Unicode 的 code point。
 
 - `双引号` 才是字符串, 实际上是字符数组; 可以用索引访问某字节, 也可以用 `len()` 函数来获取字符串所占的字节长度
 
-- `反引号` 表示字符串字面量, 但不支持任何转义序列; 
+- `反引号` 表示字符串字面量, 但不支持任何转义序列;
 
   可以理解成 Python 中的 `r"string"` , 将内部字符串原样输出, 不转义 `\n, \t, \r` 等具有特殊含义的字符串
 
@@ -243,7 +242,7 @@ Go 语言不需要在语句或者声明的末尾添加分号，除非一行上�
 
 #### 代码格式
 
-Go 语言在代码格式上采取了很强硬的态度。`gofmt`工具把代码格式化为标准格式，并且 `go` 工具中的 `fmt` 子命令会对指定包, 否则默认为当前目录中所有 `.go`  源文件应用 `gofmt` 命令。
+Go 语言在代码格式上采取了很强硬的态度。`gofmt`工具把代码格式化为标准格式，并且 `go` 工具中的 `fmt` 子命令会对指定包, 否则默认为当前目录中所有 `.go` 源文件应用 `gofmt` 命令。
 
 > 译者注：
 >
@@ -276,7 +275,7 @@ VSCode 安装 Go 扩展时应该是已经装了类似的工具了, 这点在个�
 
 `os` 包外部使用 `os.Args` 访问该变量。
 
-`os.Args` 变量是一个字符串（string）的 *切片*（slice）(类似于 Python 中的切片, 是一个简化版的动态数组)
+`os.Args` 变量是一个字符串（string）的 _切片_（slice）(类似于 Python 中的切片, 是一个简化版的动态数组)
 
 ---
 
@@ -325,7 +324,7 @@ func Print_cmd_args() {
 >
 > - var 声明定义了两个 string 类型的变量 `getParams` 和 `sep`
 >
->   变量会在声明时直接初始化。如果变量没有显式初始化，则被隐式地赋予其类型的 *零值*（zero value）
+>   变量会在声明时直接初始化。如果变量没有显式初始化，则被隐式地赋予其类型的 _零值_（zero value）
 >
 >   > 数值类型是 `0`，字符串类型是空字符串 `""`
 >
@@ -355,15 +354,15 @@ func Print_cmd_args() {
 >
 >   - 三个部分不需要用括号包围, 但是要有大括号, 且 `{` 必须与 for 在同一行(像前面说的一样, 因为 Go 编译时会自动给每行加分号, 所以大括号单起一行过不了编译)
 >
->   - *`initialization`* 语句是可选的，在循环开始前执行。
+>   - _`initialization`_ 语句是可选的，在循环开始前执行。
 >
->     *`initalization`* 如果存在，必须是一条 *简单语句*（simple statement），即，短变量声明、自增语句、赋值语句或函数调用。
+>     _`initalization`_ 如果存在，必须是一条 _简单语句_（simple statement），即，短变量声明、自增语句、赋值语句或函数调用。
 >
 >   - `condition` 是一个布尔表达式（boolean expression），其值在每次循环迭代开始时计算。如果为 `true` 则执行循环体语句
 >
 >   - `post` 语句在循环体执行结束后执行，之后再次对 `condition` 求值。`condition` 值为 `false` 时，循环结束。
 >
->   ---
+>   ***
 >
 >   - `for` 循环的三个部分都可以省略(分号需要保留, 用于确定位置), 当 `initialization` 和 `post` 都省略时才可以省略分号
 >
@@ -425,7 +424,7 @@ func Echo_Slice() {
 >
 >   `_` 可用于在任何语法上需要变量名但是程序逻辑中之处
 >
-> - 对于已声明的变量, 使用 ` := ` 会报错 ` "no new variables on left side of :="`
+> - 对于已声明的变量, 使用 `:=` 会报错 ` "no new variables on left side of :="`
 >
 >   此时可以使用 = 赋值
 
@@ -490,7 +489,7 @@ func main() {
 
 ### ch1.3 查找重复的行
 
-> [查找重复的行 - Go语言圣经 (gopl-zh.github.io)](https://gopl-zh.github.io/ch1/ch1-03.html)
+> [查找重复的行 - Go 语言圣经 (gopl-zh.github.io)](https://gopl-zh.github.io/ch1/ch1-03.html)
 
 对文件做拷贝、打印、搜索、排序、统计或类似事情的程序都有一个差不多的程序结构：一个处理输入的循环，在每个元素上执行计算处理，在处理的同时或最后产生输出。
 
@@ -546,7 +545,7 @@ func Dup1() {
 
   内置函数 `make` 创建空 `map`
 
-  > 关于 Map 的其他用法学到 4.3 会有一章讲解: [Map - Go语言圣经 (gopl-zh.github.io)](https://gopl-zh.github.io/ch4/ch4-03.html)
+  > 关于 Map 的其他用法学到 4.3 会有一章讲解: [Map - Go 语言圣经 (gopl-zh.github.io)](https://gopl-zh.github.io/ch4/ch4-03.html)
 
 - `bufio` 包使处理输入和输出方便又高效。`Scanner` 类型是该包最有用的特性之一，它读取输入并将其拆成行或单词；通常是处理行形式的输入最简单的方法。
 
@@ -763,17 +762,17 @@ func lissajous(out io.Writer) {
 >
 > ![out](http://cdn.ayusummer233.top/img/202301092305753.gif)
 
-- `line27~33` 的常量声明给出了一系列的常量值，常量是指在程序编译后运行时始终都不会变化的值，比如圈数、帧数、延迟值。常量声明和变量声明一般都会出现在包级别，所以这些常量在整个包中都是可以共享的，或者你也可以把常量声明定义在函数体内部，那么这种常量就只能在函数体内用。目前常量声明的值必须是一个数字值、字符串或者一个固定的boolean值。
+- `line27~33` 的常量声明给出了一系列的常量值，常量是指在程序编译后运行时始终都不会变化的值，比如圈数、帧数、延迟值。常量声明和变量声明一般都会出现在包级别，所以这些常量在整个包中都是可以共享的，或者你也可以把常量声明定义在函数体内部，那么这种常量就只能在函数体内用。目前常量声明的值必须是一个数字值、字符串或者一个固定的 boolean 值。
 
-- `[]color.Color{...}` 和 `gif.GIF{...}` 这两个表达式是复合声明（4.2和4.4.1节有说明）。这是实例化Go语言里的复合类型的一种写法。
+- `[]color.Color{...}` 和 `gif.GIF{...}` 这两个表达式是复合声明（4.2 和 4.4.1 节有说明）。这是实例化 Go 语言里的复合类型的一种写法。
 
-  前者生成的是一个slice切片，后者生成的是一个struct结构体。
+  前者生成的是一个 slice 切片，后者生成的是一个 struct 结构体。
 
-- lissajous 函数内部有两层嵌套的for循环。外层循环会循环64次，每一次都会生成一个单独的动画帧。它生成了一个包含两种颜色的201*201大小的图片，白色和黑色。所有像素点都会被默认设置为其零值（也就是调色板palette里的第0个值），这里我们设置的是白色。每次外层循环都会生成一张新图片，并将一些像素设置为黑色。其结果会append到之前结果之后。这里我们用到了append(参考4.2.1)内置函数，将结果append到anim中的帧列表末尾，并设置一个默认的80ms的延迟值。循环结束后所有的延迟值被编码进了GIF图片中，并将结果写入到输出流。out这个变量是io.Writer类型，这个类型支持把输出结果写到很多目标，很快我们就可以看到例子。
+- lissajous 函数内部有两层嵌套的 for 循环。外层循环会循环 64 次，每一次都会生成一个单独的动画帧。它生成了一个包含两种颜色的 201\*201 大小的图片，白色和黑色。所有像素点都会被默认设置为其零值（也就是调色板 palette 里的第 0 个值），这里我们设置的是白色。每次外层循环都会生成一张新图片，并将一些像素设置为黑色。其结果会 append 到之前结果之后。这里我们用到了 append(参考 4.2.1)内置函数，将结果 append 到 anim 中的帧列表末尾，并设置一个默认的 80ms 的延迟值。循环结束后所有的延迟值被编码进了 GIF 图片中，并将结果写入到输出流。out 这个变量是 io.Writer 类型，这个类型支持把输出结果写到很多目标，很快我们就可以看到例子。
 
-  内层循环设置两个偏振值。x轴偏振使用sin函数。y轴偏振也是正弦波，但其相对x轴的偏振是一个0-3的随机值，初始偏振值是一个零值，随着动画的每一帧逐渐增加。循环会一直跑到x轴完成五次完整的循环。每一步它都会调用SetColorIndex来为(x,y)点来染黑色。
+  内层循环设置两个偏振值。x 轴偏振使用 sin 函数。y 轴偏振也是正弦波，但其相对 x 轴的偏振是一个 0-3 的随机值，初始偏振值是一个零值，随着动画的每一帧逐渐增加。循环会一直跑到 x 轴完成五次完整的循环。每一步它都会调用 SetColorIndex 来为(x,y)点来染黑色。
 
-  main函数调用lissajous函数，用它来向标准输出流打印信息，所以下面这个命令会像图1.1中产生一个GIF动画。
+  main 函数调用 lissajous 函数，用它来向标准输出流打印信息，所以下面这个命令会像图 1.1 中产生一个 GIF 动画。
 
   ```bash
   go build main
@@ -784,14 +783,14 @@ func lissajous(out io.Writer) {
   >
   > ![image-20230110000030361](http://cdn.ayusummer233.top/img/202301100000401.png)
   >
-  > 可参阅: 
+  > 可参阅:
   >
   > - [image - Go-generated animated GIFs didn't work in windows - Stack Overflow](https://stackoverflow.com/questions/56323293/go-generated-animated-gifs-didnt-work-in-windows)
   > - [image/gif: result of EncodeAll not viewable in Eye of GNOME · Issue #13746 · golang/go (github.com)](https://github.com/golang/go/issues/13746)
   >
   > - [os: Binary data written to os.Stdout gets corrupted on Windows 8.1 · Issue #42337 · golang/go (github.com)](https://github.com/golang/go/issues/42337)
   >
-  > - [《Go语言圣经》 读书笔记与个人思考 ① 第一章、包括源码分析 - 小能日记 - 博客园 (cnblogs.com)](https://www.cnblogs.com/linxiaoxu/p/16187331.html)
+  > - [《Go 语言圣经》 读书笔记与个人思考 ① 第一章、包括源码分析 - 小能日记 - 博客园 (cnblogs.com)](https://www.cnblogs.com/linxiaoxu/p/16187331.html)
   >
   >   如果使用 powershell 重定向管道 `go run main.exe > out.gif` 生成的 gif 图片将会出错无法打开。具体原因是 powershell 的标准输出流如果进行管道重定向会进行转换。
   >
@@ -807,13 +806,13 @@ func lissajous(out io.Writer) {
 
 Go 语言在 net package 的帮助下提供了一些列的 package 来访问互联网上的信息, 使用这些包可以更简单地用网络收发信息, 还可以建立更底层的网络连接, 编写服务器程序, 在这些情景下, Go 语言原生的并发特性显得尤其好用
 
-> 在第八章中会介绍Go语言原生的并发特性
+> 在第八章中会介绍 Go 语言原生的并发特性
 >
 > TODO: 在可以建立更底层的网络连接方面看起来似乎可以用来构造一些欺骗性质的请求, 之后遇到可以试试
 
 下面是一个 fetch 程序的示例, fetch 到对应 url 并打印响应文本
 
-> 这个例子的灵感来源于curl
+> 这个例子的灵感来源于 curl
 
 ```go
 package ch1
@@ -858,14 +857,14 @@ func PrintResponseBody() {
 > >
 > > ![image-20230316013139581](http://cdn.ayusummer233.top/DailyNotes/202303160131602.png)
 > >
-> > > 译注：在大天朝的网络环境下很容易重现这种错误，下面是Windows下运行得到的错误信息：
+> > > 译注：在大天朝的网络环境下很容易重现这种错误，下面是 Windows 下运行得到的错误信息：
 > > >
 > > > ```bash
 > > > $ go run main.go http://gopl.io
 > > > fetch: Get http://gopl.io: dial tcp: lookup gopl.io: getaddrinfow: No such host is known.
 > > > ```
 > >
-> > 无论哪种失败原因，上述程序都用了 `os.Exit` 函数来终止进程，并且返回一个status错误码，其值为1。
+> > 无论哪种失败原因，上述程序都用了 `os.Exit` 函数来终止进程，并且返回一个 status 错误码，其值为 1。
 >
 > - `:=` 是一个赋值运算符, 用于 `声明并初始化` 一个变量, 其左边是一个或多个变量, 右边是一个或多个表达式
 >
@@ -942,7 +941,7 @@ func PrintResponseBody() {
 >
 >   - `Fprintf` 的第一个参数是一个 `io.Writter` 类型的变量, 表示输出流, 其可以是文件, 网络连接, 标准输出等
 >
->     `Fprintf` 会将后面第2个及之后参数按照指定格式写入到输出流中, 例如:
+>     `Fprintf` 会将后面第 2 个及之后参数按照指定格式写入到输出流中, 例如:
 >
 >     ```go
 >     f, err := os.Create("test.txt")
@@ -959,7 +958,7 @@ func PrintResponseBody() {
 >     fmt.Printf("The answer is %d.\n", 42) // 在屏幕上打印The answer is 42.
 >     ```
 >
-> - `os.Stderr` 是 Go 语言中的一个标准错误输出流, 它是一个 `io.Writter` 类型的接口, 可以用于向标准错误输出(通常是中断或者控制台) 写入数据  
+> - `os.Stderr` 是 Go 语言中的一个标准错误输出流, 它是一个 `io.Writter` 类型的接口, 可以用于向标准错误输出(通常是中断或者控制台) 写入数据
 >
 >   一般情况下, 我们可以使用 `os.Stderr` 来打印错误信息或调试信息, 而不影响正常的标准输出流
 >
@@ -978,7 +977,7 @@ func PrintResponseBody() {
 >   - 压缩/解压缩器（`*gzip.Reader`, `*flate.Reader` 等）
 >   - 加密/解密器(`*cipher.StreamReader` 等)
 >
->   > [Go编程技巧--io.Reader/Writer - 简书 (jianshu.com)](https://www.jianshu.com/p/758c4e2b4ab8)
+>   > [Go 编程技巧--io.Reader/Writer - 简书 (jianshu.com)](https://www.jianshu.com/p/758c4e2b4ab8)
 >
 > - 使用 `ioutil.ReadAll(resp.Body)` 读取了响应体之后，需要使用 `resp.Body.Close()` 关闭响应体，是因为
 >
@@ -999,11 +998,11 @@ func PrintResponseBody() {
 >         log.Fatal(err)
 >     }
 >     defer resp.Body.Close()
->             
+>
 >     if resp.StatusCode == http.StatusOK {
 >         bodyBytes, err := io.ReadAll(resp.Body)
 >         // if u want to read the body many time
->         // u need to restore 
+>         // u need to restore
 >         // reader := io.NopCloser(bytes.NewReader(bodyBytes))
 >         if err != nil {
 >             log.Fatal(err)
@@ -1022,13 +1021,12 @@ func PrintResponseBody() {
 >   > [Go 1.16 Release Notes - ioutil - The Go Programming Language](https://go.dev/doc/go1.16#ioutil)
 >   >
 >   > ![image-20230316010211279](http://cdn.ayusummer233.top/DailyNotes/202303160102329.png)
->
 
 ---
 
 #### 练习 1.7 使用 `io.Copy` 替代 `io.outil.ReadAll`
 
-函数调用 `io.Copy(dst, src)` 会从 src 中读取内容，并将读到的结果写入到dst中，使用这个函数替代掉例子中的 `ioutil.ReadAll` 来拷贝响应结构体到 `os.Stdout`，避免申请一个缓冲区（例子中的b）来存储。记得处理 `io.Copy` 返回结果中的错误。
+函数调用 `io.Copy(dst, src)` 会从 src 中读取内容，并将读到的结果写入到 dst 中，使用这个函数替代掉例子中的 `ioutil.ReadAll` 来拷贝响应结构体到 `os.Stdout`，避免申请一个缓冲区（例子中的 b）来存储。记得处理 `io.Copy` 返回结果中的错误。
 
 ```go
 /*
@@ -1070,37 +1068,37 @@ func PrintResponseBody_Copy() {
 
 - `io.Copy` 函数是从一个 `io.Reader` 接口读取数据, 并写到一个 `io.Writter` 接口, 直到读取完毕或发生错误
 
-  使用 `io.Copy` 的一般格式是 
+  使用 `io.Copy` 的一般格式是
 
   ```go
   n, err := io.Copy(dst, src)
   ```
 
-  - `n`   字节数
-  - `err`  复制过程中遇到的错误
-  - `(dst, src)`   `(目标的 io.Writter, 源的 io.Reader)`
+  - `n` 字节数
+  - `err` 复制过程中遇到的错误
+  - `(dst, src)` `(目标的 io.Writter, 源的 io.Reader)`
 
 - `log.Fatal` 函数用于在但因输出内容后, 退出应用程序
 
-  相当于调用了 `log.Print` 和 `os.Exit(1)` 两个函数, 通常用于处理无法回复的错误情况 
+  相当于调用了 `log.Print` 和 `os.Exit(1)` 两个函数, 通常用于处理无法回复的错误情况
 
-  -  `log.Print` 用于在标准错误输出 `os.Stderr` 上打印一条日志信息, 相当于调用了 `fmt.FPrint(v ... interface[])` 
+  - `log.Print` 用于在标准错误输出 `os.Stderr` 上打印一条日志信息, 相当于调用了 `fmt.FPrint(v ... interface[])`
 
-    其与 `fmt.Printf(os.Stderr)` 有如下区别
+  其与 `fmt.Printf(os.Stderr)` 有如下区别
 
-    -  `log.Print` 会自动添加当前日期和时间作为前缀, 而后者不会
-    - `log.Print` 会自动添加换行符作为后缀, 而后者不会
-    - `log.Print` 可以从多个 `goroutine` 安全地调用, 而后者需要使用同步机制来避免竞争条件
+  - `log.Print` 会自动添加当前日期和时间作为前缀, 而后者不会
+  - `log.Print` 会自动添加换行符作为后缀, 而后者不会
+  - `log.Print` 可以从多个 `goroutine` 安全地调用, 而后者需要使用同步机制来避免竞争条件
 
-    > ![image-20230317004239769](http://cdn.ayusummer233.top/DailyNotes/202303170042807.png)
-    >
-    > ![image-20230317005650011](http://cdn.ayusummer233.top/DailyNotes/202303170056062.png)
+  > ![image-20230317004239769](http://cdn.ayusummer233.top/DailyNotes/202303170042807.png)
+  >
+  > ![image-20230317005650011](http://cdn.ayusummer233.top/DailyNotes/202303170056062.png)
 
 ---
 
 #### 练习 1.8 补充前缀
 
-修改 `fetch` 这个范例，如果输入的url参数没有 `http://` 前缀的话，为这个url加上该前缀。你可能会用到 `strings.HasPrefix` 这个函数。
+修改 `fetch` 这个范例，如果输入的 url 参数没有 `http://` 前缀的话，为这个 url 加上该前缀。你可能会用到 `strings.HasPrefix` 这个函数。
 
 ```go
 /*
@@ -1154,11 +1152,11 @@ func PrintResponseBody_Copy_Prefix() {
 
   其中 `s` 为需要判断的字符串, `prefix` 为要检查的前缀
 
-----
+---
 
 #### 练习 1.9 输出状态码
 
-修改 fetch 打印出HTTP协议的状态码，可以从 `resp.Status` 变量得到该状态码。
+修改 fetch 打印出 HTTP 协议的状态码，可以从 `resp.Status` 变量得到该状态码。
 
 ```go
 /*
@@ -1210,3 +1208,12 @@ func PrintResponseBody_Copy_Prefix_Status() {
 
 ---
 
+## CH2 程序结构
+
+---
+
+### CH2.1 命名
+
+Go 语言中的函数名、变量名、常量名、类型名、语句标号和包名等所有的命名，都遵循一个简单的命名规则：一个名字必须以一个字母（Unicode 字母）或下划线开头，后面可以跟任意数量的字母、数字或下划线。
+
+大写字母和小写字母是不同的：`heapSort` 和 `Heapsort` 是两个不同的名字。
