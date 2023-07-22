@@ -2,9 +2,9 @@
 
 ---
 
-## C2工具
+## C2 工具
 
-[Cobalt Strike模块详解&功能详解 - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/261298349)
+[Cobalt Strike 模块详解&功能详解 - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/261298349)
 
 ---
 
@@ -16,13 +16,13 @@
 
 ## Windows
 
-> [Powershell攻击指南2——Empire_powershsell empire_willowpy的博客-CSDN博客](https://blog.csdn.net/qq_34640691/article/details/110686135)
+> [Powershell 攻击指南 2——Empire_powershsell empire_willowpy 的博客-CSDN 博客](https://blog.csdn.net/qq_34640691/article/details/110686135)
 
 ---
 
 ### 永久关闭 Windows 实时防护
 
-> [Win11关闭Windows Defender实时保护，暂时关闭和永久关闭方法 | Win10怎么永久关闭Windows Defender实时保护_COCO56（徐可可）的博客-CSDN博客](https://blog.csdn.net/COCO56/article/details/128613164)
+> [Win11 关闭 Windows Defender 实时保护，暂时关闭和永久关闭方法 | Win10 怎么永久关闭 Windows Defender 实时保护\_COCO56（徐可可）的博客-CSDN 博客](https://blog.csdn.net/COCO56/article/details/128613164)
 
 在需要完全关闭 Windows 防病毒设置时一般会选择在 Windows 安全中心进行相关配置
 
@@ -54,7 +54,6 @@
 
   ![image-20230625161949403](http://cdn.ayusummer233.top/DailyNotes/202306251619476.png)
 
-
 ---
 
 ### Sysmon
@@ -76,4 +75,3 @@
   ![image-20230705153607522](http://cdn.ayusummer233.top/DailyNotes/202307051536745.png)
 
   ![image-20230705153619818](http://cdn.ayusummer233.top/DailyNotes/202307051536930.png)
-
