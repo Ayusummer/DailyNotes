@@ -752,9 +752,11 @@ du -hsm .
 ### 启用与禁用网卡
 
 ```bash
-# 禁用 ensxx
+# 禁用 ensxx(下面两条命令均可)
+ip link set ensxx down
 ifconfig  ensxx down
-# 启用 ensxx
+# 启用 ensxx(下面两条命令均可)
+ip link set ensxx up
 ifconfig  ensxx up
 ```
 
