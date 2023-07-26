@@ -284,6 +284,43 @@ find / -name "success"
 
 ---
 
+### 历史记录
+
+> [谁动了我的 Linux？原来 history 可以这么强大！ - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/371739269)
+
+使用 history 命令可以查看当前用户执行的历史命令
+
+```bash
+history
+```
+
+![image-20230725143721312](http://cdn.ayusummer233.top/DailyNotes/202307251437125.png)
+
+此外, 每个用户根目录下还都有一个 `.bash_history` 文件, 也存储了 bash 历史记录:
+
+![image-20230725144046356](http://cdn.ayusummer233.top/DailyNotes/202307251500784.png)
+
+不过这样看到的历史命令没有时间的, 需要时间的话还需要
+
+```bash
+export HISTTIMEFORMAT="%Y-%m-%d %T"
+```
+
+或者写到 `/root/.bashrc` 中然后 `source /root/.bashrc`
+
+```bash
+# 先写个空字符加换行进去
+echo '' >> /root/.bashrc
+echo 'export HISTTIMEFORMAT="%Y-%m-%d %T"' >> /root/.bashrc
+source /root/.bashrc
+```
+
+这样再 history 就能看到带时间的日志了, 不过稍早一些的日志已经无可考证时间了, 毕竟当时执行的时候没保存时间戳
+
+![image-20230725150042919](http://cdn.ayusummer233.top/DailyNotes/202307251500923.png)
+
+此外 `.bash_history` 并非实时操作的, 正常退出 shell (`Ctrl+D`, `exit`)时, shell 进程会把历史记录缓冲区的内容写到 `.bash_history` 中
+
 ---
 
 ## SSH
