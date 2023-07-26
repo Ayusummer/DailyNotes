@@ -80,6 +80,18 @@ sudo code --no-sandbox --disable-gpu-sandbox --user-data-dir="~/.vscode"
 
 ---
 
+#### 删掉空行
+
+```
+^\s*$
+```
+
+![image-20230725162730155](http://cdn.ayusummer233.top/DailyNotes/202307251627548.png)
+
+> 似乎没有成功把空行替换为空字符, 这里先保存一下
+
+---
+
 ## 用户代码片段
 
 > [Visual Studio Code 中的代码片段](https://code.visualstudio.com/docs/editor/userdefinedsnippets)
