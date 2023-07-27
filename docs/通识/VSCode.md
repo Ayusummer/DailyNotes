@@ -3,15 +3,16 @@
 ---
 
 ## VSCode 下载
-> [VsCode下载，使用国内镜像秒下载_bielaiwuyang1999的博客-CSDN博客](https://blog.csdn.net/bielaiwuyang1999/article/details/117814237)
 
-[官网下载 VSCode](https://code.visualstudio.com/Download) 速度比较慢, 可以在下载时将直链替换国内镜像地址, 以达到更快的下载速度.  
+> [VsCode 下载，使用国内镜像秒下载\_bielaiwuyang1999 的博客-CSDN 博客](https://blog.csdn.net/bielaiwuyang1999/article/details/117814237)
+
+[官网下载 VSCode](https://code.visualstudio.com/Download) 速度比较慢, 可以在下载时将直链替换国内镜像地址, 以达到更快的下载速度.
 
 在下载按钮上右键复制链接, 或者点击下载后在浏览器下载或者是其他下载工具中可以找到软件下载的直链
 
-![20211119092740](http://cdn.ayusummer233.top/img/20211119092740.png)  
+![20211119092740](http://cdn.ayusummer233.top/img/20211119092740.png)
 
-复制该 URL 然后将 /stable 前的地址替换为国内镜像地址再进行下载即可, 如:  
+复制该 URL 然后将 /stable 前的地址替换为国内镜像地址再进行下载即可, 如:
 
 - 原地址: `https://az764295.vo.msecnd.net/stable/ccbaa2d27e38e5afa3e5c21c1c7bef4657064247/VSCodeUserSetup-x64-1.62.3.exe`  
   将 `az764295.vo.msecnd.net` 替换为 `vscode.cdn.azure.cn` 得到新地址:  
@@ -47,14 +48,13 @@ sudo code --no-sandbox --disable-gpu-sandbox --user-data-dir="~/.vscode"
 
 :::
 
-
 ---
 
 ## 查找替换
 
 ### 使用正则表达式
 
-> [VS Code正则匹配替换 - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/414806629)
+> [VS Code 正则匹配替换 - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/414806629)
 >
 > ---
 
@@ -110,22 +110,22 @@ sudo code --no-sandbox --disable-gpu-sandbox --user-data-dir="~/.vscode"
 
 ```json
 {
-	// Place your snippets for python here. Each snippet is defined under a snippet name and has a prefix, body and 
-	// description. The prefix is what is used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
-	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. Placeholders with the 
-	// same ids are connected.
-	"python-template": {
-		"prefix": "py",
-		"body": [
-		  "'''",
-		  "-*- encoding: utf-8 -*-",
-		  "@文件: $RELATIVE_FILEPATH",
-		  "@时间: $CURRENT_YEAR/$CURRENT_MONTH/$CURRENT_DATE $CURRENT_HOUR:$CURRENT_MINUTE:$CURRENT_SECOND",
-		  "@作者: 咸鱼型233",
-		  "@说明: ",
-		  "'''",
-		],
-	  }
+  // Place your snippets for python here. Each snippet is defined under a snippet name and has a prefix, body and
+  // description. The prefix is what is used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
+  // $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. Placeholders with the
+  // same ids are connected.
+  "python-template": {
+    "prefix": "py",
+    "body": [
+      "'''",
+      "-*- encoding: utf-8 -*-",
+      "@文件: $RELATIVE_FILEPATH",
+      "@时间: $CURRENT_YEAR/$CURRENT_MONTH/$CURRENT_DATE $CURRENT_HOUR:$CURRENT_MINUTE:$CURRENT_SECOND",
+      "@作者: 咸鱼型233",
+      "@说明: ",
+      "'''"
+    ]
+  }
 }
 ```
 
@@ -133,35 +133,35 @@ sudo code --no-sandbox --disable-gpu-sandbox --user-data-dir="~/.vscode"
 
 ```json
 {
-	// Place your snippets for vue here. Each snippet is defined under a snippet name and has a prefix, body and 
-	// description. The prefix is what is used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
-	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. Placeholders with the 
-	// same ids are connected.
-	// Example:
-	// "Print to console": {
-	// 	"prefix": "log",
-	// 	"body": [
-	// 		"console.log('$1');",
-	// 		"$2"
-	// 	],
-	// 	"description": "Log output to console"
-	// }
-	"vue-template": {
-		"prefix": "vue3",
-		"body": [
-			"<script setup lang=\"ts\">",
-			"</script>",
-			"",
-			"<template>",
-			"<div>",
-			"</div>",
-			"</template>",
-			"",
-			"<style lang=\"less\" scoped>",
-			"</style>"
-		],
-		"description": "vue3 template"
-	}
+  // Place your snippets for vue here. Each snippet is defined under a snippet name and has a prefix, body and
+  // description. The prefix is what is used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
+  // $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. Placeholders with the
+  // same ids are connected.
+  // Example:
+  // "Print to console": {
+  // 	"prefix": "log",
+  // 	"body": [
+  // 		"console.log('$1');",
+  // 		"$2"
+  // 	],
+  // 	"description": "Log output to console"
+  // }
+  "vue-template": {
+    "prefix": "vue3",
+    "body": [
+      "<script setup lang=\"ts\">",
+      "</script>",
+      "",
+      "<template>",
+      "<div>",
+      "</div>",
+      "</template>",
+      "",
+      "<style lang=\"less\" scoped>",
+      "</style>"
+    ],
+    "description": "vue3 template"
+  }
 }
 ```
 
@@ -219,7 +219,7 @@ sudo code --no-sandbox --disable-gpu-sandbox --user-data-dir="~/.vscode"
 
 ##### 文件头部注释快捷键
 
-- 记录文件信息/文件的传参/出参，设置个性签名、留下QQ、微信联系方式、输入空行等等
+- 记录文件信息/文件的传参/出参，设置个性签名、留下 QQ、微信联系方式、输入空行等等
 - 支持用户高度自定义注释选项, 适配各种需求的注释形式。
 - 保存文件的时候，自动更新最后的编辑时间和编辑人
 - `window`：`ctrl+win+i`,`mac`：`ctrl+cmd+i`, `linux`: `ctrl+meta+i`,`Ubuntu`: `ctrl+super+i`
@@ -236,7 +236,6 @@ sudo code --no-sandbox --disable-gpu-sandbox --user-data-dir="~/.vscode"
 
 1. **鼠标左键选择多行函数声明区域，函数声明区域尽量精准**
 2. **按函数注释快捷键**
-
 
 ---
 
@@ -260,11 +259,11 @@ sudo code --no-sandbox --disable-gpu-sandbox --user-data-dir="~/.vscode"
 
 ![open插件](http://cdn.ayusummer233.top/DailyNotes/202212090939646.png "屏幕截图.png")
 
-用于从VSCode中使用系统默认应用打开文件
+用于从 VSCode 中使用系统默认应用打开文件
 
 ![open插件使用演示](http://cdn.ayusummer233.top/DailyNotes/202212090939503.png "屏幕截图.png")
 
-装了`open`插件之后VSCode不支持打开的文件可以通过右键菜单调用系统默认应用打开该文件;这样既不用再打开文件资源浏览器中的该文件再打开了
+装了`open`插件之后 VSCode 不支持打开的文件可以通过右键菜单调用系统默认应用打开该文件;这样既不用再打开文件资源浏览器中的该文件再打开了
 
 ---
 
@@ -275,7 +274,6 @@ sudo code --no-sandbox --disable-gpu-sandbox --user-data-dir="~/.vscode"
 ![](http://cdn.ayusummer233.top/img/202204212054230.png)
 
 ![image-20221210221817120](http://cdn.ayusummer233.top/img/202212102218612.png)
-
 
 ---
 
@@ -298,8 +296,6 @@ sudo code --no-sandbox --disable-gpu-sandbox --user-data-dir="~/.vscode"
 ![image-20221209103632603](http://cdn.ayusummer233.top/DailyNotes/202212091037830.png)
 
 ---
-
-
 
 ---
 
@@ -343,7 +339,7 @@ sudo code --no-sandbox --disable-gpu-sandbox --user-data-dir="~/.vscode"
 
 > 图中没显示 stop 的容器是因为容器太多了, stop 的容器可能很久都不会用了所以直接全清了, 镜像基本全推过 Habor 了所以也没什么顾虑
 
-在安装了 Dev Containers 扩展后在任意一个容器上右键 `Attach Visual Studio Code`  会在页面上方弹出选择容器的菜单, 选择对应容器即可使用 VSCode 打开该容器
+在安装了 Dev Containers 扩展后在任意一个容器上右键 `Attach Visual Studio Code` 会在页面上方弹出选择容器的菜单, 选择对应容器即可使用 VSCode 打开该容器
 
 ![image-20221209095559457](http://cdn.ayusummer233.top/DailyNotes/202212090956480.png)
 
@@ -381,7 +377,7 @@ sudo code --no-sandbox --disable-gpu-sandbox --user-data-dir="~/.vscode"
 
 > 拷贝后的 cURL 命令可以直接在 Linux 上发, 也可以导入到 Thunder Client 或者利用 curlconvert 转换为代码
 
-----
+---
 
 #### curlconverter
 
@@ -421,10 +417,7 @@ sudo code --no-sandbox --disable-gpu-sandbox --user-data-dir="~/.vscode"
 
 ![image-20221209103032673](http://cdn.ayusummer233.top/DailyNotes/202212091030230.png)
 
-
-
 ![image-20221209103104828](http://cdn.ayusummer233.top/DailyNotes/202212091031186.png)
-
 
 ---
 
@@ -443,11 +436,12 @@ sudo code --no-sandbox --disable-gpu-sandbox --user-data-dir="~/.vscode"
 #### Python
 
 ---
+
 ##### Python-autopep8
-- 自动按照pep8规范格式化python代码
 
+- 自动按照 pep8 规范格式化 python 代码
 
------
+---
 
 ##### Sourcery
 
@@ -460,7 +454,6 @@ Sourcery-ai 可以给开发者提供 Python 代码的重构建议:
 ![image-20220517212351093](http://cdn.ayusummer233.top/img/202205172123260.png)
 
 ![image-20220517211830963](http://cdn.ayusummer233.top/img/202205172118184.png)
-
 
 ---
 
@@ -476,17 +469,18 @@ Sourcery-ai 可以给开发者提供 Python 代码的重构建议:
 >
 > [Prettier Playground v2.6.2](https://prettier.io/playground/)
 >
-> [ESLint - Pluggable JavaScript linter - ESLint中文](http://eslint.cn/)
+> [ESLint - Pluggable JavaScript linter - ESLint 中文](http://eslint.cn/)
 
 ![](http://cdn.ayusummer233.top/img/202204212028180.png)
 
 ![image-20220421202926005](http://cdn.ayusummer233.top/img/202204212029364.png)用 ESLint 做约束, 用 Prettier 做代码格式化
 
-----
+---
 
 ### 已弃用扩展
 
 ---
+
 #### ~~Terminal~~
 
 > PS: 新版本 VSCode 该扩展已弃用, 目前直接使用工具栏上的终端指令
@@ -506,8 +500,6 @@ Sourcery-ai 可以给开发者提供 Python 代码的重构建议:
 2. 搜索 open keyboard shortcuts
 3. 搜索 workbench.action.terminal.clea
 
-
-
 ---
 
 ## 报错收集
@@ -526,7 +518,7 @@ Sourcery-ai 可以给开发者提供 Python 代码的重构建议:
 
 ### remote-ssh 一直 waiting for server log
 
-> [vscode ssh连接失败_我歌月徘徊、的博客-CSDN博客_vscode连不上ssh](https://blog.csdn.net/myWorld001/article/details/119443079)
+> [vscode ssh 连接失败\_我歌月徘徊、的博客-CSDN 博客\_vscode 连不上 ssh](https://blog.csdn.net/myWorld001/article/details/119443079)
 >
 > ---
 
@@ -540,9 +532,9 @@ rm -rf ****/vscode-server/bin/****
 
 ### Remote-SSH + tmux 每次 bash 命令执行完都会有红色报错 ``-bash: __vsc_prompt_cmd_original: command not found`
 
-> [visual studio code - VSCode Remote SSH Extension + tmux = -bash: __vsc_prompt_cmd_original: command not found - Stack Overflow](https://stackoverflow.com/questions/73421978/vscode-remote-ssh-extension-tmux-bash-vsc-prompt-cmd-original-command-n/73798469#73798469)
+> [visual studio code - VSCode Remote SSH Extension + tmux = -bash: \_\_vsc_prompt_cmd_original: command not found - Stack Overflow](https://stackoverflow.com/questions/73421978/vscode-remote-ssh-extension-tmux-bash-vsc-prompt-cmd-original-command-n/73798469#73798469)
 >
-> [Avoid "-bash: __vsc_prompt_cmd_original: command not found" when launching Terminal from Python in macOS - Stack Overflow](https://stackoverflow.com/questions/75723868/avoid-bash-vsc-prompt-cmd-original-command-not-found-when-launching-termi)
+> [Avoid "-bash: \_\_vsc_prompt_cmd_original: command not found" when launching Terminal from Python in macOS - Stack Overflow](https://stackoverflow.com/questions/75723868/avoid-bash-vsc-prompt-cmd-original-command-not-found-when-launching-termi)
 >
 > ---
 
