@@ -8,13 +8,13 @@
 
 Rocketry is a modern statement-based scheduling framework for Python. It is simple, clean and extensive. It is suitable for small and big projects.
 
-
 - [Rocketry](#rocketry)
   - [Quick Start](#quick-start)
   - [条件表达式](#条件表达式)
     - [API](#api)
       - [Cron](#cron)
-
+  - [报错处理](#报错处理)
+    - [`pydantic.errors.PydanticUserError: const is removed, use Literal instead`](#pydanticerrorspydanticusererror-const-is-removed-use-literal-instead)
 
 ---
 
@@ -189,8 +189,8 @@ def do_main():
 
 > PS: 因为描述都比较明确, 能看出大致用法, 所以贴上来了, 等到后面再结合具体使用场景进行记录
 
+---
 
-----
 ## 条件表达式
 
 ### API
@@ -210,4 +210,22 @@ def do_minutely():
 def do_complex():
     "Run at every 2nd minute past every hour from 12 through 18 on Friday in October."
     ...
+```
+
+---
+
+## 报错处理
+
+### `pydantic.errors.PydanticUserError: const is removed, use Literal instead`
+
+> [Pydantic v2 support · Issue #210 · Miksus/rocketry (github.com)](https://github.com/Miksus/rocketry/issues/210)
+
+```python
+from rocketry import Rocketry
+```
+
+报错 `pydantic.errors.PydanticUserError: const is removed, use Literal instead` 可能是因为当前 Rocketry 不兼容 Pydantic2, 可以指定 Pydantic 版本为 `1.10.10` 以解决此问题
+
+```bash
+pip install pydantic==1.10.10
 ```
