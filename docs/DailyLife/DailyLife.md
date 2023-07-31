@@ -195,6 +195,34 @@ PMI 所有证书
 
 ---
 
+### FDM
+
+#### 防病毒配置
+
+> [关于IDM调用火绒的设置 - 火绒安全软件 - 火绒安全软件 (huorong.cn)](https://bbs.huorong.cn/thread-60060-1-1.html)
+
+以火绒为例:
+
+![image-20230731151418988](http://cdn.ayusummer233.top/DailyNotes/202307311514473.png)
+
+注意这里的 `%path%` 指的是下载文件的保存路径而非上面填写的火绒的路径
+
+但是实际上下载后会调起火绒UI并查杀该文件, 用户手动关闭火绒UI(点右上角的X关闭按钮)后 FDM 上的 `正在检测病毒` 才会停止, 总体来说体验不是很流畅, 因此后面不打算配置了
+
+不过也可以手动检测:
+
+![image-20230731151658502](http://cdn.ayusummer233.top/DailyNotes/202307311517478.png)
+
+![image-20230731151708991](http://cdn.ayusummer233.top/DailyNotes/202307311517391.png)
+
+![image-20230731151720438](http://cdn.ayusummer233.top/DailyNotes/202307311517245.png)
+
+手动关闭火绒UI后
+
+![image-20230731151925117](http://cdn.ayusummer233.top/DailyNotes/202307311519586.png)
+
+---
+
 ### IDM
 
 > [解决新版 Edge 浏览器无法使用 IDM 的问题_Xavier Jiezou的博客-CSDN博客_edge idm](https://blog.csdn.net/qq_42951560/article/details/120678847)
