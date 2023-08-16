@@ -12,11 +12,14 @@
   - [仓库相关](#仓库相关)
     - [常规操作](#常规操作)
     - [分支操作](#分支操作)
+    - [查看某个文件变动的所有历史记录](#查看某个文件变动的所有历史记录)
   - [relations](#relations)
     - [code996](#code996)
   - [learnGitBranching](#learngitbranching)
-  - [报错收集](#报错收集)
+  - [常见问题](#常见问题)
     - [fatal: Authentication failed](#fatal-authentication-failed)
+    - [filename too lang](#filename-too-lang)
+    - [拉取时间过长](#拉取时间过长)
 
 
 ---
@@ -273,7 +276,7 @@ python -m http.server 9222
 
 ---
 
-## 报错收集
+## 常见问题
 
 ---
 
@@ -302,6 +305,24 @@ fatal: Authentication failed for 'https://github.com/Ayusummer/vue-vben-admin.gi
 > **Warning:** Treat your tokens like passwords and keep them secret. When working with the API, use tokens as environment variables instead of hardcoding them into your programs.
 
 然后就可以通过 `username` 和 `token` 来进行一些权限操作了
+
+---
+
+### filename too lang
+
+```bash
+git config --system core.longpaths true
+```
+
+---
+
+### 拉取时间过长
+
+排除了网络问题后, 如果仓库过大导致拉取时间很长, 可以尝试只 clone 到最近一次提交:
+
+```bash
+git clone xxxxxxx --depth 1
+```
 
 ---
 
