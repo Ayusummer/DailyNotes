@@ -12,13 +12,176 @@
 
 ---
 
-## Quick Start
+## 安装
 
-### 安装
-
-#### Github
+### Github
 
 > PS: `main` 分支反映了最新更改，可能并不总是稳定的。克隆存储库后，可以通过运行 `setup/checkout-latest-tag.sh` 脚本签出最新的稳定版本。
+
+---
+
+#### 1.clone 仓库本体及相关依赖仓库
+
+```bash
+git clone --recursive https://github.com/BC-SECURITY/Empire.git
+```
+
+![image-20230904165844577](http://cdn.ayusummer233.top/DailyNotes/202309041658684.png)
+
+![image-20230904170344264](http://cdn.ayusummer233.top/DailyNotes/202309041703364.png)
+
+![image-20230904171347281](http://cdn.ayusummer233.top/DailyNotes/202309041713348.png)
+
+![image-20230904171831597](http://cdn.ayusummer233.top/DailyNotes/202309041718686.png)
+
+上面的全是首次 clone 失败的 reference repo, 失败后会加入计划任务, 全 clone 一遍后会重新 clone  失败的仓库
+
+如下即为重新 clone 成功了:
+
+![image-20230904172035940](http://cdn.ayusummer233.top/DailyNotes/202309041720336.png)
+
+![image-20230904172111320](http://cdn.ayusummer233.top/DailyNotes/202309041721397.png)
+
+![image-20230904172129685](http://cdn.ayusummer233.top/DailyNotes/202309041721828.png)
+
+---
+
+#### 2. 切到稳定版本并安装
+
+```bash
+cd Empire
+./setup/checkout-latest-tag.sh
+```
+
+![image-20230904174753857](http://cdn.ayusummer233.top/DailyNotes/202309041747913.png)
+
+```bash
+sudo ./setup/install.sh
+```
+
+![image-20230904174856396](http://cdn.ayusummer233.top/DailyNotes/202309041748553.png)
+
+![image-20230904174921667](http://cdn.ayusummer233.top/DailyNotes/202309041749800.png)
+
+![image-20230904174950726](http://cdn.ayusummer233.top/DailyNotes/202309041749975.png)
+
+中间会有个提示要不要装 `xar` 和 `bomutils` 的选项需要手动输入选择一下:
+
+![image-20230904175022743](http://cdn.ayusummer233.top/DailyNotes/202309041750990.png)
+
+![image-20230904175051016](http://cdn.ayusummer233.top/DailyNotes/202309041750178.png)
+
+![image-20230904175115885](http://cdn.ayusummer233.top/DailyNotes/202309041751997.png)
+
+解压了一堆包:
+
+![image-20230904175330094](http://cdn.ayusummer233.top/DailyNotes/202309041753187.png)
+
+![image-20230904175353728](http://cdn.ayusummer233.top/DailyNotes/202309041753859.png)
+
+![image-20230904175428980](http://cdn.ayusummer233.top/DailyNotes/202309041754051.png)
+
+然后开始
+
+![image-20230904175450645](http://cdn.ayusummer233.top/DailyNotes/202309041754737.png)
+
+> 这里由于网络原因超时了↑, 然后后面恢复了:
+
+然后应该是吧 xar 的目录列出来了:
+
+![image-20230904175613675](http://cdn.ayusummer233.top/DailyNotes/202309041756771.png)
+
+![image-20230904175701068](http://cdn.ayusummer233.top/DailyNotes/202309041757186.png)
+
+![image-20230904175720460](http://cdn.ayusummer233.top/DailyNotes/202309041757592.png)
+
+然后提示了一堆需要 autoupdate:
+
+![image-20230904175847634](http://cdn.ayusummer233.top/DailyNotes/202309041758733.png)
+
+![image-20230904175914796](http://cdn.ayusummer233.top/DailyNotes/202309041759929.png)
+
+![image-20230904175930869](http://cdn.ayusummer233.top/DailyNotes/202309041759009.png)
+
+![image-20230904175952167](http://cdn.ayusummer233.top/DailyNotes/202309041759237.png)
+
+----
+
+然后似乎是在拿 gcc 编译 libxml, 报了一堆 warning, 应该不用管
+
+![image-20230904180129483](http://cdn.ayusummer233.top/DailyNotes/202309041801620.png)
+
+![image-20230904180201860](http://cdn.ayusummer233.top/DailyNotes/202309041802983.png)
+
+![image-20230904180223245](http://cdn.ayusummer233.top/DailyNotes/202309041802398.png)
+
+![image-20230904180306732](http://cdn.ayusummer233.top/DailyNotes/202309041803795.png)
+
+----
+
+编译 `xar`:
+
+![image-20230904180354623](http://cdn.ayusummer233.top/DailyNotes/202309041803728.png)
+
+---
+
+拉 `bomutils`:
+
+![image-20230904180442879](http://cdn.ayusummer233.top/DailyNotes/202309041804954.png)
+
+---
+
+然后会询问要不要装 `openjdk`:
+
+![image-20230904180525602](http://cdn.ayusummer233.top/DailyNotes/202309041805669.png)
+
+![image-20230904180647064](http://cdn.ayusummer233.top/DailyNotes/202309041806260.png)
+
+![image-20230904180727351](http://cdn.ayusummer233.top/DailyNotes/202309041807467.png)
+
+---
+
+装 C# agents 以及 modules
+
+![image-20230904180826346](http://cdn.ayusummer233.top/DailyNotes/202309041808478.png)
+
+![image-20230904180844742](http://cdn.ayusummer233.top/DailyNotes/202309041808843.png)
+
+![image-20230904180856309](http://cdn.ayusummer233.top/DailyNotes/202309041808376.png)
+
+---
+
+询问要不要装 `MinGW`:
+
+![image-20230904181339135](http://cdn.ayusummer233.top/DailyNotes/202309041813243.png)
+
+得, 又是网络问题, 打个快照先, 然后重跑一遍安装脚本:
+
+![image-20230904182144749](http://cdn.ayusummer233.top/DailyNotes/202309041821847.png)
+
+又是 xar
+
+![image-20230904182221225](http://cdn.ayusummer233.top/DailyNotes/202309041822292.png)
+
+下面一堆目录和 warning 就不截图了, 然后接着是 OpenJDK:
+
+![image-20230904182326472](http://cdn.ayusummer233.top/DailyNotes/202309041823723.png)
+
+![image-20230904182424979](http://cdn.ayusummer233.top/DailyNotes/202309041824057.png)
+
+然后是 `MinGW`:
+
+![image-20230904184908942](http://cdn.ayusummer233.top/DailyNotes/202309041849047.png)
+
+最后又 package not found, enmmmmmm, 再重装一次吧:
+
+![image-20230904185602899](http://cdn.ayusummer233.top/DailyNotes/202309041856976.png)
+
+> 得, 总是网络问题, 挂个代理再试一次吧...
+
+----
+
+#### (stash)如下是以往失败的安装记录, 总是会缺包
 
 ```bash
 git clone --recursive https://github.com/BC-SECURITY/Empire.git
@@ -260,3 +423,206 @@ agents
 ```
 
 > ![image-20230528231930403](http://cdn.ayusummer233.top/DailyNotes/202305282319434.png)
+
+----
+
+## 整体源码架构
+
+> [Empire源码分析（一） - 跳跳糖 (tttang.com)](https://tttang.com/archive/1281/)  -- 19年的博客, 应该是旧版的源码目录分析, 这里作为参考, 可能是检索方法的原因, 也可能是真没有相关资源, 总之并没有检索出什么 Powershell Empire 源码分析的文章
+
+```bash
+# 可以在项目根目录下使用 tree 命令以及 -L 参数来指定层级生成项目结构树
+tree -L 3 > tree.md
+```
+
+然后手动精简一下:
+
+```
+.
+├── changelog
+├── CHANGELOG.md
+├── conftest.py
+├── Dockerfile
+├── docs
+│   ├── ...各类帮助文档
+├── empire
+│   ├── arguments.py
+│   ├── client
+│   │   ├── client.py
+│   │   ├── config.yaml
+│   │   ├── downloads
+│   │   ├── generated-stagers
+│   │   ├── __init__.py
+│   │   └── src
+│   ├── __init__.py
+│   ├── scripts
+│   │   └── sync_starkiller.py
+│   ├── server
+│   │   ├── api
+│   │   ├── bypasses
+│   │   ├── common
+│   │   ├── config.yaml
+│   │   ├── core
+│   │   ├── csharp
+│   │   ├── data
+│   │   │   ├── agent
+│   │   │   ├── __init__.py
+│   │   │   ├── Invoke-Obfuscation    用于混淆 Powershell命令
+│   │   │   ├── listeners
+│   │   │   ├── misc
+│   │   │   ├── module_source
+│   │   │   ├── obfuscated_module_source
+│   │   │   └── profiles
+│   │   ├── downloads
+│   │   ├── __init__.py
+│   │   ├── listeners    各类listener
+│   │   ├── modules      各类后渗透阶段的payload
+│   │   ├── plugins		 插件示例
+│   │   ├── server.py
+│   │   ├── stagers      各类平台下的stager脚本
+│   │   └── utils
+│   └── test
+│       ├── ... 各类测试
+├── empire.py    主程序入口
+├── LICENSE
+├── poetry.lock
+├── ps-empire
+├── pyproject.toml
+├── pytest.ini
+├── README.md
+├── setup
+│   ├── cert.sh
+│   ├── checkout-latest-tag.sh
+│   └── install.sh
+└── tree.md - 刚才生成的项目树结构的文件
+
+36 directories, 87 files
+```
+
+> 暂时还没看到的目录便还没标注含义
+
+----
+
+### 主程序入口
+
+`empire.py`:
+
+```python
+#! /usr/bin/env python3
+
+import sys
+
+import empire.arguments as arguments
+
+if __name__ == "__main__":
+    args = arguments.args
+
+    if args.subparser_name == "server":
+        import empire.server.server as server
+
+        server.run(args)
+    elif args.subparser_name == "sync-starkiller":
+        import yaml
+
+        from empire.scripts.sync_starkiller import sync_starkiller
+
+        with open("empire/server/config.yaml") as f:
+            config = yaml.safe_load(f)
+
+        sync_starkiller(config)
+    elif args.subparser_name == "client":
+        import empire.client.client as client
+
+        client.start(args)
+
+    sys.exit(0)
+
+```
+
+起 Powershell empire
+
+这里看下 server: `empire/server/server.py` 的 `run` 函数
+
+```python
+def run(args):
+    setup_logging(args)
+    check_submodules()
+    check_recommended_configuration()
+
+    if not args.restport:
+        args.restport = 1337
+    else:
+        args.restport = int(args.restport[0])
+
+    if not args.restip:
+        args.restip = "0.0.0.0"
+    else:
+        args.restip = args.restip[0]
+
+    if args.version:
+        # log to stdout instead of stderr
+        print(empire.VERSION)
+        sys.exit()
+
+    elif args.reset:
+        choice = input(
+            "\x1b[1;33m[>] Would you like to reset your Empire Server instance? [y/N]: \x1b[0m"
+        )
+        if choice.lower() == "y":
+            reset()
+
+        sys.exit()
+
+    else:
+        base.startup_db()
+        global main
+
+        # Calling run more than once, such as in the test suite
+        # Will generate more instances of MainMenu, which then
+        # causes shutdown failure.
+        if main is None:
+            main = empire.MainMenu(args=args)
+
+        if not os.path.exists("./empire/server/data/empire-chain.pem"):
+            log.info("Certificate not found. Generating...")
+            subprocess.call("./setup/cert.sh")
+            time.sleep(3)
+
+        from empire.server.api import app
+
+        app.initialize(secure=args.secure_api, ip=args.restip, port=args.restport)
+
+    sys.exit()
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
