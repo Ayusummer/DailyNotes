@@ -42,6 +42,134 @@
 
 ## 环境搭建
 
+---
+
+### CommandoVM
+
+> [mandiant/commando-vm: Complete Mandiant Offensive VM (Commando VM), a fully customizable Windows-based pentesting virtual machine distribution. commandovm@mandiant.com --- mandiant/commando-vm：完整的Mandiant进攻性VM（Commando VM），一个完全可定制的基于Windows的渗透测试虚拟机发行版。 commandovm@mandiant.com (github.com)](https://github.com/mandiant/commando-vm)
+
+Complete Mandiant Offective VM（“CommandoVM”）是一个全面的、可定制的、基于 Windows 的安全发行版，用于渗透测试和红队。 CommandoVM 附带了 Kali Linux 中未包含的各种攻击工具，这些工具突出了 Windows 作为攻击平台的有效性。
+
+> 这里只是捋一下这套环境搭建的步骤
+
+首先准备一台虚拟机, 配置如下:
+
+- Windows 10 22H2 
+- 200 GB 硬盘
+- 4+ GB 内存
+- 2 个网络适配器
+
+---
+
+关闭 Windows 的病毒防护, 可以参考 [端点安全 - 永久关闭 Windows 实时防护 | DailyNotes (ayusummer.github.io)](https://ayusummer.github.io/DailyNotes/网络安全/端点安全/#永久关闭-windows-实时防护)
+
+![image-20230905223516662](http://cdn.ayusummer233.top/DailyNotes/202309052235748.png)
+
+然后重启虚拟机
+
+---
+
+下载并解压 [mandiant/commando-vm: Complete Mandiant Offensive VM (Commando VM), a fully customizable Windows-based pentesting virtual machine distribution. commandovm@mandiant.com --- mandiant/commando-vm：完整的Mandiant进攻性VM（Commando VM），一个完全可定制的基于Windows的渗透测试虚拟机发行版。 commandovm@mandiant.com (github.com)](https://github.com/mandiant/commando-vm)
+
+![image-20230905223838127](http://cdn.ayusummer233.top/DailyNotes/202309052238160.png)
+
+---
+
+以管理员权限运行 powershell 然后把脚本限制解了:
+
+```powershell
+Set-ExecutionPolicy Unrestricted -force
+```
+
+切到上图中的解压后的仓库根目录
+
+```powershell
+cd xxxxx
+# 解锁所有项目文件
+Get-ChildItem .\ -Recurse | Unblock-File
+```
+
+- `Get-ChildItem .\ -Recurse`: 获取当前目录及其子目录下的所有文件
+- `|` 管道符, 将前一个命令的输出传递给下一个命令
+- `Unlock-File`: 用于解除文件的 "已阻止" 属性。
+  "已阻止" 属性通常与从不受信任的来源下载的文件相关联，以确保文件不会在打开时执行潜在的危险操作。
+  通过运行 `Unblock-File` 命令可以解除这个属性，在这里由于要下载大量的工具因此需要接触禁止从不信任来源下载文件的限制
+
+----
+
+==准备一个梯子覆盖系统代理, 后续安装脚本会走系统代理==
+
+----
+
+把系统默认输入法改成英文, 或者把默认模式改成英语:
+
+![image-20230905231137787](http://cdn.ayusummer233.top/DailyNotes/202309052311817.png)
+
+这是因为后续有些软件会有安装界面, 脚本会模拟键盘把路径输进去, 用中文的话会缺一个回车导致路径打不出来而引起中断, 效果如下:
+
+![image-20230905231517073](http://cdn.ayusummer233.top/DailyNotes/202309052315099.png)
+
+由于没有回车， 导致这些字符实际上并没有成功输入完, 也就会引起异常
+
+---
+
+```powershell
+# 运行安装脚本
+.\install.ps1
+```
+
+![image-20230905230656842](http://cdn.ayusummer233.top/DailyNotes/202309052306869.png)
+
+![image-20230905230709829](http://cdn.ayusummer233.top/DailyNotes/202309052307855.png)
+
+![image-20230905230807396](http://cdn.ayusummer233.top/DailyNotes/202309052308455.png)
+
+这里我选择全部安装, 需要点进 Configure Profile 来自定义
+
+![image-20230905230900392](http://cdn.ayusummer233.top/DailyNotes/202309052309421.png)
+
+> 点击上图中的 `<<` 将可选的包全选上以便后续来安装
+>
+> 需要注意的是其实里面有些工具比较久或者不兼容系统, 可以在出现问题时考量是否舍弃
+
+---
+
+点击 `Install` 后会提示输入电脑的开机密码, 这里输入解锁屏幕的密码即可, 后面整个安装过程后会有多次重启电脑的操作
+
+![image-20230905231601787](http://cdn.ayusummer233.top/DailyNotes/202309052316819.png)
+
+----
+
+安装过程可能会比较漫长, 需要一些耐心等待以及排错, 下面即为一些遇到的错误及解决方案:
+
+----
+
+有一些包需要通过 `choco` 安装, 不过也许是存的 hash 比较旧, 或者说真的拉下来的包不对劲, 总之 hash 对不上便不会继续安装, 此时则需要手动翻找下载源然后校对是否安全来决定是否安装
+
+![image-20230905231813525](http://cdn.ayusummer233.top/DailyNotes/202309052318567.png)
+
+![image-20230905231751771](http://cdn.ayusummer233.top/DailyNotes/202309052317810.png)
+
+```powershell
+ Get-FileHash -Path [文件路径] -Algorithm SHA256
+```
+
+![image-20230906000517652](http://cdn.ayusummer233.top/DailyNotes/202309060005690.png)
+
+![image-20230906000314527](http://cdn.ayusummer233.top/DailyNotes/202309060003554.png)
+
+![image-20230906000558144](http://cdn.ayusummer233.top/DailyNotes/202309060005176.png)
+
+手动去官网下载下然后对一下哈希,能对上, 说明是存的哈希旧了, 可以使用如下命令忽略校验强制安装
+
+```powershell
+choco install --ignore-checksums -y [包名] 
+```
+
+![image-20230906002518106](http://cdn.ayusummer233.top/DailyNotes/202309060025137.png)
+
+---
+
 ### vulhub
 
 > [vulhub/README.zh-cn.md at master · vulhub/vulhub · GitHub](https://github.com/vulhub/vulhub)
@@ -68,9 +196,9 @@ systemctl start docker
 
   ```dockerfile
   FROM vulhub/elasticsearch:1.4.4
-
+  
   LABEL maintainer="phithon <root@leavesongs.com>"
-
+  
   RUN set -ex \
       && plugin --install mobz/elasticsearch-head/1.x -u https://codeload.github.com/mobz/elasticsearch-head/zip/refs/heads/1.x
   ```
