@@ -179,40 +179,358 @@ sudo ./setup/install.sh
 
 > 得, 总是网络问题, 挂个代理再试一次吧...
 
-----
+![image-20230905104400091](http://cdn.ayusummer233.top/DailyNotes/202309051044209.png)
 
-#### (stash)如下是以往失败的安装记录, 总是会缺包
+看样子是成功了:
 
-```bash
-git clone --recursive https://github.com/BC-SECURITY/Empire.git
-cd Empire
-./setup/checkout-latest-tag.sh
-sudo ./setup/install.sh 
+![image-20230905105430483](http://cdn.ayusummer233.top/DailyNotes/202309051054607.png)
+
+---
+
+然后是检查 python 版本:
+
+![image-20230905105540909](http://cdn.ayusummer233.top/DailyNotes/202309051055020.png)
+
+---
+
+然后是装一些包, 不过似乎全失败了:
+
+![image-20230905105623145](http://cdn.ayusummer233.top/DailyNotes/202309051056310.png)
+
+也许和代理有关系, 把代理下掉试试:
+
+![image-20230905105656210](http://cdn.ayusummer233.top/DailyNotes/202309051056330.png)
+
+依旧不行:
+
+![image-20230905105742903](http://cdn.ayusummer233.top/DailyNotes/202309051057057.png)
+
+记录一下失败的日志:
+
+![image-20230905110450222](http://cdn.ayusummer233.top/DailyNotes/202309051104393.png)
+
+![image-20230905110742437](http://cdn.ayusummer233.top/DailyNotes/202309051107539.png)
+
+![image-20230905110826373](http://cdn.ayusummer233.top/DailyNotes/202309051108491.png)
+
+可以看到安装失败的包有:
+
+```
+pycparser
 ```
 
-> ![image-20230528221752691](http://cdn.ayusummer233.top/DailyNotes/202305282217839.png)
+> [eliben/pycparser: :snake: Complete C99 parser in pure Python --- eliben/pycparser: :snake: 纯 Python 中的完整 C99 解析器 (github.com)](https://github.com/eliben/pycparser)
+
+手动装一下试试:
+
+```bash
+pip install pycparser
+```
+
+![image-20230905111518207](http://cdn.ayusummer233.top/DailyNotes/202309051115309.png)
+
+手动装显示装好了, 不过重新运行脚本依旧会出错:
+
+![image-20230905113545960](http://cdn.ayusummer233.top/DailyNotes/202309051135044.png)
+
+按照 `DUBusErrorResponse` 作为关键词进行检索, 似乎是 `poetry` 的问题
+
+> [[已解决\] poetry install 命令安装依赖报错，无法安装部分依赖 · Issue #1217 · HibiKier/zhenxun_bot (github.com)](https://github.com/HibiKier/zhenxun_bot/issues/1217)
 >
-> ![image-20230528221911741](http://cdn.ayusummer233.top/DailyNotes/202305282219824.png)
+> [python - DBusErrorResponse while running poetry install - Stack Overflow --- python - 运行诗歌安装时的DBusErrorResponse - VoidCC](https://stackoverflow.com/questions/75080993/dbuserrorresponse-while-running-poetry-install)
+
+尝试直接 poetry add 看看:
+
+![image-20230905133944148](http://cdn.ayusummer233.top/DailyNotes/202309051339232.png)
+
+检索该报错找到了如下信息:
+
+> [KeyRingError: Failed to create the collection: Prompt dismissed.. · Issue #3012 · python-poetry/poetry --- KeyRingError：无法创建集合：提示已关闭..·问题#3012·python-poetry/poetry (github.com)](https://github.com/python-poetry/poetry/issues/3012)
 >
-> ![image-20230528221938052](http://cdn.ayusummer233.top/DailyNotes/202305282219122.png)
+> [Error: Unable to store the password for poetry-repository-pypi in the key ring: Failed to unlock the collection! · Issue #2692 · python-poetry/poetry --- 错误：无法在钥匙圈中存储诗歌存储库-pypi 的密码：无法解锁集合！ · 问题 #2692 · python-poetry/poetry (github.com)](https://github.com/python-poetry/poetry/issues/2692)
 >
-> ![image-20230528221951643](http://cdn.ayusummer233.top/DailyNotes/202305282219715.png)
+> [python poetry 1.0.0 private repo issue fix – Frank-Mich's Blog --- python诗1.0.0私人回购问题修复 – Frank-Mich的博客](https://blog.frank-mich.com/python-poetry-1-0-0-private-repo-issue-fix/)
+
+两个报错最终都指向了 kering, 且都提到了同一种解决方案:
+
+```bash
+export PYTHON_KEYRING_BACKEND=keyring.backends.null.Keyring
+```
+
+![image-20230905134854510](http://cdn.ayusummer233.top/DailyNotes/202309051348555.png)
+
+再重新跑一遍安装脚本试试:
+
+![image-20230905134918277](http://cdn.ayusummer233.top/DailyNotes/202309051349340.png)
+
+终于开始正常运行了:
+
+![image-20230905135131176](http://cdn.ayusummer233.top/DailyNotes/202309051351591.png)
+
+![image-20230905135218509](http://cdn.ayusummer233.top/DailyNotes/202309051352600.png)
+
+![image-20230905135243218](http://cdn.ayusummer233.top/DailyNotes/202309051352295.png)
+
+终于成功装完了, 根据最后的提示重新加载下配置文件来启用 `nim`
+
+```bash
+source ~/.bashrc
+```
+
+![image-20230905135507151](http://cdn.ayusummer233.top/DailyNotes/202309051355203.png)
+
+> 这里又反复确认了下项目所在的 kali 用户目录以及 root 用户的 `.bashrc` 中的配置是否都能成功加载完成, 因为我不能确定到底是把配置写在那个用户下了, 个人认为应该是当前命令行的 root 用户, 翻了下两个文件, 确实是在 root 下面:
 >
-> ![image-20230528222008063](http://cdn.ayusummer233.top/DailyNotes/202305282220138.png)
+> ![image-20230905135726625](http://cdn.ayusummer233.top/DailyNotes/202309051357723.png)
+
+> [Nim - 维基百科，自由的百科全书 (wikipedia.org)](https://zh.wikipedia.org/wiki/Nim)
 >
-> ---
->
-> ![image-20230528222037983](http://cdn.ayusummer233.top/DailyNotes/202305282220095.png)
->
-> ---
->
-> ![image-20230528222607333](http://cdn.ayusummer233.top/DailyNotes/202305282226429.png)
->
-> ![image-20230528222619151](http://cdn.ayusummer233.top/DailyNotes/202305282226219.png)
->
-> ![image-20230528222637442](http://cdn.ayusummer233.top/DailyNotes/202305282226512.png)
->
-> > 这里似乎缺了一个包, 目前暂且不知道会有什么影响, 先 mark 一下
+> **Nim**是一个[指令式](https://zh.wikipedia.org/wiki/指令式編程)、[通用](https://zh.wikipedia.org/wiki/通用编程语言)、[多范式](https://zh.wikipedia.org/wiki/多重编程范式)、[静态类型](https://zh.wikipedia.org/wiki/静态类型)、[编译型](https://zh.wikipedia.org/wiki/編譯語言)的[编程语言](https://zh.wikipedia.org/wiki/编程语言), 设计目标是像[C](https://zh.wikipedia.org/wiki/C语言)一样快速，像[Python](https://zh.wikipedia.org/wiki/Python)一样有表达力，并像[Lisp](https://zh.wikipedia.org/wiki/Lisp)一样有扩展性。
+
+----
+
+接下来起一下 server client 试试
+
+![image-20230905140935515](http://cdn.ayusummer233.top/DailyNotes/202309051409613.png)
+
+![image-20230905140954014](http://cdn.ayusummer233.top/DailyNotes/202309051409165.png)
+
+又有报错, 不管是包还是网络, 先解决第一个问题:
+
+```
+[ERROR]: advanced_reporting failed to initialize: No module named 'stix2'
+```
+
+看了下这是 python 的一个包, 尝试拿 poetry 装一下这个库:
+
+![image-20230905142742025](http://cdn.ayusummer233.top/DailyNotes/202309051427204.png)
+
+![image-20230905142804783](http://cdn.ayusummer233.top/DailyNotes/202309051428927.png)
+
+看样子还是能成功装上的, 再起一遍 server 试试
+
+> 由于前面还看到下载失败啥的, 所以还是先挂下代理(
+
+![image-20230905143045296](http://cdn.ayusummer233.top/DailyNotes/202309051430365.png)
+
+看样子似乎是正常启动了
+
+---
+
+再起一下 client:
+
+![image-20230905143144250](http://cdn.ayusummer233.top/DailyNotes/202309051431331.png)
+
+![image-20230905143159838](http://cdn.ayusummer233.top/DailyNotes/202309051431951.png)
+
+----
+
+总算是成功通过源码装好了, 嫌费劲的话还是直接 apt 装就行了:
+
+```bash
+sudo apt install powershell-empire
+```
+
+----
+
+#### 上线个机子验一下能不能用
+
+具体步骤可以参阅下面的 [Demo章节](#Demo)
+
+在生成上线命令时报错了:
+
+![image-20230905154807411](http://cdn.ayusummer233.top/DailyNotes/202309051548904.png)
+
+不过看上去只是拷贝没成功而已, 通过报错提示指向的网页: [Welcome to Pyperclip’s documentation! — Pyperclip 1.5 documentation --- 欢迎来到 Pyperclip 的文档！ — Pyperclip 1.5 文档](https://pyperclip.readthedocs.io/en/latest/index.html#not-implemented-error) 找到了解决方案:
+
+![image-20230905155244575](http://cdn.ayusummer233.top/DailyNotes/202309051552656.png)
+
+```bash
+sudo apt-get install xsel # to install the xsel utility.
+sudo apt-get install xclip # to install the xclip utility.
+pip install gtk # to install the gtk Python module.
+pip install PyQt4 # to install the PyQt4 Python module.
+```
+
+相应的进行处理
+
+```bash
+apt install xsel
+```
+
+![image-20230905155233450](http://cdn.ayusummer233.top/DailyNotes/202309051552537.png)
+
+```bash
+apt install xclip
+```
+
+![image-20230905155311091](http://cdn.ayusummer233.top/DailyNotes/202309051553222.png)
+
+```bash
+# 如下步骤操作后发现是不需要的
+export PYTHON_KEYRING_BACKEND=keyring.backends.null.Keyring
+poetry add gtk
+poetry add PyQt4
+```
+
+![image-20230905155839004](http://cdn.ayusummer233.top/DailyNotes/202309051558148.png)
+
+看到这里报错没找到就去翻了下为什么, 然后发现 gtk py 包的全名是 pygtk, 而且只支持 python2, 而 pyqt 已经出到 6 了, 感觉也和剪贴板没啥关系, 就不装了
+
+再试一下生成上线命令发现还是一样的报错, 猜测可能是没加载到啥配置之类的, 重启了下主机
+
+重启完主机后起 server 的时候发现连不上数据库, 还需要手动启动下 mysql
+
+![image-20230905161835804](http://cdn.ayusummer233.top/DailyNotes/202309051618898.png)
+
+以及需要等 Starkiller 启动才能起 client, 否则会连不上
+
+![image-20230905162249249](http://cdn.ayusummer233.top/DailyNotes/202309051622312.png)
+
+这就比较头疼了, 要拉更新, 太慢了, 挂下代理吧
+
+```bash
+export https_proxy=http://127.0.0.1:7890
+```
+
+然后就能成功运行了
+
+![image-20230905162416231](http://cdn.ayusummer233.top/DailyNotes/202309051624297.png)
+
+不过这个代理感觉可能会影响部分功能, 下掉再重启试试:
+
+```bash
+unset https_proxy
+```
+
+![image-20230905162619135](http://cdn.ayusummer233.top/DailyNotes/202309051626227.png)
+
+成功起来了, 不过感觉总是这样的话并不是个好办法, 看看有没有啥参数能跳过 Starkiller 更新, 循着 `./ps-empire` 一步步找找:
+
+![image-20230905162810317](http://cdn.ayusummer233.top/DailyNotes/202309051628355.png)
+
+指向 `empire.py` 主程序:
+
+![image-20230905162835778](http://cdn.ayusummer233.top/DailyNotes/202309051628833.png)
+
+调用了 `empire.empire.server.run(args)` 来启动 server
+
+![image-20230905163816595](http://cdn.ayusummer233.top/DailyNotes/202309051638650.png)
+
+函数全文如下:
+
+```python
+def run(args):
+    setup_logging(args)
+    check_submodules()
+    check_recommended_configuration()
+
+    if not args.restport:
+        args.restport = 1337
+    else:
+        args.restport = int(args.restport[0])
+
+    if not args.restip:
+        args.restip = "0.0.0.0"
+    else:
+        args.restip = args.restip[0]
+
+    if args.version:
+        # log to stdout instead of stderr
+        print(empire.VERSION)
+        sys.exit()
+
+    elif args.reset:
+        choice = input(
+            "\x1b[1;33m[>] Would you like to reset your Empire Server instance? [y/N]: \x1b[0m"
+        )
+        if choice.lower() == "y":
+            reset()
+
+        sys.exit()
+
+    else:
+        base.startup_db()
+        global main
+
+        # Calling run more than once, such as in the test suite
+        # Will generate more instances of MainMenu, which then
+        # causes shutdown failure.
+        if main is None:
+            main = empire.MainMenu(args=args)
+
+        if not os.path.exists("./empire/server/data/empire-chain.pem"):
+            log.info("Certificate not found. Generating...")
+            subprocess.call("./setup/cert.sh")
+            time.sleep(3)
+
+        from empire.server.api import app
+
+        app.initialize(secure=args.secure_api, ip=args.restip, port=args.restport)
+
+    sys.exit()
+
+```
+
+可惜的是没有参数能控制是否更新 Starkiller, 继续向下看 `app.initialize`
+
+![image-20230905164224683](http://cdn.ayusummer233.top/DailyNotes/202309051642808.png)
+
+根据 log 信息与代码定位到更新 Starkiller 的代码在 `sync_starkiller`:
+
+![image-20230905164524327](http://cdn.ayusummer233.top/DailyNotes/202309051645388.png)
+
+![image-20230905164650213](http://cdn.ayusummer233.top/DailyNotes/202309051646302.png)
+
+![image-20230905164728960](http://cdn.ayusummer233.top/DailyNotes/202309051647016.png)
+
+找到了:
+
+![image-20230905165429386](http://cdn.ayusummer233.top/DailyNotes/202309051654486.png)
+
+配置在调用 sync_starkiller 传入了, 在捋一下来源找到了如下文件：
+
+![image-20230905165556526](http://cdn.ayusummer233.top/DailyNotes/202309051655641.png)
+
+![image-20230905165527997](http://cdn.ayusummer233.top/DailyNotes/202309051655103.png)
+
+![image-20230905165648165](http://cdn.ayusummer233.top/DailyNotes/202309051656229.png)
+
+看样子还是可以传入参配置文件控制的, 默认的配置在这里:
+
+![image-20230905171036243](http://cdn.ayusummer233.top/DailyNotes/202309051710319.png)
+
+如果要自定义的话可以拷贝一份默认配置, 例如:
+
+![image-20230905172215794](http://cdn.ayusummer233.top/DailyNotes/202309051722888.png)
+
+这样就不用更新了, 不过直接改默认配置更方便, 之后需要更新的时候可以再改回来
+
+----
+
+然后在 client 端成功生成了上线命令:
+
+![image-20230905181654321](http://cdn.ayusummer233.top/DailyNotes/202309051816388.png)
+
+可以看到能成功复制了
+
+> 不过后续使用的时候发现有时又不能复制了, 又是一样的报错, 感觉有可能是因为我 ssh 连上去之后拷贝要跨机子所以报错了? 不过反正也不影响, 直接手动拷贝也可以
+
+----
+
+上线个机子试试:
+
+
+
+---
+
+### Kali
+
+Kali 上可以直接通过 `apt` 安装 `powershell-empire`
+
+```bash
+sudo apt install powershell-empire
+```
 
 ---
 
@@ -423,6 +741,16 @@ agents
 ```
 
 > ![image-20230528231930403](http://cdn.ayusummer233.top/DailyNotes/202305282319434.png)
+
+----
+
+## Starkiller
+
+```
+
+```
+
+
 
 ----
 
