@@ -876,6 +876,58 @@ iptables [-AI chain] [-io interface] [-p 协议] [-s 来源 IP] [-d 目标 IP] -
 `-d`：指定数据包的目标 IP/网段，其它与 -s 选项相同。
 `-j`：指定匹配成功后的行为，主要有 ACCEPT、DROP、REJECT 和 LOG。
 
+----
+
+### 代理
+
+::: tabs
+
+@tab:active shell
+
+```bash
+# shell 中临时设置(若需要永久设置则写到 ~/.bashrc 中即可)
+export http_proxy=http://127.0.0.1:7890
+export https_proxy=http://127.0.0.1:7890
+```
+
+![image-20230905104050714](http://cdn.ayusummer233.top/DailyNotes/202309051040864.png)
+
+```bash
+# 下掉 proxy:
+unset http_proxy
+unset https_proxy
+```
+
+![image-20230905105927377](http://cdn.ayusummer233.top/DailyNotes/202309051059445.png)
+
+@tab proxychains
+
+安装 `proxychains`
+
+```bash
+sudo apt install proxychains
+```
+
+![image-20230905102950537](http://cdn.ayusummer233.top/DailyNotes/202309051029806.png)
+
+打开上述报错中提到的 Config File, 编辑 `[ProxyList]` 属性为需要配置的代理
+
+```properties
+[ProxyList]
+# add proxy here ...
+# meanwile
+# defaults set to "tor"
+socks5 	127.0.0.1 7890
+```
+
+![image-20230905103741065](http://cdn.ayusummer233.top/DailyNotes/202309051037143.png)
+
+然后在需要使用代理的命令前加上 `proxychains` 即可使用
+
+![image-20230905103831201](http://cdn.ayusummer233.top/DailyNotes/202309051038312.png)
+
+:::
+
 ---
 
 ## WSL2
