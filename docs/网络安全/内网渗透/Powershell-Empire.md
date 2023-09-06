@@ -746,11 +746,43 @@ agents
 
 ## Starkiller
 
-```
+> [BC-SECURITY/Starkiller: Starkiller is a Frontend for PowerShell Empire. --- BC-SECURITY/Starkiller：Starkiller 是 PowerShell Empire 的前端。 (github.com)](https://github.com/BC-SECURITY/Starkiller)
 
-```
+从 Empire 5.0 以及 Starkiller 2.0 开始, 无需手动拉取 Starkiller 仓库来构建, Starkiller 已经作为子模块打包在了 Empire 中并通过 Empire 的 API 提供服务
 
+通过 Github 源码安装了 Empire 5.0+ 之后可以在 `empire/server/api/v2/starkiller` 看到 Starkiller 的源码:
 
+![image-20230906162414414](http://cdn.ayusummer233.top/DailyNotes/202309061624498.png)
+
+---
+
+默认挂在了 1337 端口
+
+![image-20230906160140011](http://cdn.ayusummer233.top/DailyNotes/202309061601806.png)
+
+可以通过 `restport` 参数来指定
+
+![image-20230906160640133](http://cdn.ayusummer233.top/DailyNotes/202309061606193.png)
+
+访问 `1337/index.html` 即可看到登录页:
+
+![image-20230906161813449](http://cdn.ayusummer233.top/DailyNotes/202309061618580.png)
+
+默认账密在 `config.yaml` 中有定义:
+
+![image-20230906161855631](http://cdn.ayusummer233.top/DailyNotes/202309061618685.png)
+
+不在 empire 本机打开网页的话需要把 URL 中的 localhost 改成 empire 机子的ip
+
+![image-20230906162822599](http://cdn.ayusummer233.top/DailyNotes/202309061628667.png)
+
+成功登入后会显示 listeners 界面:
+
+![image-20230906164730064](http://cdn.ayusummer233.top/DailyNotes/202309061647138.png)
+
+> 可以通过点击头像并点击 `>|` 来固定左侧边栏:
+>
+> ![image-20230906164823009](http://cdn.ayusummer233.top/DailyNotes/202309061648109.png)
 
 ----
 
@@ -923,6 +955,14 @@ def run(args):
     sys.exit()
 
 ```
+
+![image-20230906174200378](http://cdn.ayusummer233.top/DailyNotes/202309061742430.png)
+
+旧版 Empire 默认使用 Sqlite 数据库, 这里则推荐使用 Mysql
+
+检查完配置项并传入命令行参数后会启动数据库 `base.startup_db()`
+
+![image-20230906173319387](http://cdn.ayusummer233.top/DailyNotes/202309061733482.png)
 
 
 
