@@ -784,9 +784,27 @@ agents
 >
 > ![image-20230906164823009](http://cdn.ayusummer233.top/DailyNotes/202309061648109.png)
 
+---
+
+可以在 Users 界面设置用户的管理员权限以及是否启用
+
+![image-20230908170913223](http://cdn.ayusummer233.top/DailyNotes/202309081709825.png)
+
 ----
 
-## 整体源码架构
+在 `Settings` 页面可以修改当前用户的密码, 以及`登出` :
+
+![image-20230908171009047](http://cdn.ayusummer233.top/DailyNotes/202309081710120.png)
+
+---
+
+==需要注意的是==, 在修改了密码或是禁用了 `empireadmin` 账户后需要相应修改配置文件中的默认账密, 否则可能会导致 server 或者 client 默认使用默认配置而起不来
+
+![image-20230908171539888](http://cdn.ayusummer233.top/DailyNotes/202309081715037.png)
+
+----
+
+## 整体源码概述
 
 > [Empire源码分析（一） - 跳跳糖 (tttang.com)](https://tttang.com/archive/1281/)  -- 19年的博客, 应该是旧版的源码目录分析, 这里作为参考, 可能是检索方法的原因, 也可能是真没有相关资源, 总之并没有检索出什么 Powershell Empire 源码分析的文章
 
@@ -958,35 +976,57 @@ def run(args):
 
 ![image-20230906174200378](http://cdn.ayusummer233.top/DailyNotes/202309061742430.png)
 
+![image-20230907154153426](http://cdn.ayusummer233.top/DailyNotes/202309071541992.png)
+
 旧版 Empire 默认使用 Sqlite 数据库, 这里则推荐使用 Mysql
 
 检查完配置项并传入命令行参数后会启动数据库 `base.startup_db()`
 
 ![image-20230906173319387](http://cdn.ayusummer233.top/DailyNotes/202309061733482.png)
 
+此函数主要用于检查数据库的初始状态是否正确, 不正确则输出报错提示(一般会在大版本更新的时候出现这种情况)
 
+- 创建了一个数据库会话 Session 用于与数据库交互;  
+- 如果当前用了 mysql 的话则检查 `unique_check` 列, 不存在则创建, 用来作为键值
+- 创建索引 `agent_checkin_idx` 来加速对 `AgentCheckIn` 表的 `agent_id` 以及 `checkin_time` 列的查询
+- 检查并生成用户记录、数据库配置记录、关键词模糊记录以及混淆配置记录的默认配置
+- 检查数据库表结构与 model 是否一致, 有问题则输出报错并退出程序
 
+----
 
+接着就是初始化 main menu, 加载插件与配置:
 
+![image-20230907154447961](http://cdn.ayusummer233.top/DailyNotes/202309071544018.png)
 
+![image-20230907154401089](http://cdn.ayusummer233.top/DailyNotes/202309071544224.png)
 
+---
 
+检查与生成证书, 然后进入 app 初始化函数
 
+![image-20230907154519802](http://cdn.ayusummer233.top/DailyNotes/202309071545870.png)
 
+加载一堆后端路由:
 
+![image-20230907154705101](http://cdn.ayusummer233.top/DailyNotes/202309071547200.png)
 
+----
 
+配置 CORS, 创建一个支持异步的 WebSocket 服务器
 
+![image-20230907155022075](http://cdn.ayusummer233.top/DailyNotes/202309071550193.png)
 
+----
 
+加载 Starkiller, 证书并启动服务
 
+![image-20230907155924600](http://cdn.ayusummer233.top/DailyNotes/202309071559704.png)
 
+![image-20230907160007220](http://cdn.ayusummer233.top/DailyNotes/202309071600388.png)
 
+---
 
-
-
-
-
+### Listener
 
 
 
