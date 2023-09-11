@@ -879,6 +879,37 @@ tree -L 3 > tree.md
 
 > 暂时还没看到的目录便还没标注含义
 
+---
+
+### 调试
+
+可以使用 VSCode 配置 `launch.json` 来调试 Empire
+
+```json
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Powershell Empire Server",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/empire.py", // Empire 入口程序
+            "python": "${workspaceFolder}/.venv/bin/python",  // Poetry 虚拟环境中的 Python 解释器路径
+            "args": [
+                "server"
+            ],
+            "cwd": "${workspaceFolder}",
+            "console": "integratedTerminal"
+        }
+    ]
+}
+
+```
+
+然后可以在主程序上打断点来做调试
+
+![image-20230911110231233](http://cdn.ayusummer233.top/DailyNotes/202309111102431.png)
+
 ----
 
 ### 主程序入口
@@ -1028,9 +1059,127 @@ def run(args):
 
 ### Listener
 
+> [Empire源码分析（一） - 跳跳糖 (tttang.com)](https://tttang.com/archive/1281/)
 
+下面开始研究 Empire 中的 `listener`, `stager` 与 `agent`
 
+- `listener`: 监听器, C2服务器需要与被控端连接以向其发布命令, 这就需要开放一个端口来与被控端连接; Empire 中的 http listener 就是起了一个 flask web application, 利用 flask 内置的 WSGI 来作为 server
+- `stager` 是一个小心地木马程序 用于在目标机器上执行并与 listener 建立连接; Empire 支持通过 `usestager` 命令生成不同文件格式的 stager 以适应不同目标系统和执行方式
+- `agent` 则是指代被控端
 
+---
 
+那么这里以新建与设置 HTTP listener 的流程来 debug 一下项目
 
+```bash
+uselistener http
+# Set Port
+set Port 9091
+# execute 以使用此 listener
+execute
+```
+
+---
+
+```bash
+uselistener http
+```
+
+![image-20230911141139416](http://cdn.ayusummer233.top/DailyNotes/202309111411157.png)
+
+![image-20230911141221325](http://cdn.ayusummer233.top/DailyNotes/202309111412567.png)
+
+通过如下 Get 请求匹配 URL 末尾的 listener 类型字符串来获取 listener 模板:
+
+![image-20230911142406452](http://cdn.ayusummer233.top/DailyNotes/202309111424540.png)
+
+![image-20230911142324365](http://cdn.ayusummer233.top/DailyNotes/202309111423446.png)
+
+![image-20230911142657888](http://cdn.ayusummer233.top/DailyNotes/202309111426011.png)
+
+![image-20230911143015534](http://cdn.ayusummer233.top/DailyNotes/202309111430685.png)
+
+这些 listener 是在上图中的类 `ListenerTemplateService` 初始化时从本地 py 文件加载的:
+
+![image-20230911143136364](http://cdn.ayusummer233.top/DailyNotes/202309111431472.png)
+
+![image-20230911143120702](http://cdn.ayusummer233.top/DailyNotes/202309111431801.png)
+
+![image-20230911143207618](http://cdn.ayusummer233.top/DailyNotes/202309111432701.png)
+
+这里具体看看 `http.py` 中是如何写的:
+
+![image-20230911143249071](http://cdn.ayusummer233.top/DailyNotes/202309111432150.png)
+
+![image-20230911143308960](http://cdn.ayusummer233.top/DailyNotes/202309111433067.png)
+
+一千多行的 listener 实现
+
+其结构与 client 端看到的回显一致:
+
+![image-20230911143633921](http://cdn.ayusummer233.top/DailyNotes/202309111436012.png)
+
+![image-20230911154029899](http://cdn.ayusummer233.top/DailyNotes/202309111540305.png)
+
+然后可以通过 `set Host  / set Name` 等命令设置各个属性, 然后使用 `options` 命令进行查看
+
+---
+
+```bash
+execute
+```
+
+![image-20230911155148167](http://cdn.ayusummer233.top/DailyNotes/202309111551298.png)
+
+![image-20230911155158288](http://cdn.ayusummer233.top/DailyNotes/202309111551417.png)
+
+可以看到是发了条 Post 请求, 不过 Server 回显先出现了, 可能和信息打印的顺序有关系, 重新 execute 抓下包看看发了什么
+
+```bash
+tcpdump -nn -vv -i lo -w 202309111557_测一下httpListenerExecute命令做了什么.pcap
+```
+
+![image-20230911160453109](http://cdn.ayusummer233.top/DailyNotes/202309111604283.png)
+
+看样子就是把 Listener 的信息放在请求体中发过去了
+
+查找相应的接口:
+
+![image-20230911162653485](http://cdn.ayusummer233.top/DailyNotes/202309111626929.png)
+
+![image-20230911162906141](http://cdn.ayusummer233.top/DailyNotes/202309111629254.png)
+
+![image-20230911163229863](http://cdn.ayusummer233.top/DailyNotes/202309111632999.png)
+
+![image-20230911163340598](http://cdn.ayusummer233.top/DailyNotes/202309111633752.png)
+
+可以看到又回到 Listener 本身了, 通过 Listener json 信息实例化 Listener 然后调用其 start 函数启动 Listener
+
+![image-20230911163707457](http://cdn.ayusummer233.top/DailyNotes/202309111637592.png)
+
+定义路由与中间件起一个 Flask app
+
+![image-20230911164414864](http://cdn.ayusummer233.top/DailyNotes/202309111644992.png)
+
+![image-20230911164521997](http://cdn.ayusummer233.top/DailyNotes/202309111645112.png)
+
+![image-20230911164619885](http://cdn.ayusummer233.top/DailyNotes/202309111646015.png)
+
+后续交互就可以看下具体的路由了, 这里先简单捋一下
+
+- 
+
+----
+
+之于前面的外层的 Thread 函数则是为 Listener 的 Flask app 另外起个线程跑:
+
+![image-20230911164821706](http://cdn.ayusummer233.top/DailyNotes/202309111648936.png)
+
+上图中圈起来的两个线程对应两个 Listener 在 `start_server` 函数中起的 Flask app
+
+![image-20230911165028907](http://cdn.ayusummer233.top/DailyNotes/202309111650016.png)
+
+----
+
+如此依赖
 
