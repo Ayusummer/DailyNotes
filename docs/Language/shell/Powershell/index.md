@@ -2,6 +2,16 @@
 
 ---
 
+## 代理
+
+```powershell
+# 为当前 powershell 会话设置 http 与 https 代理
+$env:HTTP_PROXY="http://127.0.0.1:7890"
+$env:HTTPS_PROXY="http://127.0.0.1:7890"
+```
+
+---
+
 
 ## 目标目录文件变动监控备份
 
