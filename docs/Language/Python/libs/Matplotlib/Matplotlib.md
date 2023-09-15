@@ -128,7 +128,7 @@ plt.show()
 - 添加图标题,坐标轴名称,设置刻度与范围
   - 没有先后顺序
 
-![结构示意图](../../res/img/BigDataMicroMajor/Python/Pyplot绘图结构示意图.png)
+<!-- ![结构示意图](../../res/img/BigDataMicroMajor/Python/Pyplot绘图结构示意图.png) -->
 
 ---
 
@@ -149,7 +149,7 @@ plt.show()
 - 通过rc参数可以修改默认的属性，包括窗体大小、每英寸的点数、线条宽度、颜色、样式、坐标轴、坐标和网络属性、文本、字体等。
 - rc参数存储在字典变量中，通过字典的方式进行访问。
 
-![rcParams](../../res/img/BigDataMicroMajor/Python/rcParams参数.png)
+<!-- ![rcParams](../../res/img/BigDataMicroMajor/Python/rcParams参数.png) -->
 
 - [matplotlib命令与格式：参数配置文件与参数配置](https://blog.csdn.net/helunqu2017/article/details/78652261)
 
@@ -295,9 +295,9 @@ C:\Users\233\AppData\Local\Programs\Python\Python38\lib\site-packages\matplotlib
   font.set_text(s, 0, flags=flags)
 
 ```
-- ![运行截图](../../res/img/BigDataMicroMajor/Python/11.26-rcParams错误使用.png)
+<!-- - ![运行截图](../../res/img/BigDataMicroMajor/Python/11.26-rcParams错误使用.png) -->
   - 出错问题在于使用了默认的Unicode负号
-    - ![](../../res/img/BigDataMicroMajor/Python/11.26-Unicode和ASCII负号.png)
+    <!-- - ![](../../res/img/BigDataMicroMajor/Python/11.26-Unicode和ASCII负号.png) -->
     - 但是用的`SimHei`字体不支持Unicode负号
 
 ---
@@ -432,7 +432,7 @@ plt.show()
 
 ```
 - 运行截图
-![](../../res/img/BigDataMicroMajor/Python/子图位置分布.png)
+<!-- ![](../../res/img/BigDataMicroMajor/Python/子图位置分布.png) -->
 
 
 ---
@@ -544,7 +544,7 @@ plt.show()
 
 ```
 - 运行截图
-  - ![](../../res/img/BigDataMicroMajor/Python/图例实例1.png)
+  <!-- - ![](../../res/img/BigDataMicroMajor/Python/图例实例1.png) -->
 
 
 ---
@@ -585,7 +585,7 @@ plt.show()
 
 ```
 - 运行截图
-![](../../res/img/BigDataMicroMajor/Python/图例例2.png)
+<!-- ![](../../res/img/BigDataMicroMajor/Python/图例例2.png) -->
 
 
 
@@ -679,7 +679,7 @@ plt.show()
   plot(x轴,y轴,折线形状颜色标记，设置标签显示信息）
   ```
 
-  ![图例标签](../../res/img/BigDataMicroMajor/Python/图例标签.png)
+  <!-- ![图例标签](../../res/img/BigDataMicroMajor/Python/图例标签.png) -->
 
 
 ---
@@ -723,7 +723,7 @@ plt.show()
 
 ```
 - 运行结果
-  - ![](../../res/img/BigDataMicroMajor/Python/折线图实例1.png)
+  <!-- - ![](../../res/img/BigDataMicroMajor/Python/折线图实例1.png) -->
 
 ---
 ##### 修改线的形状
@@ -776,7 +776,7 @@ plt.show()
 
 ```
 - 运行截图
-  - ![](../../res/img/BigDataMicroMajor/Python/折线图实例1.2.png)
+  <!-- - ![](../../res/img/BigDataMicroMajor/Python/折线图实例1.2.png) -->
 
 ---
 ### 散点图实战
@@ -789,7 +789,7 @@ plt.show()
   - 结合以上两个函数，可以实现例9-2同样的效果图。
   - 为了稍做区分，在本例中把端点符号设置为蓝色三角形。
 
-![图](../../res/img/BigDataMicroMajor/Python/11.26-散点图实例1.png)
+<!-- ![图](../../res/img/BigDataMicroMajor/Python/11.26-散点图实例1.png) -->
 
 
 ---
@@ -846,7 +846,7 @@ plt.show()
 
 ```
 - 运行截图
-  - ![](../../res/img/BigDataMicroMajor/Python/散点图例3.png)
+  <!-- - ![](../../res/img/BigDataMicroMajor/Python/散点图例3.png) -->
 
 ---
 ##### 标注数字
@@ -898,7 +898,7 @@ plt.show()
 
 ```
 - 运行截图
-  - ![](../../res/img/BigDataMicroMajor/Python/散点图例1.2.png)
+  <!-- - ![](../../res/img/BigDataMicroMajor/Python/散点图例1.2.png) -->
 
 
 ---
@@ -927,7 +927,7 @@ plt.show()
 - 常用的可视化图形是**折线图**(**plot**())
   - 在**数据项较少**的情况下，也可以使用**柱形图**(**bar**())。
 
-![折线图与柱形图](../../res/img/BigDataMicroMajor/Python/折线图与柱形图.png)  
+<!-- ![折线图与柱形图](../../res/img/BigDataMicroMajor/Python/折线图与柱形图.png)   -->
 - 数据项比较少时用柱状图比较清晰,但是当数据项多时柱状图会显得并排会显得比较挤
 
 ---
@@ -965,7 +965,7 @@ plt.show()
 
 ```
 - 运行截图
-  ![](../../res/img/BigDataMicroMajor/Python/部门业绩折线图.png)
+  <!-- ![](../../res/img/BigDataMicroMajor/Python/部门业绩折线图.png) -->
 
 
 ---
@@ -978,9 +978,9 @@ plt.show()
   - 而多个对象的多个指标的同时对比可用
     - 雷达图(polar())等。
 
-![](../../res/img/BigDataMicroMajor/Python/绘图-对比-1.png)
-![](../../res/img/BigDataMicroMajor/Python/绘图-对比-2.png)
-![](../../res/img/BigDataMicroMajor/Python/绘图-对比-3-雷达图.png)
+<!-- ![](../../res/img/BigDataMicroMajor/Python/绘图-对比-1.png) -->
+<!-- ![](../../res/img/BigDataMicroMajor/Python/绘图-对比-2.png) -->
+<!-- ![](../../res/img/BigDataMicroMajor/Python/绘图-对比-3-雷达图.png) -->
 
 ---
 ##### 示例:商场男女装销售对比
@@ -1005,7 +1005,7 @@ plt.legend()
 plt.show()
 
 ```
-![](../../res/img/BigDataMicroMajor/Python/商场各部门业绩1.png)
+<!-- ![](../../res/img/BigDataMicroMajor/Python/商场各部门业绩1.png) -->
 
 ---
 ###### 图形美化-"倒影"柱状图
@@ -1034,7 +1034,7 @@ plt.show()
 
 ```
 - 运行截图
-  !["倒影"柱状图](../../res/img/BigDataMicroMajor/Python/商场各部门业绩2.png)
+  <!-- !["倒影"柱状图](../../res/img/BigDataMicroMajor/Python/商场各部门业绩2.png) -->
 
 ---
 ###### 美化-并列柱状图
@@ -1114,7 +1114,7 @@ plt.show()
 
 
 - 运行截图
-  ![](../../res/img/BigDataMicroMajor/Python/商场各部门业绩3.png)
+  <!-- ![](../../res/img/BigDataMicroMajor/Python/商场各部门业绩3.png) -->
 
 ---
 ##### 示例2:商场各部门业绩
@@ -1146,7 +1146,7 @@ plt.show()
 
 ```
 - 运行截图
-  ![](../../res/img/BigDataMicroMajor/Python/商场各部门业绩4.png)
+  <!-- ![](../../res/img/BigDataMicroMajor/Python/商场各部门业绩4.png) -->
   - 显得比较挤,感觉上没有折线图美观
   - 并且数据项多了之后同一组数据的变化趋势就不明显了
     - 单作对比数据实用的话这样画柱状图还好
@@ -1184,7 +1184,7 @@ plt.show()
 
 ```
 - 运行截图
-  ![](../../res/img/BigDataMicroMajor/Python/商场各部门业绩5_条形图.png)
+  <!-- ![](../../res/img/BigDataMicroMajor/Python/商场各部门业绩5_条形图.png) -->
 
 
 ---
@@ -1194,7 +1194,7 @@ plt.show()
 - 常用的可视化图形，一般使用饼图（圆形图）及其变体，
   - 变体例如玫瑰图、扇形图、环形图等；
 
-![](../../res/img/BigDataMicroMajor/Python/绘图-结构-1.png)
+<!-- ![](../../res/img/BigDataMicroMajor/Python/绘图-结构-1.png) -->
 
 
 ---

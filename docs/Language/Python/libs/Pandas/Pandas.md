@@ -168,38 +168,38 @@ dtype: int64
     ```Python
     print("s2 - s3:\n{0}\ns2 + s3:\n{1}\ns2 * s3:\n{2}\ns2 / s3:\n{3}".format(s2 - s3, s2 + s3, s2 * s3, s2 / s3))
     ```
-    ![](../../res/img/BigDataMicroMajor/Python/Pandas.Series-四则运算.png)
+    <!-- ![](../../res/img/BigDataMicroMajor/Python/Pandas.Series-四则运算.png) -->
     - 没有的部分自动补齐`NotANumber`
 - 不同索引运算其相对应的值控制为NaN
     ```python
     print("s1+s2:\n{0}".format(s1 + s2))
     ```
-    ![](../../res/img/BigDataMicroMajor/Python/Pandas.Series-NAN.png)
+    <!-- ![](../../res/img/BigDataMicroMajor/Python/Pandas.Series-NAN.png) -->
 - Series对象与标量进行算术运算
     ```python
     print("s3*2:\n{0}\ns3**0.5:\n{1}".format(s3 * 2, s3 ** 0.5))
     ```
-    ![](../../res/img/BigDataMicroMajor/Python/Pandas.Series-Series对象与标量进行算术运算.png)
+    <!-- ![](../../res/img/BigDataMicroMajor/Python/Pandas.Series-Series对象与标量进行算术运算.png) -->
 - Series对象的关系运算
     ```python
     print("\ns2[s2 >= 80]:\n{0}".format(s2[s2 >= 80]))
     ```
-    ![](../../res/img/BigDataMicroMajor/Python/Pandas.Series-Series对象的关系运算.png)
+    <!-- ![](../../res/img/BigDataMicroMajor/Python/Pandas.Series-Series对象的关系运算.png) -->
 - 计算Series对象的中值
     ```Python
     print("\ns3.median():\n{0}".format(s3.median()))
     ```
-    ![](../../res/img/BigDataMicroMajor/Python/Pandas.Series-计算Series对象的中值.png)
+    <!-- ![](../../res/img/BigDataMicroMajor/Python/Pandas.Series-计算Series对象的中值.png) -->
 - 计算s2中最小的1个值
     ```Python
     print('\ns2.nsmallest(1)：\n', s2.nsmallest(1))
     ```
-    ![](../../res/img/BigDataMicroMajor/Python/Pandas.Series-计算s2中最小的1个值.png)
+    <!-- ![](../../res/img/BigDataMicroMajor/Python/Pandas.Series-计算s2中最小的1个值.png) -->
 - 计算s2中最大的1个值
     ```python
     print('s2.nlargest(1)：\n', s2.nlargest(1))
     ```
-    ![](../../res/img/BigDataMicroMajor/Python/Pandas.Series-计算s2中最大的1个值.png)
+    <!-- ![](../../res/img/BigDataMicroMajor/Python/Pandas.Series-计算s2中最大的1个值.png) -->
 
 ---
 #### values的访问与修改
@@ -216,19 +216,19 @@ s2 = Series({'语文': 90, '数学': 87, '英语': 67, '程序设计': 78})
     print("s1[1:4]:\n{0}\n"
         "s2[1:3]:\n{1}".format(s1[1:4], s2[1:3]))
     ```
-    ![](../../res/img/BigDataMicroMajor/Python/Pandas.Series-通过索引，切片访问Series的value.png)
+    <!-- ![](../../res/img/BigDataMicroMajor/Python/Pandas.Series-通过索引，切片访问Series的value.png) -->
 - 通过索引修改Series的value，注意字典的键为索引
     ```python 
     s2['程序设计'] = 89
     print("s2:\n{0}".format(s2))
     ```
-    ![](../../res/img/BigDataMicroMajor/Python/Pandas.Series-通过索引修改Series的value，注意字典的键为索引.png)
+    <!-- ![](../../res/img/BigDataMicroMajor/Python/Pandas.Series-通过索引修改Series的value，注意字典的键为索引.png) -->
 
 ---
 ### DataFrame
 - 二维数据，类似于二维表格，由多行多列组成。
 
-  ![示例](../../res/img/BigDataMicroMajor/Python/Pandas-DataFrame例子.png)
+  <!-- ![示例](../../res/img/BigDataMicroMajor/Python/Pandas-DataFrame例子.png) -->
 
 
 ----
