@@ -181,6 +181,18 @@ let language_java = [
   },
 ];
 
+/** language_shell */
+let language_shell = [
+  {
+    text: "Shell",
+    link: "/Language/Shell/",
+  },
+  {
+    text: "Powershell",
+    link: "/Language/Shell/Powershell/",
+  },
+];
+
 /** 后端-数据库 */
 let backend_database = [
   {
@@ -293,24 +305,12 @@ let Go = [
   },
 ];
 
-/** Shell */
-let Shell = [
-  {
-    text: "Shell",
-    link: "/Language/Shell/",
-  },
-  {
-    text: "Powershell",
-    link: "/Language/Shell/Powershell/",
-  },
-];
-
 export const Sidebar = sidebar({
   "/NoteTools/": NoteTools,
   "/通识/Docker/": Docker,
   "/Language/Python/": language_python,
   "/Language/Java/": language_java,
-  "/Language/Shell/": Shell,
+  "/Language/Shell/": language_shell,
   "/Language/Go/": Go,
   "/后端/数据库/": backend_database,
   "/前端/VUE/": frontend_vue,
