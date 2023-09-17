@@ -2,7 +2,7 @@
 
 > [redcanaryco/atomic-red-team: Small and highly portable detection tests based on MITRE's ATT&CK. --- redcanaryco/atomic-red-team：基于 MITRE 的 ATT&CK 的小型且高度便携的检测测试。 (github.com)](https://github.com/redcanaryco/atomic-red-team)
 >
-> [redcanaryco/invoke-atomicredteam: Invoke-AtomicRedTeam is a PowerShell module to execute tests as defined in the [atomics folder](https://github.com/redcanaryco/atomic-red-team/tree/master/atomics) of Red Canary's Atomic Red Team project. --- redcanaryco/invoke-atomicredteam：Invoke-AtomicRedTeam 是一个 PowerShell 模块，用于执行 Red Canary 的 [atomics 文件夹](https://github.com/redcanaryco/atomic-red-team/tree/master/atomics) 中定义的测试原子红队项目。](https://github.com/redcanaryco/invoke-atomicredteam)
+> [redcanaryco/invoke-atomicredteam: Invoke-AtomicRedTeam is a PowerShell module to execute tests as defined in the atomics folder of Red Canary's Atomic Red Team project. --- redcanaryco/invoke-atomicredteam：Invoke-AtomicRedTeam 是一个 PowerShell 模块，用于执行 Red Canary 的 atomics 文件夹中定义的测试原子红队项目。](https://github.com/redcanaryco/invoke-atomicredteam)
 
 Atomic Red Team™ 是映射到 MITRE ATT&CK® 框架的测试库。安全团队可以使用 Atomic Red Team 快速、可移植且可重复地测试其环境。
 
@@ -62,6 +62,9 @@ Install-AtomicRedTeam -getAtomics
 ![image-20230915104505877](http://cdn.ayusummer233.top/DailyNotes/202309151045518.png)
 
 可以使用 `Get-Module` 来验证是否已安装成功:
+```powershell
+Get-Module
+```
 
 ![image-20230915104750591](http://cdn.ayusummer233.top/DailyNotes/202309151047650.png)
 
@@ -174,13 +177,15 @@ Invoke-AtomicTest T1003 -TestName "Gsecdump" -GetPrereqs
 
 ## 在本地执行 atomic tests
 
+### 通过编号执行测试
+
 ```powershell
 # 检查依赖
 Invoke-AtomicTest T1218.010 -TestNumbers 1,2 -CheckPrereqs
 # 依赖完整, 执行测试
 Invoke-AtomicTest T1218.010 -TestNumbers 1,2
 # 或者使用上述命令的简化写法:
-Invoke-AtomicTest T1218.010-1,2
+Invoke-AtomicTest T1218.010-1,2 
 ```
 
 > 检查依赖不通过则相应使用 `-GetPrereqs` 获取依赖然后再复查下即可
@@ -196,17 +201,32 @@ Invoke-AtomicTest T1218.010-1,2
 
 ![image-20230915164124433](http://cdn.ayusummer233.top/DailyNotes/202309151641595.png)
 
+```powershell
+# 清理环境
+Invoke-AtomicTest T1218.010-1,2 -Cleanup
+```
+
+![image-20230917225147559](http://cdn.ayusummer233.top/DailyNotes/202309172251588.png)
+
 ---
+
+### 通过名称执行测试
 
 除了上述命令中使用测试用例的编号外, 还可以使用其名称:
 
 ```powershell
 Invoke-AtomicTest T1218.010 -TestNames "Regsvr32 remote COM scriptlet execution","Regsvr32 local DLL execution"
+# 清理环境
+Invoke-AtomicTest T1218.010 -TestNames "Regsvr32 remote COM scriptlet execution","Regsvr32 local DLL execution" -Cleanup
 ```
 
 ![image-20230915164933033](http://cdn.ayusummer233.top/DailyNotes/202309151649184.png)
 
+![image-20230917225213561](http://cdn.ayusummer233.top/DailyNotes/202309172252593.png)
+
 ---
+
+### 通过 GUID 执行测试
 
 或者使用其 GUID:
 
@@ -217,6 +237,8 @@ Invoke-AtomicTest T1218.010 -TestGuids 449aa403-6aba-47ce-8a37-247d21ef0306,c9d0
 ![image-20230915165205345](http://cdn.ayusummer233.top/DailyNotes/202309151652511.png)
 
 ---
+
+### 执行指定技术的所有测试
 
 执行指定技术的所有用例
 
@@ -236,25 +258,161 @@ Invoke-AtomicTest T1218.010 -CheckPrereqs
 Invoke-AtomicTest T1218.010
 ```
 
+![image-20230917192454429](http://cdn.ayusummer233.top/DailyNotes/202309171925764.png)
 
+> PS: 这里 `T1218.010-5` 会弹出一个计算器以及一个确定窗口(`regsvr32.exe`弹的), 需要点击确定窗口才会完成测试
 
+----
 
+### 指定进程超时
 
+```powershell
+Invoke-AtomicTest T1218.010 -TimeoutSeconds 15
+```
 
+如果攻击命令未在指定的 `-TimeoutSeconds` 内退出（返回），则该进程及其子进程将被强制终止, 从而允许 `Invoke-AtomicTest` 脚本继续进行下一个测试。
 
+> `-TimeoutSeconds` 的默认值为 120。
 
+![image-20230917194407394](http://cdn.ayusummer233.top/DailyNotes/202309171944227.png)
 
+> 上之前的测试中可以看到这个用例是会有一个 regsvr 的弹窗卡住程序的, 因此便会超时退出
 
+---
 
+### 交互执行测试
 
+可以通过在执行期间向测试提供输入的方式来执行测试。例如，在覆盖文件之前执行的命令会提示您进行确认。
 
+为了能够执行此操作，必须指定 `-Interactive` 标志。如果不指定 `-Interactive` 标志并且命令要求用户输入，则执行将挂起，直到最终超时。
 
+```powershell
+# 检查依赖
+Invoke-AtomicTest T1003 -CheckPrereqs
+```
 
+![image-20230917211459537](http://cdn.ayusummer233.top/DailyNotes/202309172114569.png)
 
+发现缺少依赖, 需要安装, 执行
 
+```powershell
+# 安装依赖
+Invoke-AtomicTest T1003 -GetPrereqs
+```
 
+![image-20230917212447500](http://cdn.ayusummer233.top/DailyNotes/202309172124537.png)
 
+发现找不到 `Get-WindowsFeature` 命令, 搜索后发现该命令是属于 Windows Server 的命令, 这里用的是Win10Pro, 默认是没有这个模块的
 
+> [Get-WindowsFeature (ServerManager) | Microsoft Learn --- 获取 WindowsFeature (服务器管理器) |微软学习](https://learn.microsoft.com/en-us/powershell/module/servermanager/get-windowsfeature?view=windowsserver2022-ps)
+
+所以需要装一下, 该命令属于 `ServerManager` 模块, 在 Win10 上可以通过 `管理可选功能` 页面添加 RSAT(`Remote Server Administrator Tools`) 的相关功能来安装, 不过这条命令具体属于哪个功能模块并没有找到, 因此这里就把 RSAT 相关功能全装了:
+
+![image-20230917214755067](http://cdn.ayusummer233.top/DailyNotes/202309172147151.png)
+
+![image-20230917214739417](http://cdn.ayusummer233.top/DailyNotes/202309172147482.png)
+
+> PS: 感觉可能是这个, 不过想到其他测试可能也会用到相关模块, 就全装了
+>
+> ![image-20230917214822097](http://cdn.ayusummer233.top/DailyNotes/202309172148166.png)
+>
+> 装完之后就可以用了:
+>
+> ![image-20230917223444555](http://cdn.ayusummer233.top/DailyNotes/202309172234613.png)
+>
+> ![image-20230917224559414](http://cdn.ayusummer233.top/DailyNotes/202309172245446.png)
+>
+> 报错了, 不支持在 Windows 客户端操作, 应该是要 Windows Server
+
+```powershell
+Invoke-AtomicTest T1003 -Interactive
+```
+
+![image-20230917224725224](http://cdn.ayusummer233.top/DailyNotes/202309172247287.png)
+
+使用 `-Interactive` 标志的缺点是无法将命令执行的输出重定向到文件。
+
+----
+
+### 执行所有测试
+
+不建议一次性执行所有的 atomic test, 非要这样做的话可以使用如下命令:
+
+```powershell
+Invoke-AtomicTest All
+# 上述命令默认使用预定义的 atomics 目录中的示例, 也可以指定指定 atomics 目录
+Invoke-AtomicTest All -PathToAtomicsFolder C:\AtomicRedTeam\atomics
+# 如果不想手动确认执行的话也可以使用如下命令, 将 Confirm 设置为 false
+Invoke-AtomicTest All -Confirm:$false
+# 或者将 Confirm 设置为 Medium(文档中没有详细说明 false 和 medium 二者的区别)
+$ConfirmPreference = 'Medium'
+Invoke-AtomicTest All
+```
+
+![image-20230917220839090](http://cdn.ayusummer233.top/DailyNotes/202309172208128.png)
+
+需要确定才能运行, 这里就不完全跑完了
+
+更好的方法是使用一个小的 PowerShell 脚本逐个运行每个测试，先获取先决条件，然后在每个测试执行后进行清理。
+
+以下为运行所有自动化 Windows atomics 的 powershell 脚本示例:
+
+```powershell
+$techniques = gci C:\AtomicRedTeam\atomics\* -Recurse -Include T*.yaml | Get-AtomicTechnique
+
+foreach ($technique in $techniques) {
+    foreach ($atomic in $technique.atomic_tests) {
+        if ($atomic.supported_platforms.contains("windows") -and ($atomic.executor -ne "manual")) {
+            # Get Prereqs for test
+            Invoke-AtomicTest $technique.attack_technique -TestGuids $atomic.auto_generated_guid -GetPrereqs
+            # Invoke
+            Invoke-AtomicTest $technique.attack_technique -TestGuids $atomic.auto_generated_guid
+            # Sleep then cleanup
+            Start-Sleep 3
+            Invoke-AtomicTest  $technique.attack_technique -TestGuids $atomic.auto_generated_guid -Cleanup
+        }
+    }
+}
+```
+
+----
+
+## 在执行完 atomic tests 之后运行清理命令
+
+许多原子测试包括清理命令，用于删除在执行测试期间生成的临时文件或将设置返回到以前的或更安全的值，以便可以再次运行测试。建议在每次测试执行后运行清理命令。
+
+可以使用 `ShowDetails` 选项来查看清理命令的具体作用
+
+要查看清理命令的作用，您可以使用 `-ShowDetails` 选项，如本 Wiki 的“列表原子测试”页面上所述。
+
+```powershell
+Invoke-AtomicTest T1003 -ShowDetails
+```
+
+![image-20230917221634506](http://cdn.ayusummer233.top/DailyNotes/202309172216543.png)
+
+---
+
+### 运行指定测试的清理命令
+
+```powershell
+# 清理环境
+Invoke-AtomicTest T1218.010 -TestNames "Regsvr32 remote COM scriptlet execution","Regsvr32 local DLL execution" -Cleanup
+```
+
+![image-20230917225234153](http://cdn.ayusummer233.top/DailyNotes/202309172252223.png)
+
+----
+
+### 对给定编号的所有 atomic test 执行清理命令
+
+```powershell
+Invoke-AtomicTest T1218.010 -Cleanup
+```
+
+![image-20230917225429297](http://cdn.ayusummer233.top/DailyNotes/202309172254323.png)
+
+---
 
 
 
