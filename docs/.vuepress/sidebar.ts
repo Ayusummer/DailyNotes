@@ -265,6 +265,26 @@ let sovits = [
   },
 ];
 
+/** 端点安全 */
+let endpoint_security = [
+  {
+    text: "端点安全",
+    link: "/网络安全/端点安全/",
+  },
+  {
+    text: "Windows",
+    link: "/网络安全/端点安全/Windows/",
+  },
+  {
+    text: "Linux",
+    link: "/网络安全/端点安全/Linux/",
+  },
+  {
+    text: "AtomicRedTeam",
+    link: "/网络安全/端点安全/AtomicRedTeam.md",
+  },
+];
+
 /** 内网渗透 */
 let penetration = [
   {
@@ -319,6 +339,7 @@ export const Sidebar = sidebar({
   "/网络安全/加密算法/": security_encrypt,
   "/网络安全/ATTCK/": security_ATTCK,
   "/网络安全/Web安全/": security_web,
+  "/网络安全/端点安全/": endpoint_security,
   "/网络安全/内网渗透/": penetration,
   "/网络安全/信息收集/": information_collection,
 });
