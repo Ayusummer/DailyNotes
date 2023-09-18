@@ -359,6 +359,12 @@ sudo code --no-sandbox --disable-gpu-sandbox --user-data-dir="~/.vscode"
 
 ![image-20221209100335268](http://cdn.ayusummer233.top/DailyNotes/202212091003613.png)
 
+----
+
+##### Remote-SSH 占用 CPU
+
+> [解决：vscode-remote-ssh 远程连接后 rg 进程占用 CPU 问题_vscode远程开发长时间不关闭导致资源被严重占用_sigmarising的博客-CSDN博客](https://blog.csdn.net/sigmarising/article/details/107615035)
+
 ---
 
 ### 网络相关
