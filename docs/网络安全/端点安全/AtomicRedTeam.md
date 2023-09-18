@@ -377,6 +377,66 @@ foreach ($technique in $techniques) {
 
 ----
 
+## 在远程执行 atomic tests
+
+可以使用 `Invoke-AtomicTest` 函数在安装 Atomic Red Team 的系统（本地）或通过 PowerShell 远程会话（远程）在远程计算机上运行原子测试。如下说明展示了如何在远程计算机上执行测试。
+
+----
+
+### 前提条件
+
+在安装了 `Invoke-AtomicTests` 的本地计算机上, 满足如下条件后便可以在远程计算机上执行 atomic tests
+
+|  本地计算机  |  远程计算机  |                                         先决条件                                          |
+| :----------: | :----------: | :---------------------------------------------------------------------------------------: |
+|   Windows    |   Windows    |                             远程必须启用 PowerShell Remoting                              |
+|   Windows    | Linux, macOS | 1) 本地必须安装PowerShell Core <br>2) 远程必须配置好了通过 SSH 来进行 powershell remoting |
+| Linux, macOS |   Windows    | 1）本地必须安装PowerShell Core<br>2) 远程必须配置好了通过 SSH 来进行 powershell remoting  |
+
+---
+
+### 启用 Powershell Remoting - Win2Win
+
+> [Enable-PSRemoting (Microsoft.PowerShell.Core) - PowerShell | Microsoft Learn --- 启用-PSRemoting (Microsoft.PowerShell.Core) - PowerShell |微软学习](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/enable-psremoting?view=powershell-7.3&source=docs)
+
+如果本地和远程都是 Windows 的话, 只需要在远程 Windows 上启用 PS Remoteing
+
+![image-20230918162723157](http://cdn.ayusummer233.top/DailyNotes/202309181627870.png)
+
+> 这个虚拟机加了两张卡, 一张用来连公网, 一张用来连内网, 这里由于公网那张卡开 WinRM 失败了, 因此暂且将其禁用了
+>
+> 除此以外, 文档中还提到了这种情况下也可以通过使用  `-SkipNetworkProfileCheck` 来跳过此项验证
+
+![image-20230918163201801](http://cdn.ayusummer233.top/DailyNotes/202309181632947.png)
+
+默认情况下, 只有远程计算机上的 Administrators 组中的用户才能建立 PS Remoting 连接
+
+---
+
+### 安装 Powershell Core - NoWin
+
+> [Install PowerShell on Windows, Linux, and macOS - PowerShell | Microsoft Learn --- 在 Windows、Linux 和 macOS 上安装 PowerShell - PowerShell |微软学习](https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell?view=powershell-7.3)
+
+当本地和远程计算器不是 Windows 时, 必须安装 `Powershell Core Version >= 6` 的版本
+
+```powershell
+$PSVersionTable
+```
+
+![image-20230918180016101](http://cdn.ayusummer233.top/DailyNotes/202309181800702.png)
+
+---
+
+### 通过 SSH 配置 PowerShell Remoting - NoWin
+
+> [PowerShell Remoting Over SSH - PowerShell | Microsoft Learn --- 通过 SSH 进行 PowerShell 远程处理 - PowerShell |微软学习](https://learn.microsoft.com/en-us/powershell/scripting/learn/remoting/ssh-remoting-in-powershell-core?view=powershell-7.3)
+
+当本地与远程计算机都不是 Windows 时, 必须将远程计算机配置为通过 SSH 进行 Powershell Remoting, 具体操作可以参阅上面的链接
+
+PS: 如果远程计算机为 Linux/MacOS, 并且如果运行的测试需要管理员权限的话, 需要再 sshd_config 文件中包含 sudo, 并且需要链接的用户必须能够在没有密码的情况下执行 sudo
+
+---
+
 ## 在执行完 atomic tests 之后运行清理命令
 
 许多原子测试包括清理命令，用于删除在执行测试期间生成的临时文件或将设置返回到以前的或更安全的值，以便可以再次运行测试。建议在每次测试执行后运行清理命令。
