@@ -3,6 +3,7 @@ node_modules
 .temp
 .cache
 docs/.vuepress/dist
+package-lock.json
 
 # 日常资源及测试文件
 DailyLife/res
