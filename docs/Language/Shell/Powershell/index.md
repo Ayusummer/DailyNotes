@@ -2,6 +2,19 @@
 
 ---
 
+## 版本信息
+
+```powershell
+$PSVersionTable
+$PSVersionTable.PSVersion
+```
+
+![image-20230918174306661](http://cdn.ayusummer233.top/DailyNotes/202309181743508.png)
+
+![image-20230918174411070](http://cdn.ayusummer233.top/DailyNotes/202309181744112.png)
+
+---
+
 ## 代理
 
 ```powershell
