@@ -401,6 +401,8 @@ foreach ($technique in $techniques) {
 
 如果本地和远程都是 Windows 的话, 只需要在远程 Windows 上启用 PS Remoteing
 
+> PS: 官方 wiki 这里有问题; 推荐在本地与远程都启用 PS Remoting , 详见 [在远程机器上执行 atomic tests](#在远程机器上执行 atomic tests) 章节的内容
+
 ![image-20230918162723157](http://cdn.ayusummer233.top/DailyNotes/202309181627870.png)
 
 > 这个虚拟机加了两张卡, 一张用来连公网, 一张用来连内网, 这里由于公网那张卡开 WinRM 失败了, 因此暂且将其禁用了
@@ -434,6 +436,134 @@ $PSVersionTable
 当本地与远程计算机都不是 Windows 时, 必须将远程计算机配置为通过 SSH 进行 Powershell Remoting, 具体操作可以参阅上面的链接
 
 PS: 如果远程计算机为 Linux/MacOS, 并且如果运行的测试需要管理员权限的话, 需要再 sshd_config 文件中包含 sudo, 并且需要链接的用户必须能够在没有密码的情况下执行 sudo
+
+- `Linux`: `/etc/ssh/sshd_config`
+
+  ```
+  Subsystem powershell sudo /usr/bin/pwsh -sshs -NoLogo
+  ```
+
+- `macOS`: `/private/etc/ssh/sshd_config`
+
+  ```
+  Subsystem powershell sudo /usr/local/bin/pwsh -sshs -NoLogo
+  ```
+
+----
+
+### 在远程机器上执行 atomic tests
+
+在执行测试前, 必须先和远程计算机建立 PS Session(`$sess`)
+
+- [建立 PS Session Win2Win](https://github.com/redcanaryco/invoke-atomicredteam/wiki/Execute-Atomic-Tests-(Remote)#establish-a-ps-session-from-windows-to-windows)
+- [建立 PS Session Win2Lin/Mac](https://github.com/redcanaryco/invoke-atomicredteam/wiki/Execute-Atomic-Tests-(Remote)#establish-a-ps-session-establish-a-ps-session-from-linuxosx-to-windowslinuxosx)
+- [建立 PS Session Lin/Mac2Lin/Mac](https://github.com/redcanaryco/invoke-atomicredteam/wiki/Execute-Atomic-Tests-(Remote)#establish-a-ps-session-establish-a-ps-session-from-linuxosx-to-windowslinuxosx)
+
+> 这里做下 Win2Win 的流程
+
+在本地 Windows Powershell 上尝试与远程 Windows 建立 Powershell Session
+
+```powershell
+$sess = New-PSSession -ComputerName testcomputer -Credential domain\username
+```
+
+- `ComputerName`: 待链接的远程计算机的名称或 IP
+
+![image-20230919100736521](http://cdn.ayusummer233.top/DailyNotes/202309191007241.png)
+
+尝试建立连接时出现了上述报错, 查阅资料后发现这是由于本地计算机没有信任远程计算机的证书导致的
+
+> [WinRM の TrastedHosts にホストを追加 / 確認 / 削除する : Windows Tips | iPentec](https://www.ipentec.com/document/windows-windows-10-add-winrm-trasted-hosts)
+
+可以通过如下几种方式解决问题
+
+- **使用 HTTPS 连接**：安全地连接到远程计算机的一种方法是使用 HTTPS。这通常需要配置远程计算机上的 WinRM 服务以支持 HTTPS。不过这需要一些额外的设置和证书管理。
+- **将远程计算机添加到 TrustedHosts 列表**：可以将目标计算机添加到本地计算机的 TrustedHosts 列表中以信任该计算机。
+- 如果本地和远程计算机在同一个域中, 可以使用 Kerberos 认证来连接远程计算机, 可以在 `New-PSSession` 命令后加上  `Authentication Kerberos` 参数来使用 Kerberos 认证
+
+这里本地和远程在两个局域网中, 选择通过将远程计算机添加到本地 TrustedHosts 列表来解决问题:
+
+```powershell
+Set-Item wsman:\localhost\Client\TrustedHosts -Value "192.168.4.214" -Force
+```
+
+> [WS-Management (WSMan) Remoting in PowerShell - PowerShell | Microsoft Learn --- PowerShell 中的 WS-Management (WSMan) 远程处理 - PowerShell |微软学习](https://learn.microsoft.com/en-us/powershell/scripting/learn/remoting/wsman-remoting-in-powershell-core?view=powershell-7.3)
+
+![image-20230919104826960](http://cdn.ayusummer233.top/DailyNotes/202309191048599.png)
+
+这里就体现出官方 wiki 的问题了, 实际上本地计算机也是需要启用 PSRemoting 的, 否则这里会一直连不上
+
+> ![image-20230919105427539](http://cdn.ayusummer233.top/DailyNotes/202309191054618.png)
+
+![image-20230919105455088](http://cdn.ayusummer233.top/DailyNotes/202309191054181.png)
+
+在本地计算机启用了 PSRemoting 后就可以顺畅地连接到远程 Windwos 了, 可以通过 `Get-PSSession` 来查看已建立的 session
+
+```powershell
+Get-PSSession
+```
+
+![image-20230919105638522](http://cdn.ayusummer233.top/DailyNotes/202309191056653.png)
+
+> 要释放这个 session 可以使用 `Remove-PSSession` 命令
+>
+> ```powershell
+> Remove-PSSession $sess
+> ```
+
+----
+
+建立完 PS Session 后, 可以这样远程执行测试:
+
+```
+Invoke-AtomicTest T1218.010-1 -Session $sess -CheckPrereqs
+Invoke-AtomicTest T1218.010-1 -Session $sess -GetPrereqs
+Invoke-AtomicTest T1218.010-1 -Session $sess 
+```
+
+![image-20230919110546671](http://cdn.ayusummer233.top/DailyNotes/202309191105793.png)
+
+可以看到检查前提条件时报错了, 该路径下缺少文件, 仔细看这个路径可以看到这个像是 atomic folder, 这也就引出了: ==对于远程执行的情况 , 即使在远程配置了 atomic folder 的路径,`PathToAtomicsFolder` 始终以 `$env:Temp` 开头==, 那么解决方案也很简单, 在远程计算机上的 `$env:Temp` 目录安装 atolmic folder 即可
+
+> ![image-20230919112531474](http://cdn.ayusummer233.top/DailyNotes/202309191125912.png)
+
+```powershell
+# 为当前 powershell 会话设置 https 代理
+$env:HTTPS_PROXY="http://127.0.0.1:7890"
+# 安装执行框架与 atomic folder
+IEX (IWR 'https://raw.githubusercontent.com/redcanaryco/invoke-atomicredteam/master/install-atomicredteam.ps1' -UseBasicParsing);
+Install-AtomicRedTeam -getAtomics
+```
+
+将 atomics 目录拷贝到 `$env:Temp` 目录下重命名为 `AtomicRedTeam` 目录
+
+![image-20230919152950136](http://cdn.ayusummer233.top/DailyNotes/202309191529293.png)
+
+----
+
+重新查一下前提条件:
+
+![image-20230919152807833](http://cdn.ayusummer233.top/DailyNotes/202309191528752.png)
+
+运行:
+
+```powershell
+Invoke-AtomicTest T1218.010-1 -Session $sess 
+```
+
+成功在远程利用:
+
+![image-20230919153014730](http://cdn.ayusummer233.top/DailyNotes/202309191530897.png)
+
+---
+
+清理环境
+
+```powershell
+Invoke-AtomicTest T1218.010-1 -Session $sess -Cleanup
+```
+
+![image-20230919153107833](http://cdn.ayusummer233.top/DailyNotes/202309191531917.png)
 
 ---
 
@@ -474,11 +604,180 @@ Invoke-AtomicTest T1218.010 -Cleanup
 
 ---
 
+## 自定义参数
+
+### 交互式自定义输入参数
+
+可以使用 `-PromptForInputArgs` 参数来为 atomic test 指定自定义的变量, 这需要用户手动输入各参数的值来进行测试, 未输入则保留 yaml 中的默认值
+
+```powershell
+Invoke-AtomicTest T1564.004 -TestNames "Create ADS command prompt" -PromptForInputArgs
+```
+
+![image-20230919155912020](http://cdn.ayusummer233.top/DailyNotes/202309191559485.png)
+
+![image-20230919155947614](http://cdn.ayusummer233.top/DailyNotes/202309191559781.png)
+
+```powershell
+# 清理环境
+Invoke-AtomicTest T1564.004 -TestNames "Create ADS command prompt" -Cleanup
+```
+
+![image-20230919160106125](http://cdn.ayusummer233.top/DailyNotes/202309191601238.png)
+
+---
+
+### 可编程自定义输入参数
+
+可以使用命令行或者脚本来指定全部或部分的输入参数, 没有定义的部分会采用 test 本身的 yaml 中的默认值
+
+```powershell
+$myArgs = @{ "filename" = "C:\AtomicRedTeam\atomics\T1218.010\src\RegSvr32.sct"; "regsvr32name" = "regsvr32.exe" }
+Invoke-AtomicTest T1218.010-1 -InputArgs $myArgs
+```
+
+![image-20230919160632186](http://cdn.ayusummer233.top/DailyNotes/202309191606303.png)
+
+```powershell
+# 清理环境
+Invoke-AtomicTest T1218.010-1 -Cleanup
+```
+
+![image-20230919160711767](http://cdn.ayusummer233.top/DailyNotes/202309191607844.png)
+
+---
+
+## 执行日志
+
+- 内置日志选项
+  - [Default Logger (csv) 默认记录器 (csv)](https://github.com/redcanaryco/invoke-atomicredteam/wiki/Execution-Logging#default-logger)
+  - [Attire Logger 着装记录器](https://github.com/redcanaryco/invoke-atomicredteam/wiki/Execution-Logging#attire-logger)
+  - [Syslog Logger 系统日志记录器](https://github.com/redcanaryco/invoke-atomicredteam/wiki/Execution-Logging#syslog-logger)
+  - [WinEvent Logger Win事件记录器](https://github.com/redcanaryco/invoke-atomicredteam/wiki/Execution-Logging#winevent-logger)
+
+---
+
+### Default Logger
+
+默认情况下, 测试执行的详细信息会被写入 `temp目录($env:TEMP、%tmp% 或 \tmp)` 中的 `Invoke-AtomicTest-ExecutionLog.csv`
+
+![image-20230919161428365](http://cdn.ayusummer233.top/DailyNotes/202309191614453.png)
+
+![image-20230919161527174](http://cdn.ayusummer233.top/DailyNotes/202309191615326.png)
+
+---
+
+#### 指定用于写入执行日志的可选路径
+
+也可以使用 `-ExecutionLogPath` 参数可以将 log 写入其他文件
+
+```powershell
+Invoke-AtomicTest T1218.010-1 -ExecutionLogPath 'C:\Temp\mylog.csv'
+# 清理环境
+Invoke-AtomicTest T1218.010-1 -Cleanup -ExecutionLogPath 'C:\Temp\mylog.csv'
+```
+
+![image-20230919162649472](http://cdn.ayusummer233.top/DailyNotes/202309191626589.png)
+
+![image-20230919162538017](http://cdn.ayusummer233.top/DailyNotes/202309191625110.png)
+
+只有当 ==执行== 测试时才会记录日志, 而 `-ShowDetais`, `-CheckPrereqs`, `-GetPrereqs`, `-Cleanup` 都是不会被记录的
+
+----
+
+此外还可以使用 `-NoExcutionLog` 参数, 这样就不会讲执行信息写到磁盘上了
+
+---
+
+执行 log 记录了 `测试名称`, `测试编号`, `执行时间`, `用户名`, `主机名` 等信息, 
+
+```powershell
+Import-Csv $env:TEMP\Invoke-AtomicTest-ExecutionLog.csv | Out-GridView
+```
 
 
- 
+
+---
+
+#### 执行日志示例
 
 
+
+---
+
+#### 将测试执行的输出重定向到文件
+
+Attire Logger 是唯一生成包含完整命令输入和输出详细信息的日志的日志记录机制, 如果要在使用其他记录器时捕获命令输入输出的话可以使用如下命令
+
+```powershell
+Invoke-AtomicTest T1027 -TestNumbers 2 *>&1 | Tee-Object atomic-out.txt -Append
+```
+
+上述命令会将所有的三个输出流记录到名为 `atomic-out.txt` 的文件中,  使用 `-Append` 参数是为了续写而非覆盖文件
+
+如果要单独记录错误日志的话, 可以使用如下命令:
+
+```powershell
+Invoke-AtomicTest T1027  -TestNumbers 2 2>>atomic-error.txt | Tee-Object atomic-out.txt -Append
+```
+
+
+
+
+
+---
+
+### Attire Logger
+
+Default Logger 不会记录命令输出, 要记录名称输出的话可以使用 Attire Logger; 
+
+Attire format 用 json 编写, 可以导入到 Vectr 这样的紫队报告工具中;
+
+Attire Logger 的默认日志名称为 `tmp($env:TEMP、%tmp% 或 \tmp)` 目录中的 `Invoke-AtomicTest-ExecutionLog-timestamp.json`
+
+需要注意的是日志文件名时间戳会被替换为执行时的实际时间戳, 这意味着每次调用 `Invoke-AtomicTest` 都会创建一个新的时间戳日志文件
+
+可以在执行 atomic tests 时指定 Attire logger
+
+```powershell
+Invoke-AtomicTest T1016 -LoggingModule "Attire-ExecutionLogger" -ExecutionLogPath T1016-Windows.json
+```
+
+这将在当前目录创建一个名为 `T1106-Windows.json` 的 Json 执行日志, 后续可以将其导入到 Vectr 中
+
+---
+
+需要注意的是 Default Logger 将日志记录到单个文件中, 但是 Attire Logger 会在每次调用 Invoke-AtomicTest 时覆盖日志; 如果需要保留所有日志而不是每次都指定新名称的话可以在名称中使用时间戳占位符, 改占位符将在运行时按照实际执行时间戳替换;
+
+如下命令将每次都使用当前时间戳作为文件名写入一个新的日志文件
+
+```powershell
+Invoke-AtomicTest T1016 -LoggingModule "Attire-ExecutionLogger" -ExecutionLogPath "timestamp.json")
+```
+
+
+
+----
+
+最后, 如果不想每次都手动指定 `LoggingModule` 的话, 可以将如下命令添加到 powershell profile 中
+
+```powershell
+$PSDefaultParameterValues = @{"Invoke-AtomicTest:LoggingModule"="Attire-ExecutionLogger"}
+```
+
+或者也可以通过  [privateConfig.ps1 file](https://github.com/redcanaryco/invoke-atomicredteam/wiki/Continuous-Atomic-Testing#set-custom-config-using-privateconfigps1) 来设置 Logger 选项
+
+
+
+Click [here](https://www.youtube.com/watch?v=n-C9ovMFYnk) for a demo of importing the Attire logs into [Vectr](https://vectr.io/).
+单击此处查看将服装日志导入 Vectr 的演示。
+
+Looking for a way to merge multiple Attire logs into one file? Look [here](https://github.com/Retrospected/attire-merger)
+正在寻找一种将多个着装日志合并到一个文件中的方法？看这里
+
+
+
+----
 
 
 
