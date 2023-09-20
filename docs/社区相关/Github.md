@@ -290,6 +290,126 @@ git config core.gitPorxy socks5://127.0.0.1:7890
 > git config --global --unset core.gitPorxy
 > ```
 
+
+---
+
+### SSH Key
+
+> [git生成连接远程仓库的密钥_旁观者lgp的博客-CSDN博客](https://blog.csdn.net/qq_45515863/article/details/106312232)
+
+- 在主机创建 ssh key
+
+  ```shell
+  ssh-keygen -t rsa -C "youremail@example.com"
+  ```
+
+  `-C(comment)` 随便填, 有辨识度就行
+
+  运行命令后一路回车默认配置, 根据运行提示找到 公钥 `id_rsa.pub`
+
+- `Github 右上角头像 -> Settings -> SSH and GPG keys -> add new ssh key`
+
+  title 随便填, key 粘贴 `id_rsa.pub` 的全部内容
+
+- 在主机上使用
+
+  ```shell
+  git clone 仓库SSH路径
+  ```
+
+  来 clone 仓库
+
+> 需要注意的是在 Linux 上使用不同的用户创建的 ssh-key 加入到 github 后也只有对应的用户可以使用, 当切换用户后需要将该用户的 ssh-key 也加入到 Github 的 SSH-key 中方可使用
+
+---
+
+### 本地仓库切换 https 到 ssh
+
+可以使用如下命令查看当前仓库的远程 URL:
+
+```bash
+git remote -v
+```
+
+![image-20230921013052319](http://cdn.ayusummer233.top/DailyNotes/202309210130370.png)
+
+要想从 https(ssh) 切到 ssh(https) 的话可以如下设置:
+
+```bash
+# git remote set-url origin xxx
+git remote set-url origin git@github.com:Ayusummer/DailyNotes.git
+```
+
+----
+
+### SSH 代理
+
+最近更新仓库时总是莫名其妙被重置, 见到了好多奇怪的报错, 包括但不限于
+
+```
+Connection reset by 20.205.243.166 port 22
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+```
+
+```
+Error: Unable to Fetch from Remote(s)
+kex_exchange_identification: Connection closed by remote host
+Connection closed by UNKNOWN port 65535
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+```
+
+```
+Error: Unable to Fetch from Remote(s)
+Host key verification failed.
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+```
+
+最终达成的解决方案是
+
+1. 把本地的密钥对删了, 重新新建一对密钥并将公钥添加到 github ssh key
+
+2. 清除本地 `know_hosts` 中的 github 条目
+
+   ![image-20230921013523135](http://cdn.ayusummer233.top/DailyNotes/202309210135195.png)
+
+   如果有 `know_hosts.old` 文件, 可以直接把这个 old 删了
+
+   ![image-20230921013757996](http://cdn.ayusummer233.top/DailyNotes/202309210137027.png)
+
+3. 配置 ssh 使用本地代理, 以 clash 默认 7890 端口为例
+
+   配置文件在 `~/.ssh/config`, 不存在则新建, 对于 windows 而言可以是:
+
+   ![image-20230921013914928](http://cdn.ayusummer233.top/DailyNotes/202309210139983.png)
+
+   写入如下配置
+
+   ```properties
+   Host github.com
+       Hostname ssh.github.com
+       Port 443
+       User git
+       ProxyCommand connect -H 127.0.0.1:7890 %h %p
+   ```
+
+4. 关闭 VSCode, 重新打开即可, 可以 git fetch 看下效果
+
+   ![image-20230921014108032](http://cdn.ayusummer233.top/DailyNotes/202309210141058.png)
+
+   ![image-20230921014150077](http://cdn.ayusummer233.top/DailyNotes/202309210141104.png)
+
+至少我如此操作成功修复了, 后续再遇到类似问题再看吧(
+
+
 ---
 
 ## 简介
@@ -325,35 +445,6 @@ git config core.gitPorxy socks5://127.0.0.1:7890
 
 ---
 
-## SSH Key
-
-> [git生成连接远程仓库的密钥_旁观者lgp的博客-CSDN博客](https://blog.csdn.net/qq_45515863/article/details/106312232)
-
-- 在主机创建 ssh key
-
-  ```shell
-  ssh-keygen -t rsa -C "youremail@example.com"
-  ```
-
-  `-C(comment)` 随便填, 有辨识度就行
-
-  运行命令后一路回车默认配置, 根据运行提示找到 公钥 `id_rsa.pub`
-
-- `Github 右上角头像 -> Settings -> SSH and GPG keys -> add new ssh key`
-
-  title 随便填, key 粘贴 `id_rsa.pub` 的全部内容
-
-- 在主机上使用
-
-  ```shell
-  git clone 仓库SSH路径
-  ```
-
-  来 clone 仓库
-
-> 需要注意的是在 Linux 上使用不同的用户创建的 ssh-key 加入到 github 后也只有对应的用户可以使用, 当切换用户后需要将该用户的 ssh-key 也加入到 Github 的 SSH-key 中方可使用
-
----
 ## Actions
 
 > [原文链接:GitHub Actions 入门教程 - 阮一峰的网络日志 (ruanyifeng.com)](http://www.ruanyifeng.com/blog/2019/09/getting-started-with-github-actions.html)
