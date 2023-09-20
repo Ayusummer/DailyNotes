@@ -3,6 +3,8 @@
 > [redcanaryco/atomic-red-team: Small and highly portable detection tests based on MITRE's ATT&CK. --- redcanaryco/atomic-red-team：基于 MITRE 的 ATT&CK 的小型且高度便携的检测测试。 (github.com)](https://github.com/redcanaryco/atomic-red-team)
 >
 > [redcanaryco/invoke-atomicredteam: Invoke-AtomicRedTeam is a PowerShell module to execute tests as defined in the atomics folder of Red Canary's Atomic Red Team project. --- redcanaryco/invoke-atomicredteam：Invoke-AtomicRedTeam 是一个 PowerShell 模块，用于执行 Red Canary 的 atomics 文件夹中定义的测试原子红队项目。](https://github.com/redcanaryco/invoke-atomicredteam)
+>
+> [Explore Atomic Red Team --- 探索原子红队](https://atomicredteam.io/)
 
 Atomic Red Team™ 是映射到 MITRE ATT&CK® 框架的测试库。安全团队可以使用 Atomic Red Team 快速、可移植且可重复地测试其环境。
 
@@ -663,7 +665,7 @@ Invoke-AtomicTest T1218.010-1 -Cleanup
 
 ![image-20230919161428365](http://cdn.ayusummer233.top/DailyNotes/202309191614453.png)
 
-![image-20230919161527174](http://cdn.ayusummer233.top/DailyNotes/202309191615326.png)
+![image-20230920095105702](http://cdn.ayusummer233.top/DailyNotes/202309200951811.png)
 
 ---
 
@@ -673,19 +675,30 @@ Invoke-AtomicTest T1218.010-1 -Cleanup
 
 ```powershell
 Invoke-AtomicTest T1218.010-1 -ExecutionLogPath 'C:\Temp\mylog.csv'
-# 清理环境
+# 清理环境(PS:后面那个log路径实际上是没用的, cleanup并不会触发日志记录, 这里只是做下对照)
 Invoke-AtomicTest T1218.010-1 -Cleanup -ExecutionLogPath 'C:\Temp\mylog.csv'
 ```
 
 ![image-20230919162649472](http://cdn.ayusummer233.top/DailyNotes/202309191626589.png)
 
-![image-20230919162538017](http://cdn.ayusummer233.top/DailyNotes/202309191625110.png)
+![image-20230920095049408](http://cdn.ayusummer233.top/DailyNotes/202309200950491.png)
 
 只有当 ==执行== 测试时才会记录日志, 而 `-ShowDetais`, `-CheckPrereqs`, `-GetPrereqs`, `-Cleanup` 都是不会被记录的
 
 ----
 
-此外还可以使用 `-NoExcutionLog` 参数, 这样就不会讲执行信息写到磁盘上了
+此外还可以使用 `-NoExecutionLog` 参数, 这样就不会讲执行信息写到磁盘上了
+
+```powershell
+Invoke-AtomicTest T1218.010 -NoExecutionLog
+Invoke-AtomicTest T1218.010-1 -Cleanup
+```
+
+![image-20230920101528485](http://cdn.ayusummer233.top/DailyNotes/202309201015569.png)
+
+这样执行应该是会记录到默认的日志位置 `$env:TEMP\Invoke-AtomicTest-ExecutionLog.csv`, 由于使用了 `-NoExecutionLog`, 因此打开 log 文件是看不到相应记录的:
+
+![image-20230920101805218](http://cdn.ayusummer233.top/DailyNotes/202309201018353.png)
 
 ---
 
@@ -695,13 +708,7 @@ Invoke-AtomicTest T1218.010-1 -Cleanup -ExecutionLogPath 'C:\Temp\mylog.csv'
 Import-Csv $env:TEMP\Invoke-AtomicTest-ExecutionLog.csv | Out-GridView
 ```
 
-
-
----
-
-#### 执行日志示例
-
-
+![image-20230920101438586](http://cdn.ayusummer233.top/DailyNotes/202309201014467.png)
 
 ---
 
@@ -710,20 +717,43 @@ Import-Csv $env:TEMP\Invoke-AtomicTest-ExecutionLog.csv | Out-GridView
 Attire Logger 是唯一生成包含完整命令输入和输出详细信息的日志的日志记录机制, 如果要在使用其他记录器时捕获命令输入输出的话可以使用如下命令
 
 ```powershell
-Invoke-AtomicTest T1027 -TestNumbers 2 *>&1 | Tee-Object atomic-out.txt -Append
+Invoke-AtomicTest T1218.010-1 *>&1 | Tee-Object atomic-out.txt -Append
 ```
 
-上述命令会将所有的三个输出流记录到名为 `atomic-out.txt` 的文件中,  使用 `-Append` 参数是为了续写而非覆盖文件
+上述命令会将所有的三个输出流记录到名为 `atomic-out.txt` 的文件中
+
+> 使用 `-Append` 参数是为了续写而非覆盖文件
+>
+> 三个输出流想来应该是指 `PathToAtomicsFolder`, `Executing test`, `Done executing test`
+
+![image-20230920104629240](http://cdn.ayusummer233.top/DailyNotes/202309201046881.png)
+
+![image-20230920104719551](http://cdn.ayusummer233.top/DailyNotes/202309201047668.png)
+
+![image-20230920104829732](http://cdn.ayusummer233.top/DailyNotes/202309201048832.png)
+
+> 清理环境
+>
+> ```powershell
+> Invoke-AtomicTest T1218.010-1 -Cleanup
+> Invoke-AtomicTest T1218.010-2 -Cleanup
+> ```
+>
+> ![image-20230920105140212](http://cdn.ayusummer233.top/DailyNotes/202309201051309.png)
 
 如果要单独记录错误日志的话, 可以使用如下命令:
 
 ```powershell
 Invoke-AtomicTest T1027  -TestNumbers 2 2>>atomic-error.txt | Tee-Object atomic-out.txt -Append
+# 清理环境
+Invoke-AtomicTest T1027  -TestNumbers 2 -Cleanup
 ```
 
+![image-20230920105347008](http://cdn.ayusummer233.top/DailyNotes/202309201053138.png)
 
+![image-20230920111314658](http://cdn.ayusummer233.top/DailyNotes/202309201113409.png)
 
-
+![image-20230920111328375](http://cdn.ayusummer233.top/DailyNotes/202309201113463.png)
 
 ---
 
@@ -740,10 +770,15 @@ Attire Logger 的默认日志名称为 `tmp($env:TEMP、%tmp% 或 \tmp)` 目录�
 可以在执行 atomic tests 时指定 Attire logger
 
 ```powershell
-Invoke-AtomicTest T1016 -LoggingModule "Attire-ExecutionLogger" -ExecutionLogPath T1016-Windows.json
+Invoke-AtomicTest T1218.010-1 -LoggingModule "Attire-ExecutionLogger" -ExecutionLogPath T1218.010-1.json
+Invoke-AtomicTest T1218.010-1 -Cleanup
 ```
 
-这将在当前目录创建一个名为 `T1106-Windows.json` 的 Json 执行日志, 后续可以将其导入到 Vectr 中
+这将在当前目录创建一个名为 `T1218.010-1.json` 的 Json 执行日志, 后续可以将其导入到 Vectr 中
+
+![image-20230920112210688](http://cdn.ayusummer233.top/DailyNotes/202309201122878.png)
+
+![image-20230920112130716](http://cdn.ayusummer233.top/DailyNotes/202309201121344.png)
 
 ---
 
@@ -752,10 +787,13 @@ Invoke-AtomicTest T1016 -LoggingModule "Attire-ExecutionLogger" -ExecutionLogPat
 如下命令将每次都使用当前时间戳作为文件名写入一个新的日志文件
 
 ```powershell
-Invoke-AtomicTest T1016 -LoggingModule "Attire-ExecutionLogger" -ExecutionLogPath "timestamp.json")
+Invoke-AtomicTest T1218.010-1 -LoggingModule "Attire-ExecutionLogger" -ExecutionLogPath "timestamp.json"
+Invoke-AtomicTest T1218.010-1 -Cleanup
 ```
 
+![image-20230920172308393](http://cdn.ayusummer233.top/DailyNotes/202309201723876.png)
 
+![image-20230920172732211](http://cdn.ayusummer233.top/DailyNotes/202309201727446.png)
 
 ----
 
@@ -779,9 +817,13 @@ Looking for a way to merge multiple Attire logs into one file? Look [here](https
 
 ----
 
+## 可持续的 atomic testing
 
+> [Continuous Atomic Testing · redcanaryco/invoke-atomicredteam Wiki (github.com)](https://github.com/redcanaryco/invoke-atomicredteam/wiki/Continuous-Atomic-Testing)
 
+Atomic Runner 功能支持在无人值守的情况下运行配置好的 atomic tests 列表, 以帮助生成预防与检测报告
 
+这些脚本设计上默认配置下每周会运行一次 CSV 配置中的所有测试; 在	
 
 
 
