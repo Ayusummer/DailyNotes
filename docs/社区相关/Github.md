@@ -325,6 +325,18 @@ git config core.gitPorxy socks5://127.0.0.1:7890
 
 ### 本地仓库切换 https 到 ssh
 
+> [【求助】开启OpenClash之后，无法使用 git clone/push，kex ssh 密钥错误 · Issue #1960 · vernesong/OpenClash (github.com)](https://github.com/vernesong/OpenClash/issues/1960#issuecomment-1019101426)
+>
+> [Correct way to set git proxy - Kirovj's Chaos --- 设置 git 代理的正确方法 - Kirovj's Chaos (wuyiting.cn)](https://www.wuyiting.cn/blog/Correct way to set git proxy)
+>
+> [使用Git时报错Connection reset by 20.205.243.166 port 22_Wrysmile0308的博客-CSDN博客](https://blog.csdn.net/Wrysmile0308/article/details/128801870)
+>
+> [Has GitHub changed his remote host key ? · community · Discussion #50878 --- GitHub 更改了他的远程主机密钥吗？ · 社区 · 讨论 #50878](https://github.com/orgs/community/discussions/50878)
+>
+> [We updated our RSA SSH host key - The GitHub Blog --- 我们更新了 RSA SSH 主机密钥 - GitHub 博客](https://github.blog/2023-03-23-we-updated-our-rsa-ssh-host-key/)
+>
+> 
+
 可以使用如下命令查看当前仓库的远程 URL:
 
 ```bash
