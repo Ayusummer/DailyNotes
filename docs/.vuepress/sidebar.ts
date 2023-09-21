@@ -281,7 +281,11 @@ let endpoint_security = [
   },
   {
     text: "AtomicRedTeam",
-    link: "/网络安全/端点安全/AtomicRedTeam.md",
+    link: "/网络安全/端点安全/AtomicRedTeam/",
+  },
+  {
+    text: "Vectr",
+    link: "/网络安全/端点安全/AtomicRedTeam/Vectr.md",
   },
 ];
 
