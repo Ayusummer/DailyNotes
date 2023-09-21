@@ -12,6 +12,51 @@ Invoke-AtomicRedTeam 是一个 PowerShell 模块，用于执行 Red Canary 的 A
 
 ---
 
+- [Atomic Red Team](#atomic-red-team)
+  - [安装](#安装)
+  - [展示 Atomic 测试用例列表](#展示-atomic-测试用例列表)
+  - [检查先决条件](#检查先决条件)
+  - [在本地执行 atomic tests](#在本地执行-atomic-tests)
+    - [通过编号执行测试](#通过编号执行测试)
+    - [通过名称执行测试](#通过名称执行测试)
+    - [通过 GUID 执行测试](#通过-guid-执行测试)
+    - [执行指定技术的所有测试](#执行指定技术的所有测试)
+    - [指定进程超时](#指定进程超时)
+    - [交互执行测试](#交互执行测试)
+    - [执行所有测试](#执行所有测试)
+  - [在远程执行 atomic tests](#在远程执行-atomic-tests)
+    - [前提条件](#前提条件)
+    - [启用 Powershell Remoting - Win2Win](#启用-powershell-remoting---win2win)
+    - [安装 Powershell Core - NoWin](#安装-powershell-core---nowin)
+    - [通过 SSH 配置 PowerShell Remoting - NoWin](#通过-ssh-配置-powershell-remoting---nowin)
+    - [在远程机器上执行 atomic tests](#在远程机器上执行-atomic-tests)
+  - [在执行完 atomic tests 之后运行清理命令](#在执行完-atomic-tests-之后运行清理命令)
+    - [运行指定测试的清理命令](#运行指定测试的清理命令)
+    - [对给定编号的所有 atomic test 执行清理命令](#对给定编号的所有-atomic-test-执行清理命令)
+  - [自定义参数](#自定义参数)
+    - [交互式自定义输入参数](#交互式自定义输入参数)
+    - [可编程自定义输入参数](#可编程自定义输入参数)
+  - [执行日志](#执行日志)
+    - [Default Logger](#default-logger)
+      - [指定用于写入执行日志的可选路径](#指定用于写入执行日志的可选路径)
+      - [将测试执行的输出重定向到文件](#将测试执行的输出重定向到文件)
+    - [Attire Logger](#attire-logger)
+      - [将 Attire logs 导入 Vectr(TODO)](#将-attire-logs-导入-vectrtodo)
+    - [Syslog Logger](#syslog-logger)
+    - [WinEvent Logger](#winevent-logger)
+  - [攻击模拟](#攻击模拟)
+  - [可持续的 atomic testing](#可持续的-atomic-testing)
+    - [Setup and Configuration](#setup-and-configuration)
+      - [安装 `Atomic Red Team` 和 `Invoke-AtomicRedTeam`](#安装-atomic-red-team-和-invoke-atomicredteam)
+      - [使用 privateConfig.ps1 进行自定义配置](#使用-privateconfigps1-进行自定义配置)
+      - [运行 Invoke-SetupAtomicRunner](#运行-invoke-setupatomicrunner)
+  - [辅助函数](#辅助函数)
+  - [Atomic GUI](#atomic-gui)
+    - [启动 Atomic GUI](#启动-atomic-gui)
+  - [卸载](#卸载)
+
+---
+
 ## 安装
 
 > [Installing Invoke AtomicRedTeam · redcanaryco/invoke-atomicredteam Wiki --- 安装 Invoke AtomicRedTeam · redcanaryco/invoke-atomicredteam Wiki (github.com)](https://github.com/redcanaryco/invoke-atomicredteam/wiki/Installing-Invoke-AtomicRedTeam)
@@ -803,17 +848,90 @@ Invoke-AtomicTest T1218.010-1 -Cleanup
 $PSDefaultParameterValues = @{"Invoke-AtomicTest:LoggingModule"="Attire-ExecutionLogger"}
 ```
 
-或者也可以通过  [privateConfig.ps1 file](https://github.com/redcanaryco/invoke-atomicredteam/wiki/Continuous-Atomic-Testing#set-custom-config-using-privateconfigps1) 来设置 Logger 选项
+或者也可以通过  [privateConfig.ps1 file](#使用 privateConfig.ps1 进行自定义配置) 来设置 Logger 选项
 
+---
 
+#### 将 Attire logs 导入 Vectr(TODO)
 
-Click [here](https://www.youtube.com/watch?v=n-C9ovMFYnk) for a demo of importing the Attire logs into [Vectr](https://vectr.io/).
-单击此处查看将服装日志导入 Vectr 的演示。
+> Click [here](https://www.youtube.com/watch?v=n-C9ovMFYnk) for a demo of importing the Attire logs into [Vectr](https://vectr.io/).
 
-Looking for a way to merge multiple Attire logs into one file? Look [here](https://github.com/Retrospected/attire-merger)
-正在寻找一种将多个着装日志合并到一个文件中的方法？看这里
+```powershell
+Invoke-AtomicTest T1016 -CheckPrereqs
+Invoke-AtomicTest T1016 -GetPrereqs
+Invoke-AtomicTest T1016 -LoggingModule "Attire-ExecutionLogger" -ExecutionLogPath "timestamp.json"
+Invoke-AtomicTest T1016 -Cleanup
+```
 
+![image-20230921141313725](http://cdn.ayusummer233.top/DailyNotes/202309211413650.png)
 
+![image-20230921142333314](http://cdn.ayusummer233.top/DailyNotes/202309211423866.png)
+
+![image-20230921142924415](http://cdn.ayusummer233.top/DailyNotes/202309211429570.png)
+
+这个用例始终装不上, 使用系统是 mac 和 lin, 暂且搁置下
+
+![image-20230921143424015](http://cdn.ayusummer233.top/DailyNotes/202309211434169.png)
+
+![image-20230921144057691](http://cdn.ayusummer233.top/DailyNotes/202309211440852.png)
+
+> 和官方一样的操作, 但是无法导入, 有些奇怪, 后续再看看
+
+TODO: 需要把多个 Attire 日志合并到一起的话可以参考 [Retrospected/attire-merger](https://github.com/Retrospected/attire-merger)
+
+> 暂时没相关需求, 之后需要的时候再尝试下
+
+---
+
+### Syslog Logger
+
+除了使用 Default Logger 外还可以将执行的详细信息记录到 Syslog server; 可以在 `privateConfig.ps1` 中指定 Syslog 服务器和端口
+
+```powershell
+Invoke-AtomicTest T1218.010-1 -LoggingModule "Syslog-ExecutionLogger"
+Invoke-AtomicTest T1218.010-1 -Cleanup
+```
+
+Syslog 消息包含 Json 格式的字符串, 具体有如下信息:
+
+- Execution Time (UTC) 
+- Execution Time (Local) 
+- Technique 
+- Test Number
+- Test Name 
+- Hostname 
+- IP Address 
+- Username 
+- GUID 
+- Tag 
+- CustomTag 
+
+其中 Tag 设置为 atomicrunner，并且 CustomTag 可通过 `privateConfig.ps1` 进行配置。
+
+----
+
+### WinEvent Logger
+
+可以将执行的详细信息直接记录到 Windwos 事件日志中, 命令如下所示; 执行完后可以在 Windows 事件查看器的 `Application and Service Logs` 目录下的 `Atomic Red Team` 日志中找到执行的详细信息
+
+```powershell
+Invoke-AtomicTest T1218.010-1 -LoggingModule "WinEvent-ExecutionLogger"
+Invoke-AtomicTest T1218.010-1 -Cleanup
+```
+
+Note: 第一次使用 WinEvent Logger 时，需要以管理员身份执行此操作，以便创建 `Atomic Red Team` 日志。创建后便不再需要以管理员用户身份调用测试来获取记录的执行详细信息。
+
+![image-20230921150201738](http://cdn.ayusummer233.top/DailyNotes/202309211502434.png)
+
+---
+
+## 攻击模拟
+
+可以按照设定的顺序执行 atomic tests; Atomic Runner 支持基于 CSV 格式的 Atomic tests list, 该文件中药指定要运行的每个 atomic test, 且支持自定义输入参数以及执行的超时值(timeout values)
+
+这个脚本适用于 Windows, Linux 和 MacOS, 不过需要在 Linux/MacOS 上安装 Powershell Core 才能使用这些脚本
+
+> TODO: 需要的时候再继续记录
 
 ----
 
@@ -823,7 +941,175 @@ Looking for a way to merge multiple Attire logs into one file? Look [here](https
 
 Atomic Runner 功能支持在无人值守的情况下运行配置好的 atomic tests 列表, 以帮助生成预防与检测报告
 
-这些脚本设计上默认配置下每周会运行一次 CSV 配置中的所有测试; 在	
+这些脚本设计上默认配置下每周会运行一次 CSV 配置中的所有测试;这些脚本在运行每个 atomic  test 之前, 会将其 GUID 附加到 hostname 末尾, 以便更容易确定检测是从哪个 atomic test 触发的; 因为检测中会包括 GUID 和 hostname, 因此 Cleanup 命令也会在 test 执行完后根据 GUID 运行
+
+这个脚本适用于 Windows, Linux 和 MacOS, 不过需要在 Linux/MacOS 上安装 Powershell Core 才能使用这些脚本
+
+---
+
+### Setup and Configuration
+
+#### 安装 `Atomic Red Team` 和 `Invoke-AtomicRedTeam`
+
+```powershell
+IEX (IWR 'https://raw.githubusercontent.com/redcanaryco/invoke-atomicredteam/master/install-atomicredteam.ps1' -UseBasicParsing);
+Install-AtomicRedTeam -getAtomics -Force -noPayloads
+```
+
+PS(仅限Windows): 必须要 Atomic Runner 所在机器上禁用本地安全策略(`安全设置->本地策略-> 安全选项  "网络访问:不允许存储网络身份验证的密码和凭据"`)  才能允许创建计划任务
+
+![image-20230921103620728](http://cdn.ayusummer233.top/DailyNotes/202309211036485.png)
+
+![image-20230921103951539](http://cdn.ayusummer233.top/DailyNotes/202309211039706.png)
+
+---
+
+#### 使用 privateConfig.ps1 进行自定义配置
+
+`Invoke-AtomicRedTeam\Public` 目录下有个名为 `config.ps1` 的配置文件, 可以在 atomic 安装目录下创建 `privateConfig.ps1` 来修改该文件中的默认值
+
+![image-20230921110837441](http://cdn.ayusummer233.top/DailyNotes/202309211108170.png)
+
+| Configuration Variable <br>配置变量 | Description 描述                                                                                                                                                                                                                                                |
+| ----------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| PathToInvokeFolder                  | The folder containing the installed Invoke-AtomicRedTeam folder <br>包含已安装的 Invoke-AtomicRedTeam 文件夹的文件夹                                                                                                                                            |
+| PathToPublicAtomicsFolder           | The folder containing the installed atomics folder <br/>包含已安装的atomics文件夹的文件夹                                                                                                                                                                       |
+| PathToPrivateAtomics                | The folder containing your own private atomics (if any) <br/>包含您自己的私有原子的文件夹（如果有）                                                                                                                                                             |
+| user                                | The user/account that will be used to execute atomics <br/>将用于执行原子操作的用户/帐户                                                                                                                                                                        |
+| basePath                            | The path where you want the folder created that houses the logs and the runner schedule. <br/>您希望在其中创建包含日志和运行程序计划的文件夹的路径。                                                                                                            |
+| scheduleTimeSpan                    | The time span in which you want all of the atomics on your schedule to complete. <br/>您希望完成计划中所有原子操作的时间跨度。                                                                                                                                  |
+| scheduleFileName                    | The name of the csv file containing the schedule (list) of atomic tests to run. <br/>包含要运行的原子测试的计划（列表）的 csv 文件的名称。                                                                                                                      |
+| kickOffDelay                        | A delay (specified as a PowerShell Timespan object) to sleep before running the atomic <br/>运行原子之前的睡眠延迟（指定为 PowerShell Timespan 对象）                                                                                                           |
+| syslogServer                        | Set this to the name of your syslog server if you want to use the SysLog execution logger <br/>如果您想使用 SysLog 执行记录器，请将其设置为您的 syslog 服务器的名称                                                                                             |
+| syslogPort                          | The port for the syslog server (ignored if syslogServer not set) <br/>syslog 服务器的端口（如果未设置 syslogServer，则忽略）                                                                                                                                    |
+| syslogProtocol                      | The port for the network protocol to use with the syslog server (options are UDP, TCP, TCPwithTLS) <br/>与 syslog 服务器一起使用的网络协议的端口（选项包括 UDP、TCP、TCPwithTLS）                                                                               |
+| LoggingModule                       | The logging module to use for the atomic execution logs (e.g. Attire-ExecutionLogger, Syslog-ExecutionLogger or WinEvent-ExecutionLogger)<br/>用于原子执行日志的日志记录模块（例如 Attire-ExecutionLogger、Syslog-ExecutionLogger 或 WinEvent-ExecutionLogger） |
+| verbose                             | Set to `$true` for more output in the runner logs <br/>设置为 `$true` 以获得运行程序日志中的更多输出                                                                                                                                                            |
+| debug                               | Set to `$true` for additional output which will be added to a file called `all-out-<base hostname>.txt` <br/>设置为 `$true` 以获得额外输出，该输出将添加到名为 `all-out-<base hostname>.txt` 的文件中                                                           |
+| logFolder                           | Name of the folder that will be found in the basePath and contains the Runner logs <br/>将在 basePath 中找到并包含运行程序日志的文件夹的名称                                                                                                                    |
+| CustomTag                           | A string that you want sent with each execution log sent to the SysLog logger <br/>您希望与发送到 SysLog 记录器的每个执行日志一起发送的字符串                                                                                                                   |
+| absb                                | An optional AMSI bypass script block that will be run before each atomic (Windows Only) <br/>将在每个原子之前运行的可选 AMSI 绕过脚本块（仅限 Windows）                                                                                                         |
+| gmsaAccount                         | A group managed service account to use for renaming the host if required (Windows Only) <br/>如果需要，用于重命名主机的组托管服务帐户（仅限 Windows）                                                                                                           |
+
+默认值表:
+
+|           config variable 配置变量           |    default (Windows) 默认（Windows）    | default (Linux/macOS) 默认（Linux/macOS） |
+| :------------------------------------------: | :-------------------------------------: | :---------------------------------------: |
+|              PathToInvokeFolder              | `C:\AtomicRedTeam\Invoke-AtomicRedTeam` |  `~/AtomicRedTeam/Invoke-AtomicRedTeam`   |
+| PathToPublicAtomicsFolder 公共原子文件夹路径 |       `C:\AtomicRedTeam\atomics`        |         `~/AtomicRedTeam/atomics`         |
+|             PathToPrivateAtomics             |       `C:\PrivateAtomics\atomics`       |        `~/PrivateAtomics/atomics`         |
+|                     user                     |     `$env:USERDOMAIN\$env:USERNAME`     |                `$env:USER`                |
+|                   basePath                   |               `$env:HOME`               |            `$env:USERPROFILE`             |
+|               scheduleTimeSpan               |                 7 days                  |                  7 days                   |
+|               scheduleFileName               |       `AtomicRunnerSchedule.csv `       |        `AtomicRunnerSchedule.csv `        |
+|                 kickOffDelay                 |                0 minutes                |                 0 minutes                 |
+|         syslogServer 系统日志服务器          |                                         |                                           |
+|                  syslogPort                  |                   514                   |                    514                    |
+|                syslogProtocol                |                   UDP                   |                    UDP                    |
+|                LoggingModule                 |         Default-ExecutionLogger         |          Default-ExecutionLogger          |
+|                   verbose                    |                `$false`                 |                 `$false`                  |
+|                    debug                     |                `$false`                 |                 `$false`                  |
+|                  logFolder                   |            AtomicRunner-Logs            |             AtomicRunner-Logs             |
+|                  CustomTag                   |                                         |                                           |
+|                     absb                     |                 `$null`                 |                  `$null`                  |
+|                 gmsaAccount                  |                 `$null`                 |                  `$null`                  |
+
+----
+
+`privateConfig.ps1` 实例:
+
+```powershell
+$artConfig | Add-Member -Force -NotePropertyMembers @{
+  PathToPrivateAtomics = "C:\MyPrivateAtomics\atomics"
+  scheduleTimeSpan = New-TimeSpan -Days 1 
+  verbose = $true
+  LoggingModule = "WinEvent-ExecutionLogger"
+}
+```
+
+Note: 必须启动新的 Powershell 窗口才能使 privateConfig 文件的更改生效
+
+---
+
+#### 运行 Invoke-SetupAtomicRunner
+
+```powershell
+# Run Invoke-SetupAtomicRunner as the runner user (from admin prompt)
+Invoke-SetupAtomicRunner
+```
+
+Note: 在 Windwos 上, 系统会提示输入将运行 atomics 的用户凭据
+
+这个 setup 脚本将会执行如下操作:
+
+> TODO: 需要使用的时候再继续记录
+
+---
+
+## 辅助函数
+
+如下辅助函数由于主简化 atomic test creation
+
+- [New Atomic* Technique Test Creation Functions](https://github.com/redcanaryco/invoke-atomicredteam/wiki/New-Atomic*-Technique-Test-Creation-Functions)
+
+  一组有助于使用本机 PowerShell 创建和验证原子技术和测试的函数
+
+- [Invoke WebRequestVerifyHash](https://github.com/redcanaryco/invoke-atomicredteam/wiki/Invoke-WebRequestVerifyHash)
+
+  作为 GetPrereq 命令的一部分，可在下载前验证 Prereq 文件。
+
+[Iterate through Atomic Tests Programmatically · redcanaryco/invoke-atomicredteam Wiki --- 以编程方式迭代原子测试 · redcanaryco/invoke-atomicredteam Wiki (github.com)](https://github.com/redcanaryco/invoke-atomicredteam/wiki/Iterate-through-Atomic-Tests-Programmatically)
+
+如上述实例所示, 可以使用 `Get-AtomicTechnique` 函数以编程方式迭代原子测试
+
+----
+
+## Atomic GUI
+
+Atomic GUI 通过提供一个可以填写以生成 YAML 测试定义的 Web 表单来帮助创建新的 atomic  test。
+
+然后可以将此 YAML 复制并粘贴到相应技术编号（例如 T1003）的 YAML 中，以便添加新的原子测试。下面提供了使用 Atomic GUI 的说明。
+
+---
+
+### 启动 Atomic GUI
+
+```powershell
+Start-AtomicGUI
+```
+
+![image-20230921151923155](http://cdn.ayusummer233.top/DailyNotes/202309211519834.png)
+
+![image-20230921151947530](http://cdn.ayusummer233.top/DailyNotes/202309211519682.png)
+
+> TODO: 看样子只是为写 yaml 提供了一个 UI, 暂时用不到, 后续需要再继续记录
+
+---
+
+## 卸载
+
+需要卸载 Atomic Red Team 的话, 只需要删除默认安装目录 `<BASEPATH>\AtomicRedTeam`, 其中 `<BASEPATH>` 在 Windows 上为 `C:`, 在 Linux/MacOS 上为 `~`
+
+再明确些的话, 还可以卸载 Invoke-AtomicRedTeam 一起安装的 `powershell-yaml` 模块; 先关闭所有的 Powershell session, 然后从 CMD(Win) 或 Terminal(Lin/Mac) 运行如下命令
+
+```powershell
+powershell -NoProfile -Command "Uninstall-Module powershell-yaml" # this is for Windows
+pwsh -NoProfile -Command "Uninstall-Module powershell-yaml" # this is for macOS/Linux
+```
+
+----
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
