@@ -9,3 +9,38 @@
 [FindSomething - Chrome 应用商店 (google.com)](https://chrome.google.com/webstore/detail/findsomething/kfhniponecokdefffkpagipffdefeldb)
 
 ![image-20230727224129911](http://cdn.ayusummer233.top/DailyNotes/202307272241749.png)
+
+---
+
+## 子域名查询
+
+> [Subdomain Center | ARPSyndicate](https://www.subdomain.center/)
+
+```http
+http://api.subdomain.center/?domain=x.com
+```
+
+将上述 URL 中的 Query 参数 domain 修改为需要查询的域名并请求即可
+
+![image-20231009144647105](http://cdn.ayusummer233.top/DailyNotes/202310091446212.png)
+
+---
+
+## IP 地址查询
+
+> [The trusted source for IP address data, leading IP data provider - IPinfo.io](https://ipinfo.io/)
+>
+> [ipapi.is --- ipapi.is](https://ipapi.is/)
+
+```powershell
+curl "ipinfo.io/103.142.141.76?token=ea371af279e38a"
+```
+
+![image-20231009173614611](http://cdn.ayusummer233.top/DailyNotes/202310091736872.png)
+
+```bash
+curl 'https://api.ipapi.is?q=32.5.140.2&key=xxx'
+```
+
+![image-20231009174039094](http://cdn.ayusummer233.top/DailyNotes/202310091740160.png)
+
