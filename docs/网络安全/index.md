@@ -40,6 +40,56 @@
 
 ---
 
+## 常见端口梳理
+
+> [De Facto Ports  (matt-rickard.com)](https://matt-rickard.com/de-facto-ports)
+
+大多数应用程序通过 TCP 或 UDP 端口进行通信。端口 0-1023 通常具有特权，需要管理员或超级用户访问权限才能将网络套接字绑定到具有相应端口的 IP
+
+不过 1024 及以上的端口则是可以自由分配的, 在 [De Facto Ports  (matt-rickard.com)](https://matt-rickard.com/de-facto-ports) 中, 作者汇总了 2023 年生产环境中常见的默认端口, 发现了一些有趣的现象:
+
+- 奇数且易于记忆的端口常用于开发服务器; 3000, 5000, 9000 在一体式 Web 框架中比较常见
+- 具有相关特权应用程序端口(如 SMTP, DNS) 的应用程序有时会使用重复的字符串(例如 多播DNS 为 5353, SMTP 为 3535, Web 服务器为 8080)
+- 除此以外, 似乎趋势上会选择一个低熵数字(例如 Jupyter 的 8888) 或一个完全随机的不太可能引起冲突的数字 (例如 Minecraft 的 25365) 来作为端口号使用
+
+常见的还有
+
+| 端口号 |                             应用                             |
+| :----: | :----------------------------------------------------------: |
+|  1080  |                          SOCK Proxy                          |
+|  2049  |           Network File System (NFS)(网络文件系统 )           |
+|  2181  |                       Apache ZooKeeper                       |
+|  2375  |                    Docker REST API (HTTP)                    |
+|  2376  |                   Docker REST API (HTTPS)                    |
+|  3000  | 开发框架的常用端口<br>Ruby on Rails 使用端口 3000 作为其 Web 服务器的默认开发端口<br>Node 框架也常使用此端口（例如 Express.js、Meteor、Create React App、NextJS、SvelteJS、Astro、Remix） |
+|  3306  |                            MySQL                             |
+|  3478  |                  STUN, TURN (NAT Traversal)                  |
+|  4000  | Phoenix, Jekyll<br>(二者都是网站生成器, 后者还可以直接部署在 Github Pages 上) |
+|  4001  |                             etcd                             |
+|  4200  |                          AngularJS                           |
+|  4567  |                           Sinatra                            |
+|  5000  | 也是开发框架的常见端口<br>Flask (Python) 使用 5000 作为默认开发端口。 ASP.NET Core 也是如此 |
+|  5222  | XMPP (Extensible Messaging and Presence Protocol)(XMPP (Extensible Messaging and Presence Protocol)) |
+|  5349  |                     STUN, TURN over TLS                      |
+|  5353  | Multicast DNS(多播DNS) --- 遵循与 SMTP 相同的模式, 偶尔在端口 3535 上运行. 复制特权端口(DNS 使用 53) |
+|  5432  |                          PostgreSQL                          |
+|  5900  |                             VNC                              |
+|  6000  |                             X11                              |
+|  6379  |                             6379                             |
+|  6660  |                  IRC (Internet Relay Chat)                   |
+|  6881  |                          BitTorrent                          |
+|  8000  | Python 开发框架常用端口<br>包括 Django 和 Python3  的 http.server |
+|  8080  |                   HTTP Web 服务器常用端口                    |
+|  8333  |                           Bitcoin                            |
+|  8888  |                       Jupyter Notebook                       |
+|  8983  |                         Apache Solr                          |
+|  9000  |    被各种应用程序使用，但没有中心主题或非常知名的应用程序    |
+| 25565  |                          Minecraft                           |
+| 27017  |                           MongoDB                            |
+| 51820  |                          WireGuard                           |
+
+---
+
 ## 环境搭建
 
 ---
