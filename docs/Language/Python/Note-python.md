@@ -5,6 +5,7 @@
     - [python 简介](#python-简介)
       - [什么是编译](#什么是编译)
       - [Python 的工作原理](#python-的工作原理)
+    - [当前 python 各版本的使用情况](#当前-python-各版本的使用情况)
   - [换源操作](#换源操作)
   - [`code2flow` ---- 根据 python 代码生成项目结构及函数调用图](#code2flow------根据-python-代码生成项目结构及函数调用图)
     - [概述(摘自项目README)](#概述摘自项目readme)
@@ -113,6 +114,8 @@
           - [else语句](#else语句)
           - [finally语句](#finally语句)
           - [示例](#示例-3)
+  - [建站工具](#建站工具)
+    - [Reflex](#reflex)
   - [报错收集](#报错收集)
     - [no module named ‘pip’](#no-module-named-pip)
 
@@ -188,6 +191,7 @@ pip install -i https://pypi.tuna.tsinghua.edu.cn/simple --upgrade pip
 
 -----
 ## `code2flow` ---- 根据 python 代码生成项目结构及函数调用图
+
 - [code2flow 仓库](https://github.com/scottrogowski/code2flow)
 
 ---
@@ -1373,27 +1377,27 @@ del dict          # 删除字典
   open(file, mode='r', buffering=-1, encoding=None,
        errors=None, newline=None, closefd=True, opener=None)
   ```
-| 模式 | 说明 |
-| -- | -- |
-| r | 读模式（默认模式，可省略），如果文件不存在，抛出异常 |
-| w | 写模式，如果文件已存在，先清空原有内容；如果文件不存在，创建新文件 |
-| x | 写模式，创建新文件，如果文件已存在则抛出异常 |
-| a | 追加模式，不覆盖文件中原有内容 |
-| b | 二进制模式(可与r、w、x或a模式组合使用) |
-| t | 文本模式（默认模式，可省略） |
-| + | 读、写模式（可与其他模式组合使用） |
+| 模式 | 说明                                                               |
+| ---- | ------------------------------------------------------------------ |
+| r    | 读模式（默认模式，可省略），如果文件不存在，抛出异常               |
+| w    | 写模式，如果文件已存在，先清空原有内容；如果文件不存在，创建新文件 |
+| x    | 写模式，创建新文件，如果文件已存在则抛出异常                       |
+| a    | 追加模式，不覆盖文件中原有内容                                     |
+| b    | 二进制模式(可与r、w、x或a模式组合使用)                             |
+| t    | 文本模式（默认模式，可省略）                                       |
+| +    | 读、写模式（可与其他模式组合使用）                                 |
 
 ---
 #### 文件对象常用方法
-| 方法 | 功能说明 |
-| -- | -- |
-| close() | 把缓冲区的内容写入文件，同时关闭文件，释放文件对象 |
-| read([size]) | 从文本文件中读取并返回size个字符，或从二进制文件中读取并返回size个字节，省略size参数表示读取文件中全部内容 |
-| readline() | 从文本文件中读取并返回一行内容 |
-| readlines() | 返回包含文本文件中每行内容的列表 |
+| 方法                      | 功能说明                                                                                                                                                                                                 |
+| ------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| close()                   | 把缓冲区的内容写入文件，同时关闭文件，释放文件对象                                                                                                                                                       |
+| read([size])              | 从文本文件中读取并返回size个字符，或从二进制文件中读取并返回size个字节，省略size参数表示读取文件中全部内容                                                                                               |
+| readline()                | 从文本文件中读取并返回一行内容                                                                                                                                                                           |
+| readlines()               | 返回包含文本文件中每行内容的列表                                                                                                                                                                         |
 | seek(cookie, whence=0, /) | 定位文件指针，把文件指针移动到相对于whence的偏移量为cookie的位置。其中whence为0表示文件头，1表示当前位置，2表示文件尾。对于文本文件，whence=2时cookie必须为0；对于二进制文件，whence=2时cookie可以为负数 |
-| write(s) | 把s的内容写入文件，如果写入文本文件则s应该是字符串，如果写入二进制文件则s应该是字节串 |
-| writelines(s) | 把列表s中的所有字符串写入文本文件，并不在s中每个字符串后面自动增加换行符。也就是说，如果确实想让s中的每个字符串写入文本文件之后各占一行，应由程序员保证每个字符串以换行符结束 |
+| write(s)                  | 把s的内容写入文件，如果写入文本文件则s应该是字符串，如果写入二进制文件则s应该是字节串                                                                                                                    |
+| writelines(s)             | 把列表s中的所有字符串写入文本文件，并不在s中每个字符串后面自动增加换行符。也就是说，如果确实想让s中的每个字符串写入文本文件之后各占一行，应由程序员保证每个字符串以换行符结束                            |
 
 #### 上下文管理语句with
 - 在实际开发中，读写文件应优先考虑使用上下文管理语句with。关键字with可以自动管理资源，不论因为什么原因跳出with块，总能保证文件被正确关闭。除了用于文件操作，with关键字还可以用于数据库连接、网络连接或类似场合。用于文件内容读写时，with语句的语法形式如下：
@@ -1499,56 +1503,56 @@ Wed
 
 
 ---
-| 异常名称 | 描述 |
-| -- | -- |
-| BaseException |	所有异常的基类 |
-| SystemExit |	解释器请求退出
-| KeyboardInterrupt	| 用户中断执行(通常是输入^C)
-| Exception	| 常规错误的基类
-| StopIteration	| 迭代器没有更多的值
-| GeneratorExit	| 生成器(generator)发生异常来通知退出
-| SystemExit	| Python 解释器请求退出
-| StandardError	| 所有的内建标准异常的基类
-| ArithmeticError	| 所有数值计算错误的基类
-| FloatingPointError | 浮点计算错误
-| OverflowError	| 数值运算超出最大限制
-| ZeroDivisionError	| 除(或取模)零 (所有数据类型)
-| AssertionError | 断言语句失败
-| AttributeError	| 对象没有这个属性
-| EOFError | 没有内建输入,到达EOF 标记
-| EnvironmentError | 操作系统错误的基类
-| IOError	| 输入/输出操作失败
-| OSError	| 操作系统错误
-| WindowsError |	系统调用失败
-| ImportError	| 导入模块/对象失败
-| KeyboardInterrupt	| 用户中断执行(通常是输入^C)
-| LookupError	| 无效数据查询的基类
-| IndexError	| 序列中没有没有此索引(index)【越界】
-| KeyError	| 映射中没有这个键
-| MemoryError	| 内存溢出错误(对于Python 解释器不是致命的)
-| NameError	| 未声明/初始化对象 (没有属性)
-| UnboundLocalError	| 访问未初始化的本地变量
-| ReferenceError	| 弱引用(Weak reference)试图访问已经垃圾回收了的对象
-| RuntimeError |	一般的运行时错误
-| NotImplementedError	| 尚未实现的方法
-| SyntaxError	| Python 语法错误
-| IndentationError |	缩进错误
-| TabError	| Tab 和空格混用
-|SystemError|	一般的解释器系统错误
-|TypeError	|对类型无效的操作
-|ValueError	|传入无效的参数
-|UnicodeError	|Unicode 相关的错误
-|UnicodeDecodeError|	Unicode 解码时的错误
-|UnicodeEncodeError|	Unicode 编码时错误
-|UnicodeTranslateError|	Unicode 转换时错误
-|Warning|	警告的基类
-|DeprecationWarning	|关于被弃用的特征的警告
-|FutureWarning	|关于构造将来语义会有改变的警告
-|OverflowWarning	|旧的关于自动提升为长整型(long)的警告
-|PendingDeprecationWarning	|关于特性将会被废弃的警告
-|RuntimeWarning|	可疑的运行时行为(runtime behavior)的警告
-|SyntaxWarning|	可疑的语法的警告
-|UserWarning	|用户代码生成的警告
+| 异常名称                  | 描述                                               |
+| ------------------------- | -------------------------------------------------- |
+| BaseException             | 所有异常的基类                                     |
+| SystemExit                | 解释器请求退出                                     |
+| KeyboardInterrupt         | 用户中断执行(通常是输入^C)                         |
+| Exception                 | 常规错误的基类                                     |
+| StopIteration             | 迭代器没有更多的值                                 |
+| GeneratorExit             | 生成器(generator)发生异常来通知退出                |
+| SystemExit                | Python 解释器请求退出                              |
+| StandardError             | 所有的内建标准异常的基类                           |
+| ArithmeticError           | 所有数值计算错误的基类                             |
+| FloatingPointError        | 浮点计算错误                                       |
+| OverflowError             | 数值运算超出最大限制                               |
+| ZeroDivisionError         | 除(或取模)零 (所有数据类型)                        |
+| AssertionError            | 断言语句失败                                       |
+| AttributeError            | 对象没有这个属性                                   |
+| EOFError                  | 没有内建输入,到达EOF 标记                          |
+| EnvironmentError          | 操作系统错误的基类                                 |
+| IOError                   | 输入/输出操作失败                                  |
+| OSError                   | 操作系统错误                                       |
+| WindowsError              | 系统调用失败                                       |
+| ImportError               | 导入模块/对象失败                                  |
+| KeyboardInterrupt         | 用户中断执行(通常是输入^C)                         |
+| LookupError               | 无效数据查询的基类                                 |
+| IndexError                | 序列中没有没有此索引(index)【越界】                |
+| KeyError                  | 映射中没有这个键                                   |
+| MemoryError               | 内存溢出错误(对于Python 解释器不是致命的)          |
+| NameError                 | 未声明/初始化对象 (没有属性)                       |
+| UnboundLocalError         | 访问未初始化的本地变量                             |
+| ReferenceError            | 弱引用(Weak reference)试图访问已经垃圾回收了的对象 |
+| RuntimeError              | 一般的运行时错误                                   |
+| NotImplementedError       | 尚未实现的方法                                     |
+| SyntaxError               | Python 语法错误                                    |
+| IndentationError          | 缩进错误                                           |
+| TabError                  | Tab 和空格混用                                     |
+| SystemError               | 一般的解释器系统错误                               |
+| TypeError                 | 对类型无效的操作                                   |
+| ValueError                | 传入无效的参数                                     |
+| UnicodeError              | Unicode 相关的错误                                 |
+| UnicodeDecodeError        | Unicode 解码时的错误                               |
+| UnicodeEncodeError        | Unicode 编码时错误                                 |
+| UnicodeTranslateError     | Unicode 转换时错误                                 |
+| Warning                   | 警告的基类                                         |
+| DeprecationWarning        | 关于被弃用的特征的警告                             |
+| FutureWarning             | 关于构造将来语义会有改变的警告                     |
+| OverflowWarning           | 旧的关于自动提升为长整型(long)的警告               |
+| PendingDeprecationWarning | 关于特性将会被废弃的警告                           |
+| RuntimeWarning            | 可疑的运行时行为(runtime behavior)的警告           |
+| SyntaxWarning             | 可疑的语法的警告                                   |
+| UserWarning               | 用户代码生成的警告                                 |
 
 ---
 ### 异常处理机制
@@ -1673,7 +1677,7 @@ finally:
 
 ---
 
-### 建站工具
+## 建站工具
 
 ### Reflex
 
