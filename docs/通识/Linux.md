@@ -813,6 +813,71 @@ du -hsm .
 
 ## 网络
 
+----
+
+### NetworkManager
+
+> [NetworkManager - 维基百科，自由的百科全书 (wikipedia.org)](https://zh.wikipedia.org/wiki/NetworkManager)
+>
+> [NetworkManager - Arch Linux 中文维基 (archlinuxcn.org)](https://wiki.archlinuxcn.org/wiki/NetworkManager?rdfrom=https%3A%2F%2Fwiki.archlinux.org%2Findex.php%3Ftitle%3DNetworkManager_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)%26redirect%3Dno)
+
+NetworkManager 是 RedHat 公司在 2004 年发起的项目, 目标是让 Linux 用户能够更容易地处理现代的网络需求
+
+对于旧有的 `ifupdown` 和 `/etc/network/interfaces` 配置而言, NetworkManager 提供了一个用户友好的 GUI, 让用户能够更轻松地管理网络连接和配置
+
+- 列出所有连接
+
+  ```bash
+  nmcli connection show
+  ```
+
+  ![image-20231011094043329](http://cdn.ayusummer233.top/DailyNotes/202310110940549.png)
+
+- 查看特定连接的详细信息
+
+  ```bash
+  nmcli connection show "连接名称"
+  ```
+
+  ![image-20231011094222201](http://cdn.ayusummer233.top/DailyNotes/202310110942198.png)
+
+- 修改连接属性
+
+  ```bash
+  nmcli connection modify "连接名称" 属性 值
+  ```
+
+- 启用/禁用连接
+
+  ```bash
+  nmcli connection up "连接名称"
+  nmcli connection down "连接名称"
+  ```
+
+- 删除连接
+
+  ```bash
+  nmcli connection delete "连接名称"
+  ```
+
+---
+
+除了用命令行操作连接配置外, NetworkManager 也可以通过修改文件并重新加载网络配置
+
+NetworkManager 的配置文件通常存储在 `/etc/NetworkManager/system-connections` 目录下, 每个连接对应一个配置文件
+
+![image-20231011103622777](http://cdn.ayusummer233.top/DailyNotes/202310111036902.png)
+
+![image-20231011103648130](http://cdn.ayusummer233.top/DailyNotes/202310111036655.png)
+
+修改完成后保存, 然后重启网络服务使修改生效:
+
+```bash
+sudo systemctl restart NetworkManager
+```
+
+----
+
 ### 启用与禁用网卡
 
 ```bash
