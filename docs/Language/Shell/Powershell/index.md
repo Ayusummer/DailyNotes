@@ -231,3 +231,156 @@ powershell -noP -sta -w 1 -enc  CgAjACAAwGjlZyAAUABvAHcAZQByAFMAaABlAGwAbAAgAEhy
 
 ![image-20230831181105944](http://cdn.ayusummer233.top/DailyNotes/202308311811637.png)
 
+---
+
+## 远程连接
+
+> [Enable-PSRemoting (Microsoft.PowerShell.Core) - PowerShell | Microsoft Learn --- 启用-PSRemoting (Microsoft.PowerShell.Core) - PowerShell |微软学习](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/enable-psremoting?view=powershell-7.3&source=docs)
+>
+> [WinRM の TrastedHosts にホストを追加 / 確認 / 削除する : Windows Tips | iPentec](https://www.ipentec.com/document/windows-windows-10-add-winrm-trasted-hosts)
+>
+> [WS-Management (WSMan) Remoting in PowerShell - PowerShell | Microsoft Learn --- PowerShell 中的 WS-Management (WSMan) 远程处理 - PowerShell |微软学习](https://learn.microsoft.com/en-us/powershell/scripting/learn/remoting/wsman-remoting-in-powershell-core?view=powershell-7.3)
+
+如果本地和远程都是 Windows 的话, 需要在本地和远程 Windows 上启用 PS Remoteing
+
+![image-20230918163201801](http://cdn.ayusummer233.top/DailyNotes/202310121357162.png)
+
+然后将远程主机加入到本地 TrustedHosts 中来信任该远程主机
+
+```powershell
+Set-Item wsman:\localhost\Client\TrustedHosts -Value "远程主机ip" -Force
+```
+
+连接远程主机:
+
+```powershell
+$sess = New-PSSession -ComputerName [远程主机名或ip] -Credential domain\username
+```
+
+![image-20231012135531500](http://cdn.ayusummer233.top/DailyNotes/202310121357082.png)
+
+可以通过 `Get-PSSession` 来查看已建立的 session
+
+```powershell
+Get-PSSession
+```
+
+![image-20230919105638522](http://cdn.ayusummer233.top/DailyNotes/202310121357071.png)
+
+要释放这个 session 可以使用 `Remove-PSSession` 命令
+
+```powershell
+Remove-PSSession $sess
+```
+
+---
+
+可以使用如下命令通过 powershell remote session 执行命令:
+
+```powershell
+Invoke-Command -Session $sess -ScriptBlock {
+  # 在远程计算机上执行的命令
+  pip -V
+}
+```
+
+![image-20231012140559947](http://cdn.ayusummer233.top/DailyNotes/202310121406001.png)
+
+可以看到无法识别 pip, 然而远程主机上是有 pip  的:
+
+![image-20231012140646679](http://cdn.ayusummer233.top/DailyNotes/202310121406724.png)
+
+这是因为 PSSession 不会自动加载环境变量, 因此还需要加载一下环境变量, 以加载系统环境变量(而非用户环境变量) 为例
+
+```powershell
+# 读取系统环境变量
+$envVariables = [System.Environment]::GetEnvironmentVariables([System.EnvironmentVariableTarget]::Machine)
+    
+foreach ($envVariable in $envVariables.GetEnumerator()) {
+    # 这里需要判空, 因为 SetEnviromentVariable 函数不支持空值, 会报错并退出
+    if (![string]::IsNullOrWhiteSpace($envVariable.Value)) {
+        # 将这些环境变量加载到当前 powershell 进程环境变量中
+        [System.Environment]::SetEnvironmentVariable($envVariable.Key, $envVariable.Value, [System.EnvironmentVariableTarget]::Process)
+    }
+}
+```
+
+![image-20231012140818961](http://cdn.ayusummer233.top/DailyNotes/202310121408024.png)
+
+可以看到加载完环境变量就能成功识别 pip 了
+
+> 此外, 如果明确知道只需要加载部分环境, 比如只需要加载系统环境中的 Path 变量的话就可以如下操作:
+>
+> ```powershell
+> [System.Environment]::SetEnvironmentVariable("Path", [System.Environment]::GetEnvironmentVariable("Path", [System.EnvironmentVariableTarget]::Machine), [System.EnvironmentVariableTarget]::Process)
+> ```
+>
+> ![image-20231012142257950](http://cdn.ayusummer233.top/DailyNotes/202310121422009.png)
+
+---
+
+## 制作提示窗口
+
+> [PowerShell制作提示窗口_powershell怎么创建弹窗消息-CSDN博客](https://blog.csdn.net/weixin_39802884/article/details/119250927)
+
+可以使用 `WScript.Shell` 对象制作消息弹窗
+
+```powershell
+$ws = New-Object -ComObject WScript.Shell
+```
+
+然后使用期 `Popup` 方法进行弹窗
+
+```powershell
+object.Popup(strText,[nSecondsToWait],[strTitle],[nType])
+```
+
+-  `strText` ：消息窗口所包含的文本信息；
+- `nSecondsToWait`：等待n秒后该窗口自动关闭，如设置为0，则永不会自动关闭；
+- `strTitle`：消息窗口的标题；
+- `nType`：消息窗口的按钮类型及其图标
+
+按钮类型:
+
+|  值  |             描述             |
+| :--: | :--------------------------: |
+|  0   |        显示“确定”按钮        |
+|  1   |    显示“确定”+“取消”按钮     |
+|  2   | 显示“终止”+“重试”+“忽略”按钮 |
+|  3   |   显示“是”+“否”+“取消”按钮   |
+|  4   |      显示“是”+“否”按钮       |
+|  5   |    显示“重试”+“取消”按钮     |
+|  6   | 显示“重试”+“取消”+“继续”按钮 |
+
+图标类型:
+
+|  值  |                             描述                             |
+| :--: | :----------------------------------------------------------: |
+|  16  | ![img](http://cdn.ayusummer233.top/DailyNotes/202310121739545.png) |
+|  32  | ![img](http://cdn.ayusummer233.top/DailyNotes/202310121739063.png) |
+|  48  | ![img](http://cdn.ayusummer233.top/DailyNotes/202310121739057.png) |
+|  64  | ![img](http://cdn.ayusummer233.top/DailyNotes/202310121739923.png) |
+
+例如:
+
+```powershell
+$ws = New-Object -ComObject WScript.Shell
+$wsr = $ws.popup("你好吗？",0,"我的窗口",1 + 16)
+```
+
+![image-20231012174103646](http://cdn.ayusummer233.top/DailyNotes/202310121741317.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
