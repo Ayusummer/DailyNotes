@@ -370,6 +370,18 @@ $wsr = $ws.popup("你好吗？",0,"我的窗口",1 + 16)
 
 ![image-20231012174103646](http://cdn.ayusummer233.top/DailyNotes/202310121741317.png)
 
+---
+
+## 输出信息
+
+```powershell
+Write-Host "未检测到Microsoft Word， 请稍后手动安装 ＞︿＜" -ForegroundColor:Red -BackgroundColor:Black
+```
+
+![image-20231013142353601](http://cdn.ayusummer233.top/DailyNotes/202310131423079.png)
+
+---
+
 
 
 
