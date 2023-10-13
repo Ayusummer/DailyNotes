@@ -14,6 +14,7 @@ Invoke-AtomicRedTeam 是一个 PowerShell 模块，用于执行 Red Canary 的 A
 
 - [Atomic Red Team](#atomic-red-team)
   - [安装](#安装)
+    - [离线安装](#离线安装)
   - [展示 Atomic 测试用例列表](#展示-atomic-测试用例列表)
   - [检查先决条件](#检查先决条件)
   - [在本地执行 atomic tests](#在本地执行-atomic-tests)
@@ -134,6 +135,12 @@ $PSDefaultParameterValues = @{"Invoke-AtomicTest:PathToAtomicsFolder"="C:\Atomic
 这样打开新的 powershell 的时候依旧可以识别到 atomic 相关模块
 
 ![image-20230915151510956](http://cdn.ayusummer233.top/DailyNotes/202309151515029.png)
+
+---
+
+### 离线安装
+
+
 
 ----
 
@@ -455,6 +462,10 @@ foreach ($technique in $techniques) {
 > 这个虚拟机加了两张卡, 一张用来连公网, 一张用来连内网, 这里由于公网那张卡开 WinRM 失败了, 因此暂且将其禁用了
 >
 > 除此以外, 文档中还提到了这种情况下也可以通过使用  `-SkipNetworkProfileCheck` 来跳过此项验证
+
+```powershell
+Enable-PSRemoting
+```
 
 ![image-20230918163201801](http://cdn.ayusummer233.top/DailyNotes/202309181632947.png)
 
