@@ -150,3 +150,33 @@ sysmon64 -i
 
 ![image-20230917203613487](http://cdn.ayusummer233.top/DailyNotes/202309172036546.png)
 
+---
+
+## 域渗透
+
+### 域内提权-42278/42287
+
+> [域内提权漏洞CVE-2021-42287与CVE-2021-42278原理分析 - FreeBuf网络安全行业门户](https://www.freebuf.com/vuls/317773.html)
+>
+> [safebuffer/sam-the-admin: Exploiting CVE-2021-42278 and CVE-2021-42287 to impersonate DA from standard domain user --- safebuffer/sam-the-admin：利用 CVE-2021-42278 和 CVE-2021-42287 来模拟标准域用户的 DA (github.com)](https://github.com/safebuffer/sam-the-admin?tab=readme-ov-file)
+>
+> [eXploit – CVE-2021-42287/CVE-2021-42278 Weaponisation --- eXploit – CVE-2021-42287/CVE-2021-42278 武器化](https://exploit.ph/cve-2021-42287-cve-2021-42278-weaponisation.html)
+>
+> [CVE-2021-42278&42287（域控）漏洞分析与利用 | KB-AT的博客 (kb-at-zero.github.io)](https://kb-at-zero.github.io/2021/12/19/CVE-2021-42278-42287（域控）漏洞分析与利用/)
+
+适用范围: 未打补丁的 Winserver, 具体可参阅上述连接, 似乎 winserver 2012  - 2022 都有覆盖
+
+拿到一个域用户后, 保证当前 kali 主机能够连通域控主机, 使用 [safebuffer/sam-the-admin](https://github.com/safebuffer/sam-the-admin?tab=readme-ov-file) 中的脚本来 getshell
+
+```bash
+python sam_the_admin.py "域/用户:密码" -dc-ip [域控ip] -shell
+```
+
+![image-20231019165850749](http://cdn.ayusummer233.top/DailyNotes/202310191658100.png)
+
+> PS: Python 3.11 安装 `impacket==0.9.24` 会出错, 建议使用 Python3.10
+
+---
+
+
+
