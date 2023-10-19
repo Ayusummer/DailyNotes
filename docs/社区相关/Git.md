@@ -13,6 +13,8 @@
     - [常规操作](#常规操作)
     - [分支操作](#分支操作)
     - [查看某个文件变动的所有历史记录](#查看某个文件变动的所有历史记录)
+    - [强制拉取远程更新覆盖本地仓库](#强制拉取远程更新覆盖本地仓库)
+    - [批量修改提交名称与邮箱](#批量修改提交名称与邮箱)
   - [relations](#relations)
     - [code996](#code996)
   - [learnGitBranching](#learngitbranching)
@@ -193,6 +195,45 @@ git log -- [file_path]
 得到 commit id 之后就可以根据这个 id 查询对应的提交记录了
 
 ![image-20230208171115272](http://cdn.ayusummer233.top/DailyNotes/202302081711208.png)
+
+---
+
+### 强制拉取远程更新覆盖本地仓库
+
+```bash
+git fetch --all
+git reset --hard origin/main
+git pull
+```
+
+![image-20231019233415081](http://cdn.ayusummer233.top/DailyNotes/202310192334112.png)
+
+---
+
+### 批量修改提交名称与邮箱
+
+```powershell
+# 遍历仓库中的所有提交, 将指定的提交者的名字和邮箱修改为新的名字和邮箱
+git filter-branch --env-filter '
+if [ "$GIT_COMMITTER_EMAIL" = "origin_email" ]; then
+    export GIT_COMMITTER_EMAIL="new_email
+fi
+if [ "$GIT_AUTHOR_EMAIL" = "origin_email" ]; then
+    export GIT_AUTHOR_EMAIL="new_email"
+fi
+if [ "$GIT_COMMITTER_NAME" = "origin_name" ]; then
+    export GIT_COMMITTER_NAME="new_name"
+fi
+if [ "$GIT_AUTHOR_NAME" = "origin_name" ]; then
+    export GIT_AUTHOR_NAME="new_name"
+fi
+' --tag-name-filter cat -- --branches --tags
+
+```
+
+然后 `git push -f`
+
+> 如果提示无法强制推送则需要到仓库设置中允许该操作
 
 ---
 
