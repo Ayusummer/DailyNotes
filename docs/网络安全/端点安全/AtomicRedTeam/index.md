@@ -527,6 +527,10 @@ $sess = New-PSSession -ComputerName testcomputer -Credential domain\username
 
 - `ComputerName`: 待链接的远程计算机的名称或 IP
 
+> PS: 这里的 username, 不管是本地用户组还是域用户组, 都是需要管理员用户才能够成功连上, 如果用的是普通用户的话则会报错
+>
+> ![image-20231019153819583](http://cdn.ayusummer233.top/DailyNotes/202310191538449.png)
+
 ![image-20230919100736521](http://cdn.ayusummer233.top/DailyNotes/202309191007241.png)
 
 尝试建立连接时出现了上述报错, 查阅资料后发现这是由于本地计算机没有信任远程计算机的证书导致的
