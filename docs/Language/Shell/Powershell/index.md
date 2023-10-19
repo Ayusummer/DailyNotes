@@ -382,6 +382,28 @@ Write-Host "未检测到Microsoft Word， 请稍后手动安装 ＞︿＜" -Fore
 
 ---
 
+## 模块
+
+### 安装模块
+
+```powershell
+Import-Module AtomicTestHarnesses
+```
+
+上述命令用于将计算机中已经存在的模块导入到当前 powershell 会话
+
+----
+
+```powershell
+Install-Module -Name AtomicTestHarnesses -Scope CurrentUser -Force
+```
+
+上述命令用于从 PowerShell Gallery(或其他源) 下载模块, 并将其安装在当前用户指定的范围中
+
+> `-Force` 表示即便模块已存在, 也会重新安装
+
+---
+
 
 
 
