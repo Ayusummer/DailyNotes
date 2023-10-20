@@ -1687,6 +1687,34 @@ finally:
 
 ---
 
+## 使用 http.server 搭建文件服务器
+
+最基础的用法, 使用如下命令可以在本机 8000 端口起一个文件服务器
+
+```bash
+python -m http.server
+```
+
+---
+
+要结合 ssl 的话需要先创建一组密钥
+
+```bash
+pip install py-ht
+```
+
+
+
+
+
+
+
+
+
+
+
+---
+
 ## 报错收集
 
 ### no module named ‘pip’

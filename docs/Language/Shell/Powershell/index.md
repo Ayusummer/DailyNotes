@@ -630,6 +630,20 @@ Set-ExecutionPolicy
 
 > ![image-20220824095701736](http://cdn.ayusummer233.top/img/202208240957639.png)
 
+---
+
+不过这里也许会报错:
+
+![image-20231020143414302](http://cdn.ayusummer233.top/DailyNotes/202310201434853.png)
+
+可以看到在 UserPolicy 中 ExecutionPolicy 为 Restricted
+
+```powershell
+Set-ExecutionPolicy -Scope UserPolicy UnRestricted
+```
+
+![image-20231020143846673](http://cdn.ayusummer233.top/DailyNotes/202310201438322.png)
+
 
 
 
