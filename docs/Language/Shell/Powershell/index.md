@@ -1,5 +1,23 @@
 # Powershell
 
+- [Powershell](#powershell)
+  - [版本信息](#版本信息)
+    - [Powershell 7](#powershell-7)
+  - [代理](#代理)
+  - [主题](#主题)
+    - [Oh My Posh](#oh-my-posh)
+        - [Quick Start For Windows](#quick-start-for-windows)
+  - [目标目录文件变动监控备份](#目标目录文件变动监控备份)
+  - [powershell empire 上线命令](#powershell-empire-上线命令)
+  - [远程连接](#远程连接)
+  - [制作提示窗口](#制作提示窗口)
+  - [输出信息](#输出信息)
+  - [模块](#模块)
+    - [安装模块](#安装模块)
+  - [报错收集](#报错收集)
+    - [无法加载 `xxx.ps1`, 因在此系统上禁止运行脚本。有关详细信息，请参阅 关于执行策略 - PowerShell | Microsoft Docs 中的 `about_Execution_Policies`。](#无法加载-xxxps1-因在此系统上禁止运行脚本有关详细信息请参阅-关于执行策略---powershell--microsoft-docs-中的-about_execution_policies)
+
+
 ---
 
 ## 版本信息
@@ -15,6 +33,45 @@ $PSVersionTable.PSVersion
 
 ---
 
+### Powershell 7
+
+
+> [Releases · PowerShell/PowerShell (github.com)](https://github.com/PowerShell/PowerShell/releases)
+>
+> [在 Windows 上安装 PowerShell - PowerShell | Microsoft Docs](https://docs.microsoft.com/zh-cn/powershell/scripting/install/installing-powershell-on-windows?view=powershell-7.2#msi)
+>
+> [从 Windows PowerShell 5.1 迁移到 PowerShell 7 - PowerShell | Microsoft Docs](https://docs.microsoft.com/zh-cn/powershell/scripting/whats-new/migrating-from-windows-powershell-51-to-powershell-7?view=powershell-7.2)
+
+```powershell
+# 查看 powershell 版本
+$psversiontable
+```
+
+PowerShell 7 是专为云、本地和混合环境设计的，它包含增强功能和[新功能](https://docs.microsoft.com/zh-cn/powershell/scripting/whats-new/what-s-new-in-powershell-70?view=powershell-7.2)。
+
+- 与 Windows PowerShell 并行安装和运行
+- 提升了与现有 Windows PowerShell 模块的兼容性
+- 新语言功能（如三元运算符和 `ForEach-Object -Parallel`）
+- 提高了性能
+- 基于 SSH 的远程处理
+- 跨平台互操作性
+- 支持 Docker 容器
+
+PowerShell 7 与 Windows PowerShell 并行运行，可便于你在部署前轻松地测试和比较各个版本。 迁移简单、快捷、安全，
+
+以下 Windows 操作系统支持 PowerShell 7：
+
+- Windows 8.1、10 和 11
+- Windows Server 2012、2012 R2、2016 和 2019
+
+PowerShell 7 还在 macOS 和多个 Linux 发行版本上运行。 若要获取受支持操作系统的列表，并了解支持生命周期，请参阅 [PowerShell 支持生命周期](https://docs.microsoft.com/zh-cn/powershell/scripting/install/powershell-support-lifecycle?view=powershell-7.2)。
+
+---
+
+PowerShell 7 默认安装路径为 `C:\Program Files\PowerShell\`
+
+---
+
 ## 代理
 
 ```powershell
@@ -24,6 +81,132 @@ $env:HTTPS_PROXY="http://127.0.0.1:7890"
 ```
 
 ---
+
+## 主题
+
+---
+
+### Oh My Posh
+
+
+> [Home | Oh My Posh](https://ohmyposh.dev/)
+
+A prompt theme engine for any shell.
+
+![image-20230414001558700](http://cdn.ayusummer233.top/DailyNotes/202304140016105.png)
+
+##### Quick Start For Windows
+
+- 首先 [在 Windows 上安装 PowerShell7 - PowerShell | Microsoft Learn](https://learn.microsoft.com/zh-cn/powershell/scripting/install/installing-powershell-on-windows?view=powershell-7.2#msi), 默认的 Powershell5 不支持主题中的一些语法
+
+- 使用 `winget` 安装 `OhMyPosh`:
+
+  由于要到 github 获取资源, 因此挂代理会快些, 以本地 7890 端口有代理为例, 可以在 powershell 中临时设置代理配置:
+
+  ```powershell
+  $env:HTTP_PROXY="http://127.0.0.1:7890"
+  $env:HTTPS_PROXY="http://127.0.0.1:7890"
+  ```
+
+  然后使用 `winget` 安装 `OhMyPosh`
+
+  ```powershell
+  winget install JanDeDobbeleer.OhMyPosh -s winget
+  ```
+
+- 安装一个支持的字体, 如 [MesloLGSNF](https://github.com/fontmgr/MesloLGSNF)
+
+  > 官方文档中使用 `oh-my-posh font install` 选择字体进行安装, 不过我安装后进行配置时总是找不到字体, 最终使用 `MESLOLGS NF` 成功进行了配置
+
+  然后在 Powershell 中使用快捷键 `Ctrl+Shift+,` 调起配置文件, 在 `profiles` 中的 `defaults` 属性下添加 `font.face` 属性
+
+  ![image-20230414002805811](http://cdn.ayusummer233.top/DailyNotes/202304140028837.png)
+
+  ```json
+              "font":
+              {
+                  "face": "MesloLGS NF"
+              }
+  ```
+
+  添加并保存后会自动弹回到打开的 Powershell 窗口, 不报错就说明成功用上了字体
+
+  ***
+
+  对于 VSCode 而言, VSCode 调起的终端中的字体配置还需要在 VSCode 的配置项中配下
+
+  ![image-20230414003342061](http://cdn.ayusummer233.top/DailyNotes/202304140033087.png)
+
+- 接下来编辑 powershell 配置文件配置默认使用 `OhMyPosh`
+
+  ```powershell
+  code $PROFILE
+  ```
+
+  在配置中加上如下语句
+
+  ```powershell
+  oh-my-posh init pwsh | Invoke-Expression
+  ```
+
+  ![image-20230414003110073](http://cdn.ayusummer233.top/DailyNotes/202304140031095.png)
+
+  这样即可成功让 powershell 使用上 OhMyPosh
+
+- 配置主题
+
+  可以在 [Themes | Oh My Posh](https://ohmyposh.dev/docs/themes) 查看 OhMyPosh 中支持的主题
+
+  或者使用如下命令直接在 Powershell 中预览主题
+
+  ```powershell
+  Get-PoshThemes
+  ```
+
+  ![image-20230414003535662](http://cdn.ayusummer233.top/DailyNotes/202304140035712.png)
+
+  > 记得及时 `Ctrl + C`, 不然会拖很长, 毕竟主题挺多的
+
+  在 Powershell 中预览主题时, 主题的名字是超链接, 可以通过 Ctrl + 鼠标点击的形式编辑该主题配置文件
+
+  ![image-20230414003739707](http://cdn.ayusummer233.top/DailyNotes/202304140037760.png)
+
+  ![image-20230414003752894](http://cdn.ayusummer233.top/DailyNotes/202304140037931.png)
+
+  然后编辑 Powershell 配置文件, 配置 OhMyPosh 的主题
+
+  ```powershell
+  code $PROFILE
+  ```
+
+  添加如下命令
+
+  ```powershell
+  oh-my-posh init pwsh --config '主题json路径' | Invoke-Expression
+  ```
+
+  ![image-20230414004039339](http://cdn.ayusummer233.top/DailyNotes/202304140040357.png)
+
+  然后重启 Powershell/VSCode 窗口即可看到 Powershell 加载了 OhMyPosh 及设定的主题
+
+  ![image-20230414004140231](http://cdn.ayusummer233.top/DailyNotes/202304140041246.png)
+
+  ![image-20230414004152193](http://cdn.ayusummer233.top/DailyNotes/202304140041208.png)
+
+  > 需要注意的是如果是默认的 powershell5 的话, 加载主题可能会报错, 且每次打开 powershell 窗口均会报错, 因此建议直接升级到 powershell7
+  >
+  > ![image-20230414004218421](http://cdn.ayusummer233.top/DailyNotes/202304140042453.png)
+  >
+  > 可以通过如下命令查看 powershell 版本
+  >
+  > ```powershell
+  > $psversiontable
+  > ```
+  >
+  > ![image-20230414004313579](http://cdn.ayusummer233.top/DailyNotes/202304140043602.png)
+  >
+  > ![image-20230414004329598](http://cdn.ayusummer233.top/DailyNotes/202304140043653.png)
+
 
 
 ## 目标目录文件变动监控备份
@@ -342,24 +525,24 @@ object.Popup(strText,[nSecondsToWait],[strTitle],[nType])
 
 按钮类型:
 
-|  值  |             描述             |
-| :--: | :--------------------------: |
-|  0   |        显示“确定”按钮        |
-|  1   |    显示“确定”+“取消”按钮     |
-|  2   | 显示“终止”+“重试”+“忽略”按钮 |
-|  3   |   显示“是”+“否”+“取消”按钮   |
-|  4   |      显示“是”+“否”按钮       |
-|  5   |    显示“重试”+“取消”按钮     |
-|  6   | 显示“重试”+“取消”+“继续”按钮 |
+|  值   |             描述             |
+| :---: | :--------------------------: |
+|   0   |        显示“确定”按钮        |
+|   1   |    显示“确定”+“取消”按钮     |
+|   2   | 显示“终止”+“重试”+“忽略”按钮 |
+|   3   |   显示“是”+“否”+“取消”按钮   |
+|   4   |      显示“是”+“否”按钮       |
+|   5   |    显示“重试”+“取消”按钮     |
+|   6   | 显示“重试”+“取消”+“继续”按钮 |
 
 图标类型:
 
-|  值  |                             描述                             |
-| :--: | :----------------------------------------------------------: |
-|  16  | ![img](http://cdn.ayusummer233.top/DailyNotes/202310121739545.png) |
-|  32  | ![img](http://cdn.ayusummer233.top/DailyNotes/202310121739063.png) |
-|  48  | ![img](http://cdn.ayusummer233.top/DailyNotes/202310121739057.png) |
-|  64  | ![img](http://cdn.ayusummer233.top/DailyNotes/202310121739923.png) |
+|  值   |                                描述                                |
+| :---: | :----------------------------------------------------------------: |
+|  16   | ![img](http://cdn.ayusummer233.top/DailyNotes/202310121739545.png) |
+|  32   | ![img](http://cdn.ayusummer233.top/DailyNotes/202310121739063.png) |
+|  48   | ![img](http://cdn.ayusummer233.top/DailyNotes/202310121739057.png) |
+|  64   | ![img](http://cdn.ayusummer233.top/DailyNotes/202310121739923.png) |
 
 例如:
 
@@ -405,6 +588,47 @@ Install-Module -Name AtomicTestHarnesses -Scope CurrentUser -Force
 ---
 
 
+
+## 报错收集
+
+### 无法加载 `xxx.ps1`, 因在此系统上禁止运行脚本。有关详细信息，请参阅 [关于执行策略 - PowerShell | Microsoft Docs](https://docs.microsoft.com/zh-cn/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-7.2) 中的 `about_Execution_Policies`。
+
+> [关于执行策略 - PowerShell | Microsoft Docs](https://docs.microsoft.com/zh-cn/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-7.2)
+
+`Windwos+x -> 以管理员身份运行 PowerShell`
+
+```powershell
+# 获取当前策略配置
+get-ExecutionPolicy
+```
+
+> ![image-20220824095328309](http://cdn.ayusummer233.top/img/202208240957994.png)
+>
+> 默认是 `Restricted`:
+>
+> - Windows 客户端计算机的默认执行策略。
+> - 允许单个命令，但不允许脚本。
+> - 防止运行所有脚本文件，包括格式化和配置文件 () `.ps1xml` 、模块脚本文件 (`.psm1`) ，以及 powerShell 配置文件 (`.ps1`) 。
+>
+> 可以将其改为 `RemoteSigned`
+>
+> - Windows 服务器计算机的默认执行策略。
+> - 脚本可以运行。
+> - 需要来自受信任的发布者对从 Internet 下载的脚本和配置文件（包括电子邮件和即时消息程序）的数字签名。
+> - 不需要对在本地计算机上编写的脚本（而不是从 Internet 下载）进行数字签名。
+> - 如果脚本被取消阻止，则运行从 Internet 下载且未签名的脚本，例如使用 `Unblock-File` cmdlet。
+> - 从 Internet 以外的源运行未签名脚本的风险，以及可能是恶意的签名脚本。
+
+```powershell
+# 设置 powershell 的策略
+Set-ExecutionPolicy
+```
+
+输入 `RemoteSigned` 并回车, 输入 `y` 确认更改;
+
+然后可以 `get-ExecutionPolicy` 看下是否改动完成
+
+> ![image-20220824095701736](http://cdn.ayusummer233.top/img/202208240957639.png)
 
 
 
