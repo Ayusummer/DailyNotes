@@ -3,7 +3,9 @@
 - [Powershell](#powershell)
   - [版本信息](#版本信息)
     - [Powershell 7](#powershell-7)
-  - [代理](#代理)
+  - [网络](#网络)
+    - [代理](#代理)
+    - [域名解析](#域名解析)
   - [主题](#主题)
     - [Oh My Posh](#oh-my-posh)
         - [Quick Start For Windows](#quick-start-for-windows)
@@ -72,13 +74,25 @@ PowerShell 7 默认安装路径为 `C:\Program Files\PowerShell\`
 
 ---
 
-## 代理
+## 网络
+
+### 代理
 
 ```powershell
 # 为当前 powershell 会话设置 http 与 https 代理
 $env:HTTP_PROXY="http://127.0.0.1:7890"
 $env:HTTPS_PROXY="http://127.0.0.1:7890"
 ```
+
+----
+
+### 域名解析
+
+```powershell
+Resolve-DnsName www.bing.com
+```
+
+![image-20231023151249741](http://cdn.ayusummer233.top/DailyNotes/202310231512020.png)
 
 ---
 
