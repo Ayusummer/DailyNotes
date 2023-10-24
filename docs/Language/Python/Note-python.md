@@ -1690,6 +1690,10 @@ finally:
 
 ## 使用 http.server 搭建文件服务器
 
+> [simple-https-server.py --- simple-https-server.py (github.com)](https://gist.github.com/DannyHinshaw/a3ac5991d66a2fe6d97a569c6cdac534)
+>
+> [simple-https-server.py --- simple-https-server.py (github.com)](https://gist.github.com/dergachev/7028596)
+
 最基础的用法, 使用如下命令可以在本机 8000 端口起一个文件服务器
 
 ```bash
