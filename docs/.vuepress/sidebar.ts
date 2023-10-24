@@ -41,6 +41,10 @@ let Docker = [
 /** 加密算法侧边栏 */
 let security_encrypt = [
   {
+    text: "加密算法",
+    link: "/网络安全/加密算法/",
+  },
+  {
     text: "Hash",
     link: "/网络安全/加密算法/Hash.md",
   },
