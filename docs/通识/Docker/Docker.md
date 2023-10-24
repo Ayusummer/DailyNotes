@@ -12,6 +12,21 @@
 >
 > ---
 
+使用如下脚本来安装 docker 即可:
+
+```bash
+# Install the latest version docker
+curl -s https://get.docker.com/ | sh
+
+# Run docker service
+systemctl start docker
+```
+
+---
+
+旧版安装指令:
+
+
 ```bash
 # 更新现有的软件包列表
 apt update
