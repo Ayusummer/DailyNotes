@@ -134,6 +134,21 @@ sysmon64 -i
 
   ![image-20230705153619818](http://cdn.ayusummer233.top/DailyNotes/202307051536930.png)
 
+----
+
+## 查看登录日志
+
+`Win+X` 或直接搜索打开事件查看器 `->  Windows日志 -> 安全` 然后 `-> 操作 -> 查找` 或者 `右键安全 -> 查找` 
+
+![image-20231023094609789](http://cdn.ayusummer233.top/DailyNotes/202310230946237.png)
+
+然后搜寻事件 ID 接口
+
+- 登录成功 - 4624
+- 登录失败 - 4625
+
+![image-20231024151558584](http://cdn.ayusummer233.top/DailyNotes/202310241515737.png)
+
 ---
 
 ## Process Explorer - 查看某个窗口是哪个进程调起的
