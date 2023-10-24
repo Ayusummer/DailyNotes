@@ -116,6 +116,7 @@
           - [示例](#示例-3)
   - [建站工具](#建站工具)
     - [Reflex](#reflex)
+  - [使用 http.server 搭建文件服务器](#使用-httpserver-搭建文件服务器)
   - [报错收集](#报错收集)
     - [no module named ‘pip’](#no-module-named-pip)
 
@@ -1697,21 +1698,38 @@ python -m http.server
 
 ---
 
-要结合 ssl 的话需要先创建一组密钥
+要结合 ssl 的话需要先创建一组密钥, 可以参考 [此处](../../网络安全/加密算法/index.md#使用-openssl-生成自签名证书) 生成ca根证书密钥对并签发这里的证书与密钥对, 然后将根证书添加到本地受信任的根证书颁发机构
 
-```bash
-pip install py-ht
+然后创建一个 py 文件, 如 `https_server.py`:
+
+```python
+from http.server import HTTPServer, SimpleHTTPRequestHandler
+import ssl
+from pathlib import Path
+
+server_address = ("0.0.0.0", 443)
+PEM_PATH = Path(__file__).parent / "key/py-server/summer-py-server.crt"
+KEY_PATH = Path(__file__).parent / "key/py-server/summer-py-server.key"
+
+httpd = HTTPServer(server_address, SimpleHTTPRequestHandler)
+
+httpd.socket = ssl.wrap_socket(
+    httpd.socket,
+    certfile=PEM_PATH,
+    keyfile=KEY_PATH,
+    server_side=True,
+    ssl_version=ssl.PROTOCOL_TLS,
+)
+
+httpd.serve_forever()
+
 ```
 
+```bash
+python https_server.py
+```
 
-
-
-
-
-
-
-
-
+![image-20231024145943512](http://cdn.ayusummer233.top/DailyNotes/202310241459913.png)
 
 ---
 
