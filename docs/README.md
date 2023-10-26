@@ -11,4 +11,4 @@
 
 # 概述
 
-233 的日常学习记录随笔
+233 的日常学习记录随笔, [在线阅读](https://ayusummer.github.io/DailyNotes/)
