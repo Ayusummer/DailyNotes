@@ -16,6 +16,9 @@
   - [输出信息](#输出信息)
   - [模块](#模块)
     - [安装模块](#安装模块)
+  - [证书](#证书)
+  - [基础语法](#基础语法)
+    - [循环结构](#循环结构)
   - [报错收集](#报错收集)
     - [无法加载 `xxx.ps1`, 因在此系统上禁止运行脚本。有关详细信息，请参阅 关于执行策略 - PowerShell | Microsoft Docs 中的 `about_Execution_Policies`。](#无法加载-xxxps1-因在此系统上禁止运行脚本有关详细信息请参阅-关于执行策略---powershell--microsoft-docs-中的-about_execution_policies)
 
@@ -601,7 +604,54 @@ Install-Module -Name AtomicTestHarnesses -Scope CurrentUser -Force
 
 ---
 
+## 证书
 
+> [ssl - Adding Self Signed Certificate to trusted root certificate store using Command Line - Super User --- ssl-使用命令行将自签名证书添加到受信任的根证书存储 - 智库101 - 一个基于CC版权的问答分享平台](https://superuser.com/questions/463081/adding-self-signed-certificate-to-trusted-root-certificate-store-using-command-l)
+>
+> [powershell - Import certificates using command line on Windows - Super User --- powershell - 在Windows上使用命令行导入证书 - 智库101 - 一个基于CC版权的问答分享平台](https://superuser.com/questions/1506440/import-certificates-using-command-line-on-windows)
+
+安装证书:
+
+```powershell
+# 当前脚本所在目录, 用于后续拼接路径
+$scriptParh = Split-Path -Parent $MyInvocation.MyCommand.Definition
+# 将 FileServer/key/ca/ca.crt 安装到本地受信任的根证书颁发机构
+$caCertPath = Join-Path $scriptParh "\FileServer\key\ca\ca.crt"
+Import-Certificate -FilePath $caCertPath -CertStoreLocation Cert:\LocalMachine\Root
+Write-Host "已将 $caCertPath 安装到本地受信任的根证书颁发机构" -ForegroundColor:Green 
+```
+
+其中 `Cert:\LocalMachine\Root` 对应下图中的 `本地计算机`, 相应的 `CurrentUser` 对应 `当前用户`
+
+![image-20231025113228953](http://cdn.ayusummer233.top/DailyNotes/202310251132410.png)
+
+可以使用 `dir` 命令来查看指定范围可用的证书存储, 例如:
+
+```powershell
+dir cert:\\LocalMachine\Root
+# 或者:
+Get-ChildItem -Path Cert:\LocalMachine\Root
+```
+
+![image-20231025141407396](http://cdn.ayusummer233.top/DailyNotes/202310251414906.png)
+
+![image-20231025142513929](http://cdn.ayusummer233.top/DailyNotes/202310251425242.png)
+
+---
+
+## 基础语法
+
+### 循环结构
+
+```powershell
+# 循环执行 curl http://192.168.1.21/phpinfo.php -UseBasicParsing
+$cmd_always = 'curl http://192.168.1.21/phpinfo.php -UseBasicParsing
+while ($true) {
+    Invoke-Expression $cmd_always
+}
+```
+
+---
 
 ## 报错收集
 
