@@ -5,12 +5,17 @@
     - [行尾序列](#行尾序列)
     - [交流社区](#交流社区)
       - [HackerTalk](#hackertalk)
+  - [路由器](#路由器)
+  - [小米](#小米)
+    - [小爱音箱Pro连不上电脑](#小爱音箱pro连不上电脑)
   - [证书](#证书)
     - [软考证书](#软考证书)
     - [计算机程序设计能力考试(PAT)](#计算机程序设计能力考试pat)
     - [项目管理职业资格认证(PMI)](#项目管理职业资格认证pmi)
     - [华为认证](#华为认证)
   - [下载](#下载)
+    - [FDM](#fdm)
+      - [防病毒配置](#防病毒配置)
     - [IDM](#idm)
     - [aria2](#aria2)
     - [超星相关](#超星相关)
@@ -27,6 +32,11 @@
     - [微软商店中的iCloud](#微软商店中的icloud)
     - [Cloudreve](#cloudreve)
       - [WebDav 使用](#webdav-使用)
+    - [Nextcloud](#nextcloud)
+      - [服务器搭建](#服务器搭建)
+      - [配置](#配置)
+  - [同步](#同步)
+    - [使用云盘与 Git 管理使用本地图片的 Markdown 文件](#使用云盘与-git-管理使用本地图片的-markdown-文件)
   - [Microsoft](#microsoft)
     - [Edge](#edge)
       - [扩展](#扩展)
@@ -35,9 +45,14 @@
           - [WSL2 DNS 服务异常](#wsl2-dns-服务异常)
       - [针对某一软件关闭用户账户控制](#针对某一软件关闭用户账户控制)
       - [命令行重启文件资源管理器](#命令行重启文件资源管理器)
+  - [你需要来自 S-1-5-21-XXXX-XXX-XXX 的权限才能对此文件夹进行更改](#你需要来自-s-1-5-21-xxxx-xxx-xxx-的权限才能对此文件夹进行更改)
   - [图片OCR-\>表格](#图片ocr-表格)
   - [英语学习](#英语学习)
   - [clash](#clash)
+    - [pip 报错 `ValueError: check_hostname requires server_hostname`](#pip-报错-valueerror-check_hostname-requires-server_hostname)
+    - [TUN Mode](#tun-mode)
+    - [Mixin](#mixin)
+    - [Bypass](#bypass)
   - [桌面显示器屏幕使用体验](#桌面显示器屏幕使用体验)
     - [Win11 设置合盖不休眠](#win11-设置合盖不休眠)
   - [Game](#game)
@@ -464,6 +479,27 @@ sudo snap install nextcloud
     1 => '192.168.1.21',
   ),
 ```
+
+---
+
+## 同步
+
+### 使用云盘与 Git 管理使用本地图片的 Markdown 文件
+
+创建软连接指向 assets 目录然后创建硬链接指向 Markdown 文件, 在 `.gitignore` 中忽略 `.assets` 即可
+
+```CMD
+mklink /D [git仓库中指定的assets目录] [原始assets目录]
+mklink /H [git仓库中指定的Markdown文档路径] [原始Markdown文档路径]
+```
+
+> 其中 git仓库中指定的目录都是不存在的, 命令执行完后会自动创建
+>
+> 链接完目录与文件后可以在 git 仓库变动中看到链接后的 assets 目录看上去像是个文件, 然后在 `.gitignore` 中将其忽略即可
+>
+> ![image-20231026205733351](http://cdn.ayusummer233.top/DailyNotes/202310262057001.png)
+>
+> ![image-20231026205806753](http://cdn.ayusummer233.top/DailyNotes/202310262058355.png)
 
 ---
 
