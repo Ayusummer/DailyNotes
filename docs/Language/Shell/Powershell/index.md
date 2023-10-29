@@ -17,6 +17,7 @@
   - [模块](#模块)
     - [安装模块](#安装模块)
   - [证书](#证书)
+  - [启用或关闭 Windows 功能](#启用或关闭-windows-功能)
   - [基础语法](#基础语法)
     - [循环结构](#循环结构)
   - [报错收集](#报错收集)
@@ -636,6 +637,60 @@ Get-ChildItem -Path Cert:\LocalMachine\Root
 ![image-20231025141407396](http://cdn.ayusummer233.top/DailyNotes/202310251414906.png)
 
 ![image-20231025142513929](http://cdn.ayusummer233.top/DailyNotes/202310251425242.png)
+
+---
+
+## 启用或关闭 Windows 功能
+
+```powershell
+optionalFeatures
+```
+
+在命令行中键入 `OptionalFeatures` 可以打开 `启用或关闭 Windows 功能` 页面
+
+可以使用 `Enable-WindowsOptionalFeature` 命令启用 Windows 功能, 例如启用 IIS 这一串功能可以用下面的命令
+
+```powershell
+Enable-WindowsOptionalFeature -Online -FeatureName IIS-WebServerRole, IIS-WebServer, IIS-CommonHttpFeatures, IIS-ManagementConsole, IIS-HttpErrors, IIS-HttpRedirect, IIS-WindowsAuthentication, IIS-StaticContent, IIS-DefaultDocument, IIS-HttpCompressionStatic, IIS-DirectoryBrowsing
+```
+
+- `IIS-WebServerRole`: 启用 Web 服务器角色，它是 IIS 的核心部分，用于托管网站和应用程序。
+
+- `IIS-WebServer`: 启用 Web 服务器角色的子组件，包含 Web 服务器核心功能。
+
+- `IIS-CommonHttpFeatures`: 启用通用 HTTP 功能，包括 HTTP 请求监控和其他基本的 HTTP 功能。
+
+- `IIS-ManagementConsole`: 启用 IIS 管理控制台，这是用于配置和管理 IIS 的 GUI 工具。
+
+- `IIS-HttpErrors`: 启用 HTTP 错误页面支持，用于自定义 HTTP 错误页面的设置。
+
+- `IIS-HttpRedirect`: 启用 HTTP 重定向支持，用于配置 HTTP 重定向规则。
+
+- `IIS-WindowsAuthentication`: 启用 Windows 身份验证，允许用户使用其 Windows 凭据进行身份验证。
+
+- `IIS-StaticContent`: 启用静态内容支持，用于托管和提供静态文件（如 HTML、CSS 和图像）。
+
+- `IIS-DefaultDocument`: 启用默认文档支持，用于配置默认文档文件。
+
+- `IIS-HttpCompressionStatic`: 启用静态内容的 HTTP 压缩，以提高性能并减少带宽占用。
+
+- `IIS-DirectoryBrowsing`: 启用目录浏览功能，允许用户浏览 Web 服务器上的目录。
+
+  ---
+
+- `-Online`: 指定要在在线模式下启用 Windows 可选功能。在线模式表示不需要重新启动计算机以使更改生效。通常，在使用 `-Online` 参数时，可以实时启用或禁用功能，而不必重新启动计算机。
+
+  这与离线模式相对，离线模式通常需要重新启动计算机以使更改生效，这可能会导致系统中断。在线模式通常用于快速配置和启用功能而无需中断计算机的正常操作。
+
+![image-20231029163148767](http://cdn.ayusummer233.top/DailyNotes/202310291631863.png)
+
+然后可以通过如下命令判断 WWW服务(World Wide Web Publishing Service)是否启动来判断是否成功启用了 IIS
+
+```powershell
+Get-Service W3SVC
+```
+
+![image-20231029164742589](http://cdn.ayusummer233.top/DailyNotes/202310291647834.png)
 
 ---
 
