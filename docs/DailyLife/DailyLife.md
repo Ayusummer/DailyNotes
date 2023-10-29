@@ -23,6 +23,7 @@
   - [搜题目解析](#搜题目解析)
   - [云盘](#云盘)
     - [OneDrive](#onedrive)
+      - [挂了全局代理后会无法登录OneDrive客户端](#挂了全局代理后会无法登录onedrive客户端)
     - [E5](#e5)
       - [申请流程](#申请流程)
       - [续期](#续期)
@@ -329,8 +330,120 @@ asklib.com
 
 ---
 ### OneDrive
+
 - 多次同步,挂起,取消链接账户可能会导致 Explorer 左栏快捷访问中存在多个指向相同的 OneDrive 快捷访问  
   [删除OneDrive for Bussiness导航栏快捷方式_根号负一的博客-CSDN博客](https://blog.csdn.net/u014389786/article/details/54095019)
+
+---
+
+#### 挂了全局代理后会无法登录OneDrive客户端
+
+> [(2 封私信 / 59 条消息) Onedrive客户端如何走代理? - 知乎 (zhihu.com)](https://www.zhihu.com/question/414671076)
+>
+> [OneDrive 使用者所需的 URL 和端口 - SharePoint in Microsoft 365 | Microsoft Learn](https://learn.microsoft.com/zh-cn/sharepoint/required-urls-and-ports)
+>
+> [[已解决\]无法开启System Proxy · Issue #1105 · Fndroid/clash_for_windows_pkg (github.com)](https://github.com/Fndroid/clash_for_windows_pkg/issues/1105)
+
+先写结论, 这样操作需要 Bypass 大量域名, 且对于需要挂代理的 Microsoft 服务可能也会产生影响, 因此建议关闭 System Proxy 登录 OneDrive, 登录成功后再打开 System Proxy
+
+非要使用 Bypass 方案的话在 Clash 的 Bypass yaml 末尾加上这些域名即可
+
+```yaml
+# OneDrive
+- "onedrive.com"
+- "*.onedrive.com"
+- "onedrive.live.com"
+- "spoprod-a.akamaihd.net"
+- "*.mesh.com"
+- "p.sfx.ms"
+- "oneclient.sfx.ms"
+- "*.microsoft.com"
+- "fabric.io"
+- "*.crashlytics.com"
+- "vortex.data.microsoft.com"
+- "posarprodcssservice.accesscontrol.windows.net"
+- "redemptionservices.accesscontrol.windows.net"
+- "token.cp.microsoft.com"
+- "tokensit.cp.microsoft-tst.com"
+- "*.office.com"
+- "*.officeapps.live.com"
+- "*.aria.microsoft.com"
+- "*.mobileengagement.windows.net"
+- "*.branch.io"
+- "*.adjust.com"
+- "*.servicebus.windows.net"
+- "vas.samsungapps.com"
+- "*.files.1drv.com"
+- "*.onedrive.live.com"
+- "*.*.onedrive.live.com"
+- "storage.live.com"
+- "*.storage.live.com"
+- "*.*.storage.live.com"
+- "*.groups.office.live.com"
+- "*.groups.photos.live.com"
+- "*.groups.skydrive.live.com"
+- "favorites.live.com"
+- "oauth.live.com"
+- "photos.live.com"
+- "skydrive.live.com"
+- "api.live.net"
+- "apis.live.net"
+- "docs.live.net"
+- "*.docs.live.net"
+- "policies.live.net"
+- "*.policies.live.net"
+- "settings.live.net"
+- "*.settings.live.net"
+- "skyapi.live.net"
+- "snapi.live.net"
+- "*.livefilestore.com"
+- "*.*.livefilestore.com"
+- "storage.msn.com"
+- "*.storage.msn.com"
+- "*.*.storage.msn.com"
+
+```
+
+---
+
+如下是正文内容:
+
+有时候挂了全局代理后, OneDrive 客户端会一直转 "正在登录", 没有找到具体原因, 猜测可能和账户区域有关, 挂了代理反而登不上去了
+
+![image-20231029095724608](http://cdn.ayusummer233.top/DailyNotes/202310290957655.png)
+
+> TODO: 下次开机抓一下 OneDrive 客户端的流量, 把相关域名 bypass 下
+>
+> PS: 感觉直接拿 
+
+在虚拟机里挂代理看了一下大概是这些
+
+![image-20231029123919349](http://cdn.ayusummer233.top/DailyNotes/202310291239429.png)
+
+Bypass 一下 `login.microsoftonline.com` 应该就可以了, 另外一个 `aadcdn.msauth.net` 是 Microsoft Azure Active Directory CDN 的一部分, 用于 MS365 的激活与验证
+
+> PS: 用于实验的美区账户挂代理是能正常登录的:
+>
+> ![image-20231029124521831](http://cdn.ayusummer233.top/DailyNotes/202310291245895.png)
+
+用 Fiddler 又抓到了另一个域名 `odc.officeapps.live.com`
+
+![image-20231029124921793](http://cdn.ayusummer233.top/DailyNotes/202310291249866.png)
+
+> PS: 需要注意的是开启了 Fiddler 会屏蔽掉 Clash 的全局代理(
+
+这是 MS365 在线预览和编辑的域名
+
+Bypass 了这些域名后发现加载过程中又出现了其他一堆域名, 因此放弃手动抓了, 再寻找下网上的材料, 参考了如下两篇文章 Bypass 了一些域名最终可以成功登入国区账户了
+
+- [OneDrive 使用者所需的 URL 和端口 - SharePoint in Microsoft 365 | Microsoft Learn](https://learn.microsoft.com/zh-cn/sharepoint/required-urls-and-ports)
+- [(2 封私信 / 59 条消息) Onedrive客户端如何走代理? - 知乎 (zhihu.com)](https://www.zhihu.com/question/414671076)
+
+在这个过程中还遇到了 Clash System Proxy 打不开的情况, 最终发现是 Bypass yaml 里有些域名写错了, 不是域名的格式, 把有些无关字符串当域名格式写了, 修正过来就恢复了
+
+> [[已解决\]无法开启System Proxy · Issue #1105 · Fndroid/clash_for_windows_pkg (github.com)](https://github.com/Fndroid/clash_for_windows_pkg/issues/1105)
+
+具体 Bypass 方案参见章节开头~
 
 
 ---
