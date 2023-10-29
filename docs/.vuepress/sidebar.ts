@@ -329,7 +329,16 @@ let Go = [
   },
   {
     text: "Go语言圣经学习随笔",
-    link: "/Language/Go/Go语言圣经学习随笔.md",
+    children: [
+      {
+        text: "CH1 入门",
+        link: "/Language/Go/Go语言圣经/CH1-入门.md",
+      },
+      {
+        text: "CH2 程序结构",
+        link: "/Language/Go/Go语言圣经/CH2-程序结构",
+      },
+    ],
   },
 ];
 
