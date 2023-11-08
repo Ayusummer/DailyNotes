@@ -2,6 +2,17 @@
 
 - [Windows](#windows)
   - [软链接与硬链接](#软链接与硬链接)
+  - [Windows 远程连接](#windows-远程连接)
+    - [PYPSRP](#pypsrp)
+      - [Streams(流)](#streams流)
+      - [Objects(对象)](#objects对象)
+      - [Process Flow](#process-flow)
+      - [Message Structure 消息结构](#message-structure-消息结构)
+      - [WSMan](#wsman)
+      - [安装 pypsrp](#安装-pypsrp)
+      - [示例](#示例)
+      - [WInRS 示例](#winrs-示例)
+
 
 ---
 
@@ -104,6 +115,20 @@ PyPSRP 是 [Jordan Borean](https://www.bloggingforlogging.com/sample-page/) 编�
 > 这部分内容推荐到 [PowerShell Remoting on Python – Blogging for Logging](https://www.bloggingforlogging.com/2018/08/14/powershell-remoting-on-python/) 中阅读, 这里只摘录与讨论一些个人比较关注的概念
 
 ----
+
+#### 最新版本中的一些示例
+
+> [pypsrp · PyPI --- pypsrp·PyPI](https://pypi.org/project/pypsrp/)
+
+
+
+
+
+
+
+
+
+---
 
 #### Streams(流)
 
@@ -289,6 +314,14 @@ WSMan 是一种基于 SOAP 的协议, 通过 HTTP 发送
 pip install pypsrp
 ```
 
+要使用 PyPSRP 需要先启用 PowerShell Remoting
+
+```powershell
+Enable-PSRemoting
+```
+
+![image-20231109000451634](http://cdn.ayusummer233.top/DailyNotes/202311090004919.png)
+
 ----
 
 #### 示例
@@ -384,7 +417,49 @@ print("STDERR:\n%s" % stderr)
 现在将上面的写法与使用 lower level API 相比较:
 
 ```python
+from pypsrp.shell import Process, SignalCode, WinRS
+from pypsrp.wsman import WSMan
+from config import SERVER, USERNAME, PASSWORD
+
+
+wsman = WSMan(
+    server=SERVER,
+    username=USERNAME,
+    password=PASSWORD,
+    ssl=False,
+)
+
+with WinRS(wsman) as shell:
+    process = Process(shell, "whoami.exe", ["/all"])
+    process.invoke()
+    process.signal(SignalCode.CTRL_C)
+
+print("RC: %d" % process.rc)
+
+# the stdout and stderr streams come back as bytes, this decodes them with GBK(用于中文)
+print("STDOUT:\n%s" % process.stdout.decode("GBK"))
+print("STDERR:\n%s" % process.stderr.decode("GBK"))
+
 ```
+
+![image-20231109001414210](http://cdn.ayusummer233.top/DailyNotes/202311090014262.png)
+
+在这个示例中, 我们手动创建了一个 `Process` 对象, 该对象参数中包含了可执行程序(`whoami.exe`) 以及其参数 `/all`, 调用完该对象并在完成后发送停止信号; 这比其他代码要详细得多, 但是我们可以使用这些 low level interface 来实现如下操作:
+
+- 在同一个 WinRS Shell 中运行多个命令, 从而节省反复启动 shell 的时间
+- 进程对象具有 `begin_invoke()`, `poll_invoke` 和 `end_invoke()` 来有效地在后台执行命令, 并且在其完成之前不会 block Python
+- Process 对象有一个 `send()` 方法将字节发送到远程进程的 stdin pipe
+- 围绕 WinRS shell 和 Process 对象还有更多的配置选项, 如环境, 工作目录, 代码页等
+
+---
+
+#### Interop with Secure Strings
+
+PyPSRP 作者认为这是一个非常重要的特性, 不过目前个人对此需求不大, 这里 mark 一下, 需要了解的话可以参阅 [PowerShell Remoting on Python – Blogging for Logging](https://www.bloggingforlogging.com/2018/08/14/powershell-remoting-on-python/)
+
+---
+
+
 
 
 
