@@ -44,6 +44,10 @@ let general = {
       link: "/通识/Linux.md",
     },
     {
+      text: "Windows",
+      link: "/通识/Windows.md",
+    },
+    {
       text: "Docker",
       link: "/通识/Docker/Docker.md",
     },

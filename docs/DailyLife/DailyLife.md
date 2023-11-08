@@ -1,10 +1,10 @@
 # 日常
 
 - [日常](#日常)
-  - [Programming](#programming)
-    - [行尾序列](#行尾序列)
-    - [交流社区](#交流社区)
-      - [HackerTalk](#hackertalk)
+  - [语言学习](#语言学习)
+    - [英语学习](#英语学习)
+  - [交流社区](#交流社区)
+    - [HackerTalk](#hackertalk)
   - [路由器](#路由器)
   - [小米](#小米)
     - [小爱音箱Pro连不上电脑](#小爱音箱pro连不上电脑)
@@ -48,7 +48,6 @@
       - [命令行重启文件资源管理器](#命令行重启文件资源管理器)
   - [你需要来自 S-1-5-21-XXXX-XXX-XXX 的权限才能对此文件夹进行更改](#你需要来自-s-1-5-21-xxxx-xxx-xxx-的权限才能对此文件夹进行更改)
   - [图片OCR-\>表格](#图片ocr-表格)
-  - [英语学习](#英语学习)
   - [clash](#clash)
     - [pip 报错 `ValueError: check_hostname requires server_hostname`](#pip-报错-valueerror-check_hostname-requires-server_hostname)
     - [TUN Mode](#tun-mode)
@@ -73,31 +72,31 @@
   - [零散报错](#零散报错)
     - [Win11 下 QQ 调起文件资源管理器 C:\\WINDOWS\\SYSTEM32\\ntdll.dll 报错](#win11-下-qq-调起文件资源管理器-cwindowssystem32ntdlldll-报错)
 
+---
+## 语言学习
 
-## Programming
-
-### 行尾序列
-
-- `LF` - 换行 - Unix/macOS(\n)
-- `CR` 回车 - Classic MacOS(\r)
-- `CRLF` 回车换行 - Windows(\r\n)
-
-CLion 编辑代码保存时会自动替换行尾为当前行尾序列。
-
-![20211221092252](http://cdn.ayusummer233.top/img/20211221092252.png)  
-在 Windows 下使用 CLion, 使用回车换行作为行尾可以正常编译运行代码
-
-![20211221092905](http://cdn.ayusummer233.top/img/20211221092905.png)  
-
-![20211221092951](http://cdn.ayusummer233.top/img/20211221092951.png)
-
-单独使用回车或换行作为行尾时会编译出错
+> [如何掌握所有的程序语言 (yinwang.org)](http://www.yinwang.org/blog-cn/2017/07/06/master-pl)
 
 ---
 
-### 交流社区
+### 英语学习
 
-#### HackerTalk
+`背单词`:
+
+[沙拉查词](https://saladict.crimx.com/download.html)
+- [使用文档](https://saladict.crimx.com/manual.html)
+- [初次使用注意事项](https://saladict.crimx.com/notice.html)
+- [配合Anki使用](https://saladict.crimx.com/anki.html)
+- 也支持欧路词典, 扇贝单词和 WebDAV 方式同步
+  ![20220117225152](https://cdn.ayusummer233.top/img/20220117225152.png)
+
+
+
+
+---
+
+## 交流社区
+### HackerTalk
 
 > [黑客说 - 技术驱动优质交流 (hackertalk.net)](https://hackertalk.net/)
 
@@ -828,18 +827,6 @@ explorer
 ## 图片OCR->表格
 
 [白描](https://web.baimiaoapp.com/image-to-excel)
-
----
-## 英语学习
-
-`背单词`:
-
-[沙拉查词](https://saladict.crimx.com/download.html)
-- [使用文档](https://saladict.crimx.com/manual.html)
-- [初次使用注意事项](https://saladict.crimx.com/notice.html)
-- [配合Anki使用](https://saladict.crimx.com/anki.html)
-- 也支持欧路词典, 扇贝单词和 WebDAV 方式同步
-  ![20220117225152](https://cdn.ayusummer233.top/img/20220117225152.png)
 
 ---
 
