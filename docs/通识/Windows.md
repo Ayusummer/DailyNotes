@@ -4,6 +4,10 @@
   - [软链接与硬链接](#软链接与硬链接)
   - [Windows 远程连接](#windows-远程连接)
     - [PYPSRP](#pypsrp)
+      - [Runspace Pool and Runspaces 运行空间池和运行空间](#runspace-pool-and-runspaces-运行空间池和运行空间)
+      - [Pileline 管道](#pileline-管道)
+      - [Statements 语句](#statements-语句)
+      - [Commands 命令](#commands-命令)
       - [Streams(流)](#streams流)
       - [Objects(对象)](#objects对象)
       - [Process Flow](#process-flow)
@@ -12,6 +16,7 @@
       - [安装 pypsrp](#安装-pypsrp)
       - [示例](#示例)
       - [WInRS 示例](#winrs-示例)
+      - [Interop with Secure Strings](#interop-with-secure-strings)
 
 
 ---
@@ -114,19 +119,71 @@ PyPSRP 是 [Jordan Borean](https://www.bloggingforlogging.com/sample-page/) 编�
 
 > 这部分内容推荐到 [PowerShell Remoting on Python – Blogging for Logging](https://www.bloggingforlogging.com/2018/08/14/powershell-remoting-on-python/) 中阅读, 这里只摘录与讨论一些个人比较关注的概念
 
+---
+
+#### Runspace Pool and Runspaces 运行空间池和运行空间
+
+Runspaces 是指现有 PowerShell 进程上的一个新线程, 可以在某个事件点运行单个 "Pipeline"
+
+Runspace Pool 是 Runspace 的集合(collection)/池(pool) , 他可以高效地处理多个 Runspace 的执行
+
 ----
 
-#### 最新版本中的一些示例
+#### Pileline 管道
 
-> [pypsrp · PyPI --- pypsrp·PyPI](https://pypi.org/project/pypsrp/)
+在 PSRP 中, Pipeline 是在 Runspace 上执行 "Statements(语句)" 的有序集合
 
+Runspace 和 Pipeline 存在一一对应的关系, 这意味着每个 Runspace 只能执行一个 Pipeline
 
+---
 
+#### Statements 语句
 
+statement 是在 Pipeline 上运行的 Commands/scripts 的有序集合
 
+一条语句很容易被视为一个工作单元, 并且通常在 powershell 中表示为一行, 例如:
 
+```powershell
+# 2 statement
+$service = Get-Service -Name winrm
+$service.Status
 
+# same 2 statements in the 1 line
+$service = Get-Service -Name winrm; $service.Status
+```
 
+---
+
+#### Commands 命令
+
+Command 是通过 pipe 连接在一起的 cmdlet 或 scripts 的有序集合
+
+> 例如:
+>
+> ```powershell
+> Get-Process | Where-Object {$_.Name -eq "explorer"} | Stop-Process
+> ```
+>
+> pipe 用于将一个命令的输出传给另一个命令的输入, 形成命令链, 这样就可以用于将多个命令连接起来从而实现更复杂的任务
+>
+> 上述语句中的 `|` 就是 pipe, `Get-Process` 就是 cmdlet
+>
+> `Get-Process` 获取所有进程, 然后通过管道将其传递给 `Where-Object`, 该命令过滤出进程名为 `explorer` 的进程, 然后通过将这些进程传递给 `Stop-Process` 来停止这些进程; 最终实现的效果就是会关闭当前打开的所有文件资源管理器
+>
+> > PS: 由于 Windows 任务栏也是和 explorer 绑一起的, 所以执行命令后也会看到任务栏消失, 然后 explorer 进程重启恢复任务栏
+>
+> cmdlet 是 powershell 中的命令, 是一种轻量级的命令, 他们通常以 `动词-名词` 的形式命令, 如上述代码中的 `Get-Porcess`, `Stop-Process`; cmdlet 提供了在 PowerShell 中执行各种操作的功能单元
+
+script 就像一个 PowerShell 代码块, 可以包含多行代码以及函数和其他属性;
+
+当 command 中有多个 cmdlet 或 script 时, 第一个 cmdlet/scirpt 的输出将被 piped into 第二个 cmdlet/script 的输入中, 例如上面示例中的 `Get-Process` 的输出就通过 pipe `|` 送给了 `Where-Object` 作输入
+
+每个 cmdlet/script 在运行时可以没有 `parameter/argument`; 
+
+> - parameter 是指 cmdlet/script 定义中的参数, 用于接收传入的值
+> - argument 是指 cmdlet/scirpt 调用时传入的实际值, 用于赋给 parameter
+>
+> 例如 `Get-Process -Name exploere` 中 `-Name` 就是 `parameter`, `exploere` 就是 `argument`
 
 ---
 
