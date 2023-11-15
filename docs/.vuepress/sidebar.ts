@@ -154,6 +154,10 @@ let language_python = [
         link: "/Language/Python/libs/Pillow/Pillow.md",
       },
       {
+        text: "PyPSRP",
+        link: "/Language/Python/libs/PyPSRP/PyPSRP.md",
+      },
+      {
         text: "TensorFlow",
         link: "/Language/Python/libs/TensorFlow/TensorFlow.md",
       },

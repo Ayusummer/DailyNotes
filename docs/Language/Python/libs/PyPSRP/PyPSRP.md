@@ -1,5 +1,23 @@
 # PYPSRP
 
+- [PYPSRP](#pypsrp)
+  - [Runspace Pool and Runspaces 运行空间池和运行空间](#runspace-pool-and-runspaces-运行空间池和运行空间)
+  - [Pileline 管道](#pileline-管道)
+  - [Statements 语句](#statements-语句)
+  - [Commands 命令](#commands-命令)
+  - [Streams(流)](#streams流)
+  - [Objects(对象)](#objects对象)
+  - [Process Flow](#process-flow)
+  - [Message Structure 消息结构](#message-structure-消息结构)
+  - [WSMan](#wsman)
+  - [安装 pypsrp](#安装-pypsrp)
+  - [示例](#示例)
+  - [WInRS 示例](#winrs-示例)
+  - [Interop with Secure Strings](#interop-with-secure-strings)
+
+
+---
+
 PyPSRP 是 [Jordan Borean](https://www.bloggingforlogging.com/sample-page/) 编写的一个 python 库, 他只关注仅允许 WSMan 传输的 `PowerShell 2-5.x`, 这个库旨在 PSRP 层上运行, 而其他第三方库一般只是提供了 WinRS 组件;
 
 在介绍 PYPSRP 前需要了解一些 PSRP 中的概念
