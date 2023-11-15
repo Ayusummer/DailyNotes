@@ -2,6 +2,54 @@
 
 ---
 
+- [VSCode](#vscode)
+  - [VSCode 下载](#vscode-下载)
+  - [安装](#安装)
+  - [查找替换](#查找替换)
+    - [使用正则表达式](#使用正则表达式)
+      - [删掉空行](#删掉空行)
+  - [配置](#配置)
+    - [多文档突出显示 Multi-document highlighting](#多文档突出显示-multi-document-highlighting)
+  - [用户代码片段](#用户代码片段)
+    - [自用代码片段 stash](#自用代码片段-stash)
+    - [KoroFileHeader](#korofileheader)
+      - [快捷键](#快捷键)
+        - [文件头部注释快捷键](#文件头部注释快捷键)
+        - [函数注释注释快捷键](#函数注释注释快捷键)
+        - [多行函数参数鼠标选中后函数声明后按快捷键自动提取](#多行函数参数鼠标选中后函数声明后按快捷键自动提取)
+  - [扩展食用记录](#扩展食用记录)
+    - [基础使用](#基础使用)
+      - [汉化](#汉化)
+      - [open](#open)
+      - [vscode-icons](#vscode-icons)
+      - [Resource Monitor](#resource-monitor)
+    - [Drawio Preview](#drawio-preview)
+    - [CodeTour](#codetour)
+    - [Markdown 相关](#markdown-相关)
+    - [远程开发](#远程开发)
+      - [Remote - SSH + Docker + Dev Containers](#remote---ssh--docker--dev-containers)
+        - [Remote-SSH 占用 CPU](#remote-ssh-占用-cpu)
+    - [网络相关](#网络相关)
+      - [REST Client](#rest-client)
+      - [curlconverter](#curlconverter)
+      - [Thunder Client](#thunder-client)
+    - [编程相关](#编程相关)
+      - [Error Lens](#error-lens)
+      - [Python](#python)
+        - [Python-autopep8](#python-autopep8)
+        - [Sourcery](#sourcery)
+      - [前端](#前端)
+        - [prettier + ESLint](#prettier--eslint)
+    - [已弃用扩展](#已弃用扩展)
+      - [~~Terminal~~](#terminal)
+  - [报错收集](#报错收集)
+    - [git Missing or invalid credentials.](#git-missing-or-invalid-credentials)
+    - [remote-ssh 一直 waiting for server log](#remote-ssh-一直-waiting-for-server-log)
+    - [Remote-SSH + tmux 每次 bash 命令执行完都会有红色报错 \`\`-bash: \_\_vsc\_prompt\_cmd\_original: command not found\`](#remote-ssh--tmux-每次-bash-命令执行完都会有红色报错--bash-__vsc_prompt_cmd_original-command-not-found)
+
+
+---
+
 ## VSCode 下载
 
 > [VsCode 下载，使用国内镜像秒下载\_bielaiwuyang1999 的博客-CSDN 博客](https://blog.csdn.net/bielaiwuyang1999/article/details/117814237)
@@ -89,6 +137,24 @@ sudo code --no-sandbox --disable-gpu-sandbox --user-data-dir="~/.vscode"
 ![image-20230725162730155](http://cdn.ayusummer233.top/DailyNotes/202307251627548.png)
 
 > 似乎没有成功把空行替换为空字符, 这里先保存一下
+
+----
+
+## 配置
+
+### 多文档突出显示 Multi-document highlighting
+
+> [Visual Studio Code October 2023 --- Visual Studio 代码 2023 年 10 月](https://code.visualstudio.com/updates/v1_84)
+
+在 VSCode 2023 年 10 月的 v1.84 版本更新中, 加入了一项实验功能
+
+![image-20231115141006285](http://cdn.ayusummer233.top/DailyNotes/202311151412388.png)
+
+这样就可以跨文件高亮选中元素了:
+
+![image-20231115141938786](http://cdn.ayusummer233.top/DailyNotes/202311151420019.png)
+
+> - `https://code.visualstudio.com/assets/updates/1_84/multi-doc-occurrences.mp4`
 
 ---
 
