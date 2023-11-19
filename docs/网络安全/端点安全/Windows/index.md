@@ -167,6 +167,41 @@ sysmon64 -i
 
 ---
 
+## 定时任务
+
+```cmd
+schtasks /create /tn "T1053_005_OnLogon" /sc onlogon /tr "cmd.exe /c calc.exe"
+schtasks /create /tn "T1053_005_OnStartup" /sc onstart /ru system /tr "cmd.exe /c calc.exe"
+SCHTASKS /Create /SC ONCE /TN spawn /TR "C:\windows\system32\cmd.exe" /ST "20:10"
+```
+
+- `/tn`: `Task Name`
+- `/sc`: `shcedule` - 后续接任务执行频率
+  - `Once`: 一次性任务
+  - `onlogon`: 用户登录时执行
+  - `onstart`: 系统启动时执行
+  - `daily`: 每天执行
+- `/tr`: `Task Run` - 指定任务执行时运行的命令或程序
+- `/st`: `Start Time` - 指定任务开始执行的时间
+- `/S`: `Server` - 指定任务执行的服务器
+- `/RU`: `Run User` - 指定任务执行的用户
+- `/RP`: `Run Password` - 指定任务执行的用户密码
+
+---
+
+```powershell
+$Action = New-ScheduledTaskAction -Execute "calc.exe"
+$Trigger = New-ScheduledTaskTrigger -AtLogon
+$User = New-ScheduledTaskPrincipal -GroupId "BUILTIN\Administrators" -RunLevel Highest
+$Set = New-ScheduledTaskSettingsSet
+$object = New-ScheduledTask -Action $Action -Principal $User -Trigger $Trigger -Settings $Set
+Register-ScheduledTask AtomicTask -InputObject $object
+```
+
+
+
+---
+
 ## 域渗透
 
 ### 域内提权-42278/42287
