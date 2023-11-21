@@ -4,6 +4,28 @@
 
 ---
 
+- [Windows 安全](#windows-安全)
+  - [永久关闭 Windows 实时防护](#永久关闭-windows-实时防护)
+  - [Sysmon](#sysmon)
+    - [简介](#简介)
+    - [功能概述](#功能概述)
+    - [使用](#使用)
+  - [查看登录日志](#查看登录日志)
+  - [Process Explorer - 查看某个窗口是哪个进程调起的](#process-explorer---查看某个窗口是哪个进程调起的)
+  - [定时任务](#定时任务)
+  - [Windows Management Instrumentation - Windows 管理工具](#windows-management-instrumentation---windows-管理工具)
+    - [在 CMD 中使用 wmic 命令查看一些系统信息](#在-cmd-中使用-wmic-命令查看一些系统信息)
+    - [在 CMD 中使用 wmic 命令新建进程](#在-cmd-中使用-wmic-命令新建进程)
+      - [在 powershell 中使用 wmic 命令执行 rundll32](#在-powershell-中使用-wmic-命令执行-rundll32)
+    - [使用 wmic](#使用-wmic)
+    - [在powershell 中使用 Invoke-WmiMethod 新建进程](#在powershell-中使用-invoke-wmimethod-新建进程)
+      - [在 powershell 中从 Win32\_Process 派生一个类新建进程](#在-powershell-中从-win32_process-派生一个类新建进程)
+  - [域渗透](#域渗透)
+    - [域内提权-42278/42287](#域内提权-4227842287)
+
+
+---
+
 ## 永久关闭 Windows 实时防护
 
 > [Win11 关闭 Windows Defender 实时保护，暂时关闭和永久关闭方法 | Win10 怎么永久关闭 Windows Defender 实时保护\_COCO56（徐可可）的博客-CSDN 博客](https://blog.csdn.net/COCO56/article/details/128613164)
@@ -197,6 +219,205 @@ $Set = New-ScheduledTaskSettingsSet
 $object = New-ScheduledTask -Action $Action -Principal $User -Trigger $Trigger -Settings $Set
 Register-ScheduledTask AtomicTask -InputObject $object
 ```
+
+---
+
+## Windows Management Instrumentation - Windows 管理工具
+
+`WMIC(Windows Management Instrumentation Command-line)(Windows管理规范命令行)`  是一个用于访问本地或远程计算机上的管理信息的Windows命令行工具
+
+---
+
+### 在 CMD 中使用 wmic 命令查看一些系统信息
+
+```powershell
+# 列出系统中所有用户账户的详细信息，包括用户的各种属性，如用户名、SID（安全标识符）、账户类型等，输出格式设置为 CSV
+wmic useraccount get /ALL /format:csv
+# 列出系统中所有进程的名称、它们的可执行文件路径和启动它们的命令行参数，输出格式为 CSV
+wmic process get caption,executablepath,commandline /format:csv
+# 获取系统上安装的更新和修补程序的详细信息，包括它们的描述和安装日期，输出格式为 CSV
+wmic qfe get description,installedOn /format:csv 
+```
+
+- `xxx get`: 获取 xxx 信息
+  - `useraccount`：获取用户账户信息。
+  - `process`：获取与进程（程序）相关的信息。
+  - `qfe(Quick Fix Engineering)`: 获取系统上的更新和修补程序信息
+- `get xxx` 获取 xxx 信息
+  - `caption` 进程的名称
+  - `executablepath` 可执行文件的路径
+  - `commandline` 显示启动进程时使用的命令行参数。
+  - `description` 描述信息
+  - `installedOn` 安装日期
+  - `/ALL`：返回所有可用的属性。
+- `/format:csv`：指定输出格式为 CSV
+
+
+
+> ![image-20231121151050009](http://cdn.ayusummer233.top/DailyNotes/202311211510098.png)
+>
+> ![image-20231121151517619](http://cdn.ayusummer233.top/DailyNotes/202311211515762.png)
+>
+> ![image-20231121153412521](http://cdn.ayusummer233.top/DailyNotes/202311211534644.png)
+
+```cmd
+# 查询本机上，所有描述中包含“Spooler”(打印机)的服务的信息
+wmic /node:"127.0.0.1" service where (caption like "%Spooler%")
+```
+
+- `/node:"127.0.0.1"`: 指定要查询的目标节点(计算机) IP 为 `127.0.0.1` (也可以写hostname)
+
+- `service`：指定要查询的 WMI 类别。这里表示正在查询 Windows 服务相关的信息。
+
+- `where (caption like "%Spooler%")`：这是一个过滤条件，用于限制查询结果。
+
+  - `caption` : 服务的描述标签。
+
+  - `like "%Spooler%"`  筛选出描述中包含“Spooler”字样的服务。
+
+    百分号（`%`）是通配符，表示“Spooler”可以出现在任何位置。
+
+>![image-20231121155454706](http://cdn.ayusummer233.top/DailyNotes/202311211554805.png)
+
+---
+
+### 在 CMD 中使用 wmic 命令新建进程
+
+---
+
+```cmd
+# 在 Windows 系统上启动一个新的记事本应用程序实例
+wmic process call create notepad.exe
+# 在 remote_ip/hostnmae windows上启动一个新的记事本应用程序实例
+wmic /user:DOMAIN\Administrator /password:Password /node:"remote_ip/hostname" process call create notepad.exe
+```
+
+- `process` 指定 wmic 在操作与系统进程相关的信息
+
+- `call create notepad.exe`  
+
+  - `call` 表示执行一个方法
+
+  - `create` 是 process 类中的一个方法, 用于创建新的进程
+
+    `notepad.exe` 是传递给 `create` 方法的参数, 指定要创建的进程为记事本
+
+> ![image-20231121160748978](http://cdn.ayusummer233.top/DailyNotes/202311211607180.png)
+>
+> 远程启进程的命令不能指定  `remote_ip/hostname` 为本机的 ip, 否则会:
+>
+> ![image-20231121162658528](http://cdn.ayusummer233.top/DailyNotes/202311211626609.png)
+>
+> 远程执行示例:
+>
+> ![image-20231121162724037](http://cdn.ayusummer233.top/DailyNotes/202311211627101.png)
+>
+> > TODO: PS: 虽然这里显示执行成功了, 但是 rdp 过去并没有看到有记事本, 这里对此效果存疑
+
+---
+
+#### 在 powershell 中使用 wmic 命令执行 rundll32
+
+---
+
+```powershell
+wmic /node:127.0.0.1 process call create "rundll32.exe xxx\xxx\calc.dll StartW"
+wmic /node:127.0.0.1 process call create "rundll32.exe C:\AtomicRedTeam\ExternalPayloads/calc.dll StartW"
+```
+
+指示系统运行 `rundll32.exe` 程序，该程序用于调用 DLL 文件中的函数。`C:\AtomicRedTeam\ExternalPayloads/calc.dll` 是 DLL 文件的路径，而 `StartW` 是 DLL 中的一个函数。
+
+> TODO: 这个 dll 的作用是启动计算器, 学一下怎么用 x64dbg 调试 dll
+
+
+
+-----
+
+### 使用 wmic
+
+```cmd
+wmic /node:"#{node}" product where "name like '#{product}%%'" call uninstall
+```
+
+
+
+
+
+---
+
+### 在powershell 中使用 Invoke-WmiMethod 新建进程
+
+---
+
+```powershell
+powershell -exec bypass -e SQBuAHYAbwBrAGUALQBXAG0AaQBNAGUAdABoAG8AZAAgAC0AUABhAHQAaAAgAHcAaQBuADMAMgBfAHAAcgBvAGMAZQBzAHMAIAAtAE4AYQBtAGUAIABjAHIAZQBhAHQAZQAgAC0AQQByAGcAdQBtAGUAbgB0AEwAaQBzAHQAIABuAG8AdABlAHAAYQBkAC4AZQB4AGUA
+```
+
+- **`-exec bypass`**: 绕过 PowerShell 的执行策略。
+
+  默认情况下 Windows 为了安全起见可能会限制运行某些脚本。使用 `-exec bypass` 可以绕过这些限制，允许运行没有签名的脚本。
+
+- **`-e`**: 这是 PowerShell 的一个参数，用于执行经过 Base64 编码的命令。
+
+使用 powershell 执行一个 `utf-16le` 编码的命令, 可以使用 python `base64.b64decode(*enc_cmd*).decode("utf-16-le")`  解码该命令, 得到:
+
+```powershell
+Invoke-WmiMethod -Path win32_process -Name create -ArgumentList notepad.exe
+```
+
+- `Invoke-WmiMethod`：调用 `Windows Management Instrumentation (WMI) `方法
+
+- `-Path win32_process`：指定 WMI 类的路径，`win32_process` 是一个用于表示系统进程的 WMI 类。
+
+- `-Name create`: 调用的 WMI 方法的名称，在这里是 `create`，用于创建新的进程
+
+- `-ArgumentList notepad.exe`：传递给 `create` 方法的参数，表示要创建的进程。
+
+  在此示例中将启动 Windows 记事本应用程序（Notepad）
+
+---
+
+#### 在 powershell 中从 Win32_Process 派生一个类新建进程
+
+---
+
+```powershell
+# 创建一个 ManagementClass 对象，代表 Win32_Process WMI 类
+$Class = New-Object Management.ManagementClass(New-Object Management.ManagementPath("Win32_Process"))
+# 从 Win32_Process 类派生出一个新的类，并命名为 Win32_Atomic
+$NewClass = $Class.Derive("Win32_Atomic")
+# 将新创建的 Win32_Atomic 类注册到 WMI 命名空间中。这意味着，之后可以像其他标准 WMI 类一样使用 Win32_Atomic。
+$NewClass.Put()
+# 使用 Invoke-WmiMethod 命令调用 Win32_Atomic 类的 create 方法新建一个进程启动记事本
+Invoke-WmiMethod -Path Win32_Atomic -Name create -ArgumentList notepad.exe
+
+# Clean
+# 创建一个指向 Win32_Atomic 类的 ManagementClass 对象。
+$CleanupClass = New-Object Management.ManagementClass(New-Object Management.ManagementPath("Win32_Atomic"))
+# 尝试删除 Win32_Atomic 类
+try { $CleanupClass.Delete() } catch {}
+```
+
+- `Win32_Process` 是一个预定义的 WMI 类，用于表示和操作系统进程相关的信息。
+
+- 派生操作是在 WMI 中创建一个新的类，它继承了父类的所有属性和方法。
+
+- 由于 Win32_Atomic 类是从 Win32_Process 类派生的，它继承了 create 方法，该方法用于创建新的进程。
+
+  在这个例子中，它被用来启动 Windows 的记事本应用程序（Notepad）。
+
+  ---
+
+- `try { $CleanupClass.Delete() } catch {}`:用于尝试执行某些操作，并捕获如果这些操作失败时产生的任何异常。
+
+  在 `try` 块中，代码尝试调用 `$CleanupClass.Delete()`，这个方法用于从 WMI 命名空间中删除 `Win32_Atomic` 类。
+
+---
+
+
+
+
+
 
 
 
