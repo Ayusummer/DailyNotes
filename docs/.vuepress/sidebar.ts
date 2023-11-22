@@ -90,14 +90,22 @@ let security_web = [
 
 /** 网络安全-ATTCK 侧边栏 */
 let security_ATTCK = [
-  {
-    text: "ATTCK",
-    link: "/网络安全/ATTCK/",
-  },
+  // {
+  //   text: "ATTCK",
+  //   link: "/网络安全/ATTCK/",
+  // },
   {
     text: "TA0001-InitialAccess",
     link: "/网络安全/ATTCK/TA0001-InitialAccess.md",
   },
+  {
+    text: "TA0005-DefenseEvasion",
+    link: "/网络安全/ATTCK/TA0005-DefenseEvasion(下).md"
+  },
+  {
+    text: "TA0040-Impact",
+    link: "/网络安全/ATTCK/TA0040-Impact.md"
+  }
 ];
 
 /** language-python */
