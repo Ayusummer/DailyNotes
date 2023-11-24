@@ -12,8 +12,8 @@
 
 ```powershell
 # Get-FileHash -Path [FilePath] -Algorithm [Algorithm]
-Get-FileHash -Path test -Algorithm SHA256
-Get-FileHash -Path test -Algorithm MD5
+Get-FileHash -Algorithm SHA256 -Path test
+Get-FileHash -Algorithm MD5 -Path test 
 ```
 
 ![image-20230910211506449](http://cdn.ayusummer233.top/DailyNotes/202309102115479.png)
