@@ -13,6 +13,8 @@
   - [查看登录日志](#查看登录日志)
   - [Process Explorer - 查看某个窗口是哪个进程调起的](#process-explorer---查看某个窗口是哪个进程调起的)
   - [定时任务](#定时任务)
+    - [schtasks](#schtasks)
+    - [at](#at)
   - [Windows Management Instrumentation - Windows 管理工具](#windows-management-instrumentation---windows-管理工具)
     - [在 CMD 中使用 wmic 命令查看一些系统信息](#在-cmd-中使用-wmic-命令查看一些系统信息)
     - [在 CMD 中使用 wmic 命令新建进程](#在-cmd-中使用-wmic-命令新建进程)
@@ -191,6 +193,8 @@ sysmon64 -i
 
 ## 定时任务
 
+### schtasks
+
 ```cmd
 schtasks /create /tn "T1053_005_OnLogon" /sc onlogon /tr "cmd.exe /c calc.exe"
 schtasks /create /tn "T1053_005_OnStartup" /sc onstart /ru system /tr "cmd.exe /c calc.exe"
@@ -219,6 +223,20 @@ $Set = New-ScheduledTaskSettingsSet
 $object = New-ScheduledTask -Action $Action -Principal $User -Trigger $Trigger -Settings $Set
 Register-ScheduledTask AtomicTask -InputObject $object
 ```
+
+---
+
+### at
+
+```powershell
+at 13:20 /interactive cmd 
+```
+
+at 命令在 win10 中已经弃用, 在 Win7 中可以使用, 有资料显示 XP 和 Server2003 也可以用
+
+> ![image-20231122162800484](http://cdn.ayusummer233.top/DailyNotes/202311221628629.png)
+>
+> ![image-20231122162652063](http://cdn.ayusummer233.top/DailyNotes/202311221626960.png)
 
 ---
 

@@ -9,6 +9,11 @@
   - [主题](#主题)
     - [Oh My Posh](#oh-my-posh)
         - [Quick Start For Windows](#quick-start-for-windows)
+  - [基础语法](#基础语法)
+    - [杂项](#杂项)
+    - [循环结构](#循环结构)
+  - [文件操作](#文件操作)
+    - [清除文件中的空行](#清除文件中的空行)
   - [目标目录文件变动监控备份](#目标目录文件变动监控备份)
   - [powershell empire 上线命令](#powershell-empire-上线命令)
   - [远程连接](#远程连接)
@@ -18,8 +23,6 @@
     - [安装模块](#安装模块)
   - [证书](#证书)
   - [启用或关闭 Windows 功能](#启用或关闭-windows-功能)
-  - [基础语法](#基础语法)
-    - [循环结构](#循环结构)
   - [报错收集](#报错收集)
     - [无法加载 `xxx.ps1`, 因在此系统上禁止运行脚本。有关详细信息，请参阅 关于执行策略 - PowerShell | Microsoft Docs 中的 `about_Execution_Policies`。](#无法加载-xxxps1-因在此系统上禁止运行脚本有关详细信息请参阅-关于执行策略---powershell--microsoft-docs-中的-about_execution_policies)
 
@@ -225,7 +228,58 @@ A prompt theme engine for any shell.
   >
   > ![image-20230414004329598](http://cdn.ayusummer233.top/DailyNotes/202304140043653.png)
 
+----
 
+
+## 基础语法
+
+---
+
+### 杂项
+
+- 在 powershell 中, 转义符号为 反引号(`` ` ``) 而非反斜杠(``\``), 例如:
+  - `换行`: `` `n ``
+  - `回车`: `` `r ``
+  - `空格`: `` `s ``
+  - `制表符`: `` `t ``
+  - `反引号`: `` `` ``
+
+---
+
+### 循环结构
+
+```powershell
+# 循环执行 curl http://192.168.1.21/phpinfo.php -UseBasicParsing
+$cmd_always = 'curl http://192.168.1.21/phpinfo.php -UseBasicParsing
+while ($true) {
+    Invoke-Expression $cmd_always
+}
+```
+
+
+
+---
+
+## 文件操作
+
+### 清除文件中的空行
+
+```powershell
+(Get-Content -Path $FilePath | Where-Object { $_.Trim() -ne "" }) | Set-Content -Path $FilePath
+```
+
+- `Get-Content` 用于读取文件内容。
+
+- `Where-Object { $_.Trim() -ne "" }` 是一个过滤器，它会排除所有的空行和只包含空格或制表符的行。
+
+  - `$_` 表示当前处理的行
+  - `Trim()` 函数会移除字符串两端的空格和制表符
+
+  如果处理后的行为空字符串（`""`），则该行会被排除。
+
+- `Set-Content`  用于将处理后的内容写回到原文件。
+
+---
 
 ## 目标目录文件变动监控备份
 
@@ -691,20 +745,6 @@ Get-Service W3SVC
 ```
 
 ![image-20231029164742589](http://cdn.ayusummer233.top/DailyNotes/202310291647834.png)
-
----
-
-## 基础语法
-
-### 循环结构
-
-```powershell
-# 循环执行 curl http://192.168.1.21/phpinfo.php -UseBasicParsing
-$cmd_always = 'curl http://192.168.1.21/phpinfo.php -UseBasicParsing
-while ($true) {
-    Invoke-Expression $cmd_always
-}
-```
 
 ---
 
