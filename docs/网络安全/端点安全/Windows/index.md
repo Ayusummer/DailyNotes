@@ -270,8 +270,6 @@ wmic qfe get description,installedOn /format:csv
   - `/ALL`：返回所有可用的属性。
 - `/format:csv`：指定输出格式为 CSV
 
-
-
 > ![image-20231121151050009](http://cdn.ayusummer233.top/DailyNotes/202311211510098.png)
 >
 > ![image-20231121151517619](http://cdn.ayusummer233.top/DailyNotes/202311211515762.png)
