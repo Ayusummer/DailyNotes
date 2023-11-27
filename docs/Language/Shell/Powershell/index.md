@@ -9,6 +9,7 @@
   - [主题](#主题)
     - [Oh My Posh](#oh-my-posh)
         - [Quick Start For Windows](#quick-start-for-windows)
+    - [显示时间](#显示时间)
   - [基础语法](#基础语法)
     - [杂项](#杂项)
     - [循环结构](#循环结构)
@@ -228,8 +229,30 @@ A prompt theme engine for any shell.
   >
   > ![image-20230414004329598](http://cdn.ayusummer233.top/DailyNotes/202304140043653.png)
 
-----
+---
 
+### 显示时间
+
+```powershell
+function prompt {
+    # 显示当前时间
+    $currentTime = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
+    Write-Host "Time: $currentTime" -NoNewline -ForegroundColor Green
+
+    # PowerShell默认提示符
+    " PS $($executionContext.SessionState.Path.CurrentLocation)$('>' * ($nestedPromptLevel + 1)) "
+}
+```
+
+PowerShell的提示函数（`prompt` 函数）用于生成命令提示符。通过在此函数中添加显示当前时间的代码，可以在每个提示符前显示时间。
+
+把上述 PowerShell 代码加到 profile 里(例如 `code $profile` 然后在打开的 VSCode 中的 profile 文件中输入上述代码并保存) 然后重启 PowerShell 就可以显示每次命令时间了, 效果如下:
+
+![image-20231127185352895](http://cdn.ayusummer233.top/DailyNotes/202311271853066.png)
+
+> [CMD 中也有类似的方法显示当前时间](../CMD/index.md#显示时间)
+
+----
 
 ## 基础语法
 
