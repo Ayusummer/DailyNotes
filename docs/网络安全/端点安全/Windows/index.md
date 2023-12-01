@@ -202,7 +202,7 @@ SCHTASKS /Create /SC ONCE /TN spawn /TR "C:\windows\system32\cmd.exe" /ST "20:10
 ```
 
 - `/tn`: `Task Name`
-- `/sc`: `shcedule` - 后续接任务执行频率
+- `/sc`: `schedule` - 后续接任务执行频率
   - `Once`: 一次性任务
   - `onlogon`: 用户登录时执行
   - `onstart`: 系统启动时执行
@@ -215,28 +215,75 @@ SCHTASKS /Create /SC ONCE /TN spawn /TR "C:\windows\system32\cmd.exe" /ST "20:10
 
 ---
 
+```cmd
+# 列出所有计划任务
+schtasks /query /FO LIST
+# 查询名称包含指定字符串的计划任务(例如包含 T1053 的计划任务)
+schtasks /query | findstr "T1053"
+# 查询名称为 T1053_005_OnLogon 的计划任务
+schtasks /query /tn "T1053_005_OnLogon"
+```
+
+- `/FO LIST` 指定输出格式为列表, 显示更详细的信息
+
+---
+
+```cmd
+# 远程创建计划任务
+# SCHTASKS /Create /S #{target} /RU #{user_name} /RP #{password} /TN "Atomic task" /TR "#{task_command}" /SC daily /ST #{time}
+schtasks /Create /S [remote-ip] /RU [remote-user] /RP [passwd] /TN "Atomic task" /TR "C:/windows/system32/cmd.exe" /SC daily /ST 20:10
+```
+
+- `/S`: `Server` - 指定任务执行的服务器
+- `/RU`: `Run User` - 指定任务执行的用户
+- `/RP`: `Run Password` - 指定任务执行的用户密码
+- `/tn`: `Task Name`
+- `/tr`: `Task Run` - 指定任务执行时运行的命令或程序
+- `/sc`: `schedule` - 后续接任务执行频率
+  - `daily`: 每天执行
+- `/st`: `Start Time` - 指定任务开始执行的时间
+
+---
+
+### PowerShell Cmdlet
+
+---
+
 ```powershell
+# 新建一个计划任务用于执行 calc.exe
 $Action = New-ScheduledTaskAction -Execute "calc.exe"
+# 新建一个计划任务触发器, 在用户登入时触发
 $Trigger = New-ScheduledTaskTrigger -AtLogon
+# 新建一个计划任务主体, 指定任务以管理员组的权限运行, 并且以最高权限级别运行
 $User = New-ScheduledTaskPrincipal -GroupId "BUILTIN\Administrators" -RunLevel Highest
+# 新建一个计划任务设置集(这里没有设置具体参数, 因此保持默认)
 $Set = New-ScheduledTaskSettingsSet
+# 综合前面定义的动作,触发器,主体和设置创建一个新的计划任务对象
 $object = New-ScheduledTask -Action $Action -Principal $User -Trigger $Trigger -Settings $Set
+# 将前面创建的计划任务对象注册到系统中, 任务名称为 AtomicTask, 注册后该任务将根据其配置在系统中自动运行
 Register-ScheduledTask AtomicTask -InputObject $object
 ```
 
 ---
 
-### at
+### AT
 
 ```powershell
 at 13:20 /interactive cmd 
 ```
 
-at 命令在 win10 中已经弃用, 在 Win7 中可以使用, 有资料显示 XP 和 Server2003 也可以用
+at 命令在 win10 中已经弃用, 在 Win7 中可以使用
 
 > ![image-20231122162800484](http://cdn.ayusummer233.top/DailyNotes/202311221628629.png)
 >
 > ![image-20231122162652063](http://cdn.ayusummer233.top/DailyNotes/202311221626960.png)
+
+---
+
+- 根据 [at (command) - Wikipedia](https://en.wikipedia.org/wiki/At_(command)), [At Command (computerhope.com)](https://www.computerhope.com/at.htm), [Use the at command to schedule tasks - Windows Client | Microsoft Learn](https://learn.microsoft.com/en-us/troubleshoot/windows-client/system-management-components/use-at-command-to-schedule-tasks) 以及 [at | Microsoft Learn](https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/at) 的信息
+  - `at` 命令自 Windows NT 开始就可用于在计算机上指定的时间和日期运行命令和程序
+  - 其在 `Windows NT`、`Windows 2000` 和 `Windows XP` 等早期版本中都是可用的。在Windows Vista及更新的Windows版本中，`at`命令被标记为弃用，推荐使用`schtasks`命令来替代
+  - 在微软官方的 Windows Server 文档中有提到其适用于``Windows Server 2022`、`Windows Server 2019`、`Windows Server 2016`、`Windows Server 2012 R2`、`Windows Server 2012`
 
 ---
 
