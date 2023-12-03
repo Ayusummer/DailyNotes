@@ -16,6 +16,7 @@
     - [schtasks](#schtasks)
     - [PowerShell Cmdlet](#powershell-cmdlet)
     - [WMI Invoke-CimMethod 计划任务](#wmi-invoke-cimmethod-计划任务)
+    - [创建执行从注册表读取base64编码命令的计划任务](#创建执行从注册表读取base64编码命令的计划任务)
     - [AT](#at)
   - [Windows Management Instrumentation - Windows 管理工具](#windows-management-instrumentation---windows-管理工具)
     - [在 CMD 中使用 wmic 命令查看一些系统信息](#在-cmd-中使用-wmic-命令查看一些系统信息)
@@ -396,6 +397,47 @@ Unregister-ScheduledTask -TaskName "T1053_005_WMI" -confirm:$false
 
 ![image-20231203163444148](http://cdn.ayusummer233.top/DailyNotes/202312031634174.png)
 
+---
+
+### 创建执行从注册表读取base64编码命令的计划任务
+
+```cmd
+# 将 ping 127.0.0.1 的命令以 base64 编码后写入注册表
+reg add HKCU\SOFTWARE\ATOMIC-T1053.005 /v test /t REG_SZ /d cGluZyAxMjcuMC4wLjE= /f
+# 创建计划任务, 每天 07:45 执行从注册表读取的 base64 编码命令
+schtasks.exe /Create /F /TN "ATOMIC-T1053.005" /TR "cmd /c start /min \"\" powershell.exe -Command IEX([System.Text.Encoding]::ASCII.GetString([System.Convert]::FromBase64String((Get-ItemProperty -Path HKCU:\\SOFTWARE\\ATOMIC-T1053.005).test)))" /sc daily /st 07:45
+```
+- `/Create` 创建计划任务
+- `/F` 强制创建, 即使已经存在具有相同名称的任务也会覆盖
+- `/TN` 指定任务名称
+- `/TR` 指定任务执行时运行的命令或程序
+- `/sc` 指定任务执行频率
+  - `daily` 每天执行
+- `/st` 指定任务开始执行的时间
+
+![image-20231203174743641](http://cdn.ayusummer233.top/DailyNotes/202312031747667.png)
+
+---
+
+查询对应的注册表以及计划任务:
+
+```powershell
+Get-ItemProperty -Path HKCU:\\SOFTWARE\\ATOMIC-T1053.005
+schtasks /query /tn "ATOMIC-T1053.005"
+```
+
+![image-20231203174806582](http://cdn.ayusummer233.top/DailyNotes/202312031748619.png)
+
+----
+
+删除对应的注册表以及计划任务:
+
+```powershell
+reg delete HKCU\SOFTWARE\ATOMIC-T1053.005 /f
+schtasks /delete /tn "ATOMIC-T1053.005" /f
+```
+
+![image-20231203174824824](http://cdn.ayusummer233.top/DailyNotes/202312031748878.png)
 
 ---
 
