@@ -191,7 +191,7 @@ sysmon64 -i
 
 ---
 
-## 定时任务
+## 计划任务
 
 ### schtasks
 
@@ -263,6 +263,12 @@ $object = New-ScheduledTask -Action $Action -Principal $User -Trigger $Trigger -
 # 将前面创建的计划任务对象注册到系统中, 任务名称为 AtomicTask, 注册后该任务将根据其配置在系统中自动运行
 Register-ScheduledTask AtomicTask -InputObject $object
 ```
+
+---
+
+### WMI Invoke-CimMethod 计划任务
+
+
 
 ---
 
