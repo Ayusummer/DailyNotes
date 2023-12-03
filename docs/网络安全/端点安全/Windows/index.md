@@ -267,6 +267,30 @@ $object = New-ScheduledTask -Action $Action -Principal $User -Trigger $Trigger -
 Register-ScheduledTask AtomicTask -InputObject $object
 ```
 
+```powershell
+# 新建一个计划任务用于执行 calc.exe
+$Action = New-ScheduledTaskAction -Execute "cmd.exe"
+# 新建一个计划任务触发器, 在用户登入时触发
+$Trigger = New-ScheduledTaskTrigger -AtLogon
+# 新建一个计划任务主体, 指定任务以管理员组的权限运行, 并且以最高权限级别运行
+$User = New-ScheduledTaskPrincipal -GroupId "BUILTIN\Administrators" -RunLevel Highest
+# 新建一个计划任务设置集(这里没有设置具体参数, 因此保持默认)
+$Set = New-ScheduledTaskSettingsSet
+# 综合前面定义的动作,触发器,主体和设置创建一个新的计划任务对象
+$object = New-ScheduledTask -Action $Action -Principal $User -Trigger $Trigger -Settings $Set
+# 将前面创建的计划任务对象注册到系统中, 任务名称为 AtomicTask, 注册后该任务将根据其配置在系统中自动运行
+Register-ScheduledTask AtomicTaskModifed -InputObject $object
+# 修改计划任务的执行动作, 将其修改为执行 notepad.exe
+$NewAction = New-ScheduledTaskAction -Execute "Notepad.exe"
+# 修改计划任务的执行动作
+Set-ScheduledTask "AtomicTaskModifed" -Action $NewAction
+
+# 查询该计划任务
+Get-ScheduledTask -TaskName "AtomicTaskModifed"
+# 删除该计划任务
+Unregister-ScheduledTask -TaskName "AtomicTaskModifed" -confirm:$false
+```
+
 ---
 
 ### WMI Invoke-CimMethod 计划任务
@@ -274,7 +298,13 @@ Register-ScheduledTask AtomicTask -InputObject $object
 ```powershell
 # 读取 xml 文档内容并将其保存到变量 $xml 中
 $xml = [System.IO.File]::ReadAllText("C:\AtomicRedTeam\atomics\T1053.005\src\T1053_005_WMI.xml")
-# 使用 Invoke-CimMethod 命令将计划任务注册到系统中
+Invoke-CimMethod -ClassName PS_ScheduledTask -NameSpace "Root\Microsoft\Windows\TaskScheduler" -MethodName "RegisterByXml" -Arguments @{ Force = $true; Xml =$xml; }
+```
+
+```powershell
+# 读取 xml 文档内容并将其保存到变量 $xml 中
+$xml = [System.IO.File]::ReadAllText("C:\AtomicRedTeam\atomics\T1053.005\src\T1053_05_SCTASK_HIDDEN_ATTRIB.xml")
+# 使用 Invoke-CimMethod 命令将计划任务注册到系统中(该xml中的计划任务启用了隐藏属性)
 Invoke-CimMethod -ClassName PS_ScheduledTask -NameSpace "Root\Microsoft\Windows\TaskScheduler" -MethodName "RegisterByXml" -Arguments @{ Force = $true; Xml =$xml; }
 ```
 
@@ -295,7 +325,7 @@ Invoke-CimMethod -ClassName PS_ScheduledTask -NameSpace "Root\Microsoft\Windows\
   - `Force = $true` 强制执行，即使已经存在具有相同名称的任务也会覆盖。
   - `Xml = $xml` 提供了任务定义的 XML 内容，这是从之前读取的文件中获取的 xml 内容
 
-读取的 xml 内容如下:
+`T1053_005_WMI.xml` 内容如下:
 
 ```xml
 <?xml version="1.0" encoding="UTF-16"?>
@@ -359,22 +389,81 @@ Invoke-CimMethod -ClassName PS_ScheduledTask -NameSpace "Root\Microsoft\Windows\
 </Task>
 ```
 
+`T1053_05_SCTASK_HIDDEN_ATTRIB.xml` 的内容如下:
+
+```xml
+<?xml version="1.0" encoding="UTF-16"?>
+<Task version="1.2" xmlns="http://schemas.microsoft.com/windows/2004/02/mit/task">
+  <RegistrationInfo>
+    <Version>1.1.1</Version>
+    <Author>atomicredteam</Author>
+    <Description>atomic red team schedule task with hidden attribute</Description>
+    <URI>\atomic red team</URI>
+  </RegistrationInfo>
+  <Triggers>
+    <LogonTrigger>
+      <Enabled>true</Enabled>
+    </LogonTrigger>
+  </Triggers>
+  <Principals>
+    <Principal id="Author">
+      <RunLevel>LeastPrivilege</RunLevel>
+      <LogonType>InteractiveToken</LogonType>
+    </Principal>
+  </Principals>
+  <Settings>
+    <MultipleInstancesPolicy>IgnoreNew</MultipleInstancesPolicy>
+    <DisallowStartIfOnBatteries>false</DisallowStartIfOnBatteries>
+    <StopIfGoingOnBatteries>true</StopIfGoingOnBatteries>
+    <AllowHardTerminate>true</AllowHardTerminate>
+    <StartWhenAvailable>true</StartWhenAvailable>
+    <RunOnlyIfNetworkAvailable>false</RunOnlyIfNetworkAvailable>
+    <IdleSettings>
+      <StopOnIdleEnd>true</StopOnIdleEnd>
+      <RestartOnIdle>false</RestartOnIdle>
+    </IdleSettings>
+    <AllowStartOnDemand>true</AllowStartOnDemand>
+    <Enabled>true</Enabled>
+    <!-- 隐藏计划任务 -->
+    <Hidden>true</Hidden>
+    <RunOnlyIfIdle>false</RunOnlyIfIdle>
+    <WakeToRun>false</WakeToRun>
+    <ExecutionTimeLimit>PT0S</ExecutionTimeLimit>
+    <Priority>6</Priority>
+  </Settings>
+  <Actions Context="Author">
+    <Exec>
+      <Command>C:\Windows\system32\calc.exe"</Command>
+      <Arguments></Arguments>
+    </Exec>
+  </Actions>
+</Task>
+
+```
+
 - `S-1-5-32-545` 是 `Users` 组的 SID
+
   - `S`: 代表 SID(Security Identifier)(安全标识符), 在 Windows 中用于唯一标识用户、组、计算机等
-  
+
   - `1`: 代表 SID 的版本号
-  
+
   - `5`: 代表 SID 的机构标识符, 5 代表这是一个 Windows 或域账户
-  
+
   - `32`: 代表 SID 的子机构标识符, 32 代表这是一个内置账户
-  
+
   - `545`: 代表 SID 的相对标识符(RID), 545 代表这是 Users 组的 RID
-  
+
     类似的还有:
     - `544`: Administrators 组的 RID
     - `546`: Guests 组的 RID
 
+- 在 `T1053_05_SCTASK_HIDDEN_ATTRIB.xml` 的 `line34` 定义了隐藏该计划任务, 该计划任务在计划任务程序中将不可见
+
 ![image-20231203163355433](http://cdn.ayusummer233.top/DailyNotes/202312031634488.png)
+
+![image-20231203181951850](http://cdn.ayusummer233.top/DailyNotes/202312031819908.png)
+
+---
 
 要查看这个计划任务是否已经注册到系统中, 可以使用如下命令:
 
@@ -382,14 +471,24 @@ Invoke-CimMethod -ClassName PS_ScheduledTask -NameSpace "Root\Microsoft\Windows\
 Get-ScheduledTask -TaskName "T1053_005_WMI"
 # 或者使用 schtasks
 schtasks /query /tn "T1053_005_WMI"
+
+Get-ScheduledTask -TaskName "atomic red team"
+schtasks /query /tn "atomic red team"
 ```
 
 ![image-20231203163429219](http://cdn.ayusummer233.top/DailyNotes/202312031634242.png)
+
+可惜后者并未达成隐藏的效果:
+
+![image-20231203182014956](http://cdn.ayusummer233.top/DailyNotes/202312031820985.png)
+
+---
 
 要删除这个计划任务可以使用如下命令:
 
 ```powershell
 Unregister-ScheduledTask -TaskName "T1053_005_WMI" -confirm:$false
+Unregister-ScheduledTask -TaskName "atomic red team" -confirm:$false
 ```
 - `Unregister-ScheduledTask` 删除计划任务
 - `TaskName` 指定要删除的计划任务名称
