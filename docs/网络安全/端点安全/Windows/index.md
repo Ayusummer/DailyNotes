@@ -12,9 +12,11 @@
     - [使用](#使用)
   - [查看登录日志](#查看登录日志)
   - [Process Explorer - 查看某个窗口是哪个进程调起的](#process-explorer---查看某个窗口是哪个进程调起的)
-  - [定时任务](#定时任务)
+  - [计划任务](#计划任务)
     - [schtasks](#schtasks)
-    - [at](#at)
+    - [PowerShell Cmdlet](#powershell-cmdlet)
+    - [WMI Invoke-CimMethod 计划任务](#wmi-invoke-cimmethod-计划任务)
+    - [AT](#at)
   - [Windows Management Instrumentation - Windows 管理工具](#windows-management-instrumentation---windows-管理工具)
     - [在 CMD 中使用 wmic 命令查看一些系统信息](#在-cmd-中使用-wmic-命令查看一些系统信息)
     - [在 CMD 中使用 wmic 命令新建进程](#在-cmd-中使用-wmic-命令新建进程)
@@ -268,6 +270,131 @@ Register-ScheduledTask AtomicTask -InputObject $object
 
 ### WMI Invoke-CimMethod 计划任务
 
+```powershell
+# 读取 xml 文档内容并将其保存到变量 $xml 中
+$xml = [System.IO.File]::ReadAllText("C:\AtomicRedTeam\atomics\T1053.005\src\T1053_005_WMI.xml")
+# 使用 Invoke-CimMethod 命令将计划任务注册到系统中
+Invoke-CimMethod -ClassName PS_ScheduledTask -NameSpace "Root\Microsoft\Windows\TaskScheduler" -MethodName "RegisterByXml" -Arguments @{ Force = $true; Xml =$xml; }
+```
+
+- `Invoke-CimMethod`: 调用 Common Information Model (CIM) 方法。
+
+- `-ClassName PS_ScheduledTask`: 指定要调用的 CIM 类的名称
+  这里是 `PS_ScheduledTask`，与 Windows 计划任务相关。
+
+- `-NameSpace "Root\Microsoft\Windows\TaskScheduler"` 指定 CIM 命名空间
+  这里是 Windows 任务调度器的命名空间。
+
+- `-MethodName "RegisterByXml"` 调用 `RegisterByXml` 方法，这个方法用于根据提供的 XML 定义来注册一个新的计划任务。
+
+- ```
+  -Arguments @{ Force = $true; Xml =$xml; }
+  ```
+
+  - `Force = $true` 强制执行，即使已经存在具有相同名称的任务也会覆盖。
+  - `Xml = $xml` 提供了任务定义的 XML 内容，这是从之前读取的文件中获取的 xml 内容
+
+读取的 xml 内容如下:
+
+```xml
+<?xml version="1.0" encoding="UTF-16"?>
+<Task version="1.2" xmlns="http://schemas.microsoft.com/windows/2004/02/mit/task">
+  <!-- 任务信息 -->
+  <RegistrationInfo>
+    <Date>2021-04-22T12:29:17</Date>
+    <Author>AtomicRedTeam</Author>
+    <!-- 每个计划任务都有一个唯一的 URI 用于标识该任务。 -->
+    <URI>\T1053_005_WMI</URI>
+  </RegistrationInfo>
+  <!-- 触发器 -->
+  <Triggers>
+    <!-- 登录触发器 -->
+    <LogonTrigger>
+      <StartBoundary>2021-04-22T12:29:00</StartBoundary>
+      <Enabled>true</Enabled>
+    </LogonTrigger>
+  </Triggers>
+  <!-- 主体内容 -->
+  <Principals>
+    <Principal id="Author">
+      <!-- 任务运行的用户 S-1-5-32-545 为 Users 组 -->
+      <GroupId>S-1-5-32-545</GroupId>
+      <!-- 运行级别, 以最低权限级别运行 -->
+      <RunLevel>LeastPrivilege</RunLevel>
+    </Principal>
+  </Principals>
+  <Settings>
+    <!-- 多实例策略, 如果任务已在运行, 新的实例将被忽略 -->
+    <MultipleInstancesPolicy>IgnoreNew</MultipleInstancesPolicy>
+    <!-- 任务不会在仅使用电池供电时启动 -->
+    <DisallowStartIfOnBatteries>true</DisallowStartIfOnBatteries>
+    <!-- 如果开始运行后切换到电池供电, 任务将会停止 -->
+    <StopIfGoingOnBatteries>true</StopIfGoingOnBatteries>
+    <AllowHardTerminate>true</AllowHardTerminate>
+    <StartWhenAvailable>false</StartWhenAvailable>
+    <!-- 在网络不可用时也会运行 -->
+    <RunOnlyIfNetworkAvailable>false</RunOnlyIfNetworkAvailable>
+    <IdleSettings>
+      <StopOnIdleEnd>true</StopOnIdleEnd>
+      <RestartOnIdle>false</RestartOnIdle>
+    </IdleSettings>
+    <!-- 允许按需启动 -->
+    <AllowStartOnDemand>true</AllowStartOnDemand>
+    <Enabled>true</Enabled>
+    <!-- 不隐藏 -->
+    <Hidden>false</Hidden>
+    <RunOnlyIfIdle>false</RunOnlyIfIdle>
+    <WakeToRun>false</WakeToRun>
+    <!-- 执行时间限制 - 任务最长运行时间为 72h -->
+    <ExecutionTimeLimit>PT72H</ExecutionTimeLimit>
+    <Priority>7</Priority>
+  </Settings>
+  <!-- 任务执行时将执行 notepad.exe -->
+  <Actions Context="Author">
+    <Exec>
+      <Command>notepad.exe</Command>
+    </Exec>
+  </Actions>
+</Task>
+```
+
+- `S-1-5-32-545` 是 `Users` 组的 SID
+  - `S`: 代表 SID(Security Identifier)(安全标识符), 在 Windows 中用于唯一标识用户、组、计算机等
+  
+  - `1`: 代表 SID 的版本号
+  
+  - `5`: 代表 SID 的机构标识符, 5 代表这是一个 Windows 或域账户
+  
+  - `32`: 代表 SID 的子机构标识符, 32 代表这是一个内置账户
+  
+  - `545`: 代表 SID 的相对标识符(RID), 545 代表这是 Users 组的 RID
+  
+    类似的还有:
+    - `544`: Administrators 组的 RID
+    - `546`: Guests 组的 RID
+
+![image-20231203163355433](http://cdn.ayusummer233.top/DailyNotes/202312031634488.png)
+
+要查看这个计划任务是否已经注册到系统中, 可以使用如下命令:
+
+```powershell
+Get-ScheduledTask -TaskName "T1053_005_WMI"
+# 或者使用 schtasks
+schtasks /query /tn "T1053_005_WMI"
+```
+
+![image-20231203163429219](http://cdn.ayusummer233.top/DailyNotes/202312031634242.png)
+
+要删除这个计划任务可以使用如下命令:
+
+```powershell
+Unregister-ScheduledTask -TaskName "T1053_005_WMI" -confirm:$false
+```
+- `Unregister-ScheduledTask` 删除计划任务
+- `TaskName` 指定要删除的计划任务名称
+- `-confirm:$false` 确认删除时不需要用户确认
+
+![image-20231203163444148](http://cdn.ayusummer233.top/DailyNotes/202312031634174.png)
 
 
 ---
