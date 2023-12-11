@@ -1,5 +1,9 @@
 # Shell
 
+
+
+---
+
 - **Shell** 是一个命令行界面，用户可以通过它与操作系统进行交互。Shell 既是一个命令解释器，也是一种脚本语言。在类 Unix 系统（如 Linux、macOS）中，Shell 是用户与操作系统核心进行交互的主要方式。
 
   - **sh（Bourne Shell）**：
@@ -16,11 +20,37 @@
 
 - `.sh` 文件扩展名通常用于指代 shell 脚本，而不特指用 Bourne Shell (`sh`) 编写的脚本。
 
+---
 
+## 显示时间
 
+:::tabs
 
+@tab:ative bash
 
+```bash
+PS1="[\d  \t] \u@\h: "
+# 要永久生效请编辑如下文件
+~/.bashrc
+```
 
+![image-20231211105830736](http://cdn.ayusummer233.top/DailyNotes/202312111059839.png)
 
+@tab zsh
 
+```bash
+PROMPT='[%*] %n@%m: %~%# '
+# 要显示日期:
+PROMPT='[%D{%Y-%m-%d} %*] %n@%m: %~%# '
+# 要永久生效请编辑如下文件
+~/.zshrc
+```
+- `%*`: 显示当前时间（24小时制，包括小时、分钟和秒）
+- `%n@%m: %~%#`: 显示当前用户名、主机名、当前目录和提示符
+
+![image-20231211110828980](http://cdn.ayusummer233.top/DailyNotes/202312111108063.png)
+
+:::
+
+---
 
