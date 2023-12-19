@@ -574,6 +574,32 @@ Sourcery-ai 可以给开发者提供 Python 代码的重构建议:
 
 ---
 
+## 实用更新记录
+
+### 浮动编辑器窗口
+
+> [Visual Studio Code November 2023 --- Visual Studio 代码 2023 年 11 月](https://code.visualstudio.com/updates/v1_85#_floating-editor-windows)
+
+V1.85 更新, 可以将窗口脱离出来成独立窗口了
+
+![NVIDIA_Share_AxQ19JKh5F](http://cdn.ayusummer233.top/DailyNotes/202312110007086.gif)
+
+---
+
+### Sticky Scroll
+
+> [Visual Studio Code November 2023 --- Visual Studio 代码 2023 年 11 月](https://code.visualstudio.com/updates/v1_85#_sticky-scroll-in-trees)
+
+```
+workbench.tree.enableStickyScroll
+```
+
+![image-20231215033409893](http://cdn.ayusummer233.top/DailyNotes/202312150334244.png)
+
+![Code_-_Insiders_E9C5eCwsRr](http://cdn.ayusummer233.top/DailyNotes/202312150335128.gif)
+
+---
+
 ## 报错收集
 
 ---
