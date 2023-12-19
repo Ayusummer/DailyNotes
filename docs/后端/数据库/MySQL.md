@@ -1,17 +1,33 @@
 # mysql
 
 - [mysql](#mysql)
+  - [MariaDB](#mariadb)
   - [安装](#安装)
+    - [官方安装包](#官方安装包)
+    - [手动配置](#手动配置)
+  - [启用远程访问权限](#启用远程访问权限)
   - [mysql 数据类型](#mysql-数据类型)
     - [数值类型](#数值类型)
       - [日期和时间类型](#日期和时间类型)
       - [字符串类型](#字符串类型)
   - [重置自增量](#重置自增量)
-  - [重置密码](#重置密码)
+  - [密码](#密码)
+    - [修改密码](#修改密码)
+    - [重置密码](#重置密码)
   - [报错收集](#报错收集)
     - [mysql Failed! Error: SET PASSWORD has no significance for user ‘root’@’localhost’ as the authentication method used doesn’t store authentication data in the mysql server. Please consider using ALTER USER](#mysql-failed-error-set-password-has-no-significance-for-user-rootlocalhost-as-the-authentication-method-used-doesnt-store-authentication-data-in-the-mysql-server-please-consider-using-alter-user)
     - [ERROR 1819 (HY000): Your password does not satisfy the current policy requirements](#error-1819-hy000-your-password-does-not-satisfy-the-current-policy-requirements)
     - [ERROR 1396 (HY000): Operation ALTER USER failed for 'root'@'%'](#error-1396-hy000-operation-alter-user-failed-for-root)
+
+---
+
+## MariaDB
+
+**MariaDB** 起源于 **MySQL**。当 Oracle 公司于 2010 年收购了 MySQL 后，MySQL 的原始开发者之一 Monty Widenius 启动了 MariaDB 作为 MySQL 的一个分支。目的是确保社区能够保持一个完全开源的版本。
+
+MariaDB 设计为与 MySQL 兼容，初衷是作为 MySQL 的直接替代品。这意味着它使用与 MySQL 相同的协议和 API。因此，在很多情况下，用于 MySQL 的工具和客户端（例如 `mysql` 命令行工具）也可以与 MariaDB 一起使用。
+
+---
 
 
 ## 安装
@@ -611,6 +627,8 @@ select user,host from user;
 ```mysql
 grant all on *.* to 'root'@'%' identified by '[密码]' with grant option;
 ```
+
+---
 
 
 
