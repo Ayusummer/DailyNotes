@@ -1,6 +1,7 @@
 # Shell
 
-
+- [Shell](#shell)
+  - [显示时间](#显示时间)
 
 ---
 
@@ -26,13 +27,20 @@
 
 :::tabs
 
-@tab:ative bash
+@tab:active bash
 
 ```bash
 PS1="[\d  \t] \u@\h: "
 # 要永久生效请编辑如下文件
 ~/.bashrc
+
+# 如果要保留 python 的虚拟环境提示符，可以这样写
+PS1="\$(if [ -n \"\${VIRTUAL_ENV}\" ]; then echo \"(\${VIRTUAL_ENV##*/})\"; fi) [\d  \t] \u@\h: "
 ```
+- `\d`: 显示当前日期（格式为 `Weekday Month Date`，如 `Mon Dec 11`）
+- `\t`: 显示当前时间（24小时制，包括小时、分钟和秒）
+- `\u@\h`: 显示当前用户名和主机名
+- 
 
 ![image-20231211105830736](http://cdn.ayusummer233.top/DailyNotes/202312111059839.png)
 
@@ -44,9 +52,32 @@ PROMPT='[%*] %n@%m: %~%# '
 PROMPT='[%D{%Y-%m-%d} %*] %n@%m: %~%# '
 # 要永久生效请编辑如下文件
 ~/.zshrc
+
+# 如果要保留 python 的虚拟环境提示符，可以这样写
+PROMPT='$(if [ -n "${VIRTUAL_ENV}" ]; then echo "(${VIRTUAL_ENV##*/})"; fi) [%D{%Y-%m-%d} %*] %n@%m: %~%# '
 ```
 - `%*`: 显示当前时间（24小时制，包括小时、分钟和秒）
 - `%n@%m: %~%#`: 显示当前用户名、主机名、当前目录和提示符
+
+```bash
+# 或者使用如下这种写法以支持显示python虚拟环境
+set_prompt() {
+    # 保存原始的 PS1，以便在虚拟环境中使用
+    export ORIG_PS1="$PS1"
+
+    # 设置自定义提示符
+    export PROMPT="[%D{%Y-%m-%d} %*] %n@%m: %~ %# "
+
+    # 如果 Python 虚拟环境被激活，则添加它的提示符
+    if [[ -n "$VIRTUAL_ENV" ]]; then
+        export PROMPT="(`basename \"$VIRTUAL_ENV\"`) $PROMPT"
+    fi
+}
+
+# 在每个命令之前执行 set_prompt 函数
+autoload -Uz add-zsh-hook
+add-zsh-hook precmd set_prompt
+```
 
 ![image-20231211110828980](http://cdn.ayusummer233.top/DailyNotes/202312111108063.png)
 
