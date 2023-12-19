@@ -147,6 +147,9 @@ sudo code --no-sandbox --disable-gpu-sandbox --user-data-dir="~/.vscode"
 > [Visual Studio Code October 2023 --- Visual Studio 代码 2023 年 10 月](https://code.visualstudio.com/updates/v1_84)
 
 在 VSCode 2023 年 10 月的 v1.84 版本更新中, 加入了一项实验功能
+````
+multiDiffEditor.experimental.enabled
+````
 
 ![image-20231115141006285](http://cdn.ayusummer233.top/DailyNotes/202311151412388.png)
 
