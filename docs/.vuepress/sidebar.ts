@@ -100,12 +100,12 @@ let security_ATTCK = [
   },
   {
     text: "TA0005-DefenseEvasion",
-    link: "/网络安全/ATTCK/TA0005-DefenseEvasion(下).md"
+    link: "/网络安全/ATTCK/TA0005-DefenseEvasion(下).md",
   },
   {
     text: "TA0040-Impact",
-    link: "/网络安全/ATTCK/TA0040-Impact.md"
-  }
+    link: "/网络安全/ATTCK/TA0040-Impact.md",
+  },
 ];
 
 /** language-python */
@@ -201,11 +201,15 @@ let language_java = [
 let language_shell = [
   {
     text: "Shell",
-    link: "/Language/Shell/",
+    link: "/Language/Shell/Shell",
   },
   {
     text: "Powershell",
     link: "/Language/Shell/Powershell/",
+  },
+  {
+    text: "CMD",
+    link: "/Language/Shell/CMD/",
   },
 ];
 
