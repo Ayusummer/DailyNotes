@@ -297,7 +297,16 @@ let endpoint_security = [
   },
   {
     text: "Linux",
-    link: "/网络安全/端点安全/Linux/",
+    children: [
+      {
+        text: "Linux安全通识",
+        link: "/网络安全/端点安全/Linux/",
+      },
+      {
+        text: "Linux日志分析",
+        link: "/网络安全/端点安全/Linux/日志分析/",
+      },
+    ],
   },
   {
     text: "AtomicRedTeam",
