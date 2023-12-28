@@ -63,12 +63,13 @@
       - [继续配合 ShareX 使用](#继续配合-sharex-使用)
     - [Pandoc](#pandoc)
     - [reveal-md](#reveal-md)
+    - [CodiMD](#codimd)
+      - [部署](#部署)
   - [something interesting](#something-interesting)
     - [徽章](#徽章)
     - [markdown + pandoc 写论文](#markdown--pandoc-写论文)
       - [文献管理工具: Zotero](#文献管理工具-zotero)
       - [Better BibTex](#better-bibtex)
-
 
 ---
 
@@ -1247,6 +1248,90 @@ reveal-md path_markdown_file
 ![20220120231927](http://cdn.ayusummer233.top/img/20220120231927.png)
 
 ---
+
+### CodiMD
+
+> [hackmdio/codimd: CodiMD - Realtime collaborative markdown notes on all platforms. (github.com)](https://github.com/hackmdio/codimd)
+>
+> [实时、多平台协作的markdown开源神器--CodiMD - 开源指北 (gitee.io)](https://coderguide.gitee.io/blog/2022/02/27/实时-多平台协作的markdown开源神器-CodiMD.html)
+
+---
+
+#### 部署
+
+```bash
+# 进入 mysql 命令行后创建一个数据库
+create schema codimd default character set utf8 collate utf8_general_ci;
+# 创建用户
+create user '[用户名称]'@'%' identified by '[用户密码]';
+# 授权用户
+GRANT ALL PRIVILEGES ON *.* TO 用户名@'%' IDENTIFIED BY '密码';
+# 刷新生效
+flush privileges;
+use mysql;
+select host, user from user;
+show databases;
+#确认具有操作codimd 库的权限
+```
+
+![image-20231228154504763](http://cdn.ayusummer233.top/DailyNotes/202312281545656.png)
+
+![image-20231228155430388](http://cdn.ayusummer233.top/DailyNotes/202312281554965.png)
+
+新建并编辑一个 `docker-compose.yml` 文件
+
+```yml
+version: "3"
+services:
+  codimd:
+    image: hackmdio/hackmd:2.4.2
+    environment:
+      - CMD_DB_URL=mysql://codimd:此处填写密码@172.17.0.1:3306/codimd
+      - CMD_USECDN=false
+    ports:
+      - "3000:3000"
+    volumes:
+      - upload-data:/home/hackmd/app/public/uploads
+    restart: always
+volumes:
+  database-data: {}
+  upload-data: {}
+```
+
+这里需要注意两点
+
+- 首先是 172 网段的 ip, 需要确认一下主机上的 docker 网段的 ip
+
+  ![image-20231228164324926](http://cdn.ayusummer233.top/DailyNotes/202312281652654.png)
+
+- 其次是 mysql 的端口绑定, 默认绑定在 `localhost`, 需要手动改到 `0.0.0.0`
+
+  一般这个配置文件在 `/etc/mysql/mariadb.conf.d/50-server.cnf`
+
+  ```properties
+  bind-address            = 0.0.0.0
+  ```
+
+  然后重启 mysql
+
+  ```bash
+  service mysql restart
+  ```
+
+配置完成后执行
+
+```bash
+docker-compose up -d
+# 或新版的 docker compose up -d
+```
+
+访问默认映射的 3000 端口可以看到  CodiMD 的页面
+
+![image-20231228165140455](http://cdn.ayusummer233.top/DailyNotes/202312281651017.png)
+
+> 如果看不到页面的话请自行查看 docker logs 进行排错
+>
+> 官方提供的 postgres 版本的 docker-compose.yml 尝试了几次无法成功所以直接用了本地的 mariadb(mysql)
 
 
 ---
