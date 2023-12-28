@@ -559,6 +559,15 @@ skip-grant-tables
 service mysql restart
 # 进入 mysql
 mysql
+# 刷新权限并重置 root 密码
+FLUSH PRIVILEGES;
+ALTER USER 'root'@'localhost' IDENTIFIED BY '[新密码]';
+```
+
+注释或删除前面加在 `/etc/my.cnf` 中的 `skip-grant-tables` 并重启 mysql 即可
+
+```bash
+systemctl restart mysql
 ```
 
 :::
