@@ -348,7 +348,28 @@ npm cache verify
 
 ---
 
+## 报错收集
 
+### 安装git仓库相关包时连不上github
+
+![image-20240119023656548](http://cdn.ayusummer233.top/DailyNotes/202401190236578.png)
+
+```powershell
+# 指定 Git 在获取远程仓库时使用 HTTPS 协议而不是 Git 协议（git://）
+git config --global url."https://".insteadOf git://
+# 结束后记得取消掉配置
+git config --global --unset url."https://".insteadOf
+# 验证一下
+git config --global --get url."https://".insteadOf
+```
+
+![image-20240119030200661](http://cdn.ayusummer233.top/DailyNotes/202401190302731.png)
+
+![image-20240119030209175](http://cdn.ayusummer233.top/DailyNotes/202401190302261.png)
+
+![image-20240119030218994](http://cdn.ayusummer233.top/DailyNotes/202401190302089.png)
+
+![image-20240119030151299](http://cdn.ayusummer233.top/DailyNotes/202401190301352.png)
 
 
 
