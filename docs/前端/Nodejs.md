@@ -2,6 +2,9 @@
 
 - [Nodejs](#nodejs)
   - [安装](#安装)
+    - [nvm](#nvm)
+      - [安装 nvm](#安装-nvm)
+      - [使用 nvm](#使用-nvm)
   - [换源](#换源)
     - [源地址](#源地址)
     - [临时替换](#临时替换)
@@ -64,6 +67,8 @@ apt-get install -y nodejs
 
 > [coreybutler/nvm-windows: A node.js version management utility for Windows. Ironically written in Go. --- coreybutler/nvm-windows：Windows 的 node.js 版本管理实用程序。具有讽刺意味的是用 Go 编写的。 (github.com)](https://github.com/coreybutler/nvm-windows)
 
+NVM(Node Version Manager) 用于在同一台计算机上安装和管理多个 Node.js 版本
+
 在 [coreybutler/nvm-windows: A node.js version management utility for Windows. Ironically written in Go. --- coreybutler/nvm-windows：Windows 的 node.js 版本管理实用程序。具有讽刺意味的是用 Go 编写的。 (github.com)](https://github.com/coreybutler/nvm-windows/releases) 下载可执行程序进行安装即可
 
 > 请务必使用 ==管理员模式== 启动安装程序, 否则可能导致符号链接建立出问题而且不会报错, 直到后面使用 nvm use 命令启用对应版本 node 时会报错找不到 node
@@ -96,11 +101,64 @@ nvm use 16.16.0
 
 ![image-20230507144939140](http://cdn.ayusummer233.top/DailyNotes/202305071449170.png)
 
+---
 
+#### 安装 nvm
 
+:::tabs
 
+@tab:active Windows
 
+在 [GitHub - coreybutler/nvm-windows: A node.js version management utility for Windows. Ironically written in Go.](https://github.com/coreybutler/nvm-windows) 的 Release 中下载可执行程序进程安装
 
+![image-20240119021421814](http://cdn.ayusummer233.top/DailyNotes/202401190214887.png)
+
+@tab Linux
+
+在 [GitHub - nvm-sh/nvm: Node Version Manager - POSIX-compliant bash script to manage multiple active node.js versions](https://github.com/nvm-sh/nvm) 找到 `install.sh` 下载或复制其中的代码(需要其他版本的nvm可以翻下release)
+
+然后使用 `bash install.sh` 执行, 完成后 `source ~/.bashrc` 即可
+
+:::
+
+安装完成后可以在 powershell/bash 中使用 `nvm version` 确认是否安装成功
+
+![image-20240119021632102](http://cdn.ayusummer233.top/DailyNotes/202401190216160.png)
+
+---
+
+#### 使用 nvm
+
+安装特定版本的 nodejs, 例如
+
+```bash
+nvm install 14.17.3
+```
+
+> timeout的话可以走下代理
+>
+> 例如 powershell 设置代理
+>
+> ```powershell
+> $env:HTTP_PROXY="http://127.0.0.1:7890"
+> $env:HTTPS_PROXY="http://127.0.0.1:7890"
+> ```
+>
+> ![image-20240119022016369](http://cdn.ayusummer233.top/DailyNotes/202401190220405.png)
+
+设置默认的 nodejs 版本:
+
+```bash
+nvm use 14.17.3
+```
+
+查看当前 nvm 管理的 nodejs 版本:
+
+```bash
+nvm list
+```
+
+![image-20240119022109568](http://cdn.ayusummer233.top/DailyNotes/202401190221590.png)
 
 ---
 
@@ -289,3 +347,8 @@ npm cache verify
 
 
 ---
+
+
+
+
+
