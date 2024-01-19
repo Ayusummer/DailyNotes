@@ -360,6 +360,21 @@ source /root/.bashrc
 
 ---
 
+### 手动校准时间
+
+```bash
+# 修改日期
+sudo date +%Y%m%d -s "20240119"
+# 修改时间
+sudo date +%T -s "11:20:00"
+# 修改日期时间
+sudo date +%Y%m%d%H%M.%S -s "202401191120.00"
+```
+
+![image-20240119112242251](http://cdn.ayusummer233.top/DailyNotes/202401191124984.png)
+
+---
+
 ## SSH
 
 > [如何在 Ubuntu 20.04 启用 SSH-阿里云开发者社区 (aliyun.com)](https://developer.aliyun.com/article/763505)
