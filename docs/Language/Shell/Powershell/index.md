@@ -812,6 +812,12 @@ Set-ExecutionPolicy
 
 > ![image-20220824095701736](http://cdn.ayusummer233.top/img/202208240957639.png)
 
+> 或者直接
+>
+> ```powershell
+> Set-ExecutionPolicy Unrestricted -force
+> ```
+
 ---
 
 不过这里也许会报错:
@@ -825,6 +831,22 @@ Set-ExecutionPolicy -Scope UserPolicy UnRestricted
 ```
 
 ![image-20231020143846673](http://cdn.ayusummer233.top/DailyNotes/202310201438322.png)
+
+此时需要手动到组策略编辑器中进行设置
+
+![image-20240129140116880](http://cdn.ayusummer233.top/DailyNotes/202401291403112.png)
+
+![image-20240129140155904](http://cdn.ayusummer233.top/DailyNotes/202401291402920.png)
+
+重启 powershell, 重新
+
+```powershell
+Get-ExecutionPolicy -List
+```
+
+![image-20240129140244993](http://cdn.ayusummer233.top/DailyNotes/202401291402131.png)
+
+
 
 
 
