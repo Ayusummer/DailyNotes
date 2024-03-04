@@ -1,5 +1,10 @@
 # GoPhish
 
+- [GoPhish](#gophish)
+  - [部署](#部署)
+
+---
+
 > [入门 - Gophish 用户指南 --- Getting Started - Gophish User Guide (getgophish.com)](https://docs.getgophish.com/user-guide/getting-started)
 >
 > [gophish/gophish: Open-Source Phishing Toolkit (github.com)](https://github.com/gophish/gophish?tab=readme-ov-file)
