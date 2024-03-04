@@ -61,6 +61,19 @@ let security_web = [
     link: "/网络安全/Web安全/",
   },
   {
+    text: "钓鱼",
+    children: [
+      {
+        text: "GoPhish",
+        link: "/网络安全/Web安全/钓鱼/GoPhish/",
+      },
+      {
+        text: "Postfix",
+        link: "/网络安全/Web安全/钓鱼/Postfix/",
+      },
+    ],
+  },
+  {
     text: "漏洞类型",
     children: [
       {
