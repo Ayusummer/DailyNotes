@@ -47,7 +47,7 @@
       [5  6  7  8   9] 
       [10 11 12 13 14]]
     ```
-- 通常我们称数组的维度为“秩（rank）”，
+- 通常我们称数组的维度为“秩(rank) ”，
     - 可以通过下面的代码创建并查看一个数组的秩：
       ```python
       import numpy as np 
@@ -138,7 +138,7 @@ def linspace(start: Union[ndarray, Iterable, int, float],
 - geomspace
   - Similar to linspace, but with numbers spaced evenly on a log scale (a geometric progression).
     - scale(秤；比例尺；范围；刻度)
-    - geometric(几何（学）的；（似）几何图形的)
+    - geometric(几何(学) 的；(似) 几何图形的)
 - logspace
   - Similar to geomspace, but with the end points specified as logarithms.
     - specified(明确规定；具体说明；详述；详列)
@@ -215,7 +215,7 @@ plt.show()
   - By default (0), the samples will be along a new axis inserted at the beginning. 
   - Use `-1` to get an axis at the end. .. versionadded:: 1.16.0
     - relevant(紧密相关的；切题的；有价值的；**有意义的**)
-    - axis(坐标轴；轴（旋转物体假想的中心线）；对称中心线（将物体平分为二）)
+    - axis(坐标轴；轴(旋转物体假想的中心线) ；对称中心线(将物体平分为二) )
 ---
 - 返回:
   - There are `num` equally spaced samples in the closed interval ``[start, stop]`` or the half-open interval ``[start, stop)`` (depending on whether `endpoint` is True or False).
@@ -313,7 +313,7 @@ plt.show()
   - 该模块中的函数返回的是一个矩阵，而不是 ndarray 对象。
     - 矩阵是ndarray的子类,即矩阵是特殊的数组
       - 矩阵的位数是固定的,永远是二位,通常都是数值
-- 一个 $m × n$ 的矩阵是一个由 $m$ 行（row） $n$ 列（column）元素排列成的矩形阵列。
+- 一个 $m × n$ 的矩阵是一个由 $m$ 行(row)  $n$ 列(column) 元素排列成的矩形阵列。
 
 ---
 ### 转置矩阵
@@ -447,12 +447,12 @@ mat:
 ---
 ### 矩阵特有属性
 
-| 矩阵 | 属性 | 说明 |
-| -- | -- | -- |
-| A | T | A.T 返回自身的转置 |
-| A | H | A.H 返回自身的共轭转置 |
-| A | I | A.I 返回自身的逆矩阵 |
-| A | A | A.A 返回自身数据的2维数组的一个视图 |
+| 矩阵 | 属性 | 说明                                |
+| ---- | ---- | ----------------------------------- |
+| A    | T    | A.T 返回自身的转置                  |
+| A    | H    | A.H 返回自身的共轭转置              |
+| A    | I    | A.I 返回自身的逆矩阵                |
+| A    | A    | A.A 返回自身数据的2维数组的一个视图 |
 
 ```Python
 import numpy as np
@@ -657,17 +657,17 @@ a与其逆矩阵的乘积为:
 某地区居民连续几年的年底储蓄总金额如表所示:
 - (1)计算y关于t的回归方程$\hat{y} = kt + b$的斜率与截距
 - (2)用所求的回归方程预测该地区第6年的年底储蓄总金额
-| 年份 | 2015 | 2016 | 2017 | 2018 | 2019 | 2020 |
-| - | - | - | - | - | - | - |
-| 第t年 | 1 | 2 | 3 | 4 | 5 | 6 |
-| 储蓄总金额 | 6 | 7 | 7.8 | 8 | 9 | 9.8 |
+| 年份       | 2015 | 2016 | 2017 | 2018 | 2019 | 2020 |
+| ---------- | ---- | ---- | ---- | ---- | ---- | ---- |
+| 第t年      | 1    | 2    | 3    | 4    | 5    | 6    |
+| 储蓄总金额 | 6    | 7    | 7.8  | 8    | 9    | 9.8  |
 
 
 ----
 ### 一元线性回归分析是最基本的回归模型
 ---
 #### 概念
-- 一元线性回归是分析只有一个自变量（自变量x和因变量y）线性相关关系的方法。
+- 一元线性回归是分析只有一个自变量(自变量x和因变量y) 线性相关关系的方法。
   - 一个经济指标的数值往往受许多因素影响，若其中只有一个因素是主要的，起决定性作用，则可用一元线性回归进行预测分析。
 
 
@@ -809,7 +809,7 @@ print('重复后数组为：', arr1_repeat)  # 按行进行元素重复，axis=1
 
 ---
 ## numpy中的数据常用保存与读取方法
-- 二进制的文件和文件列表形式（文本文件和csv文件） 
+- 二进制的文件和文件列表形式(文本文件和csv文件)  
   - save()函数是以二进制的格式保存数据(保存格式是.npy)。 
     - ```python
       np.save(filename,arr) 
@@ -826,7 +826,7 @@ print('重复后数组为：', arr1_repeat)  # 按行进行元素重复，axis=1
       np.savez(filenme,arr1=arr1,arr2=arr2) 
       ```
     - 存储时可以省略扩展名，但读取时不能省略扩展名。
-  - savetxt函数是将数组写到文本文件（txt或cvs）中。
+  - savetxt函数是将数组写到文本文件(txt或cvs) 中。
     - ```python
       np.savetxt(filename, arr, fmt="%d", delimiter=" ") 
       ```

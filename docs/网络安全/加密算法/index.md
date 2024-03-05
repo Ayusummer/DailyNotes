@@ -56,7 +56,7 @@
   IP.3 = 127.0.0.1
   ```
 
-  > [正确使用 OpenSSL 自签发代码|邮件|域名|IP 证书（附免费可信任 IP 证书申请） - VirCloud's Blog - Learning&Sharing](https://vircloud.net/operations/sign-ip-crt.html)
+  > [正确使用 OpenSSL 自签发代码|邮件|域名|IP 证书(附免费可信任 IP 证书申请)  - VirCloud's Blog - Learning&Sharing](https://vircloud.net/operations/sign-ip-crt.html)
   >
   > [使用OpenSSL自签发SSL证书，支持chrome识别 - 程序人生♨︎ - 博客园 (cnblogs.com)](https://www.cnblogs.com/springwind2006/p/14273387.html)
   >

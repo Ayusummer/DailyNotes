@@ -12,7 +12,7 @@ Compose 使用的三个步骤：
 - 使用 docker-compose.yml 定义构成应用程序的服务，这样它们可以在隔离环境中一起运行。
 - 最后，执行 docker-compose up 命令来启动并运行整个应用程序。
 
-docker-compose.yml 的配置案例如下（配置参数参考下文）：
+docker-compose.yml 的配置案例如下(配置参数参考下文) ：
 
 ## 实例
 
@@ -357,10 +357,10 @@ services:
 endpoint_mode: vip 
 # Docker 集群服务一个对外的虚拟 ip。所有的请求都会通过这个虚拟 ip 到达集群服务内部的机器。
 endpoint_mode: dnsrr
-# DNS 轮询（DNSRR）。所有的请求会自动轮询获取到集群 ip 列表中的一个 ip 地址。
+# DNS 轮询(DNSRR) 。所有的请求会自动轮询获取到集群 ip 列表中的一个 ip 地址。
 ```
 
-**labels**：在服务上设置标签。可以用容器上的 labels（跟 deploy 同级的配置） 覆盖 deploy 下的 labels。
+**labels**：在服务上设置标签。可以用容器上的 labels(跟 deploy 同级的配置)  覆盖 deploy 下的 labels。
 
 **mode**：指定服务提供的模式。
 
@@ -378,28 +378,28 @@ endpoint_mode: dnsrr
 
 **restart_policy**：配置如何在退出容器时重新启动容器。
 
-- condition：可选 none，on-failure 或者 any（默认值：any）。
-- delay：设置多久之后重启（默认值：0）。
-- max_attempts：尝试重新启动容器的次数，超出次数，则不再尝试（默认值：一直重试）。
-- window：设置容器重启超时时间（默认值：0）。
+- condition：可选 none，on-failure 或者 any(默认值：any) 。
+- delay：设置多久之后重启(默认值：0) 。
+- max_attempts：尝试重新启动容器的次数，超出次数，则不再尝试(默认值：一直重试) 。
+- window：设置容器重启超时时间(默认值：0) 。
 
 **rollback_config**：配置在更新失败的情况下应如何回滚服务。
 
 - parallelism：一次要回滚的容器数。如果设置为0，则所有容器将同时回滚。
-- delay：每个容器组回滚之间等待的时间（默认为0s）。
-- failure_action：如果回滚失败，该怎么办。其中一个 continue 或者 pause（默认pause）。
-- monitor：每个容器更新后，持续观察是否失败了的时间 (ns|us|ms|s|m|h)（默认为0s）。
-- max_failure_ratio：在回滚期间可以容忍的故障率（默认为0）。
-- order：回滚期间的操作顺序。其中一个 stop-first（串行回滚），或者 start-first（并行回滚）（默认 stop-first ）。
+- delay：每个容器组回滚之间等待的时间(默认为0s) 。
+- failure_action：如果回滚失败，该怎么办。其中一个 continue 或者 pause(默认pause) 。
+- monitor：每个容器更新后，持续观察是否失败了的时间 (ns|us|ms|s|m|h)(默认为0s) 。
+- max_failure_ratio：在回滚期间可以容忍的故障率(默认为0) 。
+- order：回滚期间的操作顺序。其中一个 stop-first(串行回滚) ，或者 start-first(并行回滚) (默认 stop-first ) 。
 
 **update_config**：配置应如何更新服务，对于配置滚动更新很有用。
 
 - parallelism：一次更新的容器数。
 - delay：在更新一组容器之间等待的时间。
-- failure_action：如果更新失败，该怎么办。其中一个 continue，rollback 或者pause （默认：pause）。
-- monitor：每个容器更新后，持续观察是否失败了的时间 (ns|us|ms|s|m|h)（默认为0s）。
+- failure_action：如果更新失败，该怎么办。其中一个 continue，rollback 或者pause (默认：pause) 。
+- monitor：每个容器更新后，持续观察是否失败了的时间 (ns|us|ms|s|m|h)(默认为0s) 。
 - max_failure_ratio：在更新过程中可以容忍的故障率。
-- order：回滚期间的操作顺序。其中一个 stop-first（串行回滚），或者 start-first（并行回滚）（默认stop-first）。
+- order：回滚期间的操作顺序。其中一个 stop-first(串行回滚) ，或者 start-first(并行回滚) (默认stop-first) 。
 
 **注**：仅支持 V3.4 及更高版本。
 
@@ -611,7 +611,7 @@ networks:
 
 - no：是默认的重启策略，在任何情况下都不会重启容器。
 - always：容器总是重新启动。
-- on-failure：在容器非正常退出时（退出状态非0），才会重启容器。
+- on-failure：在容器非正常退出时(退出状态非0) ，才会重启容器。
 - unless-stopped：在容器退出时总是重启容器，但是不考虑在Docker守护进程启动时就已经停止了的容器
 
 ```

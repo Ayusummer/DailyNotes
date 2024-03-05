@@ -61,7 +61,7 @@ PowerShell 7 是专为云、本地和混合环境设计的，它包含增强功�
 
 - 与 Windows PowerShell 并行安装和运行
 - 提升了与现有 Windows PowerShell 模块的兼容性
-- 新语言功能（如三元运算符和 `ForEach-Object -Parallel`）
+- 新语言功能(如三元运算符和 `ForEach-Object -Parallel`) 
 - 提高了性能
 - 基于 SSH 的远程处理
 - 跨平台互操作性
@@ -244,7 +244,7 @@ function prompt {
 }
 ```
 
-PowerShell的提示函数（`prompt` 函数）用于生成命令提示符。通过在此函数中添加显示当前时间的代码，可以在每个提示符前显示时间。
+PowerShell的提示函数(`prompt` 函数) 用于生成命令提示符。通过在此函数中添加显示当前时间的代码，可以在每个提示符前显示时间。
 
 把上述 PowerShell 代码加到 profile 里(例如 `code $profile` 然后在打开的 VSCode 中的 profile 文件中输入上述代码并保存) 然后重启 PowerShell 就可以显示每次命令时间了, 效果如下:
 
@@ -298,7 +298,7 @@ while ($true) {
   - `$_` 表示当前处理的行
   - `Trim()` 函数会移除字符串两端的空格和制表符
 
-  如果处理后的行为空字符串（`""`），则该行会被排除。
+  如果处理后的行为空字符串(`""`) ，则该行会被排除。
 
 - `Set-Content`  用于将处理后的内容写回到原文件。
 
@@ -376,9 +376,9 @@ powershell -noP -sta -w 1 -enc  SQBmACgAJABQAFMAVgBlAHIAcwBpAG8AbgBUAGEAYgBsAGUA
 ```
 
 - `powershell`：表示调用 PowerShell 程序。
-- `-noP`：表示不加载配置文件。包括启动时加载的个人配置文件（Profile）和系统级别的配置文件。使用此参数可以在启动 PowerShell 时跳过配置文件的加载，加快启动速度。
+- `-noP`：表示不加载配置文件。包括启动时加载的个人配置文件(Profile) 和系统级别的配置文件。使用此参数可以在启动 PowerShell 时跳过配置文件的加载，加快启动速度。
 - `-sta`：`Single Threaded Apartment`表示使用单线程的会话模式。
-- `-w 1`：等待指定的时间（以秒为单位）后自动退出 PowerShell。在这里，`-w 1` 表示等待 1 秒后自动退出 PowerShell。
+- `-w 1`：等待指定的时间(以秒为单位) 后自动退出 PowerShell。在这里，`-w 1` 表示等待 1 秒后自动退出 PowerShell。
 - `-enc`：表示后面跟着的是一个 Base64 编码的字符串，需要解码后执行。
 
 上述 Base64 编码的字符串解码后得到:
@@ -745,7 +745,7 @@ Enable-WindowsOptionalFeature -Online -FeatureName IIS-WebServerRole, IIS-WebSer
 
 - `IIS-WindowsAuthentication`: 启用 Windows 身份验证，允许用户使用其 Windows 凭据进行身份验证。
 
-- `IIS-StaticContent`: 启用静态内容支持，用于托管和提供静态文件（如 HTML、CSS 和图像）。
+- `IIS-StaticContent`: 启用静态内容支持，用于托管和提供静态文件(如 HTML、CSS 和图像) 。
 
 - `IIS-DefaultDocument`: 启用默认文档支持，用于配置默认文档文件。
 
@@ -796,8 +796,8 @@ get-ExecutionPolicy
 >
 > - Windows 服务器计算机的默认执行策略。
 > - 脚本可以运行。
-> - 需要来自受信任的发布者对从 Internet 下载的脚本和配置文件（包括电子邮件和即时消息程序）的数字签名。
-> - 不需要对在本地计算机上编写的脚本（而不是从 Internet 下载）进行数字签名。
+> - 需要来自受信任的发布者对从 Internet 下载的脚本和配置文件(包括电子邮件和即时消息程序) 的数字签名。
+> - 不需要对在本地计算机上编写的脚本(而不是从 Internet 下载) 进行数字签名。
 > - 如果脚本被取消阻止，则运行从 Internet 下载且未签名的脚本，例如使用 `Unblock-File` cmdlet。
 > - 从 Internet 以外的源运行未签名脚本的风险，以及可能是恶意的签名脚本。
 

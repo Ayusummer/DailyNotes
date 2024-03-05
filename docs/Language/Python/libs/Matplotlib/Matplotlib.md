@@ -66,9 +66,9 @@
 - 创建一张空白画图,并可以选择是否将整个画布划分为多个部分,方便在同一幅图上绘制多个图形
   - 也可以省略,直接在默认的画布上进行图形绘制,通常情况下省略
 
-| 函数 | 函数作用 |
-| --   | -- |
-| plt.figure() | 创建一个空白画布,可以指定画布大小,像素 |
+| 函数          | 函数作用                                              |
+| ------------- | ----------------------------------------------------- |
+| plt.figure()  | 创建一个空白画布,可以指定画布大小,像素                |
 | plt.subplot() | 创建并选中子图,可以指定子图的行数,列数,与选中图片编号 |
 
 
@@ -132,20 +132,20 @@ plt.show()
 
 ---
 
-| 函数 | 函数作用 |
-| --   | -- |
-| plt.title | 在当前图形中添加图表题,可以确定标题的名称,位置,颜色,字体大小等参数 |
-| plt.xlable | 在当前图形中添加x轴名称(标题),可以指定位置,颜色,字体大小等参数 |
-| plt.ylable | 在当前图形中添加y轴名称(标题),可以指定位置,颜色,字体大小等参数 |
-| plt.xlim | 指定当前x轴的范围,只能确定一个数值区间,而无法使用字符串标识 |
-| plt.ylim | 指定当前y轴的范围,只能确定一个数值区间,而无法使用字符串标识 |
-| plt.xticks | 指定x轴可读的数目与取值 |
-| plt.yticks | 指定y轴可读的书目与取值 |
+| 函数       | 函数作用                                                           |
+| ---------- | ------------------------------------------------------------------ |
+| plt.title  | 在当前图形中添加图表题,可以确定标题的名称,位置,颜色,字体大小等参数 |
+| plt.xlable | 在当前图形中添加x轴名称(标题),可以指定位置,颜色,字体大小等参数     |
+| plt.ylable | 在当前图形中添加y轴名称(标题),可以指定位置,颜色,字体大小等参数     |
+| plt.xlim   | 指定当前x轴的范围,只能确定一个数值区间,而无法使用字符串标识        |
+| plt.ylim   | 指定当前y轴的范围,只能确定一个数值区间,而无法使用字符串标识        |
+| plt.xticks | 指定x轴可读的数目与取值                                            |
+| plt.yticks | 指定y轴可读的书目与取值                                            |
 
 ---
 #### rcParams参数
 - [原文链接](https://blog.csdn.net/weixin_39010770/article/details/88200298)
-- plt（matplotlib.pyplot）使用rc配置文件来自定义图形的各种**默认属性**，称之为rc配置或rc参数。
+- plt(matplotlib.pyplot) 使用rc配置文件来自定义图形的各种**默认属性**，称之为rc配置或rc参数。
 - 通过rc参数可以修改默认的属性，包括窗体大小、每英寸的点数、线条宽度、颜色、样式、坐标轴、坐标和网络属性、文本、字体等。
 - rc参数存储在字典变量中，通过字典的方式进行访问。
 
@@ -246,7 +246,7 @@ plt.show()
 > 虽然这里这么写了,但是在字体管理器那里我已经可以正常显示负号了 
 - 配置rc参数 
     ```python
-    rcParams['axes.unicode_minus']=False #修改y轴的名称（标题）
+    rcParams['axes.unicode_minus']=False #修改y轴的名称(标题) 
     ```
 
   ```python 
@@ -263,7 +263,7 @@ plt.show()
             rotation=0,          # 文本中的文字水平显示
             linespacing=2,       # 行距
             labelpad=20,         # 文本名称与坐标轴的距离
-            position=(10, 0.35)  # 文本名称的纵坐标（第2个数值）
+            position=(10, 0.35)  # 文本名称的纵坐标(第2个数值) 
             )
   plt.plot(a1, b1)  # 画折线图
   plt.show()
@@ -439,9 +439,9 @@ plt.show()
 ##### 例题:烧烤店营业额折线图
 - 已知某商场2019年每个月份的营业额如下所示。绘制折线图对该烧烤店全年营业额进行可视化。 
 
-| 月份 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 |
-| - |- |- |- |- |- |- |- |- |- |- |- |- |- |
-| 营业额（万元）  | 5.2 | 4 | 3.7 | 5.2 | 4.9 | 3.6 | 5.8 | 3.8 | 6.7 | 6.1 | 4.5 | 5.7 |
+| 月份 | 1   | 2   | 3   | 4   | 5   | 6   | 7   | 8   | 9   | 10  | 11  | 12  |
+| ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- ||
+| 营业额(万元)  | 5.2 | 4   | 3.7 | 5.2 | 4.9 | 3.6 | 5.8 | 3.8 | 6.7 | 6.1 | 4.5 | 5.7 |
 
 
 ```python 
@@ -476,7 +476,7 @@ plt.show()
   <!-- - ![](../../res/img/BigDataMicroMajor/Python/loc字符串示意.png) -->
   <!-- - ![与数值对应](../../res/img/BigDataMicroMajor/Python/loc字符串数值对照表.png) -->
 - loc = (x, y)
-  - （x, y）表示图例左下角的位置，这是最灵活的一种放置图例的方法，慢慢调整，总会找到你想要的放置图例的位置
+  - (x, y) 表示图例左下角的位置，这是最灵活的一种放置图例的方法，慢慢调整，总会找到你想要的放置图例的位置
   - x, y并不是轴域中实际的x, y的值，而是将x轴, y轴分别看成1, 即： 
     - $( x / (x\_max-x\_min) , y / (y\_max - y\_min) )$
       - 即进行归一化处理
@@ -676,7 +676,7 @@ plt.show()
 
 - `plot()`函数
   ```python
-  plot(x轴,y轴,折线形状颜色标记，设置标签显示信息）
+  plot(x轴,y轴,折线形状颜色标记，设置标签显示信息) 
   ```
 
   <!-- ![图例标签](../../res/img/BigDataMicroMajor/Python/图例标签.png) -->
@@ -712,8 +712,8 @@ earnnum = (wnum - 49) * num
 cusprice = wnum * num
 # 顾客省钱
 cusnum = num * (price - wnum)
-plt.xlabel('顾客购买数量（件）')
-plt.ylabel('金额（元）')
+plt.xlabel('顾客购买数量(件) ')
+plt.ylabel('金额(元) ')
 plt.plot(num, earnnum)
 plt.plot(num, cusprice)
 plt.plot(num, cusnum)
@@ -764,8 +764,8 @@ wnum = np.array([price * (1 - 0.01 * i) for i in num])
 earnnum = (wnum - 49) * num  # 商家收益数据
 cusprice = wnum * num  # 顾客总消费
 cusnum = num * (price - wnum)  # 顾客省钱
-plt.xlabel('顾客购买数量（件）')
-plt.ylabel('金额（元）')
+plt.xlabel('顾客购买数量(件) ')
+plt.ylabel('金额(元) ')
 plt.plot(num, earnnum, '--', label='商家收益')
 plt.plot(num, cusprice, label='顾客总消费')
 plt.plot(num, cusnum, ':', label='顾客省钱')
@@ -798,7 +798,7 @@ plt.show()
   - 为此，商场安排工作人员在不同位置对手机信号强度进行测试以便进一步提高服务质量和用户体验
     - 测试数据保存于文件`D:\服务质量保证\商场一楼手机信号强度.txt`中
       - 文件中每行使用逗号分隔的三个数字分别表示商场内一个位置的x、y坐标和信号强度
-        - 其中x、y坐标值以商场西南角为坐标原点且向东为x正轴（共150米）、向北为y正轴（共30米）
+        - 其中x、y坐标值以商场西南角为坐标原点且向东为x正轴(共150米) 、向北为y正轴(共30米) 
         - 信号强度以0表示无信号、100表示最强。
 -  编写程序，使用散点图对该商场一楼所有测量位置的手机信号强度进行可视化
    - 既可以直观地发现不同位置信号的强度以便分析原因
@@ -829,8 +829,8 @@ wnum = np.array([price * (1 - 0.01 * i) for i in num])
 earnnum = (wnum - 49) * num  # 商家收益数据
 cusprice = wnum * num  # 顾客总消费
 cusnum = num * (price - wnum)  # 顾客省钱
-plt.xlabel('顾客购买数量（件）')
-plt.ylabel('金额（元）')
+plt.xlabel('顾客购买数量(件) ')
+plt.ylabel('金额(元) ')
 plt.plot(num, earnnum, '--', label='商家收益')
 plt.plot(num, cusprice, label='顾客总消费')
 plt.plot(num, cusnum, ':', label='顾客省钱')
@@ -875,8 +875,8 @@ wnum = np.array([price * (1 - 0.01 * i) for i in num])
 earnnum = (wnum - 49) * num     # 商家收益数据
 cusprice = wnum * num           # 顾客总消费
 cusnum = num * (price - wnum)   # 顾客省钱
-plt.xlabel('顾客购买数量（件）')
-plt.ylabel('金额（元）')
+plt.xlabel('顾客购买数量(件) ')
+plt.ylabel('金额(元) ')
 plt.plot(num, earnnum, '--', label='商家收益')
 plt.plot(num, cusprice, label='顾客总消费')
 plt.plot(num, cusnum, ':', label='顾客省钱')
@@ -948,10 +948,10 @@ gold_d = [143, 100, 89, 90, 78, 129, 100, 97, 108, 152, 96, 87]
 mo = [str(i) + '月' for i in range(1, 13)]
 
 plt.figure(figsize=(10, 5))
-plt.title('某商场各部门业绩（万元）')
+plt.title('某商场各部门业绩(万元) ')
 plt.xticks(month, mo)
 plt.xlabel('月份')
-plt.ylabel('营业额（万元）', labelpad=12)
+plt.ylabel('营业额(万元) ', labelpad=12)
 # 绘制折线
 plt.plot(month, food_d, linestyle='--', color='blue')
 plt.plot(month, man_d, color='r')
@@ -974,7 +974,7 @@ plt.show()
 - 例如商场中不同部门的月业绩情况，某课程的成绩的分布情况，新用户与老用户的客单价对比、不同广告来源渠道的订单量和利润率对比等。
 - 常用的可视化图形
   - **对比数据较少**时选
-    - 择柱形图（bar())、条形图(barh())；
+    - 择柱形图(bar())、条形图(barh())；
   - 而多个对象的多个指标的同时对比可用
     - 雷达图(polar())等。
 
@@ -997,10 +997,10 @@ mo = [str(i) + '月' for i in range(1, 13)]
 plt.figure(figsize=(10, 5))
 plt.xticks(month, mo)
 plt.xlabel('月份')
-plt.ylabel('营业额（万元）', labelpad=12)
+plt.ylabel('营业额(万元) ', labelpad=12)
 plt.bar(month, man_d, 0.8, color='#FF00FF', label='男装', )
 plt.bar(month, woman_d, color='lightskyblue', label='女装')
-plt.title('某商场各部门业绩（万元）')
+plt.title('某商场各部门业绩(万元) ')
 plt.legend()
 plt.show()
 
@@ -1025,10 +1025,10 @@ mo = [str(i) + '月' for i in range(1, 13)]
 plt.figure(figsize=(10, 5))
 plt.xticks(month, mo)
 plt.xlabel('月份')
-plt.ylabel('营业额（万元）', labelpad=12)
+plt.ylabel('营业额(万元) ', labelpad=12)
 plt.bar(month, man_d, 0.8, color='#FF00FF', label='男装', )
 plt.bar(month, -woman_d, color='lightskyblue', label='女装')
-plt.title('某商场各部门业绩（万元）')
+plt.title('某商场各部门业绩(万元) ')
 plt.legend()
 plt.show()
 
@@ -1054,10 +1054,10 @@ mo = [str(i) + '月' for i in range(1, 13)]
 plt.figure(figsize=(10, 5))
 plt.xticks(month, mo)
 plt.xlabel('月份')
-plt.ylabel('营业额（万元）', labelpad=12)
+plt.ylabel('营业额(万元) ', labelpad=12)
 plt.bar(month - 0.4, man_d, 0.4, color='#FF00FF', label='男装', )
 plt.bar(month, woman_d, 0.4, color='lightskyblue', label='女装')
-plt.title('某商场各部门业绩（万元）')
+plt.title('某商场各部门业绩(万元) ')
 plt.legend()
 plt.show()
 
@@ -1080,10 +1080,10 @@ mo = [str(i) + '月' for i in range(1, 13)]
 plt.figure(figsize=(10, 5))
 plt.xticks(month, mo)
 plt.xlabel('月份')
-plt.ylabel('营业额（万元）', labelpad=12)
+plt.ylabel('营业额(万元) ', labelpad=12)
 plt.bar(month - 0.4, man_d, 0.4, color='#FF00FF', label='男装', )
 plt.bar(month, woman_d, 0.4, color='lightskyblue', label='女装')
-plt.title('某商场各部门业绩（万元）')
+plt.title('某商场各部门业绩(万元) ')
 plt.legend()
 
 for i, j in zip(month, man_d):
@@ -1134,13 +1134,13 @@ mo = [str(i) + '月' for i in range(1, 13)]
 plt.figure(figsize=(10, 5))
 plt.xticks(month, mo)
 plt.xlabel('月份')
-plt.ylabel('营业额（万元）', labelpad=12)
+plt.ylabel('营业额(万元) ', labelpad=12)
 plt.bar(month - 0.1, re_d, 0.1)
 plt.bar(month, man_d, 0.1, color='r')
 plt.bar(month + 0.1, woman_d, 0.1, color='b')
 plt.bar(month + 0.2, hua_d, 0.1)
 plt.bar(month + 0.3, gl_d, 0.1)
-plt.title('某商场各部门业绩（万元）')
+plt.title('某商场各部门业绩(万元) ')
 plt.legend(['餐饮', '男装', '女装', '化妆品', '金银首饰'])
 plt.show()
 
@@ -1172,13 +1172,13 @@ plt.figure(figsize=(10, 6))
 plt.ylim(0, 13)
 plt.yticks(month, mo)
 plt.ylabel('月份')
-plt.xlabel('营业额（万元）', labelpad=12)
+plt.xlabel('营业额(万元) ', labelpad=12)
 plt.barh(month - 0.2, re_d, 0.2, color='pink')
 plt.barh(month, man_d, 0.2, color='r')
 plt.barh(month + 0.2, woman_d, 0.2, color='c')
 plt.barh(month + 0.4, hua_d, 0.2, color='yellow')
 plt.barh(month + 0.6, gl_d, 0.2, color='blue')
-plt.title('某商场各部门业绩（万元）')
+plt.title('某商场各部门业绩(万元) ')
 plt.legend(['餐饮', '男装', '女装', '化妆品', '金银首饰'])
 plt.show()
 
@@ -1191,7 +1191,7 @@ plt.show()
 #### 结构
 - 结构也可以称为成分、构成或内容组成，指的是一个整体内有哪些元素组成，以及各个元素的影响因素或程度的大小。
 - 例如不同品类的利润占比、不同类型客户的销售额占比、总体中各组成部分所占比重等。
-- 常用的可视化图形，一般使用饼图（圆形图）及其变体，
+- 常用的可视化图形，一般使用饼图(圆形图) 及其变体，
   - 变体例如玫瑰图、扇形图、环形图等；
 
 <!-- ![](../../res/img/BigDataMicroMajor/Python/绘图-结构-1.png) -->

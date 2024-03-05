@@ -105,7 +105,7 @@ p
 
 > [Flex 布局语法教程 | 菜鸟教程 (runoob.com)](https://www.runoob.com/w3cnote/flex-grammar.html)
 >
-> [弹性布局（display:flex;）属性详解 - cdgogo - 博客园 (cnblogs.com)](https://www.cnblogs.com/hellocd/p/10443237.html)
+> [弹性布局(display:flex;) 属性详解 - cdgogo - 博客园 (cnblogs.com)](https://www.cnblogs.com/hellocd/p/10443237.html)
 
 2009 年，`W3C` 提出了一种新的方案 ---- `Flex` 布局，可以简便、完整、响应式地实现各种页面布局。目前，它已经得到了所有浏览器的支持，这意味着，现在就能很安全地使用这项功能。
 

@@ -221,7 +221,7 @@ randomValue.toUpperCase();      // Error: Object is of type unknown
 (<string>randomValue).toUpperCase();
 ```
 
-> `as` 是首选语法。 使用 `< >` 进行类型转换时，某些 TypeScript 应用程序（例如 JSX）可能会发生混淆。
+> `as` 是首选语法。 使用 `< >` 进行类型转换时，某些 TypeScript 应用程序(例如 JSX) 可能会发生混淆。
 
 ```typescript
 let randomValue: unknown = 10;
@@ -263,7 +263,7 @@ if (typeof randomValue === "string") {
 
 > [TypeScript 中的联合类型和交叉类型 - Learn | Microsoft Docs](https://docs.microsoft.com/zh-cn/learn/modules/typescript-declare-variable-types/6-unions-intersections)
 
-联合类型描述的值可以是几种类型之一。 当值不受控制时（例如，来自库、API 或用户输入的值），这将很有帮助。
+联合类型描述的值可以是几种类型之一。 当值不受控制时(例如，来自库、API 或用户输入的值) ，这将很有帮助。
 
 联合类型使用竖线 (`|`) 分隔每种类型。
 
@@ -323,7 +323,7 @@ console.log(newManager.employeeID);
 
 > [TypeScript 中的集合类型 - Learn | Microsoft Docs](https://docs.microsoft.com/zh-cn/learn/modules/typescript-declare-variable-types/7-collection-types)
 
-对象类型是所有类、接口、数组和字面量类型（不是基元类型的任何类型）
+对象类型是所有类、接口、数组和字面量类型(不是基元类型的任何类型) 
 
 ---
 
@@ -390,7 +390,7 @@ console.log(person1);
 
   > TypeScript 编码准则建议接口不应以字母 `I` 开头。
 
-- 定义该接口的属性（或成员）及其类型。 属性可以为必需、可选或只读属性。
+- 定义该接口的属性(或成员) 及其类型。 属性可以为必需、可选或只读属性。
 
   | 属性类型 | 说明                                                                                                           | 示例                          |
   | :------- | :------------------------------------------------------------------------------------------------------------- | :---------------------------- |
@@ -430,7 +430,7 @@ console.log(person1);
   }
   ```
 
-  类型别名是数据类型（例如联合、基元、交集、元组或其他任何类型）的定义。 另一方面，接口是描述数据形状（例如对象）的一种方法。 类型别名可以像接口一样使用；但有一些细微的差异。 主要区别在于**，不能重新打开类型别名以添加新属性，而接口始终是可扩展的**。 此外，**只能使用类型别名描述并集或元组**。
+  类型别名是数据类型(例如联合、基元、交集、元组或其他任何类型) 的定义。 另一方面，接口是描述数据形状(例如对象) 的一种方法。 类型别名可以像接口一样使用；但有一些细微的差异。 主要区别在于**，不能重新打开类型别名以添加新属性，而接口始终是可扩展的**。 此外，**只能使用类型别名描述并集或元组**。
 
 
 
@@ -527,7 +527,7 @@ async function showPost() {
 showPost();
 ```
 
-> 虽然早期版本的 ECMAScript（如 ES3）不支持 `async` 和 `await`，但 TypeScript 编译器能够生成兼容代码来实现此功能。 这样，你就能够在仍使用旧版浏览器的同时利用较新的功能！
+> 虽然早期版本的 ECMAScript(如 ES3) 不支持 `async` 和 `await`，但 TypeScript 编译器能够生成兼容代码来实现此功能。 这样，你就能够在仍使用旧版浏览器的同时利用较新的功能！
 
 -----
 
@@ -552,7 +552,7 @@ console.log(addNumbers(1, 2))
 
 ### 匿名函数
 
-函数表达式（或匿名函数）是未预先加载到执行上下文中的函数，并且仅当代码遇到该函数时才会运行。 函数表达式是在运行时创建的，并且必须先声明才能调用。 （这意味着不会对它们进行提升，而命名函数声明在程序开始执行时就会进行提升，并且可以在其声明之前调用。）
+函数表达式(或匿名函数) 是未预先加载到执行上下文中的函数，并且仅当代码遇到该函数时才会运行。 函数表达式是在运行时创建的，并且必须先声明才能调用。 (这意味着不会对它们进行提升，而命名函数声明在程序开始执行时就会进行提升，并且可以在其声明之前调用。) 
 
 ```typescript
 let addNumbers_anonymous = function (x: number, y: number): number {
@@ -573,13 +573,13 @@ let total = function (input: number[]): number {
 console.log(total([1, 2, 3, 4, 5, 6, 7, 8, 9]))
 ```
 
-在使用匿名函数时，你将获得类型检查和 Intellisense。 你还会注意到，在此示例中，变量 `total` 不是类型化的变量，但 TypeScript 可以通过称为“上下文类型化”的内容（一种类型推理形式）来确定其类型。 这可以减少保持程序类型所需的工作量。
+在使用匿名函数时，你将获得类型检查和 Intellisense。 你还会注意到，在此示例中，变量 `total` 不是类型化的变量，但 TypeScript 可以通过称为“上下文类型化”的内容(一种类型推理形式) 来确定其类型。 这可以减少保持程序类型所需的工作量。
 
 ---
 
 ### 箭头函数
 
-箭头函数（也称为 Lambda 或胖箭头函数，因为定义它们的是 `=>` 运算符）提供用于定义匿名函数的简写语法。 由于其简洁性，箭头函数通常用于简单的函数和某些事件处理场景。
+箭头函数(也称为 Lambda 或胖箭头函数，因为定义它们的是 `=>` 运算符) 提供用于定义匿名函数的简写语法。 由于其简洁性，箭头函数通常用于简单的函数和某些事件处理场景。
 
  箭头函数通过省略函数关键字并在参数和函数体之间添加 `=>` 运算符来简化语法。
 
@@ -590,7 +590,7 @@ let addNumbers_arrow = (x: number, y: number): number => {
 console.log(addNumbers_arrow(3, 4))
 ```
 
-> 箭头函数是在 ES2015 中引入的，因此并非所有浏览器都支持它们。 通过使用 TypeScript，你可以利用这些函数类型，然后转译到更低的 JavaScript 版本（如有必要），这样你的代码就可以在旧版浏览器上使用。
+> 箭头函数是在 ES2015 中引入的，因此并非所有浏览器都支持它们。 通过使用 TypeScript，你可以利用这些函数类型，然后转译到更低的 JavaScript 版本(如有必要) ，这样你的代码就可以在旧版浏览器上使用。
 
 ![image-20220301224130936](http://cdn.ayusummer233.top/img/202203012241501.png)
 
@@ -632,7 +632,7 @@ console.log(addNumbers_arrow(3, 4))
 
 - `rest 参数` 
 
-  如果要使用多个参数作为一个组（在数组中）或不知道函数最终将采用的参数数量，则可以使用 rest 参数。 rest 参数被视为无限数量的可选参数。 可以将它们保留不动，或根据需要调整数量。
+  如果要使用多个参数作为一个组(在数组中) 或不知道函数最终将采用的参数数量，则可以使用 rest 参数。 rest 参数被视为无限数量的可选参数。 可以将它们保留不动，或根据需要调整数量。
 
   此示例包含一个必需参数和一个可选参数 `restOfNumbers`，该参数可接受任意数量的其他数字。 `restOfNumbers` 之前的省略号 (`...`) 指示编译器构建一个传递给函数的参数数组，并给它后面的名称赋值，这样你就可以在函数中使用它。
 
@@ -796,15 +796,15 @@ console.log(doCalculation("substract")(1, 2))
 
 一个 `Promise` 必然处于以下几种状态之一：
 
-- *待定（pending）*: 初始状态，既没有被兑现，也没有被拒绝。
-- *已兑现（fulfilled）*: 意味着操作成功完成。
-- *已拒绝（rejected）*: 意味着操作失败。
+- *待定(pending) *: 初始状态，既没有被兑现，也没有被拒绝。
+- *已兑现(fulfilled) *: 意味着操作成功完成。
+- *已拒绝(rejected) *: 意味着操作失败。
 
-待定状态的 Promise 对象要么会通过一个值*被兑现（fulfilled）*，要么会通过一个原因（错误）*被拒绝（rejected）*。当这些情况之一发生时，我们用 promise 的 then 方法排列起来的相关处理程序就会被调用。如果 promise 在一个相应的处理程序被绑定时就已经被兑现或被拒绝了，那么这个处理程序就会被调用，因此在完成异步操作和绑定处理方法之间不会存在竞争状态。
+待定状态的 Promise 对象要么会通过一个值*被兑现(fulfilled) *，要么会通过一个原因(错误) *被拒绝(rejected) *。当这些情况之一发生时，我们用 promise 的 then 方法排列起来的相关处理程序就会被调用。如果 promise 在一个相应的处理程序被绑定时就已经被兑现或被拒绝了，那么这个处理程序就会被调用，因此在完成异步操作和绑定处理方法之间不会存在竞争状态。
 
 ![img](http://cdn.ayusummer233.top/img/202203281209302.png)
 
-> 如果一个 promise 已经被兑现（fulfilled）或被拒绝（rejected），那么我们也可以说它处于*已敲定（settled）*状态。您还会听到一个经常跟 promise 一起使用的术语：*已决议（resolved）*，它表示 promise 已经处于已敲定(settled)状态，或者为了匹配另一个 promise 的状态被"锁定"了。`Domenic Denicola` 的 [States and fates](https://github.com/domenic/promises-unwrapping/blob/master/docs/states-and-fates.md) 中有更多关于 promise 术语的细节可以供您参考。
+> 如果一个 promise 已经被兑现(fulfilled) 或被拒绝(rejected) ，那么我们也可以说它处于*已敲定(settled) *状态。您还会听到一个经常跟 promise 一起使用的术语：*已决议(resolved) *，它表示 promise 已经处于已敲定(settled)状态，或者为了匹配另一个 promise 的状态被"锁定"了。`Domenic Denicola` 的 [States and fates](https://github.com/domenic/promises-unwrapping/blob/master/docs/states-and-fates.md) 中有更多关于 promise 术语的细节可以供您参考。
 
 ---
 

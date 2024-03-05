@@ -3,7 +3,7 @@
 
 > [amsi绕过总结 - 先知社区 (aliyun.com)](https://xz.aliyun.com/t/11097)
 
-AMSI（Antimalware Scan Interface）是微软提供的一个标准化接口，旨在增强恶意软件和其他威胁的检测能力，特别是对于那些运行在Windows操作系统上的脚本和解释型代码
+AMSI(Antimalware Scan Interface) 是微软提供的一个标准化接口，旨在增强恶意软件和其他威胁的检测能力，特别是对于那些运行在Windows操作系统上的脚本和解释型代码
 
 > Win10 以及 WindowsSever2016 及之后的版本支持 AMSI 
 >
@@ -11,7 +11,7 @@ AMSI（Antimalware Scan Interface）是微软提供的一个标准化接口，�
 >
 > ![image-20240102052708985](http://cdn.ayusummer233.top/DailyNotes/202401020527019.png)
 
-AMSI使得应用程序（如PowerShell、VBScript、JavaScript等）可以将执行前的代码发送到安装的防病毒软件进行扫描
+AMSI使得应用程序(如PowerShell、VBScript、JavaScript等) 可以将执行前的代码发送到安装的防病毒软件进行扫描
 
 ----
 
@@ -52,7 +52,7 @@ Remove-Item -Path "HKLM:\Software\Microsoft\Windows Script\Settings\AmsiEnable" 
 
    - 获取`AmsiUtils`类中名为`amsiInitFailed`的字段。
 
-     这个字段是一个私有（NonPublic）静态（Static）字段，用于指示AMSI是否初始化失败。
+     这个字段是一个私有(NonPublic) 静态(Static) 字段，用于指示AMSI是否初始化失败。
 
 3. `SetValue($null,$true)`
 

@@ -45,8 +45,8 @@ NetBeans菜单栏选Tools下的option  里设置php interpreter 路径为下载�
 
 ### 为什么使用PHP
 
-- PHP 运行于各种平台（Windows, Linux, Unix, Mac OS X 等等）
-- PHP 兼容几乎所有服务器（Apache, IIS 等等）
+- PHP 运行于各种平台(Windows, Linux, Unix, Mac OS X 等等) 
+- PHP 兼容几乎所有服务器(Apache, IIS 等等) 
 - PHP 支持多种数据库
 - PHP 是免费的。请从官方 PHP 资源下载：[www.php.net](http://www.php.net/)
 - PHP 易于学习，并可高效地运行在服务器端
@@ -121,7 +121,7 @@ echo "Hello World!";
 </html>
 ```
 
-**注释：**PHP 语句以分号结尾（;）。PHP 代码块的关闭标签也会自动表明分号（因此在 PHP 代码块的最后一行不必使用分号）。
+**注释：**PHP 语句以分号结尾(;) 。PHP 代码块的关闭标签也会自动表明分号(因此在 PHP 代码块的最后一行不必使用分号) 。
 
 ### PHP 中的注释
 
@@ -129,7 +129,7 @@ PHP 代码中的注释不会被作为程序来读取和执行。它唯一的作�
 
 注释用于：
 
-- 使其他人理解您正在做的工作 - 注释可以让其他程序员了解您在每个步骤进行的工作（如果您供职于团队）
+- 使其他人理解您正在做的工作 - 注释可以让其他程序员了解您在每个步骤进行的工作(如果您供职于团队) 
 - 提醒自己做过什么 - 大多数程序员都曾经历过一两年后对项目进行返工，然后不得不重新考虑他们做过的事情。注释可以记录您在写代码时的思路。
 
 PHP支持3中注释：
@@ -157,7 +157,7 @@ PHP支持3中注释：
 
 ### PHP 大小写的敏感问题
 
-在 PHP 中，所有用户定义的函数、类和关键词（例如 if、else、echo 等等）都对大小写不敏感。
+在 PHP 中，所有用户定义的函数、类和关键词(例如 if、else、echo 等等) 都对大小写不敏感。
 
 不过在 PHP 中，所有变量都对大小写敏感。
 
@@ -174,23 +174,23 @@ echo $z;
 ?>
 ```
 
-类似代数，在代数中我们使用字母（比如 x）来保存值（比如 5）。
+类似代数，在代数中我们使用字母(比如 x) 来保存值(比如 5) 。
 
 在 PHP 中，起到代数作用的被称为*变量*。
 
 **注释：**请把变量视为存储数据的容器。
 
-正如代数，PHP 变量可用于保存值（x=5）和表达式（z=x+y）。
+正如代数，PHP 变量可用于保存值(x=5) 和表达式(z=x+y) 。
 
-变量的名称可以很短（比如 x 和 y），也可以取更具描述性的名称（比如 carname、total_volume）。
+变量的名称可以很短(比如 x 和 y) ，也可以取更具描述性的名称(比如 carname、total_volume) 。
 
 ### PHP 变量规则：
 
 - 变量以 $ 符号开头，其后是变量的名称
 - 变量名称必须以字母或下划线开头
 - 变量名称不能以数字开头
-- 变量名称只能包含字母数字字符和下划线（A-z、0-9 以及 _）
-- 变量名称对大小写敏感（$y 与 $Y 是两个不同的变量）
+- 变量名称只能包含字母数字字符和下划线(A-z、0-9 以及 _) 
+- 变量名称对大小写敏感($y 与 $Y 是两个不同的变量) 
 
 **注释：**PHP 变量名称对大小写敏感！
 
@@ -234,9 +234,9 @@ PHP 根据它的值，自动把变量转换为正确的数据类型。
 
 PHP 有三种不同的变量作用域：
 
-- local（局部）
-- global（全局）
-- static（静态）
+- local(局部) 
+- global(全局) 
+- static(静态) 
 
 ### Local 和 Global 作用域
 
@@ -277,7 +277,7 @@ echo "变量 y 是：$y";
 
 global 关键词用于在函数内访问全局变量。
 
-要做到这一点，请在（函数内部）变量前面使用 global 关键词：
+要做到这一点，请在(函数内部) 变量前面使用 global 关键词：
 
 ```php
 <?php
@@ -357,7 +357,7 @@ echo 是一个语言结构，有无括号均可使用：echo 或 echo()。
 
 #### 显示字符串
 
-下面的例子展示如何用 echo 命令来显示不同的字符串（同时请注意字符串中能包含 HTML 标记）：
+下面的例子展示如何用 echo 命令来显示不同的字符串(同时请注意字符串中能包含 HTML 标记) ：
 
 ```php+HTML
 <?php
@@ -395,7 +395,7 @@ print 也是语言结构，有无括号均可使用：print 或 print()。
 
 #### 显示字符串
 
-下面的例子展示如何用 print 命令来显示不同的字符串（同时请注意字符串中能包含 HTML 标记）：
+下面的例子展示如何用 print 命令来显示不同的字符串(同时请注意字符串中能包含 HTML 标记) ：
 
 ```php
 <?php
@@ -452,11 +452,11 @@ echo $x;
 
 整数规则：
 
-- 整数必须有至少一个数字（0-9）
+- 整数必须有至少一个数字(0-9) 
 - 整数不能包含逗号或空格
 - 整数不能有小数点
 - 整数正负均可
-- 可以用三种格式规定整数：十进制、十六进制（前缀是 0x）或八进制（前缀是 0）
+- 可以用三种格式规定整数：十进制、十六进制(前缀是 0x) 或八进制(前缀是 0) 
 
 在下面的例子中，我们将测试不同的数字。PHP var_dump() 会返回变量的数据类型和值：
 
@@ -578,7 +578,7 @@ var_dump($x);
 
 返回字符串的长度，以字符记。
 
-strlen() 常用于循环和其他函数， 在确定字符串何时结束很重要时。（例如，在循环中，我们也许需要在字符串的最后一个字符之后停止循环）。
+strlen() 常用于循环和其他函数， 在确定字符串何时结束很重要时。(例如，在循环中，我们也许需要在字符串的最后一个字符之后停止循环) 。
 
 ### str_word_count() 函数
 
@@ -592,7 +592,7 @@ strlen() 常用于循环和其他函数， 在确定字符串何时结束很重�
 
 strpos() 函数用于检索字符串内指定的字符或文本。
 
-如果找到匹配，则会返回首个匹配的字符位置。如果未找到匹配，则将返回 FALSE。（从首字符的位置0开始）
+如果找到匹配，则会返回首个匹配的字符位置。如果未找到匹配，则将返回 FALSE。(从首字符的位置0开始) 
 
 ```php
 <?php
@@ -618,9 +618,9 @@ echo str_replace("world", "Kitty", "Hello world!"); // 输出 Hello Kitty!
 
 **常量类似变量，但是常量一旦被定义就无法更改或撤销定义。**
 
-常量是单个值的标识符（名称）。在脚本中无法改变该值。
+常量是单个值的标识符(名称) 。在脚本中无法改变该值。
 
-有效的常量名以字符或下划线开头（常量名称前面没有 $ 符号）。
+有效的常量名以字符或下划线开头(常量名称前面没有 $ 符号) 。
 
 **注释：**与变量不同，常量贯穿整个脚本是自动全局的。
 
@@ -672,13 +672,13 @@ myTest();
 
 ### PHP 算数运算符
 
-| 运算符 | 名称 | 例子    | 结果            | 显示结果                                                     |
-| :----- | :--- | :------ | :-------------- | :----------------------------------------------------------- |
-| +      | 加法 | $x + $y | $x 与 $y 求和   | [显示结果](https://www.w3school.com.cn/tiy/s.asp?f=demo_php_operator_addition) |
-| -      | 减法 | $x - $y | $x 与 $y 的差数 | [显示结果](https://www.w3school.com.cn/tiy/s.asp?f=demo_php_operator_subtraction) |
+| 运算符 | 名称 | 例子    | 结果            | 显示结果                                                                             |
+| :----- | :--- | :------ | :-------------- | :----------------------------------------------------------------------------------- |
+| +      | 加法 | $x + $y | $x 与 $y 求和   | [显示结果](https://www.w3school.com.cn/tiy/s.asp?f=demo_php_operator_addition)       |
+| -      | 减法 | $x - $y | $x 与 $y 的差数 | [显示结果](https://www.w3school.com.cn/tiy/s.asp?f=demo_php_operator_subtraction)    |
 | *      | 乘法 | $x * $y | $x 与 $y 的乘积 | [显示结果](https://www.w3school.com.cn/tiy/s.asp?f=demo_php_operator_multiplication) |
-| /      | 除法 | $x / $y | $x 与 $y 的商数 | [显示结果](https://www.w3school.com.cn/tiy/s.asp?f=demo_php_operator_division) |
-| %      | 取模 | $x % $y | $x 除 $y 的余数 | [显示结果](https://www.w3school.com.cn/tiy/s.asp?f=demo_php_operator_modulus) |
+| /      | 除法 | $x / $y | $x 与 $y 的商数 | [显示结果](https://www.w3school.com.cn/tiy/s.asp?f=demo_php_operator_division)       |
+| %      | 取模 | $x % $y | $x 除 $y 的余数 | [显示结果](https://www.w3school.com.cn/tiy/s.asp?f=demo_php_operator_modulus)        |
 
 ```php
 <?php 
@@ -698,14 +698,14 @@ PHP 赋值运算符用于向变量写值。
 
 PHP 中基础的赋值运算符是 "="。这意味着右侧赋值表达式会为左侧运算数设置值。
 
-| 赋值   | 等同于    | 描述                           | 显示结果                                                     |
-| :----- | :-------- | :----------------------------- | :----------------------------------------------------------- |
-| x = y  | x = y     | 右侧表达式为左侧运算数设置值。 | [显示结果](https://www.w3school.com.cn/tiy/s.asp?f=demo_php_operator_set) |
-| x += y | x = x + y | 加                             | [显示结果](https://www.w3school.com.cn/tiy/s.asp?f=demo_php_operator_addition2) |
-| x -= y | x = x - y | 减                             | [显示结果](https://www.w3school.com.cn/tiy/s.asp?f=demo_php_operator_subtraction2) |
+| 赋值   | 等同于    | 描述                           | 显示结果                                                                              |
+| :----- | :-------- | :----------------------------- | :------------------------------------------------------------------------------------ |
+| x = y  | x = y     | 右侧表达式为左侧运算数设置值。 | [显示结果](https://www.w3school.com.cn/tiy/s.asp?f=demo_php_operator_set)             |
+| x += y | x = x + y | 加                             | [显示结果](https://www.w3school.com.cn/tiy/s.asp?f=demo_php_operator_addition2)       |
+| x -= y | x = x - y | 减                             | [显示结果](https://www.w3school.com.cn/tiy/s.asp?f=demo_php_operator_subtraction2)    |
 | x *= y | x = x * y | 乘                             | [显示结果](https://www.w3school.com.cn/tiy/s.asp?f=demo_php_operator_multiplication2) |
-| x /= y | x = x / y | 除                             | [显示结果](https://www.w3school.com.cn/tiy/s.asp?f=demo_php_operator_division2) |
-| x %= y | x = x % y | 模数                           | [显示结果](https://www.w3school.com.cn/tiy/s.asp?f=demo_php_operator_modulus2) |
+| x /= y | x = x / y | 除                             | [显示结果](https://www.w3school.com.cn/tiy/s.asp?f=demo_php_operator_division2)       |
+| x %= y | x = x % y | 模数                           | [显示结果](https://www.w3school.com.cn/tiy/s.asp?f=demo_php_operator_modulus2)        |
 
 下例展示了使用不同赋值运算符的不同结果：
 
@@ -738,8 +738,8 @@ echo $k; // 输出 1
 
 ### PHP 字符串运算符
 
-| 运算符 | 名称     | 例子                                      | 结果                           | 显示结果                                                     |
-| :----- | :------- | :---------------------------------------- | :----------------------------- | :----------------------------------------------------------- |
+| 运算符 | 名称     | 例子                                      | 结果                           | 显示结果                                                                      |
+| :----- | :------- | :---------------------------------------- | :----------------------------- | :---------------------------------------------------------------------------- |
 | .      | 串接     | $txt1 = "Hello" $txt2 = $txt1 . " world!" | 现在 $txt2 包含 "Hello world!" | [显示结果](https://www.w3school.com.cn/tiy/s.asp?f=demo_php_operator_string1) |
 | .=     | 串接赋值 | $txt1 = "Hello" $txt1 .= " world!"        | 现在 $txt1 包含 "Hello world!" | [显示结果](https://www.w3school.com.cn/tiy/s.asp?f=demo_php_operator_string2) |
 
@@ -759,11 +759,11 @@ echo $x; // 输出 Hello world!
 
 ### PHP 递增/递减运算符
 
-| 运算符 | 名称   | 描述                      | 显示结果                                                     |
-| :----- | :----- | :------------------------ | :----------------------------------------------------------- |
-| ++$x   | 前递增 | $x 加一递增，然后返回 $x  | [显示结果](https://www.w3school.com.cn/tiy/s.asp?f=demo_php_operator_pre_increment) |
+| 运算符 | 名称   | 描述                      | 显示结果                                                                             |
+| :----- | :----- | :------------------------ | :----------------------------------------------------------------------------------- |
+| ++$x   | 前递增 | $x 加一递增，然后返回 $x  | [显示结果](https://www.w3school.com.cn/tiy/s.asp?f=demo_php_operator_pre_increment)  |
 | $x++   | 后递增 | 返回 $x，然后 $x 加一递增 | [显示结果](https://www.w3school.com.cn/tiy/s.asp?f=demo_php_operator_post_increment) |
-| --$x   | 前递减 | $x 减一递减，然后返回 $x  | [显示结果](https://www.w3school.com.cn/tiy/s.asp?f=demo_php_operator_pre_decrement) |
+| --$x   | 前递减 | $x 减一递减，然后返回 $x  | [显示结果](https://www.w3school.com.cn/tiy/s.asp?f=demo_php_operator_pre_decrement)  |
 | $x--   | 后递减 | 返回 $x，然后 $x 减一递减 | [显示结果](https://www.w3school.com.cn/tiy/s.asp?f=demo_php_operator_post_decrement) |
 
 下例展示了使用不同递增/递减运算符的不同结果：
@@ -786,19 +786,19 @@ echo $i--; // 输出 17
 
 ### PHP 比较运算符
 
-PHP 比较运算符用于比较两个值（数字或字符串）：
+PHP 比较运算符用于比较两个值(数字或字符串) ：
 
-| 运算符 | 名称               | 例子      | 结果                                               | 显示结果                                                     |
-| :----- | :----------------- | :-------- | :------------------------------------------------- | :----------------------------------------------------------- |
-| ==     | 等于               | $x == $y  | 如果 $x 等于 $y，则返回 true。                     | [显示结果](https://www.w3school.com.cn/tiy/s.asp?f=demo_php_operator_equal) |
-| ===    | 全等（完全相同）   | $x === $y | 如果 $x 等于 $y，且它们类型相同，则返回 true。     | [显示结果](https://www.w3school.com.cn/tiy/s.asp?f=demo_php_operator_identical) |
-| !=     | 不等于             | $x != $y  | 如果 $x 不等于 $y，则返回 true。                   | [显示结果](https://www.w3school.com.cn/tiy/s.asp?f=demo_php_operator_not_equal) |
-| <>     | 不等于             | $x <> $y  | 如果 $x 不等于 $y，则返回 true。                   | [显示结果](https://www.w3school.com.cn/tiy/s.asp?f=demo_php_operator_not_equal2) |
-| !==    | 不全等（完全不同） | $x !== $y | 如果 $x 不等于 $y，或它们类型不相同，则返回 true。 | [显示结果](https://www.w3school.com.cn/tiy/s.asp?f=demo_php_operator_not_identical) |
-| >      | 大于               | $x > $y   | 如果 $x 大于 $y，则返回 true。                     | [显示结果](https://www.w3school.com.cn/tiy/s.asp?f=demo_php_operator_greater_than) |
-| <      | 小于               | $x < $y   | 如果 $x 小于 $y，则返回 true。                     | [显示结果](https://www.w3school.com.cn/tiy/s.asp?f=demo_php_operator_less_than) |
-| >=     | 大于或等于         | $x >= $y  | 如果 $x 大于或者等于 $y，则返回 true.              | [显示结果](https://www.w3school.com.cn/tiy/s.asp?f=demo_php_operator_greater_than2) |
-| <=     | 小于或等于         | $x <= $y  | 如果 $x 小于或者等于 $y，则返回 true。             | [显示结果](https://www.w3school.com.cn/tiy/s.asp?f=demo_php_operator_less_than2) |
+| 运算符 | 名称             | 例子      | 结果                                               | 显示结果                                                                            |
+| :----- | :--------------- | :-------- | :------------------------------------------------- | :---------------------------------------------------------------------------------- |
+| ==     | 等于             | $x == $y  | 如果 $x 等于 $y，则返回 true。                     | [显示结果](https://www.w3school.com.cn/tiy/s.asp?f=demo_php_operator_equal)         |
+| ===    | 全等(完全相同)   | $x === $y | 如果 $x 等于 $y，且它们类型相同，则返回 true。     | [显示结果](https://www.w3school.com.cn/tiy/s.asp?f=demo_php_operator_identical)     |
+| !=     | 不等于           | $x != $y  | 如果 $x 不等于 $y，则返回 true。                   | [显示结果](https://www.w3school.com.cn/tiy/s.asp?f=demo_php_operator_not_equal)     |
+| <>     | 不等于           | $x <> $y  | 如果 $x 不等于 $y，则返回 true。                   | [显示结果](https://www.w3school.com.cn/tiy/s.asp?f=demo_php_operator_not_equal2)    |
+| !==    | 不全等(完全不同) | $x !== $y | 如果 $x 不等于 $y，或它们类型不相同，则返回 true。 | [显示结果](https://www.w3school.com.cn/tiy/s.asp?f=demo_php_operator_not_identical) |
+| >      | 大于             | $x > $y   | 如果 $x 大于 $y，则返回 true。                     | [显示结果](https://www.w3school.com.cn/tiy/s.asp?f=demo_php_operator_greater_than)  |
+| <      | 小于             | $x < $y   | 如果 $x 小于 $y，则返回 true。                     | [显示结果](https://www.w3school.com.cn/tiy/s.asp?f=demo_php_operator_less_than)     |
+| >=     | 大于或等于       | $x >= $y  | 如果 $x 大于或者等于 $y，则返回 true.              | [显示结果](https://www.w3school.com.cn/tiy/s.asp?f=demo_php_operator_greater_than2) |
+| <=     | 小于或等于       | $x <= $y  | 如果 $x 小于或者等于 $y，则返回 true。             | [显示结果](https://www.w3school.com.cn/tiy/s.asp?f=demo_php_operator_less_than2)    |
 
 下例展示了使用某些比较运算符的不同结果：
 
@@ -827,27 +827,27 @@ var_dump($a < $b);
 
 ### PHP 逻辑运算符
 
-| 运算符 | 名称 | 例子       | 结果                                             | 显示结果                                                     |
-| :----- | :--- | :--------- | :----------------------------------------------- | :----------------------------------------------------------- |
-| and    | 与   | $x and $y  | 如果 $x 和 $y 都为 true，则返回 true。           | [显示结果](https://www.w3school.com.cn/tiy/s.asp?f=demo_php_operator_and) |
-| or     | 或   | $x or $y   | 如果 $x 和 $y 至少有一个为 true，则返回 true。   | [显示结果](https://www.w3school.com.cn/tiy/s.asp?f=demo_php_operator_or) |
-| xor    | 异或 | $x xor $y  | 如果 $x 和 $y 有且仅有一个为 true，则返回 true。 | [显示结果](https://www.w3school.com.cn/tiy/s.asp?f=demo_php_operator_xor) |
+| 运算符 | 名称 | 例子       | 结果                                             | 显示结果                                                                   |
+| :----- | :--- | :--------- | :----------------------------------------------- | :------------------------------------------------------------------------- |
+| and    | 与   | $x and $y  | 如果 $x 和 $y 都为 true，则返回 true。           | [显示结果](https://www.w3school.com.cn/tiy/s.asp?f=demo_php_operator_and)  |
+| or     | 或   | $x or $y   | 如果 $x 和 $y 至少有一个为 true，则返回 true。   | [显示结果](https://www.w3school.com.cn/tiy/s.asp?f=demo_php_operator_or)   |
+| xor    | 异或 | $x xor $y  | 如果 $x 和 $y 有且仅有一个为 true，则返回 true。 | [显示结果](https://www.w3school.com.cn/tiy/s.asp?f=demo_php_operator_xor)  |
 | &&     | 与   | $x && $y   | 如果 $x 和 $y 都为 true，则返回 true。           | [显示结果](https://www.w3school.com.cn/tiy/s.asp?f=demo_php_operator_and2) |
-| \|\|   | 或   | $x \|\| $y | 如果 $x 和 $y 至少有一个为 true，则返回 true。   | [显示结果](https://www.w3school.com.cn/tiy/s.asp?f=demo_php_operator_or2) |
-| !      | 非   | !$x        | 如果 $x 不为 true，则返回 true。                 | [显示结果](https://www.w3school.com.cn/tiy/s.asp?f=demo_php_operator_not) |
+| \|\|   | 或   | $x \|\| $y | 如果 $x 和 $y 至少有一个为 true，则返回 true。   | [显示结果](https://www.w3school.com.cn/tiy/s.asp?f=demo_php_operator_or2)  |
+| !      | 非   | !$x        | 如果 $x 不为 true，则返回 true。                 | [显示结果](https://www.w3school.com.cn/tiy/s.asp?f=demo_php_operator_not)  |
 
 ### PHP 数组运算符
 
 PHP 数组运算符用于比较数组：
 
-| 运算符 | 名称   | 例子      | 结果                                                         | 显示结果                                                     |
-| :----- | :----- | :-------- | :----------------------------------------------------------- | :----------------------------------------------------------- |
-| +      | 联合   | $x + $y   | $x 和 $y 的联合（但不覆盖重复的键）                          | [显示结果](https://www.w3school.com.cn/tiy/s.asp?f=demo_php_operator_union) |
-| ==     | 相等   | $x == $y  | 如果 $x 和 $y 拥有相同的键/值对，则返回 true。               | [显示结果](https://www.w3school.com.cn/tiy/s.asp?f=demo_php_operator_equality) |
-| ===    | 全等   | $x === $y | 如果 $x 和 $y 拥有相同的键/值对，且顺序相同类型相同，则返回 true。 | [显示结果](https://www.w3school.com.cn/tiy/s.asp?f=demo_php_operator_identity) |
-| !=     | 不相等 | $x != $y  | 如果 $x 不等于 $y，则返回 true。                             | [显示结果](https://www.w3school.com.cn/tiy/s.asp?f=demo_php_operator_inequality) |
-| <>     | 不相等 | $x <> $y  | 如果 $x 不等于 $y，则返回 true。                             | [显示结果](https://www.w3school.com.cn/tiy/s.asp?f=demo_php_operator_inequality2) |
-| !==    | 不全等 | $x !== $y | 如果 $x 与 $y 完全不同，则返回 true。                        | [显示结果](https://www.w3school.com.cn/tiy/s.asp?f=demo_php_operator_non_identity) |
+| 运算符 | 名称   | 例子      | 结果                                                               | 显示结果                                                                           |
+| :----- | :----- | :-------- | :----------------------------------------------------------------- | :--------------------------------------------------------------------------------- |
+| +      | 联合   | $x + $y   | $x 和 $y 的联合(但不覆盖重复的键)                                  | [显示结果](https://www.w3school.com.cn/tiy/s.asp?f=demo_php_operator_union)        |
+| ==     | 相等   | $x == $y  | 如果 $x 和 $y 拥有相同的键/值对，则返回 true。                     | [显示结果](https://www.w3school.com.cn/tiy/s.asp?f=demo_php_operator_equality)     |
+| ===    | 全等   | $x === $y | 如果 $x 和 $y 拥有相同的键/值对，且顺序相同类型相同，则返回 true。 | [显示结果](https://www.w3school.com.cn/tiy/s.asp?f=demo_php_operator_identity)     |
+| !=     | 不相等 | $x != $y  | 如果 $x 不等于 $y，则返回 true。                                   | [显示结果](https://www.w3school.com.cn/tiy/s.asp?f=demo_php_operator_inequality)   |
+| <>     | 不相等 | $x <> $y  | 如果 $x 不等于 $y，则返回 true。                                   | [显示结果](https://www.w3school.com.cn/tiy/s.asp?f=demo_php_operator_inequality2)  |
+| !==    | 不全等 | $x !== $y | 如果 $x 与 $y 完全不同，则返回 true。                              | [显示结果](https://www.w3school.com.cn/tiy/s.asp?f=demo_php_operator_non_identity) |
 
 下例展示了使用不同数组运算符的不同结果：
 
@@ -963,7 +963,7 @@ default:
 
 工作原理：
 
-1. 对表达式（通常是变量）进行一次计算
+1. 对表达式(通常是变量) 进行一次计算
 2. 把表达式的值与结构中 case 的值进行比较
 3. 如果存在匹配，则执行与 case 关联的代码
 4. 代码执行后，*break 语句*阻止代码跳入下一个 case 中继续执行
@@ -992,7 +992,7 @@ while (条件为真) {
 }
 ```
 
-下例首先把变量 $x 设置为 1（$x=1）。然后执行 while 循环，只要 $x 小于或等于 5。循环每运行一次，$x 将递增 1：
+下例首先把变量 $x 设置为 1($x=1) 。然后执行 while 循环，只要 $x 小于或等于 5。循环每运行一次，$x 将递增 1：
 
 ```php
 <?php 
@@ -1015,7 +1015,7 @@ do {
 } while (条件为真);
 ```
 
-下面的例子首先把变量 $x 设置为 1（$x=1）。然后，do while 循环输出一段字符串，然后对变量 $x 递增 1。随后对条件进行检查（$x 是否小于或等于 5）。只要 $x 小于或等于 5，循环将会继续运行：
+下面的例子首先把变量 $x 设置为 1($x=1) 。然后，do while 循环输出一段字符串，然后对变量 $x 递增 1。随后对条件进行检查($x 是否小于或等于 5) 。只要 $x 小于或等于 5，循环将会继续运行：
 
 ```php
 <?php 
@@ -1083,7 +1083,7 @@ foreach ($array as $value) {
 
 每进行一次循环迭代，当前数组元素的值就会被赋值给 $value 变量，并且数组指针会逐一地移动，直到到达最后一个数组元素。
 
-下面的例子演示的循环将输出给定数组（$colors）的值：
+下面的例子演示的循环将输出给定数组($colors) 的值：
 
 ```php
 <?php 
@@ -1121,7 +1121,7 @@ function functionName() {
 }
 ```
 
-**注释：**函数名能够以字母或下划线开头（而非数字）。
+**注释：**函数名能够以字母或下划线开头(而非数字) 。
 
 **注释：**函数名对大小写不敏感。
 
@@ -1133,7 +1133,7 @@ function functionName() {
 
 参数被定义在函数名之后，括号内部。您可以添加任意多参数，只要用逗号隔开即可。
 
-下面的例子中的函数有一个参数（$fname）。当调用 familyName() 函数时，我们同时要传递一个名字（例如 Bill），这样会输出不同的名字，但是姓氏相同：
+下面的例子中的函数有一个参数($fname) 。当调用 familyName() 函数时，我们同时要传递一个名字(例如 Bill) ，这样会输出不同的名字，但是姓氏相同：
 
 ```php+HTML
 <?php
@@ -1219,7 +1219,7 @@ echo $newfunc(2, M_E) . "\n";
 
 分析：
 
-`create_function()`会创建一个匿名函数（`lambda`样式）。此处创建了一个叫`lambda_1`的函数，在第一个`echo`中显示出名字，并在第二个`echo`语句中执行了此函数。
+`create_function()`会创建一个匿名函数(`lambda`样式) 。此处创建了一个叫`lambda_1`的函数，在第一个`echo`中显示出名字，并在第二个`echo`语句中执行了此函数。
 
 create_function()函数会在内部执行 eval()，我们发现是执行了后面的`return`语句，属于`create_function()`中的第二个参数`string $code`位置。
 
@@ -1376,7 +1376,7 @@ echo "I like " . $cars[0] . ", " . $cars[1] . " and " . $cars[2] . ".";
 
 数组是特殊的变量，它可以同时保存一个以上的值。
 
-如果您有一个项目列表（例如汽车品牌列表），在单个变量中存储这些品牌名称是这样的：
+如果您有一个项目列表(例如汽车品牌列表) ，在单个变量中存储这些品牌名称是这样的：
 
 ```
 $cars1="porsche";
@@ -1408,7 +1408,7 @@ array();
 
 有两种创建索引数组的方法：
 
-索引是自动分配的（索引从 0 开始）：
+索引是自动分配的(索引从 0 开始) ：
 
 ```
 $cars=array("porsche","BMW","Volvo");
@@ -1433,7 +1433,7 @@ echo "I like " . $cars[0] . ", " . $cars[1] . " and " . $cars[2] . ".";
 
 ### 获得数组的长度 - count() 函数
 
-count() 函数用于返回数组的长度（元素数）：
+count() 函数用于返回数组的长度(元素数) ：
 
 ```php
 <?php
@@ -1641,7 +1641,7 @@ PHP 中的许多预定义变量都是“超全局的”，这意味着它们在�
 
 ### $GLOBALS — 引用全局作用域中可用的全部变量
 
-$GLOBALS 这种全局变量用于在 PHP 脚本中的任意位置访问全局变量（从函数或方法中均可）。
+$GLOBALS 这种全局变量用于在 PHP 脚本中的任意位置访问全局变量(从函数或方法中均可) 。
 
 PHP 在名为 $GLOBALS[index] 的数组中存储了所有全局变量。变量的名字就是数组的键。
 
@@ -1687,32 +1687,32 @@ echo $_SERVER['SCRIPT_NAME'];
 
 下表列出了您能够在 $_SERVER 中访问的最重要的元素：
 
-| 元素/代码                       | 描述                                                         |
-| :------------------------------ | :----------------------------------------------------------- |
-| $_SERVER['PHP_SELF']            | 返回当前执行脚本的文件名。                                   |
-| $_SERVER['GATEWAY_INTERFACE']   | 返回服务器使用的 CGI 规范的版本。                            |
-| $_SERVER['SERVER_ADDR']         | 返回当前运行脚本所在的服务器的 IP 地址。                     |
-| $_SERVER['SERVER_NAME']         | 返回当前运行脚本所在的服务器的主机名（比如 www.w3school.com.cn）。 |
-| $_SERVER['SERVER_SOFTWARE']     | 返回服务器标识字符串（比如 Apache/2.2.24）。                 |
-| $_SERVER['SERVER_PROTOCOL']     | 返回请求页面时通信协议的名称和版本（例如，“HTTP/1.0”）。     |
-| $_SERVER['REQUEST_METHOD']      | 返回访问页面使用的请求方法（例如 POST）。                    |
-| $_SERVER['REQUEST_TIME']        | 返回请求开始时的时间戳（例如 1577687494）。                  |
-| $_SERVER['QUERY_STRING']        | 返回查询字符串，如果是通过查询字符串访问此页面。             |
-| $_SERVER['HTTP_ACCEPT']         | 返回来自当前请求的请求头。                                   |
-| $_SERVER['HTTP_ACCEPT_CHARSET'] | 返回来自当前请求的 Accept_Charset 头（ 例如 utf-8,ISO-8859-1） |
-| $_SERVER['HTTP_HOST']           | 返回来自当前请求的 Host 头。                                 |
-| $_SERVER['HTTP_REFERER']        | 返回当前页面的完整 URL（不可靠，因为不是所有用户代理都支持）。 |
-| $_SERVER['HTTPS']               | 是否通过安全 HTTP 协议查询脚本。                             |
-| $_SERVER['REMOTE_ADDR']         | 返回浏览当前页面的用户的 IP 地址。                           |
-| $_SERVER['REMOTE_HOST']         | 返回浏览当前页面的用户的主机名。                             |
-| $_SERVER['REMOTE_PORT']         | 返回用户机器上连接到 Web 服务器所使用的端口号。              |
-| $_SERVER['SCRIPT_FILENAME']     | 返回当前执行脚本的绝对路径。                                 |
-| $_SERVER['SERVER_ADMIN']        | 该值指明了 Apache 服务器配置文件中的 SERVER_ADMIN 参数。     |
-| $_SERVER['SERVER_PORT']         | Web 服务器使用的端口。默认值为 “80”。                        |
-| $_SERVER['SERVER_SIGNATURE']    | 返回服务器版本和虚拟主机名。                                 |
-| $_SERVER['PATH_TRANSLATED']     | 当前脚本所在文件系统（非文档根目录）的基本路径。             |
-| $_SERVER['SCRIPT_NAME']         | 返回当前脚本的路径。                                         |
-| $_SERVER['SCRIPT_URI']          | 返回当前页面的 URI。                                         |
+| 元素/代码                       | 描述                                                              |
+| :------------------------------ | :---------------------------------------------------------------- |
+| $_SERVER['PHP_SELF']            | 返回当前执行脚本的文件名。                                        |
+| $_SERVER['GATEWAY_INTERFACE']   | 返回服务器使用的 CGI 规范的版本。                                 |
+| $_SERVER['SERVER_ADDR']         | 返回当前运行脚本所在的服务器的 IP 地址。                          |
+| $_SERVER['SERVER_NAME']         | 返回当前运行脚本所在的服务器的主机名(比如 www.w3school.com.cn) 。 |
+| $_SERVER['SERVER_SOFTWARE']     | 返回服务器标识字符串(比如 Apache/2.2.24) 。                       |
+| $_SERVER['SERVER_PROTOCOL']     | 返回请求页面时通信协议的名称和版本(例如，“HTTP/1.0”) 。           |
+| $_SERVER['REQUEST_METHOD']      | 返回访问页面使用的请求方法(例如 POST) 。                          |
+| $_SERVER['REQUEST_TIME']        | 返回请求开始时的时间戳(例如 1577687494) 。                        |
+| $_SERVER['QUERY_STRING']        | 返回查询字符串，如果是通过查询字符串访问此页面。                  |
+| $_SERVER['HTTP_ACCEPT']         | 返回来自当前请求的请求头。                                        |
+| $_SERVER['HTTP_ACCEPT_CHARSET'] | 返回来自当前请求的 Accept_Charset 头( 例如 utf-8,ISO-8859-1)      |
+| $_SERVER['HTTP_HOST']           | 返回来自当前请求的 Host 头。                                      |
+| $_SERVER['HTTP_REFERER']        | 返回当前页面的完整 URL(不可靠，因为不是所有用户代理都支持) 。     |
+| $_SERVER['HTTPS']               | 是否通过安全 HTTP 协议查询脚本。                                  |
+| $_SERVER['REMOTE_ADDR']         | 返回浏览当前页面的用户的 IP 地址。                                |
+| $_SERVER['REMOTE_HOST']         | 返回浏览当前页面的用户的主机名。                                  |
+| $_SERVER['REMOTE_PORT']         | 返回用户机器上连接到 Web 服务器所使用的端口号。                   |
+| $_SERVER['SCRIPT_FILENAME']     | 返回当前执行脚本的绝对路径。                                      |
+| $_SERVER['SERVER_ADMIN']        | 该值指明了 Apache 服务器配置文件中的 SERVER_ADMIN 参数。          |
+| $_SERVER['SERVER_PORT']         | Web 服务器使用的端口。默认值为 “80”。                             |
+| $_SERVER['SERVER_SIGNATURE']    | 返回服务器版本和虚拟主机名。                                      |
+| $_SERVER['PATH_TRANSLATED']     | 当前脚本所在文件系统(非文档根目录) 的基本路径。                   |
+| $_SERVER['SCRIPT_NAME']         | 返回当前脚本的路径。                                              |
+| $_SERVER['SCRIPT_URI']          | 返回当前页面的 URI。                                              |
 
 ### PHP $_REQUEST
 
@@ -1815,7 +1815,7 @@ echo "在 " . $_GET['web'] . " 学习 " . $_GET['subject'];
 
 ## PHP表单
 
-**PHP 超全局变量 $_GET 和 $_POST 用于收集表单数据（form-data）。**
+**PHP 超全局变量 $_GET 和 $_POST 用于收集表单数据(form-data) 。**
 
 ### PHP - 一个简单的 HTML 表单
 
@@ -1837,7 +1837,7 @@ E-mail: <input type="text" name="email"><br>
 
 当用户填写此表单并点击提交按钮后，表单数据会发送到名为 "welcome.php" 的 PHP 文件供处理。表单数据是通过 HTTP POST 方法发送的。
 
-如需显示出被提交的数据，您可以简单地输出（echo）所有变量。"welcome.php" 文件是这样的：
+如需显示出被提交的数据，您可以简单地输出(echo) 所有变量。"welcome.php" 文件是这样的：
 
 ``` php
 <html>
@@ -1896,7 +1896,7 @@ Your email address is: <?php echo $_GET["email"]; ?>
 
 ### GET vs. POST   必须大写
 
-GET 和 POST 都创建数组（例如，array( key => value, key2 => value2, key3 => value3, ...)）。此数组包含键/值对，其中的键是表单控件的名称，而值是来自用户的输入数据。
+GET 和 POST 都创建数组(例如，array( key => value, key2 => value2, key3 => value3, ...)) 。此数组包含键/值对，其中的键是表单控件的名称，而值是来自用户的输入数据。
 
 GET 和 POST 被视作 $_GET 和 $_POST。它们是超全局变量，这意味着对它们的访问无需考虑作用域 - 无需任何特殊代码，您能够从任何函数、类或文件访问它们。
 
@@ -1908,7 +1908,7 @@ $_REQUEST['需要获取数据的来源--表单控件名称']可以兼容URL和HT
 
 ### 何时使用 GET？
 
-通过 GET 方法从表单发送的信息*对任何人都是可见的*（所有变量名和值都显示在 URL 中）。GET 对所发送信息的数量也有限制。限制在大约 2000 个字符。不过，由于变量显示在 URL 中，把页面添加到书签中也更为方便。
+通过 GET 方法从表单发送的信息*对任何人都是可见的*(所有变量名和值都显示在 URL 中) 。GET 对所发送信息的数量也有限制。限制在大约 2000 个字符。不过，由于变量显示在 URL 中，把页面添加到书签中也更为方便。
 
 GET 可用于发送非敏感的数据。
 
@@ -1916,7 +1916,7 @@ GET 可用于发送非敏感的数据。
 
 ### 何时使用 POST？
 
-通过 POST 方法从表单发送的信息*对其他人是不可见的*（所有名称/值会被嵌入 HTTP 请求的主体中），并且对所发送信息的数量也*无限制*。
+通过 POST 方法从表单发送的信息*对其他人是不可见的*(所有名称/值会被嵌入 HTTP 请求的主体中) ，并且对所发送信息的数量也*无限制*。
 
 此外 POST 支持高阶功能，比如在向服务器上传文件时进行 multi-part 二进制输入。
 
@@ -1940,13 +1940,13 @@ GET 可用于发送非敏感的数据。
 
 上面的表单使用如下验证规则：
 
-| 字段    | 验证规则                                          |
-| :------ | :------------------------------------------------ |
-| Name    | 必需。必须包含字母和空格。                        |
-| E-mail  | 必需。必须包含有效的电子邮件地址（包含 @ 和 .）。 |
-| Website | 可选。如果选填，则必须包含有效的 URL。            |
-| Comment | 可选。多行输入字段（文本框）。                    |
-| Gender  | 必需。必须选择一项。                              |
+| 字段    | 验证规则                                         |
+| :------ | :----------------------------------------------- |
+| Name    | 必需。必须包含字母和空格。                       |
+| E-mail  | 必需。必须包含有效的电子邮件地址(包含 @ 和 .) 。 |
+| Website | 可选。如果选填，则必须包含有效的 URL。           |
+| Comment | 可选。多行输入字段(文本框) 。                    |
+| Gender  | 必需。必须选择一项。                             |
 
 首先我们看一下这个表单的纯 HTML 代码：
 
@@ -1991,7 +1991,7 @@ $_SERVER["PHP_SELF"] 是一种超全局变量，它返回当前执行脚本的�
 
 ### 什么是 htmlspecialchars() 函数？
 
-htmlspecialchars() 函数把特殊字符转换为 HTML 实体。这意味着 < 和 > 之类的 HTML 字符会被替换为 \&lt; 和 \&gt; 。这样可防止攻击者通过在表单中注入 HTML 或 JavaScript 代码（跨站点脚本攻击）对代码进行利用。
+htmlspecialchars() 函数把特殊字符转换为 HTML 实体。这意味着 < 和 > 之类的 HTML 字符会被替换为 \&lt; 和 \&gt; 。这样可防止攻击者通过在表单中注入 HTML 或 JavaScript 代码(跨站点脚本攻击) 对代码进行利用。
 
 ### 关于 PHP 表单安全性的重要提示_
 
@@ -1999,9 +1999,9 @@ htmlspecialchars() 函数把特殊字符转换为 HTML 实体。这意味着 < �
 
 $_SERVER["PHP_SELF"] 变量表示php文件的相对路径  反斜杠表示相对路径/。。。   能够被黑客利用！
 
-如果您的页面使用了 PHP_SELF，用户能够输入下划线然后执行跨站点脚本（XSS）。
+如果您的页面使用了 PHP_SELF，用户能够输入下划线然后执行跨站点脚本(XSS) 。
 
-**提示：**跨站点脚本（Cross-site scripting，XSS）是一种计算机安全漏洞类型，常见于 Web 应用程序。XSS 能够使攻击者向其他用户浏览的网页中输入客户端脚本。
+**提示：**跨站点脚本(Cross-site scripting，XSS) 是一种计算机安全漏洞类型，常见于 Web 应用程序。XSS 能够使攻击者向其他用户浏览的网页中输入客户端脚本。
 
 假设我们的一张名为 "test_form.php" 的页面中有如下表单：
 
@@ -2029,7 +2029,7 @@ http://www.example.com/test_form.php/%22%3E%3Cscript%3Ealert('hacked')%3C/script
 <form method="post" action="test_form.php"/><script>alert('hacked')</script>
 ```
 
-这段代码加入了一段脚本和一个提示命令。并且当此页面加载后，就会执行 JavaScript 代码（用户会看到一个提示框）。这仅仅是一个关于 PHP_SELF 变量如何被利用的简单无害案例。
+这段代码加入了一段脚本和一个提示命令。并且当此页面加载后，就会执行 JavaScript 代码(用户会看到一个提示框) 。这仅仅是一个关于 PHP_SELF 变量如何被利用的简单无害案例。
 
 您应该意识到 *<script> 标签内能够添加任何 JavaScript 代码*！黑客能够把用户重定向到另一台服务器上的某个文件，该文件中的恶意代码能够更改全局变量或将表单提交到其他地址以保存用户数据，等等。
 
@@ -2071,10 +2071,10 @@ htmlspecialchars() 函数把特殊字符转换为 HTML 实体。现在，如果�
 
 在用户提交该表单时，我们还要做两件事：
 
-1. （通过 PHP trim() 函数）去除用户输入数据中不必要的字符（多余的空格、制表符、换行）
-2. （通过 PHP stripslashes() 函数）删除用户输入数据中的反斜杠（\）反转义字符
+1. (通过 PHP trim() 函数) 去除用户输入数据中不必要的字符(多余的空格、制表符、换行) 
+2. (通过 PHP stripslashes() 函数) 删除用户输入数据中的反斜杠(\) 反转义字符
 
-接下来我们创建一个检查函数（相比一遍遍地写代码，这样效率更好）。
+接下来我们创建一个检查函数(相比一遍遍地写代码，这样效率更好) 。
 
 我们把函数命名为 test_input()。
 
@@ -2130,7 +2130,7 @@ $_FILES
 $_POST 
 $_GET 
 等函数获取表单内容。 
-经由 HTTP POST 文件上传而提交至脚本的变量。类似于旧数组 $HTTP_POST_FILES 数组（依然有效，但反对使用）。详细信息请参阅 POST 方法上传。
+经由 HTTP POST 文件上传而提交至脚本的变量。类似于旧数组 $HTTP_POST_FILES 数组(依然有效，但反对使用) 。详细信息请参阅 POST 方法上传。
 
 print_r($_FILES)
 
@@ -2214,7 +2214,7 @@ move_uploaded_file -- 将上传的文件移动到新位置
 bool move_uploaded_file ( string filename, string destination )
 
 
-本函数检查并确保由 filename 指定的文件是合法的上传文件（即通过 PHP 的 HTTP POST 上传机制所上传的）。如果文件合法，则将其移动为由 destination 指定的文件。
+本函数检查并确保由 filename 指定的文件是合法的上传文件(即通过 PHP 的 HTTP POST 上传机制所上传的) 。如果文件合法，则将其移动为由 destination 指定的文件。
 
 如果 filename 不是合法的上传文件，不会出现任何操作，move_uploaded_file() 将返回 FALSE。
 
@@ -2267,17 +2267,17 @@ move_uploaded_file($tmp_name, $uploadfile);
 
 从上一节中的验证规则中，我们看到 "Name", "E-mail" 以及 "Gender" 字段是必需的。这些字段不能为空且必须在 HTML 表单中填写。
 
-| 字段    | 验证规则                                          |
-| :------ | :------------------------------------------------ |
-| Name    | 必需。必须包含字母和空格。                        |
-| E-mail  | 必需。必须包含有效的电子邮件地址（包含 @ 和 .）。 |
-| Website | 可选。如果选填，则必须包含有效的 URL。            |
-| Comment | 可选。多行输入字段（文本框）。                    |
-| Gender  | 必需。必须选择一项。                              |
+| 字段    | 验证规则                                         |
+| :------ | :----------------------------------------------- |
+| Name    | 必需。必须包含字母和空格。                       |
+| E-mail  | 必需。必须包含有效的电子邮件地址(包含 @ 和 .) 。 |
+| Website | 可选。如果选填，则必须包含有效的 URL。           |
+| Comment | 可选。多行输入字段(文本框) 。                    |
+| Gender  | 必需。必须选择一项。                             |
 
 在上一节中，所有输入字段都是可选的。
 
-在下面的代码中我们增加了一些新变量：$nameErr、$emailErr、$genderErr 以及 $websiteErr。这些错误变量会保存被请求字段的错误消息。我们还为每个 $_POST 变量添加了一个 if else 语句。这条语句检查 $_POST 变量是否为空（通过 PHP empty() 函数）。如果为空，则错误消息会存储于不同的错误变量中。如果不为空，则通过 test_input() 函数发送用户输入数据：
+在下面的代码中我们增加了一些新变量：$nameErr、$emailErr、$genderErr 以及 $websiteErr。这些错误变量会保存被请求字段的错误消息。我们还为每个 $_POST 变量添加了一个 if else 语句。这条语句检查 $_POST 变量是否为空(通过 PHP empty() 函数) 。如果为空，则错误消息会存储于不同的错误变量中。如果不为空，则通过 test_input() 函数发送用户输入数据：
 
 ```php
 <?php
@@ -2321,7 +2321,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 ### PHP - 显示错误消息
 
-在 HTML 表单中，我们在每个被请求字段后面增加了一点脚本。如果需要，会生成恰当的错误消息（如果用户未填写必填字段就试图提交表单）：
+在 HTML 表单中，我们在每个被请求字段后面增加了一点脚本。如果需要，会生成恰当的错误消息(如果用户未填写必填字段就试图提交表单) ：
 
 ### 实例
 
@@ -2383,7 +2383,7 @@ if (!preg_match("/([\w\-]+\@[\w\-]+\.[\w\-]+)/",$email)) {
 
 ### PHP - 验证 URL
 
-以下代码展示的方法检查 URL 地址语法是否有效（这条正则表达式同时允许 URL 中的斜杠）。如果 URL 地址语法无效，则存储一条错误消息：
+以下代码展示的方法检查 URL 地址语法是否有效(这条正则表达式同时允许 URL 中的斜杠) 。如果 URL 地址语法无效，则存储一条错误消息：
 
 ```
 $website = test_input($_POST["website"]);
@@ -2427,7 +2427,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $website = "";
   } else {
     $website = test_input($_POST["website"]);
-    // 检查 URL 地址语言是否有效（此正则表达式同样允许 URL 中的下划线）
+    // 检查 URL 地址语言是否有效(此正则表达式同样允许 URL 中的下划线) 
     if (!preg_match("/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i",$website)) {
       $websiteErr = "Invalid URL"; 
     }
@@ -2460,7 +2460,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 如需在用户点击提交按钮后在输入字段中显示值，我们在以下输入字段的 value 属性中增加了一小段 PHP 脚本：name、email 以及 website。在 comment 文本框字段中，我们把脚本放到了 <textarea> 与 </textarea> 之间。这些脚本输出 $name、$email、$website 和 $comment 变量的值。
 
-然后，我们还需要显示选中了哪个单选按钮。对此，我们必须操作 checked 属性（而非单选按钮的 value 属性）：
+然后，我们还需要显示选中了哪个单选按钮。对此，我们必须操作 checked 属性(而非单选按钮的 value 属性) ：
 
 ```php
 Name: <input type="text" name="name" value="<?php echo $name;?>">
@@ -2502,7 +2502,7 @@ PHP 能理解两、三、四或五级甚至更多级的多维数组。不过，�
 
 #### PHP - 两维数组
 
-两维数组是数组的数组（三维数组是数组的数组的数组）。
+两维数组是数组的数组(三维数组是数组的数组的数组) 。
 
 首先，让我们看看下面的表格：
 
@@ -2525,9 +2525,9 @@ $cars = array
   );
 ```
 
-现在这个两维数组包含了四个数组，并且它有两个索引（下标）：行和列。
+现在这个两维数组包含了四个数组，并且它有两个索引(下标) ：行和列。
 
-如需访问 $cars 数组中的元素，我们必须使用两个索引（行和列）：
+如需访问 $cars 数组中的元素，我们必须使用两个索引(行和列) ：
 
 ```php
 <?php
@@ -2538,7 +2538,7 @@ echo $cars[3][0].": 库存：".$cars[3][1].", 销量：".$cars[3][2].".<br>";
 ?>
 ```
 
-我们也可以在 For 循环中使用另一个 For 循环，来获得 $cars 数组中的元素（我们仍需使用两个索引）：
+我们也可以在 For 循环中使用另一个 For 循环，来获得 $cars 数组中的元素(我们仍需使用两个索引) ：
 
 ```php
 <?php
@@ -2578,9 +2578,9 @@ date() 函数的格式参数是必需的，它们规定如何格式化日期或�
 
 下面列出了一些常用于日期的字符：
 
-- d - 表示月里的某天（01-31）
-- m - 表示月（01-12）
-- Y - 表示年（四位数）
+- d - 表示月里的某天(01-31) 
+- m - 表示月(01-12) 
+- Y - 表示年(四位数) 
 - 1 - 表示周里的某天
 
 其他字符，比如 "/", "." 或 "-" 也可被插入字符中，以增加其他格式。
@@ -2610,8 +2610,8 @@ echo "今天是 " . date("l");
 
 - h - 带有首位零的 12 小时小时格式
 - i - 带有首位零的分钟
-- s - 带有首位零的秒（00 -59）
-- a - 小写的午前和午后（am 或 pm）
+- s - 带有首位零的秒(00 -59) 
+- a - 小写的午前和午后(am 或 pm) 
 
 下面的例子以指定的格式输出当前时间：
 
@@ -2642,9 +2642,9 @@ echo "当前时间是 " . date("h:i:sa");
 
 ### 通过 PHP mktime() 创建日期
 
-date() 函数中可选的时间戳参数规定时间戳。如果您未规定时间戳，将使用当前日期和时间（正如上例中那样）。
+date() 函数中可选的时间戳参数规定时间戳。如果您未规定时间戳，将使用当前日期和时间(正如上例中那样) 。
 
-mktime() 函数返回日期的 Unix 时间戳。Unix 时间戳包含 Unix 纪元（1970 年 1 月 1 日 00:00:00 GMT）与指定时间之间的秒数。
+mktime() 函数返回日期的 Unix 时间戳。Unix 时间戳包含 Unix 纪元(1970 年 1 月 1 日 00:00:00 GMT) 与指定时间之间的秒数。
 
 ```
 mktime(hour,minute,second,month,day,year)
@@ -2737,18 +2737,18 @@ echo "距离十二月三十一日还有：" . $d2 ." 天。";
 
 **服务器端包含 (SSI) 用于创建可在多个页面重复使用的函数、页眉、页脚或元素。**
 
-include （或 require）语句会获取指定文件中存在的所有文本/代码/标记，并复制到使用 include 语句的文件中。
+include (或 require) 语句会获取指定文件中存在的所有文本/代码/标记，并复制到使用 include 语句的文件中。
 
 包含文件很有用，如果您需要在网站的多张页面上引用相同的 PHP、HTML 或文本的话。
 
 ### PHP include和require语句
 
-通过 include 或 require 语句，可以将 PHP 文件的内容插入另一个 PHP 文件（在服务器执行它之前）。
+通过 include 或 require 语句，可以将 PHP 文件的内容插入另一个 PHP 文件(在服务器执行它之前) 。
 
 include 和 require 语句是相同的，除了错误处理方面：
 
-- require 会生成致命错误（E_COMPILE_ERROR）并停止脚本
-- include 只生成警告（E_WARNING），并且脚本会继续
+- require 会生成致命错误(E_COMPILE_ERROR) 并停止脚本
+- include 只生成警告(E_WARNING) ，并且脚本会继续
 
 因此，如果您希望继续执行，并向用户输出结果，即使包含文件已丢失，那么请使用 include。否则，在框架、CMS 或者复杂的 PHP 应用程序编程中，请始终使用 require 向执行流引用关键文件。这有助于提高应用程序的安全性和完整性，在某个关键文件意外丢失的情况下。
 
@@ -2805,7 +2805,7 @@ echo '<a href="/index.asp">首页</a> -
 ?>
 ```
 
-网站中的所有页面均使用此菜单文件。具体的做法是（我们使用了一个 <div> 元素，这样今后就可以轻松地通过 CSS 设置样式）：
+网站中的所有页面均使用此菜单文件。具体的做法是(我们使用了一个 <div> 元素，这样今后就可以轻松地通过 CSS 设置样式) ：
 
 ```php
 <html>
@@ -2956,8 +2956,8 @@ eval(phpcode)
 | *phpcode* | 必需。规定要计算的 PHP 代码。 |
 
 | 返回值：   | 除非在代码字符串中调用 return 语句，则返回传给 return 语句的值，否则返回 NULL。如果代码字符串中存在解析错误，则 eval() 函数返回 FALSE。 |
-| :--------- | ------------------------------------------------------------ |
-| PHP 版本： | 4+                                                           |
+| :--------- | --------------------------------------------------------------------------------------------------------------------------------------- |
+| PHP 版本： | 4+                                                                                                                                      |
 
 ### @
 
@@ -2993,7 +2993,7 @@ SVG = Scalable Vector Graphics
 XML = EXtensible Markup Language
 ```
 
-读取此文件并写到输出流的 PHP 代码如下（如读取成功则 readfile() 函数返回字节数）：
+读取此文件并写到输出流的 PHP 代码如下(如读取成功则 readfile() 函数返回字节数) ：
 
 ```php
 <?php
@@ -3045,16 +3045,16 @@ fclose($myfile);
 
 文件会以如下模式之一打开：
 
-| 模式 | 描述                                                         |
-| :--- | :----------------------------------------------------------- |
-| r    | 打开文件为只读。文件指针在文件的开头开始。                   |
-| w    | 打开文件为只写。删除文件的内容或创建一个新的文件，如果它不存在。文件指针在文件的开头开始。 |
+| 模式 | 描述                                                                                             |
+| :--- | :----------------------------------------------------------------------------------------------- |
+| r    | 打开文件为只读。文件指针在文件的开头开始。                                                       |
+| w    | 打开文件为只写。删除文件的内容或创建一个新的文件，如果它不存在。文件指针在文件的开头开始。       |
 | a    | 打开文件为只写。文件中的现有数据会被保留。文件指针在文件结尾开始。创建新的文件，如果文件不存在。 |
-| x    | 创建新文件为只写。返回 FALSE 和错误，如果文件已存在。        |
-| r+   | 打开文件为读/写、文件指针在文件开头开始。                    |
-| w+   | 打开文件为读/写。删除文件内容或创建新文件，如果它不存在。文件指针在文件开头开始。 |
-| a+   | 打开文件为读/写。文件中已有的数据会被保留。文件指针在文件结尾开始。创建新文件，如果它不存在。 |
-| x+   | 创建新文件为读/写。返回 FALSE 和错误，如果文件已存在。       |
+| x    | 创建新文件为只写。返回 FALSE 和错误，如果文件已存在。                                            |
+| r+   | 打开文件为读/写、文件指针在文件开头开始。                                                        |
+| w+   | 打开文件为读/写。删除文件内容或创建新文件，如果它不存在。文件指针在文件开头开始。                |
+| a+   | 打开文件为读/写。文件中已有的数据会被保留。文件指针在文件结尾开始。创建新文件，如果它不存在。    |
+| x+   | 创建新文件为读/写。返回 FALSE 和错误，如果文件已存在。                                           |
 
 ### PHP 读取文件 - fread()
 
@@ -3074,7 +3074,7 @@ fclose() 函数用于关闭打开的文件。
 
 **注释：**用完文件后把它们全部关闭是一个良好的编程习惯。您并不想打开的文件占用您的服务器资源。
 
-fclose() 需要待关闭文件的名称（或者存有文件名的变量）：
+fclose() 需要待关闭文件的名称(或者存有文件名的变量) ：
 
 ```php
 <?php
@@ -3152,7 +3152,7 @@ fclose($myfile);
 
 fopen() 函数也用于创建文件。也许有点混乱，但是在 PHP 中，创建文件所用的函数与打开文件的相同。
 
-如果您用 fopen() 打开并不存在的文件，此函数会创建文件，假定文件被打开为写入（w）或增加（a）。
+如果您用 fopen() 打开并不存在的文件，此函数会创建文件，假定文件被打开为写入(w) 或增加(a) 。
 
 下面的例子创建名为 "testfile.txt" 的新文件。此文件将被创建于 PHP 代码所在的相同目录中：
 
@@ -3194,7 +3194,7 @@ Bill Gates
 Steve Jobs
 ```
 
-### PHP 覆盖（Overwriting）
+### PHP 覆盖(Overwriting) 
 
 如果现在 "newfile.txt" 包含了一些数据，我们可以展示在写入已有文件时发生的的事情。所有已存在的数据会被擦除并以一个新文件开始。
 
@@ -3401,7 +3401,7 @@ setcookie("user", "Alex Porter", time()+3600);
 </html>
 ```
 
-**注释：**在发送 cookie 时，cookie 的值会自动进行 URL 编码，在取回时进行自动解码（为防止 URL 编码，请使用 setrawcookie() 取而代之）。
+**注释：**在发送 cookie 时，cookie 的值会自动进行 URL 编码，在取回时进行自动解码(为防止 URL 编码，请使用 setrawcookie() 取而代之) 。
 
 ### 如何取回 Cookie 的值？
 
@@ -3451,7 +3451,7 @@ setcookie("user", "", time()-3600);
 
 ### 如果浏览器不支持 cookie 该怎么办？
 
-如果您的应用程序涉及不支持 cookie 的浏览器，您就不得不采取其他方法在应用程序中从一张页面向另一张页面传递信息。一种方式是从表单传递数据（有关表单和用户输入的内容，稍早前我们已经在本教程中介绍过了）。或者通过URL传输数据。
+如果您的应用程序涉及不支持 cookie 的浏览器，您就不得不采取其他方法在应用程序中从一张页面向另一张页面传递信息。一种方式是从表单传递数据(有关表单和用户输入的内容，稍早前我们已经在本教程中介绍过了) 。或者通过URL传输数据。
 
 下面的表单在用户单击提交按钮时向 "welcome.php" 提交了用户输入：
 

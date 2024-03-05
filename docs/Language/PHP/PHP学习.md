@@ -28,7 +28,7 @@ PHP 是一种创建动态交互性站点的强有力的服务器端脚本语言
 
 @tab:active Windows
 
-> [如何在VSCode配置PHP开发环境（详细版）[通俗易懂\] - 腾讯云开发者社区-腾讯云 (tencent.com)](https://cloud.tencent.com/developer/article/1990743)
+> [如何在VSCode配置PHP开发环境(详细版) [通俗易懂\] - 腾讯云开发者社区-腾讯云 (tencent.com)](https://cloud.tencent.com/developer/article/1990743)
 >
 > ---
 

@@ -106,7 +106,7 @@ $client.Close();
   - `% { 0 }`: PowerShell中的ForEach-Object命令的简短写法  
     对序列中的每个元素执行括号内的操作(返回0)
 - `$sendback = (iex $data 2>&1 | Out-String )`
-  - `2>&1`: 在PowerShell中，2 表示标准错误流（stderr），1 表示标准输出流（stdout）  
+  - `2>&1`: 在PowerShell中，2 表示标准错误流(stderr) ，1 表示标准输出流(stdout)   
     `2>&1` 表示将标准错误流重定向到标准输出流, 这意味着命令的输出和错误都会被捕获并重定向为字符串到 `$sendback`
 - `$stream.Write($sendbyte,0,$sendbyte.Length)`
   - `Write` 是 `System.Net.Sockets.NetworkStream` 对象的一个方法，用于将数据写入网络流;   
@@ -148,7 +148,7 @@ $client.Close();
 例如: 
 
 -  `New-Object System.Net.Sockets.TCPClient` 用于建立网络连接, 特别是当它连接到一个固定的IP地址端口时
-- `iex`（Invoke-Expression的缩写）用于执行字符串中的命令, 尤其是当它与网络功能结合使用时
+- `iex`(Invoke-Expression的缩写) 用于执行字符串中的命令, 尤其是当它与网络功能结合使用时
 
 那么可以创建一个特征码, 用于检测包含 `New-Object System.Net.Sockets.TCPClient` 和 `iex` 命令组合的脚本
 
@@ -348,7 +348,7 @@ $obfuscatedScript -join "`n" | Out-File -FilePath "ObfuscatedRAT.ps1"
 
 #### 利用第三方服务
 
-使用合法的第三方服务作为C&C（命令和控制）通信，比如社交媒体、合法的云服务等，以隐藏恶意流量。
+使用合法的第三方服务作为C&C(命令和控制) 通信，比如社交媒体、合法的云服务等，以隐藏恶意流量。
 
 ---
 
@@ -417,7 +417,7 @@ $obfuscatedScript -join "`n" | Out-File -FilePath "ObfuscatedRAT.ps1"
 
 > [amsi绕过总结 - 先知社区 (aliyun.com)](https://xz.aliyun.com/t/11097)
 
-AMSI（Antimalware Scan Interface）是微软提供的一个标准化接口，旨在增强恶意软件和其他威胁的检测能力，特别是对于那些运行在Windows操作系统上的脚本和解释型代码
+AMSI(Antimalware Scan Interface) 是微软提供的一个标准化接口，旨在增强恶意软件和其他威胁的检测能力，特别是对于那些运行在Windows操作系统上的脚本和解释型代码
 
 > Win10 以及 WindowsSever2016 及之后的版本支持 AMSI 
 >
@@ -425,7 +425,7 @@ AMSI（Antimalware Scan Interface）是微软提供的一个标准化接口，�
 >
 > ![image-20240102052708985](http://cdn.ayusummer233.top/DailyNotes/202401020527019.png)
 
-AMSI使得应用程序（如PowerShell、VBScript、JavaScript等）可以将执行前的代码发送到安装的防病毒软件进行扫描
+AMSI使得应用程序(如PowerShell、VBScript、JavaScript等) 可以将执行前的代码发送到安装的防病毒软件进行扫描
 
 ----
 
@@ -464,7 +464,7 @@ Remove-Item -Path "HKLM:\Software\Microsoft\Windows Script\Settings\AmsiEnable" 
 
    - 获取`AmsiUtils`类中名为`amsiInitFailed`的字段。
 
-     这个字段是一个私有（NonPublic）静态（Static）字段，用于指示AMSI是否初始化失败。
+     这个字段是一个私有(NonPublic) 静态(Static) 字段，用于指示AMSI是否初始化失败。
 
 3. `SetValue($null,$true)`
 
@@ -512,7 +512,7 @@ $decryptionScript | Out-File -FilePath "EncryptedRAT.ps1"
 
 ### 条件触发
 
-设计脚本在满足某些特定条件（如特定的系统配置、日期或用户活动）时才执行恶意操作
+设计脚本在满足某些特定条件(如特定的系统配置、日期或用户活动) 时才执行恶意操作
 
 例如只有当 word 启动时才执行恶意代码
 
@@ -570,7 +570,7 @@ $asm.EntryPoint.Invoke($null,@());
 - `.EntryPoint` 是 `System.Reflection.Assembly` 类的一个属性，它指向程序集中的入口点。对于.NET程序来说，这通常是Main方法, 是程序开始执行的地方。
 - `.Invoke($null,@())`
   - `($null,@())` 是 `.Invoke` 方法的参数。这里有两个参数：
-    - `$null`：表示Invoke方法被调用的对象。因为大多数.NET程序的入口点Main方法是静态的（即它不依赖于类的实例），所以这里使用$null。如果入口点是一个实例方法（非静态），这里将需要一个该类的实例。
+    - `$null`：表示Invoke方法被调用的对象。因为大多数.NET程序的入口点Main方法是静态的(即它不依赖于类的实例) ，所以这里使用$null。如果入口点是一个实例方法(非静态) ，这里将需要一个该类的实例。
     - `@()`：传递给Main方法的参数数组。在这个例子中，使用空数组@()，表示没有参数被传递。如果Main方法期望参数，它们将在这里提供。
 
 ---

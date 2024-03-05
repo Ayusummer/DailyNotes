@@ -173,7 +173,7 @@ The word isograms, however, is not an isogram, because the s repeats.
 ## [2021-12-23-Hamming](https://exercism.org/tracks/c/exercises/hamming)
 
 > hamming distance 汉明间距；代码间距；汉娩距  
-> hamming code 汉明码（误差检验及纠正码）
+> hamming code 汉明码(误差检验及纠正码) 
 
 ### Instructions
 

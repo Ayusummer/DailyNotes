@@ -19,22 +19,22 @@
 
 ---
 ## Pandas数据分析
-- pandas的名称来自于panel data(面板数据）和data analysis(数据分析)。
+- pandas的名称来自于panel data(面板数据) 和data analysis(数据分析)。
 - 是基于扩展库numpy和matplotlib的数据分析模块，是一个开源项目。
 - Pandas提供了大量标准数据模型和高效操作大型数据集所需要的函数和方法，是使得Python能够成为高效且强大的数据分析工具的重要因素之一。
 
 ---
 ## pandas数据结构
 -  Pandas常用的数据结构有：
-   - 1）Series，带标签的一维数组；
-   - 2）DatetimeIndex，时间序列；
-   - 3）DataFrame，带标签且大小可变的二维表格结构；
-   - 4）Panel，带标签且大小可变的三维数组。
+   - 1) Series，带标签的一维数组；
+   - 2) DatetimeIndex，时间序列；
+   - 3) DataFrame，带标签且大小可变的二维表格结构；
+   - 4) Panel，带标签且大小可变的三维数组。
 
 ---
 ### Series
 - pandas提供的类似于一维数组的字典结构的对象，
-  - 由**索引**（数据标签）和**数据**两部分组成。
+  - 由**索引**(数据标签) 和**数据**两部分组成。
 - 如果在创建时没有明确指定索引则会自动使用从0开始的非负整数作为索引。
 
 ---
@@ -273,7 +273,7 @@ stu = pd.read_csv(file_path,
                   encoding='utf-8',
                   header=[0],       # 指定行数用来作为列名,默认第一行为列名
                   index_col=0,      # 指定列编号或者列名为索引
-                  skiprows=None,    # 需要忽略的行数（从文件开始处算起）
+                  skiprows=None,    # 需要忽略的行数(从文件开始处算起) 
                   )
 print(stu)
 
@@ -323,7 +323,7 @@ stu = pd.read_csv(file_path,
                   encoding='utf-8',
                   header=[0],  # 指定行数用来作为列名,默认第一行为列名
                   index_col=0,  # 指定列编号或者列名为索引
-                  skiprows=None,  # 需要忽略的行数（从文件开始处算起）
+                  skiprows=None,  # 需要忽略的行数(从文件开始处算起) 
                   )
 print(stu)
 stu.to_csv(file_path_save,

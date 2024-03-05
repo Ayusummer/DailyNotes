@@ -34,7 +34,7 @@ WebShell 按照功能可以分为
 
 - 大马：大马WebShell功能齐全，能够管理数据库、文件管理、信息收集、提权等。由于这种大型木马的体量比较大，上传过程中容易被检测且不方便进行上传绕过测试。
 
-- 小马：小马的功能通常是围绕文件管理的功能（文件上传、文件修改、新建文件等），在上传文件的时候，可能会出现被限制上传的文件大小或是被拦截的情况，可以通过小马来上传大马。
+- 小马：小马的功能通常是围绕文件管理的功能(文件上传、文件修改、新建文件等) ，在上传文件的时候，可能会出现被限制上传的文件大小或是被拦截的情况，可以通过小马来上传大马。
 
 - 一句话木马：短小精悍、功能强大、隐蔽性好、使用客户端可以快速管理WebShell。
 
@@ -61,7 +61,7 @@ WebShell 的利用前提
 
 如下情况可能表明当前网站中存在 Webshell
 
-- 服务器使用率非常高（可能是因为攻击者在上传和下载大量数据）
+- 服务器使用率非常高(可能是因为攻击者在上传和下载大量数据) 
 - 服务器上存在外来文件
 - 具有可疑名称的文件
 - 服务器端日志中存在未知连接
@@ -133,7 +133,7 @@ rule = '(preg_replace[\s\n]{0,10}\([\s\n]{0,10}((["\'].{0,15}[/@\'][is]{0,2}e[is
 
 ---
 
-对于 jsp 马而言则可以是代码执行 `java.lang.Runtime.getRuntime().exec`, Java反射（`ClassLoader`，`getClass().getClassLoader()`, `(Runtime) Class.forName("java.lang.Runtime").getMethod("getRuntime").invoke(null)`）等特征
+对于 jsp 马而言则可以是代码执行 `java.lang.Runtime.getRuntime().exec`, Java反射(`ClassLoader`，`getClass().getClassLoader()`, `(Runtime) Class.forName("java.lang.Runtime").getMethod("getRuntime").invoke(null)`) 等特征
 
 ---
 

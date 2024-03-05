@@ -324,7 +324,7 @@ Invoke-AtomicTest T1218.010
 Invoke-AtomicTest T1218.010 -TimeoutSeconds 15
 ```
 
-如果攻击命令未在指定的 `-TimeoutSeconds` 内退出（返回），则该进程及其子进程将被强制终止, 从而允许 `Invoke-AtomicTest` 脚本继续进行下一个测试。
+如果攻击命令未在指定的 `-TimeoutSeconds` 内退出(返回) ，则该进程及其子进程将被强制终止, 从而允许 `Invoke-AtomicTest` 脚本继续进行下一个测试。
 
 > `-TimeoutSeconds` 的默认值为 120。
 
@@ -433,7 +433,7 @@ foreach ($technique in $techniques) {
 
 ## 在远程执行 atomic tests
 
-可以使用 `Invoke-AtomicTest` 函数在安装 Atomic Red Team 的系统（本地）或通过 PowerShell 远程会话（远程）在远程计算机上运行原子测试。如下说明展示了如何在远程计算机上执行测试。
+可以使用 `Invoke-AtomicTest` 函数在安装 Atomic Red Team 的系统(本地) 或通过 PowerShell 远程会话(远程) 在远程计算机上运行原子测试。如下说明展示了如何在远程计算机上执行测试。
 
 ----
 
@@ -445,7 +445,7 @@ foreach ($technique in $techniques) {
 | :----------: | :----------: | :---------------------------------------------------------------------------------------: |
 |   Windows    |   Windows    |                             远程必须启用 PowerShell Remoting                              |
 |   Windows    | Linux, macOS | 1) 本地必须安装PowerShell Core <br>2) 远程必须配置好了通过 SSH 来进行 powershell remoting |
-| Linux, macOS |   Windows    | 1）本地必须安装PowerShell Core<br>2) 远程必须配置好了通过 SSH 来进行 powershell remoting  |
+| Linux, macOS |   Windows    | 1) 本地必须安装PowerShell Core<br>2) 远程必须配置好了通过 SSH 来进行 powershell remoting  |
 
 ---
 
@@ -985,49 +985,49 @@ PS(仅限Windows): 必须要 Atomic Runner 所在机器上禁用本地安全策�
 
 ![image-20230921110837441](http://cdn.ayusummer233.top/DailyNotes/202309211108170.png)
 
-| Configuration Variable <br>配置变量 | Description 描述                                                                                                                                                                                                                                                |
-| ----------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| PathToInvokeFolder                  | The folder containing the installed Invoke-AtomicRedTeam folder <br>包含已安装的 Invoke-AtomicRedTeam 文件夹的文件夹                                                                                                                                            |
-| PathToPublicAtomicsFolder           | The folder containing the installed atomics folder <br/>包含已安装的atomics文件夹的文件夹                                                                                                                                                                       |
-| PathToPrivateAtomics                | The folder containing your own private atomics (if any) <br/>包含您自己的私有原子的文件夹（如果有）                                                                                                                                                             |
-| user                                | The user/account that will be used to execute atomics <br/>将用于执行原子操作的用户/帐户                                                                                                                                                                        |
-| basePath                            | The path where you want the folder created that houses the logs and the runner schedule. <br/>您希望在其中创建包含日志和运行程序计划的文件夹的路径。                                                                                                            |
-| scheduleTimeSpan                    | The time span in which you want all of the atomics on your schedule to complete. <br/>您希望完成计划中所有原子操作的时间跨度。                                                                                                                                  |
-| scheduleFileName                    | The name of the csv file containing the schedule (list) of atomic tests to run. <br/>包含要运行的原子测试的计划（列表）的 csv 文件的名称。                                                                                                                      |
-| kickOffDelay                        | A delay (specified as a PowerShell Timespan object) to sleep before running the atomic <br/>运行原子之前的睡眠延迟（指定为 PowerShell Timespan 对象）                                                                                                           |
-| syslogServer                        | Set this to the name of your syslog server if you want to use the SysLog execution logger <br/>如果您想使用 SysLog 执行记录器，请将其设置为您的 syslog 服务器的名称                                                                                             |
-| syslogPort                          | The port for the syslog server (ignored if syslogServer not set) <br/>syslog 服务器的端口（如果未设置 syslogServer，则忽略）                                                                                                                                    |
-| syslogProtocol                      | The port for the network protocol to use with the syslog server (options are UDP, TCP, TCPwithTLS) <br/>与 syslog 服务器一起使用的网络协议的端口（选项包括 UDP、TCP、TCPwithTLS）                                                                               |
-| LoggingModule                       | The logging module to use for the atomic execution logs (e.g. Attire-ExecutionLogger, Syslog-ExecutionLogger or WinEvent-ExecutionLogger)<br/>用于原子执行日志的日志记录模块（例如 Attire-ExecutionLogger、Syslog-ExecutionLogger 或 WinEvent-ExecutionLogger） |
-| verbose                             | Set to `$true` for more output in the runner logs <br/>设置为 `$true` 以获得运行程序日志中的更多输出                                                                                                                                                            |
-| debug                               | Set to `$true` for additional output which will be added to a file called `all-out-<base hostname>.txt` <br/>设置为 `$true` 以获得额外输出，该输出将添加到名为 `all-out-<base hostname>.txt` 的文件中                                                           |
-| logFolder                           | Name of the folder that will be found in the basePath and contains the Runner logs <br/>将在 basePath 中找到并包含运行程序日志的文件夹的名称                                                                                                                    |
-| CustomTag                           | A string that you want sent with each execution log sent to the SysLog logger <br/>您希望与发送到 SysLog 记录器的每个执行日志一起发送的字符串                                                                                                                   |
-| absb                                | An optional AMSI bypass script block that will be run before each atomic (Windows Only) <br/>将在每个原子之前运行的可选 AMSI 绕过脚本块（仅限 Windows）                                                                                                         |
-| gmsaAccount                         | A group managed service account to use for renaming the host if required (Windows Only) <br/>如果需要，用于重命名主机的组托管服务帐户（仅限 Windows）                                                                                                           |
+| Configuration Variable <br>配置变量 | Description 描述                                                                                                                                                                                                                                              |
+| ----------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| PathToInvokeFolder                  | The folder containing the installed Invoke-AtomicRedTeam folder <br>包含已安装的 Invoke-AtomicRedTeam 文件夹的文件夹                                                                                                                                          |
+| PathToPublicAtomicsFolder           | The folder containing the installed atomics folder <br/>包含已安装的atomics文件夹的文件夹                                                                                                                                                                     |
+| PathToPrivateAtomics                | The folder containing your own private atomics (if any) <br/>包含您自己的私有原子的文件夹(如果有)                                                                                                                                                             |
+| user                                | The user/account that will be used to execute atomics <br/>将用于执行原子操作的用户/帐户                                                                                                                                                                      |
+| basePath                            | The path where you want the folder created that houses the logs and the runner schedule. <br/>您希望在其中创建包含日志和运行程序计划的文件夹的路径。                                                                                                          |
+| scheduleTimeSpan                    | The time span in which you want all of the atomics on your schedule to complete. <br/>您希望完成计划中所有原子操作的时间跨度。                                                                                                                                |
+| scheduleFileName                    | The name of the csv file containing the schedule (list) of atomic tests to run. <br/>包含要运行的原子测试的计划(列表) 的 csv 文件的名称。                                                                                                                     |
+| kickOffDelay                        | A delay (specified as a PowerShell Timespan object) to sleep before running the atomic <br/>运行原子之前的睡眠延迟(指定为 PowerShell Timespan 对象)                                                                                                           |
+| syslogServer                        | Set this to the name of your syslog server if you want to use the SysLog execution logger <br/>如果您想使用 SysLog 执行记录器，请将其设置为您的 syslog 服务器的名称                                                                                           |
+| syslogPort                          | The port for the syslog server (ignored if syslogServer not set) <br/>syslog 服务器的端口(如果未设置 syslogServer，则忽略)                                                                                                                                    |
+| syslogProtocol                      | The port for the network protocol to use with the syslog server (options are UDP, TCP, TCPwithTLS) <br/>与 syslog 服务器一起使用的网络协议的端口(选项包括 UDP、TCP、TCPwithTLS)                                                                               |
+| LoggingModule                       | The logging module to use for the atomic execution logs (e.g. Attire-ExecutionLogger, Syslog-ExecutionLogger or WinEvent-ExecutionLogger)<br/>用于原子执行日志的日志记录模块(例如 Attire-ExecutionLogger、Syslog-ExecutionLogger 或 WinEvent-ExecutionLogger) |
+| verbose                             | Set to `$true` for more output in the runner logs <br/>设置为 `$true` 以获得运行程序日志中的更多输出                                                                                                                                                          |
+| debug                               | Set to `$true` for additional output which will be added to a file called `all-out-<base hostname>.txt` <br/>设置为 `$true` 以获得额外输出，该输出将添加到名为 `all-out-<base hostname>.txt` 的文件中                                                         |
+| logFolder                           | Name of the folder that will be found in the basePath and contains the Runner logs <br/>将在 basePath 中找到并包含运行程序日志的文件夹的名称                                                                                                                  |
+| CustomTag                           | A string that you want sent with each execution log sent to the SysLog logger <br/>您希望与发送到 SysLog 记录器的每个执行日志一起发送的字符串                                                                                                                 |
+| absb                                | An optional AMSI bypass script block that will be run before each atomic (Windows Only) <br/>将在每个原子之前运行的可选 AMSI 绕过脚本块(仅限 Windows)                                                                                                         |
+| gmsaAccount                         | A group managed service account to use for renaming the host if required (Windows Only) <br/>如果需要，用于重命名主机的组托管服务帐户(仅限 Windows)                                                                                                           |
 
 默认值表:
 
-|           config variable 配置变量           |    default (Windows) 默认（Windows）    | default (Linux/macOS) 默认（Linux/macOS） |
-| :------------------------------------------: | :-------------------------------------: | :---------------------------------------: |
-|              PathToInvokeFolder              | `C:\AtomicRedTeam\Invoke-AtomicRedTeam` |  `~/AtomicRedTeam/Invoke-AtomicRedTeam`   |
-| PathToPublicAtomicsFolder 公共原子文件夹路径 |       `C:\AtomicRedTeam\atomics`        |         `~/AtomicRedTeam/atomics`         |
-|             PathToPrivateAtomics             |       `C:\PrivateAtomics\atomics`       |        `~/PrivateAtomics/atomics`         |
-|                     user                     |     `$env:USERDOMAIN\$env:USERNAME`     |                `$env:USER`                |
-|                   basePath                   |               `$env:HOME`               |            `$env:USERPROFILE`             |
-|               scheduleTimeSpan               |                 7 days                  |                  7 days                   |
-|               scheduleFileName               |       `AtomicRunnerSchedule.csv `       |        `AtomicRunnerSchedule.csv `        |
-|                 kickOffDelay                 |                0 minutes                |                 0 minutes                 |
-|         syslogServer 系统日志服务器          |                                         |                                           |
-|                  syslogPort                  |                   514                   |                    514                    |
-|                syslogProtocol                |                   UDP                   |                    UDP                    |
-|                LoggingModule                 |         Default-ExecutionLogger         |          Default-ExecutionLogger          |
-|                   verbose                    |                `$false`                 |                 `$false`                  |
-|                    debug                     |                `$false`                 |                 `$false`                  |
-|                  logFolder                   |            AtomicRunner-Logs            |             AtomicRunner-Logs             |
-|                  CustomTag                   |                                         |                                           |
-|                     absb                     |                 `$null`                 |                  `$null`                  |
-|                 gmsaAccount                  |                 `$null`                 |                  `$null`                  |
+|           config variable 配置变量           |     default (Windows) 默认(Windows)     | default (Linux/macOS) 默认(Linux/macOS) |
+| :------------------------------------------: | :-------------------------------------: | :-------------------------------------: |
+|              PathToInvokeFolder              | `C:\AtomicRedTeam\Invoke-AtomicRedTeam` | `~/AtomicRedTeam/Invoke-AtomicRedTeam`  |
+| PathToPublicAtomicsFolder 公共原子文件夹路径 |       `C:\AtomicRedTeam\atomics`        |        `~/AtomicRedTeam/atomics`        |
+|             PathToPrivateAtomics             |       `C:\PrivateAtomics\atomics`       |       `~/PrivateAtomics/atomics`        |
+|                     user                     |     `$env:USERDOMAIN\$env:USERNAME`     |               `$env:USER`               |
+|                   basePath                   |               `$env:HOME`               |           `$env:USERPROFILE`            |
+|               scheduleTimeSpan               |                 7 days                  |                 7 days                  |
+|               scheduleFileName               |       `AtomicRunnerSchedule.csv `       |       `AtomicRunnerSchedule.csv `       |
+|                 kickOffDelay                 |                0 minutes                |                0 minutes                |
+|         syslogServer 系统日志服务器          |                                         |                                         |
+|                  syslogPort                  |                   514                   |                   514                   |
+|                syslogProtocol                |                   UDP                   |                   UDP                   |
+|                LoggingModule                 |         Default-ExecutionLogger         |         Default-ExecutionLogger         |
+|                   verbose                    |                `$false`                 |                `$false`                 |
+|                    debug                     |                `$false`                 |                `$false`                 |
+|                  logFolder                   |            AtomicRunner-Logs            |            AtomicRunner-Logs            |
+|                  CustomTag                   |                                         |                                         |
+|                     absb                     |                 `$null`                 |                 `$null`                 |
+|                 gmsaAccount                  |                 `$null`                 |                 `$null`                 |
 
 ----
 
@@ -1083,7 +1083,7 @@ Note: 在 Windwos 上, 系统会提示输入将运行 atomics 的用户凭据
 
 Atomic GUI 通过提供一个可以填写以生成 YAML 测试定义的 Web 表单来帮助创建新的 atomic  test。
 
-然后可以将此 YAML 复制并粘贴到相应技术编号（例如 T1003）的 YAML 中，以便添加新的原子测试。下面提供了使用 Atomic GUI 的说明。
+然后可以将此 YAML 复制并粘贴到相应技术编号(例如 T1003) 的 YAML 中，以便添加新的原子测试。下面提供了使用 Atomic GUI 的说明。
 
 ---
 

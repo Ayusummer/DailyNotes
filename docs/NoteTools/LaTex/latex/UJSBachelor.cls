@@ -120,7 +120,7 @@
 \RequirePackage{graphicx, subcaption}
 \RequirePackage{float}                       % 图表浮动
 \RequirePackage{listings}                    % 代码段
-% \RequirePackage{minted}                    % 代码高亮（需要 python 安装 pygments 库）
+% \RequirePackage{minted}                    % 代码高亮(需要 python 安装 pygments 库) 
 \RequirePackage{algorithm2e, algorithmic}    % 算法代码
 \RequirePackage{tikz}              % 绘图
 % 使用 1.17 版本的 pgfplots 包绘图
@@ -129,7 +129,7 @@
 
 \RequirePackage{fontspec, color, url, array}
 
-\RequirePackage{txfonts}                     % Times 风格（数学）字体
+\RequirePackage{txfonts}                     % Times 风格(数学) 字体
 
 %%% ---- 定义字体 ----- %%%
 \renewcommand{\normalsize}{\zihao{-4}}         % 正常字号
@@ -190,7 +190,7 @@
 
 \newcommand{\upcite}[1]{\textsuperscript{\cite{#1}}} % 自定义新命令\upcite, 使参考文献引用以上标出现
 
-\renewcommand{\eqref}[1]{\textup{{\normalfont（\ref{#1}）\normalfont}}} % 公式引用使用中文括号
+\renewcommand{\eqref}[1]{\textup{{\normalfont(\ref{#1}) \normalfont}}} % 公式引用使用中文括号
 
 % 清除公式上下间距
 \AtBeginDocument{

@@ -903,7 +903,7 @@ Typora 中最常用的快捷键是
 
 `使用 MPE 导出 base64图片 && 带侧边目录的 HTML`:
 
-> [3.1 HTML 导出-markdown preview enhanced文档（简体中文版）-面试哥 (mianshigee.com)](https://www.mianshigee.com/tutorial/mpe/zh-cn-html.md)
+> [3.1 HTML 导出-markdown preview enhanced文档(简体中文版) -面试哥 (mianshigee.com)](https://www.mianshigee.com/tutorial/mpe/zh-cn-html.md)
 >
 > [最完善的markdown转html/pdf方法、带目录生成_所谓向日葵族的博客-CSDN博客_markdown转html](https://blog.csdn.net/weixin_38601833/article/details/94585595)
 >
@@ -1087,7 +1087,7 @@ VNote是免费、开源的。您可以获得适用于Linux，Windows和macOS的�
 
 #### Nextcloud+Picgo
 
-> [Docker系列 深度使用nextcloud（三）Typora图床 - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/507984461)
+> [Docker系列 深度使用nextcloud(三) Typora图床 - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/507984461)
 
 Nextcloud 也可以配合 Picgo 作为图床使用, 简单来说上传图片到 nextcloud 并通过公开链接共享后可以在链接后缀加上 `/preview` 预览
 
@@ -1221,7 +1221,7 @@ Pandoc 是通用文档文本转换器。Typora 使用它来支持几种文件类
 ---
 ### reveal-md
 
-> [markdown写ppt （史上最全） - 疯狂创客圈 - 博客园 (cnblogs.com)](https://www.cnblogs.com/crazymakercircle/p/14372042.html)
+> [markdown写ppt (史上最全)  - 疯狂创客圈 - 博客园 (cnblogs.com)](https://www.cnblogs.com/crazymakercircle/p/14372042.html)
 
 像演示 PPT 一样演示 markdown
 

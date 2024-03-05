@@ -157,7 +157,7 @@ axios.all([getUserAccount(), getUserPermissions()])
 
 > [Window.localStorage - Web API 接口参考 | MDN (mozilla.org)](https://developer.mozilla.org/zh-CN/docs/Web/API/Window/localStorage)
 
-只读的`localStorage` 属性允许你访问一个[`Document`](https://developer.mozilla.org/zh-CN/docs/Web/API/Document) 源（origin）的对象 [`Storage`](https://developer.mozilla.org/zh-CN/docs/Web/API/Storage)；存储的数据将保存在浏览器会话中。`localStorage` 类似 [`sessionStorage`](https://developer.mozilla.org/zh-CN/docs/Web/API/Window/sessionStorage)，但其区别在于：存储在 `localStorage` 的数据可以长期保留；而当页面会话结束——也就是说，当页面被关闭时，存储在 `sessionStorage` 的数据会被清除 。
+只读的`localStorage` 属性允许你访问一个[`Document`](https://developer.mozilla.org/zh-CN/docs/Web/API/Document) 源(origin) 的对象 [`Storage`](https://developer.mozilla.org/zh-CN/docs/Web/API/Storage)；存储的数据将保存在浏览器会话中。`localStorage` 类似 [`sessionStorage`](https://developer.mozilla.org/zh-CN/docs/Web/API/Window/sessionStorage)，但其区别在于：存储在 `localStorage` 的数据可以长期保留；而当页面会话结束——也就是说，当页面被关闭时，存储在 `sessionStorage` 的数据会被清除 。
 
 应注意，无论数据存储在 `localStorage` 还是 `sessionStorage` ，**它们都特定于页面的协议。**
 
@@ -239,7 +239,7 @@ changeReactInputValue(passwdDom,'passwd');			//改变React的输入框的值
 
 > [IIFE - MDN Web Docs Glossary: Definitions of Web-related terms | MDN (mozilla.org)](https://developer.mozilla.org/en-US/docs/Glossary/IIFE)
 
-**IIFE**（立即调用函数表达式）是一个在定义时就会立即执行的 [JavaScript](https://developer.mozilla.org/zh-CN/docs/Glossary/JavaScript) [函数](https://developer.mozilla.org/zh-CN/docs/Glossary/Function)。
+**IIFE**(立即调用函数表达式) 是一个在定义时就会立即执行的 [JavaScript](https://developer.mozilla.org/zh-CN/docs/Glossary/JavaScript) [函数](https://developer.mozilla.org/zh-CN/docs/Glossary/Function)。
 
 ```JavaScript
 (function () {

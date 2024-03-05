@@ -98,11 +98,11 @@ clone 完仓库后进入相应的漏洞目录下可以看到 README 文档且一
   - 业务逻辑：这是Action的核心部分，代表了一个特定功能的实现。比如，用户登录就可能对应一个包含了验证用户名和密码的Action。
   - 输入属性：这些属性通常从HTTP请求中提取，并用于在执行业务逻辑时作为输入参数。
   - 输出属性：这些属性用于存储业务逻辑执行的结果，比如一个查询操作的结果。它们将会被放入模型对象中，并在视图层用于展示。
-  - 结果类型：这表示了Action处理完请求后的结果类型，通常是一个表示视图的字符串（如"success"、"error"等）。Struts 2根据这个结果类型来选择哪个视图（JSP页面或其他）应该被用于响应用户。
+  - 结果类型：这表示了Action处理完请求后的结果类型，通常是一个表示视图的字符串(如"success"、"error"等) 。Struts 2根据这个结果类型来选择哪个视图(JSP页面或其他) 应该被用于响应用户。
 
   实际上，任何实现了Action接口的Java类都可以作为Struts2的一个Action。Action接口只定义了一个方法：`execute()`，该方法用于封装要执行的业务逻辑，并返回一个字符串表示的结果类型。
 
-- `HttpServletRequest`对象表示客户端到服务器的HTTP请求，它包含请求行（例如GET或POST方法，URL，HTTP版本），头部字段（例如Host，User-Agent，Accept-Language等），以及可选的消息主体。
+- `HttpServletRequest`对象表示客户端到服务器的HTTP请求，它包含请求行(例如GET或POST方法，URL，HTTP版本) ，头部字段(例如Host，User-Agent，Accept-Language等) ，以及可选的消息主体。
 
   在Struts2框架中，`HttpServletRequest`对象可以在一个Action类或结果页面中使用，以获取关于客户端请求的信息。例如，可以使用`HttpServletRequest`对象获取客户端提交的表单数据，获取HTTP头部信息，或者获取关于客户端的会话信息。
 
@@ -120,7 +120,7 @@ clone 完仓库后进入相应的漏洞目录下可以看到 README 文档且一
 
   1. 通过 ActionMapper 查找请求 URI 来找到适当的 Action 和方法。
   2. 调用 Action 的方法并获取结果。
-  3. 将结果转发到适当的视图（通常是 JSP 页面）。
+  3. 将结果转发到适当的视图(通常是 JSP 页面) 。
 
 - `ActionProxy`是一个核心组件，用于封装和管理对Action的引用以及该Action的执行环境。它负责路由请求到正确的Action，并协调一些关键的交互过程。
 
@@ -128,14 +128,14 @@ clone 完仓库后进入相应的漏洞目录下可以看到 README 文档且一
 
   1. 路由请求：`ActionProxy`通过解析请求URI并匹配相应的Action配置来决定应该路由到哪个Action。它会使用一个`ActionMapper`实例来完成这个任务。
   2. 管理拦截器：`ActionProxy`还负责管理拦截器链，这是一组在执行Action方法之前和之后运行的拦截器。这些拦截器可以添加跨越多个Action的公共行为，如验证、日志记录、异常处理等。
-  3. 执行Action：`ActionProxy`最终会调用Action的适当方法，并获取该方法返回的结果代码。结果代码之后用于确定应该呈现哪个视图（通常是一个JSP页面）。
+  3. 执行Action：`ActionProxy`最终会调用Action的适当方法，并获取该方法返回的结果代码。结果代码之后用于确定应该呈现哪个视图(通常是一个JSP页面) 。
   4. 存储执行环境：`ActionProxy`还存储了一些与当前请求相关的环境信息，如Action的名称，命名空间，方法名等。
 
   `ActionProxy`是Struts2框架的中心控制器，负责处理Action的执行和拦截器链的管理。
 
-- Interceptor（拦截器）是一个用来实现跨切面（cross-cutting）关注点的重要组件。跨切面关注点是指那些分布在应用程序中多个模块或功能中的共享功能，例如日志记录、事务管理、安全性检查、数据验证等。
+- Interceptor(拦截器) 是一个用来实现跨切面(cross-cutting) 关注点的重要组件。跨切面关注点是指那些分布在应用程序中多个模块或功能中的共享功能，例如日志记录、事务管理、安全性检查、数据验证等。
 
-  Struts2的拦截器工作在Action的处理过程中，当一个请求到来并匹配到某个Action时，这个请求首先会经过一个由拦截器组成的拦截器栈（Interceptor Stack）。每一个拦截器在请求到达Action之前（前处理）和请求完成返回之后（后处理）都有机会进行操作。
+  Struts2的拦截器工作在Action的处理过程中，当一个请求到来并匹配到某个Action时，这个请求首先会经过一个由拦截器组成的拦截器栈(Interceptor Stack) 。每一个拦截器在请求到达Action之前(前处理) 和请求完成返回之后(后处理) 都有机会进行操作。
 
   例如，一个认证拦截器可能会在前处理阶段检查用户是否已经登录，如果没有，它可能会重定向到登录页面而不是继续执行Action。同样，一个日志拦截器可能在后处理阶段记录Action的执行时间。
 
@@ -148,7 +148,7 @@ clone 完仓库后进入相应的漏洞目录下可以看到 README 文档且一
   - 业务逻辑：这是Action的核心部分，代表了一个特定功能的实现。比如，用户登录就可能对应一个包含了验证用户名和密码的Action。
   - 输入属性：这些属性通常从HTTP请求中提取，并用于在执行业务逻辑时作为输入参数。
   - 输出属性：这些属性用于存储业务逻辑执行的结果，比如一个查询操作的结果。它们将会被放入模型对象中，并在视图层用于展示。
-  - 结果类型：这表示了Action处理完请求后的结果类型，通常是一个表示视图的字符串（如"success"、"error"等）。Struts 2根据这个结果类型来选择哪个视图（JSP页面或其他）应该被用于响应用户。
+  - 结果类型：这表示了Action处理完请求后的结果类型，通常是一个表示视图的字符串(如"success"、"error"等) 。Struts 2根据这个结果类型来选择哪个视图(JSP页面或其他) 应该被用于响应用户。
 
   实际上，任何实现了Action接口的Java类都可以作为Struts 2的一个Action。Action接口只定义了一个方法：`execute()`，该方法用于封装要执行的业务逻辑，并返回一个字符串表示的结果类型。
 
@@ -174,11 +174,11 @@ clone 完仓库后进入相应的漏洞目录下可以看到 README 文档且一
 
 Struts2-rest-plugin 是一个用于在 Struts2 框架中开发 RESTful web services 的插件。
 
-> REST，即表示性状态传递，是一种软件架构风格，它的核心是将 Web 应用程序视为资源的集合，可以通过 URL 来定位，并通过 HTTP 方法（如 GET，POST，PUT，DELETE 等）进行操作。
+> REST，即表示性状态传递，是一种软件架构风格，它的核心是将 Web 应用程序视为资源的集合，可以通过 URL 来定位，并通过 HTTP 方法(如 GET，POST，PUT，DELETE 等) 进行操作。
 
 Struts2-rest-plugin 提供了对 RESTful 架构风格的支持，使得开发者能在 Struts2 框架中创建符合 REST 风格的 Web 服务。例如，开发者可以使用此插件来定义资源，并将这些资源与 HTTP 方法关联起来，使得客户端可以通过 HTTP 方法操作这些资源。
 
-Struts2-rest-plugin 还提供了对常见数据格式（如 XML 和 JSON）的序列化和反序列化支持，这使得 Struts2 构建的 Web 服务可以以多种数据格式与客户端进行交互。
+Struts2-rest-plugin 还提供了对常见数据格式(如 XML 和 JSON) 的序列化和反序列化支持，这使得 Struts2 构建的 Web 服务可以以多种数据格式与客户端进行交互。
 
 ---
 
@@ -230,7 +230,7 @@ Struts2-rest-plugin 还提供了对常见数据格式（如 XML 和 JSON）的�
 `Xstream.fromXML` 能够将 XML 转化成 Java 对象, 简单来说就是:
 
 1. **创建 XStream 实例**：首先，需要创建一个 XStream 实例。这个实例将用于执行所有的序列化和反序列化操作。
-2. **注册转换器**：XStream 使用一系列的转换器（Converter）来完成对象与 XML 之间的转换。默认情况下，XStream 会注册一系列默认的转换器，用于处理常见的 Java 类型。如果需要处理特殊的类型，可以手动注册新的转换器。
+2. **注册转换器**：XStream 使用一系列的转换器(Converter) 来完成对象与 XML 之间的转换。默认情况下，XStream 会注册一系列默认的转换器，用于处理常见的 Java 类型。如果需要处理特殊的类型，可以手动注册新的转换器。
 3. **解析 XML**：XStream 会将输入的 XML 字符串解析成一个 DOM 树。
 4. **根据 DOM 树创建对象**：XStream 会遍历 DOM 树，并使用注册的转换器将每个 XML 节点转换成相应的 Java 对象。
 5. **处理对象引用**：为了处理可能存在的对象引用，XStream 在创建对象的过程中，会记录每个创建的对象以及它在 XML 中的位置。当遇到一个引用时，XStream 会查找之前记录的对象，而不是创建一个新的对象。
@@ -551,7 +551,7 @@ Content-Length: 2415
 
 ### s2-005 - CVE-2010-1870 RCE
 
-S2-005和S2-003的原理是类似的，因为官方在修补S2-003不全面，导致用户可以绕过官方的安全配置（禁止静态方法调用和类方法执行），再次造成的漏洞，可以说是升级版的S2-005是升级版的S2-003。
+S2-005和S2-003的原理是类似的，因为官方在修补S2-003不全面，导致用户可以绕过官方的安全配置(禁止静态方法调用和类方法执行) ，再次造成的漏洞，可以说是升级版的S2-005是升级版的S2-003。
 
 ----
 
@@ -620,7 +620,7 @@ User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (
    )
    ```
 
-   - `(%27%5cu0023context[%5c%27xwork.MethodAccessor.denyMethodExecution%5c%27]%5cu003d%5cu0023vccc%27)` 这部分的作用是在 OGNL 上下文（context）中设置 `'xwork.MethodAccessor.denyMethodExecution'` 属性的值为 `#vccc`，其中 `#vccc` 是一个 OGNL 变量。
+   - `(%27%5cu0023context[%5c%27xwork.MethodAccessor.denyMethodExecution%5c%27]%5cu003d%5cu0023vccc%27)` 这部分的作用是在 OGNL 上下文(context) 中设置 `'xwork.MethodAccessor.denyMethodExecution'` 属性的值为 `#vccc`，其中 `#vccc` 是一个 OGNL 变量。
    - `(%5cu0023vccc%5cu003dnew%20java.lang.Boolean(%22false%22))` 这部分的作用是设置 `#vccc` 变量的值为 `new Boolean("false")`。实际上，这就相当于将 `'xwork.MethodAccessor.denyMethodExecution'` 的值设置为 `false`。
 
    这两步操作实际上是绕过了 Struts2 的安全限制。Struts2 通过 `'xwork.MethodAccessor.denyMethodExecution'` 这个属性来阻止 OGNL 表达式调用方法，其默认值为 `true`，即默认禁止调用方法。但是这段 payload 通过设置其值为 `false`，从而允许 OGNL 表达式调用方法，这样就可以通过 OGNL 表达式执行任意 Java 方法，导致远程代码执行漏洞。
@@ -653,7 +653,7 @@ User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (
 
 ----
 
-执行任意命令POC（有回显，将需要执行的命令进行urlencode编码）:
+执行任意命令POC(有回显，将需要执行的命令进行urlencode编码) :
 
 ```http
 POST /example/HelloWorld.action HTTP/1.1

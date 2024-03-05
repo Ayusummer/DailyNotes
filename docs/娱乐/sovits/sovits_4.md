@@ -162,7 +162,7 @@ python train.py -c configs/config.json -m 44k
 > - -m, --model_path：模型路径。
 > - -c, --config_path：配置文件路径。
 > - -n, --clean_names：wav 文件名列表，放在 raw 文件夹下。
-> - -t, --trans：音高调整，支持正负（半音）。
+> - -t, --trans：音高调整，支持正负(半音) 。
 > - -s, --spk_list：合成目标说话人名称。
 >
 > 可选项部分：见下一节

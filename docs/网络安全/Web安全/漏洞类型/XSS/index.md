@@ -115,7 +115,7 @@ http://192.168.1.215:9221/vul/xss/xss_reflected_get.php?message=%3Cscript%3Ealer
 
 HTML DOM(Document Object Model 文档对象模型)
 
-当网页被加载时，浏览器会创建页面的文档对象模型（*D*ocument *O*bject *M*odel）。
+当网页被加载时，浏览器会创建页面的文档对象模型(*D*ocument *O*bject *M*odel) 。
 
 *HTML DOM* 模型被结构化为*对象树*：
 

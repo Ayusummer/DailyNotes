@@ -43,7 +43,7 @@
 
 `HTTP request(请求)` 的目标通常被称作 `resource(资源)` , 它可以是一份文档，一张图片，或所有其他你能够想到的格式。每个资源都由一个 ([URI(Uniform Resource Identifier 统一资源标识符)](https://developer.mozilla.org/zh-CN/docs/Glossary/URI)) 来进行标识。
 
-一般情况下，资源的名称和位置由同一个  `URL（Uniform Resource Locator 统一资源定位符，它是 URI 的一种）`来 标识。
+一般情况下，资源的名称和位置由同一个  `URL(Uniform Resource Locator 统一资源定位符，它是 URI 的一种) `来 标识。
 
 也有某些特殊情况，资源的名称和位置由不同的 URI 进行标识：
 
@@ -63,7 +63,7 @@ https://github.com/Ayusummer/DailyNotes/blob/main/%E5%89%8D%E7%AB%AF/%E9%80%9A%E
 https://developer.mozilla.org/en-US/search?q=URL
 ```
 
-在浏览器的地址栏中输入上述任一地址，浏览器就会加载相应的网页（资源）。
+在浏览器的地址栏中输入上述任一地址，浏览器就会加载相应的网页(资源) 。
 
 URL 由多个必须或可选的组件构成。下面给出了一个复杂的 URL：
 
@@ -105,18 +105,18 @@ urn:ietf:rfc:7230
 
 `http://`告诉浏览器使用何种协议。对于大部分 Web 资源，通常使用 HTTP 协议或其安全版本，HTTPS 协议。另外，浏览器也知道如何处理其他协议。例如， `mailto:` 协议指示浏览器打开邮件客户端；`ftp:`协议指示浏览器处理文件传输。常见的方案有：
 
-|    方案     |                             描述                             |
-| :---------: | :----------------------------------------------------------: |
-|    data     | [Data URIs](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Basics_of_HTTP/Data_URLs) |
-|    file     |                     指定主机上文件的名称                     |
-|     ftp     | [文件传输协议](https://developer.mozilla.org/en-US/docs/Glossary/FTP) |
-| http/https  | [超文本传输  协议／安全的超文本传输协议](https://developer.mozilla.org/en-US/docs/Glossary/HTTP) |
-|   mailto    |                         电子邮件地址                         |
-|     ssh     |                          安全 shell                          |
-|     tel     |                             电话                             |
-|     urn     |                         统一资源名称                         |
-| view-source |                         资源的源代码                         |
-|   ws/wss    | （加密的）[WebSocket (en-US)](https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API) 连接 |
+|    方案     |                                                描述                                                |
+| :---------: | :------------------------------------------------------------------------------------------------: |
+|    data     |      [Data URIs](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Basics_of_HTTP/Data_URLs)       |
+|    file     |                                        指定主机上文件的名称                                        |
+|     ftp     |               [文件传输协议](https://developer.mozilla.org/en-US/docs/Glossary/FTP)                |
+| http/https  |  [超文本传输  协议／安全的超文本传输协议](https://developer.mozilla.org/en-US/docs/Glossary/HTTP)  |
+|   mailto    |                                            电子邮件地址                                            |
+|     ssh     |                                             安全 shell                                             |
+|     tel     |                                                电话                                                |
+|     urn     |                                            统一资源名称                                            |
+| view-source |                                            资源的源代码                                            |
+|   ws/wss    | (加密的) [WebSocket (en-US)](https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API) 连接 |
 
 ---
 
@@ -134,7 +134,7 @@ urn:ietf:rfc:7230
 
 ![image-20220830193154577](http://cdn.ayusummer233.top/img/202208301934051.png)
 
-`:80` 是端口。它表示用于访问 Web 服务器上资源的技术“门”。如果访问的该 Web 服务器使用 HTTP 协议的标准端口（`HTTP 为 80，HTTPS 为 443`）授予对其资源的访问权限，则通常省略此部分。否则端口就是 URI 必须的部分。
+`:80` 是端口。它表示用于访问 Web 服务器上资源的技术“门”。如果访问的该 Web 服务器使用 HTTP 协议的标准端口(`HTTP 为 80，HTTPS 为 443`) 授予对其资源的访问权限，则通常省略此部分。否则端口就是 URI 必须的部分。
 
 ---
 
@@ -357,7 +357,7 @@ data:[<mediatype>][;base64],<data>
 
 ==长度限制==
 
-虽然 Firefox 支持无限长度的 `data` URLs，但是标准中并没有规定浏览器必须支持任意长度的 `data` URIs。比如，Opera 11 浏览器限制 URLs 最长为 65535 个字符，这意味着 data URLs 最长为 65529 个字符（如果你使用纯文本 data:, 而不是指定一个 MIME 类型的话，那么 65529 字符长度是编码后的长度，而不是源文件）。
+虽然 Firefox 支持无限长度的 `data` URLs，但是标准中并没有规定浏览器必须支持任意长度的 `data` URIs。比如，Opera 11 浏览器限制 URLs 最长为 65535 个字符，这意味着 data URLs 最长为 65529 个字符(如果你使用纯文本 data:, 而不是指定一个 MIME 类型的话，那么 65529 字符长度是编码后的长度，而不是源文件) 。
 
 ----
 
@@ -401,11 +401,11 @@ data:text/html,lots of text...<p><a name%3D"bottom">bottom</a>?arg=val
 
 > [MIME 类型 - HTTP | MDN (mozilla.org)-2022-9-13](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Basics_of_HTTP/MIME_Types)
 
-**媒体类型**（通常称为 **Multipurpose Internet Mail Extensions** 或 **MIME** 类型）是一种标准，用来表示文档、文件或字节流的性质和格式。它在[IETF RFC 6838](https://tools.ietf.org/html/rfc6838)中进行了定义和标准化。
+**媒体类型**(通常称为 **Multipurpose Internet Mail Extensions** 或 **MIME** 类型) 是一种标准，用来表示文档、文件或字节流的性质和格式。它在[IETF RFC 6838](https://tools.ietf.org/html/rfc6838)中进行了定义和标准化。
 
-互联网号码分配机构（[IANA](https://www.iana.org/)）是负责跟踪所有官方 MIME 类型的官方机构，您可以在[媒体类型](https://www.iana.org/assignments/media-types/media-types.xhtml)页面中找到最新的完整列表。
+互联网号码分配机构([IANA](https://www.iana.org/)) 是负责跟踪所有官方 MIME 类型的官方机构，您可以在[媒体类型](https://www.iana.org/assignments/media-types/media-types.xhtml)页面中找到最新的完整列表。
 
-> **警告：** 浏览器通常使用 MIME 类型（而不是文件扩展名）来确定如何处理 URL，因此 Web 服务器在响应头中添加正确的 MIME 类型非常重要。如果配置不正确，浏览器可能会曲解文件内容，网站将无法正常工作，并且下载的文件也会被错误处理。
+> **警告：** 浏览器通常使用 MIME 类型(而不是文件扩展名) 来确定如何处理 URL，因此 Web 服务器在响应头中添加正确的 MIME 类型非常重要。如果配置不正确，浏览器可能会曲解文件内容，网站将无法正常工作，并且下载的文件也会被错误处理。
 
 ---
 
@@ -444,13 +444,13 @@ application/octet-stream
 
 *独立*类型表明了对文件的分类，可以是如下之一：
 
-|     类型      |                             描述                             |                           典型示例                           |
-| :-----------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
-|    `text`     |             表明文件是普通文本，理论上是人类可读             |    `text/plain`, `text/html`, `text/css, text/javascript`    |
-|    `image`    | 表明是某种图像。不包括视频，但是动态图（比如动态 gif）也使用 image 类型 | `image/gif`, `image/png`, `image/jpeg`, `image/bmp`, `image/webp`, `image/x-icon`, `image/vnd.microsoft.icon` |
-|    `audio`    |                      表明是某种音频文件                      | `audio/midi`, `audio/mpeg, audio/webm, audio/ogg, audio/wav` |
-|    `video`    |                      表明是某种视频文件                      |                  `video/webm`, `video/ogg`                   |
-| `application` |                     表明是某种二进制数据                     | `application/octet-stream`, `application/pkcs12`, `application/vnd.mspowerpoint`, `application/xhtml+xml`, `application/xml`, `application/pdf` |
+|     类型      |                                  描述                                  |                                                                    典型示例                                                                     |
+| :-----------: | :--------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------------------------------------: |
+|    `text`     |                  表明文件是普通文本，理论上是人类可读                  |                                             `text/plain`, `text/html`, `text/css, text/javascript`                                              |
+|    `image`    | 表明是某种图像。不包括视频，但是动态图(比如动态 gif) 也使用 image 类型 |                  `image/gif`, `image/png`, `image/jpeg`, `image/bmp`, `image/webp`, `image/x-icon`, `image/vnd.microsoft.icon`                  |
+|    `audio`    |                           表明是某种音频文件                           |                                          `audio/midi`, `audio/mpeg, audio/webm, audio/ogg, audio/wav`                                           |
+|    `video`    |                           表明是某种视频文件                           |                                                            `video/webm`, `video/ogg`                                                            |
+| `application` |                          表明是某种二进制数据                          | `application/octet-stream`, `application/pkcs12`, `application/vnd.mspowerpoint`, `application/xhtml+xml`, `application/xml`, `application/pdf` |
 
 对于 text 文件类型若没有特定的 subtype，就使用 `text/plain`。类似的，二进制文件没有特定或已知的 subtype，即使用 `application/octet-stream`。
 
@@ -463,7 +463,7 @@ multipart/form-data
 multipart/byteranges
 ```
 
-*Multipart* 类型表示细分领域的文件类型的种类，经常对应不同的 MIME 类型。这是*复合*文件的一种表现方式。`multipart/form-data` 可用于联系 [HTML Forms](https://developer.mozilla.org/zh-CN/docs/Learn/Forms) 和 [`POST`](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Methods/POST) 方法，此外 `multipart/byteranges`使用状态码[`206`](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Status/206) `Partial Content`来发送整个文件的子集，而 HTTP 对不能处理的复合文件使用特殊的方式：将信息直接传送给浏览器（这时可能会建立一个“另存为”窗口，但是却不知道如何去显示内联文件。）
+*Multipart* 类型表示细分领域的文件类型的种类，经常对应不同的 MIME 类型。这是*复合*文件的一种表现方式。`multipart/form-data` 可用于联系 [HTML Forms](https://developer.mozilla.org/zh-CN/docs/Learn/Forms) 和 [`POST`](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Methods/POST) 方法，此外 `multipart/byteranges`使用状态码[`206`](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Status/206) `Partial Content`来发送整个文件的子集，而 HTTP 对不能处理的复合文件使用特殊的方式：将信息直接传送给浏览器(这时可能会建立一个“另存为”窗口，但是却不知道如何去显示内联文件。) 
 
 ---
 
@@ -495,7 +495,7 @@ multipart/byteranges
 
 #### text/html
 
-所有的 HTML 内容都应该使用这种类型。XHTML 的其他 MIME 类型（如`application/xml+html`）现在基本不再使用（HTML5 统一了这些格式）。
+所有的 HTML 内容都应该使用这种类型。XHTML 的其他 MIME 类型(如`application/xml+html`) 现在基本不再使用(HTML5 统一了这些格式) 。
 
 > PS: 如果需要使用 XML 严格解析规则的话需要使用 `application/xml` 或者 `application/xhtml+xml`, 使用 `<![CDATA[...]]>` 或者其他的来自 `non-HTML`、`non-SVG`  或 `non-MathML` XML 名称空间的元素，因为 `text/HTML` 的解析语义与 `application/XML` 的语义微妙地不兼容。
 
@@ -504,7 +504,7 @@ multipart/byteranges
 #### text/javascript
 
 根据 HTML 标准 , 对于 JavaScript 文件, 应当使用 `text/javascript` MIME 类型而非其他类型, 否则可能会导致无法载入或运行脚本
-由于历史原因，[MIME 嗅探标准](https://mimesniff.spec.whatwg.org/)（定义浏览器应该如何解释媒体类型和如何处理无有效媒体类型的内容）允许使用匹配以下任意的 MIME 类型服务 JavaScript：
+由于历史原因，[MIME 嗅探标准](https://mimesniff.spec.whatwg.org/)(定义浏览器应该如何解释媒体类型和如何处理无有效媒体类型的内容) 允许使用匹配以下任意的 MIME 类型服务 JavaScript：
 
 - `application/javascript`
 - `application/ecmascript`
@@ -539,21 +539,21 @@ MIME 类型包含 `image` 的文件包含图像数据, 其子类型指定了具�
 
 在网页上常使用以下安全的图像类型
 
-|    MIME 类型    |                           图片类型                           |
-| :-------------: | :----------------------------------------------------------: |
+|    MIME 类型    |                                     图片类型                                     |
+| :-------------: | :------------------------------------------------------------------------------: |
 |   image/apng    | Animated Portable Network Graphics  (**动态便携式网络图像**)(PNG 格式的动画扩展) |
-|   image/avif    |                    AV1 Image File Format                     |
-|   `image/gif`   | Graphics Interchange Format  (GIF 图片)(无损耗压缩方面被 PNG 所替代) |
-|  `image/jpeg`   |      Joint Photographic Expert Group image  (JPEG 图片)      |
-|   `image/png`   |            Portable Network Graphics  (PNG 图片)             |
-| `image/svg+xml` |        Scalable Vector Graphics  (SVG 图片) (矢量图)         |
-|   image/webp    |                  Web Picture format (WEBP)                   |
+|   image/avif    |                              AV1 Image File Format                               |
+|   `image/gif`   |       Graphics Interchange Format  (GIF 图片)(无损耗压缩方面被 PNG 所替代)       |
+|  `image/jpeg`   |                Joint Photographic Expert Group image  (JPEG 图片)                |
+|   `image/png`   |                      Portable Network Graphics  (PNG 图片)                       |
+| `image/svg+xml` |                  Scalable Vector Graphics  (SVG 图片) (矢量图)                   |
+|   image/webp    |                            Web Picture format (WEBP)                             |
 
 > [不一样的动图-APNG - 腾讯云开发者社区-腾讯云 (tencent.com)](https://cloud.tencent.com/developer/article/1114186)
 >
 > [APNG 那些事 - HelloWorld开发者社区](https://www.helloworld.net/p/5650557531)
 >
-> APNG（Animated Portable Network Graphics）顾名思义是基于 PNG 格式扩展的一种动画格式，增加了对动画图像的支持，同时加入了 24 位图像和 8 位 Alpha 透明度的支持，这意味着动画将拥有更好的质量，其诞生的目的是为了替代老旧的 GIF 格式，但它目前并没有获得 PNG 组织官方的认可。
+> APNG(Animated Portable Network Graphics) 顾名思义是基于 PNG 格式扩展的一种动画格式，增加了对动画图像的支持，同时加入了 24 位图像和 8 位 Alpha 透明度的支持，这意味着动画将拥有更好的质量，其诞生的目的是为了替代老旧的 GIF 格式，但它目前并没有获得 PNG 组织官方的认可。
 >
 > ---
 >

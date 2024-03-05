@@ -207,7 +207,7 @@ uvicorn main:app --reload
 - `PATCH`
 - `TRACE`
 
-在 HTTP 协议中，你可以使用以上的其中一种（或多种）「方法」与每个路径进行通信。
+在 HTTP 协议中，你可以使用以上的其中一种(或多种) 「方法」与每个路径进行通信。
 
 在开发 API 时，通常使用特定的 HTTP 方法去执行特定的行为。
 
@@ -247,7 +247,7 @@ uvicorn main:app --reload
 
 路径：是 /。  
 操作：是 get。  
-函数：是位于「装饰器」下方的函数（位于 @app.get("/") 下方）。  
+函数：是位于「装饰器」下方的函数(位于 @app.get("/") 下方) 。  
 
 ```python
 from fastapi import FastAPI
@@ -272,9 +272,9 @@ return {"message": "Hello World"}
 
 你可以返回一个 dict、list，像 str、int 一样的单个值，等等。
 
-你还可以返回 Pydantic 模型（稍后你将了解更多）。
+你还可以返回 Pydantic 模型(稍后你将了解更多) 。
 
-还有许多其他将会自动转换为 JSON 的对象和模型（包括 ORM 对象等）。尝试下使用你最喜欢的一种，它很有可能已经被支持。
+还有许多其他将会自动转换为 JSON 的对象和模型(包括 ORM 对象等) 。尝试下使用你最喜欢的一种，它很有可能已经被支持。
 
 
 ---
@@ -1316,10 +1316,10 @@ def update_item(id: str, item: Item):
 
 ## OAuth2.0 的授权模式
 
-- 授权码授权模式（Authorization Code Grant）
-- 隐式授权模式（Implicit Grant）
-- **密码授权模式（Resource Owner Password Credentials Grant）**
-- 客户端凭证授权模式（Client Credentials Grant）
+- 授权码授权模式(Authorization Code Grant) 
+- 隐式授权模式(Implicit Grant) 
+- **密码授权模式(Resource Owner Password Credentials Grant) **
+- 客户端凭证授权模式(Client Credentials Grant) 
 
 ---
 
@@ -2345,7 +2345,7 @@ async def add_process_time_header(request: Request, call_next):
 
 ## 跨域资源共享
 
-> [CORS（跨域资源共享） - FastAPI (tiangolo.com)](https://fastapi.tiangolo.com/zh/tutorial/cors/)
+> [CORS(跨域资源共享)  - FastAPI (tiangolo.com)](https://fastapi.tiangolo.com/zh/tutorial/cors/)
 
 [CORS 或者「跨域资源共享」](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) 指浏览器中运行的前端拥有与后端通信的 JavaScript 代码，而后端处于与前端不同的「源」的情况。
 
@@ -2353,7 +2353,7 @@ async def add_process_time_header(request: Request, call_next):
 
 ### 源
 
-源是协议（`http`，`https`）、域（`myapp.com`，`localhost`，`localhost.tiangolo.com`）以及端口（`80`、`443`、`8080`）的组合。
+源是协议(`http`，`https`) 、域(`myapp.com`，`localhost`，`localhost.tiangolo.com`) 以及端口(`80`、`443`、`8080`) 的组合。
 
 因此，这些都是不同的源：
 
@@ -2369,7 +2369,7 @@ async def add_process_time_header(request: Request, call_next):
 
 假设你的浏览器中有一个前端运行在 `https://localhost:3100`，并且它的 JavaScript 正在尝试与运行在 `http://localhost:8000` 的后端通信
 
-然后，浏览器会向后端发送一个 HTTP `OPTIONS` 请求，如果后端发送适当的 headers 来授权来自这个不同源（`https://localhost:3100`）的通信，浏览器将允许前端的 JavaScript 向后端发送请求。
+然后，浏览器会向后端发送一个 HTTP `OPTIONS` 请求，如果后端发送适当的 headers 来授权来自这个不同源(`https://localhost:3100`) 的通信，浏览器将允许前端的 JavaScript 向后端发送请求。
 
 为此，后端必须有一个「允许的源」列表。
 
@@ -2379,7 +2379,7 @@ async def add_process_time_header(request: Request, call_next):
 
 ### 通配符
 
-也可以使用 `"*"`（一个「通配符」）声明这个列表，表示全部都是允许的。
+也可以使用 `"*"`(一个「通配符」) 声明这个列表，表示全部都是允许的。
 
 但这仅允许某些类型的通信，不包括所有涉及凭据的内容：像 Cookies 以及那些使用 Bearer 令牌的授权 headers 等。
 
@@ -2392,13 +2392,13 @@ async def add_process_time_header(request: Request, call_next):
 你可以在 **FastAPI** 应用中使用 `CORSMiddleware` 来配置它。
 
 - 导入 `CORSMiddleware`。
-- 创建一个允许的源列表（由字符串组成）。
+- 创建一个允许的源列表(由字符串组成) 。
 - 将其作为「中间件」添加到你的 **FastAPI** 应用中。
 
 你也可以指定后端是否允许：
 
-- 凭证（授权 headers，Cookies 等）。
-- 特定的 HTTP 方法（`POST`，`PUT`）或者使用通配符 `"*"` 允许所有方法。
+- 凭证(授权 headers，Cookies 等) 。
+- 特定的 HTTP 方法(`POST`，`PUT`) 或者使用通配符 `"*"` 允许所有方法。
 - 特定的 HTTP headers 或者使用通配符 `"*"` 允许所有 headers。
 
 ```python

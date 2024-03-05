@@ -18,7 +18,7 @@ Linux 系统的目录组织是一个树形的结构, 其根节点为根目录 `/
 - **/mnt**：手动挂载其他文件系统的临时挂载点。
 - **/opt**：可选软件包的安装位置。某些第三方软件可能安装在此处。
 - **/proc**：虚拟文件系统，用于访问有关系统进程和内核状态的信息。
-- **/root**：超级用户（root）的主目录。
+- **/root**：超级用户(root) 的主目录。
 - **/run**：在系统启动期间创建的临时运行时文件的存储位置。
 - **/sbin**：系统命令的存储位置。包含只能由超级用户执行的系统命令。
 - **/srv**：服务数据的存储位置。用于存储系统提供的一些服务的数据。
@@ -51,9 +51,9 @@ Linux日志存储在`/var/log`目录下，涵盖了从用户登录到服务错�
 
 ### 关键日志
 
-- ``/var/log/syslog`（或 **/var/log/messages**）: 记录了系统的绝大多数活动，包括系统错误、警告和其他重要消息。
+- ``/var/log/syslog`(或 **/var/log/messages**) : 记录了系统的绝大多数活动，包括系统错误、警告和其他重要消息。
 
-- `/var/log/auth.log`（在某些系统中是 **/var/log/secure**）: 记录所有关于用户认证过程的信息，包括登录尝试、sudo命令的使用等, 可用于安全分析
+- `/var/log/auth.log`(在某些系统中是 **/var/log/secure**) : 记录所有关于用户认证过程的信息，包括登录尝试、sudo命令的使用等, 可用于安全分析
 
 - **/var/log/boot.log**: 包含系统启动过程中的信息，可用于排查启动问题
 
@@ -61,7 +61,7 @@ Linux日志存储在`/var/log`目录下，涵盖了从用户登录到服务错�
 
 - **/var/log/kern.log**: 包含内核产生的消息和错误，可用于分析硬件和系统级别的问题
 
-- **/var/log/apache2**（Apache）或 **/var/log/nginx**（Nginx）: 记录了Web服务器的活动，可用于分析HTTP请求和定位Web服务器问题
+- **/var/log/apache2**(Apache) 或 **/var/log/nginx**(Nginx) : 记录了Web服务器的活动，可用于分析HTTP请求和定位Web服务器问题
 
 - **/var/log/mail.log**: (邮件服务器)记录了所有关于邮件服务的活动
 
@@ -73,7 +73,7 @@ Linux日志存储在`/var/log`目录下，涵盖了从用户登录到服务错�
 
 - **/var/log/ufw.log** 或 **/var/log/firewalld**: 如果安装了UFW或Firewalld等防火墙工具，这些日志文件记录了防火墙活动。
 
-- **/var/log/yum.log** 或 **/var/log/dpkg.log**: 对于使用YUM（如CentOS）或dpkg（如Debian/Ubuntu）的系统，这些文件记录软件包管理器的活动。
+- **/var/log/yum.log** 或 **/var/log/dpkg.log**: 对于使用YUM(如CentOS) 或dpkg(如Debian/Ubuntu) 的系统，这些文件记录软件包管理器的活动。
 
 - `/var/log/lastlog`: 记录系统中所有用户的最后一次登录信息, 不是文本文件, 而是一个格式化的数据库, 可以通过 `lastlog` 命令阅读
 
@@ -119,15 +119,15 @@ view /var/log/syslog
 
 #### authlog
 
-`/var/log/auth.log`（在某些系统中是 **/var/log/secure**）: 记录所有关于用户认证过程的信息，包括登录尝试、sudo命令的使用等, 可用于安全分析
+`/var/log/auth.log`(在某些系统中是 **/var/log/secure**) : 记录所有关于用户认证过程的信息，包括登录尝试、sudo命令的使用等, 可用于安全分析
 
 ![image-20231222112711225](http://cdn.ayusummer233.top/DailyNotes/202312221128852.png)
 
-- `dbus-daemon` 是 D-Bus（Desktop Bus）系统的核心组件，是一种在 Linux 和其他类 Unix 系统中广泛使用的消息总线系统。D-Bus 被设计用来提供一种简单的方式，使得在同一系统上运行的应用程序和服务之间能够相互通信
+- `dbus-daemon` 是 D-Bus(Desktop Bus) 系统的核心组件，是一种在 Linux 和其他类 Unix 系统中广泛使用的消息总线系统。D-Bus 被设计用来提供一种简单的方式，使得在同一系统上运行的应用程序和服务之间能够相互通信
 
-- SSH 守护进程（`sshd`），在尝试连接到 IP 地址 `34.240.117.4` 的 `443` 端口时失败了
+- SSH 守护进程(`sshd`) ，在尝试连接到 IP 地址 `34.240.117.4` 的 `443` 端口时失败了
 
-  `sshd`（SSH 守护进程）默认情况下监听在 22 端口上，用于处理 SSH 连接, 这里尝试连接到一个外网 ip 的 443 端口是有些异常的, 可以结合恶意域名ip之类的情报查看
+  `sshd`(SSH 守护进程) 默认情况下监听在 22 端口上，用于处理 SSH 连接, 这里尝试连接到一个外网 ip 的 443 端口是有些异常的, 可以结合恶意域名ip之类的情报查看
 
 - ```log
   Dec 17 00:10:01 virtual-machine CRON[958697]: pam_unix(cron:session): session opened for user root by (uid=0)
@@ -140,7 +140,7 @@ view /var/log/syslog
 
 #### syslog
 
-`/var/log/syslog`（或 **/var/log/messages**）: 记录了系统的绝大多数活动，包括系统错误、警告和其他重要消息。
+`/var/log/syslog`(或 **/var/log/messages**) : 记录了系统的绝大多数活动，包括系统错误、警告和其他重要消息。
 
 ![image-20231222112816916](http://cdn.ayusummer233.top/DailyNotes/202312221128933.png)
 
@@ -165,11 +165,11 @@ zgrep "Failed password" /var/log/auth.log* | wc -l
 ```
 
 - `zgrep "Failed password" /var/log/auth.log*`：
-  - `zgrep` 是 `grep` 的一个变体，可以处理普通和压缩（gzip）格式的文件
+  - `zgrep` 是 `grep` 的一个变体，可以处理普通和压缩(gzip) 格式的文件
   - 使用通配符 `*` 来包含 `/var/log` 目录下所有以 `auth.log` 开头的文件
-  - 使用 `zgrep` 在 `/var/log/auth.log` 及其所有旧文件（包括 `.gz` 结尾的压缩文件）中搜索包含 "Failed password" 的行
+  - 使用 `zgrep` 在 `/var/log/auth.log` 及其所有旧文件(包括 `.gz` 结尾的压缩文件) 中搜索包含 "Failed password" 的行
 - `| wc -l`：
-  - 将 `zgrep` 的输出（所有包含 "Failed password" 的行）传递给 `wc -l`
+  - 将 `zgrep` 的输出(所有包含 "Failed password" 的行) 传递给 `wc -l`
   - `wc -l` 统计接收到的行数
 
 ![image-20231222113259693](http://cdn.ayusummer233.top/DailyNotes/202312221132878.png)
@@ -214,7 +214,7 @@ Linux 日志数量比较庞大, 漫无目的的翻找日志是比较低效的做
 
 ### 日志与网络安全工具
 
-对于入侵检测系统（IDS）和入侵防御系统（IPS）而言, 其主要依赖网络流量来检测与响应安全事件
+对于入侵检测系统(IDS) 和入侵防御系统(IPS) 而言, 其主要依赖网络流量来检测与响应安全事件
 
 不过终端侧的日志也可以作为关联分析的依据, 结合网络侧流量以及终端侧日志可以更全面地分析与响应安全事件
 

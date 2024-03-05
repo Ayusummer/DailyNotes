@@ -239,7 +239,7 @@ Intruder 模块通过对 http request 的数据包以变量的方式自定义参
 
 ---
 
-### 可选项设置（Options）
+### 可选项设置(Options) 
 
 
 
@@ -263,7 +263,7 @@ Repeater 是 Burp Suite 中一款手工验证 HTTP 消息的测试工具，通�
 
 ---
 
-### 可选项设置（Options）
+### 可选项设置(Options) 
 
 
 

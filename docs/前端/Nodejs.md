@@ -355,7 +355,7 @@ npm cache verify
 ![image-20240119023656548](http://cdn.ayusummer233.top/DailyNotes/202401190236578.png)
 
 ```powershell
-# 指定 Git 在获取远程仓库时使用 HTTPS 协议而不是 Git 协议（git://）
+# 指定 Git 在获取远程仓库时使用 HTTPS 协议而不是 Git 协议(git://) 
 git config --global url."https://".insteadOf git://
 # 结束后记得取消掉配置
 git config --global --unset url."https://".insteadOf

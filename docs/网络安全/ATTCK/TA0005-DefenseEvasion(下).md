@@ -10,28 +10,28 @@ An adversary may attempt to modify a cloud account's compute service infrastruct
 ### T1578.001 [Create Snapshot](https://attack.mitre.org/techniques/T1578/001) 创建快照
 
 An adversary may create a snapshot or data backup within a cloud account to evade defenses. A snapshot is a point-in-time copy of an existing cloud compute component such as a virtual machine (VM), virtual hard drive, or volume. An adversary may leverage permissions to create a snapshot in order to bypass restrictions that prevent access to existing compute service infrastructure, unlike in [Revert Cloud Instance](https://attack.mitre.org/techniques/T1578/004) where an adversary may revert to a snapshot to evade detection and remove evidence of their presence.
-攻击者可能会在云帐户中创建快照或数据备份以逃避防御。快照是现有云计算组件（如虚拟机 （VM）、虚拟硬盘驱动器或卷）的时间点副本。攻击者可以利用权限创建快照，以绕过阻止访问现有计算服务基础架构的限制，这与在还原云实例中不同，在还原云实例中，攻击者可能会还原到快照以逃避检测并删除其存在的证据。
+攻击者可能会在云帐户中创建快照或数据备份以逃避防御。快照是现有云计算组件(如虚拟机 (VM) 、虚拟硬盘驱动器或卷) 的时间点副本。攻击者可以利用权限创建快照，以绕过阻止访问现有计算服务基础架构的限制，这与在还原云实例中不同，在还原云实例中，攻击者可能会还原到快照以逃避检测并删除其存在的证据。
 
 ---
 
 ### T1578.002 [ Create Cloud Instance](https://attack.mitre.org/techniques/T1578/002) 创建云实例
 
 An adversary may create a new instance or virtual machine (VM) within the compute service of a cloud account to evade defenses. Creating a new instance may allow an adversary to bypass firewall rules and permissions that exist on instances currently residing within an account. An adversary may [Create Snapshot](https://attack.mitre.org/techniques/T1578/001) of one or more volumes in an account, create a new instance, mount the snapshots, and then apply a less restrictive security policy to collect [Data from Local System](https://attack.mitre.org/techniques/T1005) or for [Remote Data Staging](https://attack.mitre.org/techniques/T1074/002).
-攻击者可以在云帐户的计算服务中创建新的实例或虚拟机 （VM） 以逃避防御。创建新实例可能允许攻击者绕过当前驻留在账户中的实例上存在的防火墙规则和权限。攻击者可能会在账户中创建一个或多个卷的快照，创建新实例，挂载快照，然后应用限制较少的安全策略来从本地系统收集数据或进行远程数据暂存。
+攻击者可以在云帐户的计算服务中创建新的实例或虚拟机 (VM)  以逃避防御。创建新实例可能允许攻击者绕过当前驻留在账户中的实例上存在的防火墙规则和权限。攻击者可能会在账户中创建一个或多个卷的快照，创建新实例，挂载快照，然后应用限制较少的安全策略来从本地系统收集数据或进行远程数据暂存。
 
 ---
 
 ### T1578.003 [Delete Cloud Instance](https://attack.mitre.org/techniques/T1578/003) 删除云实例
 
 An adversary may revert changes made to a cloud instance after they have performed malicious activities in attempt to evade detection and remove evidence of their presence. In highly virtualized environments, such as cloud-based infrastructure, this may be accomplished by restoring virtual machine (VM) or data storage snapshots through the cloud management dashboard or cloud APIs.
-攻击者在执行恶意活动以试图逃避检测并删除其存在的证据后，可能会还原对云实例所做的更改。在高度虚拟化的环境（例如基于云的基础架构）中，可以通过云管理仪表板或云 API 还原虚拟机 （VM） 或数据存储快照来实现这一点。
+攻击者在执行恶意活动以试图逃避检测并删除其存在的证据后，可能会还原对云实例所做的更改。在高度虚拟化的环境(例如基于云的基础架构) 中，可以通过云管理仪表板或云 API 还原虚拟机 (VM)  或数据存储快照来实现这一点。
 
 ---
 
 ### T1578.004[Revert Cloud Instance](https://attack.mitre.org/techniques/T1578/004) 恢复云实例
 
 An adversary may revert changes made to a cloud instance after they have performed malicious activities in attempt to evade detection and remove evidence of their presence. In highly virtualized environments, such as cloud-based infrastructure, this may be accomplished by restoring virtual machine (VM) or data storage snapshots through the cloud management dashboard or cloud APIs.
-攻击者在执行恶意活动以试图逃避检测并删除其存在的证据后，可能会还原对云实例所做的更改。在高度虚拟化的环境（例如基于云的基础架构）中，可以通过云管理仪表板或云 API 还原虚拟机 （VM） 或数据存储快照来实现这一点。
+攻击者在执行恶意活动以试图逃避检测并删除其存在的证据后，可能会还原对云实例所做的更改。在高度虚拟化的环境(例如基于云的基础架构) 中，可以通过云管理仪表板或云 API 还原虚拟机 (VM)  或数据存储快照来实现这一点。
 
 ---
 
@@ -70,7 +70,7 @@ An adversary may revert changes made to a cloud instance after they have perform
 
   - [Instance Deletion](https://attack.mitre.org/datasources/DS0030/#Instance Deletion) 实例删除
 
-    删除新实例或虚拟机是许多云环境中操作的常见部分。因此，不应孤立地看待事件，而应将其视为可能导致其他活动的行为链的一部分。例如，检测一系列事件（如创建实例、将快照装载到该实例以及新用户帐户删除该实例）可能表示可疑活动。
+    删除新实例或虚拟机是许多云环境中操作的常见部分。因此，不应孤立地看待事件，而应将其视为可能导致其他活动的行为链的一部分。例如，检测一系列事件(如创建实例、将快照装载到该实例以及新用户帐户删除该实例) 可能表示可疑活动。
 
     在 AWS 中，CloudTrail 日志捕获终止实例事件中实例的删除
 
@@ -84,21 +84,21 @@ An adversary may revert changes made to a cloud instance after they have perform
 
   - [Instance Modification](https://attack.mitre.org/datasources/DS0030/#Instance Modification) 实例修改
 
-    建立实例活动的集中日志记录，即使在恢复到快照、回滚更改或更改持久性/存储类型后，也可用于监控和查看系统事件。专门监视与快照和回滚以及 VM 配置更改相关的事件，这些事件发生在正常活动之外。为了减少误报，有效的变更管理过程可以引入一个已知的标识符，如果云提供商支持，该标识符与变更一起记录（例如，标记或标头），以帮助区分有效的预期操作和恶意操作。
+    建立实例活动的集中日志记录，即使在恢复到快照、回滚更改或更改持久性/存储类型后，也可用于监控和查看系统事件。专门监视与快照和回滚以及 VM 配置更改相关的事件，这些事件发生在正常活动之外。为了减少误报，有效的变更管理过程可以引入一个已知的标识符，如果云提供商支持，该标识符与变更一起记录(例如，标记或标头) ，以帮助区分有效的预期操作和恶意操作。
 
   - [Instance Start](https://attack.mitre.org/datasources/DS0030/#Instance Start) 实例启动
 
-    建立实例活动的集中日志记录，即使在恢复到快照、回滚更改或更改持久性/存储类型后，也可用于监控和查看系统事件。专门监视与在正常活动/计划操作之外发生的实例激活相关的事件。为了减少误报，有效的变更管理过程可以引入一个已知的标识符，如果云提供商支持，该标识符与变更一起记录（例如，标记或标头），以帮助区分有效的预期操作和恶意操作。
+    建立实例活动的集中日志记录，即使在恢复到快照、回滚更改或更改持久性/存储类型后，也可用于监控和查看系统事件。专门监视与在正常活动/计划操作之外发生的实例激活相关的事件。为了减少误报，有效的变更管理过程可以引入一个已知的标识符，如果云提供商支持，该标识符与变更一起记录(例如，标记或标头) ，以帮助区分有效的预期操作和恶意操作。
 
   - [Instance Stop](https://attack.mitre.org/datasources/DS0030/#Instance Stop) 实例停止
 
-    建立实例活动的集中日志记录，即使在恢复到快照、回滚更改或更改持久性/存储类型后，也可用于监控和查看系统事件。专门监视与在计划操作之外发生的实例停用相关的事件。为了减少误报，有效的变更管理过程可以引入一个已知的标识符，如果云提供商支持，该标识符与变更一起记录（例如，标记或标头），以帮助区分有效的预期操作和恶意操作。
+    建立实例活动的集中日志记录，即使在恢复到快照、回滚更改或更改持久性/存储类型后，也可用于监控和查看系统事件。专门监视与在计划操作之外发生的实例停用相关的事件。为了减少误报，有效的变更管理过程可以引入一个已知的标识符，如果云提供商支持，该标识符与变更一起记录(例如，标记或标头) ，以帮助区分有效的预期操作和恶意操作。
 
 - [DS0020](https://attack.mitre.org/datasources/DS0020) [Snapshot](https://attack.mitre.org/datasources/DS0020) 快照
 
   - [Snapshot Creation](https://attack.mitre.org/datasources/DS0020/#Snapshot Creation) [ Snapshot Deletion](https://attack.mitre.org/datasources/DS0020/#Snapshot Deletion) 检测快照的创建与删除
 
-    为云计算基础架构组件的活动建立集中日志记录。监视可疑的事件序列，例如在短时间内创建/删除多个快照。为了减少误报，有效的变更管理过程可以引入一个已知的标识符，如果云提供商支持，该标识符与变更一起记录（例如，标记或标头），以帮助区分有效的预期操作和恶意操作。
+    为云计算基础架构组件的活动建立集中日志记录。监视可疑的事件序列，例如在短时间内创建/删除多个快照。为了减少误报，有效的变更管理过程可以引入一个已知的标识符，如果云提供商支持，该标识符与变更一起记录(例如，标记或标头) ，以帮助区分有效的预期操作和恶意操作。
 
   - [Snapshot Metadata](https://attack.mitre.org/datasources/DS0020/#Snapshot Metadata) 快照元数据
 
@@ -106,13 +106,13 @@ An adversary may revert changes made to a cloud instance after they have perform
 
   - [Snapshot Modification](https://attack.mitre.org/datasources/DS0020/#Snapshot Modification) 快照修改
 
-    为云计算基础架构组件的活动建立集中日志记录。监视可疑的事件序列，例如新用户或意外用户将快照装载到新实例。为了减少误报，有效的变更管理过程可以引入一个已知的标识符，如果云提供商支持，该标识符与变更一起记录（例如，标记或标头），以帮助区分有效的预期操作和恶意操作。
+    为云计算基础架构组件的活动建立集中日志记录。监视可疑的事件序列，例如新用户或意外用户将快照装载到新实例。为了减少误报，有效的变更管理过程可以引入一个已知的标识符，如果云提供商支持，该标识符与变更一起记录(例如，标记或标头) ，以帮助区分有效的预期操作和恶意操作。
 
 - [DS0034](https://attack.mitre.org/datasources/DS0034) [Volume](https://attack.mitre.org/datasources/DS0034)  卷
 
   - [Volume Creation](https://attack.mitre.org/datasources/DS0034/#Volume Creation) [Volume Deletion](https://attack.mitre.org/datasources/DS0034/#Volume Deletion) [Volume Modification ](https://attack.mitre.org/datasources/DS0034/#Volume Modification) 卷的新增与删除及修改
 
-    监视意外 创建或出现/删除或缺少 云块存储卷, 监视云块存储卷的意外更改。为了减少误报，有效的变更管理过程可以引入一个已知的标识符，如果云提供商支持，该标识符与变更一起记录（例如，标记或标头），以帮助区分有效的预期操作和恶意操作。
+    监视意外 创建或出现/删除或缺少 云块存储卷, 监视云块存储卷的意外更改。为了减少误报，有效的变更管理过程可以引入一个已知的标识符，如果云提供商支持，该标识符与变更一起记录(例如，标记或标头) ，以帮助区分有效的预期操作和恶意操作。
 
   - [Volume Metadata](https://attack.mitre.org/datasources/DS0034/#Volume Metadata) 卷的元数据
 

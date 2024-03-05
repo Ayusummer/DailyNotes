@@ -271,7 +271,7 @@ PMI 所有证书
 - 下载[aria2.exe]并将其移动至`C:\Windows\System32`文件夹
 - 复制`aria2`下载命令
 - 在本地你想下载到的位置，按住 `Shift` 右键点击空白处，选择在此打开命令行窗口(`Powershell`)
-- 将刚才复制的命令粘贴（鼠标右键点击即可，不要按 ctrl-V）;回车，然后等待下载完成
+- 将刚才复制的命令粘贴(鼠标右键点击即可，不要按 ctrl-V) ;回车，然后等待下载完成
 
 ---
 ### 超星相关
@@ -963,7 +963,7 @@ Clash 有三种代理模式
 
   - **TUN** 是 `三层设备` ，模拟一个网络层设备，操作 **第三层** 数据包比如 IP 数据包，TUN 虚拟网卡实现 IP 层隧道
 
-    Tun 模式通过新建一个 Tun 虚拟网卡接受操作系统的三层浏览流量，从而拓展 Clash 入口（inbound）转发能力，Tun 模式可以提升 Clash 处理 UDP 流量的能力，可以劫持任何三层流量，实现 DNS 劫持也是轻而易举，并且它与部分操作系统的网络栈结合也非常好，可以提升利用 iptables 等组件的能力
+    Tun 模式通过新建一个 Tun 虚拟网卡接受操作系统的三层浏览流量，从而拓展 Clash 入口(inbound) 转发能力，Tun 模式可以提升 Clash 处理 UDP 流量的能力，可以劫持任何三层流量，实现 DNS 劫持也是轻而易举，并且它与部分操作系统的网络栈结合也非常好，可以提升利用 iptables 等组件的能力
 
   - 对于不遵循系统代理的软件，TUN 模式可以接管其流量并交由 CFW 处理，在 Windows 中，TUN 模式性能比 TAP 模式好
 
@@ -979,7 +979,7 @@ Clash 有三种代理模式
 
 - 启用 TUN Mode(`0.19.27`以上版本)
 
-  - 点击`General`中`Service Mode`右边`Manage`，在打开窗口中安装服务模式，安装完成应用会自动重启，Service Mode 右边地球图标变为`绿色`即安装成功（无法安装参考：[这里](https://docs.cfw.lbyczf.com/contents/questions.html#service-mode-无法安装-windows)）
+  - 点击`General`中`Service Mode`右边`Manage`，在打开窗口中安装服务模式，安装完成应用会自动重启，Service Mode 右边地球图标变为`绿色`即安装成功(无法安装参考：[这里](https://docs.cfw.lbyczf.com/contents/questions.html#service-mode-无法安装-windows)) 
 
     > [Service Mode 作用是啥？为什么要开启这个模式 · Issue #2839 · Fndroid/clash_for_windows_pkg (github.com)](https://github.com/Fndroid/clash_for_windows_pkg/issues/2839)
 
@@ -995,7 +995,7 @@ Clash 有三种代理模式
 
     > 如果使用`system`作为 TUN stack，需要同时在系统防火墙中将 clash core 放行，方法如下：
     >
-    > 在`0.19.27`及以上版本中，点击 Clash Core 版本号前的图标，并在 UAC 弹窗（若有）中允许运行，CFW 将自动配置对应的防火墙规则。
+    > 在`0.19.27`及以上版本中，点击 Clash Core 版本号前的图标，并在 UAC 弹窗(若有) 中允许运行，CFW 将自动配置对应的防火墙规则。
     >
     > 成功配置防火墙规则后该图标作为指示灯亮起。
     >
@@ -1297,7 +1297,7 @@ enmmm, 本身 explorer 就比较卡, 平时能不打开Explorer就不打开Explo
 
 ### 中易宋体和微软雅黑
 
-> [在打印文本的正文字体中，宋体（中易）和微软雅黑孰优孰劣？ - 知乎 (zhihu.com)](https://www.zhihu.com/question/19855799)
+> [在打印文本的正文字体中，宋体(中易) 和微软雅黑孰优孰劣？ - 知乎 (zhihu.com)](https://www.zhihu.com/question/19855799)
 >
 > [Windows自带的宋体、黑体、楷体、仿宋体等能免费商用吗？ - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/162838215)
 >

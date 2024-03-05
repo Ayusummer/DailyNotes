@@ -119,7 +119,7 @@ DELETE FROM sqlite_sequence WHERE name = ‘TableName’; --可以将递增数�
 
 - `name` 记录自增列所在的表
 
-- `seq` 记录当前序号（下一条记录的编号就是当前序号加1）。
+- `seq` 记录当前序号(下一条记录的编号就是当前序号加1) 。
 
   如果想把某个自增列的序号归零，只需要修改 `sqlite_sequence` 表就可以了。
 

@@ -25,7 +25,7 @@
 
 **MariaDB** 起源于 **MySQL**。当 Oracle 公司于 2010 年收购了 MySQL 后，MySQL 的原始开发者之一 Monty Widenius 启动了 MariaDB 作为 MySQL 的一个分支。目的是确保社区能够保持一个完全开源的版本。
 
-MariaDB 设计为与 MySQL 兼容，初衷是作为 MySQL 的直接替代品。这意味着它使用与 MySQL 相同的协议和 API。因此，在很多情况下，用于 MySQL 的工具和客户端（例如 `mysql` 命令行工具）也可以与 MariaDB 一起使用。
+MariaDB 设计为与 MySQL 兼容，初衷是作为 MySQL 的直接替代品。这意味着它使用与 MySQL 相同的协议和 API。因此，在很多情况下，用于 MySQL 的工具和客户端(例如 `mysql` 命令行工具) 也可以与 MariaDB 一起使用。
 
 ---
 
@@ -358,7 +358,7 @@ sudo mysql_secure_installation
 
 @tab Docker
 
-> [Docker配置mysql容器+远程连接（全流程）_卷、就硬卷的博客-CSDN博客](https://blog.csdn.net/qq_43781399/article/details/112650755)
+> [Docker配置mysql容器+远程连接(全流程) _卷、就硬卷的博客-CSDN博客](https://blog.csdn.net/qq_43781399/article/details/112650755)
 >
 > ---
 
@@ -463,7 +463,7 @@ FLUSH PRIVILEGES;
           - 即$-2³¹-1$ ~ $2³¹-1$
   
             > 也就是说：int(1)、int(4)、int(11)和 int(110)表示意思是一样的
-  - 要查看出不同效果记得在创建类型的时候加 zerofill 这个值（INT(M) ZEROFILL），表示用 0 填充，否则看不出效果的
+  - 要查看出不同效果记得在创建类型的时候加 zerofill 这个值(INT(M) ZEROFILL) ，表示用 0 填充，否则看不出效果的
 
 ---
 

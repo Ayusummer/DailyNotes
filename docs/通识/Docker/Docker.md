@@ -50,7 +50,7 @@ sudo systemctl enable docker.service
 
 @tab Debian
 
-> [在Kali Linux版本中安装Docker（Docker CE社区版）和Docker Compose_Linux教程_云网牛站 (ywnz.com)](https://ywnz.com/linuxjc/6543.html)
+> [在Kali Linux版本中安装Docker(Docker CE社区版) 和Docker Compose_Linux教程_云网牛站 (ywnz.com)](https://ywnz.com/linuxjc/6543.html)
 >
 > ---
 
@@ -130,7 +130,7 @@ service docker restart
 
   ```bash
   # docker pull [镜像名]
-  # vuldocker/lamp映像包括（php＋apache+MySQL），只需要下载dvwa源码即可
+  # vuldocker/lamp映像包括(php＋apache+MySQL) ，只需要下载dvwa源码即可
   docker pull vuldocker/lamp   
   ```
 
@@ -239,7 +239,7 @@ docker run -it -d --name dvwa -p 8008:80 vuldocker/lamp
 >
 > -i: 交互式操作。
 >
-> -t: 终端（一般与i一起）
+> -t: 终端(一般与i一起) 
 >
 >  -d：后台运行。
 
@@ -249,13 +249,13 @@ docker run -it -d --name dvwa -p 8008:80 vuldocker/lamp
 docker run -it -d --name dvwa -p 8008:80 vuldocker/lamp
 ```
 
-指令时出现了问题，说已经有container使用了dvwa这个名字（ `The container name "/dvwa" is already in use by container "6e3fc590b41c9c6cf6c0d81de14730c127240edecb6a2a5e3debf1565eb3fe6b"`），但是从图中也可以看到docker ps指令执行后没有正在运行的container,可以执行
+指令时出现了问题，说已经有container使用了dvwa这个名字( `The container name "/dvwa" is already in use by container "6e3fc590b41c9c6cf6c0d81de14730c127240edecb6a2a5e3debf1565eb3fe6b"`) ，但是从图中也可以看到docker ps指令执行后没有正在运行的container,可以执行
 
 ---
 
 ### 推送到 Habor
 
-**因为是在只有http  sql apach服务的镜像上跑的容器，在容器里配置了dvwa（并没有改变镜像）**
+**因为是在只有http  sql apach服务的镜像上跑的容器，在容器里配置了dvwa(并没有改变镜像) **
 
 **此时将原来的镜像推送还是只有http  sql apach服务的镜像，没有自己在容器里的所有配置  需要将容器保存为镜像再去推送才行**
 
@@ -348,7 +348,7 @@ docker rm -f koko
 docker cp ./data/test.db koko:/tmp/test.db
 ```
 
-在docker中，LAMP是指Linux（操作系统）、Apache HTTP服务器、MySQL（MariaDB等数据库软件）和PHP（Perl或Python）的组合方案，一般用来建立Web服务器环境。
+在docker中，LAMP是指Linux(操作系统) 、Apache HTTP服务器、MySQL(MariaDB等数据库软件) 和PHP(Perl或Python) 的组合方案，一般用来建立Web服务器环境。
 
 > [docker中的lamp是什么-Docker-PHP中文网](https://www.php.cn/docker/488591.html)
 

@@ -197,7 +197,7 @@ public class reflect {
     }
 
     // 3.通过 Class 类的静态方法 forName(String className) 得到
-    // 该方法将类的全名（包括包名）作为参数，返回对应的 Class 对象
+    // 该方法将类的全名(包括包名) 作为参数，返回对应的 Class 对象
     // 用的最多, 但可能抛出 ClassNotFoundException 异常
     public void by_forName() throws ClassNotFoundException {
         System.out.println("3.通过 Class 类的静态方法 forName(String className) 得到");
@@ -254,7 +254,7 @@ try {
 }
 ```
 
-- `line3` 的 `Method` 指的是 `java.lang.reflect.Method` 类, 在 Java 中，`java.lang.reflect.Method` 类提供了关于类或接口上单个方法的信息和访问权限。可以使用 `java.lang.reflect.Method` 类的实例来获取方法的信息（如返回类型、参数类型、访问修饰符等）或者对它进行调用。
+- `line3` 的 `Method` 指的是 `java.lang.reflect.Method` 类, 在 Java 中，`java.lang.reflect.Method` 类提供了关于类或接口上单个方法的信息和访问权限。可以使用 `java.lang.reflect.Method` 类的实例来获取方法的信息(如返回类型、参数类型、访问修饰符等) 或者对它进行调用。
 - `line3` 的 `getMethod` 方法被用来获取名为 `getRuntime` 的方法(这是 `java.lang.Runtime` 类的一个静态方法)。然后，`invoke` 方法被用来调用这个获取到的方法。
 - 因为 `getRuntime` 是一个无参数的方法，所以 `invoke` 方法被调用时只传入了一个 `null` 参数，这个 `null` 参数表示当前正在调用的是一个不需要实例对象的方法(即静态方法)。
 
@@ -283,7 +283,7 @@ Class.forName("java.lang.Runtime").getMethod("exec", String.class).invoke(
 );
 ```
 
-首先获取 `exec` 方法的 `Method` 对象，然后再调用 `invoke` 方法，其第一个参数传递了 `exec` 方法的调用者（`Runtime` 对象），第二个参数传递了 `exec` 方法的参数（`calc`）。
+首先获取 `exec` 方法的 `Method` 对象，然后再调用 `invoke` 方法，其第一个参数传递了 `exec` 方法的调用者(`Runtime` 对象) ，第二个参数传递了 `exec` 方法的参数(`calc`) 。
 
 或者通过 `String对象.getClass()` 来获取 `Class` 也可以:
 

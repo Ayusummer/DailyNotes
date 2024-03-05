@@ -27,7 +27,7 @@
       - [nodeValue 属性](#nodevalue-属性)
       - [nodeType 属性](#nodetype-属性)
     - [HTML DOM 访问](#html-dom-访问)
-      - [访问 HTML 元素（节点）](#访问-html-元素节点)
+      - [访问 HTML 元素(节点) ](#访问-html-元素节点)
       - [getElementById() 方法](#getelementbyid-方法-1)
       - [getElementsByTagName() 方法](#getelementsbytagname-方法)
       - [The getElementsByClassName()方法](#the-getelementsbyclassname方法)
@@ -37,7 +37,7 @@
 
 ## `label`
 
-> [`<label>` - HTML（超文本标记语言） | MDN (mozilla.org)](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/label)
+> [`<label>` - HTML(超文本标记语言)  | MDN (mozilla.org)](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/label)
 
 将一个 `<label>` 和一个 `<input>` 元素相关联主要有这些优点：
 
@@ -111,11 +111,11 @@ HTML DOM定义了访问和操作HTML文档的标准
 
 #### 什么是DOM
 
-DOM 是 W3C（万维网联盟）的标准。
+DOM 是 W3C(万维网联盟) 的标准。
 
 DOM 定义了访问 HTML 和 XML 文档的标准：
 
-> "W3C 文档对象模型 （DOM） 是中立于平台和语言的接口，它允许程序和脚本动态地访问和更新文档的内容、结构和样式。"
+> "W3C 文档对象模型 (DOM)  是中立于平台和语言的接口，它允许程序和脚本动态地访问和更新文档的内容、结构和样式。"
 
 W3C DOM 标准被分为 3 个不同的部分：
 
@@ -123,7 +123,7 @@ W3C DOM 标准被分为 3 个不同的部分：
 - XML DOM - 针对 XML 文档的标准模型
 - HTML DOM - 针对 HTML 文档的标准模型
 
-**编者注：**DOM 是 Document Object Model（文档对象模型）的缩写。
+**编者注：**DOM 是 Document Object Model(文档对象模型) 的缩写。
 
 #### 什么是 XML DOM？
 
@@ -167,10 +167,10 @@ HTML DOM 将 HTML 文档视作树结构。这种结构被称为**节点树**：
 
 节点树中的节点彼此拥有层级关系。
 
-我们常用**父（parent）**、**子（child）**和**同胞（sibling）**等术语来描述这些关系。父节点拥有子节点。同级的子节点被称为同胞（兄弟或姐妹）。
+我们常用**父(parent) **、**子(child) **和**同胞(sibling) **等术语来描述这些关系。父节点拥有子节点。同级的子节点被称为同胞(兄弟或姐妹) 。
 
-- 在节点树中，顶端节点被称为根（root）。
-- 每个节点都有父节点、除了根（它没有父节点）。
+- 在节点树中，顶端节点被称为根(root) 。
+- 每个节点都有父节点、除了根(它没有父节点) 。
 - 一个节点可拥有任意数量的子节点。
 - 同胞是拥有相同父节点的节点。
 
@@ -225,19 +225,19 @@ DOM 处理中的常见错误是希望元素节点包含文本。
 
 ### HTML DOM方法
 
-HTML DOM 方法是我们可以在节点（HTML 元素）上执行的动作。
+HTML DOM 方法是我们可以在节点(HTML 元素) 上执行的动作。
 
-HTML DOM 属性是我们可以在节点（HTML 元素）设置和修改的值。
+HTML DOM 属性是我们可以在节点(HTML 元素) 设置和修改的值。
 
 #### 编程接口
 
-可通过 JavaScript （以及其他编程语言）对 HTML DOM 进行访问。
+可通过 JavaScript (以及其他编程语言) 对 HTML DOM 进行访问。
 
 所有 HTML 元素被定义为对象，而编程接口则是对象方法和对象属性。
 
-方法是您能够执行的动作（比如添加或修改元素）。
+方法是您能够执行的动作(比如添加或修改元素) 。
 
-属性是您能够获取或设置的值（比如节点的名称或内容）。
+属性是您能够获取或设置的值(比如节点的名称或内容) 。
 
 #### getElementById() 方法
 
@@ -253,37 +253,37 @@ var element=document.getElementById("intro");
 
 一些常用的 HTML DOM 方法：
 
-- getElementById(id) - 获取带有指定 id 的节点（元素）
-- appendChild(node) - 插入新的子节点（元素）
-- removeChild(node) - 删除子节点（元素）
+- getElementById(id) - 获取带有指定 id 的节点(元素) 
+- appendChild(node) - 插入新的子节点(元素) 
+- removeChild(node) - 删除子节点(元素) 
 
 一些常用的 HTML DOM 属性：
 
-- innerHTML - 节点（元素）的文本值
-- parentNode - 节点（元素）的父节点
-- childNodes - 节点（元素）的子节点
-- attributes - 节点（元素）的属性节点
+- innerHTML - 节点(元素) 的文本值
+- parentNode - 节点(元素) 的父节点
+- childNodes - 节点(元素) 的子节点
+- attributes - 节点(元素) 的属性节点
 
 #### 一些DOM的对象方法
 
-| 方法                     | 描述                                                         |
-| :----------------------- | :----------------------------------------------------------- |
-| getElementById()         | 返回带有指定 ID 的元素。                                     |
-| getElementsByTagName()   | 返回包含带有指定标签名称的所有元素的节点列表（集合/节点数组）。 |
-| getElementsByClassName() | 返回包含带有指定类名的所有元素的节点列表。                   |
-| appendChild()            | 把新的子节点添加到指定节点。                                 |
-| removeChild()            | 删除子节点。                                                 |
-| replaceChild()           | 替换子节点。                                                 |
-| insertBefore()           | 在指定的子节点前面插入新的子节点。                           |
-| createAttribute()        | 创建属性节点。                                               |
-| createElement()          | 创建元素节点。                                               |
-| createTextNode()         | 创建文本节点。                                               |
-| getAttribute()           | 返回指定的属性值。                                           |
-| setAttribute()           | 把指定属性设置或修改为指定的值。                             |
+| 方法                     | 描述                                                           |
+| :----------------------- | :------------------------------------------------------------- |
+| getElementById()         | 返回带有指定 ID 的元素。                                       |
+| getElementsByTagName()   | 返回包含带有指定标签名称的所有元素的节点列表(集合/节点数组) 。 |
+| getElementsByClassName() | 返回包含带有指定类名的所有元素的节点列表。                     |
+| appendChild()            | 把新的子节点添加到指定节点。                                   |
+| removeChild()            | 删除子节点。                                                   |
+| replaceChild()           | 替换子节点。                                                   |
+| insertBefore()           | 在指定的子节点前面插入新的子节点。                             |
+| createAttribute()        | 创建属性节点。                                                 |
+| createElement()          | 创建元素节点。                                                 |
+| createTextNode()         | 创建文本节点。                                                 |
+| getAttribute()           | 返回指定的属性值。                                             |
+| setAttribute()           | 把指定属性设置或修改为指定的值。                               |
 
 ### HTML DOM属性
 
-属性是节点（HTML 元素）的值，您能够获取或设置。
+属性是节点(HTML 元素) 的值，您能够获取或设置。
 
 #### innerHTML 属性
 
@@ -362,7 +362,7 @@ nodeType 属性返回节点的类型。nodeType 是只读的。
 
 访问 HTML DOM - 查找 HTML 元素。
 
-#### 访问 HTML 元素（节点）
+#### 访问 HTML 元素(节点) 
 
 访问 HTML 元素等同于访问节点
 
@@ -396,7 +396,7 @@ document.getElementsByTagName("p");
 
 ![image-20220829103608635](http://cdn.ayusummer233.top/img/image-20220829103608635.png)
 
-下面的例子返回包含文档中所有 `<p>` 元素的列表，并且这些 `<p>` 元素应该是 id="main" 的元素的后代（子、孙等等）：
+下面的例子返回包含文档中所有 `<p>` 元素的列表，并且这些 `<p>` 元素应该是 id="main" 的元素的后代(子、孙等等) ：
 
 document.getElementById("main").getElementsByTagName("p");
 

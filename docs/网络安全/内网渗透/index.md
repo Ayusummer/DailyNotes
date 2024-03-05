@@ -34,7 +34,7 @@
 
 ### netspy
 
-> netspy是一款快速探测内网可达网段工具（深信服深蓝实验室天威战队强力驱动）
+> netspy是一款快速探测内网可达网段工具(深信服深蓝实验室天威战队强力驱动) 
 
 可以在 [Releases · shmilylty/netspy (github.com)](https://github.com/shmilylty/netspy/releases) 下载可执行文件压缩包
 

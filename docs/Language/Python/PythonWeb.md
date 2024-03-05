@@ -102,7 +102,7 @@ Vue 是一套用于构建用户界面的**渐进式框架**。与其它大型框
 
 ## Flask
 
-> [欢迎来到 Flask 的世界 — Flask 中文文档（ 1.1.2 ） (dormousehole.readthedocs.io)](https://dormousehole.readthedocs.io/en/1.1.2/index.html)
+> [欢迎来到 Flask 的世界 — Flask 中文文档( 1.1.2 )  (dormousehole.readthedocs.io)](https://dormousehole.readthedocs.io/en/1.1.2/index.html)
 >
 > [Python的Web框架Flask + Vue 生成漂亮的词云 - 云+社区 - 腾讯云 (tencent.com)](https://cloud.tencent.com/developer/article/1592758)
 >

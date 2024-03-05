@@ -4,7 +4,7 @@
 
 最近看了许多 AI 翻唱, 感觉很有意思, 遂开新坑
 
-> [【AI 翻唱】群青（阿米娅）_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV1XD4y1K7ju/?spm_id_from=333.788&vd_source=bb4d7b2841dd4d0035c93d44ba5cf11a)
+> [【AI 翻唱】群青(阿米娅) _哔哩哔哩_bilibili](https://www.bilibili.com/video/BV1XD4y1K7ju/?spm_id_from=333.788&vd_source=bb4d7b2841dd4d0035c93d44ba5cf11a)
 >
 > [【AI阿梓】极致的女声表现《なんでもないや》翻唱【soVits 3.0】_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV1Ge4y1w7YB/?spm_id_from=333.788&vd_source=bb4d7b2841dd4d0035c93d44ba5cf11a)
 
@@ -26,7 +26,7 @@ sovits 依赖中包含 `numpy==1.19.2`, 支持 `Python 3.6-3.8`, 这里选择了
 
 ### 安装 CUDA
 
-> [深度学习GPU环境CUDA详细安装过程（简单快速有效） - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/358737417)
+> [深度学习GPU环境CUDA详细安装过程(简单快速有效)  - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/358737417)
 >
 > [CUDA Installation Guide for Microsoft Windows (nvidia.com)](https://docs.nvidia.com/cuda/cuda-installation-guide-microsoft-windows/index.html)
 >
@@ -44,7 +44,7 @@ sovits 依赖中包含 `numpy==1.19.2`, 支持 `Python 3.6-3.8`, 这里选择了
 > >
 > > ![image-20230221000224512](http://cdn.ayusummer233.top/DailyNotes/202302210015290.png)
 > >
-> > 参考下 [sovits3.0一键脚本（小狼躺平了，所以是深夜诗人修改版本,已更新32k/48k分支切换）.ipynb - Colaboratory (google.com)](https://colab.research.google.com/drive/1_-gh9i-wCPNlRZw6pYF-9UufetcVrGBX?usp=sharing#scrollTo=0gQcIZ8RsOkn) 
+> > 参考下 [sovits3.0一键脚本(小狼躺平了，所以是深夜诗人修改版本,已更新32k/48k分支切换) .ipynb - Colaboratory (google.com)](https://colab.research.google.com/drive/1_-gh9i-wCPNlRZw6pYF-9UufetcVrGBX?usp=sharing#scrollTo=0gQcIZ8RsOkn) 
 > >
 > > ![image-20230221001534807](http://cdn.ayusummer233.top/DailyNotes/202302210015832.png)
 > >
@@ -234,7 +234,7 @@ python resample.py
 >
 > ---
 >
-> 翻看下 [sovits3.0一键脚本（小狼躺平了，所以是深夜诗人修改版本,已更新32k/48k分支切换）.ipynb - Colaboratory (google.com)](https://colab.research.google.com/drive/1_-gh9i-wCPNlRZw6pYF-9UufetcVrGBX?usp=sharing#scrollTo=BMWfCXSzaABl) 看看这里用的什么版本
+> 翻看下 [sovits3.0一键脚本(小狼躺平了，所以是深夜诗人修改版本,已更新32k/48k分支切换) .ipynb - Colaboratory (google.com)](https://colab.research.google.com/drive/1_-gh9i-wCPNlRZw6pYF-9UufetcVrGBX?usp=sharing#scrollTo=BMWfCXSzaABl) 看看这里用的什么版本
 >
 > ![image-20230220231943535](http://cdn.ayusummer233.top/DailyNotes/202302202319589.png)
 >
@@ -311,7 +311,7 @@ python train.py -c configs/config.json -m 32k
 
 > ![image-20230220235306861](http://cdn.ayusummer233.top/DailyNotes/202302202353878.png)
 >
-> 又缺库, 那继续参考 [sovits3.0一键脚本（小狼躺平了，所以是深夜诗人修改版本,已更新32k/48k分支切换）.ipynb - Colaboratory (google.com)](https://colab.research.google.com/drive/1_-gh9i-wCPNlRZw6pYF-9UufetcVrGBX?usp=sharing#scrollTo=BMWfCXSzaABl)
+> 又缺库, 那继续参考 [sovits3.0一键脚本(小狼躺平了，所以是深夜诗人修改版本,已更新32k/48k分支切换) .ipynb - Colaboratory (google.com)](https://colab.research.google.com/drive/1_-gh9i-wCPNlRZw6pYF-9UufetcVrGBX?usp=sharing#scrollTo=BMWfCXSzaABl)
 >
 > ![image-20230220235719441](http://cdn.ayusummer233.top/DailyNotes/202302202357458.png)
 >
@@ -381,7 +381,7 @@ python train.py -c configs/config.json -m 32k
 >
 > 是一致的
 >
-> 继续薅下 [sovits3.0一键脚本（小狼躺平了，所以是深夜诗人修改版本,已更新32k/48k分支切换）.ipynb - Colaboratory (google.com)](https://colab.research.google.com/drive/1_-gh9i-wCPNlRZw6pYF-9UufetcVrGBX?usp=sharing#scrollTo=BMWfCXSzaABl):
+> 继续薅下 [sovits3.0一键脚本(小狼躺平了，所以是深夜诗人修改版本,已更新32k/48k分支切换) .ipynb - Colaboratory (google.com)](https://colab.research.google.com/drive/1_-gh9i-wCPNlRZw6pYF-9UufetcVrGBX?usp=sharing#scrollTo=BMWfCXSzaABl):
 >
 > ![image-20230221000656109](http://cdn.ayusummer233.top/DailyNotes/202302210006122.png)
 >
