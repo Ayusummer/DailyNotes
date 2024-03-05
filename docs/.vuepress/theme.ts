@@ -47,5 +47,11 @@ export default hopeTheme({
       indexContent: true,
     },
     sitemap: {},
+    feed: {
+      rss: true,
+      atom: true,
+      json: true,
+      hostname: "https://ayusummer.github.io/DailyNotes/",
+    },
   },
 });
