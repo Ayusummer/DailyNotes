@@ -1,6 +1,4 @@
 import { hopeTheme } from "vuepress-theme-hope";
-import { createRequire } from "node:module";
-import { fs, theme } from "docs-shared";
 import { Navbar } from "./navbar";
 import { Sidebar } from "./sidebar";
 
