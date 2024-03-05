@@ -232,6 +232,24 @@ pnpm add -D vuepress-plugin-seo2
 
 ---
 
+### Feed
+
+> [Feed 支持 | vuepress-theme-hope (vuejs.press)](https://theme-hope.vuejs.press/zh/guide/advanced/feed.html)
+>
+> [插件配置 | VuePress 生态系统 (vuejs.press)](https://ecosystem.vuejs.press/zh/plugins/feed/config.html)
+
+```powershell
+pnpm add -D @vuepress/plugin-feed@2.0.0-rc.18
+```
+
+![image-20240306004451712](http://cdn.ayusummer233.top/DailyNotes/202403060044776.png)
+
+![image-20240306004612356](http://cdn.ayusummer233.top/DailyNotes/202403060046408.png)
+
+> PS: 不用管VSCode给的类型提示报错
+
+---
+
 ### 案例
 
 > [案例 | vuepress-theme-hope (vuejs.press)](https://theme-hope.vuejs.press/zh/demo/)
