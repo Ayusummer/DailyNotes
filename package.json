@@ -7,22 +7,24 @@
   },
   "license": "MIT",
   "private": true,
-  "packageManager": "pnpm@8.6.0",
+  "packageManager": "pnpm@8.15.4",
+  "engines": {
+    "node": ">=20"
+  },
   "scripts": {
     "docs:clean-dev": "vuepress dev docs --clean-cache",
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs"
   },
   "devDependencies": {
-    "@vuepress/client": "2.0.0-beta.62",
-    "nodejs-jieba": "0.0.2",
-    "vue": "3.3.4",
-    "vuepress": "2.0.0-beta.62",
-    "vuepress-plugin-search-pro": "2.0.0-beta.222",
-    "vuepress-plugin-seo2": "2.0.0-beta.222",
-    "vuepress-plugin-sitemap2": "2.0.0-beta.222",
-    "vuepress-theme-hope": "2.0.0-beta.222",
-    "vuepress-vite": "2.0.0-beta.62",
-    "vuepress-webpack": "2.0.0-beta.62"
+    "@vuepress/bundler-vite": "2.0.0-rc.8",
+    "@vuepress/plugin-seo": "2.0.0-rc.18",
+    "@vuepress/plugin-sitemap": "2.0.0-rc.18",
+    "katex": "^0.16.9",
+    "mermaid": "^10.8.0",
+    "vue": "^3.4.21",
+    "vuepress": "2.0.0-rc.8",
+    "vuepress-plugin-search-pro": "2.0.0-rc.27",
+    "vuepress-theme-hope": "2.0.0-rc.27"
   }
 }

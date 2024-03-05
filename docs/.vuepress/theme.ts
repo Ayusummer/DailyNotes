@@ -45,5 +45,9 @@ export default hopeTheme({
       // 支持标记 使用 == == 进行标记。请注意两边需要有空格
       mark: true,
     },
+    searchPro: {
+      indexContent: true,
+    },
+    sitemap: {},
   },
 });
