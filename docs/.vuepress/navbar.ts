@@ -64,6 +64,10 @@ let general = {
       link: "/通识/VSCode.md",
     },
     {
+      text: "通信",
+      link: "/通识/通信/订阅更新.md",
+    },
+    {
       text: "渐构",
       link: "/通识/渐构-断墨寻径.md",
     },
