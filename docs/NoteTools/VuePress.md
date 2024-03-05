@@ -195,6 +195,8 @@ pnpm install -D vuepress-theme-hope@next
 ### 搜索
 
 > [搜索 | vuepress-theme-hope (vuejs.press)](https://theme-hope.vuejs.press/zh/guide/feature/search.html#使用-vuepress-plugin-search-pro)
+>
+> [搜索插件配置 | vuepress-theme-hope (vuejs.press)](https://theme-hope.vuejs.press/zh/config/plugins/search.html)
 
 ```bash
 pnpm add -D vuepress-plugin-search-pro@next
@@ -230,6 +232,16 @@ pnpm add -D vuepress-plugin-seo2
 
 ---
 
+### 案例
+
+> [案例 | vuepress-theme-hope (vuejs.press)](https://theme-hope.vuejs.press/zh/demo/)
+
+案例可以用来作为配置项的参考
+
+![image-20240305235337110](http://cdn.ayusummer233.top/DailyNotes/202403052353175.png)
+
+---
+
 ## 报错收集
 
 ### `Vuepress Error: ENOSPC: System limit for number of file watchers reach`
@@ -243,6 +255,248 @@ echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo s
 ```
 
 ---
+
+### Package katex is not installed
+
+```powershell
+vuepress-plugin-md-enhance:  ✖ Package katex is not installed, please install it manually!
+vuepress-plugin-md-enhance:  ✖ Package mermaid is not installed, please install it manually!
+vuepress-theme-hope:  ✖ You are not allowed to use plugin "@vuepress/plugin-sitemap" yourself in vuepress config file. Set "plugins.sitemap" in theme options to customize it.
+vuepress-theme-hope:  ✖ You are not allowed to use plugin "vuepress-plugin-search-pro" yourself in vuepress config file. Set "plugins.searchPro" in theme options to customize it.
+```
+
+![image-20240305232605836](http://cdn.ayusummer233.top/DailyNotes/202403052326887.png)
+
+
+
+
+
+----
+
+## 调试
+
+### 依赖调试
+
+项目依赖每次更新都很折磨, 要不断调整依赖适配版本
+
+首先是升级主题和 VuePress 版本，请执行以下命令:
+
+:::tbas
+
+@tab:active pnpm
+
+```bash
+pnpm dlx vp-update
+```
+
+:::
+
+----
+
+对于类似如下告警
+
+```bash
+devDependencies:
+ WARN  Issues with peer dependencies found
+.
+└─┬ vuepress-vite 2.0.0-rc.0
+ WARN  Issues with peer dependencies found
+.
+└─┬ vuepress-vite 2.0.0-rc.0
+  └── ✕ unmet peer @vuepress/client@2.0.0-rc.0: found 2.0.0-rc.8
+```
+
+可以看到相应包的支持版本
+
+```bash
+pnpm view vuepress-vite versions
+```
+
+![image-20240305224533572](http://cdn.ayusummer233.top/DailyNotes/202403052245615.png)
+
+或者可以直接参考下案例:  [vuepress-theme-hope-starter (forked) - StackBlitz](https://stackblitz.com/edit/vuepress-theme-hope-umqczj?file=package.json) 的配置
+
+
+
+
+
+
+
+----
+
+## 配置备份
+
+### vuepress-theme-hope-2.0.0-beta.222
+
+```json
+{
+  "name": "ayusummer-dailyNotes",
+  "description": "233 daily notes",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:Ayusummer/DailyNotes.git"
+  },
+  "license": "MIT",
+  "private": true,
+  "packageManager": "pnpm@8.6.0",
+  "scripts": {
+    "docs:clean-dev": "vuepress dev docs --clean-cache",
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs"
+  },
+  "devDependencies": {
+    "@vuepress/client": "2.0.0-beta.62",
+    "nodejs-jieba": "0.0.2",
+    "vue": "3.3.4",
+    "vuepress": "2.0.0-beta.62",
+    "vuepress-plugin-search-pro": "2.0.0-beta.222",
+    "vuepress-plugin-seo2": "2.0.0-beta.222",
+    "vuepress-plugin-sitemap2": "2.0.0-beta.222",
+    "vuepress-theme-hope": "2.0.0-beta.222",
+    "vuepress-vite": "2.0.0-beta.62",
+    "vuepress-webpack": "2.0.0-beta.62"
+  }
+}
+```
+
+---
+
+### vuepress-theme-hope-2.0.0-rc.27
+
+`package.json`
+
+```json
+{
+  "name": "ayusummer-dailyNotes",
+  "description": "233 daily notes",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:Ayusummer/DailyNotes.git"
+  },
+  "license": "MIT",
+  "private": true,
+  "packageManager": "pnpm@8.15.4",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "docs:clean-dev": "vuepress dev docs --clean-cache",
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs"
+  },
+  "devDependencies": {
+    "@vuepress/bundler-vite": "2.0.0-rc.8",
+    "@vuepress/plugin-seo": "2.0.0-rc.18",
+    "@vuepress/plugin-sitemap": "2.0.0-rc.18",
+    "katex": "^0.16.9",
+    "mermaid": "^10.8.0",
+    "vue": "^3.4.21",
+    "vuepress": "2.0.0-rc.8",
+    "vuepress-plugin-search-pro": "2.0.0-rc.27",
+    "vuepress-theme-hope": "2.0.0-rc.27"
+  }
+}
+
+```
+
+`config.ts`
+
+```ts
+import { defineUserConfig } from "vuepress";
+import { viteBundler } from "@vuepress/bundler-vite";
+import theme from "./theme";
+import { sitemapPlugin } from "@vuepress/plugin-sitemap";
+import { searchProPlugin } from "vuepress-plugin-search-pro";
+
+export default defineUserConfig({
+  lang: "zh-CN",
+  // 站点的标题
+  title: "DailyNotes",
+  // 站点的描述
+  description: "233的日常学习记录",
+  // 站点配置, 设置为 /[仓库名]/
+  base: "/DailyNotes/",
+
+  // plugins: [
+  //   searchProPlugin({
+  //     // 配置选项
+  //   }),
+  //   sitemapPlugin({
+  //     // 配置选项
+  //     hostname: "ayusummer.github.io",
+  //   }),
+  // ],
+  bundler: viteBundler(),
+  // 主题配置
+  theme,
+});
+
+```
+
+`theme.ts`
+
+```ts
+import { hopeTheme } from "vuepress-theme-hope";
+import { createRequire } from "node:module";
+import { fs, theme } from "docs-shared";
+import { Navbar } from "./navbar";
+import { Sidebar } from "./sidebar";
+
+export default hopeTheme({
+  // logo
+  logo: "/logo.svg",
+
+  // 主题色选择器
+  themeColor: true,
+
+  // 导航栏
+  navbar: Navbar,
+  // 侧边栏
+  sidebar: Sidebar,
+
+  // 仓库链接
+  repo: "Ayusummer/DailyNotes",
+  // 文档仓库地址，默认同主题选项中的 repo
+  docsRepo: "Ayusummer/DailyNotes",
+  // 文档在仓库中的目录，默认为根目录
+  docsDir: "docs",
+  // 文档存放的分值，默认为 "main"
+  docsBranch: "main",
+
+  // 全屏
+  fullscreen: true,
+
+  // 插件相关
+  plugins: {
+    seo: true,
+    // markdown 增强
+    mdEnhance: {
+      tabs: true,
+      mermaid: true,
+      // 使用 KaTeX 启用 TeX 支持
+      katex: true,
+      // 与选项卡功能相同，但它是专门为代码块构建的。
+      // 代码选项卡只会渲染 @tab 标记后的代码块，其他 Markdown 内容将被忽略
+      codetabs: true,
+      // 文件支持任务列表
+      tasklist: true,
+      // 支持标记 使用 == == 进行标记。请注意两边需要有空格
+      mark: true,
+    },
+    searchPro: {
+      indexContent: true,
+    },
+    sitemap: {},
+  },
+});
+
+```
+
+
+
+
+
+
 
 
 
