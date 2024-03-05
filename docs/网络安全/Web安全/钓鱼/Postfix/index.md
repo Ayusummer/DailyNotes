@@ -16,6 +16,8 @@
         - [mysql-virtual-mailbox-maps.cf](#mysql-virtual-mailbox-mapscf)
         - [mysql-virtual-alias-maps.cf](#mysql-virtual-alias-mapscf)
         - [master.cf](#mastercf)
+    - [安装与配置 Dovecot](#安装与配置-dovecot)
+      - [安装Dovecot](#安装dovecot)
 
 ---
 
@@ -224,7 +226,7 @@ values
 
 @tab:active MySQL8.0
 
-因为 `ENCRYPT` 函数采用了基于DES（Data Encryption Standard）的加密算法，而DES是一种相对较弱的加密算法，不再被视为安全, MySQL 8.0 中不再支持 `ENCRYPT` 函数
+因为 `ENCRYPT` 函数采用了基于DES(Data Encryption Standard) 的加密算法，而DES是一种相对较弱的加密算法，不再被视为安全, MySQL 8.0 中不再支持 `ENCRYPT` 函数
 
 > 随着时间的推移，密码学的研究不断进展，新的算法和更安全的加密方法得以发展。由于DES存在一些安全漏洞，例如密钥长度较短，易受到暴力破解等攻击
 
@@ -560,6 +562,35 @@ service postfix restart
 
 ---
 
+### 安装与配置 Dovecot
+
+#### 安装Dovecot
+
+Dovecot 是一个流行的开源邮件服务器软件，主要用于支持邮件协议的 IMAP(Internet Message Access Protocol) 和 POP3(Post Office Protocol version 3) 。它允许用户通过电子邮件客户端(如邮件应用程序或 Webmail) 访问和管理存储在服务器上的电子邮件(Dovecot会将真正的验证工作交给MySQL处理)
+
+因为使用SSL，Dovecot会使用993「IMAP协议」及995「POP协议」与外界交流, 如果服务器有防火墙则需要放通这两个端口
+
+在此章节中需要配置如下信息:
+
+- 开启Dovecot的IMAP、POP3、LMTP协议
+- 告知Dovecot本地邮件的投档路径
+- 连接Dovecot和MySQL数据库以验证用户身份
+- 配置SSL加密相关信息
+
+---
+
+安装Dovecot最新版:
+
+```bash
+apt install dovecot-core dovecot-imapd dovecot-pop3d dovecot-lmtpd dovecot-mysql
+```
+
+![image-20240305181937525](http://cdn.ayusummer233.top/DailyNotes/202403051819585.png)
+
+- `dovecot-core`: Dovecot的核心组件, 包括必要的库和二进制文件; 提供了Dovecot邮件服务器的基本功能
+- `dovecot-imapd`: Dovecot 的 IMAP 服务器模块; 允许用户使用 IMAP 协议来访问和管理邮件，通常用于接收邮件
+- `dovecot-pop3d`: Dovecot 的 POP3 服务器模块; 允许用户使用 POP3 协议来访问和下载邮件，通常用于接收邮件
+- `dovecot-lmtpd`: Dovecot 的 LMTP(Local Mail Transfer Protocol) 服务器模块。LMTP 通常用于传递本地邮件，特别是与其他邮件组件 (如邮件投递代理) 集成时。
 
 
 
