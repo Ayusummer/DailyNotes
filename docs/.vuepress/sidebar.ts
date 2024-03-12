@@ -65,11 +65,11 @@ let security_web = [
     children: [
       {
         text: "GoPhish",
-        link: "/网络安全/Web安全/钓鱼/GoPhish/",
+        link: "/网络安全/钓鱼/GoPhish/",
       },
       {
         text: "Postfix",
-        link: "/网络安全/Web安全/钓鱼/Postfix/",
+        link: "/网络安全/钓鱼/Postfix/",
       },
     ],
   },

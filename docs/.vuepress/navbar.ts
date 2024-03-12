@@ -98,6 +98,10 @@ let security = {
       link: "/网络安全/",
     },
     {
+      text: "钓鱼",
+      link: "/网络安全/钓鱼/",
+    },
+    {
       text: "kali",
       link: "/网络安全/kali.md",
     },
