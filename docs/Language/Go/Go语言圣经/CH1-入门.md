@@ -305,18 +305,21 @@ import (
 
 // 类似于 echo, 默认分隔符为一个空格
 func Print_cmd_args() {
+	fmt.Println("echo 基本写法:")
 	// 定义一个字符串切片, 用于存储命令行参数
 	var getParams string
 	// 分隔符为一个空格
 	var sep string = " "
 	// 第 0 个参数是程序名, 第 1 个参数才是实际传入的首个参数
-	for i := 0; i < len(os.Args); i++ {
+	for i := 1; i < len(os.Args); i++ {
 		getParams += os.Args[i] + sep
 	}
 	fmt.Println(getParams)
 }
 
 ```
+
+![image-20240313000852693](http://cdn.ayusummer233.top/DailyNotes/202403130008746.png)
 
 > - 导入多个模块时, `gofmt` 会按照字典序对模块名排序
 >
@@ -426,7 +429,9 @@ func Echo_Slice() {
 
 > - Go 中不允许有未使用的局部变量, 但是可以使用空标识符 `_` 来忽略某个变量
 >
->   `_` 可用于在任何语法上需要变量名但是程序逻辑中之处
+>   `_` 可用于在任何语法上需要变量名但是程序逻辑中不需要之处
+>
+>   这里是因为 `range` 函数返回 `索引,值` 的形式, 但是索引在后面的循环体中用不到所以给了个 `_`
 >
 > - 对于已声明的变量, 使用 `:=` 会报错 ` "no new variables on left side of :="`
 >
@@ -1002,7 +1007,7 @@ func PrintResponseBody() {
 >         log.Fatal(err)
 >     }
 >     defer resp.Body.Close()
->
+>        
 >     if resp.StatusCode == http.StatusOK {
 >         bodyBytes, err := io.ReadAll(resp.Body)
 >         // if u want to read the body many time
@@ -1078,7 +1083,7 @@ func PrintResponseBody_Copy() {
   n, err := io.Copy(dst, src)
   ```
 
-  - `n` 字节数
+  - `n` 复制的字节数的整数变量
   - `err` 复制过程中遇到的错误
   - `(dst, src)` `(目标的 io.Writter, 源的 io.Reader)`
 
