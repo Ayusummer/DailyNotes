@@ -433,9 +433,11 @@ func Echo_Slice() {
 >
 >   这里是因为 `range` 函数返回 `索引,值` 的形式, 但是索引在后面的循环体中用不到所以给了个 `_`
 >
-> - 对于已声明的变量, 使用 `:=` 会报错 ` "no new variables on left side of :="`
+> - 对于已声明的变量, 单独使用 `:=` 会报错 ` "no new variables on left side of :="`
 >
 >   此时可以使用 = 赋值
+>   
+>   > 可参阅 [CH2.3.1 简短变量声明](CH2-程序结构.md#CH2.3.1 简短变量声明)
 
 > ![image-20221122234757090](http://cdn.ayusummer233.top/img/202211222347133.png)
 
@@ -1007,7 +1009,7 @@ func PrintResponseBody() {
 >         log.Fatal(err)
 >     }
 >     defer resp.Body.Close()
->        
+>            
 >     if resp.StatusCode == http.StatusOK {
 >         bodyBytes, err := io.ReadAll(resp.Body)
 >         // if u want to read the body many time
