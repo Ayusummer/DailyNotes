@@ -4,20 +4,25 @@
 
 - [CH1 入门](#ch1-入门)
 	- [ch1.1 Hello World](#ch11-hello-world)
-	- [包管理](#包管理)
-		- [package main](#package-main)
-	- [function](#function)
-	- [分号的问题](#分号的问题)
-	- [引号的问题](#引号的问题)
-	- [代码格式](#代码格式)
+		- [包管理](#包管理)
+			- [package main](#package-main)
+		- [function](#function)
+		- [分号的问题](#分号的问题)
+		- [引号的问题](#引号的问题)
+		- [代码格式](#代码格式)
 	- [ch1.2 命令行参数](#ch12-命令行参数)
-	- [优化上述 echo 程序](#优化上述-echo-程序)
+		- [优化上述 echo 程序](#优化上述-echo-程序)
+		- [EX1.1 修改 echo 程序](#ex11-修改-echo-程序)
+		- [EX1.2 修改 echo 程序](#ex12-修改-echo-程序)
+		- [EX1.3 测试各版本 echo 程序性能](#ex13-测试各版本-echo-程序性能)
 	- [ch1.3 查找重复的行](#ch13-查找重复的行)
+		- [EX1.4 出现重复的行时打印文件名](#ex14-出现重复的行时打印文件名)
 	- [ch1.4 GIF 动画](#ch14-gif-动画)
 	- [ch1.5 获取 URL](#ch15-获取-url)
-	- [练习 1.7 使用 `io.Copy` 替代 `io.outil.ReadAll`](#练习-17-使用-iocopy-替代-iooutilreadall)
-	- [练习 1.8 补充前缀](#练习-18-补充前缀)
-	- [练习 1.9 输出状态码](#练习-19-输出状态码)
+		- [练习 1.7 使用 `io.Copy` 替代 `io.outil.ReadAll`](#练习-17-使用-iocopy-替代-iooutilreadall)
+		- [练习 1.8 补充前缀](#练习-18-补充前缀)
+		- [练习 1.9 输出状态码](#练习-19-输出状态码)
+	- [CH1.6 并发获取多个 URL](#ch16-并发获取多个-url)
 
 
 ---
@@ -82,7 +87,7 @@ Go 语言提供的工具都可以使用 `go` 命令来调用, 其包含一系列
 >
 > ---
 
-## 包管理
+### 包管理
 
 Go 语言的代码通过 `包(package)` 组织, `package` 类似于其他语言中的 `库(libraries)` 或者 `模块(modules)`
 
@@ -98,7 +103,7 @@ Go 的标准库提供了 100 多个 `package`, 以支持常见功能，如输入
 
 ---
 
-### package main
+#### package main
 
 `main` 包比较特殊。它定义了一个独立可执行的程序，而不是一个库。在 `main` 里的 `main` *函数*也很特殊，它是整个程序执行时的入口(译注：C 系语言差不多都这样) 。`main` 函数所做的事情就是程序做的。当然了，`main` 函数一般调用其它包里的函数完成很多工作(如：`fmt.Println`) 。
 
@@ -191,7 +196,7 @@ Go 的标准库提供了 100 多个 `package`, 以支持常见功能，如输入
 
 ---
 
-## function
+### function
 
 一个函数的声明由 `func` 关键字、函数名、参数列表、返回值列表以及包含在大括号里的函数体组成。
 
@@ -201,7 +206,7 @@ Go 的标准库提供了 100 多个 `package`, 以支持常见功能，如输入
 
 ---
 
-## 分号的问题
+### 分号的问题
 
 Go 语言不需要在语句或者声明的末尾添加分号，除非一行上有多条语句。实际上，==编译器会主动把特定符号后的换行符转换为分号，因此换行符添加的位置会影响 Go 代码的正确解析==
 
@@ -223,11 +228,9 @@ Go 语言不需要在语句或者声明的末尾添加分号，除非一行上�
 
 ---
 
-## 引号的问题
+### 引号的问题
 
 > [Golang 单引号、双引号和反引号 - 腾讯云开发者社区-腾讯云 (tencent.com)](https://cloud.tencent.com/developer/article/1615783)
->
-> ---
 
 需要注意的是, Go 语言中的单引号, 双引号, 反引号的功能是各不相同的
 
@@ -244,7 +247,7 @@ Go 语言不需要在语句或者声明的末尾添加分号，除非一行上�
 
 ---
 
-## 代码格式
+### 代码格式
 
 Go 语言在代码格式上采取了很强硬的态度。`gofmt`工具把代码格式化为标准格式，并且 `go` 工具中的 `fmt` 子命令会对指定包, 否则默认为当前目录中所有 `.go` 源文件应用 `gofmt` 命令。
 
@@ -401,7 +404,7 @@ func main() {
 
 ---
 
-## 优化上述 echo 程序
+### 优化上述 echo 程序
 
 在上述代码中, 命令行参数的获取是这样进行的:
 
@@ -495,6 +498,241 @@ func main() {
 > TODO:: 加入计时分析, 以直观地对比各优化版本的实际效果
 >
 > > ([1.6 节](https://gopl-zh.github.io/ch1/ch1-06.html)讲解了部分 `time` 包，[11.4 节](https://gopl-zh.github.io/ch11/ch11-04.html)展示了如何写标准测试程序，以得到系统性的性能评测。) 
+
+---
+
+### EX1.1 修改 echo 程序
+
+`练习 1.1`: 修改 `echo` 程序, 使其能够打印 `os.Args[0]`, 即被执行命令本身的名字
+
+相比前面修改的 echo 程序, 只是多数出了个程序本身名字而已, 直接访问数组的首个元素取出数据即可:
+
+```go
+// 练习 1.1： 修改 echo 程序，使其能够打印 os.Args[0]，即被执行命令本身的名字。
+package main
+
+import (
+	"fmt"
+	"os"
+)
+
+func echo_ex_1_1() {
+	fmt.Println("执行命令本身的名字:", os.Args[0])
+	fmt.Println("命令行参数:", os.Args[1:])
+}
+
+func main() {
+	echo_ex_1_1()
+}
+
+```
+
+![image-20240325231745160](http://cdn.ayusummer233.top/DailyNotes/202403252317244.png)
+
+---
+
+### EX1.2 修改 echo 程序
+
+可以利用前面优化 echo 程序中用到的 range 函数取出索引与值遍历输出
+
+```go
+// 练习 1.2: 修改 echo 程序, 使其打印每个参数的索引和值, 每个一行
+package main
+
+import (
+	"fmt"
+	"os"
+)
+
+func echo_ex_1_2() {
+	for i, arg := range os.Args[1:] {
+		fmt.Println("参数索引:", i, "\t参数值:", arg)
+	}
+}
+
+func main() {
+	echo_ex_1_2()
+}
+
+```
+
+![image-20240325232314124](http://cdn.ayusummer233.top/DailyNotes/202403252323188.png)
+
+> 这里我不认为程序名也算是程序参数, 所以从 `os.Args[1]` 开始取得值
+
+> 和之前用 range 修改的 echo 程序区别只在于当时丢弃了索引没有接收
+>
+> ![image-20240325232640476](http://cdn.ayusummer233.top/DailyNotes/202403252326564.png)
+
+---
+
+### EX1.3 测试各版本 echo 程序性能
+
+`练习 1.3`: 做实验测量潜在低效的版本和使用了 `strings.Join` 的版本的运行时间差异
+
+> [1.6 节](https://golang-china.github.io/gopl-zh/ch1/ch1-06.html) 讲解了部分 `time` 包，[11.4 节](https://golang-china.github.io/gopl-zh/ch11/ch11-04.html) 展示了如何写标准测试程序, 以得到系统性的性能评测
+
+```go
+// 练习 1.3: 做实验测量潜在低效的版本和使用了 strings.Join 的版本的运行时间差异
+package main
+
+import (
+	"fmt"
+	"os"
+	"strings"
+	"time"
+)
+
+// 类似于 echo, 默认分隔符为一个空格
+func Print_cmd_args() {
+	fmt.Println("echo 基本写法:")
+	// 定义一个字符串切片, 用于存储命令行参数
+	var getParams string
+	// 分隔符为一个空格
+	var sep string = " "
+	// 第 0 个参数是程序名, 第 1 个参数才是实际传入的首个参数
+	for i := 1; i < len(os.Args); i++ {
+		getParams += os.Args[i] + sep
+	}
+	fmt.Println(getParams)
+}
+
+// 使用切片构造 echo 语句
+func Echo_Slice() {
+	fmt.Println("echo 切片写法:")
+	var getParams, sep string
+	sep = " "
+	for _, arg := range os.Args[1:] {
+		getParams += arg + sep
+	}
+	fmt.Println(getParams)
+}
+
+// 使用 strings.Join() 方法构造 echo 语句
+func Echo_Join() {
+	fmt.Println("echo strings.Join() 写法:")
+	fmt.Println(strings.Join(os.Args[1:], " "))
+}
+
+// 不考虑输出格式, 直接打印 os.Args 切片
+func Echo_direct_print_slice() {
+	fmt.Println("echo 直接打印切片:")
+	fmt.Println(os.Args[1:])
+}
+
+// 定义一个函数类型
+type EchoFuncType func()
+
+// 定义一个函数用于执行一个函数并计算执行时间
+func CalcEchoTime(f EchoFuncType) {
+	// 获取当前时间
+	start := time.Now()
+	f()
+	// 打印函数名(×). Go中没有python/java那种对象的概念, 没有 f.__name__ 类似的写法, 直接 f 会打印函数地址
+	fmt.Println("函数内存地址:", f)
+	// 获取执行时间, 精确到毫秒
+	fmt.Println("执行时间(ms):", time.Since(start).Milliseconds())
+	// 获取执行时间, 精确到纳秒
+	fmt.Println("执行时间(ns):", time.Since(start).Nanoseconds())
+}
+
+
+func main() {
+	CalcEchoTime(Print_cmd_args)
+	CalcEchoTime(Echo_Slice)
+	CalcEchoTime(Echo_Join)
+	CalcEchoTime(Echo_direct_print_slice)
+}
+
+```
+
+![image-20240325235406599](http://cdn.ayusummer233.top/DailyNotes/202403252354663.png)
+
+![image-20240325235444657](http://cdn.ayusummer233.top/DailyNotes/202403252354805.png)
+
+可以看到有些函数执行时间很短, 即便用 ns 也捕捉不到, 因此考虑多次执行 echo, 但是这又涉及到多次执行会刷屏终端, 所以需要统一执行并最终输出执行时间对比, 如下是去除了提示性输出的多次执行时间比较的版本
+
+```go
+// 练习 1.3: 做实验测量潜在低效的版本和使用了 strings.Join 的版本的运行时间差异
+package main
+
+import (
+	"fmt"
+	"os"
+	"strings"
+	"time"
+)
+
+// 类似于 echo, 默认分隔符为一个空格
+func Print_cmd_args() {
+	// 定义一个字符串切片, 用于存储命令行参数
+	var getParams string
+	// 分隔符为一个空格
+	var sep string = " "
+	// 第 0 个参数是程序名, 第 1 个参数才是实际传入的首个参数
+	for i := 1; i < len(os.Args); i++ {
+		getParams += os.Args[i] + sep
+	}
+	fmt.Println(getParams)
+}
+
+// 使用切片构造 echo 语句
+func Echo_Slice() {
+	var getParams, sep string
+	sep = " "
+	for _, arg := range os.Args[1:] {
+		getParams += arg + sep
+	}
+	fmt.Println(getParams)
+}
+
+// 使用 strings.Join() 方法构造 echo 语句
+func Echo_Join() {
+	fmt.Println(strings.Join(os.Args[1:], " "))
+}
+
+// 不考虑输出格式, 直接打印 os.Args 切片
+func Echo_direct_print_slice() {
+	fmt.Println(os.Args[1:])
+}
+
+// 定义一个函数类型
+type EchoFuncType func()
+
+// 执行多个函数指定次数, 并在最后统一打印执行时间对比
+func CompareEchoFunsExecTime(times int, func_names []string, f ...EchoFuncType) {
+	// 定义一个时间切片, 用于存储每个函数的执行时间
+	var execTime []int64
+
+	for _, v := range f {
+		start := time.Now()
+		// 执行函数 times 次
+		for i := 0; i < times; i++ {
+			v()
+		}
+		execTime = append(execTime, time.Since(start).Milliseconds())
+	}
+	fmt.Println("--------------------------------------------------")
+	for i, v := range execTime {
+		fmt.Printf("函数名: %-25v, 执行时间(ms): %v\n", func_names[i], v)
+	}
+}
+
+func main() {
+	func_names := []string{"Print_cmd_args", "Echo_Slice", "Echo_Join", "Echo_direct_print_slice"}
+	CompareEchoFunsExecTime(10000, func_names, Print_cmd_args, Echo_Slice, Echo_Join, Echo_direct_print_slice)
+}
+```
+
+![image-20240326003240222](http://cdn.ayusummer233.top/DailyNotes/202403260032289.png)
+
+多次执行有所波动, 不过大差不差
+
+理论上来讲`Echo_Join` 应该是最快的, 因为它使用了 `strings.Join` 函数来连接字符串, 通常比使用 `+` 运算符连接字符串更高效
+
+在 Go 中, 字符串是不可变的, 这意味着每次使用 `+` 运算符连接字符串时都会创建一个新的字符串, 这涉及到相对耗时的内存分配和复制操作
+
+而 `strings.Join` 函数在内部使用了 `bytes.Buffer`, 它可以动态地增长并添加新的字符串而不需要每次都创建一个新的字符串
 
 ---
 
@@ -706,6 +944,100 @@ func Dup3() {
 > 这里可以直接使用 `os.ReadFile`, 效果是一样的:
 >
 > ![image-20230110230525093](http://cdn.ayusummer233.top/img/202301102305142.png)
+
+---
+
+### EX1.4 出现重复的行时打印文件名
+
+`练习 1.4`:  修改 `dup2`, 出现重复的行时打印文件名称
+
+先看看 Dup2:
+
+```go
+// 读取标准输入或是使用 os.Open 打开各个具名文件，并操作它们
+func Dup2() {
+	counts := make(map[string]int)
+	files := os.Args[1:]
+	if len(files) == 0 {
+		countLines(os.Stdin, counts)
+	} else {
+		for _, arg := range files {
+			f, err := os.Open(arg)
+			if err != nil {
+				fmt.Fprintf(os.Stderr, "dup2: %v\n", err)
+				continue
+			}
+			countLines(f, counts)
+			f.Close()
+		}
+	}
+	for line, n := range counts {
+		if n > 1 {
+			fmt.Printf("%d\t%s\n", n, line)
+		}
+	}
+}
+```
+
+我们要实现题目要求只需要在调用 `countLines` 计算重复行数之后遍历一遍结果判断是否有重复行并对应输出文件名即可
+
+```go
+package main
+
+import (
+	"bufio"
+	"fmt"
+	"os"
+)
+
+// 统计标准输入或文件中重复的行
+func countLines(f *os.File, counts map[string]int) {
+	input := bufio.NewScanner(f)
+	for input.Scan() {
+		// 遇到 -1 时, input.Scan() 退出循环
+		if input.Text() == "-1" {
+			break
+		}
+		counts[input.Text()]++
+	}
+	// 注意: 忽略input.Err()中可能的错误
+}
+
+// 读取标准输入或是使用 os.Open 打开各个具名文件，并操作它们
+// 练习 1.4:  修改 dup2, 出现重复的行时打印文件名称
+func Dup2_alter() {
+	counts := make(map[string]int)
+	files := os.Args[1:]
+	if len(files) == 0 {
+		countLines(os.Stdin, counts)
+	} else {
+		for _, arg := range files {
+			f, err := os.Open(arg)
+			if err != nil {
+				fmt.Fprintf(os.Stderr, "dup2: %v\n", err)
+				continue
+			}
+			countLines(f, counts)
+			// 如果重复行数大于 1, 则打印文件名
+			for line, n := range counts {
+				if n > 1 {
+					fmt.Printf("文件名: %s\t重复次数: %d\t重复行: %s\n", arg, n, line)
+				}
+			}
+			f.Close()
+		}
+	}
+}
+
+func main() {
+	Dup2_alter()
+}
+
+```
+
+![image-20240326004802993](http://cdn.ayusummer233.top/DailyNotes/202403260048108.png)
+
+
 
 ---
 
@@ -1009,7 +1341,7 @@ func PrintResponseBody() {
 >         log.Fatal(err)
 >     }
 >     defer resp.Body.Close()
->            
+>                    
 >     if resp.StatusCode == http.StatusOK {
 >         bodyBytes, err := io.ReadAll(resp.Body)
 >         // if u want to read the body many time
@@ -1035,7 +1367,7 @@ func PrintResponseBody() {
 
 ---
 
-## 练习 1.7 使用 `io.Copy` 替代 `io.outil.ReadAll`
+### 练习 1.7 使用 `io.Copy` 替代 `io.outil.ReadAll`
 
 函数调用 `io.Copy(dst, src)` 会从 src 中读取内容，并将读到的结果写入到 dst 中，使用这个函数替代掉例子中的 `ioutil.ReadAll` 来拷贝响应结构体到 `os.Stdout`，避免申请一个缓冲区(例子中的 b) 来存储。记得处理 `io.Copy` 返回结果中的错误。
 
@@ -1107,7 +1439,7 @@ func PrintResponseBody_Copy() {
 
 ---
 
-## 练习 1.8 补充前缀
+### 练习 1.8 补充前缀
 
 修改 `fetch` 这个范例，如果输入的 url 参数没有 `http://` 前缀的话，为这个 url 加上该前缀。你可能会用到 `strings.HasPrefix` 这个函数。
 
@@ -1165,7 +1497,7 @@ func PrintResponseBody_Copy_Prefix() {
 
 ---
 
-## 练习 1.9 输出状态码
+### 练习 1.9 输出状态码
 
 修改 fetch 打印出 HTTP 协议的状态码，可以从 `resp.Status` 变量得到该状态码。
 
@@ -1218,3 +1550,214 @@ func PrintResponseBody_Copy_Prefix_Status() {
 - `resp.Status` 与 `resp.Body` 不同, 它只是一个字符串, 并非可关闭的资源, 因此不用像后者一样需要考虑关闭以避免资源泄露
 
 ---
+
+## CH1.6 并发获取多个 URL
+
+> [并发获取多个URL - Go语言圣经 (golang-china.github.io)](https://golang-china.github.io/gopl-zh/ch1/ch1-06.html)
+
+Go 语言最有意思并且最新奇的特性就是对并发编程的支持
+
+并发编程是一个大话题, 在第八章和第九章中会专门讲到
+
+这里我们只浅尝辄止地来体验一下 Go 语言里的 `goroutine` 和 `channel`
+
+在 Go 语言中, goroutine 是一个轻量级的线程, 由 Go 运行时管理, 是 Go 语言并发设计的核心
+
+通道(channel)是一种特殊的类型, 用于在不同的 goroutine 之间进行通信; 可以把它想象成一个管道, 数据可以从一端发送, 然后从另一端接收;  这种机制可以让我们在不同的 goroutine 之间安全地传递数据
+
+---
+
+下面的例子 `fetchall`, 和前面小节的 `fetch` 程序所要做的工作基本一致
+
+`fetchall` 的特别之处在于它会同时去获取所有的URL, 所以这个程序的总执行时间不会超过执行时间最长的那一个任务, 前面的 `fetch` 程序执行时间则是所有任务执行时间之和
+
+`fetchall` 程序只会打印获取的内容大小和经过的时间, 不会像之前那样打印获取的内容
+
+```go
+// Fetchall fetches URLs in parallel and reports their times and sizes.
+package main
+
+import (
+	"fmt"
+	"io"
+	"net/http"
+	"os"
+	"time"
+)
+
+func main() {
+	start := time.Now()
+	ch := make(chan string)
+	for _, url := range os.Args[1:] {
+		go fetch(url, ch) // start a goroutine
+	}
+	for range os.Args[1:] {
+		fmt.Println(<-ch) // receive from channel ch
+	}
+	fmt.Printf("%.2fs elapsed\n", time.Since(start).Seconds())
+}
+
+func fetch(url string, ch chan<- string) {
+	start := time.Now()
+	resp, err := http.Get(url)
+	if err != nil {
+		ch <- fmt.Sprint(err) // send to channel ch
+		return
+	}
+	nbytes, err := io.Copy(io.Discard, resp.Body)
+	resp.Body.Close() // don't leak resources
+	if err != nil {
+		ch <- fmt.Sprintf("while reading %s: %v", url, err)
+		return
+	}
+	secs := time.Since(start).Seconds()
+	ch <- fmt.Sprintf("%.2fs  %7d  %s", secs, nbytes, url)
+}
+
+```
+
+```powershell
+ go build .\main.go
+.\main.exe https://golang.org http://gopl.io https://godoc.org
+```
+
+![image-20240326013607600](http://cdn.ayusummer233.top/DailyNotes/202403260136666.png)
+
+`goroutine` 是一种函数的并发执行方式, `channel` 用来在 `goroutine` 之间进行参数传递
+
+main 函数本身也运行在一个 goroutine 中，而 `go function` 则表示创建一个新的 goroutine, 并在这个新的 goroutine 中执行这个函数
+
+---
+
+main 函数中用 make 函数创建了一个传递 string 类型参数的 channel,
+
+对每一个命令行参数, 我们都用 go 这个关键字来创建一个 goroutine, 并且让函数在这个 goroutine 异步执行 `http.Get` 方法
+
+> `http.Get` 函数本身是同步执行的, 当调用 `http.Get` 时, 它会阻塞当前的 goroutine, 直到 HTTP 请求完成并返回响应。
+>
+> 不过这里 `http.Get` 是在一个新的 goroutine 中被调用的; 这意味着对每个 URL 的 HTTP 请求都是并发执行的
+>
+> 也就是说尽管每个单独的 `http.Get` 调用都是阻塞的, 但由于它们在不同的 goroutine 中执行, 所以整体上看起来是异步的
+
+这个程序里的 `io.Copy` 会把响应的Body内容拷贝到 `ioutil.Discard` 输出流中
+
+> 译注：可以把这个变量看作一个垃圾桶, 可以向里面写一些不需要的数据, 因为我们需要这个方法返回的字节数, 但是又不想要其内容
+>
+> PS: 这里由于 `ioutil` 已经在 `go.1.16` 版本弃用了, 使用 `io.Discard` 来替换 `ioutil.Discard`
+
+每当请求返回内容时, fetch函数都会往 ch 这个 channel 里写入一个字符串, 由 main 函数里的第二个 for 循环来处理并打印 channel 里的这个字符串
+
+---
+
+当一个 goroutine 尝试在一个 channel 上做 send 或者 receive 操作时, 这个 goroutine 会阻塞在调用处, 直到另一个 goroutine 从这个 channel 里接收或者写入值, 这样两个 goroutine 才会继续执行 channel 操作之后的逻辑
+
+在这个例子中, 每一个 fetch 函数在执行时都会往 channel 里发送一个值 `ch <- expression`,  主函数负责接收这些值(<-ch)
+
+这个程序中我们用 main 函数来完整地处理/接收所有 fetch 函数传回的字符串, 可以避免因为有两个 goroutine 同时完成而使得其输出交错在一起的危险
+
+---
+
+### EX1.10 
+
+`练习 1.10`: 找一个数据量比较大的网站, 用本小节中的程序调研网站的缓存策略, 对每个URL执行两遍请求, 查看两次时间是否有较大的差别, 并且每次获取到的响应内容是否一致; 修改本节中的程序, 将响应结果输出到文件, 以便于进行对比
+
+根据题目描述, 需要修改的地方也就是两处, 一处是遍历 URL 参数时对于每个 URL 新建两次 goroutine, 并对 print 做对应处理, 另一个是将 body 从原来的丢弃变为写入到文件
+
+```go
+// 练习 1.10: 找一个数据量比较大的网站, 用本小节中的程序调研网站的缓存策略, 对每个URL执行两遍请求, 查看两次时间是否有较大的差别, 并且每次获取到的响应内容是否一致
+// 修改本节中的程序, 将响应结果输出到文件, 以便于进行对比
+
+package main
+
+import (
+	"fmt"
+	"io"
+	"net/http"
+	"os"
+	"strings"
+	"time"
+)
+
+func fetch(url string, ch chan<- string, suffix string) {
+	start := time.Now()
+
+	// Create file
+	fileName := fmt.Sprintf("fetchall_%s_%s_%s.txt", url, time.Now().Format("20060102_150405"), suffix)
+	fileName = strings.ReplaceAll(fileName, ":", "_")
+	fileName = strings.ReplaceAll(fileName, "/", "_")
+	fileName = strings.ReplaceAll(fileName, ".", "_")
+	file, err := os.Create(fileName)
+	if err != nil {
+		ch <- fmt.Sprint(err) // send to channel ch
+		return
+	}
+
+	resp, err := http.Get(url)
+	if err != nil {
+		ch <- fmt.Sprint(err) // send to channel ch
+		return
+	}
+
+	// 将响应结果输出到文件
+	nbytes, err := io.Copy(file, resp.Body)
+	resp.Body.Close() // don't leak resources
+	if err != nil {
+		ch <- fmt.Sprintf("while reading %s: %v", url, err)
+		return
+	}
+	secs := time.Since(start).Seconds()
+	ch <- fmt.Sprintf("%.2fs  %7d  %s", secs, nbytes, url)
+
+	file.WriteString(fmt.Sprintf("%.2fs  %7d  %s", secs, nbytes, url))
+	defer file.Close()
+
+}
+
+func main() {
+	start := time.Now()
+	ch := make(chan string)
+	for _, url := range os.Args[1:] {
+		go fetch(url, ch, "1") // start a goroutine
+		go fetch(url, ch, "2") // start a goroutine
+	}
+	for range os.Args[1:] {
+		fmt.Println(<-ch) // receive from channel ch
+		fmt.Println(<-ch) // receive from channel ch
+	}
+	fmt.Printf("%.2fs elapsed\n", time.Since(start).Seconds())
+}
+
+```
+
+![image-20240326020121777](http://cdn.ayusummer233.top/DailyNotes/202403260201831.png)
+
+![image-20240326020129990](http://cdn.ayusummer233.top/DailyNotes/202403260201058.png)
+
+> 至于分析网站的缓存策略这个倒是不太能看出来怎么处理
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
