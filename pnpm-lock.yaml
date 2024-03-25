@@ -1,4 +1,4 @@
-lockfileVersion: '6.1'
+lockfileVersion: '6.0'
 
 settings:
   autoInstallPeers: true
@@ -18,8 +18,8 @@ devDependencies:
     specifier: 2.0.0-rc.18
     version: 2.0.0-rc.18(vuepress@2.0.0-rc.8)
   katex:
-    specifier: ^0.16.9
-    version: 0.16.9
+    specifier: ^0.16.10
+    version: 0.16.10
   mermaid:
     specifier: ^10.8.0
     version: 10.8.0
@@ -34,7 +34,7 @@ devDependencies:
     version: 2.0.0-rc.27(vuepress@2.0.0-rc.8)
   vuepress-theme-hope:
     specifier: 2.0.0-rc.27
-    version: 2.0.0-rc.27(@vuepress/plugin-feed@2.0.0-rc.18)(katex@0.16.9)(markdown-it@14.0.0)(mermaid@10.8.0)(vuepress-plugin-search-pro@2.0.0-rc.27)(vuepress@2.0.0-rc.8)
+    version: 2.0.0-rc.27(@vuepress/plugin-feed@2.0.0-rc.18)(katex@0.16.10)(markdown-it@14.0.0)(mermaid@10.8.0)(vuepress-plugin-search-pro@2.0.0-rc.27)(vuepress@2.0.0-rc.8)
 
 packages:
 
@@ -492,7 +492,7 @@ packages:
       upath: 2.0.1
     dev: true
 
-  /@mdit/plugin-katex@0.8.0(katex@0.16.9)(markdown-it@14.0.0):
+  /@mdit/plugin-katex@0.8.0(katex@0.16.10)(markdown-it@14.0.0):
     resolution: {integrity: sha512-u7CX3Xv5nuc2bu2sHrk1nil83/9ETKTBMmy0icbW8zlqBC0ykLo1xTCEBXmdhXtnJtPi9f/wUZVs6iMZrJzbNg==}
     engines: {node: '>= 18'}
     peerDependencies:
@@ -507,7 +507,7 @@ packages:
       '@mdit/plugin-tex': 0.8.0(markdown-it@14.0.0)
       '@types/katex': 0.16.7
       '@types/markdown-it': 13.0.7
-      katex: 0.16.9
+      katex: 0.16.10
       markdown-it: 14.0.0
     dev: true
 
@@ -2279,8 +2279,8 @@ packages:
       graceful-fs: 4.2.11
     dev: true
 
-  /katex@0.16.9:
-    resolution: {integrity: sha512-fsSYjWS0EEOwvy81j3vRA8TEAhQhKiqO+FQaKWp0m39qwOzHVBgAUBIXWj1pB+O2W3fIpNa6Y9KSKCVbfPhyAQ==}
+  /katex@0.16.10:
+    resolution: {integrity: sha512-ZiqaC04tp2O5utMsl2TEZTXxa6WSC4yo0fv5ML++D3QZv/vx2Mct0mTlRx3O+uUkjfuAgOkzsCmq5MiUEsDDdA==}
     hasBin: true
     dependencies:
       commander: 8.3.0
@@ -3291,7 +3291,7 @@ packages:
       - typescript
     dev: true
 
-  /vuepress-plugin-md-enhance@2.0.0-rc.27(katex@0.16.9)(markdown-it@14.0.0)(mermaid@10.8.0)(vuepress@2.0.0-rc.8):
+  /vuepress-plugin-md-enhance@2.0.0-rc.27(katex@0.16.10)(markdown-it@14.0.0)(mermaid@10.8.0)(vuepress@2.0.0-rc.8):
     resolution: {integrity: sha512-ZU+mR3Uy77faUfINnA0sgG/Ezbu2VAY/XnFmPGfr6KFYYWzyhH2rv8W7NvGslR4gri1wxHnVZ3ImP7rhTYh9NQ==}
     engines: {node: '>=18.16.0', npm: '>=8', pnpm: '>=7', yarn: '>=2'}
     peerDependencies:
@@ -3354,7 +3354,7 @@ packages:
       '@mdit/plugin-img-mark': 0.8.0(markdown-it@14.0.0)
       '@mdit/plugin-img-size': 0.8.0(markdown-it@14.0.0)
       '@mdit/plugin-include': 0.8.0(markdown-it@14.0.0)
-      '@mdit/plugin-katex': 0.8.0(katex@0.16.9)(markdown-it@14.0.0)
+      '@mdit/plugin-katex': 0.8.0(katex@0.16.10)(markdown-it@14.0.0)
       '@mdit/plugin-mark': 0.8.0(markdown-it@14.0.0)
       '@mdit/plugin-mathjax': 0.8.0(markdown-it@14.0.0)
       '@mdit/plugin-stylize': 0.8.0(markdown-it@14.0.0)
@@ -3369,7 +3369,7 @@ packages:
       '@vueuse/core': 10.9.0(vue@3.4.21)
       balloon-css: 1.2.0
       js-yaml: 4.1.0
-      katex: 0.16.9
+      katex: 0.16.10
       mermaid: 10.8.0
       vue: 3.4.21
       vuepress: 2.0.0-rc.8(@vuepress/bundler-vite@2.0.0-rc.8)(vue@3.4.21)
@@ -3446,7 +3446,7 @@ packages:
       - typescript
     dev: true
 
-  /vuepress-theme-hope@2.0.0-rc.27(@vuepress/plugin-feed@2.0.0-rc.18)(katex@0.16.9)(markdown-it@14.0.0)(mermaid@10.8.0)(vuepress-plugin-search-pro@2.0.0-rc.27)(vuepress@2.0.0-rc.8):
+  /vuepress-theme-hope@2.0.0-rc.27(@vuepress/plugin-feed@2.0.0-rc.18)(katex@0.16.10)(markdown-it@14.0.0)(mermaid@10.8.0)(vuepress-plugin-search-pro@2.0.0-rc.27)(vuepress@2.0.0-rc.8):
     resolution: {integrity: sha512-6/TqFrehr/hk/I5SGmOXVTY0urTvKNaifCuP1v2o8eVmdnYlnFzGHhQk89yZz0zeza54kzYJAUkQbqO0Fc6J8A==}
     engines: {node: '>=18.16.0', npm: '>=8', pnpm: '>=7', yarn: '>=2'}
     peerDependencies:
@@ -3506,7 +3506,7 @@ packages:
       vuepress: 2.0.0-rc.8(@vuepress/bundler-vite@2.0.0-rc.8)(vue@3.4.21)
       vuepress-plugin-comment2: 2.0.0-rc.27(vuepress@2.0.0-rc.8)
       vuepress-plugin-components: 2.0.0-rc.27(vuepress@2.0.0-rc.8)
-      vuepress-plugin-md-enhance: 2.0.0-rc.27(katex@0.16.9)(markdown-it@14.0.0)(mermaid@10.8.0)(vuepress@2.0.0-rc.8)
+      vuepress-plugin-md-enhance: 2.0.0-rc.27(katex@0.16.10)(markdown-it@14.0.0)(mermaid@10.8.0)(vuepress@2.0.0-rc.8)
       vuepress-plugin-sass-palette: 2.0.0-rc.27(vuepress@2.0.0-rc.8)
       vuepress-plugin-search-pro: 2.0.0-rc.27(vuepress@2.0.0-rc.8)
       vuepress-shared: 2.0.0-rc.27(vuepress@2.0.0-rc.8)

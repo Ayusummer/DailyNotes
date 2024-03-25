@@ -21,7 +21,7 @@
     "@vuepress/plugin-feed": "2.0.0-rc.18",
     "@vuepress/plugin-seo": "2.0.0-rc.18",
     "@vuepress/plugin-sitemap": "2.0.0-rc.18",
-    "katex": "^0.16.9",
+    "katex": "^0.16.10",
     "mermaid": "^10.8.0",
     "vue": "^3.4.21",
     "vuepress": "2.0.0-rc.8",
