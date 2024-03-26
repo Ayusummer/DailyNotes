@@ -23,6 +23,16 @@
 		- [练习 1.8 补充前缀](#练习-18-补充前缀)
 		- [练习 1.9 输出状态码](#练习-19-输出状态码)
 	- [CH1.6 并发获取多个 URL](#ch16-并发获取多个-url)
+		- [EX1.10](#ex110)
+	- [CH1.7 Web服务](#ch17-web服务)
+		- [EX1.12](#ex112)
+	- [CH1.8 本章要点](#ch18-本章要点)
+		- [控制流](#控制流)
+		- [命名类型](#命名类型)
+		- [指针](#指针)
+		- [方法和接口](#方法和接口)
+		- [包(packages)](#包packages)
+		- [注释](#注释)
 
 
 ---
@@ -1341,7 +1351,7 @@ func PrintResponseBody() {
 >         log.Fatal(err)
 >     }
 >     defer resp.Body.Close()
->                            
+>                                    
 >     if resp.StatusCode == http.StatusOK {
 >         bodyBytes, err := io.ReadAll(resp.Body)
 >         // if u want to read the body many time
@@ -1797,10 +1807,481 @@ func main() {
 
 一种比较实用的修改是为访问的 url 添加某种状态; 比如下面这个版本输出了同样的内容, 但是会对请求的次数进行计算
 
-对URL的请求结果会包含各种 URL 被访问的总次数，直接对 /count 这个 URL 的访问要除外
+对URL的请求结果会包含各种 URL 被访问的总次数，直接对 `/count` 这个 URL 的访问要除外
 
 ```go
+// Server2 is a minimal "echo" and counter server.
+package main
+
+import (
+	"fmt"
+	"log"
+	"net/http"
+	"sync"
+)
+
+var mu sync.Mutex
+var count int
+
+// handler echoes the Path component of the requested URL.
+func handler(w http.ResponseWriter, r *http.Request) {
+	mu.Lock()
+	count++
+	mu.Unlock()
+	fmt.Fprintf(w, "URL.Path = %q\n", r.URL.Path)
+}
+
+// counter echoes the number of calls so far.
+func counter(w http.ResponseWriter, r *http.Request) {
+	mu.Lock()
+	fmt.Fprintf(w, "Count %d\n", count)
+	mu.Unlock()
+}
+
+func main() {
+	http.HandleFunc("/", handler)
+	http.HandleFunc("/count", counter)
+	log.Fatal(http.ListenAndServe("localhost:8000", nil))
+}
+
 ```
+
+![image-20240327000938064](http://cdn.ayusummer233.top/DailyNotes/202403270009131.png)
+
+这个服务器有两个请求处理函数, 根据请求的 url 不同会调用不同的函数
+
+- 对 `/count` 这个 url 的请求会调用到 `counter` 这个函数
+- 其它的 url 都会调用默认的处理函数
+
+如果你的请求 pattern 是以 `/` 结尾, 那么所有以该 url 为前缀的 url 都会被这条规则匹配
+
+在这些代码的背后, 服务器每一次接收请求处理时都会另起一个 goroutine, 这样服务器就可以同一时间处理多个请求
+
+然而在并发情况下, 假如真的有两个请求同一时刻去更新 count, 那么这个值可能并不会被正确地增加
+
+这个程序可能会引发一个严重的bug: 竞态条件(参见9.1)
+
+为了避免这个问题, 我们必须保证每次修改变量的最多只能有一个 goroutine, 这也就是代码里的 `mu.Lock()` 和`mu.Unlock()` 调用将修改 count 的所有行为包在中间的目的(第九章中我们会进一步讲解共享变量)
+
+> `sync.Mutex` 是 Go 语言标准库中的一个结构体, 用于创建互斥锁
+>
+> 互斥锁(Mutex)是并发编程中用于保护共享资源的一种方式
+>
+> 当有多个 goroutine 需要访问同一资源时, 互斥锁可以确保在同一时间只有一个 goroutine 能够访问该资源, 从而避免竞态条件。
+>
+> 在 Go 中可以使用 `mu.Lock()` 来锁定互斥锁, 并使用 `mu.Unlock()` 来解锁; 这样，在 `mu.Lock()` 和 `mu.Unlock()` 之间的代码只能由一个 goroutine 同时执行
+
+---
+
+下面是一个更为丰富的例子, `handler` 函数会把请求的 http 头和请求的 form 数据都打印出, 这样可以使检查和调试这个服务更为方便:
+
+```go
+package main
+
+import (
+	"fmt"
+	"log"
+	"net/http"
+)
+
+// handler echoes the HTTP request.
+func handler(w http.ResponseWriter, r *http.Request) {
+	fmt.Fprintf(w, "%s %s %s\n", r.Method, r.URL, r.Proto)
+	for k, v := range r.Header {
+		fmt.Fprintf(w, "Header[%q] = %q\n", k, v)
+	}
+	fmt.Fprintf(w, "Host = %q\n", r.Host)
+	fmt.Fprintf(w, "RemoteAddr = %q\n", r.RemoteAddr)
+	if err := r.ParseForm(); err != nil {
+		log.Print(err)
+	}
+	for k, v := range r.Form {
+		fmt.Fprintf(w, "Form[%q] = %q\n", k, v)
+	}
+}
+
+func main() {
+	http.HandleFunc("/", handler)
+	log.Fatal(http.ListenAndServe("localhost:8000", nil))
+}
+
+```
+
+![image-20240327001814495](http://cdn.ayusummer233.top/DailyNotes/202403270018561.png)
+
+可以看到这里的 ParseForm 被嵌套在了 if 语句中; Go语言允许这样的一个简单的语句结果作为局部的变量声明出现在if语句的最前面, 这一点对错误处理很有用处
+
+我们还可以像下面这样写(当然看起来就长了一些):
+
+```go
+err := r.ParseForm()
+if err != nil {
+    log.Print(err)
+}
+```
+
+用 if 和 ParseForm 结合可以让代码更加简单, 并且可以限制 err 这个变量的作用域, 这么做是很不错的; 我们会在2.7节中讲解作用域
+
+---
+
+在这些程序中, 我们看到了很多不同的类型被输出到标准输出流中; 比如前面的
+
+-  `fetch` 程序, 把HTTP的响应数据拷贝到了 `os.Stdout`
+- `lissajous` 程序里我们输出的是一个文件
+- `fetchall` 程序则完全忽略到了 HTTP 的响应 Body, 只是计算了一下响应Body的大小, 这个程序中把响应Body拷贝到了 `ioutil.Discard(go.1.16后为io.Discard)`
+- 在本节的 web 服务器程序中则是用 `fmt.Fprintf` 直接写到了 `http.ResponseWriter` 中
+
+尽管三种具体的实现流程并不太一样, 他们都实现一个共同的接口, 即当它们被调用需要一个标准流输出时都可以满足; 这个接口叫作 `io.Writer`, 在 7.1 节中会详细讨论
+
+Go 语言的接口机制会在第 7 章中讲解, 为了在这里简单说明接口能做什么, 让我们简单地将这里的 web 服务器和之前写的 lissajous 函数结合起来, 这样GIF动画可以被写到 HTTP的 客户端, 而不是之前的标准输出流
+
+只要在 web 服务器的代码里加入下面这几行:
+
+```go
+handler := func(w http.ResponseWriter, r *http.Request) {
+    lissajous(w)
+}
+http.HandleFunc("/", handler)
+```
+
+或者另一种等价形式:
+
+```go
+http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+    lissajous(w)
+})
+```
+
+HandleFunc 函数的第二个参数是一个函数的字面值, 也就是一个在使用时定义的匿名函数; 这些内容我们会在5.6节中讲解
+
+```go
+package main
+
+import (
+	"image"
+	"image/color"
+	"image/gif"
+	"io"
+	"log"
+	"math"
+	"math/rand"
+	"net/http"
+	"os"
+	"time"
+)
+
+var palette = []color.Color{color.White, color.Black}
+
+const (
+	whiteIndex = 0 // first color in palette
+	blackIndex = 1 // next color in palette
+)
+
+func LissajousMain() {
+	rand.Seed(time.Now().UTC().UnixNano())
+	lissajous(os.Stdout)
+}
+
+func lissajous(out io.Writer) {
+	const (
+		cycles  = 5     // number of complete x oscillator revolutions
+		res     = 0.001 // angular resolution
+		size    = 100   // image canvas covers [-size..+size]
+		nframes = 64    // number of animation frames
+		delay   = 8     // delay between frames in 10ms units
+	)
+	/* rand.Float64() 返回一个 64 位也即小数点后保留 16 位的浮点数 f，
+	0.0 <= f < 1.0*/
+	freq := rand.Float64() * 3.0 // relative frequency of y oscillator
+	anim := gif.GIF{LoopCount: nframes}
+	phase := 0.0 // phase difference
+	for i := 0; i < nframes; i++ {
+		rect := image.Rect(0, 0, 2*size+1, 2*size+1)
+		img := image.NewPaletted(rect, palette)
+		for t := 0.0; t < cycles*2*math.Pi; t += res {
+			x := math.Sin(t)
+			y := math.Sin(t*freq + phase)
+			img.SetColorIndex(size+int(x*size+0.5), size+int(y*size+0.5),
+				blackIndex)
+		}
+		phase += 0.1
+		anim.Delay = append(anim.Delay, delay)
+		anim.Image = append(anim.Image, img)
+	}
+	// EncodeAll 函数将生成的  gif anim 写入到 out 中
+	gif.EncodeAll(out, &anim) // NOTE: ignoring encoding errors
+}
+
+func main() {
+	rand.Seed(time.Now().UTC().UnixNano())
+	handler := func(w http.ResponseWriter, r *http.Request) {
+		lissajous(w)
+	}
+	http.HandleFunc("/", handler)
+	log.Fatal(http.ListenAndServe("localhost:8000", nil))
+}
+
+```
+
+做完这些修改之后, 在浏览器里访问 `http://localhost:8000` 
+
+每次载入这个页面都可以看到一个像图1.4那样的动画
+
+![image-20240327003219976](http://cdn.ayusummer233.top/DailyNotes/202403270032084.png)
+
+---
+
+### EX1.12
+
+`练习 1.12`: 修改 Lissajour 服务, 从URL读取变量, 比如你可以访问 `http://localhost:8000/?cycles=20` 这个URL, 这样访问可以将程序里的 cycles 默认的 5 修改为 20
+
+字符串转换为数字可以调用 `strconv.Atoi` 函数; 可以在 godoc 里查看 `strconv.Atoi` 的详细说明
+
+---
+
+根据题目要求, 需要处理的点有两个
+- 一个是取出 URL Query 参数 cycles 的值
+- 另一个是修改 lisssajous 函数, 新增一个 cycles 参数来接收 URL Query 参数 cycles 的值并对应调整函数内的相关代码
+
+实现具体如下:
+
+```go
+package main
+
+import (
+	"image"
+	"image/color"
+	"image/gif"
+	"io"
+	"log"
+	"math"
+	"math/rand"
+	"net/http"
+	"strconv"
+	"time"
+)
+
+var palette = []color.Color{color.White, color.Black}
+
+const (
+	whiteIndex = 0 // first color in palette
+	blackIndex = 1 // next color in palette
+)
+
+func lissajous(out io.Writer, cyclesInt int) {
+	const (
+		res     = 0.001 // angular resolution
+		size    = 100   // image canvas covers [-size..+size]
+		nframes = 64    // number of animation frames
+		delay   = 8     // delay between frames in 10ms units
+	)
+	/* rand.Float64() 返回一个 64 位也即小数点后保留 16 位的浮点数 f，
+	0.0 <= f < 1.0*/
+	freq := rand.Float64() * 3.0 // relative frequency of y oscillator
+	anim := gif.GIF{LoopCount: nframes}
+	phase := 0.0 // phase difference
+	for i := 0; i < nframes; i++ {
+		rect := image.Rect(0, 0, 2*size+1, 2*size+1)
+		img := image.NewPaletted(rect, palette)
+		cycles := float64(cyclesInt)
+		for t := 0.0; t < cycles*2*math.Pi; t += res {
+			x := math.Sin(t)
+			y := math.Sin(t*freq + phase)
+			img.SetColorIndex(size+int(x*size+0.5), size+int(y*size+0.5),
+				blackIndex)
+		}
+		phase += 0.1
+		anim.Delay = append(anim.Delay, delay)
+		anim.Image = append(anim.Image, img)
+	}
+	// EncodeAll 函数将生成的  gif anim 写入到 out 中
+	gif.EncodeAll(out, &anim) // NOTE: ignoring encoding errors
+}
+
+func handler(w http.ResponseWriter, r *http.Request) {
+	rand.Seed(time.Now().UTC().UnixNano())
+	// 从 r 中接收 URL Query 参数 cycles
+	cyclesStr := r.URL.Query().Get("cycles")
+	cyclesInt, err := strconv.Atoi(cyclesStr)
+	if err != nil {
+		log.Print(err)
+	}
+	lissajous(w, cyclesInt)
+}
+
+func main() {
+	http.HandleFunc("/", handler)
+	log.Fatal(http.ListenAndServe("localhost:8000", nil))
+}
+
+```
+
+![image-20240327005307170](http://cdn.ayusummer233.top/DailyNotes/202403270053365.png)
+
+---
+
+## CH1.8 本章要点
+
+本章对 Go 语言做了一些介绍, Go 语言很多方面在有限的篇幅中无法覆盖到
+
+本节会把没有讲到的内容也做一些简单的介绍, 这样读者在读到完整的内容之前, 可以有个简单的印象
+
+---
+
+### 控制流
+
+`控制流`: 在本章我们只介绍了 if 控制和 for, 但是没有提到 switch 多路选择
+
+这里是一个简单的 `switch` 的例子:
+
+```go
+switch coinflip() {
+case "heads":
+    heads++
+case "tails":
+    tails++
+default:
+    fmt.Println("landed on edge!")
+}
+
+```
+
+在翻转硬币的时候，例子里的 coinflip 函数返回几种不同的结果, 每一个 case 都会对应一个返回结果
+
+> 这里需要注意, Go语言并不需要显式地在每一个 case 后写 break, 语言默认执行完 case 后的逻辑语句会自动退出
+>
+> 当然, 如果想要相邻的几个 case 都执行同一逻辑的话, 需要自己显式地写上一个 `fallthrough` 语句来覆盖这种默认行为(不过 `fallthrough` 语句在一般的程序中很少用到)
+
+---
+
+Go 语言里的 switch 还可以不带操作对象, 可以直接罗列多种条件, 像其它语言里面的多个if else一样
+
+> 译注: switch 不带操作对象时默认用 true 值代替, 然后将每个 case 的表达式和 true 值进行比较
+
+下面是一个例子:
+
+```go
+func Signum(x int) int {
+    switch {
+    case x > 0:
+        return +1
+    default:
+        return 0
+    case x < 0:
+        return -1
+    }
+}
+```
+
+这种形式叫做无 `tag switch(tagless switch)`; 这和 switch true是等价的
+
+---
+
+像 for 和 if 控制语句一样, switch 也可以紧跟一个简短的变量声明, 一个自增表达式, 赋值语句, 或者一个函数调用(译注: 比其它语言丰富)
+
+---
+
+break 和 continue 语句会改变控制流
+
+和其它语言中的 break 和 continue 一样
+
+- break 会中断当前的循环, 并开始执行循环之后的内容
+- 而 continue 会跳过当前循环, 并开始执行下一次循环
+
+这两个语句除了可以控制 for 循环, 还可以用来控制 switch 和 select 语句(之后会讲到)
+
+在 1.3 节中我们看到, continue 会跳过内层的循环, 如果我们想跳过的是更外层的循环的话, 我们可以在相应的位置加上 label, 这样 break 和 continue 就可以根据我们的想法来 continue 和 break 任意循环; 这看起来甚至有点像 goto 语句的作用了
+
+当然, 一般程序员也不会用到这种操作; 这两种行为更多地被用到机器生成的代码中
+
+> 滥用 goto 会导致代码阅读分析困难, 是坏文明(╬▔皿▔)╯
+
+---
+
+### 命名类型
+
+类型声明使得我们可以很方便地给一个特殊类型一个名字
+
+因为 struct 类型声明通常非常地长, 所以我们总要给这种 struct 取一个名字; 本章中就有这样一个例子, 二维点类型:
+
+```go
+type Point struct {
+    X, Y int
+}
+var p Point
+```
+
+类型声明和命名类型会在第二章中介绍
+
+---
+
+### 指针
+
+Go语言提供了指针, 指针是一种直接存储了变量的内存地址的数据类型
+
+在其它语言中, 比如C语言, 指针操作是完全不受约束的; 在另外一些语言中, 指针一般被处理为“引用”, 除了到处传递这些指针之外, 并不能对这些指针做太多事情
+
+Go 语言在这两种范围中取了一种平衡: 指针是可见的内存地址, `&` 操作符可以返回一个变量的内存地址, 并且 `*` 操作符可以获取指针指向的变量内容
+
+但是在 **Go语言里没有指针运算**, 也就是不能像 c 语言里可以对指针进行加或减操作, 我们会在2.3.2中进行详细介绍
+
+---
+
+### 方法和接口
+
+方法是和命名类型关联的一类函数
+
+Go 语言里比较特殊的是方法可以被关联到任意一种命名类型; 在第六章我们会详细地讲方法
+
+接口是一种抽象类型, 这种类型可以让我们以同样的方式来处理不同的固有类型, 不用关心它们的具体实现, 而只需要关注它们提供的方法; 第七章中会详细说明这些内容。
+
+---
+
+### 包(packages)
+
+Go 语言提供了一些很好用的 package, 并且这些 package 是可以扩展的; go 语言社区已经创造并且分享了很多很多, 所以Go语言编程大多数情况下就是用已有的 package 来写我们自己的代码
+
+通过这本书, 我们会讲解一些重要的标准库内的 package, 但是还是有很多限于篇幅没有去说明, 因为我们没法在这样的厚度的书里去做一部代码大全
+
+在你开始写一个新程序之前, 最好先去检查一下是不是已经有了现成的库可以帮助你更高效地完成这件事情
+
+你可以在 `https://golang.org/pkg` 和 `https://godoc.org` 中找到标准库和社区写的 package
+
+godoc 这个工具可以让你直接在本地命令行阅读标准库的文档
+
+比如下面这个例子:
+
+![image-20240327010920064](http://cdn.ayusummer233.top/DailyNotes/202403270109208.png)
+
+----
+
+### 注释
+
+我们之前已经提到过了在源文件的开头写的注释是这个源文件的文档, 在每一个函数之前写一个说明函数行为的注释也是一个好习惯
+
+这些惯例很重要, 因为这些内容会被像 godoc 这样的工具检测到, 并且在执行命令时显示这些注释
+
+具体可以参考 10.7.4
+
+多行注释可以用 `/* ... */` 来包裹, 和其它大多数语言一样, 在文件一开头的注释一般都是这种形式, 或者一大段的解释性的注释文字也会被这符号包住, 来避免每一行都需要加 `//`
+
+在注释中 `//` 和 `/*` 是没什么意义的, 所以不要在注释中再嵌入注释
+
+---
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
