@@ -1341,7 +1341,7 @@ func PrintResponseBody() {
 >         log.Fatal(err)
 >     }
 >     defer resp.Body.Close()
->                    
+>                            
 >     if resp.StatusCode == http.StatusOK {
 >         bodyBytes, err := io.ReadAll(resp.Body)
 >         // if u want to read the body many time
@@ -1735,9 +1735,72 @@ func main() {
 
 > 至于分析网站的缓存策略这个倒是不太能看出来怎么处理
 
+---
+
+## CH1.7 Web服务
+
+Go 语言的内置库使得写一个类似 fetch 的 web 服务器变得异常地简单
+
+在本节中, 我们会展示一个微型服务器, 这个服务器的功能是返回当前用户正在访问的URL
+
+比如用户访问的是 `http://localhost:8000/hello`, 那么响应是 `URL.Path = "hello"`
+
+```go
+// Server1 is a minimal "echo" server.
+package main
+
+import (
+    "fmt"
+    "log"
+    "net/http"
+)
+
+// handler echoes the Path component of the request URL r.
+func handler(w http.ResponseWriter, r *http.Request) {
+    fmt.Fprintf(w, "URL.Path = %q\n", r.URL.Path)
+}
+
+func main() {
+    http.HandleFunc("/", handler) // each request calls handler
+    log.Fatal(http.ListenAndServe("localhost:8000", nil))
+}
+
+```
+
+![image-20240326162202591](http://cdn.ayusummer233.top/DailyNotes/202403261622670.png)
+
+- `http.HandleFunc("/", handler)` 将路径 ``/`` 映射到 `handler` 函数
+
+  这意味着当有请求发送到根路径 `/` 时, 将调用 `handler` 函数来处理该请求
+
+- `http.ListenAndServe("localhost:8000", nil)`: 启动一个 HTTP 服务器, 监听本地的 8000 端口
+
+  接受两个参数: 服务器地址和处理器
+
+  处理器参数为 `nil` 表示使用默认的多路复用器 `DefaultServeMux`, 前面已经通过 `http.HandleFunc("/", handler)` 进行了处理器的设置, 因此将根路径 "/" 映射到了 `handler` 函数
+
+  如果出现任何错误，`log.Fatal` 会记录错误并退出程序。
+
+  > 在 `net/http` 包中, `DefaultServeMux` 是一个默认的多路复用器(路由器), 用于处理 HTTP 请求和路由它们到相应的处理器函数
+  > 它是一个全局变量, 代表了一个默认的 HTTP 请求路由器
+  >
+  > 多路复用器(ServeMux)是一个将 HTTP 请求与对应处理函数(handler)关联起来的机制
+  > 当收到一个 HTTP 请求时, 服务器会根据请求的路径(路径匹配)找到对应的处理函数来处理请求
+  >
+  > 这里没有显式地创建一个多路复用器, 但是通过调用 `http.HandleFunc("/", handler)` 将其注册到了默认的多路复用器 `DefaultServeMux` 中;
+  > 然后在调用 `http.ListenAndServe("localhost:8000", nil)` 启动服务器时，因为处理器参数为 `nil`，所以默认的多路复用器 `DefaultServeMux` 被使用。
 
 
+---
 
+在这个服务的基础上叠加特性是很容易的
+
+一种比较实用的修改是为访问的 url 添加某种状态; 比如下面这个版本输出了同样的内容, 但是会对请求的次数进行计算
+
+对URL的请求结果会包含各种 URL 被访问的总次数，直接对 /count 这个 URL 的访问要除外
+
+```go
+```
 
 
 
