@@ -2,6 +2,8 @@
 
 - [Windows](#windows)
   - [软链接与硬链接](#软链接与硬链接)
+  - [Robocopy](#robocopy)
+    - [结合定时任务使用](#结合定时任务使用)
   - [Windows 远程连接](#windows-远程连接)
     - [WinRM](#winrm)
       - [WinRS](#winrs)
@@ -46,6 +48,59 @@
     ```CMD
     mklink /H D:\link.txt C:\Users\233\Documents\test.txt
     ```
+
+-----
+
+## Robocopy
+
+> [Robocopy | Microsoft Learn](https://learn.microsoft.com/zh-cn/windows-server/administration/windows-commands/robocopy?source=docs)
+
+Robocopy 用于将文件数据从一个位置复制到另一个位置
+
+> 发现这个需求是因为我需要在两个 git 仓库中跟踪同样的一个目录
+>
+> 由于跟踪的是目录所以无法使用硬链接
+>
+> 由于需要git跟踪所以无法使用如软连接, 因此有了目录同步的需求
+>
+> Windows 上又不像 unix 有 rsync, 不过找到了 robocopy 可以复制文件, 也能达成需求
+
+`语法`: 
+
+```powershell
+robocopy <source> <destination> [<file>[ ...]] [<options>]
+```
+
+| 参数            | 描述                                                                                                     |
+| :-------------- | :------------------------------------------------------------------------------------------------------- |
+| `<source>`      | 指定源目录的路径。                                                                                       |
+| `<destination>` | 指定目标目录的路径。                                                                                     |
+| `<file>`        | 指定要复制的一个或多个文件。 支持通配符（***** 或 **?**）。 如果未指定此参数，`*.*` 将用作默认值。       |
+| `<options>`     | 指定要与 **robocopy** 命令结合使用的选项，包括**复制**、**文件**、**重试**、**日志记录**和**作业**选项。 |
+
+> 更详细的选项可参阅 [Robocopy | Microsoft Learn](https://learn.microsoft.com/zh-cn/windows-server/administration/windows-commands/robocopy?source=docs#copy-options)
+
+例如, 若要将名为 *yearly-report.mov* 的文件从 *c:\reports* 复制到文件共享 *\\marketing\videos*, 同时启用多线程以提高性能(使用 `/mt` 参数)并在传输中断时重新开始传输(使用 `/z` 参数), 请键入:
+
+```powershell
+robocopy c:\reports "\\marketing\videos" yearly-report.mov /mt /z
+```
+
+- `/mt` 默认使用 8 线程
+
+----
+
+### 结合定时任务使用
+
+由于 robocopy 是一次性命令, 因此需要同步两个目录的话可以结合定时任务来使用
+
+可以编写一个 `.ps1` 脚本
+
+```powershell
+robocopy <source> <destination> /MIR /mt /z
+```
+
+使用 `Win+R -> taskschd.msc`呼出任务计划程序然后设置任务执行逻辑并执行上面编写的脚本即可
 
 ---
 
