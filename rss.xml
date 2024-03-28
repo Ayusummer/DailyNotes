@@ -1,0 +1,4696 @@
+<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xsl" href="https://ayusummer.github.io/DailyNotes/rss.xsl"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <atom:link href="https://ayusummer.github.io/DailyNotes/rss.xml" rel="self" type="application/rss+xml"/>
+    <title>DailyNotes</title>
+    <link>https://ayusummer.github.io/DailyNotes/</link>
+    <description>233的日常学习记录</description>
+    <language>zh-CN</language>
+    <pubDate>Thu, 28 Mar 2024 09:18:05 GMT</pubDate>
+    <lastBuildDate>Thu, 28 Mar 2024 09:18:05 GMT</lastBuildDate>
+    <generator>@vuepress/plugin-feed</generator>
+    <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+    <item>
+      <title>GoPhish</title>
+      <link>https://ayusummer.github.io/DailyNotes/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/%E9%92%93%E9%B1%BC/GoPhish/</link>
+      <guid>https://ayusummer.github.io/DailyNotes/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/%E9%92%93%E9%B1%BC/GoPhish/</guid>
+      <source url="https://ayusummer.github.io/DailyNotes/rss.xml">GoPhish</source>
+      <description>GoPhish
+
+GoPhish
+
+部署
+
+
+
+
+
+入门 - Gophish 用户指南 --- Getting Started - Gophish User Guide (getgophish.com)
+gophish/gophish: Open-Source Phishing Toolkit (github.com)
+
+GoPhish是一个开源的钓鱼...</description>
+      <pubDate>Tue, 12 Mar 2024 06:07:16 GMT</pubDate>
+      <content:encoded><![CDATA[
+<ul>
+<li><a href="#gophish">GoPhish</a>
+<ul>
+<li><a href="#%E9%83%A8%E7%BD%B2">部署</a></li>
+</ul>
+</li>
+</ul>
+]]></content:encoded>
+      <enclosure url="http://cdn.ayusummer233.top/DailyNotes/202402271335612.png" type="image/png"/>
+    </item>
+    <item>
+      <title>Postfix</title>
+      <link>https://ayusummer.github.io/DailyNotes/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/%E9%92%93%E9%B1%BC/Postfix/</link>
+      <guid>https://ayusummer.github.io/DailyNotes/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/%E9%92%93%E9%B1%BC/Postfix/</guid>
+      <source url="https://ayusummer.github.io/DailyNotes/rss.xml">Postfix</source>
+      <description>Postfix
+
+Postfix
+
+部署
+
+制作 SSL 证书
+安装与配置 MySQL
+
+安装 MySQL
+新建数据库及用户
+新建表格
+插入数据
+
+
+安装与配置 Postfix
+
+安装 Postfix
+配置Postfix
+
+main.cf
+mysql-virtual-mailbox-domains.cf
+mysql-virtual-mailbox-ma...</description>
+      <pubDate>Tue, 12 Mar 2024 06:07:16 GMT</pubDate>
+      <content:encoded><![CDATA[
+<ul>
+<li><a href="#postfix">Postfix</a>
+<ul>
+<li><a href="#%E9%83%A8%E7%BD%B2">部署</a>
+<ul>
+<li><a href="#%E5%88%B6%E4%BD%9C-ssl-%E8%AF%81%E4%B9%A6">制作 SSL 证书</a></li>
+<li><a href="#%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE-mysql">安装与配置 MySQL</a>
+<ul>
+<li><a href="#%E5%AE%89%E8%A3%85-mysql">安装 MySQL</a></li>
+<li><a href="#%E6%96%B0%E5%BB%BA%E6%95%B0%E6%8D%AE%E5%BA%93%E5%8F%8A%E7%94%A8%E6%88%B7">新建数据库及用户</a></li>
+<li><a href="#%E6%96%B0%E5%BB%BA%E8%A1%A8%E6%A0%BC">新建表格</a></li>
+<li><a href="#%E6%8F%92%E5%85%A5%E6%95%B0%E6%8D%AE">插入数据</a></li>
+</ul>
+</li>
+<li><a href="#%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE-postfix">安装与配置 Postfix</a>
+<ul>
+<li><a href="#%E5%AE%89%E8%A3%85-postfix">安装 Postfix</a></li>
+<li><a href="#%E9%85%8D%E7%BD%AEpostfix">配置Postfix</a>
+<ul>
+<li><a href="#maincf">main.cf</a></li>
+<li><a href="#mysql-virtual-mailbox-domainscf">mysql-virtual-mailbox-domains.cf</a></li>
+<li><a href="#mysql-virtual-mailbox-mapscf">mysql-virtual-mailbox-maps.cf</a></li>
+<li><a href="#mysql-virtual-alias-mapscf">mysql-virtual-alias-maps.cf</a></li>
+<li><a href="#mastercf">master.cf</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE-dovecot">安装与配置 Dovecot</a>
+<ul>
+<li><a href="#%E5%AE%89%E8%A3%85dovecot">安装Dovecot</a></li>
+<li><a href="#%E9%85%8D%E7%BD%AE-dovecot">配置 Dovecot</a>
+<ul>
+<li>[Dovecot 主配置文件 - dovecot.conf](#dovecot-主配置文件</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+]]></content:encoded>
+      <enclosure url="http://cdn.ayusummer233.top/DailyNotes/202402280955220.png" type="image/png"/>
+    </item>
+    <item>
+      <title>名词解释</title>
+      <link>https://ayusummer.github.io/DailyNotes/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/%E9%92%93%E9%B1%BC/Postfix/%E5%90%8D%E8%AF%8D%E8%A7%A3%E9%87%8A.html</link>
+      <guid>https://ayusummer.github.io/DailyNotes/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/%E9%92%93%E9%B1%BC/Postfix/%E5%90%8D%E8%AF%8D%E8%A7%A3%E9%87%8A.html</guid>
+      <source url="https://ayusummer.github.io/DailyNotes/rss.xml">名词解释</source>
+      <description>名词解释
+
+名词解释
+
+submission和SMTPS
+
+
+
+
+submission和SMTPS
+submission 和 smtps 在 Postfix 邮件服务器中用于加密邮件传输
+
+
+Submission (587端口):
+
+
+用于客户端向邮件服务器提交邮件的传输。一般情况下，邮件客户端(如Outlook、Thunderbird等) 通过这个端...</description>
+      <pubDate>Tue, 12 Mar 2024 06:07:16 GMT</pubDate>
+      <content:encoded><![CDATA[
+<ul>
+<li><a href="#%E5%90%8D%E8%AF%8D%E8%A7%A3%E9%87%8A">名词解释</a>
+<ul>
+<li><a href="#submission%E5%92%8Csmtps">submission和SMTPS</a></li>
+</ul>
+</li>
+</ul>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>yara</title>
+      <link>https://ayusummer.github.io/DailyNotes/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/%E7%AB%AF%E7%82%B9%E5%AE%89%E5%85%A8/yara/</link>
+      <guid>https://ayusummer.github.io/DailyNotes/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/%E7%AB%AF%E7%82%B9%E5%AE%89%E5%85%A8/yara/</guid>
+      <source url="https://ayusummer.github.io/DailyNotes/rss.xml">yara</source>
+      <description>yara
+
+VirusTotal/yara: The pattern matching swiss knife (github.com)
+入门 — yara 4.4.0 文档 --- Getting started — yara 4.4.0 documentation
+
+
+简介
+YARA 是一款旨在(但不限于) 帮助恶意软件研究人员识别和分类恶意软件样...</description>
+      <pubDate>Thu, 07 Mar 2024 15:59:16 GMT</pubDate>
+      <content:encoded><![CDATA[
+<blockquote>
+<p><a href="https://github.com/VirusTotal/yara" target="_blank" rel="noopener noreferrer">VirusTotal/yara: The pattern matching swiss knife (github.com)</a></p>
+<p>[入门 — yara 4.4.0 文档</p>
+</blockquote>
+]]></content:encoded>
+      <enclosure url="http://cdn.ayusummer233.top/DailyNotes/202403072347160.png" type="image/png"/>
+    </item>
+    <item>
+      <title>订阅更新</title>
+      <link>https://ayusummer.github.io/DailyNotes/%E9%80%9A%E8%AF%86/%E9%80%9A%E4%BF%A1/%E8%AE%A2%E9%98%85%E6%9B%B4%E6%96%B0.html</link>
+      <guid>https://ayusummer.github.io/DailyNotes/%E9%80%9A%E8%AF%86/%E9%80%9A%E4%BF%A1/%E8%AE%A2%E9%98%85%E6%9B%B4%E6%96%B0.html</guid>
+      <source url="https://ayusummer.github.io/DailyNotes/rss.xml">订阅更新</source>
+      <description>订阅更新
+
+订阅更新
+
+Atom 订阅格式
+FreshRSS
+
+部署
+
+通过Docker部署FreshRSS
+
+QuickStart
+
+
+
+
+
+
+
+
+
+
+RSS(Really Simple Syndication) 是一种用于发布网站更新的 XML 标准化格式
+RSS1.0  也称为RDF Site Summary或RSS/RDF，使用RDF(Reso...</description>
+      <pubDate>Tue, 05 Mar 2024 09:14:00 GMT</pubDate>
+      <content:encoded><![CDATA[
+<ul>
+<li><a href="#%E8%AE%A2%E9%98%85%E6%9B%B4%E6%96%B0">订阅更新</a>
+<ul>
+<li><a href="#atom-%E8%AE%A2%E9%98%85%E6%A0%BC%E5%BC%8F">Atom 订阅格式</a></li>
+<li><a href="#freshrss">FreshRSS</a>
+<ul>
+<li><a href="#%E9%83%A8%E7%BD%B2">部署</a>
+<ul>
+<li><a href="#%E9%80%9A%E8%BF%87docker%E9%83%A8%E7%BD%B2freshrss">通过Docker部署FreshRSS</a>
+<ul>
+<li><a href="#quickstart">QuickStart</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+]]></content:encoded>
+      <enclosure url="http://cdn.ayusummer233.top/DailyNotes/202403060058603.png" type="image/png"/>
+    </item>
+    <item>
+      <title>Windows 对象与句柄</title>
+      <link>https://ayusummer.github.io/DailyNotes/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/%E7%AB%AF%E7%82%B9%E5%AE%89%E5%85%A8/Windows/Windows%E5%AF%B9%E8%B1%A1%E4%B8%8E%E5%8F%A5%E6%9F%84.html</link>
+      <guid>https://ayusummer.github.io/DailyNotes/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/%E7%AB%AF%E7%82%B9%E5%AE%89%E5%85%A8/Windows/Windows%E5%AF%B9%E8%B1%A1%E4%B8%8E%E5%8F%A5%E6%9F%84.html</guid>
+      <source url="https://ayusummer.github.io/DailyNotes/rss.xml">Windows 对象与句柄</source>
+      <description>Windows 对象与句柄
+
+docs/Windows/Handle/Handle.md at main · shichengv/docs (github.com)
+《Windows内核编程》- 9.对象与句柄_哔哩哔哩_bilibili</description>
+      <pubDate>Fri, 19 Jan 2024 09:09:57 GMT</pubDate>
+      <content:encoded><![CDATA[
+<blockquote>
+<p><a href="https://github.com/shichengv/docs/blob/main/Windows/Handle/Handle.md" target="_blank" rel="noopener noreferrer">docs/Windows/Handle/Handle.md at main · shichengv/docs (github.com)</a></p>
+<p><a href="https://www.bilibili.com/video/BV1x8411C71X/?buvid=Z044C501CF6EA2CB401C863CC5435F9ECD64&amp;is_story_h5=false&amp;mid=gvpxLSaOeuTRlQ%2Bz9e%2BFJA%3D%3D&amp;p=1&amp;plat_id=122&amp;share_from=ugc&amp;share_medium=iphone&amp;share_plat=ios&amp;share_session_id=586DA70E-5A1C-4533-A212-FD92A07C7FED&amp;share_source=COPY&amp;share_tag=s_i&amp;spmid=main.ugc-video-detail.0.0&amp;timestamp=1705566017&amp;unique_k=j54tpZ3&amp;up_id=1745751230" target="_blank" rel="noopener noreferrer">《Windows内核编程》- 9.对象与句柄_哔哩哔哩_bilibili</a></p>
+</blockquote>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>AMSI</title>
+      <link>https://ayusummer.github.io/DailyNotes/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/%E7%AB%AF%E7%82%B9%E5%AE%89%E5%85%A8/%E6%9D%80%E6%AF%92%E4%B8%8E%E5%85%8D%E6%9D%80/AMSI.html</link>
+      <guid>https://ayusummer.github.io/DailyNotes/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/%E7%AB%AF%E7%82%B9%E5%AE%89%E5%85%A8/%E6%9D%80%E6%AF%92%E4%B8%8E%E5%85%8D%E6%9D%80/AMSI.html</guid>
+      <source url="https://ayusummer.github.io/DailyNotes/rss.xml">AMSI</source>
+      <description>AMSI
+
+amsi绕过总结 - 先知社区 (aliyun.com)
+
+AMSI(Antimalware Scan Interface) 是微软提供的一个标准化接口，旨在增强恶意软件和其他威胁的检测能力，特别是对于那些运行在Windows操作系统上的脚本和解释型代码
+
+Win10 以及 WindowsSever2016 及之后的版本支持 AMSI
+低版...</description>
+      <pubDate>Mon, 15 Jan 2024 10:31:35 GMT</pubDate>
+      <content:encoded><![CDATA[
+<blockquote>
+<p><a href="https://xz.aliyun.com/t/11097" target="_blank" rel="noopener noreferrer">amsi绕过总结 - 先知社区 (aliyun.com)</a></p>
+</blockquote>
+<p>AMSI(Antimalware Scan Interface) 是微软提供的一个标准化接口，旨在增强恶意软件和其他威胁的检测能力，特别是对于那些运行在Windows操作系统上的脚本和解释型代码</p>
+<blockquote>
+<p>Win10 以及 WindowsSever2016 及之后的版本支持 AMSI</p>
+<p>低版本(2.0)的powershell是没有amsi的，所以在powershell2.0上执行恶意脚本就不会被检测到</p>
+<p><img src="http://cdn.ayusummer233.top/DailyNotes/202401020527019.png" alt="image-20240102052708985"></p>
+</blockquote>
+<p>AMSI使得应用程序(如PowerShell、VBScript、JavaScript等) 可以将执行前的代码发送到安装的防病毒软件进行扫描</p>
+]]></content:encoded>
+      <enclosure url="http://cdn.ayusummer233.top/DailyNotes/202401020527019.png" type="image/png"/>
+    </item>
+    <item>
+      <title>杀毒与免杀</title>
+      <link>https://ayusummer.github.io/DailyNotes/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/%E7%AB%AF%E7%82%B9%E5%AE%89%E5%85%A8/%E6%9D%80%E6%AF%92%E4%B8%8E%E5%85%8D%E6%9D%80/</link>
+      <guid>https://ayusummer.github.io/DailyNotes/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/%E7%AB%AF%E7%82%B9%E5%AE%89%E5%85%A8/%E6%9D%80%E6%AF%92%E4%B8%8E%E5%85%8D%E6%9D%80/</guid>
+      <source url="https://ayusummer.github.io/DailyNotes/rss.xml">杀毒与免杀</source>
+      <description>杀毒与免杀
+
+
+杀毒与免杀
+
+木马概述
+
+木马的定义
+木马感染的过程
+木马示例
+
+
+特征码查杀
+
+加壳
+
+代码混淆
+编码或加密
+
+Base64编码
+自定义加密
+
+
+填充合法的系统命令
+利用第三方服务
+时间延迟执行
+分割和分散代码
+
+
+
+
+启发式分析
+沙盒分析
+行为监测
+
+AMSI
+
+AMSI Bypass
+改注册表禁用 AMSI
+通过命名空间接口关闭A...</description>
+      <pubDate>Wed, 27 Dec 2023 18:32:28 GMT</pubDate>
+      <content:encoded><![CDATA[
+]]></content:encoded>
+      <enclosure url="http://cdn.ayusummer233.top/DailyNotes/202312280212445.png" type="image/png"/>
+    </item>
+    <item>
+      <title>Linux 日志</title>
+      <link>https://ayusummer.github.io/DailyNotes/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/%E7%AB%AF%E7%82%B9%E5%AE%89%E5%85%A8/Linux/%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90/</link>
+      <guid>https://ayusummer.github.io/DailyNotes/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/%E7%AB%AF%E7%82%B9%E5%AE%89%E5%85%A8/Linux/%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90/</guid>
+      <source url="https://ayusummer.github.io/DailyNotes/rss.xml">Linux 日志</source>
+      <description>Linux 日志
+
+概述
+Linux 系统的目录组织是一个树形的结构, 其根节点为根目录 /, 以 Ubuntu 为例, 根目录下的子目录包括如下这些:
+image-20230920150853543
+
+/bin：二进制文件的存储位置。包含了系统启动和修复所需的基本命令，如ls、cp、mv等。
+/boot：包含启动Ubuntu Linux所需的内核文件...</description>
+      <pubDate>Mon, 25 Dec 2023 16:57:42 GMT</pubDate>
+      <content:encoded><![CDATA[
+]]></content:encoded>
+      <enclosure url="http://cdn.ayusummer233.top/DailyNotes/202312210830360.png" type="image/png"/>
+    </item>
+    <item>
+      <title>T1053.002 - 使用 AT 命令操作 Scheduled Task/Job</title>
+      <link>https://ayusummer.github.io/DailyNotes/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/ATTCK/TA0002-Execution/T1053-ShceduledTaskorJob/T1053.002-AT.html</link>
+      <guid>https://ayusummer.github.io/DailyNotes/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/ATTCK/TA0002-Execution/T1053-ShceduledTaskorJob/T1053.002-AT.html</guid>
+      <source url="https://ayusummer.github.io/DailyNotes/rss.xml">T1053.002 - 使用 AT 命令操作 Scheduled Task/Job</source>
+      <description>T1053.002 - 使用 AT 命令操作 Scheduled Task/Job
+
+Scheduled Task/Job: At, Sub-technique T1053.002 - Enterprise | MITRE ATT&amp;CK® --- 计划任务/作业：At，子技术 T1053.002 - 企业 | MITRE ATT&amp;CK®
+
+攻击者可能会...</description>
+      <pubDate>Fri, 01 Dec 2023 07:50:46 GMT</pubDate>
+      <content:encoded><![CDATA[
+<blockquote>
+<p>[Scheduled Task/Job: At, Sub-technique T1053.002 - Enterprise | MITRE ATT&amp;CK®</p>
+</blockquote>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>CMD</title>
+      <link>https://ayusummer.github.io/DailyNotes/Language/Shell/CMD/</link>
+      <guid>https://ayusummer.github.io/DailyNotes/Language/Shell/CMD/</guid>
+      <source url="https://ayusummer.github.io/DailyNotes/rss.xml">CMD</source>
+      <description>CMD
+
+CMD
+
+主题
+
+显示时间
+
+
+
+
+
+
+主题
+显示时间
+
+$D 表示当前日期。
+$S 添加一个空格。
+$T 表示当前时间。
+$S 添加一个空格。
+$P 显示当前路径。
+$G 显示&amp;gt;字符。
+
+在 CMD 中PROMPT环境变量用于定义命令行界面的提示符外观。通过更改PROMPT变量的值，用户可以自定义显示在每个命令行前的文本和信息。例如，可以设...</description>
+      <pubDate>Mon, 27 Nov 2023 11:06:42 GMT</pubDate>
+      <content:encoded><![CDATA[
+<ul>
+<li><a href="#cmd">CMD</a>
+<ul>
+<li><a href="#%E4%B8%BB%E9%A2%98">主题</a>
+<ul>
+<li><a href="#%E6%98%BE%E7%A4%BA%E6%97%B6%E9%97%B4">显示时间</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+]]></content:encoded>
+      <enclosure url="http://cdn.ayusummer233.top/DailyNotes/202311271854686.png" type="image/png"/>
+    </item>
+    <item>
+      <title>Shell</title>
+      <link>https://ayusummer.github.io/DailyNotes/Language/Shell/Shell/</link>
+      <guid>https://ayusummer.github.io/DailyNotes/Language/Shell/Shell/</guid>
+      <source url="https://ayusummer.github.io/DailyNotes/rss.xml">Shell</source>
+      <description>Shell
+
+Shell
+
+显示时间
+
+
+
+
+
+
+Shell 是一个命令行界面，用户可以通过它与操作系统进行交互。Shell 既是一个命令解释器，也是一种脚本语言。在类 Unix 系统(如 Linux、macOS) 中，Shell 是用户与操作系统核心进行交互的主要方式。
+
+
+**sh(Bourne Shell) **：
+sh 是最早的 Unix sh...</description>
+      <pubDate>Fri, 24 Nov 2023 08:59:58 GMT</pubDate>
+      <content:encoded><![CDATA[
+<ul>
+<li><a href="#shell">Shell</a>
+<ul>
+<li><a href="#%E6%98%BE%E7%A4%BA%E6%97%B6%E9%97%B4">显示时间</a></li>
+</ul>
+</li>
+</ul>
+]]></content:encoded>
+      <enclosure url="http://cdn.ayusummer233.top/DailyNotes/202312111059839.png" type="image/png"/>
+    </item>
+    <item>
+      <title>TA0040-Impact</title>
+      <link>https://ayusummer.github.io/DailyNotes/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/ATTCK/TA0040-Impact.html</link>
+      <guid>https://ayusummer.github.io/DailyNotes/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/ATTCK/TA0040-Impact.html</guid>
+      <source url="https://ayusummer.github.io/DailyNotes/rss.xml">TA0040-Impact</source>
+      <description>TA0040-Impact
+
+Impact, Tactic TA0040 - Enterprise | MITRE ATT&amp;CK®
+
+
+
+TA0040-Impact
+
+T1531 Account Access Removal - 账户访问权限移除
+T1485 Data Destruction - 数据销毁
+
+使用 SysInternals SDelet...</description>
+      <pubDate>Tue, 21 Nov 2023 00:50:08 GMT</pubDate>
+      <content:encoded><![CDATA[
+<blockquote>
+<p><a href="https://attack.mitre.org/tactics/TA0040/" target="_blank" rel="noopener noreferrer">Impact, Tactic TA0040 - Enterprise | MITRE ATT&amp;CK®</a></p>
+</blockquote>
+]]></content:encoded>
+      <enclosure url="http://cdn.ayusummer233.top/DailyNotes/202311202258502.png" type="image/png"/>
+    </item>
+    <item>
+      <title>PYPSRP</title>
+      <link>https://ayusummer.github.io/DailyNotes/Language/Python/libs/PyPSRP/PyPSRP.html</link>
+      <guid>https://ayusummer.github.io/DailyNotes/Language/Python/libs/PyPSRP/PyPSRP.html</guid>
+      <source url="https://ayusummer.github.io/DailyNotes/rss.xml">PYPSRP</source>
+      <description>PYPSRP
+
+PYPSRP
+
+Runspace Pool and Runspaces 运行空间池和运行空间
+Pileline 管道
+Statements 语句
+Commands 命令
+Streams(流)
+Objects(对象)
+Process Flow
+Message Structure 消息结构
+WSMan
+安装 pypsrp
+示例
+WInRS ...</description>
+      <pubDate>Fri, 10 Nov 2023 06:24:52 GMT</pubDate>
+      <content:encoded><![CDATA[
+<ul>
+<li><a href="#pypsrp">PYPSRP</a>
+<ul>
+<li><a href="#runspace-pool-and-runspaces-%E8%BF%90%E8%A1%8C%E7%A9%BA%E9%97%B4%E6%B1%A0%E5%92%8C%E8%BF%90%E8%A1%8C%E7%A9%BA%E9%97%B4">Runspace Pool and Runspaces 运行空间池和运行空间</a></li>
+<li><a href="#pileline-%E7%AE%A1%E9%81%93">Pileline 管道</a></li>
+<li><a href="#statements-%E8%AF%AD%E5%8F%A5">Statements 语句</a></li>
+<li><a href="#commands-%E5%91%BD%E4%BB%A4">Commands 命令</a></li>
+<li><a href="#streams%E6%B5%81">Streams(流)</a></li>
+<li><a href="#objects%E5%AF%B9%E8%B1%A1">Objects(对象)</a></li>
+<li><a href="#process-flow">Process Flow</a></li>
+<li><a href="#message-structure-%E6%B6%88%E6%81%AF%E7%BB%93%E6%9E%84">Message Structure 消息结构</a></li>
+<li><a href="#wsman">WSMan</a></li>
+<li><a href="#%E5%AE%89%E8%A3%85-pypsrp">安装 pypsrp</a></li>
+<li><a href="#%E7%A4%BA%E4%BE%8B">示例</a></li>
+<li><a href="#winrs-%E7%A4%BA%E4%BE%8B">WInRS 示例</a></li>
+<li><a href="#interop-with-secure-strings">Interop with Secure Strings</a></li>
+</ul>
+</li>
+</ul>
+]]></content:encoded>
+      <enclosure url="http://cdn.ayusummer233.top/DailyNotes/202311081355765.png" type="image/png"/>
+    </item>
+    <item>
+      <title>SSH 横向移动</title>
+      <link>https://ayusummer.github.io/DailyNotes/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/SSH%E6%A8%AA%E5%90%91%E7%A7%BB%E5%8A%A8.html</link>
+      <guid>https://ayusummer.github.io/DailyNotes/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/SSH%E6%A8%AA%E5%90%91%E7%A7%BB%E5%8A%A8.html</guid>
+      <source url="https://ayusummer.github.io/DailyNotes/rss.xml">SSH 横向移动</source>
+      <description>SSH 横向移动
+
+SSH横向移动备忘单|ssh内网横向渗透技巧 - 🔰雨苁ℒ🔰 (ddosi.org)
+
+
+SSH 的概念
+
+什么是SSH？SSH是如何工作的？ - 华为 (huawei.com)
+
+SSH(Secure Shell，安全外壳) 是一种网络安全协议，与传统的 Telnet, FTP 使用明文传输数据不同, SSH 协议通过加密和认...</description>
+      <pubDate>Tue, 07 Nov 2023 00:21:06 GMT</pubDate>
+      <content:encoded><![CDATA[
+<blockquote>
+<p><a href="https://www.ddosi.org/ssh-movement/" target="_blank" rel="noopener noreferrer">SSH横向移动备忘单|ssh内网横向渗透技巧 - 🔰雨苁ℒ🔰 (ddosi.org)</a></p>
+</blockquote>
+]]></content:encoded>
+      <enclosure url="http://cdn.ayusummer233.top/DailyNotes/202311070711464.png" type="image/png"/>
+    </item>
+    <item>
+      <title>Webshell</title>
+      <link>https://ayusummer.github.io/DailyNotes/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/Web%E5%AE%89%E5%85%A8/Webshell.html</link>
+      <guid>https://ayusummer.github.io/DailyNotes/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/Web%E5%AE%89%E5%85%A8/Webshell.html</guid>
+      <source url="https://ayusummer.github.io/DailyNotes/rss.xml">Webshell</source>
+      <description>Webshell
+
+
+Webshell
+
+Webshell 简介
+WebShell 分析
+
+分析Webshell内容
+分析日志文件
+分析 HTTP 流量
+
+
+
+
+
+
+Webshell 简介
+顾名思义, WebShell 即为可以通过 Web 交互的 Shell, 是一种网页后门; WebShell 的形式通常为 PHP, ASP, ASPX, JSP,...</description>
+      <pubDate>Thu, 02 Nov 2023 00:48:21 GMT</pubDate>
+      <content:encoded><![CDATA[
+]]></content:encoded>
+      <enclosure url="http://cdn.ayusummer233.top/DailyNotes/202311020803353.png" type="image/png"/>
+    </item>
+    <item>
+      <title>CH1 入门</title>
+      <link>https://ayusummer.github.io/DailyNotes/Language/Go/Go%E8%AF%AD%E8%A8%80%E5%9C%A3%E7%BB%8F/CH1-%E5%85%A5%E9%97%A8.html</link>
+      <guid>https://ayusummer.github.io/DailyNotes/Language/Go/Go%E8%AF%AD%E8%A8%80%E5%9C%A3%E7%BB%8F/CH1-%E5%85%A5%E9%97%A8.html</guid>
+      <source url="https://ayusummer.github.io/DailyNotes/rss.xml">CH1 入门</source>
+      <description>CH1 入门
+
+
+CH1 入门
+
+ch1.1 Hello World
+
+包管理
+
+package main
+
+
+function
+分号的问题
+引号的问题
+代码格式
+
+
+ch1.2 命令行参数
+
+优化上述 echo 程序
+EX1.1 修改 echo 程序
+EX1.2 修改 echo 程序
+EX1.3 测试各版本 echo 程序性能
+
+
+ch1.3 查找重...</description>
+      <pubDate>Sun, 29 Oct 2023 15:32:28 GMT</pubDate>
+      <content:encoded><![CDATA[
+]]></content:encoded>
+      <enclosure url="http://cdn.ayusummer233.top/img/202211110051074.png" type="image/png"/>
+    </item>
+    <item>
+      <title>CH2 程序结构</title>
+      <link>https://ayusummer.github.io/DailyNotes/Language/Go/Go%E8%AF%AD%E8%A8%80%E5%9C%A3%E7%BB%8F/CH2-%E7%A8%8B%E5%BA%8F%E7%BB%93%E6%9E%84.html</link>
+      <guid>https://ayusummer.github.io/DailyNotes/Language/Go/Go%E8%AF%AD%E8%A8%80%E5%9C%A3%E7%BB%8F/CH2-%E7%A8%8B%E5%BA%8F%E7%BB%93%E6%9E%84.html</guid>
+      <source url="https://ayusummer.github.io/DailyNotes/rss.xml">CH2 程序结构</source>
+      <description>CH2 程序结构
+
+
+CH2 程序结构
+
+CH2.1 命名
+CH2.2 声明
+CH2.3 变量
+
+CH2.3.1 简短变量声明
+CH2.3.2 指针
+2.3.3 new 函数
+2.3.4 变量的生命周期
+
+
+CH2.4 赋值
+
+CH2.4.1 元组赋值
+2.4.2 可赋值性
+
+
+
+
+
+
+CH2.1 命名
+
+命名 - Go语言圣经 (golang-chi...</description>
+      <pubDate>Sun, 29 Oct 2023 15:32:28 GMT</pubDate>
+      <content:encoded><![CDATA[
+]]></content:encoded>
+      <enclosure url="http://cdn.ayusummer233.top/DailyNotes/202403132337181.png" type="image/png"/>
+    </item>
+    <item>
+      <title>Windows</title>
+      <link>https://ayusummer.github.io/DailyNotes/%E9%80%9A%E8%AF%86/Windows.html</link>
+      <guid>https://ayusummer.github.io/DailyNotes/%E9%80%9A%E8%AF%86/Windows.html</guid>
+      <source url="https://ayusummer.github.io/DailyNotes/rss.xml">Windows</source>
+      <description>Windows
+
+Windows
+
+软链接与硬链接
+Robocopy
+
+结合定时任务使用
+
+
+Windows 远程连接
+
+WinRM
+
+WinRS
+PSRP
+
+
+
+
+
+
+
+
+软链接与硬链接
+
+
+软链接是路径的别名
+
+
+软链接可以不存在的路径, 因此可能引入死链接
+
+
+软链接可以指向文件也可以指向目录, 也可以跨磁盘分区
+
+
+软链接可以用于链接深层目录从...</description>
+      <pubDate>Thu, 26 Oct 2023 12:59:37 GMT</pubDate>
+      <content:encoded><![CDATA[
+<ul>
+<li><a href="#windows">Windows</a>
+<ul>
+<li><a href="#%E8%BD%AF%E9%93%BE%E6%8E%A5%E4%B8%8E%E7%A1%AC%E9%93%BE%E6%8E%A5">软链接与硬链接</a></li>
+<li><a href="#robocopy">Robocopy</a>
+<ul>
+<li><a href="#%E7%BB%93%E5%90%88%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%E4%BD%BF%E7%94%A8">结合定时任务使用</a></li>
+</ul>
+</li>
+<li><a href="#windows-%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5">Windows 远程连接</a>
+<ul>
+<li><a href="#winrm">WinRM</a>
+<ul>
+<li><a href="#winrs">WinRS</a></li>
+<li><a href="#psrp">PSRP</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>加密算法</title>
+      <link>https://ayusummer.github.io/DailyNotes/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95/</link>
+      <guid>https://ayusummer.github.io/DailyNotes/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95/</guid>
+      <source url="https://ayusummer.github.io/DailyNotes/rss.xml">加密算法</source>
+      <description>加密算法
+
+加密算法
+
+使用 openssl 生成自签名证书
+
+
+
+
+使用 openssl 生成自签名证书
+
+Win32/Win64 OpenSSL Installer for Windows - Shining Light Productions --- 适用于 Windows 的 Win32/Win64 OpenSSL 安装程序 - Shining...</description>
+      <pubDate>Mon, 23 Oct 2023 17:08:48 GMT</pubDate>
+      <content:encoded><![CDATA[
+<ul>
+<li><a href="#%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95">加密算法</a>
+<ul>
+<li><a href="#%E4%BD%BF%E7%94%A8-openssl-%E7%94%9F%E6%88%90%E8%87%AA%E7%AD%BE%E5%90%8D%E8%AF%81%E4%B9%A6">使用 openssl 生成自签名证书</a></li>
+</ul>
+</li>
+</ul>
+]]></content:encoded>
+      <enclosure url="http://cdn.ayusummer233.top/DailyNotes/202310232148230.png" type="image/png"/>
+    </item>
+    <item>
+      <title>Vectr</title>
+      <link>https://ayusummer.github.io/DailyNotes/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/%E7%AB%AF%E7%82%B9%E5%AE%89%E5%85%A8/AtomicRedTeam/Vectr.html</link>
+      <guid>https://ayusummer.github.io/DailyNotes/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/%E7%AB%AF%E7%82%B9%E5%AE%89%E5%85%A8/AtomicRedTeam/Vectr.html</guid>
+      <source url="https://ayusummer.github.io/DailyNotes/rss.xml">Vectr</source>
+      <description>Vectr
+
+VECTR | Collaborate. Quantify. Improve. --- 向量|合作。量化。提升。
+SecurityRiskAdvisors/VECTR: VECTR is a tool that facilitates tracking of your red and blue team testing activitie...</description>
+      <pubDate>Wed, 20 Sep 2023 10:49:49 GMT</pubDate>
+      <content:encoded><![CDATA[
+<blockquote>
+<p>[VECTR | Collaborate. Quantify. Improve.</p>
+</blockquote>
+]]></content:encoded>
+      <enclosure url="http://cdn.ayusummer233.top/DailyNotes/202309201539716.png" type="image/png"/>
+    </item>
+    <item>
+      <title>Atomic Red Team</title>
+      <link>https://ayusummer.github.io/DailyNotes/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/%E7%AB%AF%E7%82%B9%E5%AE%89%E5%85%A8/AtomicRedTeam/</link>
+      <guid>https://ayusummer.github.io/DailyNotes/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/%E7%AB%AF%E7%82%B9%E5%AE%89%E5%85%A8/AtomicRedTeam/</guid>
+      <source url="https://ayusummer.github.io/DailyNotes/rss.xml">Atomic Red Team</source>
+      <description>Atomic Red Team
+
+redcanaryco/atomic-red-team: Small and highly portable detection tests based on MITRE&amp;apos;s ATT&amp;CK. --- redcanaryco/atomic-red-team：基于 MITRE 的 ATT&amp;CK 的小型且高度便携的检测测试。...</description>
+      <pubDate>Wed, 20 Sep 2023 10:49:41 GMT</pubDate>
+      <content:encoded><![CDATA[
+<blockquote>
+<p>[redcanaryco/atomic-red-team: Small and highly portable detection tests based on MITRE's ATT&amp;CK.</p>
+</blockquote>
+]]></content:encoded>
+      <enclosure url="http://cdn.ayusummer233.top/DailyNotes/202309141814657.png" type="image/png"/>
+    </item>
+    <item>
+      <title>Powershell</title>
+      <link>https://ayusummer.github.io/DailyNotes/Language/Shell/Powershell/</link>
+      <guid>https://ayusummer.github.io/DailyNotes/Language/Shell/Powershell/</guid>
+      <source url="https://ayusummer.github.io/DailyNotes/rss.xml">Powershell</source>
+      <description>Powershell
+
+Powershell
+
+版本信息
+
+Powershell 7
+
+
+网络
+
+代理
+域名解析
+
+
+主题
+
+Oh My Posh
+
+Quick Start For Windows
+
+
+显示时间
+
+
+基础语法
+
+杂项
+循环结构
+
+
+文件操作
+
+清除文件中的空行
+
+
+目标目录文件变动监控备份
+powershell empire 上线命令
+...</description>
+      <pubDate>Mon, 18 Sep 2023 09:27:20 GMT</pubDate>
+      <content:encoded><![CDATA[
+<ul>
+<li><a href="#powershell">Powershell</a>
+<ul>
+<li><a href="#%E7%89%88%E6%9C%AC%E4%BF%A1%E6%81%AF">版本信息</a>
+<ul>
+<li><a href="#powershell-7">Powershell 7</a></li>
+</ul>
+</li>
+<li><a href="#%E7%BD%91%E7%BB%9C">网络</a>
+<ul>
+<li><a href="#%E4%BB%A3%E7%90%86">代理</a></li>
+<li><a href="#%E5%9F%9F%E5%90%8D%E8%A7%A3%E6%9E%90">域名解析</a></li>
+</ul>
+</li>
+<li><a href="#%E4%B8%BB%E9%A2%98">主题</a>
+<ul>
+<li><a href="#oh-my-posh">Oh My Posh</a>
+<ul>
+<li><a href="#quick-start-for-windows">Quick Start For Windows</a></li>
+</ul>
+</li>
+<li><a href="#%E6%98%BE%E7%A4%BA%E6%97%B6%E9%97%B4">显示时间</a></li>
+</ul>
+</li>
+<li><a href="#%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95">基础语法</a>
+<ul>
+<li><a href="#%E6%9D%82%E9%A1%B9">杂项</a></li>
+<li><a href="#%E5%BE%AA%E7%8E%AF%E7%BB%93%E6%9E%84">循环结构</a></li>
+</ul>
+</li>
+<li><a href="#%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C">文件操作</a>
+<ul>
+<li><a href="#%E6%B8%85%E9%99%A4%E6%96%87%E4%BB%B6%E4%B8%AD%E7%9A%84%E7%A9%BA%E8%A1%8C">清除文件中的空行</a></li>
+</ul>
+</li>
+<li><a href="#%E7%9B%AE%E6%A0%87%E7%9B%AE%E5%BD%95%E6%96%87%E4%BB%B6%E5%8F%98%E5%8A%A8%E7%9B%91%E6%8E%A7%E5%A4%87%E4%BB%BD">目标目录文件变动监控备份</a></li>
+<li><a href="#powershell-empire-%E4%B8%8A%E7%BA%BF%E5%91%BD%E4%BB%A4">powershell empire 上线命令</a></li>
+<li><a href="#%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5">远程连接</a></li>
+<li><a href="#%E5%88%B6%E4%BD%9C%E6%8F%90%E7%A4%BA%E7%AA%97%E5%8F%A3">制作提示窗口</a></li>
+<li><a href="#%E8%BE%93%E5%87%BA%E4%BF%A1%E6%81%AF">输出信息</a></li>
+<li><a href="#%E6%A8%A1%E5%9D%97">模块</a>
+<ul>
+<li><a href="#%E5%AE%89%E8%A3%85%E6%A8%A1%E5%9D%97">安装模块</a></li>
+</ul>
+</li>
+<li><a href="#%E8%AF%81%E4%B9%A6">证书</a></li>
+<li><a href="#%E5%90%AF%E7%94%A8%E6%88%96%E5%85%B3%E9%97%AD-windows-%E5%8A%9F%E8%83%BD">启用或关闭 Windows 功能</a></li>
+<li><a href="#%E6%8A%A5%E9%94%99%E6%94%B6%E9%9B%86">报错收集</a>
+<ul>
+<li>[无法加载 <code>xxx.ps1</code>, 因在此系统上禁止运行脚本。有关详细信息，请参阅 关于执行策略 - PowerShell | Microsoft Docs 中的 <code>about_Execution_Policies</code>。](#无法加载-xxxps1-因在此系统上禁止运行脚本有关详细信息请参阅-关于执行策略</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+]]></content:encoded>
+      <enclosure url="http://cdn.ayusummer233.top/DailyNotes/202309181743508.png" type="image/png"/>
+    </item>
+    <item>
+      <title>Linux</title>
+      <link>https://ayusummer.github.io/DailyNotes/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/%E7%AB%AF%E7%82%B9%E5%AE%89%E5%85%A8/Linux/</link>
+      <guid>https://ayusummer.github.io/DailyNotes/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/%E7%AB%AF%E7%82%B9%E5%AE%89%E5%85%A8/Linux/</guid>
+      <source url="https://ayusummer.github.io/DailyNotes/rss.xml">Linux</source>
+      <description>Linux
+bsauce/kernel-exploit-factory: Linux kernel CVE exploit analysis report and relative debug environment. You don&amp;apos;t need to compile Linux kernel and configure your environme...</description>
+      <pubDate>Sun, 17 Sep 2023 16:21:22 GMT</pubDate>
+      <content:encoded><![CDATA[
+<p>[bsauce/kernel-exploit-factory: Linux kernel CVE exploit analysis report and relative debug environment. You don't need to compile Linux kernel and configure your environment anymore.</p>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>Windows 安全</title>
+      <link>https://ayusummer.github.io/DailyNotes/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/%E7%AB%AF%E7%82%B9%E5%AE%89%E5%85%A8/Windows/</link>
+      <guid>https://ayusummer.github.io/DailyNotes/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/%E7%AB%AF%E7%82%B9%E5%AE%89%E5%85%A8/Windows/</guid>
+      <source url="https://ayusummer.github.io/DailyNotes/rss.xml">Windows 安全</source>
+      <description>Windows 安全
+
+Powershell 攻击指南 2——Empire_powershsell empire_willowpy 的博客-CSDN 博客
+
+
+
+Windows 安全
+
+永久关闭 Windows 实时防护
+Sysmon
+
+简介
+功能概述
+使用
+
+
+查看登录日志
+Process Explorer - 查看某个窗口是哪个进程调起的
+计划任务...</description>
+      <pubDate>Sun, 17 Sep 2023 16:21:22 GMT</pubDate>
+      <content:encoded><![CDATA[
+<blockquote>
+<p><a href="https://blog.csdn.net/qq_34640691/article/details/110686135" target="_blank" rel="noopener noreferrer">Powershell 攻击指南 2——Empire_powershsell empire_willowpy 的博客-CSDN 博客</a></p>
+</blockquote>
+]]></content:encoded>
+      <enclosure url="http://cdn.ayusummer233.top/DailyNotes/202306251606226.png" type="image/png"/>
+    </item>
+    <item>
+      <title>XSS 跨站脚本漏洞</title>
+      <link>https://ayusummer.github.io/DailyNotes/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/Web%E5%AE%89%E5%85%A8/%E6%BC%8F%E6%B4%9E%E7%B1%BB%E5%9E%8B/XSS/</link>
+      <guid>https://ayusummer.github.io/DailyNotes/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/Web%E5%AE%89%E5%85%A8/%E6%BC%8F%E6%B4%9E%E7%B1%BB%E5%9E%8B/XSS/</guid>
+      <source url="https://ayusummer.github.io/DailyNotes/rss.xml">XSS 跨站脚本漏洞</source>
+      <description>XSS 跨站脚本漏洞
+概述
+
+
+XSS 漏洞一直被评估为 web 漏洞中危害较大的漏洞, 在 OWASP TOP10 排名中一致属于前三的地位
+
+
+XSS 是一种发生在 Web 前端的漏洞, 所以其危害的对象也主要是前端用户
+
+
+XSS 漏洞可以用来进行钓鱼攻击, 前端 js 挖矿, 用户 cookie 获取, 甚至于结合浏览器自身的漏洞对用户主机进行...</description>
+      <pubDate>Sun, 17 Sep 2023 11:09:44 GMT</pubDate>
+      <content:encoded><![CDATA[
+<h2>概述</h2>
+<ul>
+<li>
+<p>XSS 漏洞一直被评估为 web 漏洞中危害较大的漏洞, 在 OWASP TOP10 排名中一致属于前三的地位</p>
+</li>
+<li>
+<p>XSS 是一种发生在 Web 前端的漏洞, 所以其危害的对象也主要是前端用户</p>
+</li>
+<li>
+<p>XSS 漏洞可以用来进行钓鱼攻击, 前端 js 挖矿, 用户 cookie 获取, 甚至于结合浏览器自身的漏洞对用户主机进行远程控制等</p>
+</li>
+</ul>
+]]></content:encoded>
+      <enclosure url="http://cdn.ayusummer233.top/img/202210261726202.png" type="image/png"/>
+    </item>
+    <item>
+      <title>目录</title>
+      <link>https://ayusummer.github.io/DailyNotes/Language/Python/libs/Matplotlib/Matplotlib.html</link>
+      <guid>https://ayusummer.github.io/DailyNotes/Language/Python/libs/Matplotlib/Matplotlib.html</guid>
+      <source url="https://ayusummer.github.io/DailyNotes/rss.xml">目录</source>
+      <description>目录
+
+目录
+
+# Matplotlib
+pyplot
+
+pyplot绘图的基本操作
+
+创建画布与创建子图
+添加图的基本要素
+rcParams参数
+正常显示中文和负号
+
+例子:绘制sin(x)
+
+1.使用字体管理器font_manager
+为不同标题(图、坐标轴)设置不同的字体，大小，采用字体管理器
+显示图中的负号
+绘制sin(x)，cos(x)
+
+
+...</description>
+      <pubDate>Fri, 15 Sep 2023 06:52:40 GMT</pubDate>
+      <content:encoded><![CDATA[
+<ul>
+<li><a href="#%E7%9B%AE%E5%BD%95">目录</a>
+<ul>
+<li><a href="#-matplotlib"># Matplotlib</a></li>
+<li><a href="#pyplot">pyplot</a>
+<ul>
+<li><a href="#pyplot%E7%BB%98%E5%9B%BE%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C">pyplot绘图的基本操作</a>
+<ul>
+<li><a href="#%E5%88%9B%E5%BB%BA%E7%94%BB%E5%B8%83%E4%B8%8E%E5%88%9B%E5%BB%BA%E5%AD%90%E5%9B%BE">创建画布与创建子图</a></li>
+<li><a href="#%E6%B7%BB%E5%8A%A0%E5%9B%BE%E7%9A%84%E5%9F%BA%E6%9C%AC%E8%A6%81%E7%B4%A0">添加图的基本要素</a></li>
+<li><a href="#rcparams%E5%8F%82%E6%95%B0">rcParams参数</a></li>
+<li><a href="#%E6%AD%A3%E5%B8%B8%E6%98%BE%E7%A4%BA%E4%B8%AD%E6%96%87%E5%92%8C%E8%B4%9F%E5%8F%B7">正常显示中文和负号</a>
+<ul>
+<li><a href="#%E4%BE%8B%E5%AD%90%E7%BB%98%E5%88%B6sinx">例子:绘制<span v-pre="" class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mi>i</mi><mi>n</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">sin(x)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">s</span><span class="mord mathnormal">in</span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mclose">)</span></span></span></span></a>
+<ul>
+<li><a href="#1%E4%BD%BF%E7%94%A8%E5%AD%97%E4%BD%93%E7%AE%A1%E7%90%86%E5%99%A8font_manager">1.使用字体管理器font_manager</a></li>
+<li><a href="#%E4%B8%BA%E4%B8%8D%E5%90%8C%E6%A0%87%E9%A2%98%E5%9B%BE%E5%9D%90%E6%A0%87%E8%BD%B4%E8%AE%BE%E7%BD%AE%E4%B8%8D%E5%90%8C%E7%9A%84%E5%AD%97%E4%BD%93%E5%A4%A7%E5%B0%8F%E9%87%87%E7%94%A8%E5%AD%97%E4%BD%93%E7%AE%A1%E7%90%86%E5%99%A8">为不同标题(图、坐标轴)设置不同的字体，大小，采用字体管理器</a></li>
+<li><a href="#%E6%98%BE%E7%A4%BA%E5%9B%BE%E4%B8%AD%E7%9A%84%E8%B4%9F%E5%8F%B7">显示图中的负号</a></li>
+<li><a href="#%E7%BB%98%E5%88%B6sinxcosx">绘制sin(x)，cos(x)</a></li>
+</ul>
+</li>
+<li><a href="#%E4%BE%8B%E9%A2%98%E7%83%A7%E7%83%A4%E5%BA%97%E8%90%A5%E4%B8%9A%E9%A2%9D%E6%8A%98%E7%BA%BF%E5%9B%BE">例题:烧烤店营业额折线图</a></li>
+</ul>
+</li>
+<li><a href="#legendloc%E5%8F%82%E6%95%B0">legend.loc参数</a></li>
+<li><a href="#%E8%AE%BE%E7%BD%AE%E5%9B%BE%E4%BE%8B">设置图例</a>
+<ul>
+<li><a href="#%E4%BE%8B1%E7%BB%99%E4%B8%89%E8%A7%92%E5%87%BD%E6%95%B0%E5%9B%BE%E5%8A%A0%E5%9B%BE%E4%BE%8B">例1:给三角函数图加图例</a></li>
+<li><a href="#%E7%BB%99%E5%9B%9B%E4%B8%AA%E5%AD%90%E5%9B%BE%E5%88%86%E5%88%AB%E6%B7%BB%E5%8A%A0%E5%9B%BE%E4%BE%8B">给四个子图分别添加图例</a></li>
+</ul>
+</li>
+<li><a href="#%E4%BF%9D%E5%AD%98%E4%B8%8E%E6%98%BE%E7%A4%BA%E5%9B%BE">保存与显示图</a>
+<ul>
+<li><a href="#%E4%BF%9D%E5%AD%98">保存：</a>
+<ul>
+<li><a href="#%E5%AE%9E%E4%BE%8B">实例</a></li>
+</ul>
+</li>
+<li><a href="#%E6%98%BE%E7%A4%BA">显示</a></li>
+</ul>
+</li>
+<li><a href="#%E4%BE%8B1-%E5%95%86%E5%9C%BA%E4%BC%98%E6%83%A0">例1 商场优惠</a>
+<ul>
+<li><a href="#%E4%BF%AE%E6%94%B9%E7%BA%BF%E7%9A%84%E5%BD%A2%E7%8A%B6">修改线的形状</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E6%95%A3%E7%82%B9%E5%9B%BE%E5%AE%9E%E6%88%98">散点图实战</a>
+<ul>
+<li><a href="#%E4%BE%8B1%E6%8A%98%E7%BA%BF%E5%9B%BE%E9%87%8D%E7%BB%98%E4%B8%BA%E6%95%A3%E7%82%B9%E5%9B%BE">例1:折线图重绘为散点图</a></li>
+<li><a href="#%E4%BE%8B2%E5%95%86%E5%9C%BA%E4%BF%A1%E5%8F%B7%E5%BC%BA%E5%BA%A6">例2:商场信号强度</a></li>
+<li><a href="#%E4%BE%8B3%E5%95%86%E5%9C%BA%E4%BC%98%E6%83%A0%E6%8A%98%E7%BA%BF%E5%9B%BE%E6%95%A3%E7%82%B9%E5%9B%BE%E7%BB%93%E5%90%88">例3:商场优惠折线图散点图结合</a>
+<ul>
+<li><a href="#%E6%A0%87%E6%B3%A8%E6%95%B0%E5%AD%97">标注数字</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#matplotlib%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96">Matplotlib数据可视化</a>
+<ul>
+<li><a href="#%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96%E7%9A%84%E8%AF%AF%E5%8C%BA">数据可视化的误区</a></li>
+<li><a href="#%E5%8F%AF%E8%A7%86%E5%8C%96%E6%96%B9%E5%BC%8F">可视化方式</a>
+<ul>
+<li><a href="#%E8%B6%8B%E5%8A%BF">趋势</a>
+<ul>
+<li><a href="#%E7%A4%BA%E4%BE%8B%E5%95%86%E5%9C%BA%E9%83%A8%E9%97%A8%E4%B8%9A%E7%BB%A9">示例:商场部门业绩</a></li>
+</ul>
+</li>
+<li><a href="#%E5%AF%B9%E6%AF%94">对比</a>
+<ul>
+<li><a href="#%E7%A4%BA%E4%BE%8B%E5%95%86%E5%9C%BA%E7%94%B7%E5%A5%B3%E8%A3%85%E9%94%80%E5%94%AE%E5%AF%B9%E6%AF%94">示例:商场男女装销售对比</a>
+<ul>
+<li><a href="#%E5%9B%BE%E5%BD%A2%E7%BE%8E%E5%8C%96-%E5%80%92%E5%BD%B1%E6%9F%B1%E7%8A%B6%E5%9B%BE">图形美化-"倒影"柱状图</a></li>
+<li><a href="#%E7%BE%8E%E5%8C%96-%E5%B9%B6%E5%88%97%E6%9F%B1%E7%8A%B6%E5%9B%BE">美化-并列柱状图</a></li>
+<li><a href="#%E7%BE%8E%E5%8C%96%E6%B7%BB%E5%8A%A0%E6%B3%A8%E9%87%8A%E6%96%87%E5%AD%97">美化:添加注释文字</a></li>
+<li><a href="#%E8%BD%AC%E5%8C%96%E6%9D%A1%E5%BD%A2%E5%9B%BEbarh">转化:条形图:barh()</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E7%BB%93%E6%9E%84">结构</a>
+<ul>
+<li><a href="#%E7%A4%BA%E4%BE%8B1%E6%88%90%E7%BB%A9%E5%88%86%E6%AE%B5">示例1:成绩分段</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+]]></content:encoded>
+      <enclosure url="https://codimd.s3.shivering-isles.com/demo/uploads/upload_aa6ca071f9d619b0c934dcf9bd737568.png" type="image/png"/>
+    </item>
+    <item>
+      <title>OpenCV-python</title>
+      <link>https://ayusummer.github.io/DailyNotes/Language/Python/libs/OpenCV/OpenCV-python.html</link>
+      <guid>https://ayusummer.github.io/DailyNotes/Language/Python/libs/OpenCV/OpenCV-python.html</guid>
+      <source url="https://ayusummer.github.io/DailyNotes/rss.xml">OpenCV-python</source>
+      <description>OpenCV-python
+
+
+cv2.CascadeClassifier
+
+
+参考链接
+
+
+
+CascadeClassifier，是 Opencv 中做人脸检测的时候的一个级联分类器。并且既可以使用 Haar，也可以使用 LBP 特征。
+
+
+
+Haar
+
+
+Haar 特征是一种反映图像的灰度变化的，像素分模块求差值的一种特征。
+
+
+它分为三类：边缘特...</description>
+      <pubDate>Fri, 15 Sep 2023 06:52:40 GMT</pubDate>
+      <content:encoded><![CDATA[<!--
+ * @Author: your name
+ * @Date: 2021-05-25 22:19:51
+ * @LastEditTime: 2021-05-26 14:20:42
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \DailyNotes\OpenCV-python.md
+-->
+<h1>OpenCV-python</h1>
+]]></content:encoded>
+      <enclosure url="http://cdn.ayusummer233.top/img/20210526101757.png" type="image/png"/>
+    </item>
+    <item>
+      <title>目录</title>
+      <link>https://ayusummer.github.io/DailyNotes/Language/Python/libs/Pandas/Pandas.html</link>
+      <guid>https://ayusummer.github.io/DailyNotes/Language/Python/libs/Pandas/Pandas.html</guid>
+      <source url="https://ayusummer.github.io/DailyNotes/rss.xml">目录</source>
+      <description>目录
+
+目录
+Pandas
+
+Pandas数据分析
+pandas数据结构
+
+Series
+
+常用创建方法
+常用运算
+values的访问与修改
+
+
+DataFrame
+
+
+数据的导入与导出
+
+数据的导入参数
+
+导入xlsx
+
+
+数据的导出参数
+
+
+
+
+
+
+Pandas
+
+Pandas数据分析
+
+pandas的名称来自于panel data(面板数据) 和...</description>
+      <pubDate>Fri, 15 Sep 2023 06:52:40 GMT</pubDate>
+      <content:encoded><![CDATA[
+<ul>
+<li><a href="#%E7%9B%AE%E5%BD%95">目录</a></li>
+<li><a href="#pandas">Pandas</a>
+<ul>
+<li><a href="#pandas%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90">Pandas数据分析</a></li>
+<li><a href="#pandas%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">pandas数据结构</a>
+<ul>
+<li><a href="#series">Series</a>
+<ul>
+<li><a href="#%E5%B8%B8%E7%94%A8%E5%88%9B%E5%BB%BA%E6%96%B9%E6%B3%95">常用创建方法</a></li>
+<li><a href="#%E5%B8%B8%E7%94%A8%E8%BF%90%E7%AE%97">常用运算</a></li>
+<li><a href="#values%E7%9A%84%E8%AE%BF%E9%97%AE%E4%B8%8E%E4%BF%AE%E6%94%B9">values的访问与修改</a></li>
+</ul>
+</li>
+<li><a href="#dataframe">DataFrame</a></li>
+</ul>
+</li>
+<li><a href="#%E6%95%B0%E6%8D%AE%E7%9A%84%E5%AF%BC%E5%85%A5%E4%B8%8E%E5%AF%BC%E5%87%BA">数据的导入与导出</a>
+<ul>
+<li><a href="#%E6%95%B0%E6%8D%AE%E7%9A%84%E5%AF%BC%E5%85%A5%E5%8F%82%E6%95%B0">数据的导入参数</a>
+<ul>
+<li><a href="#%E5%AF%BC%E5%85%A5xlsx">导入<code>xlsx</code></a></li>
+</ul>
+</li>
+<li><a href="#%E6%95%B0%E6%8D%AE%E7%9A%84%E5%AF%BC%E5%87%BA%E5%8F%82%E6%95%B0">数据的导出参数</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>目录</title>
+      <link>https://ayusummer.github.io/DailyNotes/Language/Python/libs/Pillow/Pillow.html</link>
+      <guid>https://ayusummer.github.io/DailyNotes/Language/Python/libs/Pillow/Pillow.html</guid>
+      <source url="https://ayusummer.github.io/DailyNotes/rss.xml">目录</source>
+      <description>目录
+
+目录
+Pillow
+
+Image
+
+convert(mode)
+new(mode, size, color=0)
+
+
+ImageDraw
+
+
+
+
+Pillow
+
+Image
+
+convert(mode)
+
+
+[Python] - 图像处理 ------ img.convert()@Exler_yz
+
+
+
+是图像实例对象的一个方法，接受一个 mo...</description>
+      <pubDate>Fri, 15 Sep 2023 06:52:40 GMT</pubDate>
+      <content:encoded><![CDATA[
+<ul>
+<li><a href="#%E7%9B%AE%E5%BD%95">目录</a></li>
+<li><a href="#pillow">Pillow</a>
+<ul>
+<li><a href="#image">Image</a>
+<ul>
+<li><a href="#convertmode">convert(mode)</a></li>
+<li><a href="#newmode-size-color0">new(mode, size, color=0)</a></li>
+</ul>
+</li>
+<li><a href="#imagedraw">ImageDraw</a></li>
+</ul>
+</li>
+</ul>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>TensorFlow</title>
+      <link>https://ayusummer.github.io/DailyNotes/Language/Python/libs/TensorFlow/TensorFlow.html</link>
+      <guid>https://ayusummer.github.io/DailyNotes/Language/Python/libs/TensorFlow/TensorFlow.html</guid>
+      <source url="https://ayusummer.github.io/DailyNotes/rss.xml">TensorFlow</source>
+      <description>TensorFlow
+
+安装
+
+TensorFlow安装的时候需要装dll,因此不可以通过直接拷贝别人装好的的site-packages/TensorFlow...来安装
+相应环境命令行执行
+--user : pip 默认安装 package 到 system directory, 通过 --user 可以将 package 安装到 /home 路径下...</description>
+      <pubDate>Fri, 15 Sep 2023 06:52:40 GMT</pubDate>
+    </item>
+    <item>
+      <title>Python 异步编程</title>
+      <link>https://ayusummer.github.io/DailyNotes/Language/Python/libs/asyncio/%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B.html</link>
+      <guid>https://ayusummer.github.io/DailyNotes/Language/Python/libs/asyncio/%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B.html</guid>
+      <source url="https://ayusummer.github.io/DailyNotes/rss.xml">Python 异步编程</source>
+      <description>Python 异步编程
+原文链接(几乎完全照搬了内容)-Python 异步编程入门 - 阮一峰的网络日志 (ruanyifeng.com)
+
+参考链接: Async IO in Python: A Complete Walkthrough, Brad Solomon
+
+
+
+
+历史上，Python 并不支持专门的异步编程语法，因为不需要。
+
+
+有了多线程...</description>
+      <pubDate>Fri, 15 Sep 2023 06:52:40 GMT</pubDate>
+      <content:encoded><![CDATA[
+<p><a href="http://www.ruanyifeng.com/blog/2019/11/python-asyncio.html" target="_blank" rel="noopener noreferrer">原文链接(几乎完全照搬了内容)-Python 异步编程入门 - 阮一峰的网络日志 (ruanyifeng.com)</a></p>
+<ul>
+<li><a href="https://realpython.com/async-io-python/" target="_blank" rel="noopener noreferrer">参考链接: Async IO in Python: A Complete Walkthrough</a>, Brad Solomon</li>
+</ul>
+]]></content:encoded>
+      <enclosure url="http://cdn.ayusummer233.top/img/image-20210614075932427.png" type="image/png"/>
+    </item>
+    <item>
+      <title>目录</title>
+      <link>https://ayusummer.github.io/DailyNotes/Language/Python/libs/json/json.html</link>
+      <guid>https://ayusummer.github.io/DailyNotes/Language/Python/libs/json/json.html</guid>
+      <source url="https://ayusummer.github.io/DailyNotes/rss.xml">目录</source>
+      <description>目录
+
+目录
+json
+
+dumps
+
+
+
+
+json
+
+
+参考链接@CSDN:滴滴滴&amp;apos;cv
+
+
+
+
+
+dumps
+
+
+json.dumps将一个Python数据结构转换为JSON
+
+obj : 待转化成json的对象。
+sort_keys =True : 是告诉编码器按照字典排序(a到z)输出。如果是字典类型的python对象，就把关键字按照字典排序...</description>
+      <pubDate>Fri, 15 Sep 2023 06:52:40 GMT</pubDate>
+      <content:encoded><![CDATA[
+<ul>
+<li><a href="#%E7%9B%AE%E5%BD%95">目录</a></li>
+<li><a href="#json">json</a>
+<ul>
+<li><a href="#dumps">dumps</a></li>
+</ul>
+</li>
+</ul>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>目录</title>
+      <link>https://ayusummer.github.io/DailyNotes/Language/Python/libs/numpy/numpy.html</link>
+      <guid>https://ayusummer.github.io/DailyNotes/Language/Python/libs/numpy/numpy.html</guid>
+      <source url="https://ayusummer.github.io/DailyNotes/rss.xml">目录</source>
+      <description>目录
+
+目录
+numpy
+
+numpy基础
+
+np.linspace
+
+See Also
+Examples
+参数
+
+
+查看数组各项属性
+创建特定数组
+
+
+矩阵(matrix)
+
+转置矩阵
+生成矩阵
+
+matrix()
+mat()
+bmat()
+
+
+矩阵特有属性
+矩阵的运算
+
+矩阵相乘实例分析
+矩阵乘法及其应用
+
+
+
+
+linalg线代模块
+
+实例分析
+...</description>
+      <pubDate>Fri, 15 Sep 2023 06:52:40 GMT</pubDate>
+      <content:encoded><![CDATA[
+<ul>
+<li><a href="#%E7%9B%AE%E5%BD%95">目录</a></li>
+<li><a href="#numpy">numpy</a>
+<ul>
+<li><a href="#numpy%E5%9F%BA%E7%A1%80">numpy基础</a>
+<ul>
+<li><a href="#nplinspace">np.linspace</a>
+<ul>
+<li><a href="#see-also">See Also</a></li>
+<li><a href="#examples">Examples</a></li>
+<li><a href="#%E5%8F%82%E6%95%B0">参数</a></li>
+</ul>
+</li>
+<li><a href="#%E6%9F%A5%E7%9C%8B%E6%95%B0%E7%BB%84%E5%90%84%E9%A1%B9%E5%B1%9E%E6%80%A7">查看数组各项属性</a></li>
+<li><a href="#%E5%88%9B%E5%BB%BA%E7%89%B9%E5%AE%9A%E6%95%B0%E7%BB%84">创建特定数组</a></li>
+</ul>
+</li>
+<li><a href="#%E7%9F%A9%E9%98%B5matrix">矩阵(matrix)</a>
+<ul>
+<li><a href="#%E8%BD%AC%E7%BD%AE%E7%9F%A9%E9%98%B5">转置矩阵</a></li>
+<li><a href="#%E7%94%9F%E6%88%90%E7%9F%A9%E9%98%B5">生成矩阵</a>
+<ul>
+<li><a href="#matrix">matrix()</a></li>
+<li><a href="#mat">mat()</a></li>
+<li><a href="#bmat">bmat()</a></li>
+</ul>
+</li>
+<li><a href="#%E7%9F%A9%E9%98%B5%E7%89%B9%E6%9C%89%E5%B1%9E%E6%80%A7">矩阵特有属性</a></li>
+<li><a href="#%E7%9F%A9%E9%98%B5%E7%9A%84%E8%BF%90%E7%AE%97">矩阵的运算</a>
+<ul>
+<li><a href="#%E7%9F%A9%E9%98%B5%E7%9B%B8%E4%B9%98%E5%AE%9E%E4%BE%8B%E5%88%86%E6%9E%90">矩阵相乘实例分析</a></li>
+<li><a href="#%E7%9F%A9%E9%98%B5%E4%B9%98%E6%B3%95%E5%8F%8A%E5%85%B6%E5%BA%94%E7%94%A8">矩阵乘法及其应用</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#linalg%E7%BA%BF%E4%BB%A3%E6%A8%A1%E5%9D%97">linalg线代模块</a>
+<ul>
+<li><a href="#%E5%AE%9E%E4%BE%8B%E5%88%86%E6%9E%90">实例分析</a></li>
+</ul>
+</li>
+<li><a href="#-%E4%B8%80%E5%85%83%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E5%88%86%E6%9E%90%E6%98%AF%E6%9C%80%E5%9F%BA%E6%9C%AC%E7%9A%84%E5%9B%9E%E5%BD%92%E6%A8%A1%E5%9E%8B">### 一元线性回归分析是最基本的回归模型</a>
+<ul>
+<li><a href="#%E6%A6%82%E5%BF%B5">概念</a></li>
+<li><a href="#%E5%88%86%E6%9E%90">分析</a></li>
+</ul>
+</li>
+<li><a href="#numpy%E8%BF%9B%E8%A1%8C%E6%95%B0%E6%8D%AE%E7%BB%9F%E8%AE%A1%E5%88%86%E6%9E%90%E6%97%B6%E5%B8%B8%E7%94%A8%E7%9A%84%E6%96%B9%E6%B3%95">numpy进行数据统计分析时常用的方法</a>
+<ul>
+<li><a href="#%E5%8E%BB%E9%87%8D">去重</a></li>
+</ul>
+</li>
+<li><a href="#numpy%E4%B8%AD%E7%9A%84%E6%95%B0%E6%8D%AE%E5%B8%B8%E7%94%A8%E4%BF%9D%E5%AD%98%E4%B8%8E%E8%AF%BB%E5%8F%96%E6%96%B9%E6%B3%95">numpy中的数据常用保存与读取方法</a></li>
+</ul>
+</li>
+</ul>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>目录</title>
+      <link>https://ayusummer.github.io/DailyNotes/Language/Python/libs/turtle/turtle.html</link>
+      <guid>https://ayusummer.github.io/DailyNotes/Language/Python/libs/turtle/turtle.html</guid>
+      <source url="https://ayusummer.github.io/DailyNotes/rss.xml">目录</source>
+      <description>目录
+
+目录
+turtle
+
+重置
+画圆
+turtle.speed(speed=None)
+turtle.circle(radius, extent=None, steps=None)
+turtle.colormode(255)
+绘图完成后不自动退出
+颜色填充
+
+
+
+
+turtle
+
+基本上都是照抄官方文档的
+
+
+重置
+
+观感上讲调用此函数之前的海龟绘...</description>
+      <pubDate>Fri, 15 Sep 2023 06:52:40 GMT</pubDate>
+      <content:encoded><![CDATA[
+<ul>
+<li><a href="#%E7%9B%AE%E5%BD%95">目录</a></li>
+<li><a href="#turtle">turtle</a>
+<ul>
+<li><a href="#%E9%87%8D%E7%BD%AE">重置</a></li>
+<li><a href="#%E7%94%BB%E5%9C%86">画圆</a></li>
+<li><a href="#turtlespeedspeednone">turtle.speed(speed=None)</a></li>
+<li><a href="#turtlecircleradius-extentnone-stepsnone">turtle.circle(radius, extent=None, steps=None)</a></li>
+<li><a href="#turtlecolormode255">turtle.colormode(255)</a></li>
+<li><a href="#%E7%BB%98%E5%9B%BE%E5%AE%8C%E6%88%90%E5%90%8E%E4%B8%8D%E8%87%AA%E5%8A%A8%E9%80%80%E5%87%BA">绘图完成后不自动退出</a></li>
+<li><a href="#%E9%A2%9C%E8%89%B2%E5%A1%AB%E5%85%85">颜色填充</a></li>
+</ul>
+</li>
+</ul>
+]]></content:encoded>
+      <enclosure url="http://cdn.ayusummer233.top/img/20210523134615.png" type="image/png"/>
+    </item>
+    <item>
+      <title>Struts2</title>
+      <link>https://ayusummer.github.io/DailyNotes/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/Web%E5%AE%89%E5%85%A8/Web%E4%B8%BB%E6%B5%81%E5%BA%94%E7%94%A8%E6%BC%8F%E6%B4%9E/Struts2/</link>
+      <guid>https://ayusummer.github.io/DailyNotes/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/Web%E5%AE%89%E5%85%A8/Web%E4%B8%BB%E6%B5%81%E5%BA%94%E7%94%A8%E6%BC%8F%E6%B4%9E/Struts2/</guid>
+      <source url="https://ayusummer.github.io/DailyNotes/rss.xml">Struts2</source>
+      <description>Struts2
+
+盘点：史上最全Struts 2漏洞复现过程及PoC合集 - 安全内参 | 决策者的网络安全知识库 (secrss.com)
+
+Struts2 历史版本归档可在 Index of /dist/struts --- /dist/struts 的索引 (apache.org) 找到, 对于后续分析具体版本的漏洞比较有帮助
+
+Struts2 ...</description>
+      <pubDate>Thu, 14 Sep 2023 13:22:20 GMT</pubDate>
+      <content:encoded><![CDATA[
+<blockquote>
+<p><a href="https://www.secrss.com/articles/24780" target="_blank" rel="noopener noreferrer">盘点：史上最全Struts 2漏洞复现过程及PoC合集 - 安全内参 | 决策者的网络安全知识库 (secrss.com)</a></p>
+</blockquote>
+<p>Struts2 历史版本归档可在 [Index of /dist/struts</p>
+]]></content:encoded>
+      <enclosure url="http://cdn.ayusummer233.top/DailyNotes/202306010803847.png" type="image/png"/>
+    </item>
+    <item>
+      <title>后端</title>
+      <link>https://ayusummer.github.io/DailyNotes/%E5%90%8E%E7%AB%AF/</link>
+      <guid>https://ayusummer.github.io/DailyNotes/%E5%90%8E%E7%AB%AF/</guid>
+      <source url="https://ayusummer.github.io/DailyNotes/rss.xml">后端</source>
+      <description>后端
+WSGI
+
+Web服务器网关接口 - 维基百科，自由的百科全书 (wikipedia.org)
+
+WSGI(Web Server Gateway Interface) 是 Python 中端口定义 Web 服务器和 Web 应用程序或框架之间的一种简单而通用的接口
+WSGI 分为两个部分: 一为 &amp;quot;服务器&amp;quot; / &amp;quot;网关&amp;quot;, 另一为 &amp;quot;应用程序&amp;quot; ...</description>
+      <pubDate>Mon, 11 Sep 2023 02:27:18 GMT</pubDate>
+      <content:encoded><![CDATA[
+<h2>WSGI</h2>
+<blockquote>
+<p><a href="https://zh.wikipedia.org/wiki/Web%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%BD%91%E5%85%B3%E6%8E%A5%E5%8F%A3" target="_blank" rel="noopener noreferrer">Web服务器网关接口 - 维基百科，自由的百科全书 (wikipedia.org)</a></p>
+</blockquote>
+<p><code>WSGI(Web Server Gateway Interface)</code> 是 Python 中端口定义 Web 服务器和 Web 应用程序或框架之间的一种简单而通用的接口</p>
+<p>WSGI 分为两个部分: 一为 "服务器" / "网关", 另一为 "应用程序" 或 "应用框架"; 在处理 WSGI 请求时, 服务器会为应用程序提供环境信息以及回调函数;当应用程序完成处理请求后, 会通过回调函数将结果回传给服务器</p>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>Hash</title>
+      <link>https://ayusummer.github.io/DailyNotes/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95/Hash.html</link>
+      <guid>https://ayusummer.github.io/DailyNotes/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95/Hash.html</guid>
+      <source url="https://ayusummer.github.io/DailyNotes/rss.xml">Hash</source>
+      <description>Hash
+
+加密算法比较：SHA1，SHA256，MD5_风神修罗使的博客-CSDN博客_md5 sha1 sha256区别
+SHA-1 vs SHA-256 - pengyingh - 博客园 (cnblogs.com)
+Securing your webhooks - GitHub Docs
+
+
+常用命令
+image-20230910211506449</description>
+      <pubDate>Sun, 10 Sep 2023 17:58:22 GMT</pubDate>
+      <content:encoded><![CDATA[
+<blockquote>
+<p><a href="https://blog.csdn.net/WuLex/article/details/81477097" target="_blank" rel="noopener noreferrer">加密算法比较：SHA1，SHA256，MD5_风神修罗使的博客-CSDN博客_md5 sha1 sha256区别</a></p>
+<p><a href="https://www.cnblogs.com/pengyingh/articles/2499181.html" target="_blank" rel="noopener noreferrer">SHA-1 vs SHA-256 - pengyingh - 博客园 (cnblogs.com)</a></p>
+<p><a href="https://docs.github.com/en/developers/webhooks-and-events/webhooks/securing-your-webhooks" target="_blank" rel="noopener noreferrer">Securing your webhooks - GitHub Docs</a></p>
+</blockquote>
+]]></content:encoded>
+      <enclosure url="http://cdn.ayusummer233.top/DailyNotes/202309102115479.png" type="image/png"/>
+    </item>
+    <item>
+      <title>HTTP请求走私</title>
+      <link>https://ayusummer.github.io/DailyNotes/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/Web%E5%AE%89%E5%85%A8/%E6%BC%8F%E6%B4%9E%E7%B1%BB%E5%9E%8B/HTTP%E8%AF%B7%E6%B1%82%E8%B5%B0%E7%A7%81/HTTP%E8%AF%B7%E6%B1%82%E8%B5%B0%E7%A7%81.html</link>
+      <guid>https://ayusummer.github.io/DailyNotes/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/Web%E5%AE%89%E5%85%A8/%E6%BC%8F%E6%B4%9E%E7%B1%BB%E5%9E%8B/HTTP%E8%AF%B7%E6%B1%82%E8%B5%B0%E7%A7%81/HTTP%E8%AF%B7%E6%B1%82%E8%B5%B0%E7%A7%81.html</guid>
+      <source url="https://ayusummer.github.io/DailyNotes/rss.xml">HTTP请求走私</source>
+      <description>HTTP请求走私</description>
+      <pubDate>Mon, 28 Aug 2023 11:06:11 GMT</pubDate>
+      <content:encoded><![CDATA[
+]]></content:encoded>
+    </item>
+    <item>
+      <title>信息收集</title>
+      <link>https://ayusummer.github.io/DailyNotes/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/</link>
+      <guid>https://ayusummer.github.io/DailyNotes/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/</guid>
+      <source url="https://ayusummer.github.io/DailyNotes/rss.xml">信息收集</source>
+      <description>信息收集
+Findsomething
+
+陌陌安全应急响应中心 (immomo.com)
+
+搜集当前标签页的源码和js链接，对js链接再次加载，获取js代码，然后从html和js中使用正则匹配我们需要的信息。将匹配到的信息筛选、去重并展示到插件的页面中。
+FindSomething - Chrome 应用商店 (google.com)
+image-202...</description>
+      <pubDate>Thu, 27 Jul 2023 14:42:20 GMT</pubDate>
+      <content:encoded><![CDATA[
+<h2>Findsomething</h2>
+<blockquote>
+<p><a href="https://security.immomo.com/blog/145" target="_blank" rel="noopener noreferrer">陌陌安全应急响应中心 (immomo.com)</a></p>
+</blockquote>
+<p>搜集当前标签页的源码和js链接，对js链接再次加载，获取js代码，然后从html和js中使用正则匹配我们需要的信息。将匹配到的信息筛选、去重并展示到插件的页面中。</p>
+<p><a href="https://chrome.google.com/webstore/detail/findsomething/kfhniponecokdefffkpagipffdefeldb" target="_blank" rel="noopener noreferrer">FindSomething - Chrome 应用商店 (google.com)</a></p>
+<p><img src="http://cdn.ayusummer233.top/DailyNotes/202307272241749.png" alt="image-20230727224129911"></p>
+]]></content:encoded>
+      <enclosure url="http://cdn.ayusummer233.top/DailyNotes/202307272241749.png" type="image/png"/>
+    </item>
+    <item>
+      <title>端点安全</title>
+      <link>https://ayusummer.github.io/DailyNotes/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/%E7%AB%AF%E7%82%B9%E5%AE%89%E5%85%A8/</link>
+      <guid>https://ayusummer.github.io/DailyNotes/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/%E7%AB%AF%E7%82%B9%E5%AE%89%E5%85%A8/</guid>
+      <source url="https://ayusummer.github.io/DailyNotes/rss.xml">端点安全</source>
+      <description>端点安全
+
+端点安全
+
+C2 工具
+Syslog
+
+
+
+
+C2 工具
+Cobalt Strike 模块详解&amp;功能详解 - 知乎 (zhihu.com)
+
+Syslog
+
+Syslog - 维基百科，自由的百科全书 (wikipedia.org)
+关于 syslog 你要知道的一切 - 知乎 (zhihu.com)
+
+Syslog(System Logg...</description>
+      <pubDate>Mon, 26 Jun 2023 02:30:23 GMT</pubDate>
+      <content:encoded><![CDATA[
+<ul>
+<li><a href="#%E7%AB%AF%E7%82%B9%E5%AE%89%E5%85%A8">端点安全</a>
+<ul>
+<li><a href="#c2-%E5%B7%A5%E5%85%B7">C2 工具</a></li>
+<li><a href="#syslog">Syslog</a></li>
+</ul>
+</li>
+</ul>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>食谱</title>
+      <link>https://ayusummer.github.io/DailyNotes/DailyLife/%E9%A3%9F%E8%B0%B1/</link>
+      <guid>https://ayusummer.github.io/DailyNotes/DailyLife/%E9%A3%9F%E8%B0%B1/</guid>
+      <source url="https://ayusummer.github.io/DailyNotes/rss.xml">食谱</source>
+      <description>食谱
+
+食谱
+
+地锅鸡
+
+材料准备
+整体流程
+
+
+叉烧
+
+
+
+
+地锅鸡
+
+【曼食慢语】这锅鸡里贴的面饼子，比肉还让人上瘾！_哔哩哔哩_bilibili
+大厨教你徐州“地锅鸡”正宗做法，从和面开始，全都告诉你_哔哩哔哩_bilibili
+
+
+image-20230611204752633
+image-20230611204812200
+image-202...</description>
+      <pubDate>Sun, 11 Jun 2023 12:52:34 GMT</pubDate>
+      <content:encoded><![CDATA[
+<ul>
+<li><a href="#%E9%A3%9F%E8%B0%B1">食谱</a>
+<ul>
+<li><a href="#%E5%9C%B0%E9%94%85%E9%B8%A1">地锅鸡</a>
+<ul>
+<li><a href="#%E6%9D%90%E6%96%99%E5%87%86%E5%A4%87">材料准备</a></li>
+<li><a href="#%E6%95%B4%E4%BD%93%E6%B5%81%E7%A8%8B">整体流程</a></li>
+</ul>
+</li>
+<li><a href="#%E5%8F%89%E7%83%A7">叉烧</a></li>
+</ul>
+</li>
+</ul>
+]]></content:encoded>
+      <enclosure url="http://cdn.ayusummer233.top/DailyNotes/202306112047718.png" type="image/png"/>
+    </item>
+    <item>
+      <title>网络安全</title>
+      <link>https://ayusummer.github.io/DailyNotes/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/</link>
+      <guid>https://ayusummer.github.io/DailyNotes/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/</guid>
+      <source url="https://ayusummer.github.io/DailyNotes/rss.xml">网络安全</source>
+      <description>网络安全
+常见概念
+
+计算机漏洞安全相关的概念 POC 、EXP 、VUL 、CVE 、0DAY_www.xpshuai.cn 的博客-CSDN 博客_poc 漏洞 什么意思
+
+
+
+
+POC: Proof Of Concept，中文意思是“观点证明”。这个短语会在漏洞报告中使用，漏洞报告中的 POC 则是 一段说明 或者 一个攻击的样例，使得读者能够确...</description>
+      <pubDate>Tue, 06 Jun 2023 08:09:58 GMT</pubDate>
+      <content:encoded><![CDATA[
+<h2>常见概念</h2>
+<blockquote>
+<p><a href="https://blog.csdn.net/qq_37622608/article/details/88048847" target="_blank" rel="noopener noreferrer">计算机漏洞安全相关的概念 POC 、EXP 、VUL 、CVE 、0DAY_www.xpshuai.cn 的博客-CSDN 博客_poc 漏洞 什么意思</a></p>
+</blockquote>
+]]></content:encoded>
+      <enclosure url="http://cdn.ayusummer233.top/DailyNotes/202309052235748.png" type="image/png"/>
+    </item>
+    <item>
+      <title>TA0005-Defense Evasion(下)</title>
+      <link>https://ayusummer.github.io/DailyNotes/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/ATTCK/TA0005-DefenseEvasion(%E4%B8%8B).html</link>
+      <guid>https://ayusummer.github.io/DailyNotes/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/ATTCK/TA0005-DefenseEvasion(%E4%B8%8B).html</guid>
+      <source url="https://ayusummer.github.io/DailyNotes/rss.xml">TA0005-Defense Evasion(下)</source>
+      <description>TA0005-Defense Evasion(下)
+T1578 Modify Cloud Compute Infrastructure 修改云计算基础结构
+An adversary may attempt to modify a cloud account&amp;apos;s compute service infrastructure to evade defens...</description>
+      <pubDate>Sat, 20 May 2023 17:30:17 GMT</pubDate>
+      <content:encoded><![CDATA[
+<h2><a class="header-anchor" href="#t1578-modify-cloud-compute-infrastructure-修改云计算基础结构"><span>T1578 </span></a><a href="https://attack.mitre.org/techniques/T1578" target="_blank" rel="noopener noreferrer">Modify Cloud Compute Infrastructure</a> 修改云计算基础结构</h2>
+<p>An adversary may attempt to modify a cloud account's compute service infrastructure to evade defenses. A modification to the compute service infrastructure can include the creation, deletion, or modification of one or more components such as compute instances, virtual machines, and snapshots.
+攻击者可能会尝试修改云帐户的计算服务基础结构以绕过防御。对计算服务基础结构的修改可以包括创建、删除或修改一个或多个组件，例如计算实例、虚拟机和快照。</p>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>Notion</title>
+      <link>https://ayusummer.github.io/DailyNotes/NoteTools/Notion.html</link>
+      <guid>https://ayusummer.github.io/DailyNotes/NoteTools/Notion.html</guid>
+      <source url="https://ayusummer.github.io/DailyNotes/rss.xml">Notion</source>
+      <description>Notion
+进度条
+
+如何使用 Notion 原生的进度条？ - 少数派 (sspai.com)
+Notion 使用教程：如何创建Notion进度条，让数据看得见 - 知乎 (zhihu.com)</description>
+      <pubDate>Sat, 20 May 2023 17:29:34 GMT</pubDate>
+      <content:encoded><![CDATA[
+<h2>进度条</h2>
+<blockquote>
+<p><a href="https://client.sspai.com/post/75271" target="_blank" rel="noopener noreferrer">如何使用 Notion 原生的进度条？ - 少数派 (sspai.com)</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/621811139" target="_blank" rel="noopener noreferrer">Notion 使用教程：如何创建Notion进度条，让数据看得见 - 知乎 (zhihu.com)</a></p>
+</blockquote>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>云崽</title>
+      <link>https://ayusummer.github.io/DailyNotes/%E5%A8%B1%E4%B9%90/Bot/%E4%BA%91%E5%B4%BD.html</link>
+      <guid>https://ayusummer.github.io/DailyNotes/%E5%A8%B1%E4%B9%90/Bot/%E4%BA%91%E5%B4%BD.html</guid>
+      <source url="https://ayusummer.github.io/DailyNotes/rss.xml">云崽</source>
+      <description>云崽
+
+
+原版云崽
+Github 仓库被夹了, Gitee 仓库如下
+Yunzai-Bot: 原神QQ群机器人，通过米游社接口，查询原神游戏信息，生成图片返回 - Gitee.com
+这个仓库似乎 3 个月没更新过了, 发现最后一次提交的评论被当做 issue 区用了, 在里面有提到现在云崽在喵版云崽作者的 Gitee 中更新, 链接如下
+Yunzai...</description>
+      <pubDate>Sun, 07 May 2023 08:03:52 GMT</pubDate>
+      <content:encoded><![CDATA[
+<ul>
+<li>
+<p>原版云崽</p>
+<p>Github 仓库被夹了, Gitee 仓库如下</p>
+<p><a href="https://gitee.com/Le-niao/Yunzai-Bot/tree/main/" target="_blank" rel="noopener noreferrer">Yunzai-Bot: 原神QQ群机器人，通过米游社接口，查询原神游戏信息，生成图片返回 - Gitee.com</a></p>
+<p>这个仓库似乎 3 个月没更新过了, 发现最后一次提交的评论被当做 issue 区用了, 在里面有提到现在云崽在喵版云崽作者的 Gitee 中更新, 链接如下</p>
+<p><a href="https://gitee.com/yoimiya-kokomi/Yunzai-Bot" target="_blank" rel="noopener noreferrer">Yunzai-Bot: 原神QQ群机器人，通过米游社接口，查询原神游戏信息，快速生成图片返回 (gitee.com)</a></p>
+</li>
+<li>
+<p>喵版云崽</p>
+<p><a href="https://github.com/yoimiya-kokomi/Miao-Yunzai" target="_blank" rel="noopener noreferrer">yoimiya-kokomi/Miao-Yunzai: 喵版Yunzai-V3 (github.com)</a></p>
+</li>
+</ul>
+]]></content:encoded>
+      <enclosure url="http://cdn.ayusummer233.top/DailyNotes/202305071321003.png" type="image/png"/>
+    </item>
+    <item>
+      <title>Powershell Empire</title>
+      <link>https://ayusummer.github.io/DailyNotes/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/Powershell-Empire.html</link>
+      <guid>https://ayusummer.github.io/DailyNotes/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/Powershell-Empire.html</guid>
+      <source url="https://ayusummer.github.io/DailyNotes/rss.xml">Powershell Empire</source>
+      <description>Powershell Empire
+
+https://github.com/EmpireProject/Empire
+powershell-empire | Kali Linux Tools --- powershell 帝国| Kali Linux 工具
+PowerShell Empire 实战入门篇 - FreeBuf 网络安全行业门户
+Empir...</description>
+      <pubDate>Fri, 21 Apr 2023 09:53:53 GMT</pubDate>
+      <content:encoded><![CDATA[
+<blockquote>
+<p><a href="https://github.com/EmpireProject/Empire.git" target="_blank" rel="noopener noreferrer">https://github.com/EmpireProject/Empire</a></p>
+<p>[powershell-empire | Kali Linux Tools</p>
+</blockquote>
+]]></content:encoded>
+      <enclosure url="http://cdn.ayusummer233.top/DailyNotes/202309041658684.png" type="image/png"/>
+    </item>
+    <item>
+      <title>TA0001-InitialAccess 初始访问</title>
+      <link>https://ayusummer.github.io/DailyNotes/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/ATTCK/TA0001-InitialAccess.html</link>
+      <guid>https://ayusummer.github.io/DailyNotes/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/ATTCK/TA0001-InitialAccess.html</guid>
+      <source url="https://ayusummer.github.io/DailyNotes/rss.xml">TA0001-InitialAccess 初始访问</source>
+      <description>TA0001-InitialAccess 初始访问
+
+Initial Access, Tactic TA0001 - Enterprise | MITRE ATT&amp;CK® --- 初始访问，战术 TA0001 - 企业 | MITRE ATT＆CK®
+Dm2333/ATTCK-PenTester-Book: ATTCK-PenTester-Book 
+...</description>
+      <pubDate>Fri, 21 Apr 2023 09:44:54 GMT</pubDate>
+      <content:encoded><![CDATA[
+<blockquote>
+<p>[Initial Access, Tactic TA0001 - Enterprise | MITRE ATT&amp;CK®</p>
+</blockquote>
+]]></content:encoded>
+      <enclosure url="http://cdn.ayusummer233.top/DailyNotes/202304191617898.png" type="image/png"/>
+    </item>
+    <item>
+      <title>ATT&amp;CK</title>
+      <link>https://ayusummer.github.io/DailyNotes/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/ATTCK/</link>
+      <guid>https://ayusummer.github.io/DailyNotes/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/ATTCK/</guid>
+      <source url="https://ayusummer.github.io/DailyNotes/rss.xml">ATT&amp;CK</source>
+      <description>ATT&amp;CK
+
+MITRE ATT&amp;CK®
+
+
+看板 - ATT&amp;CK® Navigator (mitre-attack.github.io)
+威胁组织 - Groups | MITRE ATT&amp;CK®
+数据与开发工具 - ATT&amp;CK Data &amp; Tools | MITRE ATT&amp;CK®
+
+python  - GitHub - mitre-att...</description>
+      <pubDate>Fri, 21 Apr 2023 09:44:54 GMT</pubDate>
+      <content:encoded><![CDATA[
+<blockquote>
+<p><a href="https://attack.mitre.org/" target="_blank" rel="noopener noreferrer">MITRE ATT&amp;CK®</a></p>
+</blockquote>
+<ul>
+<li>看板 - <a href="https://mitre-attack.github.io/attack-navigator/" target="_blank" rel="noopener noreferrer">ATT&amp;CK® Navigator (mitre-attack.github.io)</a></li>
+<li>威胁组织 - <a href="https://attack.mitre.org/groups/" target="_blank" rel="noopener noreferrer">Groups | MITRE ATT&amp;CK®</a></li>
+<li>数据与开发工具 - <a href="https://attack.mitre.org/resources/attack-data-and-tools/" target="_blank" rel="noopener noreferrer">ATT&amp;CK Data &amp; Tools | MITRE ATT&amp;CK®</a>
+<ul>
+<li>python  - <a href="https://github.com/mitre-attack/mitreattack-python/" target="_blank" rel="noopener noreferrer">GitHub - mitre-attack/mitreattack-python: A python module for working with ATT&amp;CK</a></li>
+</ul>
+</li>
+</ul>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>Linux</title>
+      <link>https://ayusummer.github.io/DailyNotes/%E9%80%9A%E8%AF%86/Linux.html</link>
+      <guid>https://ayusummer.github.io/DailyNotes/%E9%80%9A%E8%AF%86/Linux.html</guid>
+      <source url="https://ayusummer.github.io/DailyNotes/rss.xml">Linux</source>
+      <description>Linux
+
+Linux
+
+Ubuntu 的 source.list 文件
+
+换源
+
+
+根目录各目录含义
+SHELL
+
+路由操作
+
+ip route
+route(deprecated)
+
+
+类清屏
+
+
+
+
+清屏
+指针移到行尾
+
+单引号, 双引号与反引号
+查找文件
+历史记录
+SSH
+
+VSCode: Remote-SSH
+MobaXterm
+WindTe...</description>
+      <pubDate>Mon, 27 Mar 2023 02:36:46 GMT</pubDate>
+      <content:encoded><![CDATA[
+<ul>
+<li><a href="#linux">Linux</a>
+<ul>
+<li><a href="#ubuntu-%E7%9A%84-sourcelist-%E6%96%87%E4%BB%B6">Ubuntu 的 source.list 文件</a>
+<ul>
+<li><a href="#%E6%8D%A2%E6%BA%90">换源</a></li>
+</ul>
+</li>
+<li><a href="#%E6%A0%B9%E7%9B%AE%E5%BD%95%E5%90%84%E7%9B%AE%E5%BD%95%E5%90%AB%E4%B9%89">根目录各目录含义</a></li>
+<li><a href="#shell">SHELL</a>
+<ul>
+<li><a href="#%E8%B7%AF%E7%94%B1%E6%93%8D%E4%BD%9C">路由操作</a>
+<ul>
+<li><a href="#ip-route">ip route</a></li>
+<li><a href="#routedeprecated">route(deprecated)</a></li>
+</ul>
+</li>
+<li><a href="#%E7%B1%BB%E6%B8%85%E5%B1%8F">类清屏</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E6%B8%85%E5%B1%8F">清屏</a></li>
+<li><a href="#%E6%8C%87%E9%92%88%E7%A7%BB%E5%88%B0%E8%A1%8C%E5%B0%BE">指针移到行尾</a>
+<ul>
+<li><a href="#%E5%8D%95%E5%BC%95%E5%8F%B7-%E5%8F%8C%E5%BC%95%E5%8F%B7%E4%B8%8E%E5%8F%8D%E5%BC%95%E5%8F%B7">单引号, 双引号与反引号</a></li>
+<li><a href="#%E6%9F%A5%E6%89%BE%E6%96%87%E4%BB%B6">查找文件</a></li>
+<li><a href="#%E5%8E%86%E5%8F%B2%E8%AE%B0%E5%BD%95">历史记录</a></li>
+<li><a href="#ssh">SSH</a>
+<ul>
+<li><a href="#vscode-remote-ssh">VSCode: Remote-SSH</a></li>
+<li><a href="#mobaxterm">MobaXterm</a></li>
+<li><a href="#windterm">WindTerm</a></li>
+<li><a href="#terminus">Terminus</a></li>
+<li><a href="#%E8%BF%9C%E7%A8%8B%E5%9B%BE%E5%BD%A2%E5%8C%96%E7%95%8C%E9%9D%A2%E7%9A%84%E6%9C%AC%E5%9C%B0%E6%98%BE%E7%A4%BA">远程图形化界面的本地显示</a>
+<ul>
+<li><a href="#%E4%B8%80%E4%BA%9B%E8%BD%AF%E4%BB%B6%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%90%AF%E5%8A%A8%E7%9A%84%E5%91%BD%E4%BB%A4">一些软件命令行启动的命令</a></li>
+</ul>
+</li>
+<li><a href="#%E4%BD%BF%E7%94%A8-ssh-%E5%81%9A%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91%E8%AE%A9%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%94%A8%E6%9C%AC%E5%9C%B0%E7%9A%84-clash-%E4%BB%A3%E7%90%86">使用 SSH 做端口转发让服务器用本地的 clash 代理</a></li>
+</ul>
+</li>
+<li><a href="#%E4%BD%BF%E7%94%A8-root-%E7%99%BB%E5%85%A5-ui">使用 root 登入 UI</a></li>
+<li><a href="#%E8%BD%AF%E7%A1%AC%E9%93%BE%E6%8E%A5">软硬链接</a></li>
+<li><a href="#%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4">常用命令</a>
+<ul>
+<li><a href="#echo">echo</a></li>
+<li><a href="#%E6%9F%A5%E7%9C%8B%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E4%BD%8D%E7%BD%AE">查看软件安装位置</a></li>
+<li><a href="#%E9%98%B2%E7%81%AB%E5%A2%99%E7%9B%B8%E5%85%B3">防火墙相关</a></li>
+<li><a href="#%E5%8E%8B%E7%BC%A9%E4%B8%8E%E8%A7%A3%E5%8E%8B">压缩与解压</a>
+<ul>
+<li><a href="#zip">zip</a></li>
+<li><a href="#gz">gz</a></li>
+<li><a href="#targz">tar.gz</a></li>
+</ul>
+</li>
+<li><a href="#cron-%E8%A1%A8%E8%BE%BE%E5%BC%8F">Cron 表达式</a>
+<ul>
+<li><a href="#%E5%90%84%E5%AD%97%E6%AE%B5%E5%90%AB%E4%B9%89">各字段含义</a></li>
+<li><a href="#%E5%B8%B8%E7%94%A8-cron-%E8%A1%A8%E8%BE%BE%E5%BC%8F">常用 Cron 表达式</a></li>
+</ul>
+</li>
+<li><a href="#%E8%AE%A1%E7%AE%97%E6%96%87%E4%BB%B6%E5%8D%A0%E7%94%A8%E7%A9%BA%E9%97%B4">计算文件占用空间</a></li>
+</ul>
+</li>
+<li><a href="#%E7%BD%91%E7%BB%9C">网络</a>
+<ul>
+<li><a href="#networkmanager">NetworkManager</a></li>
+<li><a href="#%E5%90%AF%E7%94%A8%E4%B8%8E%E7%A6%81%E7%94%A8%E7%BD%91%E5%8D%A1">启用与禁用网卡</a></li>
+<li><a href="#ip-%E8%BD%AC%E6%8D%A2">IP 转换</a></li>
+<li><a href="#%E9%98%B2%E7%81%AB%E5%A2%99">防火墙</a>
+<ul>
+<li><a href="#iptables">iptables</a>
+<ul>
+<li><a href="#%E6%B7%BB%E5%8A%A0%E8%A7%84%E5%88%99">添加规则</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E4%BB%A3%E7%90%86">代理</a></li>
+</ul>
+</li>
+<li><a href="#wsl2">WSL2</a>
+<ul>
+<li><a href="#%E5%AE%89%E8%A3%85">安装</a></li>
+<li><a href="#%E5%8D%B8%E8%BD%BD">卸载</a></li>
+<li><a href="#vscode-ssh-remote">VSCode-ssh-remote</a></li>
+<li><a href="#%E7%AB%AF%E5%8F%A3%E6%98%A0%E5%B0%84">端口映射</a></li>
+<li><a href="#wsl2-dns-%E6%9C%8D%E5%8A%A1%E5%BC%82%E5%B8%B8">WSL2 DNS 服务异常</a></li>
+<li><a href="#%E6%8A%A5%E9%94%99%E6%94%B6%E9%9B%86">报错收集</a>
+<ul>
+<li><a href="#ssh-%E6%8B%92%E7%BB%9D">ssh 拒绝</a></li>
+<li><a href="#ping-%E7%9A%84%E9%80%9A-ip--ping-%E4%B8%8D%E9%80%9A%E5%9F%9F%E5%90%8D">ping 的通 ip , ping 不通域名</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E6%9C%8D%E5%8A%A1%E5%99%A8">服务器</a>
+<ul>
+<li><a href="#%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5%E6%9C%8D%E5%8A%A1%E5%99%A8">远程连接服务器</a>
+<ul>
+<li><a href="#remote-ssh">remote-SSH</a></li>
+</ul>
+</li>
+<li><a href="#%E6%96%87%E4%BB%B6%E4%B8%8B%E8%BD%BD">文件下载</a></li>
+<li><a href="#%E8%85%BE%E8%AE%AF%E4%BA%91%E8%BD%BB%E9%87%8F">腾讯云轻量</a>
+<ul>
+<li><a href="#%E5%86%85%E7%BD%91-dns">内网 DNS</a></li>
+<li><a href="#%E4%BD%BF%E7%94%A8%E5%AF%86%E9%92%A5%E7%99%BB%E5%BD%95%E5%88%B0-root-%E8%B4%A6%E6%88%B7">使用密钥登录到 root 账户</a></li>
+</ul>
+</li>
+<li><a href="#%E6%8E%A2%E9%92%88">探针</a></li>
+</ul>
+</li>
+<li><a href="#%E7%AA%97%E5%8F%A3%E5%B7%A5%E5%85%B7">窗口工具</a>
+<ul>
+<li><a href="#zellij">Zellij</a>
+<ul>
+<li><a href="#%E5%AE%89%E8%A3%85-1">安装</a></li>
+<li><a href="#%E4%BD%BF%E7%94%A8">使用</a></li>
+</ul>
+</li>
+<li><a href="#screen-%E5%91%BD%E4%BB%A4">Screen 命令</a>
+<ul>
+<li><a href="#%E8%AF%AD%E6%B3%95">语法</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E8%BD%AF%E4%BB%B6">软件</a>
+<ul>
+<li><a href="#firefox">Firefox</a></li>
+<li><a href="#%E5%BE%AE%E4%BF%A1">微信</a></li>
+</ul>
+</li>
+<li><a href="#%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98">常见问题</a>
+<ul>
+<li><a href="#the-root-filesystem-require-a-manual-fsck">the root filesystem require a manual fsck</a></li>
+<li>[E: dpkg was interrupted, you must manually run 'dpkg --configure -a' to correct the problem.](#e-dpkg-was-interrupted-you-must-manually-run-dpkg</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+]]></content:encoded>
+      <enclosure url="http://cdn.ayusummer233.top/DailyNotes/202309201508290.png" type="image/png"/>
+    </item>
+    <item>
+      <title>Shiro</title>
+      <link>https://ayusummer.github.io/DailyNotes/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/Web%E5%AE%89%E5%85%A8/Web%E4%B8%BB%E6%B5%81%E5%BA%94%E7%94%A8%E6%BC%8F%E6%B4%9E/Shiro/</link>
+      <guid>https://ayusummer.github.io/DailyNotes/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/Web%E5%AE%89%E5%85%A8/Web%E4%B8%BB%E6%B5%81%E5%BA%94%E7%94%A8%E6%BC%8F%E6%B4%9E/Shiro/</guid>
+      <source url="https://ayusummer.github.io/DailyNotes/rss.xml">Shiro</source>
+      <description>Shiro
+Shiro&amp;lt;=1.2.4反序列化，一键检测工具
+知识星球 | 深度连接铁杆粉丝，运营高品质社群，知识变现的工具 (zsxq.com)
+Paper (seebug.org)</description>
+      <pubDate>Fri, 24 Mar 2023 02:32:35 GMT</pubDate>
+      <content:encoded><![CDATA[
+<p><a href="https://github.com/sv3nbeast/ShiroScan" target="_blank" rel="noopener noreferrer">Shiro&lt;=1.2.4反序列化，一键检测工具</a></p>
+<p><a href="https://wx.zsxq.com/dweb2/index/search/Shiro" target="_blank" rel="noopener noreferrer">知识星球 | 深度连接铁杆粉丝，运营高品质社群，知识变现的工具 (zsxq.com)</a></p>
+<p><a href="https://paper.seebug.org/?keyword=Shiro" target="_blank" rel="noopener noreferrer">Paper (seebug.org)</a></p>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>SQL 注入</title>
+      <link>https://ayusummer.github.io/DailyNotes/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/Web%E5%AE%89%E5%85%A8/%E6%BC%8F%E6%B4%9E%E7%B1%BB%E5%9E%8B/SQL%E6%B3%A8%E5%85%A5/</link>
+      <guid>https://ayusummer.github.io/DailyNotes/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/Web%E5%AE%89%E5%85%A8/%E6%BC%8F%E6%B4%9E%E7%B1%BB%E5%9E%8B/SQL%E6%B3%A8%E5%85%A5/</guid>
+      <source url="https://ayusummer.github.io/DailyNotes/rss.xml">SQL 注入</source>
+      <description>SQL 注入
+一个专注于聚合和记录各种SQL注入方法的wiki</description>
+      <pubDate>Fri, 24 Mar 2023 02:32:35 GMT</pubDate>
+      <content:encoded><![CDATA[
+<p><a href="https://github.com/ning1022/SQLInjectionWiki" target="_blank" rel="noopener noreferrer">一个专注于聚合和记录各种SQL注入方法的wiki</a></p>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>Web安全</title>
+      <link>https://ayusummer.github.io/DailyNotes/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/Web%E5%AE%89%E5%85%A8/</link>
+      <guid>https://ayusummer.github.io/DailyNotes/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/Web%E5%AE%89%E5%85%A8/</guid>
+      <source url="https://ayusummer.github.io/DailyNotes/rss.xml">Web安全</source>
+      <description>Web安全
+概述
+WEB 应用程序
+WEB应用程序是指在HTTP协议基础之上，借助浏览器进行URL访问的网站。
+image-20220526150421908
+
+HTTP 协议
+HTTP协议(HyperText Transfer Protocol，超文本传输协议) 是用于从WWW服务器传输超文本到本地浏览器的传送协议。
+HTTP是一个应用层协议，由请求...</description>
+      <pubDate>Fri, 24 Mar 2023 02:24:07 GMT</pubDate>
+      <content:encoded><![CDATA[
+<h2>概述</h2>
+<h3>WEB 应用程序</h3>
+<p>WEB应用程序是指在HTTP协议基础之上，借助浏览器进行URL访问的网站。</p>
+<p><img src="http://cdn.ayusummer233.top/img/202205261504067.png" alt="image-20220526150421908"></p>
+]]></content:encoded>
+      <enclosure url="http://cdn.ayusummer233.top/img/202205261504067.png" type="image/png"/>
+    </item>
+    <item>
+      <title>C++</title>
+      <link>https://ayusummer.github.io/DailyNotes/Language/CPlusPlus/CPP.html</link>
+      <guid>https://ayusummer.github.io/DailyNotes/Language/CPlusPlus/CPP.html</guid>
+      <source url="https://ayusummer.github.io/DailyNotes/rss.xml">C++</source>
+      <description>C++
+
+C++
+
+VisualStudio2019 相关
+
+为什么VS中会建议宏转换为constexpr？
+
+constexpr
+
+应该使用 constexpr 的场景
+不应该使用 constexpr 的场景
+
+
+auto
+
+
+C4996
+
+strcpy_s
+
+
+#pragma once
+
+
+VSCode
+
+在 VSCode 中调试 C++ 程序
+
+...</description>
+      <pubDate>Tue, 21 Mar 2023 03:21:10 GMT</pubDate>
+      <content:encoded><![CDATA[
+<ul>
+<li><a href="#c">C++</a>
+<ul>
+<li><a href="#visualstudio2019-%E7%9B%B8%E5%85%B3">VisualStudio2019 相关</a>
+<ul>
+<li><a href="#%E4%B8%BA%E4%BB%80%E4%B9%88vs%E4%B8%AD%E4%BC%9A%E5%BB%BA%E8%AE%AE%E5%AE%8F%E8%BD%AC%E6%8D%A2%E4%B8%BAconstexpr">为什么VS中会建议宏转换为constexpr？</a>
+<ul>
+<li><a href="#constexpr">constexpr</a>
+<ul>
+<li><a href="#%E5%BA%94%E8%AF%A5%E4%BD%BF%E7%94%A8-constexpr-%E7%9A%84%E5%9C%BA%E6%99%AF">应该使用 constexpr 的场景</a></li>
+<li><a href="#%E4%B8%8D%E5%BA%94%E8%AF%A5%E4%BD%BF%E7%94%A8-constexpr-%E7%9A%84%E5%9C%BA%E6%99%AF">不应该使用 constexpr 的场景</a></li>
+</ul>
+</li>
+<li><a href="#auto">auto</a></li>
+</ul>
+</li>
+<li><a href="#c4996">C4996</a>
+<ul>
+<li><a href="#strcpy_s">strcpy_s</a></li>
+</ul>
+</li>
+<li><a href="#pragma-once">#pragma once</a></li>
+</ul>
+</li>
+<li><a href="#vscode">VSCode</a>
+<ul>
+<li><a href="#%E5%9C%A8-vscode-%E4%B8%AD%E8%B0%83%E8%AF%95-c-%E7%A8%8B%E5%BA%8F">在 VSCode 中调试 C++ 程序</a>
+<ul>
+<li><a href="#%E4%BD%BF%E7%94%A8-vs-%E7%9A%84-clexe">使用 VS 的 cl.exe</a></li>
+<li><a href="#%E4%BD%BF%E7%94%A8-gcc">使用 gcc</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7">实用工具</a>
+<ul>
+<li><a href="#%E5%BF%AB%E6%8D%B7%E7%94%9F%E6%88%90%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8%E5%85%B3%E7%B3%BB%E5%9B%BE">快捷生成函数调用关系图</a>
+<ul>
+<li><a href="#callgraph">callgraph</a>
+<ul>
+<li><a href="#ubuntu">Ubuntu</a></li>
+</ul>
+</li>
+<li><a href="#tceetree--cscope--graphviz">tceetree + cscope + Graphviz</a></li>
+<li><a href="#visualstudio-code-graph-%E6%89%A9%E5%B1%95">VisualStudio Code Graph 扩展</a></li>
+<li><a href="#cppdepend">CppDepend</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">数据结构</a>
+<ul>
+<li><a href="#%E7%BB%93%E6%9E%84%E4%BD%93">结构体</a>
+<ul>
+<li><a href="#%E5%88%9D%E5%A7%8B%E5%8C%96">初始化</a>
+<ul>
+<li><a href="#%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E4%BD%BF%E7%94%A8--%E5%BF%AB%E6%8D%B7%E8%B5%8B%E5%80%BC">构造函数使用 <code>:</code> 快捷赋值</a></li>
+<li><a href="#%E5%AE%9E%E4%BE%8B%E5%8C%96%E6%97%B6%E4%BD%BF%E7%94%A8--%E8%B5%8B%E5%80%BC%E5%88%9D%E5%A7%8B%E5%8C%96">实例化时使用 {} 赋值初始化</a></li>
+<li><a href="#%E8%80%81%E8%80%81%E5%AE%9E%E5%AE%9E%E5%86%99%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E5%88%9D%E5%A7%8B%E5%8C%96">老老实实写构造函数初始化</a></li>
+<li><a href="#%E6%94%AF%E6%8C%81%E5%B0%86%E5%AE%9A%E4%B9%89%E7%BB%93%E6%9E%84%E4%BD%93%E5%92%8C%E5%AE%9E%E4%BE%8B%E5%8C%96%E7%BB%93%E6%9E%84%E4%BD%93%E5%86%99%E5%9C%A8%E4%B8%80%E8%B5%B7">支持将定义结构体和实例化结构体写在一起</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E5%AD%97%E7%AC%A6%E4%B8%B2">字符串</a>
+<ul>
+<li><a href="#stdstrcmp">std::strcmp</a></li>
+<li><a href="#%E8%BF%94%E5%9B%9E%E5%80%BC">返回值</a></li>
+<li><a href="#%E5%85%B3%E4%BA%8E%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%8E%E6%95%B0%E5%AD%97%E4%BA%92%E7%9B%B8%E8%BD%AC%E6%8D%A2">关于字符串与数字互相转换</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E8%A7%84%E8%8C%83%E6%80%A7">规范性</a>
+<ul>
+<li><a href="#%E5%A4%B4%E6%96%87%E4%BB%B6%E6%BA%90%E6%96%87%E4%BB%B6">头文件源文件</a></li>
+<li><a href="#%E6%B3%A8%E9%87%8A%E7%9B%B8%E5%85%B3">注释相关</a></li>
+</ul>
+</li>
+<li><a href="#%E5%87%BD%E6%95%B0">函数</a>
+<ul>
+<li><a href="#%E5%BC%95%E7%94%A8">引用</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+]]></content:encoded>
+      <enclosure url="http://cdn.ayusummer233.top/img/20210628184101.png" type="image/png"/>
+    </item>
+    <item>
+      <title>Go</title>
+      <link>https://ayusummer.github.io/DailyNotes/Language/Go/</link>
+      <guid>https://ayusummer.github.io/DailyNotes/Language/Go/</guid>
+      <source url="https://ayusummer.github.io/DailyNotes/rss.xml">Go</source>
+      <description>Go
+
+Go
+
+参考书籍
+开发环境配置
+
+安装
+代理
+VSCode 配置
+
+安装 Go 扩展
+更新 Go 工具
+
+
+
+
+问题整理
+
+go get 已弃用
+
+
+
+
+
+
+参考书籍
+
+
+系统学习Go语言的基础知识
+Go 语言圣经
+
+
+CGO、Go汇编语言等高级用法
+Go语言高级编程 - Go语言高级编程 (chai2010.cn)
+
+
+深入学习Go语言语法树...</description>
+      <pubDate>Wed, 15 Mar 2023 17:37:55 GMT</pubDate>
+      <content:encoded><![CDATA[
+<ul>
+<li><a href="#go">Go</a>
+<ul>
+<li><a href="#%E5%8F%82%E8%80%83%E4%B9%A6%E7%B1%8D">参考书籍</a></li>
+<li><a href="#%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE">开发环境配置</a>
+<ul>
+<li><a href="#%E5%AE%89%E8%A3%85">安装</a></li>
+<li><a href="#%E4%BB%A3%E7%90%86">代理</a></li>
+<li><a href="#vscode-%E9%85%8D%E7%BD%AE">VSCode 配置</a>
+<ul>
+<li><a href="#%E5%AE%89%E8%A3%85-go-%E6%89%A9%E5%B1%95">安装 Go 扩展</a></li>
+<li><a href="#%E6%9B%B4%E6%96%B0-go-%E5%B7%A5%E5%85%B7">更新 Go 工具</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E9%97%AE%E9%A2%98%E6%95%B4%E7%90%86">问题整理</a>
+<ul>
+<li><a href="#go-get-%E5%B7%B2%E5%BC%83%E7%94%A8">go get 已弃用</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+]]></content:encoded>
+      <enclosure url="http://cdn.ayusummer233.top/img/202211100112060.png" type="image/png"/>
+    </item>
+    <item>
+      <title>内网渗透</title>
+      <link>https://ayusummer.github.io/DailyNotes/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/</link>
+      <guid>https://ayusummer.github.io/DailyNotes/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/</guid>
+      <source url="https://ayusummer.github.io/DailyNotes/rss.xml">内网渗透</source>
+      <description>内网渗透
+
+远程登录
+拿到 shell 之后需要登录的话可以用 mimikatz 之类的工具尝试获取主机密码, 如果能拿到明文密码的话就能够远程登录了
+或者用 net user 命令创建新用户来进行登录(不过相比直接拿原有账密的密码而言, 这种操作太容易被发现了(⊙x⊙;))
+
+
+选择合适的实际直接 RDP 过去是一种可行的方案, 不过默认情况下 Wi...</description>
+      <pubDate>Sat, 04 Mar 2023 10:09:31 GMT</pubDate>
+      <content:encoded><![CDATA[
+]]></content:encoded>
+    </item>
+    <item>
+      <title>代理转发</title>
+      <link>https://ayusummer.github.io/DailyNotes/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/%E4%BB%A3%E7%90%86%E8%BD%AC%E5%8F%91.html</link>
+      <guid>https://ayusummer.github.io/DailyNotes/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/%E4%BB%A3%E7%90%86%E8%BD%AC%E5%8F%91.html</guid>
+      <source url="https://ayusummer.github.io/DailyNotes/rss.xml">代理转发</source>
+      <description>代理转发
+
+代理转发
+
+正向代理与反向代理
+
+正向代理(Forward Proxy)
+反向代理(Reverse Proxy)
+
+
+Socks 协议
+使用 SSH 创建动态端口转发作 socks 代理
+
+BurpSuit 挂内网主机的 socks 代理拦截本地 http 流量访问内网其他的服务
+
+
+使用 netsh 设置端口转发
+
+
+
+
+
+内网渗透之代理...</description>
+      <pubDate>Sat, 04 Mar 2023 10:09:31 GMT</pubDate>
+      <content:encoded><![CDATA[
+<ul>
+<li><a href="#%E4%BB%A3%E7%90%86%E8%BD%AC%E5%8F%91">代理转发</a>
+<ul>
+<li><a href="#%E6%AD%A3%E5%90%91%E4%BB%A3%E7%90%86%E4%B8%8E%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86">正向代理与反向代理</a>
+<ul>
+<li><a href="#%E6%AD%A3%E5%90%91%E4%BB%A3%E7%90%86forward-proxy">正向代理(Forward Proxy)</a></li>
+<li><a href="#%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86reverse-proxy">反向代理(Reverse Proxy)</a></li>
+</ul>
+</li>
+<li><a href="#socks-%E5%8D%8F%E8%AE%AE">Socks 协议</a></li>
+<li><a href="#%E4%BD%BF%E7%94%A8-ssh-%E5%88%9B%E5%BB%BA%E5%8A%A8%E6%80%81%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91%E4%BD%9C-socks-%E4%BB%A3%E7%90%86">使用 SSH 创建动态端口转发作 socks 代理</a>
+<ul>
+<li><a href="#burpsuit-%E6%8C%82%E5%86%85%E7%BD%91%E4%B8%BB%E6%9C%BA%E7%9A%84-socks-%E4%BB%A3%E7%90%86%E6%8B%A6%E6%88%AA%E6%9C%AC%E5%9C%B0-http-%E6%B5%81%E9%87%8F%E8%AE%BF%E9%97%AE%E5%86%85%E7%BD%91%E5%85%B6%E4%BB%96%E7%9A%84%E6%9C%8D%E5%8A%A1">BurpSuit 挂内网主机的 socks 代理拦截本地 http 流量访问内网其他的服务</a></li>
+</ul>
+</li>
+<li><a href="#%E4%BD%BF%E7%94%A8-netsh-%E8%AE%BE%E7%BD%AE%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91">使用 netsh 设置端口转发</a></li>
+</ul>
+</li>
+</ul>
+]]></content:encoded>
+      <enclosure url="http://cdn.ayusummer233.top/DailyNotes/202302271331853.jpeg" type="image/jpeg"/>
+    </item>
+    <item>
+      <title>sovits 4.0 使用随笔</title>
+      <link>https://ayusummer.github.io/DailyNotes/%E5%A8%B1%E4%B9%90/sovits/sovits_4.html</link>
+      <guid>https://ayusummer.github.io/DailyNotes/%E5%A8%B1%E4%B9%90/sovits/sovits_4.html</guid>
+      <source url="https://ayusummer.github.io/DailyNotes/rss.xml">sovits 4.0 使用随笔</source>
+      <description>sovits 4.0 使用随笔
+
+“sovits4.0一键训练/推理脚本.ipynb”的副本 - Colaboratory (google.com)
+
+吸取了之前 3.2 的复现经验后这次直接参考仓库中给出的 Colab 一键脚本进行操作
+
+环境搭建
+torch  与 CUDA 版本
+image-20230223205447849
+torch 1.13...</description>
+      <pubDate>Sun, 26 Feb 2023 08:35:19 GMT</pubDate>
+      <content:encoded><![CDATA[
+<blockquote>
+<p><a href="https://colab.research.google.com/drive/1clafh5_PDACuVBQwT32cUV-j9WSU96wB#scrollTo=LS0OPRkL4Pme" target="_blank" rel="noopener noreferrer">“sovits4.0一键训练/推理脚本.ipynb”的副本 - Colaboratory (google.com)</a></p>
+</blockquote>
+<p>吸取了之前 3.2 的复现经验后这次直接参考仓库中给出的 Colab 一键脚本进行操作</p>
+]]></content:encoded>
+      <enclosure url="http://cdn.ayusummer233.top/DailyNotes/202302232054889.png" type="image/png"/>
+    </item>
+    <item>
+      <title>AWVS</title>
+      <link>https://ayusummer.github.io/DailyNotes/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/%E6%BC%8F%E6%89%AB%E5%B7%A5%E5%85%B7/AWVS.html</link>
+      <guid>https://ayusummer.github.io/DailyNotes/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/%E6%BC%8F%E6%89%AB%E5%B7%A5%E5%85%B7/AWVS.html</guid>
+      <source url="https://ayusummer.github.io/DailyNotes/rss.xml">AWVS</source>
+      <description>AWVS
+
+安装
+
+docker 安装 AWVS
+
+XRSec/AWVS14-Update: Awvs 14 Scanner、fahai (github.com) - 镜像 by xrsec
+Docker安装AWVS AWVS批量扫描 AWVS+XRAY批量扫描 - admax11 - 博客园 (cnblogs.com) - 镜像 by secfa
+D...</description>
+      <pubDate>Sun, 26 Feb 2023 08:25:56 GMT</pubDate>
+      <content:encoded><![CDATA[
+]]></content:encoded>
+    </item>
+    <item>
+      <title>nmap</title>
+      <link>https://ayusummer.github.io/DailyNotes/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/%E7%AB%AF%E5%8F%A3%E6%89%AB%E6%8F%8F/nmap.html</link>
+      <guid>https://ayusummer.github.io/DailyNotes/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/%E7%AB%AF%E5%8F%A3%E6%89%AB%E6%8F%8F/nmap.html</guid>
+      <source url="https://ayusummer.github.io/DailyNotes/rss.xml">nmap</source>
+      <description>nmap
+在不给 -p 参数的情况下 nmap 默认扫描最常见的 1000 个 TCP 端口, 范围从 1-1024
+
+SERVICE 字段一览
+nmap扫描结果中的SERVICE字段显示扫描出的端口所运行的服务的名称和版本信息。具体的SERVICE字段中的值可以分为以下几种情况：
+
+具体的服务名称：例如SSH、HTTP、FTP等等，这些值表明对应的端...</description>
+      <pubDate>Sun, 26 Feb 2023 08:25:56 GMT</pubDate>
+      <content:encoded><![CDATA[
+<p>在不给 <code>-p</code> 参数的情况下 nmap 默认扫描最常见的 1000 个 TCP 端口, 范围从 1-1024</p>
+<div class="language-bash" data-ext="sh" data-title="sh"><pre class="language-bash"><code><span class="token comment"># 扫描 192.168.1.11 的 1-65535 端口并写入到当前目录下的 result.md 文件中</span>
+nmap <span class="token parameter variable">-p</span> <span class="token number">1</span>-65535 <span class="token number">192.168</span>.1.11 <span class="token operator">&gt;</span> result.md
+</code></pre></div>]]></content:encoded>
+      <enclosure url="http://cdn.ayusummer233.top/DailyNotes/202302261858978.png" type="image/png"/>
+    </item>
+    <item>
+      <title>sovits-32k 使用随笔</title>
+      <link>https://ayusummer.github.io/DailyNotes/%E5%A8%B1%E4%B9%90/sovits/sovits_32k.html</link>
+      <guid>https://ayusummer.github.io/DailyNotes/%E5%A8%B1%E4%B9%90/sovits/sovits_32k.html</guid>
+      <source url="https://ayusummer.github.io/DailyNotes/rss.xml">sovits-32k 使用随笔</source>
+      <description>sovits-32k 使用随笔
+
+innnky/so-vits-svc: 基于vits与softvc的歌声音色转换模型 (github.com)
+
+最近看了许多 AI 翻唱, 感觉很有意思, 遂开新坑
+
+【AI 翻唱】群青(阿米娅) _哔哩哔哩_bilibili
+【AI阿梓】极致的女声表现《なんでもないや》翻唱【soVits 3.0】_哔哩哔哩_bil...</description>
+      <pubDate>Tue, 21 Feb 2023 13:58:11 GMT</pubDate>
+      <content:encoded><![CDATA[
+<blockquote>
+<p><a href="https://github.com/innnky/so-vits-svc" target="_blank" rel="noopener noreferrer">innnky/so-vits-svc: 基于vits与softvc的歌声音色转换模型 (github.com)</a></p>
+</blockquote>
+<p>最近看了许多 AI 翻唱, 感觉很有意思, 遂开新坑</p>
+<blockquote>
+<p><a href="https://www.bilibili.com/video/BV1XD4y1K7ju/?spm_id_from=333.788&amp;vd_source=bb4d7b2841dd4d0035c93d44ba5cf11a" target="_blank" rel="noopener noreferrer">【AI 翻唱】群青(阿米娅) _哔哩哔哩_bilibili</a></p>
+<p><a href="https://www.bilibili.com/video/BV1Ge4y1w7YB/?spm_id_from=333.788&amp;vd_source=bb4d7b2841dd4d0035c93d44ba5cf11a" target="_blank" rel="noopener noreferrer">【AI阿梓】极致的女声表现《なんでもないや》翻唱【soVits 3.0】_哔哩哔哩_bilibili</a></p>
+</blockquote>
+]]></content:encoded>
+      <enclosure url="http://cdn.ayusummer233.top/DailyNotes/202302192311454.png" type="image/png"/>
+    </item>
+    <item>
+      <title>Linux相关</title>
+      <link>https://ayusummer.github.io/DailyNotes/%E5%A8%B1%E4%B9%90/Bot/commonNotes.html</link>
+      <guid>https://ayusummer.github.io/DailyNotes/%E5%A8%B1%E4%B9%90/Bot/commonNotes.html</guid>
+      <source url="https://ayusummer.github.io/DailyNotes/rss.xml">Linux相关</source>
+      <description>Linux相关
+
+安装FFmpeg</description>
+      <pubDate>Tue, 21 Feb 2023 13:57:43 GMT</pubDate>
+      <content:encoded><![CDATA[<!--
+ * @Author: your name
+ * @Date: 2021-02-26 19:34:53
+ * @LastEditTime: 2021-02-26 22:49:05
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \DailyNotes\Bot\commonNotes.md
+-->
+<h1>Linux相关</h1>
+<ul>
+<li><code>安装FFmpeg</code></li>
+</ul>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>安装运行(Ubuntu)</title>
+      <link>https://ayusummer.github.io/DailyNotes/%E5%A8%B1%E4%B9%90/Bot/gypsum.html</link>
+      <guid>https://ayusummer.github.io/DailyNotes/%E5%A8%B1%E4%B9%90/Bot/gypsum.html</guid>
+      <source url="https://ayusummer.github.io/DailyNotes/rss.xml">安装运行(Ubuntu)</source>
+      <description>安装运行(Ubuntu)
+
+下载Releases里的新版本对应包并解压缩
+apt install daemon安装daemon</description>
+      <pubDate>Tue, 21 Feb 2023 13:57:43 GMT</pubDate>
+      <content:encoded><![CDATA[<!--
+ * @Author: your name
+ * @Date: 2021-02-26 19:35:40
+ * @LastEditTime: 2021-02-26 20:27:14
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \DailyNotes\Bot\gypsum.md
+-->
+<h1>安装运行(Ubuntu)</h1>
+<ul>
+<li>下载<code>Releases</code>里的新版本对应包并解压缩</li>
+<li><code>apt install daemon</code>安装daemon</li>
+</ul>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>go-cqhttp</title>
+      <link>https://ayusummer.github.io/DailyNotes/%E5%A8%B1%E4%B9%90/Bot/</link>
+      <guid>https://ayusummer.github.io/DailyNotes/%E5%A8%B1%E4%B9%90/Bot/</guid>
+      <source url="https://ayusummer.github.io/DailyNotes/rss.xml">go-cqhttp</source>
+      <description>go-cqhttp
+
+go-cqhttp 帮助中心
+Mrs4s/go-cqhttp: cqhttp的golang实现，轻量、原生跨平台. (github.com)
+
+
+安装运行(以 Ubuntu 为例)
+在 Releases · Mrs4s/go-cqhttp (github.com) 获取系统对应版本的 release
+解压:
+给 go-cqhttp...</description>
+      <pubDate>Tue, 21 Feb 2023 13:57:43 GMT</pubDate>
+      <content:encoded><![CDATA[
+<blockquote>
+<p><a href="https://docs.go-cqhttp.org/" target="_blank" rel="noopener noreferrer">go-cqhttp 帮助中心</a></p>
+<p><a href="https://github.com/Mrs4s/go-cqhttp" target="_blank" rel="noopener noreferrer">Mrs4s/go-cqhttp: cqhttp的golang实现，轻量、原生跨平台. (github.com)</a></p>
+</blockquote>
+]]></content:encoded>
+      <enclosure url="http://cdn.ayusummer233.top/img/202205231348243.png" type="image/png"/>
+    </item>
+    <item>
+      <title>企微 Bot</title>
+      <link>https://ayusummer.github.io/DailyNotes/%E5%A8%B1%E4%B9%90/Bot/%E4%BC%81%E5%BE%AEBot.html</link>
+      <guid>https://ayusummer.github.io/DailyNotes/%E5%A8%B1%E4%B9%90/Bot/%E4%BC%81%E5%BE%AEBot.html</guid>
+      <source url="https://ayusummer.github.io/DailyNotes/rss.xml">企微 Bot</source>
+      <description>企微 Bot
+
+推送 GitHub 仓库变动
+ Github(Webhook) + Python(fastAPI, requests) + 企微 Bot(Webhook)
+
+PS:  Gitee 仓库的 webhook 的推送格式和企微的接口是可以对应上的, 不需要额外再转换
+
+由于 GitHub 仓库 webhook 推送格式和企微 Bot 的推送格...</description>
+      <pubDate>Tue, 21 Feb 2023 13:57:43 GMT</pubDate>
+      <content:encoded><![CDATA[
+]]></content:encoded>
+    </item>
+    <item>
+      <title>QQ 频道 Bot</title>
+      <link>https://ayusummer.github.io/DailyNotes/%E5%A8%B1%E4%B9%90/Bot/%E9%A2%91%E9%81%93Bot.html</link>
+      <guid>https://ayusummer.github.io/DailyNotes/%E5%A8%B1%E4%B9%90/Bot/%E9%A2%91%E9%81%93Bot.html</guid>
+      <source url="https://ayusummer.github.io/DailyNotes/rss.xml">QQ 频道 Bot</source>
+      <description>QQ 频道 Bot
+SDK
+
+官方
+
+Go
+
+
+botgo SDK 扩展组件
+botgo的使用示例
+
+
+
+
+民间
+
+Kotlin
+
+@WsureDev
+
+@simple-robot
+
+
+
+Java,Kotlin@xiaoye-bot
+
+Python
+
+adapter-qqguild@Nonebot
+
+@NGWORKS
+
+@foxwhite25
+
+@Lx...</description>
+      <pubDate>Tue, 21 Feb 2023 13:57:43 GMT</pubDate>
+      <content:encoded><![CDATA[
+<h2>SDK</h2>
+<ul>
+<li>官方
+<ul>
+<li><a href="https://github.com/tencent-connect/botgo" target="_blank" rel="noopener noreferrer">Go</a>
+<img src="https://unv-shield.librian.net/api/unv_shield?repo=tencent-connect/botgo&amp;url=https://avatars.githubusercontent.com/u//89066837&amp;scale=2" alt="">
+<ul>
+<li><a href="https://github.com/tencent-connect/botgo-plugins" target="_blank" rel="noopener noreferrer">botgo SDK 扩展组件</a></li>
+<li><a href="https://github.com/tencent-connect/botgo-demos" target="_blank" rel="noopener noreferrer">botgo的使用示例</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>民间
+<ul>
+<li>Kotlin
+<ul>
+<li><a href="https://github.com/WsureDev/qq-official-guild-bot" target="_blank" rel="noopener noreferrer">@WsureDev</a>
+<img src="https://unv-shield.librian.net/api/unv_shield?repo=WsureDev/qq-official-guild-bot&amp;url=https://avatars.githubusercontent.com/u//32191389&amp;scale=2" alt=""></li>
+<li><a href="https://github.com/simple-robot/simbot-component-tencent-guild" target="_blank" rel="noopener noreferrer">@simple-robot</a>
+<img src="https://unv-shield.librian.net/api/unv_shield?repo=simple-robot/simbot-component-tencent-guild&amp;url=https://avatars.githubusercontent.com/u//78127696&amp;scale=2" alt=""></li>
+</ul>
+</li>
+<li><a href="https://github.com/xiaoye-bot/qq-official-bot-sdk" target="_blank" rel="noopener noreferrer">Java,Kotlin@xiaoye-bot</a>
+<img src="https://unv-shield.librian.net/api/unv_shield?repo=xiaoye-bot/qq-official-bot-sdk&amp;url=https://avatars.githubusercontent.com/u//95488113&amp;scale=2" alt=""></li>
+<li>Python
+<ul>
+<li><a href="https://github.com/nonebot/adapter-qqguild" target="_blank" rel="noopener noreferrer">adapter-qqguild@Nonebot</a>
+<img src="https://unv-shield.librian.net/api/unv_shield?repo=nonebot/adapter-qqguild&amp;url=https://avatars.githubusercontent.com/u//63496654&amp;scale=3" alt=""></li>
+<li><a href="https://github.com/NGWORKS/qq_guild_bot" target="_blank" rel="noopener noreferrer">@NGWORKS</a>
+<img src="https://unv-shield.librian.net/api/unv_shield?repo=NGWORKS/qq_guild_bot&amp;url=https://avatars.githubusercontent.com/u//58591924&amp;scale=2" alt=""></li>
+<li><a href="https://github.com/foxwhite25/qq.py" target="_blank" rel="noopener noreferrer">@foxwhite25</a>
+<img src="https://unv-shield.librian.net/api/unv_shield?repo=foxwhite25/qq.py&amp;url=https://avatars.githubusercontent.com/u//39846845&amp;scale=2" alt=""></li>
+<li><a href="https://github.com/Lxns-Network/qq-guild-python-sdk" target="_blank" rel="noopener noreferrer">@Lxns-Network</a>
+<img src="https://unv-shield.librian.net/api/unv_shield?repo=Lxns-Network/qq-guild-python-sdk&amp;url=https://avatars.githubusercontent.com/u//63868458&amp;scale=2" alt=""></li>
+<li><a href="https://github.com/OlivOS-Team/OlivOS" target="_blank" rel="noopener noreferrer">@OlivOS-Team/gocq</a>
+<img src="https://unv-shield.librian.net/api/unv_shield?repo=OlivOS-Team/OlivOS&amp;url=https://avatars.githubusercontent.com/u//72327648&amp;scale=2" alt=""></li>
+</ul>
+</li>
+<li><a href="https://github.com/NWYLZW/qq-guild-sdk" target="_blank" rel="noopener noreferrer">Nodejs-TS@/NWYLZW</a>
+<img src="https://unv-shield.librian.net/api/unv_shield?repo=NWYLZW/qq-guild-sdk&amp;url=https://avatars.githubusercontent.com/u//51358815&amp;scale=2" alt=""></li>
+<li><a href="https://github.com/botuild/guild-bot-protocol" target="_blank" rel="noopener noreferrer">PHP@botuild</a>
+<img src="https://unv-shield.librian.net/api/unv_shield?repo=botuild/guild-bot-protocol&amp;url=https://avatars.githubusercontent.com/u//94901921&amp;scale=2" alt=""></li>
+<li>C#
+<ul>
+<li><a href="https://github.com/heerheer/QBot4Sharp" target="_blank" rel="noopener noreferrer">@heerheer</a>
+<img src="https://unv-shield.librian.net/api/unv_shield?repo=heerheer/QBot4Sharp&amp;url=https://avatars.githubusercontent.com/u//22632184&amp;scale=2" alt=""></li>
+<li><a href="https://github.com/Chianne1025/QQChannelFramework" target="_blank" rel="noopener noreferrer">@Chianne1025</a>
+<img src="https://unv-shield.librian.net/api/unv_shield?repo=Chianne1025/QQChannelFramework&amp;url=https://avatars.githubusercontent.com/u//95136511&amp;scale=2" alt=""></li>
+<li><a href="https://github.com/ssccinng/Masuda.Net" target="_blank" rel="noopener noreferrer">@ssccinng</a>
+<img src="https://unv-shield.librian.net/api/unv_shield?repo=ssccinng/Masuda.Net&amp;url=https://avatars.githubusercontent.com/u//22047352&amp;scale=2" alt=""></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p><a href="https://github.com/RimoChan/unv-shield" target="_blank" rel="noopener noreferrer">勋章生成-&gt;【幼盾】个性化图片徽章服务！</a></p>
+</blockquote>
+]]></content:encoded>
+      <enclosure url="https://unv-shield.librian.net/api/unv_shield?repo=tencent-connect/botgo&amp;url=https://avatars.githubusercontent.com/u//89066837&amp;scale=2" type="image/"/>
+    </item>
+    <item>
+      <title>CSS</title>
+      <link>https://ayusummer.github.io/DailyNotes/%E5%89%8D%E7%AB%AF/CSS.html</link>
+      <guid>https://ayusummer.github.io/DailyNotes/%E5%89%8D%E7%AB%AF/CSS.html</guid>
+      <source url="https://ayusummer.github.io/DailyNotes/rss.xml">CSS</source>
+      <description>CSS
+
+CSS
+
+属性
+
+overflow
+padding
+margin
+
+
+布局
+
+Flex
+
+flex 属性
+
+
+
+
+
+
+
+
+属性
+overflow
+
+CSS overflow 属性 (w3school.com.cn)
+
+image-20220319182820529
+overflow 属性规定当内容溢出元素框时发生的事情。
+
+
+padding
+...</description>
+      <pubDate>Wed, 01 Feb 2023 03:33:07 GMT</pubDate>
+      <content:encoded><![CDATA[
+<ul>
+<li><a href="#css">CSS</a>
+<ul>
+<li><a href="#%E5%B1%9E%E6%80%A7">属性</a>
+<ul>
+<li><a href="#overflow"><code>overflow</code></a></li>
+<li><a href="#padding"><code>padding</code></a></li>
+<li><a href="#margin">margin</a></li>
+</ul>
+</li>
+<li><a href="#%E5%B8%83%E5%B1%80">布局</a>
+<ul>
+<li><a href="#flex"><code>Flex</code></a>
+<ul>
+<li><a href="#flex-%E5%B1%9E%E6%80%A7">flex 属性</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+]]></content:encoded>
+      <enclosure url="http://cdn.ayusummer233.top/img/202203191828656.png" type="image/png"/>
+    </item>
+    <item>
+      <title>HTML</title>
+      <link>https://ayusummer.github.io/DailyNotes/%E5%89%8D%E7%AB%AF/HTML.html</link>
+      <guid>https://ayusummer.github.io/DailyNotes/%E5%89%8D%E7%AB%AF/HTML.html</guid>
+      <source url="https://ayusummer.github.io/DailyNotes/rss.xml">HTML</source>
+      <description>HTML
+
+HTML
+
+label
+form
+
+action
+
+
+HTML URL 编码
+DOM
+
+HTML DOM 树形结构
+HTML DOM简介
+
+什么是DOM
+什么是 XML DOM？
+什么是 HTML DOM？
+
+
+HTML DOM节点
+
+HTML Nodes-节点
+HTML DOM 节点树
+节点父、子和同胞
+警告！
+
+
+HTML DOM方法
+...</description>
+      <pubDate>Wed, 01 Feb 2023 03:33:07 GMT</pubDate>
+      <content:encoded><![CDATA[
+<ul>
+<li><a href="#html">HTML</a>
+<ul>
+<li><a href="#label"><code>label</code></a></li>
+<li><a href="#form"><code>form</code></a>
+<ul>
+<li><a href="#action"><code>action</code></a></li>
+</ul>
+</li>
+<li><a href="#html-url-%E7%BC%96%E7%A0%81">HTML URL 编码</a></li>
+<li><a href="#dom">DOM</a>
+<ul>
+<li><a href="#html-dom-%E6%A0%91%E5%BD%A2%E7%BB%93%E6%9E%84">HTML DOM 树形结构</a></li>
+<li><a href="#html-dom%E7%AE%80%E4%BB%8B">HTML DOM简介</a>
+<ul>
+<li><a href="#%E4%BB%80%E4%B9%88%E6%98%AFdom">什么是DOM</a></li>
+<li><a href="#%E4%BB%80%E4%B9%88%E6%98%AF-xml-dom">什么是 XML DOM？</a></li>
+<li><a href="#%E4%BB%80%E4%B9%88%E6%98%AF-html-dom">什么是 HTML DOM？</a></li>
+</ul>
+</li>
+<li><a href="#html-dom%E8%8A%82%E7%82%B9">HTML DOM节点</a>
+<ul>
+<li><a href="#html-nodes-%E8%8A%82%E7%82%B9">HTML Nodes-节点</a></li>
+<li><a href="#html-dom-%E8%8A%82%E7%82%B9%E6%A0%91">HTML DOM 节点树</a></li>
+<li><a href="#%E8%8A%82%E7%82%B9%E7%88%B6%E5%AD%90%E5%92%8C%E5%90%8C%E8%83%9E">节点父、子和同胞</a></li>
+<li><a href="#%E8%AD%A6%E5%91%8A">警告！</a></li>
+</ul>
+</li>
+<li><a href="#html-dom%E6%96%B9%E6%B3%95">HTML DOM方法</a>
+<ul>
+<li><a href="#%E7%BC%96%E7%A8%8B%E6%8E%A5%E5%8F%A3">编程接口</a></li>
+<li><a href="#getelementbyid-%E6%96%B9%E6%B3%95">getElementById() 方法</a></li>
+<li>[HTML DOM 对象 - 方法和属性](#html-dom-对象</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+]]></content:encoded>
+      <enclosure url="http://cdn.ayusummer233.top/img/202111082157257.png" type="image/png"/>
+    </item>
+    <item>
+      <title>Nginx</title>
+      <link>https://ayusummer.github.io/DailyNotes/%E5%89%8D%E7%AB%AF/Nginx.html</link>
+      <guid>https://ayusummer.github.io/DailyNotes/%E5%89%8D%E7%AB%AF/Nginx.html</guid>
+      <source url="https://ayusummer.github.io/DailyNotes/rss.xml">Nginx</source>
+      <description>Nginx
+
+Nginx
+
+安装
+
+Failed to start A high performance web server and a reverse proxy server.
+
+
+删除
+
+
+
+
+安装
+
+删除
+
+Ubuntu彻底删除nginx - 掘金 (juejin.cn)</description>
+      <pubDate>Wed, 01 Feb 2023 03:33:07 GMT</pubDate>
+      <content:encoded><![CDATA[
+<ul>
+<li><a href="#nginx">Nginx</a>
+<ul>
+<li><a href="#%E5%AE%89%E8%A3%85">安装</a>
+<ul>
+<li><a href="#failed-to-start-a-high-performance-web-server-and-a-reverse-proxy-server">Failed to start A high performance web server and a reverse proxy server.</a></li>
+</ul>
+</li>
+<li><a href="#%E5%88%A0%E9%99%A4">删除</a></li>
+</ul>
+</li>
+</ul>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>Nodejs</title>
+      <link>https://ayusummer.github.io/DailyNotes/%E5%89%8D%E7%AB%AF/Nodejs.html</link>
+      <guid>https://ayusummer.github.io/DailyNotes/%E5%89%8D%E7%AB%AF/Nodejs.html</guid>
+      <source url="https://ayusummer.github.io/DailyNotes/rss.xml">Nodejs</source>
+      <description>Nodejs
+
+Nodejs
+
+安装
+
+nvm
+
+安装 nvm
+使用 nvm
+
+
+
+
+换源
+
+源地址
+临时替换
+持久使用
+
+
+包管理工具
+
+npm, cnpm, pnpm, yarn 常用操作
+yarn
+
+ubuntu 安装 yarn
+
+
+pnpm
+
+换源
+代理
+报错收集
+
+ ERROR  Unable to find the global bin d...</description>
+      <pubDate>Wed, 01 Feb 2023 03:33:07 GMT</pubDate>
+      <content:encoded><![CDATA[
+<ul>
+<li><a href="#nodejs">Nodejs</a>
+<ul>
+<li><a href="#%E5%AE%89%E8%A3%85">安装</a>
+<ul>
+<li><a href="#nvm">nvm</a>
+<ul>
+<li><a href="#%E5%AE%89%E8%A3%85-nvm">安装 nvm</a></li>
+<li><a href="#%E4%BD%BF%E7%94%A8-nvm">使用 nvm</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E6%8D%A2%E6%BA%90">换源</a>
+<ul>
+<li><a href="#%E6%BA%90%E5%9C%B0%E5%9D%80">源地址</a></li>
+<li><a href="#%E4%B8%B4%E6%97%B6%E6%9B%BF%E6%8D%A2">临时替换</a></li>
+<li><a href="#%E6%8C%81%E4%B9%85%E4%BD%BF%E7%94%A8">持久使用</a></li>
+</ul>
+</li>
+<li><a href="#%E5%8C%85%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7">包管理工具</a>
+<ul>
+<li><a href="#npm-cnpm-pnpm-yarn-%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C">npm, cnpm, pnpm, yarn 常用操作</a></li>
+<li><a href="#yarn">yarn</a>
+<ul>
+<li><a href="#ubuntu-%E5%AE%89%E8%A3%85-yarn">ubuntu 安装 yarn</a></li>
+</ul>
+</li>
+<li><a href="#pnpm">pnpm</a>
+<ul>
+<li><a href="#%E6%8D%A2%E6%BA%90-1">换源</a></li>
+<li><a href="#%E4%BB%A3%E7%90%86">代理</a></li>
+<li><a href="#%E6%8A%A5%E9%94%99%E6%94%B6%E9%9B%86">报错收集</a>
+<ul>
+<li><a href="#error-unable-to-find-the-global-bin-directory"> ERROR  Unable to find the global bin directory</a></li>
+<li><a href="#ebusy-ebusy-resource-busy-or-locked-symlink"> EBUSY  EBUSY: resource busy or locked, symlink</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+]]></content:encoded>
+      <enclosure url="http://cdn.ayusummer233.top/DailyNotes/202305071412962.png" type="image/png"/>
+    </item>
+    <item>
+      <title>Git</title>
+      <link>https://ayusummer.github.io/DailyNotes/%E7%A4%BE%E5%8C%BA%E7%9B%B8%E5%85%B3/Git.html</link>
+      <guid>https://ayusummer.github.io/DailyNotes/%E7%A4%BE%E5%8C%BA%E7%9B%B8%E5%85%B3/Git.html</guid>
+      <source url="https://ayusummer.github.io/DailyNotes/rss.xml">Git</source>
+      <description>Git
+
+Git飞行规则-git-flight-rules/README_zh-CN.md at master · k88hudson/git-flight-rules (github.com)
+
+
+Git
+
+查看与升级版本
+安装与配置相关
+
+安装
+
+Linux
+
+PPA
+
+
+
+
+配置
+
+
+仓库相关
+
+常规操作
+
+撤销提交
+
+
+分支操作
+查看某个文件变...</description>
+      <pubDate>Mon, 30 Jan 2023 14:41:10 GMT</pubDate>
+      <content:encoded><![CDATA[
+<blockquote>
+<p><a href="https://github.com/k88hudson/git-flight-rules/blob/master/README_zh-CN.md#merge-conflict" target="_blank" rel="noopener noreferrer">Git飞行规则-git-flight-rules/README_zh-CN.md at master · k88hudson/git-flight-rules (github.com)</a></p>
+</blockquote>
+<ul>
+<li><a href="#git">Git</a>
+<ul>
+<li><a href="#%E6%9F%A5%E7%9C%8B%E4%B8%8E%E5%8D%87%E7%BA%A7%E7%89%88%E6%9C%AC">查看与升级版本</a></li>
+<li><a href="#%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE%E7%9B%B8%E5%85%B3">安装与配置相关</a>
+<ul>
+<li><a href="#%E5%AE%89%E8%A3%85">安装</a>
+<ul>
+<li><a href="#linux">Linux</a>
+<ul>
+<li><a href="#ppa">PPA</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E9%85%8D%E7%BD%AE">配置</a></li>
+</ul>
+</li>
+<li><a href="#%E4%BB%93%E5%BA%93%E7%9B%B8%E5%85%B3">仓库相关</a>
+<ul>
+<li><a href="#%E5%B8%B8%E8%A7%84%E6%93%8D%E4%BD%9C">常规操作</a>
+<ul>
+<li><a href="#%E6%92%A4%E9%94%80%E6%8F%90%E4%BA%A4">撤销提交</a></li>
+</ul>
+</li>
+<li><a href="#%E5%88%86%E6%94%AF%E6%93%8D%E4%BD%9C">分支操作</a></li>
+<li><a href="#%E6%9F%A5%E7%9C%8B%E6%9F%90%E4%B8%AA%E6%96%87%E4%BB%B6%E5%8F%98%E5%8A%A8%E7%9A%84%E6%89%80%E6%9C%89%E5%8E%86%E5%8F%B2%E8%AE%B0%E5%BD%95">查看某个文件变动的所有历史记录</a></li>
+<li><a href="#%E5%BC%BA%E5%88%B6%E6%8B%89%E5%8F%96%E8%BF%9C%E7%A8%8B%E6%9B%B4%E6%96%B0%E8%A6%86%E7%9B%96%E6%9C%AC%E5%9C%B0%E4%BB%93%E5%BA%93">强制拉取远程更新覆盖本地仓库</a></li>
+<li><a href="#%E6%89%B9%E9%87%8F%E4%BF%AE%E6%94%B9%E6%8F%90%E4%BA%A4%E5%90%8D%E7%A7%B0%E4%B8%8E%E9%82%AE%E7%AE%B1">批量修改提交名称与邮箱</a></li>
+</ul>
+</li>
+<li><a href="#relations">relations</a>
+<ul>
+<li><a href="#code996">code996</a></li>
+</ul>
+</li>
+<li><a href="#learngitbranching">learnGitBranching</a></li>
+<li><a href="#%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98">常见问题</a>
+<ul>
+<li><a href="#fatal-authentication-failed">fatal: Authentication failed</a></li>
+<li><a href="#filename-too-lang">filename too lang</a></li>
+<li><a href="#%E6%8B%89%E5%8F%96%E6%97%B6%E9%97%B4%E8%BF%87%E9%95%BF">拉取时间过长</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+]]></content:encoded>
+      <enclosure url="http://cdn.ayusummer233.top/DailyNotes/202310241547078.png" type="image/png"/>
+    </item>
+    <item>
+      <title>Rocketry</title>
+      <link>https://ayusummer.github.io/DailyNotes/Language/Python/libs/Rocketry/</link>
+      <guid>https://ayusummer.github.io/DailyNotes/Language/Python/libs/Rocketry/</guid>
+      <source url="https://ayusummer.github.io/DailyNotes/rss.xml">Rocketry</source>
+      <description>Rocketry
+
+Miksus/rocketry: Modern scheduling library for Python (github.com)
+Why Rocketry? — Rocketry
+
+
+Rocketry is a modern statement-based scheduling framework for Python. It ...</description>
+      <pubDate>Wed, 11 Jan 2023 08:21:41 GMT</pubDate>
+      <content:encoded><![CDATA[
+<blockquote>
+<p><a href="https://github.com/Miksus/rocketry" target="_blank" rel="noopener noreferrer">Miksus/rocketry: Modern scheduling library for Python (github.com)</a></p>
+<p><a href="https://rocketry.readthedocs.io/en/stable/" target="_blank" rel="noopener noreferrer">Why Rocketry? — Rocketry</a></p>
+</blockquote>
+]]></content:encoded>
+      <enclosure url="http://cdn.ayusummer233.top/DailyNotes/202301111538008.gif" type="image/gif"/>
+    </item>
+    <item>
+      <title>编码</title>
+      <link>https://ayusummer.github.io/DailyNotes/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/%E7%BC%96%E7%A0%81.html</link>
+      <guid>https://ayusummer.github.io/DailyNotes/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/%E7%BC%96%E7%A0%81.html</guid>
+      <source url="https://ayusummer.github.io/DailyNotes/rss.xml">编码</source>
+      <description>编码
+
+ASCII  码表
+
+ASCII - 维基百科，自由的百科全书 (wikipedia.org)
+ASCII码对照表 (oschina.net)
+
+ASCII的局限在于只能显示26个基本拉丁字母、阿拉伯数字和英式标点符号，因此只能用于显示现代美国英语(且处理naïve、café、élite等外来语时，必须去除附加符号) 。
+虽然EASCII解决了...</description>
+      <pubDate>Tue, 13 Dec 2022 07:32:45 GMT</pubDate>
+      <content:encoded><![CDATA[
+]]></content:encoded>
+      <enclosure url="http://cdn.ayusummer233.top/DailyNotes/202308311657689.png" type="image/png"/>
+    </item>
+    <item>
+      <title>目录穿越漏洞</title>
+      <link>https://ayusummer.github.io/DailyNotes/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/Web%E5%AE%89%E5%85%A8/%E6%BC%8F%E6%B4%9E%E7%B1%BB%E5%9E%8B/%E7%9B%AE%E5%BD%95%E7%A9%BF%E8%B6%8A/</link>
+      <guid>https://ayusummer.github.io/DailyNotes/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/Web%E5%AE%89%E5%85%A8/%E6%BC%8F%E6%B4%9E%E7%B1%BB%E5%9E%8B/%E7%9B%AE%E5%BD%95%E7%A9%BF%E8%B6%8A/</guid>
+      <source url="https://ayusummer.github.io/DailyNotes/rss.xml">目录穿越漏洞</source>
+      <description>目录穿越漏洞
+
+从0到1完全掌握目录遍历漏洞 - FreeBuf网络安全行业门户</description>
+      <pubDate>Mon, 12 Dec 2022 05:43:34 GMT</pubDate>
+      <content:encoded><![CDATA[
+<blockquote>
+<p><a href="https://www.freebuf.com/articles/web/326213.html" target="_blank" rel="noopener noreferrer">从0到1完全掌握目录遍历漏洞 - FreeBuf网络安全行业门户</a></p>
+</blockquote>
+]]></content:encoded>
+    </item>
+    <item>
+      <title></title>
+      <link>https://ayusummer.github.io/DailyNotes/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/Web%E5%AE%89%E5%85%A8/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/msf.html</link>
+      <guid>https://ayusummer.github.io/DailyNotes/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/Web%E5%AE%89%E5%85%A8/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/msf.html</guid>
+      <source url="https://ayusummer.github.io/DailyNotes/rss.xml"></source>
+      <description>MSF——基本使用和Exploit模块(一)  - 那少年和狗 - 博客园 (cnblogs.com)</description>
+      <pubDate>Thu, 08 Dec 2022 02:46:54 GMT</pubDate>
+      <content:encoded><![CDATA[<blockquote>
+<p><a href="https://www.cnblogs.com/dogecheng/p/11450423.html" target="_blank" rel="noopener noreferrer">MSF——基本使用和Exploit模块(一)  - 那少年和狗 - 博客园 (cnblogs.com)</a></p>
+</blockquote>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>换源</title>
+      <link>https://ayusummer.github.io/DailyNotes/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/kali.html</link>
+      <guid>https://ayusummer.github.io/DailyNotes/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/kali.html</guid>
+      <source url="https://ayusummer.github.io/DailyNotes/rss.xml">换源</source>
+      <description>换源
+打开 /etc/apt/sources.list 注释掉原来的源并添加新的源, 格式如下
+例如:
+目前可用的源如下:
+可以将这些源写入到一个 txt 文件, 然后使用下面的程序进行自动排序输出
+
+image-20220908164224429
+image-20220908164325366
+
+
+远程桌面连接
+
+如何使用远程桌面连接(RDP)至Ka...</description>
+      <pubDate>Wed, 07 Dec 2022 02:33:58 GMT</pubDate>
+      <content:encoded><![CDATA[
+<p>打开 <code>/etc/apt/sources.list</code> 注释掉原来的源并添加新的源, 格式如下</p>
+<div class="language-list" data-ext="list" data-title="list"><pre class="language-list"><code>deb [源] kali-rolling main non-free contrib
+deb-src [源] kali-rolling main non-free contrib
+</code></pre></div><p>例如:</p>
+<div class="language-list" data-ext="list" data-title="list"><pre class="language-list"><code># 华为
+deb https://repo.huaweicloud.com/kali/ kali-rolling main non-free contrib
+deb-src https://repo.huaweicloud.com/kali/ kali-rolling main non-free contrib
+</code></pre></div><p>目前可用的源如下:</p>
+<div class="language-list" data-ext="list" data-title="list"><pre class="language-list"><code>https://www.kali.org/get-kali/
+https://mirrors.aliyun.com/kali/
+https://mirrors.cloud.tencent.com/kali/
+https://repo.huaweicloud.com/kali/
+https://mirrors.tuna.tsinghua.edu.cn/kali/
+https://mirrors.ustc.edu.cn/kali/
+http://mirrors.zju.edu.cn/kali/
+https://mirror.nyist.edu.cn/kali/
+http://mirrors.neusoft.edu.cn/kali/
+http://mirrors.njupt.edu.cn/kali/
+https://mirrors.nwsuaf.edu.cn/kali/
+https://mirrors.cqu.edu.cn/kali-images/
+https://mirrors.bfsu.edu.cn/kali/
+https://mirrors.hit.edu.cn/kali
+https://mirrors.sjtug.sjtu.edu.cn/kali/
+</code></pre></div><p>可以将这些源写入到一个 <code>txt</code> 文件, 然后使用下面的程序进行自动排序输出</p>
+<div class="language-python" data-ext="py" data-title="py"><pre class="language-python"><code><span class="token comment"># 读取 kali 源列表每一行的地址, 将每个地址拆分为 [协议, 域名, 路径], 然后对每个域名 ping 4次, 按照响应时间递增排序, 输出到目的文件</span>
+<span class="token keyword">import</span> os
+<span class="token keyword">import</span> re
+
+
+<span class="token keyword">def</span> <span class="token function">ping_linux</span><span class="token punctuation">(</span>host<span class="token punctuation">:</span> <span class="token builtin">str</span><span class="token punctuation">,</span> count<span class="token punctuation">:</span> <span class="token builtin">int</span> <span class="token operator">=</span> <span class="token number">4</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">float</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">"""Linux 下的 ping 命令  
+    :param host: 域名
+    :param count: ping 的次数
+    :return: 返回平均响应时长
+    """</span>
+    output <span class="token operator">=</span> os<span class="token punctuation">.</span>popen<span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f'ping </span><span class="token interpolation"><span class="token punctuation">{</span>host<span class="token punctuation">}</span></span><span class="token string"> -c </span><span class="token interpolation"><span class="token punctuation">{</span>count<span class="token punctuation">}</span></span><span class="token string">'</span></span><span class="token punctuation">)</span><span class="token punctuation">.</span>read<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">try</span><span class="token punctuation">:</span>
+        <span class="token builtin">min</span><span class="token punctuation">,</span> avg<span class="token punctuation">,</span> <span class="token builtin">max</span><span class="token punctuation">,</span> mdev <span class="token operator">=</span> re<span class="token punctuation">.</span>findall<span class="token punctuation">(</span><span class="token string">r'rtt min/avg/max/mdev = (\d+\.\d+)/(\d+\.\d+)/(\d+\.\d+)/(\d+\.\d+) ms'</span><span class="token punctuation">,</span> output<span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f'</span><span class="token interpolation"><span class="token punctuation">{</span>host<span class="token punctuation">}</span></span><span class="token string"> </span><span class="token interpolation"><span class="token punctuation">{</span>avg<span class="token punctuation">}</span></span><span class="token string">ms'</span></span><span class="token punctuation">)</span>
+    <span class="token comment"># 全丢包的情况下就找不到了, 此时返回一个很大的数</span>
+    <span class="token keyword">except</span> IndexError<span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f'</span><span class="token interpolation"><span class="token punctuation">{</span>host<span class="token punctuation">}</span></span><span class="token string"> 超时'</span></span><span class="token punctuation">)</span>
+        <span class="token keyword">return</span> <span class="token number">999999</span>
+    <span class="token keyword">return</span> <span class="token builtin">float</span><span class="token punctuation">(</span>avg<span class="token punctuation">)</span>
+
+
+<span class="token keyword">def</span> <span class="token function">split_url_to_hosts</span><span class="token punctuation">(</span>source_path<span class="token punctuation">:</span> <span class="token builtin">str</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">list</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">"""将源列表每个条目拆分成 [协议, 域名, 路径] 的格式并返回所有条目拆分完后的嵌套列表  
+    :param source_path: 源文件
+    :return: 拆分后的嵌套列表
+    """</span>
+    <span class="token keyword">with</span> <span class="token builtin">open</span><span class="token punctuation">(</span>source_path<span class="token punctuation">,</span> <span class="token string">'r'</span><span class="token punctuation">)</span> <span class="token keyword">as</span> f<span class="token punctuation">:</span>
+        hosts <span class="token operator">=</span> f<span class="token punctuation">.</span>read<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>splitlines<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>hosts<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            hosts<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> hosts<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>strip<span class="token punctuation">(</span><span class="token punctuation">)</span>
+            <span class="token comment"># 根据 :// 进行拆分, 拆分结果作为继续拆分 协议, 域名, 路径 的依据</span>
+            main_split <span class="token operator">=</span> hosts<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token string">'://'</span><span class="token punctuation">)</span>
+
+            <span class="token comment"># 第一片为 协议://</span>
+            first_fragment <span class="token operator">=</span> main_split<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token string">'://'</span>
+            <span class="token comment"># 第二片为 域名</span>
+            second_fragment <span class="token operator">=</span> main_split<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+            <span class="token comment"># 第三片为 路径</span>
+            third_fragment <span class="token operator">=</span> <span class="token string">'/'</span> <span class="token operator">+</span> <span class="token string">'/'</span><span class="token punctuation">.</span>join<span class="token punctuation">(</span>main_split<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+            <span class="token comment"># 将拆分后的三片组合成一个列表</span>
+            hosts<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span>first_fragment<span class="token punctuation">,</span> second_fragment<span class="token punctuation">,</span> third_fragment<span class="token punctuation">]</span>
+        <span class="token comment"># 返回拆分后的嵌套列表</span>
+        <span class="token keyword">return</span> hosts
+
+
+<span class="token keyword">def</span> <span class="token function">sort_write_hosts</span><span class="token punctuation">(</span>hosts<span class="token punctuation">:</span> <span class="token builtin">list</span><span class="token punctuation">,</span> target_path<span class="token punctuation">:</span> <span class="token builtin">str</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token boolean">None</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">"""根据对源文件拆分后的嵌套列表中的域名进行 ping 操作, 并将结果按响应时间升序输出到目的文件  
+    :param hosts: 源文件拆分后的嵌套列表  
+    :param target_path: 目标输出文件路径
+    :return: None
+    """</span>
+    <span class="token comment"># 遍历 hosts 中的每个域名, 并对其进行 ping 操作, 将平均响应时间插入到 hosts 尾部</span>
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>hosts<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        hosts<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>append<span class="token punctuation">(</span>ping_linux<span class="token punctuation">(</span>hosts<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token comment"># 按照响应时间升序排序</span>
+    hosts<span class="token punctuation">.</span>sort<span class="token punctuation">(</span>key<span class="token operator">=</span><span class="token keyword">lambda</span> x<span class="token punctuation">:</span> x<span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+    <span class="token comment"># 将排序后的 hosts 写入到目的文件</span>
+    <span class="token keyword">with</span> <span class="token builtin">open</span><span class="token punctuation">(</span>target_path<span class="token punctuation">,</span> <span class="token string">'w'</span><span class="token punctuation">)</span> <span class="token keyword">as</span> f<span class="token punctuation">:</span>
+        <span class="token keyword">for</span> host <span class="token keyword">in</span> hosts<span class="token punctuation">:</span>
+            f<span class="token punctuation">.</span>write<span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f'</span><span class="token interpolation"><span class="token punctuation">{</span>host<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">}</span></span><span class="token interpolation"><span class="token punctuation">{</span>host<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">}</span></span><span class="token interpolation"><span class="token punctuation">{</span>host<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">}</span></span><span class="token string"> </span><span class="token interpolation"><span class="token punctuation">{</span>host<span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">}</span></span><span class="token string">ms \n'</span></span><span class="token punctuation">)</span>
+
+
+<span class="token keyword">def</span> <span class="token function">sort_sources</span><span class="token punctuation">(</span>source_path<span class="token punctuation">:</span> <span class="token builtin">str</span><span class="token punctuation">,</span> target_path<span class="token punctuation">:</span> <span class="token builtin">str</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token boolean">None</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">"""对源文件(kali 镜像列表)进行排序, 并按照响应时间升序输出到目的文件  
+    :param source_path: kali 镜像列表文件路径  
+    :param target_path: 按照相应时间升序输出的目的文件路径
+    """</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"开始拆分源文件..."</span><span class="token punctuation">)</span>
+    <span class="token comment"># 将源文件拆分为嵌套列表</span>
+    hosts <span class="token operator">=</span> split_url_to_hosts<span class="token punctuation">(</span>source_path<span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"拆分完成, 开始排序..."</span><span class="token punctuation">)</span>
+    <span class="token comment"># 对拆分后的嵌套列表进行排序并输出到目的文件</span>
+    sort_write_hosts<span class="token punctuation">(</span>hosts<span class="token punctuation">,</span> target_path<span class="token punctuation">)</span>    
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"排序完成, 请查看目的文件"</span><span class="token punctuation">)</span>
+
+
+<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">'__main__'</span><span class="token punctuation">:</span>
+    source_path <span class="token operator">=</span> os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>join<span class="token punctuation">(</span>os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>dirname<span class="token punctuation">(</span>__file__<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">'sources_kali.txt'</span><span class="token punctuation">)</span>
+    target_path <span class="token operator">=</span> os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>join<span class="token punctuation">(</span>os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>dirname<span class="token punctuation">(</span>__file__<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">'result_kali.txt'</span><span class="token punctuation">)</span>
+    sort_sources<span class="token punctuation">(</span>source_path<span class="token punctuation">,</span> target_path<span class="token punctuation">)</span>
+</code></pre></div><blockquote>
+<p><img src="http://cdn.ayusummer233.top/img/202209081643208.png" alt="image-20220908164224429"></p>
+<p><img src="http://cdn.ayusummer233.top/img/202209081643429.png" alt="image-20220908164325366"></p>
+</blockquote>
+]]></content:encoded>
+      <enclosure url="http://cdn.ayusummer233.top/img/202209081643208.png" type="image/png"/>
+    </item>
+    <item>
+      <title>抓包发包</title>
+      <link>https://ayusummer.github.io/DailyNotes/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/%E6%8A%93%E5%8C%85%E5%8F%91%E5%8C%85.html</link>
+      <guid>https://ayusummer.github.io/DailyNotes/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/%E6%8A%93%E5%8C%85%E5%8F%91%E5%8C%85.html</guid>
+      <source url="https://ayusummer.github.io/DailyNotes/rss.xml">抓包发包</source>
+      <description>抓包发包
+
+常用抓包工具
+
+
+TCPDUMP
+Linux，抓包功能强大，命令行工具，保存的文件是二进制, cat 和 vim 无法打开
+
+下载到本地使用wireshark界面网络分析工具进行网络包分析
+tcpdump本身的命令去读取
+
+
+帮助
+
+语法
+
+https://tonydeng.github.io/sdn-handbook/linux/tcpd...</description>
+      <pubDate>Tue, 29 Nov 2022 02:11:45 GMT</pubDate>
+      <content:encoded><![CDATA[
+]]></content:encoded>
+      <enclosure url="http://cdn.ayusummer233.top/img/202212291053306.png" type="image/png"/>
+    </item>
+    <item>
+      <title>暴力破解</title>
+      <link>https://ayusummer.github.io/DailyNotes/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/Web%E5%AE%89%E5%85%A8/%E6%BC%8F%E6%B4%9E%E7%B1%BB%E5%9E%8B/%E6%9A%B4%E5%8A%9B%E7%A0%B4%E8%A7%A3/</link>
+      <guid>https://ayusummer.github.io/DailyNotes/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/Web%E5%AE%89%E5%85%A8/%E6%BC%8F%E6%B4%9E%E7%B1%BB%E5%9E%8B/%E6%9A%B4%E5%8A%9B%E7%A0%B4%E8%A7%A3/</guid>
+      <source url="https://ayusummer.github.io/DailyNotes/rss.xml">暴力破解</source>
+      <description>暴力破解
+
+暴力破解 - FreeBuf网络安全行业门户
+暴力破解漏洞_Eaxing的博客-CSDN博客
+Brute Force Attack | OWASP Foundation
+How to brute force http forms in windows | Silly Chicken
+Endpoint Protection - Symante...</description>
+      <pubDate>Sat, 26 Nov 2022 10:39:29 GMT</pubDate>
+      <content:encoded><![CDATA[
+<blockquote>
+<p><a href="https://www.freebuf.com/articles/web/335161.html" target="_blank" rel="noopener noreferrer">暴力破解 - FreeBuf网络安全行业门户</a></p>
+<p><a href="https://blog.csdn.net/qq_44040833/article/details/104189665" target="_blank" rel="noopener noreferrer">暴力破解漏洞_Eaxing的博客-CSDN博客</a></p>
+<p><a href="https://owasp.org/www-community/attacks/Brute_force_attack" target="_blank" rel="noopener noreferrer">Brute Force Attack | OWASP Foundation</a></p>
+<p><a href="https://www.sillychicken.co.nz/2011/05/how-to-brute-force-http-forms-in-windows/" target="_blank" rel="noopener noreferrer">How to brute force http forms in windows | Silly Chicken</a></p>
+<p><a href="https://community.broadcom.com/symantecenterprise/communities/community-home/librarydocuments/viewdocument?DocumentKey=656f46ef-9e3c-4c1e-a629-594d76fb5339&amp;CommunityKey=1ecf5f55-9545-44d6-b0f4-4e4a7f5f5e68&amp;tab=librarydocuments" target="_blank" rel="noopener noreferrer">Endpoint Protection - Symantec Enterprise (broadcom.com)</a></p>
+</blockquote>
+]]></content:encoded>
+      <enclosure url="http://cdn.ayusummer233.top/img/202208291417694.png" type="image/png"/>
+    </item>
+    <item>
+      <title>PHP 安全</title>
+      <link>https://ayusummer.github.io/DailyNotes/Language/PHP/PHP%E5%AE%89%E5%85%A8.html</link>
+      <guid>https://ayusummer.github.io/DailyNotes/Language/PHP/PHP%E5%AE%89%E5%85%A8.html</guid>
+      <source url="https://ayusummer.github.io/DailyNotes/rss.xml">PHP 安全</source>
+      <description>PHP 安全
+
+PHP 安全
+
+php:filter
+
+
+
+php:filter
+
+php://filter的妙用 – JohnFrod&amp;apos;s Blog
+探索php://filter在实战当中的奇技淫巧-安全客 - 安全资讯平台 (anquanke.com)
+谈一谈php://filter的妙用 | 离别歌 (leavesongs.com)
+PHP伪协议...</description>
+      <pubDate>Fri, 18 Nov 2022 06:00:54 GMT</pubDate>
+      <content:encoded><![CDATA[
+<ul>
+<li><a href="#php-%E5%AE%89%E5%85%A8">PHP 安全</a>
+<ul>
+<li><a href="#phpfilter">php:filter</a></li>
+</ul>
+</li>
+</ul>
+<h2>php:filter</h2>
+<blockquote>
+<p><a href="https://johnfrod.top/%E5%AE%89%E5%85%A8/php-filter%E7%9A%84%E5%A6%99%E7%94%A8/" target="_blank" rel="noopener noreferrer">php://filter的妙用 – JohnFrod's Blog</a></p>
+<p><a href="https://www.anquanke.com/post/id/202510" target="_blank" rel="noopener noreferrer">探索php://filter在实战当中的奇技淫巧-安全客 - 安全资讯平台 (anquanke.com)</a></p>
+<p><a href="https://www.leavesongs.com/PENETRATION/php-filter-magic.html" target="_blank" rel="noopener noreferrer">谈一谈php://filter的妙用 | 离别歌 (leavesongs.com)</a></p>
+<p><a href="https://www.xiaozzz.xyz/2019/09/21/PHP%E4%BC%AA%E5%8D%8F%E8%AE%AE%E6%80%BB%E7%BB%93/" target="_blank" rel="noopener noreferrer">PHP伪协议总结 | xiaoZ's Blog (xiaozzz.xyz)</a></p>
+</blockquote>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>PHP 学习</title>
+      <link>https://ayusummer.github.io/DailyNotes/Language/PHP/PHP%E5%AD%A6%E4%B9%A0.html</link>
+      <guid>https://ayusummer.github.io/DailyNotes/Language/PHP/PHP%E5%AD%A6%E4%B9%A0.html</guid>
+      <source url="https://ayusummer.github.io/DailyNotes/rss.xml">PHP 学习</source>
+      <description>PHP 学习
+
+PHP 学习
+
+概述
+安装与调试
+
+下载 XAMPP
+
+配置环境变量
+
+
+下载 xdebug 插件
+在 VSCode 中调试 PHP
+在 PHPStorm 中调试 PHP
+一些基本指令
+
+
+
+
+
+
+概述
+
+PHP 教程 (w3school.com.cn)
+PHP 参考手册
+PHP 测验
+
+PHP 是一种创建动态交互性站点的强有力的服务器...</description>
+      <pubDate>Tue, 15 Nov 2022 06:43:35 GMT</pubDate>
+      <content:encoded><![CDATA[
+<ul>
+<li><a href="#php-%E5%AD%A6%E4%B9%A0">PHP 学习</a>
+<ul>
+<li><a href="#%E6%A6%82%E8%BF%B0">概述</a></li>
+<li><a href="#%E5%AE%89%E8%A3%85%E4%B8%8E%E8%B0%83%E8%AF%95">安装与调试</a>
+<ul>
+<li><a href="#%E4%B8%8B%E8%BD%BD-xampp">下载 XAMPP</a>
+<ul>
+<li><a href="#%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F">配置环境变量</a></li>
+</ul>
+</li>
+<li><a href="#%E4%B8%8B%E8%BD%BD-xdebug-%E6%8F%92%E4%BB%B6">下载 xdebug 插件</a></li>
+<li><a href="#%E5%9C%A8-vscode-%E4%B8%AD%E8%B0%83%E8%AF%95-php">在 VSCode 中调试 PHP</a></li>
+<li><a href="#%E5%9C%A8-phpstorm-%E4%B8%AD%E8%B0%83%E8%AF%95-php">在 PHPStorm 中调试 PHP</a></li>
+<li><a href="#%E4%B8%80%E4%BA%9B%E5%9F%BA%E6%9C%AC%E6%8C%87%E4%BB%A4">一些基本指令</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+]]></content:encoded>
+      <enclosure url="http://cdn.ayusummer233.top/img/202210210941771.png" type="image/png"/>
+    </item>
+    <item>
+      <title>Web 漏洞通用型 Python 复现脚本编写指南 V1.0</title>
+      <link>https://ayusummer.github.io/DailyNotes/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/Web%E5%AE%89%E5%85%A8/Web%E6%BC%8F%E6%B4%9E%E9%80%9A%E7%94%A8%E5%9E%8BPython%E5%A4%8D%E7%8E%B0%E8%84%9A%E6%9C%AC%E7%BC%96%E5%86%99%E6%8C%87%E5%8D%97/</link>
+      <guid>https://ayusummer.github.io/DailyNotes/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/Web%E5%AE%89%E5%85%A8/Web%E6%BC%8F%E6%B4%9E%E9%80%9A%E7%94%A8%E5%9E%8BPython%E5%A4%8D%E7%8E%B0%E8%84%9A%E6%9C%AC%E7%BC%96%E5%86%99%E6%8C%87%E5%8D%97/</guid>
+      <source url="https://ayusummer.github.io/DailyNotes/rss.xml">Web 漏洞通用型 Python 复现脚本编写指南 V1.0</source>
+      <description>Web 漏洞通用型 Python 复现脚本编写指南 V1.0
+前言
+在复现 Web 漏洞的过程中通常会发 HTTP 请求来进行攻击, 这个操作是可以用 Python 的 requests, urllib, aiohttp, httpx 等网络请求库实现的(在此项指南中以 requests 库为例)
+因此如果需要重复复现漏洞或是批量复现漏洞的话, 那么编...</description>
+      <pubDate>Sat, 12 Nov 2022 13:39:49 GMT</pubDate>
+      <content:encoded><![CDATA[
+<h2>前言</h2>
+<p>在复现 Web 漏洞的过程中通常会发 HTTP 请求来进行攻击, 这个操作是可以用 Python 的 requests, urllib, aiohttp, httpx 等网络请求库实现的(在此项指南中以 requests 库为例)</p>
+<p>因此如果需要重复复现漏洞或是批量复现漏洞的话, 那么编写通用脚本, 之后需要的时候只需要跑脚本即可验证复现情况</p>
+<p>此项指南旨在为上述过程的快速实现做一个常规的梳理, 希望能够帮助到有相关需求的同学</p>
+]]></content:encoded>
+      <enclosure url="http://cdn.ayusummer233.top/img/20211119092740.png" type="image/png"/>
+    </item>
+    <item>
+      <title>BurpSuit</title>
+      <link>https://ayusummer.github.io/DailyNotes/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/Web%E5%AE%89%E5%85%A8/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/BurpSuite.html</link>
+      <guid>https://ayusummer.github.io/DailyNotes/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/Web%E5%AE%89%E5%85%A8/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/BurpSuite.html</guid>
+      <source url="https://ayusummer.github.io/DailyNotes/rss.xml">BurpSuit</source>
+      <description>BurpSuit
+
+Burp Suite - Application Security Testing Software - PortSwigger
+
+引子 · burpsuite实战指南 (gitbooks.io)
+
+
+BurpSuit 安装与环境配置
+
+第一章 Burp Suite 安装和环境配置 · burpsuite实战指南 (gitbooks...</description>
+      <pubDate>Sat, 12 Nov 2022 13:38:18 GMT</pubDate>
+      <content:encoded><![CDATA[
+<blockquote>
+<p><a href="https://portswigger.net/burp" target="_blank" rel="noopener noreferrer">Burp Suite - Application Security Testing Software - PortSwigger</a></p>
+</blockquote>
+]]></content:encoded>
+      <enclosure url="http://cdn.ayusummer233.top/img/202210241939377.png" type="image/png"/>
+    </item>
+    <item>
+      <title>Harbor</title>
+      <link>https://ayusummer.github.io/DailyNotes/%E9%80%9A%E8%AF%86/Docker/Harbor.html</link>
+      <guid>https://ayusummer.github.io/DailyNotes/%E9%80%9A%E8%AF%86/Docker/Harbor.html</guid>
+      <source url="https://ayusummer.github.io/DailyNotes/rss.xml">Harbor</source>
+      <description>Harbor
+
+镜像迁移
+
+镜像迁移：如何将dockerhub上的镜像迁移到Harbor私有镜像仓库中？_键客李大白的技术博客_51CTO博客
+镜像仓库同步 - 简书 (jianshu.com)
+Harbor镜像迁移 - breezey - 博客园 (cnblogs.com)
+
+可以直接在 Habor 的 管理页面-&amp;gt;系统管理-&amp;gt;复制管理 中进行复制迁...</description>
+      <pubDate>Sat, 12 Nov 2022 08:14:47 GMT</pubDate>
+      <content:encoded><![CDATA[
+]]></content:encoded>
+    </item>
+    <item>
+      <title>HMAC</title>
+      <link>https://ayusummer.github.io/DailyNotes/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95/HMAC.html</link>
+      <guid>https://ayusummer.github.io/DailyNotes/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95/HMAC.html</guid>
+      <source url="https://ayusummer.github.io/DailyNotes/rss.xml">HMAC</source>
+      <description>HMAC
+
+HMAC算法及其应用 - 知乎 (zhihu.com)
+Securing your webhooks - GitHub Docs
+消息认证码与哈希算法的区别 - 知乎 (zhihu.com)
+Hmac算法 - 廖雪峰的官方网站 (liaoxuefeng.com)
+
+在身份认证过程中，有很多种方式可以保证用户信息的安全，MAC(message...</description>
+      <pubDate>Sat, 12 Nov 2022 08:14:29 GMT</pubDate>
+      <content:encoded><![CDATA[
+<blockquote>
+<p><a href="https://zhuanlan.zhihu.com/p/136590049" target="_blank" rel="noopener noreferrer">HMAC算法及其应用 - 知乎 (zhihu.com)</a></p>
+<p><a href="https://docs.github.com/en/developers/webhooks-and-events/webhooks/securing-your-webhooks" target="_blank" rel="noopener noreferrer">Securing your webhooks - GitHub Docs</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/398292957" target="_blank" rel="noopener noreferrer">消息认证码与哈希算法的区别 - 知乎 (zhihu.com)</a></p>
+<p><a href="https://www.liaoxuefeng.com/wiki/1252599548343744/1305366354722849" target="_blank" rel="noopener noreferrer">Hmac算法 - 廖雪峰的官方网站 (liaoxuefeng.com)</a></p>
+</blockquote>
+<p>在身份认证过程中，有很多种方式可以保证用户信息的安全，<code>MAC(message authentication code)</code> 就是一种常用的方法。</p>
+<p>消息认证码是对消息进行认证并确认其完整性的技术。通过使用发送者和接收者之间共享的密钥，就可以识别出是否存在伪装和篡改行为。</p>
+<p>MAC 是通过 <strong>MAC算法 + 密钥 + 要加密的信息一起计算</strong>得出的。</p>
+<ul>
+<li>Hash与MAC的区别，Hash只能保证消息的完整性，MAC不仅能够保证完整性，还能够保证真实性。</li>
+</ul>
+<blockquote>
+<p><a href="https://www.liaoxuefeng.com/wiki/1252599548343744/1304227729113121" target="_blank" rel="noopener noreferrer">哈希算法 - 廖雪峰的官方网站 (liaoxuefeng.com)</a></p>
+</blockquote>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>渐构-断墨寻径</title>
+      <link>https://ayusummer.github.io/DailyNotes/%E9%80%9A%E8%AF%86/%E6%B8%90%E6%9E%84-%E6%96%AD%E5%A2%A8%E5%AF%BB%E5%BE%84.html</link>
+      <guid>https://ayusummer.github.io/DailyNotes/%E9%80%9A%E8%AF%86/%E6%B8%90%E6%9E%84-%E6%96%AD%E5%A2%A8%E5%AF%BB%E5%BE%84.html</guid>
+      <source url="https://ayusummer.github.io/DailyNotes/rss.xml">渐构-断墨寻径</source>
+      <description>渐构-断墨寻径
+
+学习误区自查课程介绍-断墨寻径-渐构 Modevol
+
+
+
+
+目的: 消除对学习的误区和偏见
+
+
+渐构-断墨寻径
+
+目标
+
+重现目标与泛化目标
+指令学习与归纳学习
+
+
+
+
+
+
+目标
+
+重现目标与泛化目标
+
+目标：重现目标与泛化目标-断墨寻径-渐构 Modevol
+
+
+明确当前行为的目标是什么
+
+对于复现形式的目标则侧重于记忆本身
+对于...</description>
+      <pubDate>Thu, 10 Nov 2022 15:57:21 GMT</pubDate>
+      <content:encoded><![CDATA[
+<blockquote>
+<p><a href="https://www.modevol.com/episode/ckx8eb99w000501l2ewyt2kto" target="_blank" rel="noopener noreferrer">学习误区自查课程介绍-断墨寻径-渐构 Modevol</a></p>
+</blockquote>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>mysql</title>
+      <link>https://ayusummer.github.io/DailyNotes/%E5%90%8E%E7%AB%AF/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL.html</link>
+      <guid>https://ayusummer.github.io/DailyNotes/%E5%90%8E%E7%AB%AF/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL.html</guid>
+      <source url="https://ayusummer.github.io/DailyNotes/rss.xml">mysql</source>
+      <description>mysql
+
+mysql
+
+MariaDB
+安装
+
+官方安装包
+手动配置
+
+
+启用远程访问权限
+mysql 数据类型
+
+数值类型
+
+日期和时间类型
+字符串类型
+
+
+
+
+重置自增量
+密码
+
+修改密码
+重置密码
+
+
+报错收集
+
+mysql Failed! Error: SET PASSWORD has no significance for user ‘r...</description>
+      <pubDate>Wed, 09 Nov 2022 02:47:15 GMT</pubDate>
+      <content:encoded><![CDATA[
+<ul>
+<li><a href="#mysql">mysql</a>
+<ul>
+<li><a href="#mariadb">MariaDB</a></li>
+<li><a href="#%E5%AE%89%E8%A3%85">安装</a>
+<ul>
+<li><a href="#%E5%AE%98%E6%96%B9%E5%AE%89%E8%A3%85%E5%8C%85">官方安装包</a></li>
+<li><a href="#%E6%89%8B%E5%8A%A8%E9%85%8D%E7%BD%AE">手动配置</a></li>
+</ul>
+</li>
+<li><a href="#%E5%90%AF%E7%94%A8%E8%BF%9C%E7%A8%8B%E8%AE%BF%E9%97%AE%E6%9D%83%E9%99%90">启用远程访问权限</a></li>
+<li><a href="#mysql-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B">mysql 数据类型</a>
+<ul>
+<li><a href="#%E6%95%B0%E5%80%BC%E7%B1%BB%E5%9E%8B">数值类型</a>
+<ul>
+<li><a href="#%E6%97%A5%E6%9C%9F%E5%92%8C%E6%97%B6%E9%97%B4%E7%B1%BB%E5%9E%8B">日期和时间类型</a></li>
+<li><a href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%B1%BB%E5%9E%8B">字符串类型</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E9%87%8D%E7%BD%AE%E8%87%AA%E5%A2%9E%E9%87%8F">重置自增量</a></li>
+<li><a href="#%E5%AF%86%E7%A0%81">密码</a>
+<ul>
+<li><a href="#%E4%BF%AE%E6%94%B9%E5%AF%86%E7%A0%81">修改密码</a></li>
+<li><a href="#%E9%87%8D%E7%BD%AE%E5%AF%86%E7%A0%81">重置密码</a></li>
+</ul>
+</li>
+<li><a href="#%E6%8A%A5%E9%94%99%E6%94%B6%E9%9B%86">报错收集</a>
+<ul>
+<li><a href="#mysql-failed-error-set-password-has-no-significance-for-user-rootlocalhost-as-the-authentication-method-used-doesnt-store-authentication-data-in-the-mysql-server-please-consider-using-alter-user">mysql Failed! Error: SET PASSWORD has no significance for user ‘root’@’localhost’ as the authentication method used doesn’t store authentication data in the mysql server. Please consider using ALTER USER</a></li>
+<li><a href="#error-1819-hy000-your-password-does-not-satisfy-the-current-policy-requirements">ERROR 1819 (HY000): Your password does not satisfy the current policy requirements</a></li>
+<li><a href="#error-1396-hy000-operation-alter-user-failed-for-root">ERROR 1396 (HY000): Operation ALTER USER failed for 'root'@'%'</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+]]></content:encoded>
+      <enclosure url="http://cdn.ayusummer233.top/DailyNotes/202307041757855.png" type="image/png"/>
+    </item>
+    <item>
+      <title>SQLite</title>
+      <link>https://ayusummer.github.io/DailyNotes/%E5%90%8E%E7%AB%AF/%E6%95%B0%E6%8D%AE%E5%BA%93/SQLite.html</link>
+      <guid>https://ayusummer.github.io/DailyNotes/%E5%90%8E%E7%AB%AF/%E6%95%B0%E6%8D%AE%E5%BA%93/SQLite.html</guid>
+      <source url="https://ayusummer.github.io/DailyNotes/rss.xml">SQLite</source>
+      <description>SQLite
+
+SQLite
+
+virtual columns
+自增量归零
+Litestream
+
+
+
+virtual columns
+
+JSON and virtual columns in SQLite (antonz.org)
+
+如何在 SQLite 中使用 JSON 和 Virtual Columns 实现一些更灵活的用法
+假设我们想要保留系统...</description>
+      <pubDate>Wed, 09 Nov 2022 02:47:15 GMT</pubDate>
+      <content:encoded><![CDATA[
+<ul>
+<li><a href="#sqlite">SQLite</a>
+<ul>
+<li><a href="#virtual-columns">virtual columns</a></li>
+<li><a href="#%E8%87%AA%E5%A2%9E%E9%87%8F%E5%BD%92%E9%9B%B6">自增量归零</a></li>
+<li><a href="#litestream">Litestream</a></li>
+</ul>
+</li>
+</ul>
+<h2>virtual columns</h2>
+<blockquote>
+<p><a href="https://antonz.org/json-virtual-columns/" target="_blank" rel="noopener noreferrer">JSON and virtual columns in SQLite (antonz.org)</a></p>
+</blockquote>
+<p>如何在 SQLite 中使用 JSON 和 Virtual Columns 实现一些更灵活的用法</p>
+<p>假设我们想要保留系统中一些事件的日志, 每个事件都有自己的一组字段, 例如:</p>
+<p><code>登录</code>:</p>
+<div class="language-json" data-ext="json" data-title="json"><pre class="language-json"><code><span class="token punctuation">{</span>
+    <span class="token property">"timestamp"</span><span class="token operator">:</span> <span class="token string">"2022-05-15T09:31:00Z"</span><span class="token punctuation">,</span>
+    <span class="token property">"object"</span><span class="token operator">:</span> <span class="token string">"user"</span><span class="token punctuation">,</span>
+    <span class="token property">"object_id"</span><span class="token operator">:</span> <span class="token number">11</span><span class="token punctuation">,</span>
+    <span class="token property">"action"</span><span class="token operator">:</span> <span class="token string">"login"</span><span class="token punctuation">,</span>
+    <span class="token property">"details"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">"ip"</span><span class="token operator">:</span> <span class="token string">"192.168.0.1"</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p><code>账户存款</code>:</p>
+<div class="language-json" data-ext="json" data-title="json"><pre class="language-json"><code><span class="token punctuation">{</span>
+    <span class="token property">"timestamp"</span><span class="token operator">:</span> <span class="token string">"2022-05-15T09:32:00Z"</span><span class="token punctuation">,</span>
+    <span class="token property">"object"</span><span class="token operator">:</span> <span class="token string">"account"</span><span class="token punctuation">,</span>
+    <span class="token property">"object_id"</span><span class="token operator">:</span> <span class="token number">12</span><span class="token punctuation">,</span>
+    <span class="token property">"action"</span><span class="token operator">:</span> <span class="token string">"deposit"</span><span class="token punctuation">,</span>
+    <span class="token property">"details"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">"amount"</span><span class="token operator">:</span> <span class="token string">"1000"</span><span class="token punctuation">,</span>
+        <span class="token property">"currency"</span><span class="token operator">:</span> <span class="token string">"USD"</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>由于这种 json 数据的规范化并不容易, 因此可以直接存储 json</p>
+<p>创建一个 events 表, 只包含一个 text 类型的 value 字段</p>
+<p>value 字段的值为:</p>
+<div class="language-json" data-ext="json" data-title="json"><pre class="language-json"><code><span class="token punctuation">{</span><span class="token property">"timestamp"</span><span class="token operator">:</span><span class="token string">"2022-05-15T09:31:00Z"</span><span class="token punctuation">,</span><span class="token property">"object"</span><span class="token operator">:</span><span class="token string">"user"</span><span class="token punctuation">,</span><span class="token property">"object_id"</span><span class="token operator">:</span><span class="token number">11</span><span class="token punctuation">,</span><span class="token property">"action"</span><span class="token operator">:</span><span class="token string">"login"</span><span class="token punctuation">,</span><span class="token property">"details"</span><span class="token operator">:</span><span class="token punctuation">{</span><span class="token property">"ip"</span><span class="token operator">:</span><span class="token string">"192.168.0.1"</span><span class="token punctuation">}</span><span class="token punctuation">}</span>
+<span class="token punctuation">{</span><span class="token property">"timestamp"</span><span class="token operator">:</span><span class="token string">"2022-05-15T09:32:00Z"</span><span class="token punctuation">,</span><span class="token property">"object"</span><span class="token operator">:</span><span class="token string">"account"</span><span class="token punctuation">,</span><span class="token property">"object_id"</span><span class="token operator">:</span><span class="token number">12</span><span class="token punctuation">,</span><span class="token property">"action"</span><span class="token operator">:</span><span class="token string">"deposit"</span><span class="token punctuation">,</span><span class="token property">"details"</span><span class="token operator">:</span><span class="token punctuation">{</span><span class="token property">"amount"</span><span class="token operator">:</span><span class="token string">"1000"</span><span class="token punctuation">,</span><span class="token property">"currency"</span><span class="token operator">:</span><span class="token string">"USD"</span><span class="token punctuation">}</span><span class="token punctuation">}</span>
+<span class="token punctuation">{</span><span class="token property">"timestamp"</span><span class="token operator">:</span><span class="token string">"2022-05-15T09:33:00Z"</span><span class="token punctuation">,</span><span class="token property">"object"</span><span class="token operator">:</span><span class="token string">"company"</span><span class="token punctuation">,</span><span class="token property">"object_id"</span><span class="token operator">:</span><span class="token number">13</span><span class="token punctuation">,</span><span class="token property">"action"</span><span class="token operator">:</span><span class="token string">"edit"</span><span class="token punctuation">,</span><span class="token property">"details"</span><span class="token operator">:</span><span class="token punctuation">{</span><span class="token property">"fields"</span><span class="token operator">:</span><span class="token punctuation">[</span><span class="token string">"address"</span><span class="token punctuation">,</span><span class="token string">"phone"</span><span class="token punctuation">]</span><span class="token punctuation">}</span><span class="token punctuation">}</span>
+</code></pre></div><p>此时可以通过 json 解构查表:</p>
+<div class="language-sqlite" data-ext="sqlite" data-title="sqlite"><pre class="language-sqlite"><code>select
+  json_extract(value, '$.object') as object,
+  json_extract(value, '$.action') as action
+from events
+where json_extract(value, '$.object_id') = 11;
+</code></pre></div><p><img src="http://cdn.ayusummer233.top/img/202205230849736.png" alt=""></p>
+<p>只是满足基本查询的话到此为止就足够了, 但是当数据量起来后, 查询速度会变得很慢, 此时可以通过定义虚拟列并构建索引来加快查询速度:</p>
+<p><code>定义虚拟列</code>:</p>
+<div class="language-sqlite" data-ext="sqlite" data-title="sqlite"><pre class="language-sqlite"><code>alter table events
+add column object_id integer
+as (json_extract(value, '$.object_id'));
+
+alter table events
+add column object text
+as (json_extract(value, '$.object'));
+
+alter table events
+add column action text
+as (json_extract(value, '$.action'));
+</code></pre></div><p><code>构建索引</code>:</p>
+<div class="language-sqlite" data-ext="sqlite" data-title="sqlite"><pre class="language-sqlite"><code>create index events_object_id on events(object_id);
+</code></pre></div><p><img src="http://cdn.ayusummer233.top/img/202205230909523.png" alt="image-20220523090909436"></p>
+<p>然后使用新的虚拟列属性进行查询:</p>
+<div class="language-sqlite" data-ext="sqlite" data-title="sqlite"><pre class="language-sqlite"><code>select object, action
+from events
+where object_id = 11;
+</code></pre></div><p>虚拟列的使用让我们几乎拥有了一个 NoSQL 数据库😉</p>
+]]></content:encoded>
+      <enclosure url="http://cdn.ayusummer233.top/img/202205230849736.png" type="image/png"/>
+    </item>
+    <item>
+      <title>Docker</title>
+      <link>https://ayusummer.github.io/DailyNotes/%E9%80%9A%E8%AF%86/Docker/Docker.html</link>
+      <guid>https://ayusummer.github.io/DailyNotes/%E9%80%9A%E8%AF%86/Docker/Docker.html</guid>
+      <source url="https://ayusummer.github.io/DailyNotes/rss.xml">Docker</source>
+      <description>Docker
+安装
+
+
+换源
+Docker-hub 换源
+打开 /etc/docker/daemon.json 并输入
+然后重启 docker
+镜像
+
+关于docker容器和镜像的区别 - jason.bai - 博客园 (cnblogs.com)
+
+image-20220923175753464
+
+常用指令
+
+
+拉取镜像
+
+docker pull 下...</description>
+      <pubDate>Wed, 09 Nov 2022 02:29:39 GMT</pubDate>
+      <content:encoded><![CDATA[
+<h2>安装</h2>
+
+]]></content:encoded>
+      <enclosure url="http://cdn.ayusummer233.top/img/202211202356631.png" type="image/png"/>
+    </item>
+    <item>
+      <title>数据可视化</title>
+      <link>https://ayusummer.github.io/DailyNotes/%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/BigData/%E5%A4%A7%E6%95%B0%E6%8D%AE%E9%9A%8F%E7%AC%94.html</link>
+      <guid>https://ayusummer.github.io/DailyNotes/%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/BigData/%E5%A4%A7%E6%95%B0%E6%8D%AE%E9%9A%8F%E7%AC%94.html</guid>
+      <source url="https://ayusummer.github.io/DailyNotes/rss.xml">数据可视化</source>
+      <description>数据可视化
+
+
+Question: 搜索数据可视化的时候通常会搜到一堆 BI 相关资料, 那么这两个概念的区别与联系是怎样的呢?
+数据可视化的目的是对数据进行可视化处理, 以使得可以明白地, 有效地传递信息;
+而商业智能 BI(Business Intelligence) 是一套完整的解决方案, 用来将企业中现有的数据进行有效整合, 快速准确的提供报表...</description>
+      <pubDate>Mon, 07 Nov 2022 17:17:10 GMT</pubDate>
+      <content:encoded><![CDATA[
+<ul>
+<li>
+<p><code>Question</code>: 搜索数据可视化的时候通常会搜到一堆 <code>BI</code> 相关资料, 那么这两个概念的区别与联系是怎样的呢?</p>
+<p>数据可视化的目的是对数据进行可视化处理, 以使得可以明白地, 有效地传递信息;</p>
+<p>而商业智能 <code>BI(Business Intelligence)</code> 是一套完整的解决方案, 用来将企业中现有的数据进行有效整合, 快速准确的提供报表并提出决策依据，帮助企业做出明智的业务经营决策。一般包括数据仓库、报表查询、数据分析、数据挖掘、数据可视化等部分。</p>
+<blockquote>
+<p><a href="https://zhuanlan.zhihu.com/p/199325111" target="_blank" rel="noopener noreferrer">商业智能BI和数据可视化的区别 - 知乎 (zhihu.com)</a></p>
+</blockquote>
+</li>
+</ul>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>大数据导论</title>
+      <link>https://ayusummer.github.io/DailyNotes/%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/BigData/%E5%AF%BC%E8%AE%BA.html</link>
+      <guid>https://ayusummer.github.io/DailyNotes/%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/BigData/%E5%AF%BC%E8%AE%BA.html</guid>
+      <source url="https://ayusummer.github.io/DailyNotes/rss.xml">大数据导论</source>
+      <description>大数据导论
+第一章 大数据与大数据时代
+
+经典案例:准确预测地震
+
+1.1 什么是大数据
+
+
+当前是一个信息大爆炸的时代
+
+
+按产生数据的主题划分
+
+
+少量企业应用产生的数据
+如关系型数据中的数据和数据仓库中的数据等
+
+
+大量人产生的数据
+如推特,微博,通信软件,移动通信数据,电子商务在线交易,日志数据,企业应用的相关评论数据等;
+
+
+巨量机器产生的数...</description>
+      <pubDate>Mon, 07 Nov 2022 17:17:10 GMT</pubDate>
+      <content:encoded><![CDATA[
+<h2>第一章 大数据与大数据时代</h2>
+<ul>
+<li>经典案例:准确预测地震</li>
+</ul>
+<h3>1.1 什么是大数据</h3>
+<ul>
+<li>
+<p>当前是一个信息大爆炸的时代</p>
+</li>
+<li>
+<p>按产生数据的主题划分</p>
+<ol>
+<li>
+<p>少量企业应用产生的数据</p>
+<p>如关系型数据中的数据和数据仓库中的数据等</p>
+</li>
+<li>
+<p>大量人产生的数据</p>
+<p>如推特,微博,通信软件,移动通信数据,电子商务在线交易,日志数据,企业应用的相关评论数据等;</p>
+</li>
+<li>
+<p>巨量机器产生的数据</p>
+<p>如应用服务器日志,各类传感器数据,图像和视频监控数据,二维码和条形码(条码)扫描数据等</p>
+</li>
+</ol>
+</li>
+<li>
+<p>按数据来源的行业来分</p>
+<ol>
+<li>以BAT为代表的互联网公司</li>
+<li>电信,金融,保险,电力,石化系统</li>
+<li>公共安全,医疗,交通领域</li>
+<li>气象,地理,政务等领域</li>
+<li>制造业和其他传统行业</li>
+</ol>
+</li>
+<li>
+<p>按数据存储的形式划分</p>
+<ol>
+<li>结构化数据简单来说就是数据库,如企业ERP,财务系统,</li>
+<li>非结构化数据包括所有格式的办公文档,文本,图片,XML,HTML,各类报表,图像</li>
+</ol>
+</li>
+<li>
+<p>常用的大数据获取途径</p>
+<ol>
+<li>系统日志采集</li>
+<li>互联网数据采集</li>
+<li>APP移动数据采集</li>
+<li>与数据服务机构进行合作</li>
+</ol>
+</li>
+</ul>
+<h4>1.1.2 大数据的定义</h4>
+<ul>
+<li>所谓大数据,狭义上可以定义为:用现有的一般技术哪一管理的大量数据的集合对大量数据进行分析,并从中获得有用的观点,这种做法在一部分研究机构和企业中,过去就已经存在了,现在和过去相比,主要有三点区别:
+<ol>
+<li>随着社交媒体和传感器网络等的发展,在我们身边正产生大量且多样的数据</li>
+<li>随着硬件和软件技术的发展,数据的存储,处理成本大幅下降</li>
+<li>随着云计算的兴起,大数据的存储,处理环境已经没有必要自行搭建</li>
+</ol>
+</li>
+<li>所谓"用一般技术难以管理",例如是指用目前在企业数据库占据主流地位的关系型数据库无法进行管理的,具有复杂结构的数据.或者也可以说,是指由于数据量的增大,导致非结构化的数据</li>
+</ul>
+<h4>1.1.3<strong>用3V描述大数据特征</strong></h4>
+<ul>
+<li>3V:数量(Volume),种类(Variety),速度(Velocity)</li>
+<li>IBM在3V基础上有归纳总结了第四个V-&gt;Veracity(真实和准确)</li>
+<li>4V-&gt;数量(Volume),种类(Variety),速度(Velocity),Value(价值)</li>
+</ul>
+<h4>1.1.4 广义的大数据</h4>
+<ul>
+<li>"所谓大数据,是一个总和概念,他包括具备3V特征而难以进行管理的数据,对这些数据进行存储,处理分析的技术,以及能够通过分析这些数据获得实用意义和观点的人才和组织"</li>
+<li>"存储,处理分析的技术",值得是用于大规模数据分布式处理的框架Hadoop,具备良好扩展性的NoSQL数据库,以及机器学习和统计分析等;"能够通过分析这些数据获得实用意义和观点的人才和组织",指的是目前十分紧俏的"数据科学家"这类人才,以及能够对大数据进行有效的运用的组织</li>
+</ul>
+<h3>1.2 大数据变革思维</h3>
+<ul>
+<li>今天,人们不再认为数据时精致和陈旧的;</li>
+<li>大数据是人们获得新的知识,创造新的价值的源泉,大数据还是改变市场,组织结构以及政府与公民的关系的方法.大数据时代对我们的生活,以及世界交流的方式都提出了挑战.</li>
+</ul>
+<h3>1.3 大数据的结构类型</h3>
+<ul>
+<li>大数据有多种形式,从高度结构化的财务数据,到文本文件,多媒体文件和基因定位图的任何数据,都可以成为大数据.数据量大师大数据的意志特征;引起数据自身的复杂性,作为一个必然的结果,处理大数据的首选方法就是在并行计算的环境中进行大规模并行处理,这使得同时发生的并行摄取,并行数据装在和分析成为可能,实际上,大多数的大数据都是非结构化或半结构化的,这需要不同的技术和工具来处理和分析.</li>
+<li>大数据最突出的特征是他的结构.未来数据增长的80%~90%将来自于不是结构化的数据类型;</li>
+<li><img src="https://codimd.s3.shivering-isles.com/demo/uploads/upload_09e0fe38bae4dc2500b5c9fc5cdb717e.png" alt=""></li>
+</ul>
+<h4>大数据的表现形态</h4>
+<ul>
+<li>大数据在当今社会非常时髦，大数据的信息量是海量的，这个海量并不是某个时间端点的量级总结，而是持续更新，持续增量。由于大数据产生的过程中诸多的不确定性，使得大数据的表现形态多种多样。</li>
+<li>多源性
+<ul>
+<li>大数据来源的复杂性。网络技术的迅猛发展使得数据产生的途径多样化。大数据结构的复杂性。非结构化数据的格式多样化，而这些非结构化数据中可能蕴藏着非常有价值的信息。</li>
+</ul>
+</li>
+<li>实时性
+<ul>
+<li>大数据的实时性，体现在数据更新的实时性。如何及时、有效、全面的捕获到互联网、物联网、云计算上产生的大量的不同来源的数据是会直接影响数据价值体现的关键因素。</li>
+</ul>
+</li>
+<li>不确定性
+<ul>
+<li>体现的是数据的不确定性。原始数据的不准确以及数据采集处理粒度、应用需求与数据集成和展示等因素使得数据在不同尺度、不同维度上都有不同程度的不确定性。</li>
+</ul>
+</li>
+</ul>
+<h3>1.4 大数据的发展</h3>
+<h4>大数据技术的支撑</h4>
+<p><img src="https://codimd.s3.shivering-isles.com/demo/uploads/upload_0b5d4f8c79078394eba77cf6b4650ff5.png" alt=""></p>
+<ul>
+<li>存储:存储成本的下降
+<ul>
+<li>云计算出现之前
+<ul>
+<li>在云计算出现之前，数据存储的成本是非常高的。</li>
+<li>例如，公司要建设网站，需要购置和部署服务器，安排技术人员维护服务器，保证数据存储的安全性和数据传输的畅通性，还会定期清理数据，腾出空间以便存储新的数据，机房整体的人力和管理成本都很高。</li>
+</ul>
+</li>
+<li>云计算出现之后
+<ul>
+<li>云计算出现后，数据存储服务衍生出了新的商业模式，数据中心的出现降低了公司的计算和存储成本。</li>
+<li>例如，公司现在要建设网站，不需要去购买服务器，不需要去雇用技术人员维护服务器，可以通过租用硬件设备的方式解决问题。</li>
+</ul>
+</li>
+<li>存储成本的下降，也改变了大家对数据的看法，更加愿意把1年、2年甚至更久远的历史数据保存下来，有了历史数据的沉淀，才可以通过对比，发现数据之间的关联和价值。正是由于存储成本的下降，才能为大数据搭建最好的基础设施。</li>
+</ul>
+</li>
+<li>计算：运算速度越来越快
+<ul>
+<li>海量数据从原始数据源到产生价值，期间会经过存储、清洗、挖掘、分析等多个环节，如果计算速度不够快，很多事情是无法实现的。所以，在大数据的发展过程中，计算速度是非常关键的因素。</li>
+<li>分布式系统基础架构Hadoop的出现，为大数据带来了新的曙光；</li>
+<li>HDFS为海量的数据提供了存储；
+<ul>
+<li>HDFS:分布式文件系统</li>
+</ul>
+</li>
+<li>MapReduce则为海量的数据提供了并行计算，从而大大提高了计算效率；</li>
+<li>Spark、Storm、Impala等各种各样的技术进入人们的视野。
+<ul>
+<li>Apache Spark 是专为大规模数据处理而设计的快速通用的计算引擎</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>如果仅仅是从数据量的角度来看的话，大数据在过去就已经存在了。例如，波音的喷气发动机每30分钟就会产生10TB的运行信息数据，安装有4台发动机的大型客机，每次飞越大西洋就会产生640TB的数据。世界各地每天有超过2.5万架的飞机在工作，可见其数据量是何等庞大。生物技术领域中的基因组分析，以及以NASA(美国国家航空航天局) 为中心的太空开发领域，从很早就开始使用十分昂贵的高端超级计算机来对庞大的数据进行分析和处理了。</li>
+<li>现在和过去的区别之一，就是大数据已经不仅产生于特定领域中，而且还产生于我们每天的日常生活中，Facebook、推特、领英(LinkedIn) 、微信、QQ等社交媒体上的文本数据就是最好的例子。而且，尽管我们无法得到全部数据，但大部分数据可以通过公开的API(应用程序编程接口) 相对容易地进行采集。在B2C(商家对顾客) 企业中，使用文本挖掘(text mining) 和情感分析等技术，就可以分析消费者对于自家产品的评价。</li>
+<li>计算机性价比的提高，磁盘价格的下降，利用通用服务器对大量数据进行高速处理的软件技术Hadoop的诞生，以及随着云计算的兴起，甚至已经无需自行搭建这样的大规模环境——上述这些因素，大幅降低了大数据存储和处理的门槛。因此，过去只有像NASA这样的研究机构以及屈指可数的几家特大企业才能做到的对大量数据的深入分析，现在只要极小的成本和时间就可以完成。无论是刚刚创业的公司还是存在多年的公司，也无论是中小企业还是大企业，都可以对大数据进行充分的利用。</li>
+</ul>
+<h4>1.4.1 硬件性价比提高与软件技术进步</h4>
+<ol>
+<li>计算机性价比的提高
+<ul>
+<li>承担数据处理任务的计算机，其处理能力遵循摩尔定律，一直在不断进化。所谓摩尔定律，是美国英特尔公司共同创始人之一的高登•摩尔(Gordon Moore，1929- ) 于1965年提出的一个观点，即“半导体芯片的集成度，大约每18个月会翻一番”。从家电卖场中所陈列的电脑规格指标就可以一目了然地看出，现在以同样的价格能够买到的计算机，其处理能力已经和过去不可同日而语了。</li>
+</ul>
+</li>
+<li>磁盘价格的下降
+<ul>
+<li>除了CPU性能的提高，硬盘等存储器(数据的存储装置) 的价格也明显下降。2000年的硬盘驱动器平均每GB容量的单价约为16美元到19美元，而现在却只有7美分(换算成人民币的话，就相当于4~5毛钱的样子) ，相当于下降到了10年前的230~270分之一。</li>
+<li>变化的不仅仅是价格，存储器在重量方面也产生了巨大的进步。1982年日立最早开发的超1 GB级硬盘驱动器(容量为1.2GB) ，重量约为250磅(约合113千克) 。而现在，32GB的微型SD卡重量却只有0.5克左右，技术进步的速度相当惊人。</li>
+</ul>
+</li>
+<li>大规模数据分布式处理技术Hadoop的诞生
+<ul>
+<li>Hadoop是一种可以在通用服务器上运行的开源分布式处理技术，它的诞生成为了目前大数据浪潮的第一推动力。如果只是结构化数据不断增长，用传统的关系型数据库和数据仓库，或者是其衍生技术，就可以进行存储和处理了，但这样的技术无法对非结构化数据进行处理。Hadoop的最大特征，就是能够对大量非结构化数据进行高速处理。</li>
+</ul>
+</li>
+</ol>
+]]></content:encoded>
+      <enclosure url="https://codimd.s3.shivering-isles.com/demo/uploads/upload_09e0fe38bae4dc2500b5c9fc5cdb717e.png" type="image/png"/>
+    </item>
+    <item>
+      <title>引言课后测试(个人做题记录)[87.5&amp;apos; 暂未知正确答案]</title>
+      <link>https://ayusummer.github.io/DailyNotes/%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/MOOC_%E6%B5%8B%E8%AF%95%E4%B8%8E%E4%BD%9C%E4%B8%9A.html</link>
+      <guid>https://ayusummer.github.io/DailyNotes/%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/MOOC_%E6%B5%8B%E8%AF%95%E4%B8%8E%E4%BD%9C%E4%B8%9A.html</guid>
+      <source url="https://ayusummer.github.io/DailyNotes/rss.xml">引言课后测试(个人做题记录)[87.5&amp;apos; 暂未知正确答案]</source>
+      <description>引言课后测试(个人做题记录)[87.5&amp;apos; 暂未知正确答案]
+
+
+单选(5分) ‎ 哪一个是机器学习的合理定义？
+A.机器学习从标记的数据中学习
+B.机器学习是计算机编程的科学
+C.机器学习是允许机器人智能行动的领域
+D.机器学习能使计算机能够在没有明确编程的情况下学习
+
+
+
+机器学习能使计算机能够在没有明确编程的情况下学习, 如果编程很明确的话那就不能...</description>
+      <pubDate>Mon, 07 Nov 2022 17:17:10 GMT</pubDate>
+      <content:encoded><![CDATA[
+<ol>
+<li>
+<p>单选(5分) ‎ 哪一个是机器学习的合理定义？</p>
+<p>A.机器学习从标记的数据中学习</p>
+<p>B.机器学习是计算机编程的科学</p>
+<p>C.机器学习是允许机器人智能行动的领域</p>
+<p>D.机器学习能使计算机能够在没有明确编程的情况下学习</p>
+</li>
+</ol>
+<blockquote>
+<p>机器学习能使计算机能够在没有明确编程的情况下学习, 如果编程很明确的话那就不能说是"学习"了</p>
+<p>A 项错在标记的数据, 比如回归问题中的输入数据就是未标记的数据,</p>
+<p>B 项太笼统了</p>
+<p>C 项字面意义猜测了属于是</p>
+</blockquote>
+<ol>
+<li>
+<p>单选(5分) ‏ 一个计算机程序从经验E中学习任务T，并用P来衡量表现。并且，T的表现P随着经验E的增加而提高。
+假设我们给一个学习算法输入了很多历史天气的数据，让它学会预测天气。什么是P的合理选择？</p>
+<p>A.计算大量历史气象数据的过程</p>
+<p>B.以上都不</p>
+<p>C.天气预报任务</p>
+<p>D.正确预测未来日期天气的概率</p>
+</li>
+</ol>
+<blockquote>
+<p>正确预测未来日期天气的概率是合理的选择, P 用来衡量表现, 应当是可以量化的数值, A 与 C 是 "过程" 与 "任务" , 量化指标不明确; 而训练此模型的目的是预测天气, 那么正确预测天气的概率可以是衡量表现的指标</p>
+</blockquote>
+<ol start="3">
+<li>
+<p>单选(5分) ‌ 回归问题和分类问题的区别是什么？</p>
+<p>A.回归问题与分类问题在输入属性值上要求不同</p>
+<p>B.回归问题输出值是离散的，分类问题输出值是连续的</p>
+<p>C.回归问题有标签，分类问题没有</p>
+<p>D.回归问题输出值是连续的，分类问题输出值是离散的</p>
+</li>
+</ol>
+<blockquote>
+<p><a href="https://blog.csdn.net/fisherming/article/details/79646134" target="_blank" rel="noopener noreferrer">“分类”和“回归”问题的区别_刘明的博客-CSDN博客_回归问题和分类问题区别</a></p>
+<p>回归问题与分类问题都属于监督学习, 都是<strong>对输入进行预测</strong>,</p>
+<p>分类问题：分类问题的输出是<strong>离散型变量</strong>(如: +1、-1)，是一种<strong>定性输出</strong>。(预测明天天气是阴、晴还是雨)
+回归问题：回归问题的输出是<strong>连续型变量</strong>，是一种<strong>定量输出</strong>。(预测明天的温度是多少度)。</p>
+</blockquote>
+<ol start="4">
+<li>
+<p>单选(5分)  ‏以下关于特征选择的说法正确的是？</p>
+<p>A.选择的特征越多越好</p>
+<p>B.选择的特征越少越好</p>
+<p>C.选择的特征需尽可能反映不同事物之间的差异</p>
+<p>D.以上说法均不对</p>
+</li>
+</ol>
+<blockquote>
+<p><a href="https://zhuanlan.zhihu.com/p/74198735" target="_blank" rel="noopener noreferrer">【机器学习】特征选择(Feature Selection)方法汇总 - 知乎 (zhihu.com)</a></p>
+<p><code>特征选择</code>是<code>特征工程</code>里的一个重要问题，其目标是<strong>寻找最优特征子集</strong>。特征选择能剔除不相关(irrelevant)或冗余(redundant )的特征，从而达到减少特征个数，<strong>提高模型精确度，减少运行时间的目的</strong>。</p>
+</blockquote>
+<ol start="5">
+<li>
+<p>单选(5分)  ‏一个包含n类的多分类问题，若采用一对剩余的方法，需要拆分成多少次？</p>
+<p>A. n</p>
+<p>B. n-1</p>
+<p>C. n+1</p>
+<p>D. 1</p>
+<blockquote>
+<p><a href="https://www.omegaxyz.com/2018/05/20/multi2bi_ml/" target="_blank" rel="noopener noreferrer">机器学习多分类问题转二分类问题 – OmegaXYZ</a></p>
+<p>假设这是一个 k 分类问题,:</p>
+<p>挑出一类, 剩余的类别归位一类, 得到 一个模型</p>
+<p>相同的, 再挑一类, 其他归位一类, 得到一个模型</p>
+<p>如此往复, 最后一次挑出一类, 其他自成一类, 这样下来总共就得到了 k 个二分类模型</p>
+<p>测试样本属于哪个类时, 将该样本依次走遍这 k 个分类器,  最终哪个分类得分最多该样本就属于哪个分类(属于"一类"则"一类"分数+1, 属于"剩余类"则其他类的分数分别+1)</p>
+</blockquote>
+</li>
+<li>
+<p>单选(5分)  ‎机器学习方法传统上可以分为( C )类。</p>
+<p>A. 7</p>
+<p>B. 2</p>
+<p>C. 3</p>
+<p>D. 4</p>
+<blockquote>
+<p>监督学习, 无监督学习, 强化学习</p>
+</blockquote>
+</li>
+<li>
+<p>单选(5分)  哪些机器学习模型经过训练，能够根据其行为获得的奖励和反馈做出一系列决策？</p>
+<p>‍A.监督学习</p>
+<p>B.以上全部</p>
+<p>C.无监督学习</p>
+<p>D.强化学习</p>
+<blockquote>
+<p>监督学习: 对于输入数据 X 能预测 Y</p>
+<p>无监督学习: 对于输入数据 X 能发现什么</p>
+<p>强化学习: 序列决策问题</p>
+</blockquote>
+</li>
+</ol>
+]]></content:encoded>
+      <enclosure url="http://cdn.ayusummer233.top/img/202109301644847.png" type="image/png"/>
+    </item>
+    <item>
+      <title></title>
+      <link>https://ayusummer.github.io/DailyNotes/%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/MachineLearning.html</link>
+      <guid>https://ayusummer.github.io/DailyNotes/%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/MachineLearning.html</guid>
+      <source url="https://ayusummer.github.io/DailyNotes/rss.xml"></source>
+      <description>2.3-特征工程
+
+2.3.2-特征选择
+
+特征选择的目的主要是降维，从特征集合中挑选一组最具统计意义的特征子集来代表整体样本的特点。特征选择的方法是用一些评价指标单独地计算出各个特征与目标变量之间的关系。常见的有Pearson相关系数、基尼指标(Gini index )、信息增益(Information Gain )等 ，下面以Pearson相 关系...</description>
+      <pubDate>Mon, 07 Nov 2022 17:17:10 GMT</pubDate>
+      <content:encoded><![CDATA[<!--
+ * @Author: your name
+ * @Date: 2021-05-09 16:49:38
+ * @LastEditTime: 2021-05-09 17:32:28
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \DailyNotes\BigDataMicroMajor\MachineLearning\MachineLearning.md
+-->
+<h2>2.3-特征工程</h2>
+]]></content:encoded>
+      <enclosure url="http://cdn.ayusummer233.top/img/20210509171131.png" type="image/png"/>
+    </item>
+    <item>
+      <title>目录</title>
+      <link>https://ayusummer.github.io/DailyNotes/%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html</link>
+      <guid>https://ayusummer.github.io/DailyNotes/%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0.html</guid>
+      <source url="https://ayusummer.github.io/DailyNotes/rss.xml">目录</source>
+      <description>目录
+
+目录
+概述
+
+机器学习的一般步骤
+机器学习环境和基本库介绍
+
+
+环境搭建
+
+WSL2
+
+
+使用 Python 探索和分析数据
+
+简介
+Exercise - Explore data with NumPy and Pandas
+
+
+监督学习简介
+训练和评估回归模型
+
+一个简单示例
+
+
+逻辑回归
+
+分类问题
+
+监督学习的最主要类型
+二分类
+多分类
+...</description>
+      <pubDate>Mon, 07 Nov 2022 17:17:10 GMT</pubDate>
+      <content:encoded><![CDATA[<!--
+ * @Author: your name
+ * @Date: 2021-07-18 16:45:55
+ * @LastEditTime: 2021-07-18 16:46:20
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \DailyNotes\研究方向\机器学习\机器学习.md
+-->
+<h1>目录</h1>
+<ul>
+<li><a href="#%E7%9B%AE%E5%BD%95">目录</a></li>
+<li><a href="#%E6%A6%82%E8%BF%B0">概述</a>
+<ul>
+<li><a href="#%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%9A%84%E4%B8%80%E8%88%AC%E6%AD%A5%E9%AA%A4">机器学习的一般步骤</a></li>
+<li><a href="#%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%8E%AF%E5%A2%83%E5%92%8C%E5%9F%BA%E6%9C%AC%E5%BA%93%E4%BB%8B%E7%BB%8D">机器学习环境和基本库介绍</a></li>
+</ul>
+</li>
+<li><a href="#%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA">环境搭建</a>
+<ul>
+<li><a href="#wsl2">WSL2</a></li>
+</ul>
+</li>
+<li><a href="#%E4%BD%BF%E7%94%A8-python-%E6%8E%A2%E7%B4%A2%E5%92%8C%E5%88%86%E6%9E%90%E6%95%B0%E6%8D%AE">使用 Python 探索和分析数据</a>
+<ul>
+<li><a href="#%E7%AE%80%E4%BB%8B">简介</a></li>
+<li>[Exercise - Explore data with NumPy and Pandas](#exercise</li>
+</ul>
+</li>
+</ul>
+]]></content:encoded>
+      <enclosure url="http://cdn.ayusummer233.top/img/20210806090604.png" type="image/png"/>
+    </item>
+    <item>
+      <title>11.22 判断字母异位词</title>
+      <link>https://ayusummer.github.io/DailyNotes/%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/%E7%AE%97%E6%B3%95/LeetCode/LeetCodeNote.html</link>
+      <guid>https://ayusummer.github.io/DailyNotes/%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/%E7%AE%97%E6%B3%95/LeetCode/LeetCodeNote.html</guid>
+      <source url="https://ayusummer.github.io/DailyNotes/rss.xml">11.22 判断字母异位词</source>
+      <description>11.22 判断字母异位词
+version 1
+
+用字典获取词频
+
+
+执行用时：48 ms, 在所有 Python3 提交中击败了91.08%的用户
+内存消耗：13.6 MB, 在所有 Python3 提交中击败了56.70%的用户
+
+
+version 2
+
+比较排序后的字符串
+
+
+执行用时：68 ms, 在所有 Python3 提交中击败了35.57...</description>
+      <pubDate>Mon, 07 Nov 2022 17:17:10 GMT</pubDate>
+      <content:encoded><![CDATA[<!--
+ * @Author: your name
+ * @Date: 2021-01-22 00:35:37
+ * @LastEditTime: 2021-03-15 12:16:21
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \DailyNotes\LeetCode\LeetCodeNote.md
+-->
+<h1>11.22 判断字母异位词</h1>
+<h2>version 1</h2>
+<ul>
+<li>用字典获取词频</li>
+</ul>
+<div class="language-python" data-ext="py" data-title="py"><pre class="language-python"><code><span class="token keyword">class</span> <span class="token class-name">Solution</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">isAnagram</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> s<span class="token punctuation">:</span> <span class="token builtin">str</span><span class="token punctuation">,</span> t<span class="token punctuation">:</span> <span class="token builtin">str</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">bool</span><span class="token punctuation">:</span>
+        count_dict <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+        count_dict_s <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+        <span class="token keyword">for</span> item <span class="token keyword">in</span> t<span class="token punctuation">:</span>
+            count_dict<span class="token punctuation">[</span>item<span class="token punctuation">]</span> <span class="token operator">=</span> count_dict<span class="token punctuation">[</span>item<span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token number">1</span> <span class="token keyword">if</span> item <span class="token keyword">in</span> count_dict <span class="token keyword">else</span> <span class="token number">1</span>
+        <span class="token keyword">for</span> item <span class="token keyword">in</span> s<span class="token punctuation">:</span>
+            count_dict_s<span class="token punctuation">[</span>item<span class="token punctuation">]</span> <span class="token operator">=</span> count_dict_s<span class="token punctuation">[</span>item<span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token number">1</span> <span class="token keyword">if</span> item <span class="token keyword">in</span> count_dict_s <span class="token keyword">else</span> <span class="token number">1</span>
+        <span class="token keyword">if</span> count_dict<span class="token punctuation">.</span>keys<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">!=</span> count_dict_s<span class="token punctuation">.</span>keys<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            <span class="token keyword">return</span> <span class="token boolean">False</span>
+        <span class="token keyword">for</span> i <span class="token keyword">in</span> count_dict<span class="token punctuation">.</span>keys<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            <span class="token keyword">if</span> count_dict<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">!=</span> count_dict_s<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">:</span>
+                <span class="token keyword">return</span> <span class="token boolean">False</span>
+        <span class="token keyword">return</span> <span class="token boolean">True</span>
+</code></pre></div><ul>
+<li>执行用时：48 ms, 在所有 Python3 提交中击败了91.08%的用户</li>
+<li>内存消耗：13.6 MB, 在所有 Python3 提交中击败了56.70%的用户</li>
+</ul>
+]]></content:encoded>
+      <enclosure url="http://cdn.ayusummer233.top/img/20210315084827.png" type="image/png"/>
+    </item>
+    <item>
+      <title>日常</title>
+      <link>https://ayusummer.github.io/DailyNotes/DailyLife/DailyLife.html</link>
+      <guid>https://ayusummer.github.io/DailyNotes/DailyLife/DailyLife.html</guid>
+      <source url="https://ayusummer.github.io/DailyNotes/rss.xml">日常</source>
+      <description>日常
+
+日常
+
+语言学习
+
+英语学习
+
+
+交流社区
+
+HackerTalk
+
+
+路由器
+小米
+
+小爱音箱Pro连不上电脑
+
+
+证书
+
+软考证书
+计算机程序设计能力考试(PAT)
+项目管理职业资格认证(PMI)
+华为认证
+
+
+下载
+
+FDM
+
+防病毒配置
+
+
+IDM
+aria2
+超星相关
+
+没有下载选项的 PDF
+
+
+
+
+搜题目解析
+云盘
+
+OneDri...</description>
+      <pubDate>Mon, 07 Nov 2022 17:06:41 GMT</pubDate>
+      <content:encoded><![CDATA[
+<ul>
+<li><a href="#%E6%97%A5%E5%B8%B8">日常</a>
+<ul>
+<li><a href="#%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0">语言学习</a>
+<ul>
+<li><a href="#%E8%8B%B1%E8%AF%AD%E5%AD%A6%E4%B9%A0">英语学习</a></li>
+</ul>
+</li>
+<li><a href="#%E4%BA%A4%E6%B5%81%E7%A4%BE%E5%8C%BA">交流社区</a>
+<ul>
+<li><a href="#hackertalk">HackerTalk</a></li>
+</ul>
+</li>
+<li><a href="#%E8%B7%AF%E7%94%B1%E5%99%A8">路由器</a></li>
+<li><a href="#%E5%B0%8F%E7%B1%B3">小米</a>
+<ul>
+<li><a href="#%E5%B0%8F%E7%88%B1%E9%9F%B3%E7%AE%B1pro%E8%BF%9E%E4%B8%8D%E4%B8%8A%E7%94%B5%E8%84%91">小爱音箱Pro连不上电脑</a></li>
+</ul>
+</li>
+<li><a href="#%E8%AF%81%E4%B9%A6">证书</a>
+<ul>
+<li><a href="#%E8%BD%AF%E8%80%83%E8%AF%81%E4%B9%A6">软考证书</a></li>
+<li><a href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E8%83%BD%E5%8A%9B%E8%80%83%E8%AF%95pat">计算机程序设计能力考试(PAT)</a></li>
+<li><a href="#%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E8%81%8C%E4%B8%9A%E8%B5%84%E6%A0%BC%E8%AE%A4%E8%AF%81pmi">项目管理职业资格认证(PMI)</a></li>
+<li><a href="#%E5%8D%8E%E4%B8%BA%E8%AE%A4%E8%AF%81">华为认证</a></li>
+</ul>
+</li>
+<li><a href="#%E4%B8%8B%E8%BD%BD">下载</a>
+<ul>
+<li><a href="#fdm">FDM</a>
+<ul>
+<li><a href="#%E9%98%B2%E7%97%85%E6%AF%92%E9%85%8D%E7%BD%AE">防病毒配置</a></li>
+</ul>
+</li>
+<li><a href="#idm">IDM</a></li>
+<li><a href="#aria2">aria2</a></li>
+<li><a href="#%E8%B6%85%E6%98%9F%E7%9B%B8%E5%85%B3">超星相关</a>
+<ul>
+<li><a href="#%E6%B2%A1%E6%9C%89%E4%B8%8B%E8%BD%BD%E9%80%89%E9%A1%B9%E7%9A%84-pdf">没有下载选项的 PDF</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E6%90%9C%E9%A2%98%E7%9B%AE%E8%A7%A3%E6%9E%90">搜题目解析</a></li>
+<li><a href="#%E4%BA%91%E7%9B%98">云盘</a>
+<ul>
+<li><a href="#onedrive">OneDrive</a>
+<ul>
+<li><a href="#%E6%8C%82%E4%BA%86%E5%85%A8%E5%B1%80%E4%BB%A3%E7%90%86%E5%90%8E%E4%BC%9A%E6%97%A0%E6%B3%95%E7%99%BB%E5%BD%95onedrive%E5%AE%A2%E6%88%B7%E7%AB%AF">挂了全局代理后会无法登录OneDrive客户端</a></li>
+</ul>
+</li>
+<li><a href="#e5">E5</a>
+<ul>
+<li><a href="#%E7%94%B3%E8%AF%B7%E6%B5%81%E7%A8%8B">申请流程</a></li>
+<li><a href="#%E7%BB%AD%E6%9C%9F">续期</a>
+<ul>
+<li><a href="#oneindex">OneIndex</a></li>
+</ul>
+</li>
+<li><a href="#%E5%90%8C%E6%AD%A5%E7%9B%AE%E5%BD%95%E7%A9%BA%E6%A0%BC%E8%B7%AF%E5%BE%84%E8%A7%A3%E5%86%B3">同步目录空格路径解决</a></li>
+</ul>
+</li>
+<li><a href="#%E5%B0%86%E4%BA%91%E7%9B%98%E6%8C%82%E8%BD%BD%E5%88%B0%E6%9C%AC%E5%9C%B0raidrive">将云盘挂载到本地(RaiDrive)</a></li>
+<li><a href="#%E5%BE%AE%E8%BD%AF%E5%95%86%E5%BA%97%E4%B8%AD%E7%9A%84icloud">微软商店中的iCloud</a></li>
+<li><a href="#cloudreve">Cloudreve</a>
+<ul>
+<li><a href="#webdav-%E4%BD%BF%E7%94%A8">WebDav 使用</a></li>
+</ul>
+</li>
+<li><a href="#nextcloud">Nextcloud</a>
+<ul>
+<li><a href="#%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BA">服务器搭建</a></li>
+<li><a href="#%E9%85%8D%E7%BD%AE">配置</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E5%90%8C%E6%AD%A5">同步</a>
+<ul>
+<li><a href="#%E4%BD%BF%E7%94%A8%E4%BA%91%E7%9B%98%E4%B8%8E-git-%E7%AE%A1%E7%90%86%E4%BD%BF%E7%94%A8%E6%9C%AC%E5%9C%B0%E5%9B%BE%E7%89%87%E7%9A%84-markdown-%E6%96%87%E4%BB%B6">使用云盘与 Git 管理使用本地图片的 Markdown 文件</a></li>
+</ul>
+</li>
+<li><a href="#microsoft">Microsoft</a>
+<ul>
+<li><a href="#edge">Edge</a>
+<ul>
+<li><a href="#%E6%89%A9%E5%B1%95">扩展</a></li>
+</ul>
+</li>
+<li><a href="#windows">Windows</a>
+<ul>
+<li><a href="#%E5%86%85%E6%A0%B8%E9%9A%94%E7%A6%BB">内核隔离</a>
+<ul>
+<li><a href="#wsl2-dns-%E6%9C%8D%E5%8A%A1%E5%BC%82%E5%B8%B8">WSL2 DNS 服务异常</a></li>
+</ul>
+</li>
+<li><a href="#%E9%92%88%E5%AF%B9%E6%9F%90%E4%B8%80%E8%BD%AF%E4%BB%B6%E5%85%B3%E9%97%AD%E7%94%A8%E6%88%B7%E8%B4%A6%E6%88%B7%E6%8E%A7%E5%88%B6">针对某一软件关闭用户账户控制</a></li>
+<li><a href="#%E5%91%BD%E4%BB%A4%E8%A1%8C%E9%87%8D%E5%90%AF%E6%96%87%E4%BB%B6%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86%E5%99%A8">命令行重启文件资源管理器</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E4%BD%A0%E9%9C%80%E8%A6%81%E6%9D%A5%E8%87%AA-s-1-5-21-xxxx-xxx-xxx-%E7%9A%84%E6%9D%83%E9%99%90%E6%89%8D%E8%83%BD%E5%AF%B9%E6%AD%A4%E6%96%87%E4%BB%B6%E5%A4%B9%E8%BF%9B%E8%A1%8C%E6%9B%B4%E6%94%B9">你需要来自 S-1-5-21-XXXX-XXX-XXX 的权限才能对此文件夹进行更改</a></li>
+<li><a href="#%E5%9B%BE%E7%89%87ocr-%E8%A1%A8%E6%A0%BC">图片OCR-&gt;表格</a></li>
+<li><a href="#clash">clash</a>
+<ul>
+<li><a href="#pip-%E6%8A%A5%E9%94%99-valueerror-check_hostname-requires-server_hostname">pip 报错 <code>ValueError: check_hostname requires server_hostname</code></a></li>
+<li><a href="#tun-mode">TUN Mode</a></li>
+<li><a href="#mixin">Mixin</a></li>
+<li><a href="#bypass">Bypass</a></li>
+</ul>
+</li>
+<li><a href="#%E6%A1%8C%E9%9D%A2%E6%98%BE%E7%A4%BA%E5%99%A8%E5%B1%8F%E5%B9%95%E4%BD%BF%E7%94%A8%E4%BD%93%E9%AA%8C">桌面显示器屏幕使用体验</a>
+<ul>
+<li><a href="#win11-%E8%AE%BE%E7%BD%AE%E5%90%88%E7%9B%96%E4%B8%8D%E4%BC%91%E7%9C%A0">Win11 设置合盖不休眠</a></li>
+</ul>
+</li>
+<li><a href="#game">Game</a>
+<ul>
+<li><a href="#steam">Steam</a>
+<ul>
+<li><a href="#steam%E5%B7%A5%E5%85%B7%E7%AE%B1">steam工具箱</a></li>
+</ul>
+</li>
+<li><a href="#%E6%89%8B%E6%B8%B8%E6%A8%A1%E6%8B%9F%E5%99%A8">手游模拟器</a>
+<ul>
+<li><a href="#%E8%93%9D%E5%8F%A0%E6%A8%A1%E6%8B%9F%E5%99%A8-5%E6%94%AF%E6%8C%81-hyper-v">蓝叠模拟器 5(支持 Hyper-V)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#powertoys">PowerToys</a>
+<ul>
+<li><a href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E7%AA%97%E5%8F%A3%E5%B8%83%E5%B1%80">自定义窗口布局</a></li>
+<li><a href="#%E8%B0%83%E6%95%B4%E5%9B%BE%E5%83%8F%E5%A4%A7%E5%B0%8F">调整图像大小</a></li>
+<li><a href="#%E5%A7%8B%E7%BB%88%E7%BD%AE%E9%A1%B9">始终置项</a></li>
+<li><a href="#%E6%96%87%E4%BB%B6%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86%E5%99%A8%E5%8A%A0%E8%BD%BD%E9%A1%B9">文件资源管理器加载项</a></li>
+<li><a href="#%E9%BC%A0%E6%A0%87%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7">鼠标实用工具</a></li>
+</ul>
+</li>
+<li><a href="#%E5%AD%97%E4%BD%93">字体</a>
+<ul>
+<li><a href="#%E4%B8%AD%E6%98%93%E5%AE%8B%E4%BD%93%E5%92%8C%E5%BE%AE%E8%BD%AF%E9%9B%85%E9%BB%91">中易宋体和微软雅黑</a></li>
+</ul>
+</li>
+<li><a href="#%E6%B4%BB%E5%8A%A8%E7%9B%91%E6%8E%A7">活动监控</a></li>
+<li><a href="#%E9%9B%B6%E6%95%A3%E6%8A%A5%E9%94%99">零散报错</a>
+<ul>
+<li><a href="#win11-%E4%B8%8B-qq-%E8%B0%83%E8%B5%B7%E6%96%87%E4%BB%B6%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86%E5%99%A8-cwindowssystem32ntdlldll-%E6%8A%A5%E9%94%99">Win11 下 QQ 调起文件资源管理器 C:\WINDOWS\SYSTEM32\ntdll.dll 报错</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+]]></content:encoded>
+      <enclosure url="https://cdn.ayusummer233.top/img/20220117225152.png" type="image/png"/>
+    </item>
+    <item>
+      <title>厨房</title>
+      <link>https://ayusummer.github.io/DailyNotes/DailyLife/%E7%94%9F%E6%B4%BB.html</link>
+      <guid>https://ayusummer.github.io/DailyNotes/DailyLife/%E7%94%9F%E6%B4%BB.html</guid>
+      <source url="https://ayusummer.github.io/DailyNotes/rss.xml">厨房</source>
+      <description>厨房
+无论什么时候, 只要用厨房, 厨房必须要有人看着
+
+茶
+红茶绿茶
+
+( 红茶和绿茶，哪个益处大？ - 知乎 (zhihu.com)
+
+绿茶性寒, 红茶性温; 可以夏饮绿茶, 冬饮红茶</description>
+      <pubDate>Mon, 07 Nov 2022 17:06:41 GMT</pubDate>
+      <content:encoded><![CDATA[
+<p><strong>无论什么时候, 只要用厨房, 厨房必须要有人看着</strong></p>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>Markdown</title>
+      <link>https://ayusummer.github.io/DailyNotes/NoteTools/Markdown.html</link>
+      <guid>https://ayusummer.github.io/DailyNotes/NoteTools/Markdown.html</guid>
+      <source url="https://ayusummer.github.io/DailyNotes/rss.xml">Markdown</source>
+      <description>Markdown
+
+Markdown
+
+基础语法
+
+链接
+图片
+表格
+分页符
+html
+
+排版
+字体类型与颜色
+
+
+目录
+插入数学公式
+
+公式内部打空格
+多行公式等号对齐
+
+
+矩阵
+
+
+Markdown 编辑软件
+
+Typora
+
+配置项推荐
+
+外观
+
+窗口样式
+字体大小
+状态栏
+阅读速度
+侧边栏
+主题
+
+
+通用
+
+启动选项
+保存与恢复
+语言
+更新
+许...</description>
+      <pubDate>Mon, 07 Nov 2022 17:00:49 GMT</pubDate>
+      <content:encoded><![CDATA[
+<ul>
+<li><a href="#markdown">Markdown</a>
+<ul>
+<li><a href="#%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95">基础语法</a>
+<ul>
+<li><a href="#%E9%93%BE%E6%8E%A5">链接</a></li>
+<li><a href="#%E5%9B%BE%E7%89%87">图片</a></li>
+<li><a href="#%E8%A1%A8%E6%A0%BC">表格</a></li>
+<li><a href="#%E5%88%86%E9%A1%B5%E7%AC%A6">分页符</a></li>
+<li><a href="#html">html</a>
+<ul>
+<li><a href="#%E6%8E%92%E7%89%88">排版</a></li>
+<li><a href="#%E5%AD%97%E4%BD%93%E7%B1%BB%E5%9E%8B%E4%B8%8E%E9%A2%9C%E8%89%B2">字体类型与颜色</a></li>
+</ul>
+</li>
+<li><a href="#%E7%9B%AE%E5%BD%95">目录</a></li>
+<li><a href="#%E6%8F%92%E5%85%A5%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F">插入数学公式</a>
+<ul>
+<li><a href="#%E5%85%AC%E5%BC%8F%E5%86%85%E9%83%A8%E6%89%93%E7%A9%BA%E6%A0%BC">公式内部打空格</a></li>
+<li><a href="#%E5%A4%9A%E8%A1%8C%E5%85%AC%E5%BC%8F%E7%AD%89%E5%8F%B7%E5%AF%B9%E9%BD%90">多行公式等号对齐</a></li>
+</ul>
+</li>
+<li><a href="#%E7%9F%A9%E9%98%B5">矩阵</a></li>
+</ul>
+</li>
+<li><a href="#markdown-%E7%BC%96%E8%BE%91%E8%BD%AF%E4%BB%B6">Markdown 编辑软件</a>
+<ul>
+<li><a href="#typora">Typora</a>
+<ul>
+<li><a href="#%E9%85%8D%E7%BD%AE%E9%A1%B9%E6%8E%A8%E8%8D%90">配置项推荐</a>
+<ul>
+<li><a href="#%E5%A4%96%E8%A7%82">外观</a>
+<ul>
+<li><a href="#%E7%AA%97%E5%8F%A3%E6%A0%B7%E5%BC%8F">窗口样式</a></li>
+<li><a href="#%E5%AD%97%E4%BD%93%E5%A4%A7%E5%B0%8F">字体大小</a></li>
+<li><a href="#%E7%8A%B6%E6%80%81%E6%A0%8F">状态栏</a></li>
+<li><a href="#%E9%98%85%E8%AF%BB%E9%80%9F%E5%BA%A6">阅读速度</a></li>
+<li><a href="#%E4%BE%A7%E8%BE%B9%E6%A0%8F">侧边栏</a></li>
+<li><a href="#%E4%B8%BB%E9%A2%98">主题</a></li>
+</ul>
+</li>
+<li><a href="#%E9%80%9A%E7%94%A8">通用</a>
+<ul>
+<li><a href="#%E5%90%AF%E5%8A%A8%E9%80%89%E9%A1%B9">启动选项</a></li>
+<li><a href="#%E4%BF%9D%E5%AD%98%E4%B8%8E%E6%81%A2%E5%A4%8D">保存与恢复</a></li>
+<li><a href="#%E8%AF%AD%E8%A8%80">语言</a></li>
+<li><a href="#%E6%9B%B4%E6%96%B0">更新</a></li>
+<li><a href="#%E8%AE%B8%E5%8F%AF%E8%AF%81%E4%BF%A1%E6%81%AF">许可证信息</a></li>
+<li><a href="#%E5%BF%AB%E6%8D%B7%E9%94%AE">快捷键</a></li>
+<li><a href="#%E5%AF%B9%E8%AF%9D%E6%A1%86">对话框</a></li>
+<li><a href="#%E9%AB%98%E7%BA%A7%E8%AE%BE%E7%BD%AE">高级设置</a></li>
+<li><a href="#typora-%E6%9C%8D%E5%8A%A1%E5%99%A8">Typora 服务器</a></li>
+</ul>
+</li>
+<li><a href="#%E7%BC%96%E8%BE%91%E5%99%A8">编辑器</a></li>
+<li><a href="#%E5%9B%BE%E5%83%8F">图像</a>
+<ul>
+<li><a href="#%E6%9C%AC%E5%9C%B0%E5%9B%BE%E5%83%8F">本地图像</a></li>
+<li><a href="#%E4%B8%AA%E4%BA%BA%E5%9B%BE%E5%BA%8A">个人图床</a></li>
+</ul>
+</li>
+<li><a href="#markdown-1">Markdown</a></li>
+<li><a href="#%E5%AF%BC%E5%87%BA">导出</a></li>
+</ul>
+</li>
+<li><a href="#%E4%B8%BB%E9%A2%98%E6%8E%A8%E8%8D%90">主题推荐</a>
+<ul>
+<li><a href="#%E5%AF%BC%E5%87%BA-pdf-%E4%B8%BB%E9%A2%98%E6%8E%A8%E8%8D%90">导出 PDF 主题推荐</a></li>
+<li><a href="#%E6%B7%B1%E8%89%B2%E4%B8%BB%E9%A2%98%E6%8E%A8%E8%8D%90">深色主题推荐</a></li>
+<li><a href="#%E6%B5%85%E8%89%B2%E4%B8%BB%E9%A2%98%E6%8E%A8%E8%8D%90">浅色主题推荐</a></li>
+</ul>
+</li>
+<li><a href="#%E6%8A%A5%E9%94%99%E6%94%B6%E9%9B%86">报错收集</a>
+<ul>
+<li><a href="#image-load-failed">image load failed</a></li>
+<li><a href="#%E6%97%A0%E6%B3%95%E6%AD%A3%E5%B8%B8%E5%AF%BC%E5%87%BApdf">无法正常导出PDF</a></li>
+<li><a href="#%E6%97%A0%E6%B3%95%E6%98%BE%E7%A4%BA%E5%B1%80%E5%9F%9F%E7%BD%91https%E5%9B%BE%E7%89%87">无法显示局域网https图片</a></li>
+</ul>
+</li>
+<li><a href="#latex-%E7%9B%B8%E5%85%B3">LaTeX 相关</a></li>
+</ul>
+</li>
+<li><a href="#%E5%9C%A8-vscode-%E4%B8%AD%E7%BC%96%E8%BE%91-markdown-%E6%96%87%E4%BB%B6">在 VSCode 中编辑 Markdown 文件</a>
+<ul>
+<li><a href="#markdown-all-in-one">Markdown All in One</a></li>
+<li><a href="#markdown-preview-enhanced">Markdown Preview Enhanced</a></li>
+</ul>
+</li>
+<li><a href="#vnote">vnote</a></li>
+</ul>
+</li>
+<li><a href="#%E5%B7%A5%E5%85%B7">工具</a>
+<ul>
+<li><a href="#%E5%9B%BE%E5%BA%8A">图床</a>
+<ul>
+<li><a href="#%E4%B8%83%E7%89%9B%E4%BA%91%E5%AF%B9%E8%B1%A1%E5%AD%98%E5%82%A8">七牛云对象存储</a></li>
+<li><a href="#nextcloudpicgo">Nextcloud+Picgo</a></li>
+<li><a href="#gitlabpicgo">Gitlab+Picgo</a></li>
+</ul>
+</li>
+<li><a href="#picgo">PicGo</a>
+<ul>
+<li><a href="#picgo-%E8%AE%BE%E7%BD%AE%E6%AD%A3%E7%A1%AE%E4%BD%86%E6%98%AF%E4%BC%A0%E4%B8%8D%E4%B8%8A%E5%8E%BB%E5%9B%BE%E7%89%87">PicGo 设置正确但是传不上去图片</a></li>
+<li><a href="#%E7%BB%A7%E7%BB%AD%E9%85%8D%E5%90%88-sharex-%E4%BD%BF%E7%94%A8">继续配合 ShareX 使用</a></li>
+</ul>
+</li>
+<li><a href="#pandoc">Pandoc</a></li>
+<li><a href="#reveal-md">reveal-md</a></li>
+<li><a href="#codimd">CodiMD</a>
+<ul>
+<li><a href="#%E9%83%A8%E7%BD%B2">部署</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#something-interesting">something interesting</a>
+<ul>
+<li><a href="#%E5%BE%BD%E7%AB%A0">徽章</a></li>
+<li><a href="#markdown--pandoc-%E5%86%99%E8%AE%BA%E6%96%87">markdown + pandoc 写论文</a>
+<ul>
+<li><a href="#%E6%96%87%E7%8C%AE%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7-zotero">文献管理工具: Zotero</a></li>
+<li><a href="#better-bibtex">Better BibTex</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>Mermaid</title>
+      <link>https://ayusummer.github.io/DailyNotes/NoteTools/Mermaid.html</link>
+      <guid>https://ayusummer.github.io/DailyNotes/NoteTools/Mermaid.html</guid>
+      <source url="https://ayusummer.github.io/DailyNotes/rss.xml">Mermaid</source>
+      <description>Mermaid
+
+Mermaid
+
+结点内文字换行
+限制流程图大小
+显示支持
+甘特图
+流程图
+
+流程图整体方向
+结点形状
+连接线形状
+语法冲突的特殊字符
+
+
+时序图
+
+
+
+
+结点内文字换行
+
+限制流程图大小
+
+绘图时在当前方向上绘制的结点数量及文字比较多那么篇幅会无限扩大, 目前没有找到特别好的限制区域大小的方法
+不过通常编辑文档时的界面左右大小适应屏...</description>
+      <pubDate>Mon, 07 Nov 2022 17:00:49 GMT</pubDate>
+      <content:encoded><![CDATA[
+<ul>
+<li><a href="#mermaid">Mermaid</a>
+<ul>
+<li><a href="#%E7%BB%93%E7%82%B9%E5%86%85%E6%96%87%E5%AD%97%E6%8D%A2%E8%A1%8C">结点内文字换行</a></li>
+<li><a href="#%E9%99%90%E5%88%B6%E6%B5%81%E7%A8%8B%E5%9B%BE%E5%A4%A7%E5%B0%8F">限制流程图大小</a></li>
+<li><a href="#%E6%98%BE%E7%A4%BA%E6%94%AF%E6%8C%81">显示支持</a></li>
+<li><a href="#%E7%94%98%E7%89%B9%E5%9B%BE">甘特图</a></li>
+<li><a href="#%E6%B5%81%E7%A8%8B%E5%9B%BE">流程图</a>
+<ul>
+<li><a href="#%E6%B5%81%E7%A8%8B%E5%9B%BE%E6%95%B4%E4%BD%93%E6%96%B9%E5%90%91">流程图整体方向</a></li>
+<li><a href="#%E7%BB%93%E7%82%B9%E5%BD%A2%E7%8A%B6">结点形状</a></li>
+<li><a href="#%E8%BF%9E%E6%8E%A5%E7%BA%BF%E5%BD%A2%E7%8A%B6">连接线形状</a></li>
+<li><a href="#%E8%AF%AD%E6%B3%95%E5%86%B2%E7%AA%81%E7%9A%84%E7%89%B9%E6%AE%8A%E5%AD%97%E7%AC%A6">语法冲突的特殊字符</a></li>
+</ul>
+</li>
+<li><a href="#%E6%97%B6%E5%BA%8F%E5%9B%BE">时序图</a></li>
+</ul>
+</li>
+</ul>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>PlantUML</title>
+      <link>https://ayusummer.github.io/DailyNotes/NoteTools/PlantUML.html</link>
+      <guid>https://ayusummer.github.io/DailyNotes/NoteTools/PlantUML.html</guid>
+      <source url="https://ayusummer.github.io/DailyNotes/rss.xml">PlantUML</source>
+      <description>PlantUML
+
+官方中文教程
+
+
+PlantUML
+
+Work Breakdown Structure (WBS)
+OrgMode syntax
+
+
+
+Work Breakdown Structure (WBS)
+
+工作分解结构
+官方教程
+WBS diagram are still in beta: the syntax may change wi...</description>
+      <pubDate>Mon, 07 Nov 2022 17:00:49 GMT</pubDate>
+      <content:encoded><![CDATA[
+<blockquote>
+<p><a href="https://plantuml.com/zh/" target="_blank" rel="noopener noreferrer">官方中文教程</a></p>
+</blockquote>
+<ul>
+<li><a href="#plantuml">PlantUML</a>
+<ul>
+<li><a href="#work-breakdown-structure-wbs">Work Breakdown Structure (WBS)</a></li>
+<li><a href="#orgmode-syntax">OrgMode syntax</a></li>
+</ul>
+</li>
+</ul>
+<h2>Work Breakdown Structure (WBS)</h2>
+<blockquote>
+<p><a href="https://wiki.mbalib.com/wiki/%E5%B7%A5%E4%BD%9C%E5%88%86%E8%A7%A3%E7%BB%93%E6%9E%84" target="_blank" rel="noopener noreferrer">工作分解结构</a></p>
+<p><a href="https://plantuml.com/zh/wbs-diagram" target="_blank" rel="noopener noreferrer">官方教程</a></p>
+<p>WBS diagram are still in beta: the syntax may change without notice.</p>
+</blockquote>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>VitePress</title>
+      <link>https://ayusummer.github.io/DailyNotes/NoteTools/Vitepress.html</link>
+      <guid>https://ayusummer.github.io/DailyNotes/NoteTools/Vitepress.html</guid>
+      <source url="https://ayusummer.github.io/DailyNotes/rss.xml">VitePress</source>
+      <description>VitePress
+
+vuejs/vitepress: Vite &amp; Vue powered static site generator. (github.com)
+VitePress | Vite &amp; Vue Powered Static Site Generator (vuejs.org)
+什么是 VitePress？ | VitePress中文网...</description>
+      <pubDate>Mon, 07 Nov 2022 17:00:49 GMT</pubDate>
+      <content:encoded><![CDATA[
+<blockquote>
+<p><a href="https://github.com/vuejs/vitepress" target="_blank" rel="noopener noreferrer">vuejs/vitepress: Vite &amp; Vue powered static site generator. (github.com)</a></p>
+<p><a href="https://vitepress.vuejs.org/" target="_blank" rel="noopener noreferrer">VitePress | Vite &amp; Vue Powered Static Site Generator (vuejs.org)</a></p>
+<p><a href="https://vitejs.cn/vitepress/" target="_blank" rel="noopener noreferrer">什么是 VitePress？ | VitePress中文网 (vitejs.cn)</a></p>
+</blockquote>
+]]></content:encoded>
+      <enclosure url="http://cdn.ayusummer233.top/img/202209300023668.png" type="image/png"/>
+    </item>
+  </channel>
+</rss>
