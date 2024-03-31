@@ -734,6 +734,8 @@ func main() {
 }
 ```
 
+- `append`: Go 的 `append` 函数不会直接修改原始切片，而是返回一个新的切片因此需要被修改的目标接收返回值以进行更新
+
 ![image-20240326003240222](http://cdn.ayusummer233.top/DailyNotes/202403260032289.png)
 
 多次执行有所波动, 不过大差不差
@@ -743,6 +745,38 @@ func main() {
 在 Go 中, 字符串是不可变的, 这意味着每次使用 `+` 运算符连接字符串时都会创建一个新的字符串, 这涉及到相对耗时的内存分配和复制操作
 
 而 `strings.Join` 函数在内部使用了 `bytes.Buffer`, 它可以动态地增长并添加新的字符串而不需要每次都创建一个新的字符串
+
+> PS: 这里之所以循环再多次也看不出差异的关键就在于上面所说的这个理论速度的分析上
+>
+> 在 Go 中连接字符串有两种常见的方法: 使用 `+=` 运算符或 `strings.Join` 函数
+>
+> - `+=` 运算符在每次连接时都会创建一个新的字符串
+>
+>   因为字符串在 Go 中是不可变的, 所以当有很多字符串需要连接时会创建很多临时字符串从而消耗大量的内存和 CPU 时间
+>
+> - `strings.Join` 函数在连接字符串时更高效
+>
+>   因为它首先计算出结果字符串的总长度, 然后一次性分配足够的内存, 这避免了创建大量临时字符串
+>
+>   因此即使有很多字符串需要连接也不会消耗太多的内存和 CPU 时间
+>
+> 所以这里选择循环多次打印少量参数是看不出时间差异的, 正确的做法是打印大量参数来查看时间差异
+>
+> 依旧是:
+>
+> ![image-20240331175221836](http://cdn.ayusummer233.top/DailyNotes/202403311752928.png)
+>
+> ```powershell
+> go run .\main.go op 81 213 19 0 12 90 66 sidhaifgaifiaf edadhiuefiauhdiaheuarueabrdabfbaeuiwiajoejqioejoj12iejore 13143ih 77da 12131rvf op 81 213 19 0 12 90 66 sidhaifgaifiaf edadhiuefiauhdiaheuarueabrdabfbaeuiwiajoejqioejoj12iejore 13143ih 77da 12131rvf op 81 213 19 0 12 90 66 sidhaifgaifiaf edadhiuefiauhdiaheuarueabrdabfbaeuiwiajoejqioejoj12iejore 13143ih 77da 12131rvf op 81 213 19 0 12 90 66 sidhaifgaifiaf edadhiuefiauhdiaheuarueabrdabfbaeuiwiajoejqioejoj12iejore 13143ih 77da 12131rvf op 81 213 19 0 12 90 66 sidhaifgaifiaf edadhiuefiauhdiaheuarueabrdabfbaeuiwiajoejqioejoj12iejore 13143ih 77da 12131rvf op 81 213 19 0 12 90 66 sidhaifgaifiaf edadhiuefiauhdiaheuarueabrdabfbaeuiwiajoejqioejoj12iejore 13143ih 77da 12131rvf op 81 213 19 0 12 90 66 sidhaifgaifiaf edadhiuefiauhdiaheuarueabrdabfbaeuiwiajoejqioejoj12iejore 13143ih 77da 12131rvf op 81 213 19 0 12 90 66 sidhaifgaifiaf edadhiuefiauhdiaheuarueabrdabfbaeuiwiajoejqioejoj12iejore 13143ih 77da 12131rvf op 81 213 19 0 12 90 66 sidhaifgaifiaf edadhiuefiauhdiaheuarueabrdabfbaeuiwiajoejqioejoj12iejore 13143ih 77da 12131rvf op 81 213 19 0 12 90 66 sidhaifgaifiaf edadhiuefiauhdiaheuarueabrdabfbaeuiwiajoejqioejoj12iejore 13143ih 77da 12131rvf op 81 213 19 0 12 90 66 sidhaifgaifiaf edadhiuefiauhdiaheuarueabrdabfbaeuiwiajoejqioejoj12iejore 13143ih 77da 12131rvf op 81 213 19 0 12 90 66 sidhaifgaifiaf edadhiuefiauhdiaheuarueabrdabfbaeuiwiajoejqioejoj12iejore 13143ih 77da 12131rvf op 81 213 19 0 12 90 66 sidhaifgaifiaf edadhiuefiauhdiaheuarueabrdabfbaeuiwiajoejqioejoj12iejore 13143ih 77da 12131rvf op 81 213 19 0 12 90 66 sidhaifgaifiaf edadhiuefiauhdiaheuarueabrdabfbaeuiwiajoejqioejoj12iejore 13143ih 77da 12131rvf op 81 213 19 0 12 90 66 sidhaifgaifiaf edadhiuefiauhdiaheuarueabrdabfbaeuiwiajoejqioejoj12iejore 13143ih 77da 12131rvf op 81 213 19 0 12 90 66 sidhaifgaifiaf edadhiuefiauhdiaheuarueabrdabfbaeuiwiajoejqioejoj12iejore 13143ih 77da 12131rvf op 81 213 19 0 12 90 66 sidhaifgaifiaf edadhiuefiauhdiaheuarueabrdabfbaeuiwiajoejqioejoj12iejore 13143ih 77da 12131rvf op 81 213 19 0 12 90 66 sidhaifgaifiaf edadhiuefiauhdiaheuarueabrdabfbaeuiwiajoejqioejoj12iejore 13143ih 77da 12131rvf op 81 213 19 0 12 90 66 sidhaifgaifiaf edadhiuefiauhdiaheuarueabrdabfbaeuiwiajoejqioejoj12iejore 13143ih 77da 12131rvf op 81 213 19 0 12 90 66 sidhaifgaifiaf edadhiuefiauhdiaheuarueabrdabfbaeuiwiajoejqioejoj12iejore 13143ih 77da 12131rvf op 81 213 19 0 12 90 66 sidhaifgaifiaf edadhiuefiauhdiaheuarueabrdabfbaeuiwiajoejqioejoj12iejore 13143ih 77da 12131rvf op 81 213 19 0 12 90 66 sidhaifgaifiaf edadhiuefiauhdiaheuarueabrdabfbaeuiwiajoejqioejoj12iejore 13143ih 77da 12131rvf op 81 213 19 0 12 90 66 sidhaifgaifiaf edadhiuefiauhdiaheuarueabrdabfbaeuiwiajoejqioejoj12iejore 13143ih 77da 12131rvf op 81 213 19 0 12 90 66 sidhaifgaifiaf edadhiuefiauhdiaheuarueabrdabfbaeuiwiajoejqioejoj12iejore 13143ih 77da 12131rvf op 81 213 19 0 12 90 66 sidhaifgaifiaf edadhiuefiauhdiaheuarueabrdabfbaeuiwiajoejqioejoj12iejore 13143ih 77da 12131rvf op 81 213 19 0 12 90 66 sidhaifgaifiaf edadhiuefiauhdiaheuarueabrdabfbaeuiwiajoejqioejoj12iejore 13143ih 77da 12131rvf op 81 213 19 0 12 90 66 sidhaifgaifiaf edadhiuefiauhdiaheuarueabrdabfbaeuiwiajoejqioejoj12iejore 13143ih 77da 12131rvf op 81 213 19 0 12 90 66 sidhaifgaifiaf edadhiuefiauhdiaheuarueabrdabfbaeuiwiajoejqioejoj12iejore 13143ih 77da 12131rvf op 81 213 19 0 12 90 66 sidhaifgaifiaf edadhiuefiauhdiaheuarueabrdabfbaeuiwiajoejqioejoj12iejore 13143ih 77da 12131rvf op 81 213 19 0 12 90 66 sidhaifgaifiaf edadhiuefiauhdiaheuarueabrdabfbaeuiwiajoejqioejoj12iejore 13143ih 77da 12131rvf op 81 213 19 0 12 90 66 sidhaifgaifiaf edadhiuefiauhdiaheuarueabrdabfbaeuiwiajoejqioejoj12iejore 13143ih 77da 12131rvf op 81 213 19 0 12 90 66 sidhaifgaifiaf edadhiuefiauhdiaheuarueabrdabfbaeuiwiajoejqioejoj12iejore 13143ih 77da 12131rvf op 81 213 19 0 12 90 66 sidhaifgaifiaf edadhiuefiauhdiaheuarueabrdabfbaeuiwiajoejqioejoj12iejore 13143ih 77da 12131rvf op 81 213 19 0 12 90 66 sidhaifgaifiaf edadhiuefiauhdiaheuarueabrdabfbaeuiwiajoejqioejoj12iejore 13143ih 77da 12131rvf op 81 213 19 0 12 90 66 sidhaifgaifiaf edadhiuefiauhdiaheuarueabrdabfbaeuiwiajoejqioejoj12iejore 13143ih 77da 12131rvf op 81 213 19 0 12 90 66 sidhaifgaifiaf edadhiuefiauhdiaheuarueabrdabfbaeuiwiajoejqioejoj12iejore 13143ih 77da 12131rvf op 81 213 19 0 12 90 66 sidhaifgaifiaf edadhiuefiauhdiaheuarueabrdabfbaeuiwiajoejqioejoj12iejore 13143ih 77da 12131rvf op 81 213 19 0 12 90 66 sidhaifgaifiaf edadhiuefiauhdiaheuarueabrdabfbaeuiwiajoejqioejoj12iejore 13143ih 77da 12131rvf op 81 213 19 0 12 90 66 sidhaifgaifiaf edadhiuefiauhdiaheuarueabrdabfbaeuiwiajoejqioejoj12iejore 13143ih 77da 12131rvf op 81 213 19 0 12 90 66 sidhaifgaifiaf edadhiuefiauhdiaheuarueabrdabfbaeuiwiajoejqioejoj12iejore 13143ih 77da 12131rvf op 81 213 19 0 12 90 66 sidhaifgaifiaf edadhiuefiauhdiaheuarueabrdabfbaeuiwiajoejqioejoj12iejore 13143ih 77da 12131rvf op 81 213 19 0 12 90 66 sidhaifgaifiaf edadhiuefiauhdiaheuarueabrdabfbaeuiwiajoejqioejoj12iejore 13143ih 77da 12131rvf op 81 213 19 0 12 90 66 sidhaifgaifiaf edadhiuefiauhdiaheuarueabrdabfbaeuiwiajoejqioejoj12iejore 13143ih 77da 12131rvf op 81 213 19 0 12 90 66 sidhaifgaifiaf edadhiuefiauhdiaheuarueabrdabfbaeuiwiajoejqioejoj12iejore 13143ih 77da 12131rvf op 81 213 19 0 12 90 66 sidhaifgaifiaf edadhiuefiauhdiaheuarueabrdabfbaeuiwiajoejqioejoj12iejore 13143ih 77da 12131rvf op 81 213 19 0 12 90 66 sidhaifgaifiaf edadhiuefiauhdiaheuarueabrdabfbaeuiwiajoejqioejoj12iejore 13143ih 77da 12131rvf op 81 213 19 0 12 90 66 sidhaifgaifiaf edadhiuefiauhdiaheuarueabrdabfbaeuiwiajoejqioejoj12iejore 13143ih 77da 12131rvf op 81 213 19 0 12 90 66 sidhaifgaifiaf edadhiuefiauhdiaheuarueabrdabfbaeuiwiajoejqioejoj12iejore 13143ih 77da 12131rvf op 81 213 19 0 12 90 66 sidhaifgaifiaf edadhiuefiauhdiaheuarueabrdabfbaeuiwiajoejqioejoj12iejore 13143ih 77da 12131rvf op 81 213 19 0 12 90 66 sidhaifgaifiaf edadhiuefiauhdiaheuarueabrdabfbaeuiwiajoejqioejoj12iejore 13143ih 77da 12131rvf op 81 213 19 0 12 90 66 sidhaifgaifiaf edadhiuefiauhdiaheuarueabrdabfbaeuiwiajoejqioejoj12iejore 13143ih 77da 12131rvf op 81 213 19 0 12 90 66 sidhaifgaifiaf edadhiuefiauhdiaheuarueabrdabfbaeuiwiajoejqioejoj12iejore 13143ih 77da 12131rvf op 81 213 19 0 12 90 66 sidhaifgaifiaf edadhiuefiauhdiaheuarueabrdabfbaeuiwiajoejqioejoj12iejore 13143ih 77da 12131rvf op 81 213 19 0 12 90 66 sidhaifgaifiaf edadhiuefiauhdiaheuarueabrdabfbaeuiwiajoejqioejoj12iejore 13143ih 77da 12131rvf op 81 213 19 0 12 90 66 sidhaifgaifiaf edadhiuefiauhdiaheuarueabrdabfbaeuiwiajoejqioejoj12iejore 13143ih 77da 12131rvf op 81 213 19 0 12 90 66 sidhaifgaifiaf edadhiuefiauhdiaheuarueabrdabfbaeuiwiajoejqioejoj12iejore 13143ih 77da 12131rvf op 81 213 19 0 12 90 66 sidhaifgaifiaf edadhiuefiauhdiaheuarueabrdabfbaeuiwiajoejqioejoj12iejore 13143ih 77da 12131rvf op 81 213 19 0 12 90 66 sidhaifgaifiaf edadhiuefiauhdiaheuarueabrdabfbaeuiwiajoejqioejoj12iejore 13143ih 77da 12131rvf op 81 213 19 0 12 90 66 sidhaifgaifiaf edadhiuefiauhdiaheuarueabrdabfbaeuiwiajoejqioejoj12iejore 13143ih 77da 12131rvf op 81 213 19 0 12 90 66 sidhaifgaifiaf edadhiuefiauhdiaheuarueabrdabfbaeuiwiajoejqioejoj12iejore 13143ih 77da 12131rvf op 81 213 19 0 12 90 66 sidhaifgaifiaf edadhiuefiauhdiaheuarueabrdabfbaeuiwiajoejqioejoj12iejore 13143ih 77da 12131rvf op 81 213 19 0 12 90 66 sidhaifgaifiaf edadhiuefiauhdiaheuarueabrdabfbaeuiwiajoejqioejoj12iejore 13143ih 77da 12131rvf op 81 213 19 0 12 90 66 sidhaifgaifiaf edadhiuefiauhdiaheuarueabrdabfbaeuiwiajoejqioejoj12iejore 13143ih 77da 12131rvf op 81 213 19 0 12 90 66 sidhaifgaifiaf edadhiuefiauhdiaheuarueabrdabfbaeuiwiajoejqioejoj12iejore 13143ih 77da 12131rvf op 81 213 19 0 12 90 66 sidhaifgaifiaf edadhiuefiauhdiaheuarueabrdabfbaeuiwiajoejqioejoj12iejore 13143ih 77da 12131rvf op 81 213 19 0 12 90 66 sidhaifgaifiaf edadhiuefiauhdiaheuarueabrdabfbaeuiwiajoejqioejoj12iejore 13143ih 77da 12131rvf op 81 213 19 0 12 90 66 sidhaifgaifiaf edadhiuefiauhdiaheuarueabrdabfbaeuiwiajoejqioejoj12iejore 13143ih 77da 12131rvf op 81 213 19 0 12 90 66 sidhaifgaifiaf edadhiuefiauhdiaheuarueabrdabfbaeuiwiajoejqioejoj12iejore 13143ih 77da 12131rvf op 81 213 19 0 12 90 66 sidhaifgaifiaf edadhiuefiauhdiaheuarueabrdabfbaeuiwiajoejqioejoj12iejore 13143ih 77da 12131rvf op 81 213 19 0 12 90 66 sidhaifgaifiaf edadhiuefiauhdiaheuarueabrdabfbaeuiwiajoejqioejoj12iejore 13143ih 77da 12131rvf op 81 213 19 0 12 90 66 sidhaifgaifiaf edadhiuefiauhdiaheuarueabrdabfbaeuiwiajoejqioejoj12iejore 13143ih 77da 12131rvf op 81 213 19 0 12 90 66 sidhaifgaifiaf edadhiuefiauhdiaheuarueabrdabfbaeuiwiajoejqioejoj12iejore 13143ih 77da 12131rvf op 81 213 19 0 12 90 66 sidhaifgaifiaf edadhiuefiauhdiaheuarueabrdabfbaeuiwiajoejqioejoj12iejore 13143ih 77da 12131rvf op 81 213 19 0 12 90 66 sidhaifgaifiaf edadhiuefiauhdiaheuarueabrdabfbaeuiwiajoejqioejoj12iejore 13143ih 77da 12131rvf op 81 213 19 0 12 90 66 sidhaifgaifiaf edadhiuefiauhdiaheuarueabrdabfbaeuiwiajoejqioejoj12iejore 13143ih 77da 12131rvf op 81 213 19 0 12 90 66 sidhaifgaifiaf edadhiuefiauhdiaheuarueabrdabfbaeuiwiajoejqioejoj12iejore 13143ih 77da 12131rvf op 81 213 19 0 12 90 66 sidhaifgaifiaf edadhiuefiauhdiaheuarueabrdabfbaeuiwiajoejqioejoj12iejore 13143ih 77da 12131rvf op 81 213 19 0 12 90 66 sidhaifgaifiaf edadhiuefiauhdiaheuarueabrdabfbaeuiwiajoejqioejoj12iejore 13143ih 77da 12131rvf op 81 213 19 0 12 90 66 sidhaifgaifiaf edadhiuefiauhdiaheuarueabrdabfbaeuiwiajoejqioejoj12iejore 13143ih 77da 12131rvf op 81 213 19 0 12 90 66 sidhaifgaifiaf edadhiuefiauhdiaheuarueabrdabfbaeuiwiajoejqioejoj12iejore 13143ih 77da 12131rvf
+> ```
+>
+> ![image-20240331175345615](http://cdn.ayusummer233.top/DailyNotes/202403311753704.png)
+>
+> 可以明显看出来 `strings.Join` 要比 `+=` 快多了
+>
+> ----
+>
+> 
 
 ---
 
@@ -1351,7 +1385,7 @@ func PrintResponseBody() {
 >         log.Fatal(err)
 >     }
 >     defer resp.Body.Close()
->                                    
+>                                        
 >     if resp.StatusCode == http.StatusOK {
 >         bodyBytes, err := io.ReadAll(resp.Body)
 >         // if u want to read the body many time
@@ -1558,6 +1592,49 @@ func PrintResponseBody_Copy_Prefix_Status() {
 > ![image-20230317010910303](http://cdn.ayusummer233.top/DailyNotes/202303170109355.png)
 
 - `resp.Status` 与 `resp.Body` 不同, 它只是一个字符串, 并非可关闭的资源, 因此不用像后者一样需要考虑关闭以避免资源泄露
+
+  具体来说, HTTP 响应的 Body 是一个网络连接的流, 如果不关闭, 这个连接会一直保持打开状态, 即使已经读取了所有的数据, 这个网络连接占用的系统资源(如端口)不能被其他操作复用
+
+  如果程序频繁创建新的网络连接又不关闭它们, 那么最终可能会耗尽系统的网络资源导致新的网络连接无法创建
+
+  ---
+
+  `resp.Body` 是一个 `io.ReadCloser` 类型, 是一个接口类型, 包含 `Read` 和 `Close` 两个方法
+
+  对于接口类型, 这是一种特殊的类型, 它定义了一组方法的集合, 但并没有实现这些方法, 任何实现了这些方法的类型都被认为实现了该接口
+
+  ```go
+  type MyInterface interface {
+      Method1(param1 int) return_type
+      Method2(param1 int, param2 string) return_type
+      // 其他方法......
+  }
+  ```
+
+  上述 `MyInterface` 是一个接口类型, 它定义了 `Method1` 和 `Method2` 两个方法
+
+  任何类型, 只要它定义了这两个方法, 就被认为实现了 `MyInterface` 接口
+
+  在 Go 的 `net/http` 包中, `http.Response` 是一个结构体, 它的 `Body` 字段的类型是 `io.ReadCloser`, 这是一个接口类型
+
+  `io.ReadCloser` 是 `io.Reader` 和 `io.Closer` 这两个接口的组合, 定义如下:
+
+  ```go
+  type Reader interface {
+      Read(p []byte) (n int, err error)
+  }
+  
+  type Closer interface {
+      Close() error
+  }
+  
+  type ReadCloser interface {
+      Reader
+      Closer
+  }
+  ```
+
+  任何类型, 只要它实现了 `Read` 和 `Close` 这两个方法就被认为实现了 `io.ReadCloser` 接口
 
 ---
 
@@ -1855,7 +1932,13 @@ func main() {
 
 如果你的请求 pattern 是以 `/` 结尾, 那么所有以该 url 为前缀的 url 都会被这条规则匹配
 
-在这些代码的背后, 服务器每一次接收请求处理时都会另起一个 goroutine, 这样服务器就可以同一时间处理多个请求
+> 需要注意的是:
+>
+> 在Go的http包中, URL路径的匹配是按照前缀进行的, 但是这个前缀必须是一个路径的完整部分, 它必须以 `/` 结束
+>
+> 因此 `/count` 并不是 `/count/xxx` 的前缀, `/count/` 才是
+>
+> ![image-20240331190208506](http://cdn.ayusummer233.top/DailyNotes/202403311902666.png)
 
 然而在并发情况下, 假如真的有两个请求同一时刻去更新 count, 那么这个值可能并不会被正确地增加
 
