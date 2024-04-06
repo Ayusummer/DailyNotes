@@ -848,8 +848,8 @@ _, ok = x.(T)              // 只检测类型, 忽略具体值
 
 在任何程序中都会存在一些变量有着相同的内部结构, 但是却表示完全不同的概念, 例如
 
-- 一个int类型的变量可以用来表示一个循环的迭代索引, 或者一个时间戳, 或者一个文件描述符, 或者一个月份
-- 一个float64类型的变量可以用来表示每秒移动几米的速度, 或者是不同温度单位下的温度
+- 一个 int 类型的变量可以用来表示一个循环的迭代索引, 或者一个时间戳, 或者一个文件描述符, 或者一个月份
+- 一个 float64 类型的变量可以用来表示每秒移动几米的速度, 或者是不同温度单位下的温度
 - 一个字符串可以用来表示一个密码或者一个颜色的名称
 
 一个类型声明语句创建了一个新的类型名称, 和现有类型具有相同的底层结构, 新命名的类型提供了一个方法, 用来分隔不同概念的类型, 这样即使它们底层类型相同也是不兼容的
@@ -986,6 +986,24 @@ fmt.Println(c == Celsius(f)) // "true"!
 func (c Celsius) String() string { return fmt.Sprintf("%g°C", c) }
 ```
 
+`Sprintf` 名字来源于 "String print format", 意思是将格式化的输出打印为字符串返回一个 string 类型的值
+
+在 Go 语言中, 函数和方法是两个不同的概念
+
+- 函数是一段独立的代码, 它可以接收一些参数, 执行一些操作, 然后返回一个或多个结果
+
+  函数不依赖于任何特定的类型或值
+
+  例如 `func Add(a, b int) int` 是一个函数, 它接收两个整数, 返回它们的和
+
+- 方法则是与特定类型关联的函数
+
+  方法的定义方式是在函数名前添加一个参数，这个参数定义了这个方法所属的类型
+
+  例如 `func (c Celsius) String() string` 是一个方法, 它属于 Celsius 类型
+
+  当你在某个类型上定义了方法后, 你就可以在这个类型的值上调用这个方法。例如对于 `c Celsius` 调用 `c.String()` 来获取 `c` 的字符串表示
+
 ---
 
 许多类型都会定义一个 String 方法, 因为当使用 fmt 包的打印方法时，将会优先使用该类型对应的 String 方法返回的结果打印, 我们将在7.1节讲述
@@ -1006,13 +1024,177 @@ fmt.Println(float64(c)) // "100"; does not call String; 直接打印 Celsius 类
 
 ---
 
+## 2.6  包和文件
 
+Go 语言中的包和其他语言的库或模块的概念类似, 目的都是为了支持模块化, 封装, 单独编译和代码重用
 
+一个包的源代码保存在一个或多个以 `.go` 为文件后缀名的源文件中, 通常一个包所在目录路径的后缀是包的导入路径
 
+例如包 `gopl.io/ch1/helloworld` 对应的目录路径是 `$GOPATH/src/gopl.io/ch1/helloworld`
 
+每个包都对应一个独立的名字空间
+例如, 在 image 包中的 Decode 函数和在 `unicode/utf16` 包中的 Decode 函数是不同的
+要在外部引用该函数, 必须显式使用 `image.Decode` 或 `utf16.Decode` 形式访问
 
+---
 
+包还可以让我们通过控制哪些名字是外部可见的来隐藏内部实现信息
 
+在Go语言中, 一个简单的规则是: 如果一个名字是大写字母开头的, 那么该名字是导出的
+
+> 译注: 因为汉字不区分大小写, 因此汉字开头的名字是没有导出的
+
+---
+
+为了演示包基本的用法, 先假设我们的温度转换软件已经很流行, 我们希望到Go语言社区也能使用这个包
+
+我们该如何做呢？
+
+让我们创建一个名为 `gopl.io/ch2/tempconv` 的包, 这是前面例子的一个改进版本(这里我们没有按照惯例按顺序对例子进行编号, 因此包路径看起来更像一个真实的包)
+
+包代码存储在两个源文件中, 用来演示如何在一个源文件声明然后在其他的源文件访问(虽然在现实中, 这样小的包一般只需要一个文件)
+
+我们把变量的声明, 对应的常量, 还有方法都放到 `tempconv.go` 源文件中:
+
+`gopl.io/ch2/tempconv`
+
+```go
+// Package tempconv performs Celsius and Fahrenheit conversions.
+package tempconv
+
+import "fmt"
+
+type Celsius float64
+type Fahrenheit float64
+
+const (
+    AbsoluteZeroC Celsius = -273.15
+    FreezingC     Celsius = 0
+    BoilingC      Celsius = 100
+)
+
+func (c Celsius) String() string    { return fmt.Sprintf("%g°C", c) }
+func (f Fahrenheit) String() string { return fmt.Sprintf("%g°F", f) }
+
+```
+
+转换函数则放在另一个 `conv.go` 源文件中:
+
+```go
+package tempconv
+
+// CToF converts a Celsius temperature to Fahrenheit.
+func CToF(c Celsius) Fahrenheit { return Fahrenheit(c*9/5 + 32) }
+
+// FToC converts a Fahrenheit temperature to Celsius.
+func FToC(f Fahrenheit) Celsius { return Celsius((f - 32) * 5 / 9) }
+```
+
+每个源文件都是以包的声明语句开始, 用来指明包的名字; 当包被导入的时候, 包内的成员将通过类似 `tempconv.CToF` 的形式访问
+
+而包级别的名字, 例如在一个文件声明的类型和常量, 在同一个包的其他源文件也是可以直接访问的, 就好像所有代码都在一个文件一样
+
+要注意的是 `tempconv.go` 源文件导入了 fmt 包, 但是 `conv.go` 源文件并没有, 因为这个源文件中的代码并没有用到 fmt 包
+
+因为包级别的常量名都是以大写字母开头, 它们可以像 `tempconv.AbsoluteZeroC` 这样被外部代码访问:
+
+```go
+fmt.Printf("Brrrr! %v\n", tempconv.AbsoluteZeroC) // "Brrrr! -273.15°C"
+```
+
+要将摄氏温度转换为华氏温度, 需要先用 `import` 语句导入 `gopl.io/ch2/tempconv` 包, 然后就可以使用下面的代码进行转换了:
+
+```go
+fmt.Println(tempconv.CToF(tempconv.BoilingC)) // "212°F"
+```
+
+在每个源文件的包声明前紧跟着的注释是包注释(§10.7.4)
+
+通常, 包注释的第一句应该先是包的功能概要说明
+
+一个包通常只有一个源文件有包注释, 如果包注释很大, 通常会放到一个独立的 `doc.go` 文件中
+
+> 译注: 如果有多个包注释, 目前的文档工具会根据源文件名的先后顺序将它们链接为一个包注释
+
+---
+
+### 练习 2.1
+
+向 `tempconv` 包添加类型, 常量和函数用来处理 Kelvin 绝对温度的转换, Kelvin 绝对零度是 `−273.15°C`, Kelvin 绝对温度 1K 和摄氏度 1°C 的单位间隔是一样的
+
+> Kelvin(开尔文)是国际单位制中的温度单位, 符号为 K, 它是热力学温度的基本单位, 也是唯一的绝对温度单位, 即其零点是绝对零度, 这是自然界可能达到的最低温度
+>
+> 在 Kelvin 温度尺度中, 1K 的温度间隔与 1°C 的温度间隔相同, 但是它们的零点不同
+>
+> Celsius(摄氏)温度尺度的零点是冰点(水从固态变为液态的温度), 而 Kelvin 温度尺度的零点是绝对零度
+
+![image-20240406232958942](http://cdn.ayusummer233.top/DailyNotes/202404062330056.png)
+
+`temp.go`:
+
+```GO
+// Package tempconv performs Celsius and Fahrenheit conversions.
+package tempconv
+
+import "fmt"
+
+type Celsius float64
+type Fahrenheit float64
+type Kelvin float64
+
+const (
+	AbsoluteZeroC Celsius = -273.15
+	FreezingC     Celsius = 0
+	BoilingC      Celsius = 100
+)
+
+func (c Celsius) String() string    { return fmt.Sprintf("%g°C", c) }
+func (f Fahrenheit) String() string { return fmt.Sprintf("%g°F", f) }
+func (k Kelvin) String() string     { return fmt.Sprintf("%g°K", k) }
+
+```
+
+`conv.go`:
+
+```GO
+package tempconv
+
+// CToF converts a Celsius temperature to Fahrenheit.
+func CToF(c Celsius) Fahrenheit { return Fahrenheit(c*9/5 + 32) }
+
+// FToC converts a Fahrenheit temperature to Celsius.
+func FToC(f Fahrenheit) Celsius { return Celsius((f - 32) * 5 / 9) }
+
+// CToK converts a Celsius temperature to Kelvin.
+func CToK(c Celsius) Kelvin { return Kelvin(c - AbsoluteZeroC) }
+
+// KToC converts a Kelvin temperature to Celsius.
+func KToC(k Kelvin) Celsius { return Celsius(k) + AbsoluteZeroC }
+
+```
+
+`main.go`
+
+```go
+package main
+
+import (
+	// "CH2_6/tempconv"
+	"GoLearning/Chapter/ch2/ch2_6_package_and_file/tempconv"
+	"fmt"
+)
+
+func main() {
+	c1 := tempconv.Celsius(100)
+	f1 := tempconv.CToF(c1)
+	fmt.Println("100°C to Fahrenheit:", f1)
+	k1 := tempconv.CToK(c1)
+	fmt.Println("100°C to Kelvin:", k1)
+}
+
+```
+
+---
 
 
 
