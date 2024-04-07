@@ -14,6 +14,12 @@
     - [CH2.4.1 元组赋值](#ch241-元组赋值)
     - [2.4.2 可赋值性](#242-可赋值性)
   - [2.5 类型](#25-类型)
+  - [2.6  包和文件](#26--包和文件)
+    - [练习 2.1](#练习-21)
+    - [2.6.1.导入包](#261导入包)
+    - [练习2.2](#练习22)
+    - [2.6.2.包的初始化](#262包的初始化)
+    - [练习2.3](#练习23)
 
 
 ---
@@ -1196,19 +1202,462 @@ func main() {
 
 ---
 
+### 2.6.1.导入包
 
+在Go语言程序中，每个包都有一个全局唯一的导入路径。
 
+导入语句中类似 `gopl.io/ch2/tempconv` 的字符串对应包的导入路径。
 
+Go语言的规范并没有定义这些字符串的具体含义或包来自哪里，它们是由构建工具来解释的。
 
+当使用Go语言自带的go工具箱时（第十章），一个导入路径代表一个目录中的一个或多个Go源文件。
 
+除了包的导入路径，每个包还有一个包名，包名一般是短小的名字（并不要求包名是唯一的），包名在包的声明处指定。
 
+按照惯例，一个包的名字和包的导入路径的最后一个字段相同，例如gopl.io/ch2/tempconv包的名字一般是tempconv。
 
+要使用 `gopl.io/ch2/tempconv` 包，需要先导入：
 
+`gopl.io/ch2/cf`:
 
+```go
+// Cf converts its numeric argument to Celsius and Fahrenheit.
+package main
 
+import (
+    "fmt"
+    "os"
+    "strconv"
 
+    "gopl.io/ch2/tempconv"
+)
 
+func main() {
+    for _, arg := range os.Args[1:] {
+        t, err := strconv.ParseFloat(arg, 64)
+        if err != nil {
+            fmt.Fprintf(os.Stderr, "cf: %v\n", err)
+            os.Exit(1)
+        }
+        f := tempconv.Fahrenheit(t)
+        c := tempconv.Celsius(t)
+        fmt.Printf("%s = %s, %s = %s\n",
+            f, tempconv.FToC(f), c, tempconv.CToF(c))
+    }
+}
 
+```
+
+> PS: 在上一节的练习中我们就用到了导入包：
+>
+> ![image-20240407232152646](http://cdn.ayusummer233.top/DailyNotes/202404072321791.png)
+
+导入语句将导入的包绑定到一个短小的名字，然后通过该短小的名字就可以引用包中导出的全部内容。
+
+上面的导入声明将允许我们以 `tempconv.CToF` 的形式来访问 `gopl.io/ch2/tempconv` 包中的内容。
+
+在默认情况下，导入的包绑定到 `tempconv`名字（译注：指包声明语句指定的名字），但是我们也可以绑定到另一个名称，以避免名字冲突（§10.4）。
+
+---
+
+cf程序将命令行输入的一个温度在Celsius和Fahrenheit温度单位之间转换：
+
+```go
+$ go build gopl.io/ch2/cf
+$ ./cf 32
+32°F = 0°C, 32°C = 89.6°F
+$ ./cf 212
+212°F = 100°C, 212°C = 413.6°F
+$ ./cf -40
+-40°F = -40°C, -40°C = -40°F
+
+```
+
+---
+
+如果导入了一个包，但是又没有使用该包将被当作一个编译错误处理。
+
+这种强制规则可以有效减少不必要的依赖，虽然在调试期间可能会让人讨厌，因为删除一个类似 `log.Print("got here!")` 的打印语句可能导致需要同时删除log包导入声明，否则，编译器将会发出一个错误。
+
+在这种情况下，我们需要将不必要的导入删除或注释掉。
+
+> VSCode 的 Go 扩展自动安装的工具包会自动格式化， 当导入的包未使用时会自动删除~
+>
+> ![image-20240407232448841](http://cdn.ayusummer233.top/DailyNotes/202404072324962.png)
+
+不过有更好的解决方案，我们可以使用 `golang.org/x/tools/cmd/goimports` 导入工具，它可以根据需要自动添加或删除导入的包；
+
+许多编辑器都可以集成goimports工具，然后在保存文件的时候自动运行。类似的还有gofmt工具，可以用来格式化Go源文件。
+
+---
+
+### 练习2.2
+
+**练习 2.2：** 写一个通用的单位转换程序，用类似 cf 程序的方式从命令行读取参数，如果缺省的话则是从标准输入读取参数，然后做类似 Celsius 和 Fahrenheit 的单位转换，长度单位可以对应英尺和米，重量单位可以对应磅和公斤等。
+
+> 英尺（Feet）和米（Meter）的关系是1英尺等于0.3048米
+> 磅（Pound）和公斤（Kilogram）的关系是1磅等于0.45359237公斤
+>
+> PS： `lb`是磅（Pound）的拉丁缩写，源自拉丁词“libra”
+
+写对应的三个转换模块, 然后写个 main 函数处理输入并用 switch case 来判断单位以及转换函数即可
+
+![image-20240408000929196](http://cdn.ayusummer233.top/DailyNotes/202404080009265.png)
+
+`tempconv.go`:
+
+```go
+// 定义温度以及温度转换相关的类型和函数
+package tempconv
+
+import "fmt"
+
+type Celsius float64
+type Fahrenheit float64
+type Kelvin float64
+
+const (
+	AbsoluteZeroC Celsius = -273.15
+	FreezingC     Celsius = 0
+	BoilingC      Celsius = 100
+)
+
+func (c Celsius) String() string    { return fmt.Sprintf("%g°C", c) }
+func (f Fahrenheit) String() string { return fmt.Sprintf("%g°F", f) }
+func (k Kelvin) String() string     { return fmt.Sprintf("%g°K", k) }
+
+func CToF(c Celsius) Fahrenheit { return Fahrenheit(c*9/5 + 32) }
+
+func CToK(c Celsius) Kelvin { return Kelvin(c - AbsoluteZeroC) }
+
+func FToC(f Fahrenheit) Celsius { return Celsius((f - 32) * 5 / 9) }
+
+func FToK(f Fahrenheit) Kelvin {
+	ftoc := FToC(f)
+	ctok := CToK(ftoc)
+	return ctok
+}
+
+func KToC(k Kelvin) Celsius { return Celsius(k) + AbsoluteZeroC }
+func KToF(k Kelvin) Fahrenheit {
+	ktoc := KToC(k)
+	ctof := CToF(ktoc)
+	return ctof
+}
+
+```
+
+`weightconv.go`
+
+```go
+// 定义重量(磅和公斤)以及重量转换相关的类型和函数
+package weightconv
+
+import "fmt"
+
+type Pound float64
+type Kilogram float64
+
+const (
+	PoundToKilogram = 0.45359237
+)
+
+func (p Pound) String() string    { return fmt.Sprintf("%g lb", p) }
+func (k Kilogram) String() string { return fmt.Sprintf("%g kg", k) }
+
+func PToK(p Pound) Kilogram { return Kilogram(p * PoundToKilogram) }
+func KToP(k Kilogram) Pound { return Pound(k / PoundToKilogram) }
+
+```
+
+`lengthconv.go`
+
+```go
+// 定义长度（英尺和米）以及长度转换相关的类型和函数
+package lengthconv
+
+import "fmt"
+
+type Feet float64
+type Meter float64
+
+const (
+	FeetToMeter = 0.3048
+)
+
+func (f Feet) String() string  { return fmt.Sprintf("%g ft", f) }
+func (m Meter) String() string { return fmt.Sprintf("%g m", m) }
+
+func FToM(f Feet) Meter { return Meter(f * FeetToMeter) }
+func MToF(m Meter) Feet { return Feet(m / FeetToMeter) }
+
+```
+
+`main.go`
+
+```go
+// 通用的单位转换程序,支持长度、重量、温度的单位转换;从命令行读取参数, 如果缺省的话则是从标准输入读取参数然后做相应的转换
+package main
+
+import (
+	"GoLearning/Chapter/ch2/ch2_6_package_and_file/ex2_2/lengthconv"
+	"GoLearning/Chapter/ch2/ch2_6_package_and_file/ex2_2/tempconv"
+	"GoLearning/Chapter/ch2/ch2_6_package_and_file/ex2_2/weightconv"
+	"fmt"
+	"os"
+	"strconv"
+)
+
+func main() {
+	var number string
+	var unit string
+
+	// 获取命令行参数
+	if len(os.Args) > 1 {
+		// 第一个参数为待转换的单位,例如: 100F, 100ft, 100lb
+		number = os.Args[1]
+		// 第二个参数为待转换的单位,例如: F, ft, lb
+		unit = os.Args[2]
+	} else {
+		// 从标准输入读取参数
+		fmt.Println("Please input the number and unit:")
+		fmt.Scanln(&number, &unit)
+	}
+
+	// 将输入的数字转换为浮点数
+	num, err := strconv.ParseFloat(number, 64)
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "unitconv: %v\n", err)
+		os.Exit(1)
+	}
+
+	// 根据输入的单位进行转换
+	switch unit {
+	case "°C":
+		c := tempconv.Celsius(num)
+		f := tempconv.CToF(c)
+		k := tempconv.CToK(c)
+		fmt.Printf("%s = %s, %s = %s\n", c, f, c, k)
+	case "°F":
+		f := tempconv.Fahrenheit(num)
+		c := tempconv.FToC(f)
+		k := tempconv.FToK(f)
+		fmt.Printf("%s = %s, %s = %s\n", f, c, f, k)
+	case "°K":
+		k := tempconv.Kelvin(num)
+		c := tempconv.KToC(k)
+		f := tempconv.KToF(k)
+		fmt.Printf("%s = %s, %s = %s\n", k, c, k, f)
+	case "ft":
+		f := lengthconv.Feet(num)
+		m := lengthconv.FToM(f)
+		fmt.Printf("%s = %s\n", f, m)
+	case "m":
+		m := lengthconv.Meter(num)
+		f := lengthconv.MToF(m)
+		fmt.Printf("%s = %s\n", m, f)
+	case "lb":
+		p := weightconv.Pound(num)
+		k := weightconv.PToK(p)
+		fmt.Printf("%s = %s\n", p, k)
+	case "kg":
+		k := weightconv.Kilogram(num)
+		p := weightconv.KToP(k)
+		fmt.Printf("%s = %s\n", k, p)
+	default:
+		fmt.Fprintf(os.Stderr, "unitconv: unknown unit %s\n", unit)
+		os.Exit(1)
+	}
+}
+
+```
+
+![image-20240408001212248](http://cdn.ayusummer233.top/DailyNotes/202404080012359.png)
+
+---
+
+### 2.6.2.包的初始化
+
+包的初始化首先是解决包级变量的依赖顺序，然后按照包级变量声明出现的顺序依次初始化：
+
+```go
+var a = b + c // a 第三个初始化, 为 3
+var b = f()   // b 第二个初始化, 为 2, 通过调用 f (依赖c)
+var c = 1     // c 第一个初始化, 为 1
+
+func f() int { return c + 1 }
+
+```
+
+如果包中含有多个 `.go` 源文件，它们将按照发给编译器的顺序进行初始化，Go语言的构建工具首先会将 `.go` 文件根据文件名排序(字典序)，然后依次调用编译器编译。
+
+对于在包级别声明的变量，如果有初始化表达式则用表达式初始化，还有一些没有初始化表达式的，例如某些表格数据初始化并不是一个简单的赋值过程。
+
+在这种情况下，我们可以用一个特殊的init初始化函数来简化初始化工作。
+
+每个文件都可以包含多个init初始化函数
+
+```go
+func init() { /* ... */ }
+```
+
+这样的 `init` 初始化函数除了不能被调用或引用外，其他行为和普通函数类似。
+
+在每个文件中的init初始化函数，在程序开始执行时按照它们声明的顺序被自动调用。
+
+---
+
+每个包在解决依赖的前提下，以导入声明的顺序初始化，每个包只会被初始化一次。
+
+因此，如果一个p包导入了q包，那么在p包初始化的时候可以认为q包必然已经初始化过了。
+
+初始化工作是自下而上进行的，main包最后被初始化。
+
+以这种方式，可以确保在main函数执行之前，所有依赖的包都已经完成初始化工作了。
+
+----
+
+下面的代码定义了一个 PopCount 函数，用于返回一个数字中含二进制 1bi t的个数。
+
+它使用 init 初始化函数来生成辅助表格pc，pc表格用于处理每个 8bit 宽度的数字含二进制的 1bit 的 bit 个数（也称为汉明权重或者种群数量），这样的话在处理 64bit 宽度的数字时就没有必要循环64次，只需要8次查表就可以了。
+
+> PS: 这并不是最快的统计1bit数目的算法，但是它可以方便演示init函数的用法，并且演示了如何预生成辅助表格，这是编程中常用的技术
+
+`gopl.io/ch2/popcount`:
+
+```go
+package popcount
+
+// pc[i] is the population count of i.
+var pc [256]byte
+
+func init() {
+    // 这里的 for i:=range pc 只接收 range 返回的 index, value 中的 index, 也就是说 i 的值是 0-255
+    for i := range pc {
+        // go 语言中整数除法是向下取整的, 也就是说 1/2 = 0
+        pc[i] = pc[i/2] + byte(i&1)
+    }
+}
+
+// PopCount returns the population count (number of set bits) of x.
+func PopCount(x uint64) int {
+    return int(pc[byte(x>>(0*8))] +
+        pc[byte(x>>(1*8))] +
+        pc[byte(x>>(2*8))] +
+        pc[byte(x>>(3*8))] +
+        pc[byte(x>>(4*8))] +
+        pc[byte(x>>(5*8))] +
+        pc[byte(x>>(6*8))] +
+        pc[byte(x>>(7*8))])
+}
+
+```
+
+> 译注：对于pc这类需要复杂处理的初始化，可以通过将初始化逻辑包装为一个匿名函数处理，像下面这样：
+>
+> ```go
+> // pc[i] is the population count of i.
+> var pc [256]byte = func() (pc [256]byte) {
+>     for i := range pc {
+>         pc[i] = pc[i/2] + byte(i&1)
+>     }
+>     return
+> }()
+> 
+> ```
+>
+> 要注意的是在init函数中，range循环只使用了索引，省略了没有用到的值部分。循环也可以这样写：
+>
+> ```go
+> for i, _ := range pc {
+> ```
+>
+> 我们在下一节和10.5节还将看到其它使用init函数的地方。
+
+---
+
+### 练习2.3
+
+**练习 2.3：** 重写PopCount函数，用一个循环代替单一的表达式。比较两个版本的性能。
+
+> 11.4节将展示如何系统地比较两个不同实现的性能。
+
+按理来说, 直接手动把 8 次计算都明确写出来是要比循环快的, 因为引入循环会增加额外的开销, 例如
+
+- **循环控制语句的开销**：每次循环都需要进行条件检查，以确定是否继续执行循环
+- **变量更新的开销**：在循环中，通常会有一些变量需要在每次循环时更新（例如循环计数器）
+- **函数调用的开销**：如果在循环中调用了函数，那么每次函数调用都会有一定的开销，包括参数传递、返回值处理、栈帧管理等
+
+这里由于还没有接触后面 11 章系统比较程序性能的方法, 因此采用了循环多次计算函数调用时间的方式来比较两个版本的性能
+
+![image-20240408020704725](http://cdn.ayusummer233.top/DailyNotes/202404080207767.png)
+
+`ex2_3/popcount`:
+
+```go
+// 重写PopCount函数，用一个循环代替单一的表达式。比较两个版本的性能。
+package popcount
+
+// pc[i] is the population count of i.
+var pc [256]byte
+
+func init() {
+	// 这里的 for i:=range pc 只接收 range 返回的 index, value 中的 index, 也就是说 i 的值是 0-255
+	for i := range pc {
+		// go 语言中整数除法是向下取整的, 也就是说 1/2 = 0
+		pc[i] = pc[i/2] + byte(i&1)
+	}
+}
+
+// PopCount returns the population count (number of set bits) of x.
+func PopCount(x uint64) int {
+	var count int
+	for i := 0; i < 8; i++ {
+		count += int(pc[byte(x>>(uint(i)*8))])
+	}
+	return count
+}
+
+```
+
+`main.go`:
+
+```go
+// 比较两个版本 PopCount函数的性能
+package main
+
+import (
+	ex2_3_popcount "GoLearning/Chapter/ch2/ch2_6_package_and_file/ex2_3/popcount"
+	popcount "GoLearning/Chapter/ch2/ch2_6_package_and_file/popcount"
+	"fmt"
+	"time"
+)
+
+func main() {
+	// 通过运行时长来比较两个版本的性能
+	start := time.Now()
+	for i := 0; i < 1000000; i++ {
+		ex2_3_popcount.PopCount(0x1234567890ABCDEF)
+	}
+	time_spent := time.Since(start).Nanoseconds()
+	fmt.Printf("%-25s %v ns\n", "ex2_3_popcount.PopCount:", time_spent)
+
+	start = time.Now()
+	for i := 0; i < 1000000; i++ {
+		popcount.PopCount(0x1234567890ABCDEF)
+	}
+	time_spent = time.Since(start).Nanoseconds()
+	fmt.Printf("%-25s %v ns\n", "popcount.PopCount:", time_spent)
+
+}
+
+```
+
+![image-20240408021101266](http://cdn.ayusummer233.top/DailyNotes/202404080211356.png)
+
+可以看到直接写出 8 次运算的性能是要优于循环的
+
+----
 
 
 
