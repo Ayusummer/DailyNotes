@@ -211,6 +211,65 @@ func main() {
 
 > ![image-20221111003609799](http://cdn.ayusummer233.top/img/202211110036826.png)
 
+---
+
+## 编译
+
+### 参数
+
+- `-o <output>`: 指定生成的可执行文件的名称和路径
+- `-v`: 显示编译过程中的详细信息, 包括编译的包和文件
+- `-a`: 强制重新编译所有包, 而不使用缓存
+- `-race`: 开启数据竞争检测器, 用于检测并发程序中的数据竞争问题
+- `-gcflags <flag>`: 设置 Go 编译器的代码生成标志, 例如 `-gcflags="-N -l"` 可以关闭优化和内联
+- `-tags <tag>`: 指定额外的编译标签, 例如 `-tags=jsoniter` 可以根据指定的标签条件编译程序
+- `-mod <value>`: 设置 Go 模块的行为, 例如 `-mod=vendor` 可以优先使用 `vendor` 目录中的依赖
+
+---
+
+### 隐藏命令调用的黑窗
+
+```powershell
+go build -ldflags="-H windowsgui" -o main.exe
+```
+
+`-ldflags="-H windowsgui"` 用于设置链接标志
+
+- `-ldflags` 用于指定链接标志
+
+- `-H windowsgui` 指示链接器使用 `windowsgui` 子系统以隐藏命令行窗口
+
+  可以用于创建 GUI 应用程序, 因其不需要显示命令行窗口
+
+这里如果要达到隐藏效果除了设置链接标志外还需要保证程序里不直接调用命令行, 如 CMD, 例如对于如下命令
+
+```go
+get_ip_config_cmd := "ipconfig /all"
+cmd := exec.Command("cmd", "/C", get_ip_config_cmd)
+cmd.SysProcAttr = &syscall.SysProcAttr{HideWindow: true}
+output, err := cmd.Output()
+```
+
+需要修改为
+
+```go
+cmd := exec.Command("ipconfig", "/all")
+cmd.SysProcAttr = &syscall.SysProcAttr{HideWindow: true}
+output, err := cmd.Output()
+```
+
+又如 调用系统默认应用打开文件:
+
+```go
+cmd := exec.Command("cmd", "/C", "start", "file:///"+home+"/"+filename)
+```
+
+改为:
+
+```go
+exec.Command("rundll32.exe", "url.dll,FileProtocolHandler", filePath).Start()
+```
+
 
 ---
 
@@ -252,5 +311,4 @@ go install example.com/cmd
 ```bash
 go install example.com/cmd@latest
 ```
-
 
