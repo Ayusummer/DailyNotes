@@ -23,6 +23,7 @@
     - [练习2.4](#练习24)
     - [练习2.5](#练习25)
   - [2.7.作用域](#27作用域)
+    - [关于作用域以及简短变量声明的一些作用测试](#关于作用域以及简短变量声明的一些作用测试)
 
 
 ---
@@ -1561,10 +1562,10 @@ func PopCount(x uint64) int {
 > ```go
 > // pc[i] is the population count of i.
 > var pc [256]byte = func() (pc [256]byte) {
->     for i := range pc {
->         pc[i] = pc[i/2] + byte(i&1)
->     }
->     return
+>  for i := range pc {
+>      pc[i] = pc[i/2] + byte(i&1)
+>  }
+>  return
 > }()
 > 
 > ```
@@ -1576,6 +1577,10 @@ func PopCount(x uint64) int {
 > ```
 >
 > 我们在下一节和10.5节还将看到其它使用init函数的地方。
+>
+> ---
+>
+> `byte(x)`: 取 x 的低 8 位
 
 ---
 
@@ -2066,9 +2071,45 @@ func init() {
 
 ---
 
+### 关于作用域以及简短变量声明的一些作用测试
 
+- 单一变量单独使用简短变量声明
 
+  - 作用域未发生变化时会因为重复声明而无法通过编译
 
+    ![image-20240410095015306](http://cdn.ayusummer233.top/DailyNotes/image-20240410095015306.png)
+
+  - 作用域发生变化时会屏蔽掉外层声明
+
+    ![image-20240410095514210](http://cdn.ayusummer233.top/DailyNotes/image-20240410095514210.png)
+
+- 多变量使用简短变量声明
+
+  - 作用域未发生变化时
+
+    - `:=` 左侧都是已经声明过的变量时会因为重复声明而编译报错
+
+      ![image-20240410095752197](http://cdn.ayusummer233.top/DailyNotes/image-20240410095752197.png)
+
+    - `:=` 左侧有未声明变量时对于已声明的部分作用仅为赋值
+
+      ![image-20240410100541372](http://cdn.ayusummer233.top/DailyNotes/image-20240410100541372.png)
+
+      可以看到在重复 `:=` 的时候 `a` 的地址是没有变化的
+
+  - 作用域发生变化时会屏蔽掉外层声明
+
+    - `:=` 左侧都是已经声明过的变量时会屏蔽掉外层声明
+
+      ![](http://cdn.ayusummer233.top/DailyNotes/image-20240410111824675.png)
+
+      可以看到在 for 循环内部的变量 `a`, `b` 有新的地址
+
+    - `:=` 左侧有未声明变量时会屏蔽掉外层声明
+
+      ![image-20240410101155068](http://cdn.ayusummer233.top/DailyNotes/image-20240410101155068.png)
+
+      可以看到在 for 循环内部的变量 `a` 有新的地址
 
 
 
