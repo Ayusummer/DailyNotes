@@ -233,6 +233,10 @@ let backend_database = [
     link: "/后端/数据库/数据库.md",
   },
   {
+    text: "PostgreSQL",
+    link: "/后端/数据库/PostgreSQL.md",
+  },
+  {
     text: "MySQL",
     link: "/后端/数据库/MySQL.md",
   },
