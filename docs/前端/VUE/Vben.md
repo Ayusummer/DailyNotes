@@ -41,6 +41,16 @@
 
 ---
 
+## 关于项目的一些讨论
+
+> [Vue vben admin - 新鲜出炉的高颜值管理后台UI框架，基于 Vue3 和 Ant Design Vue - 掘金 (juejin.cn)](https://juejin.cn/post/7066046772707065870)
+>
+> [最好用的 8 款 Vue admin 后台管理系统测评 - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/461510148)
+
+
+
+---
+
 ## 项目地址
 
 [vbenjs/vue-vben-admin: A modern vue admin. It is based on Vue3, vite and TypeScript. It's fast！ (github.com)](https://github.com/vbenjs/vue-vben-admin)
