@@ -129,6 +129,34 @@ nvm use 16.16.0
 
 #### 使用 nvm
 
+列出所有支持的 node 版本:
+
+```bash
+nvm ls-remote
+```
+
+这样会列出一堆版本列表:
+
+![image-20240412143957753](http://cdn.ayusummer233.top/DailyNotes/202404121439934.png)
+
+可以选择只看 LTS 版本的
+
+```bash
+nvm ls-remote --lts
+```
+
+![image-20240412144159815](http://cdn.ayusummer233.top/DailyNotes/202404121441948.png)
+
+或者查看指定大版本中的小版本支持列表, 例如:
+
+```bash
+nvm ls-remote 20
+```
+
+![image-20240412144308087](http://cdn.ayusummer233.top/DailyNotes/202404121443199.png)
+
+---
+
 安装特定版本的 nodejs, 例如
 
 ```bash
