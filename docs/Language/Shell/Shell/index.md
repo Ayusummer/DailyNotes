@@ -85,3 +85,72 @@ add-zsh-hook precmd set_prompt
 
 ---
 
+## 主题-OhMyPosh
+
+Oh My Posh 在底层使用 ANSI 颜色代码，这些代码应该适用于每个终端，但您可能必须将环境变量 `$TERM` 设置为 `xterm-256color` 才能正常工作。
+
+编辑 `~/.bashrc` 加入如下语句:
+
+```bash
+export TERM=xterm-256color
+```
+
+然后安装 OhMyPosh
+
+```bash
+curl -s https://ohmyposh.dev/install.sh | bash -s
+```
+
+![image-20240412112439944](http://cdn.ayusummer233.top/DailyNotes/202404121124083.png)
+
+要显示所有图标，官方建议使用 [Nerd 字体](https://ohmyposh.dev/docs/installation/fonts)
+
+```bash
+oh-my-posh font install
+```
+
+选择 `Meslo` 并安装
+
+![image-20240412133955849](http://cdn.ayusummer233.top/DailyNotes/202404121339937.png)
+
+---
+
+接下来需要配置使用 OhMyPosh 的 shell
+
+> [Change your prompt | Oh My Posh](https://ohmyposh.dev/docs/installation/prompt)
+
+```bash
+# 查看当前使用的是哪个 shell
+oh-my-posh get shell
+```
+
+![image-20240412113231938](http://cdn.ayusummer233.top/DailyNotes/202404121132054.png)
+
+:::tabs
+
+@tab:active bash
+
+将如下命令下入 `~/.bashrc`
+
+```bash
+eval "$(oh-my-posh init bash)"s
+```
+
+:::
+
+在 VSCode terminal 中使用 OhMyPosh 需要更改设置中的 `Integrated: Font Family`
+
+![image-20240412143701806](http://cdn.ayusummer233.top/DailyNotes/202404121437899.png)
+
+根据 [Themes | Oh My Posh](https://ohmyposh.dev/docs/themes) 选择一个主题配置上即可
+
+---
+
+
+
+
+
+
+
+
+
