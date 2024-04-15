@@ -812,7 +812,7 @@ explorer
 
 ---
 
-## 你需要来自 S-1-5-21-XXXX-XXX-XXX 的权限才能对此文件夹进行更改
+#### 你需要来自 S-1-5-21-XXXX-XXX-XXX 的权限才能对此文件夹进行更改
 
 > [你需要来自 S-1-5-21-XXXX-XXX-XXX - Microsoft Community](https://answers.microsoft.com/zh-hans/windows/forum/all/你需要来自-s-1/8fab1a9a-412a-44f9-915b-6743d8b8dffb)
 >
@@ -822,7 +822,16 @@ explorer
 
 解决方案为 `右键文件夹->属性->安全->高级` 可以看到所有者是 `S-1-5-xxx`, 勾选
 
-----
+-----
+
+#### Authenticator
+
+- 密码同步只支持主账号密码同步,不会同步工作账户的密码
+
+  > [使用 1 个 Microsoft Authenticator 同步多个帐户的密码 - Microsoft Community --- Sync passwords from multiple accounts with 1 Microsoft Authenticator - Microsoft Community](https://answers.microsoft.com/en-us/microsoftedge/forum/all/sync-passwords-from-multiple-accounts-with-1/aa697ed9-0200-4a81-b071-e77353b91514)
+  >
+  > [身份验证器应用程序 - 密码问题 - Microsoft Community --- Authenticator App - Password Issues - Microsoft Community](https://answers.microsoft.com/en-us/microsoftedge/forum/all/authenticator-app-password-issues/d4350930-ee6c-4255-a94b-88577883890b)
+
 ----
 ## 图片OCR->表格
 
