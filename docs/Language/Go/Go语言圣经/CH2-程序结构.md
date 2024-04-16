@@ -1545,6 +1545,7 @@ func init() {
 
 // PopCount returns the population count (number of set bits) of x.
 func PopCount(x uint64) int {
+    // byte(x) -> 取 x 的低 8 位
     return int(pc[byte(x>>(0*8))] +
         pc[byte(x>>(1*8))] +
         pc[byte(x>>(2*8))] +
