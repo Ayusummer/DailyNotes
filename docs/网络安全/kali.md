@@ -1,4 +1,33 @@
-# 换源
+# kali
+
+## 版本
+
+kali 是基于 Debian 构建的, Debian 有多个版本, 包括稳定版（Stable）、测试版（Testing）和不稳定版（Unstable）。每个版本都有一个代号, 通常以玩具总动员（Toy Story）电影中的角色命名
+- Debian 12, 代号 "Bookworm"
+- Debian 11, 代号 "Bullseye"
+
+- Debian 10, 代号 "Buster"
+
+- Debian 9, 代号 "Stretch"
+
+- Debian 8, 代号 "Jessie"
+
+- Debian 7, 代号 "Wheezy"
+
+
+可以通过 `cat /etc/debian_version ` 查看当前 kali 基于的 Debian 版本
+
+不过z和不一定能获得具体的 Debian 版本号, 也可能得到 `kali-rolling` 
+
+![image-20240418142949196](http://cdn.ayusummer233.top/DailyNotes/image-20240418142949196.png)
+
+Kali Rolling 是基于 Debian 的 Testing 分支，而不是 Debian 的稳定版。Debian 的 Testing 分支是用于开发和测试即将发布为稳定版的新功能和软件包的地方。因此，虽然 Kali Rolling 会包含许多最新的软件包，但这些软件包可能还在测试中，可能不如 Debian 稳定版稳定。
+
+一般可以认为 kali rolling 基于 Debian 的最新版本, 比如当前的  Debian12 bookworm
+
+----
+
+## 换源
 
 打开 `/etc/apt/sources.list` 注释掉原来的源并添加新的源, 格式如下
 
