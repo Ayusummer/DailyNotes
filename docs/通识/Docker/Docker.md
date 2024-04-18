@@ -48,7 +48,7 @@ sudo systemctl status docker
 sudo systemctl enable docker.service
 ```
 
-@tab Debian
+@tab Debian(Deprecated)
 
 > [在Kali Linux版本中安装Docker(Docker CE社区版) 和Docker Compose_Linux教程_云网牛站 (ywnz.com)](https://ywnz.com/linuxjc/6543.html)
 >
@@ -70,6 +70,66 @@ sudo apt install docker-ce docker-ce-cli containerd.io
 # 检查安装的Docker版本
 docker version
 ```
+
+@tab Debian
+
+> [在 Debian 上安装 Docker 引擎 | Docker 文档 --- Install Docker Engine on Debian | Docker Docs](https://docs.docker.com/engine/install/debian/#install-using-the-repository)
+>
+> [Index of linux/debian/dists/ (docker.com)](https://download.docker.com/linux/debian/dists/)
+
+1. 设置 Docker 的 `apt` 存储库
+
+   ```bash
+   # Add Docker's official GPG key:
+   sudo apt-get update
+   sudo apt-get install ca-certificates curl
+   sudo install -m 0755 -d /etc/apt/keyrings
+   sudo curl -fsSL https://download.docker.com/linux/debian/gpg -o /etc/apt/keyrings/docker.asc
+   sudo chmod a+r /etc/apt/keyrings/docker.asc
+   
+   # Add the repository to Apt sources:
+   echo \
+     "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/debian \
+     $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
+     sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+   sudo apt-get update
+   ```
+
+   > 如果用的是 kali 的话
+   >
+   > ![image-20240418141046018](http://cdn.ayusummer233.top/DailyNotes/image-20240418141046018.png)
+   >
+   > ![image-20240418141104580](http://cdn.ayusummer233.top/DailyNotes/image-20240418141104580.png)
+   >
+   > 需要把 kali-rolling 换成其他版本
+   >
+   > Kali Rolling 是基于 Debian 的 Testing 分支，而不是 Debian 的稳定版。Debian 的 Testing 分支是用于开发和测试即将发布为稳定版的新功能和软件包的地方。因此，虽然 Kali Rolling 会包含许多最新的软件包，但这些软件包可能还在测试中，可能不如 Debian 稳定版稳定。
+   >
+   > 一般可以认为 kali rolling 基于 Debian 的最新版本, 比如当前的  Debian12 bookworm
+   >
+   > ![image-20240418143331741](http://cdn.ayusummer233.top/DailyNotes/image-20240418143331741.png)
+   >
+   > > [Index of linux/debian/dists/ (docker.com)](https://download.docker.com/linux/debian/dists/)
+   >
+   > 可以手动改下文件
+   >
+   > ![image-20240418143351329](http://cdn.ayusummer233.top/DailyNotes/image-20240418143351329.png)
+
+2. 安装 Docker packages
+
+   ```bash
+   sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+   ```
+
+3. 通过运行 `hello-world` image 验证安装是否成功
+
+   ```bash
+   sudo docker run hello-world
+   ```
+
+   ![image-20240418143748673](http://cdn.ayusummer233.top/DailyNotes/image-20240418143748673.png)
+
+   如图所示, 可以看到已经安装成功了
 
 @tab wsl2
 
