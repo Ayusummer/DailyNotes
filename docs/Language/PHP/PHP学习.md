@@ -1,5 +1,7 @@
 # PHP 学习
 
+>  [PHP: Hypertext Preprocessor](https://www.php.net/)
+
 - [PHP 学习](#php-学习)
   - [概述](#概述)
   - [安装与调试](#安装与调试)
