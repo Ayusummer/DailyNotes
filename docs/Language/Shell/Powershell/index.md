@@ -117,9 +117,13 @@ A prompt theme engine for any shell.
 
 ![image-20230414001558700](http://cdn.ayusummer233.top/DailyNotes/202304140016105.png)
 
-##### Quick Start For Windows
+#### Quick Start For Windows
 
 - 首先 [在 Windows 上安装 PowerShell7 - PowerShell | Microsoft Learn](https://learn.microsoft.com/zh-cn/powershell/scripting/install/installing-powershell-on-windows?view=powershell-7.2#msi), 默认的 Powershell5 不支持主题中的一些语法
+
+:::tabs
+
+@tab:active winget
 
 - 使用 `winget` 安装 `OhMyPosh`:
 
@@ -136,28 +140,73 @@ A prompt theme engine for any shell.
   winget install JanDeDobbeleer.OhMyPosh -s winget
   ```
 
-- 安装一个支持的字体, 如 [MesloLGSNF](https://github.com/fontmgr/MesloLGSNF)
+  > 如果出现如下情况且解决不掉的话可以尝试手动安装
+  >
+  > ![image-20240419172248316](http://cdn.ayusummer233.top/DailyNotes/image-20240419172248316.png)
 
-  > 官方文档中使用 `oh-my-posh font install` 选择字体进行安装, 不过我安装后进行配置时总是找不到字体, 最终使用 `MESLOLGS NF` 成功进行了配置
 
-  然后在 Powershell 中使用快捷键 `Ctrl+Shift+,` 调起配置文件, 在 `profiles` 中的 `defaults` 属性下添加 `font.face` 属性
+@tab 手动安装
 
-  ![image-20230414002805811](http://cdn.ayusummer233.top/DailyNotes/202304140028837.png)
+```powershell
+#如果下一行命令提示当前不允许执行脚本之类的信息,请执行下面注释的命令
+#Set-ExecutionPolicy Bypass -Scope Process -Force; 
+Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://ohmyposh.dev/install.ps1'))
+```
 
-  ```json
-              "font":
-              {
-                  "face": "MesloLGS NF"
-              }
-  ```
+如果下载过程实在太慢,挂代理也慢的话可以将 `https://ohmyposh.dev/install.ps1` 下载下来手动执行
 
-  添加并保存后会自动弹回到打开的 Powershell 窗口, 不报错就说明成功用上了字体
+![image-20240419172806996](http://cdn.ayusummer233.top/DailyNotes/image-20240419172806996.png)
 
-  ***
+执行完安装脚本后重新启动 powershell 执行 `oh-my-posh `就可以看到相应提示信息了
 
-  对于 VSCode 而言, VSCode 调起的终端中的字体配置还需要在 VSCode 的配置项中配下
+![image-20240419173118849](http://cdn.ayusummer233.top/DailyNotes/image-20240419173118849.png)
 
-  ![image-20230414003342061](http://cdn.ayusummer233.top/DailyNotes/202304140033087.png)
+可以通过 `(Get-Command oh-my-posh).Source` 查看 `oh-my-posh.exe` 的安装路径
+
+:::
+
+安装一个支持的字体
+
+:::tabs
+
+@tab MesloLGSNF
+
+[MesloLGSNF](https://github.com/fontmgr/MesloLGSNF)
+
+> 官方文档中使用 `oh-my-posh font install` 选择字体进行安装, 不过我安装后进行配置时总是找不到字体, 最终使用 `MESLOLGS NF` 成功进行了配置
+>
+> > PS: 看另一个选项卡, 后续找到了
+
+@tab MesloLGM Nerd Font
+
+执行 `oh-my-posh font install` 选择 `Meslo` 并安装
+
+![image-20240419173609382](http://cdn.ayusummer233.top/DailyNotes/image-20240419173609382.png)
+
+![image-20240419181220203](http://cdn.ayusummer233.top/DailyNotes/image-20240419181220203.png)
+
+:::
+
+然后在 Powershell 中使用快捷键 `Ctrl+Shift+,` 调起配置文件, 在 `profiles` 中的 `defaults` 属性下添加 `font.face` 属性
+
+![image-20230414002805811](http://cdn.ayusummer233.top/DailyNotes/202304140028837.png)
+
+```json
+            "font":
+            {
+                "face": "MesloLGS NF"
+            }
+```
+
+添加并保存后会自动弹回到打开的 Powershell 窗口, 不报错就说明成功用上了字体
+
+> 如果装上了 Nerd 就用 `MesloLGM Nerd Font`
+
+***
+
+对于 VSCode 而言, VSCode 调起的终端中的字体配置还需要在 VSCode 的配置项中配下
+
+![image-20230414003342061](http://cdn.ayusummer233.top/DailyNotes/202304140033087.png)
 
 - 接下来编辑 powershell 配置文件配置默认使用 `OhMyPosh`
 
