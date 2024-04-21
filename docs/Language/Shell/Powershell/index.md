@@ -104,6 +104,39 @@ Resolve-DnsName www.bing.com
 
 ---
 
+### 进程端口占用
+
+```bash
+# 列出当前正在运行的进程的信息
+tasklist
+```
+
+![image-20240421150955130](http://cdn.ayusummer233.top/DailyNotes/202404211510219.png)
+
+可以使用 `| findstr` 来过滤想查询的进程名或者 PID, 例如要查询 `smss.exe` 的信息
+
+```powershell
+tasklist | findstr "smss"
+```
+
+![image-20240421151234263](http://cdn.ayusummer233.top/DailyNotes/202404211512308.png)
+
+然后可以用查到的 PID 来查看端口占用, 例如
+
+```powershell
+netstat -ano | findstr 
+```
+
+![image-20240421181707569](http://cdn.ayusummer233.top/DailyNotes/202404211817610.png)
+
+要根据 PID 停止进程的话可以使用
+
+```powershell
+taskkill /PID <进程PID> /F
+```
+
+---
+
 ## 主题
 
 ---
