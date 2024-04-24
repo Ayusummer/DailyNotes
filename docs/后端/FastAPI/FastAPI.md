@@ -2863,3 +2863,71 @@ https://cdn.jsdelivr.net/npm/swagger-ui-dist@4/swagger-ui.css.map
 直接使用 `wget` 命令将其下载到对应位置即可:
 
 ![image-20221230161204692](http://cdn.ayusummer233.top/img/202212301612040.png)
+
+---
+
+## 特殊需求
+
+### uvicorn 日志添加时间戳
+
+>  [fastapi（66）- 修改 uvicorn 的日志格式 - 小菠萝测试笔记 - 博客园 (cnblogs.com)](https://www.cnblogs.com/poloyy/p/15549275.html)
+
+新建一个 uvicorn logger 的 json
+
+```json
+{
+  "version": 1,
+  "disable_existing_loggers": false,
+  "formatters": {
+    "default": {
+      "()": "uvicorn.logging.DefaultFormatter",
+      "fmt": "%(levelprefix)s %(message)s",
+      "use_colors": null
+    },
+    "access": {
+      "()": "uvicorn.logging.AccessFormatter",
+      "fmt": "%(asctime)s - %(levelprefix)s %(client_addr)s - \"%(request_line)s\" %(status_code)s"
+    }
+  },
+  "handlers": {
+    "default": {
+      "formatter": "default",
+      "class": "logging.StreamHandler",
+      "stream": "ext://sys.stderr"
+    },
+    "access": {
+      "formatter": "access",
+      "class": "logging.StreamHandler",
+      "stream": "ext://sys.stdout"
+    }
+  },
+  "loggers": {
+    "uvicorn": {
+      "handlers": [
+        "default"
+      ],
+      "level": "INFO"
+    },
+    "uvicorn.error": {
+      "level": "INFO"
+    },
+    "uvicorn.access": {
+      "handlers": [
+        "access"
+      ],
+      "level": "INFO",
+      "propagate": false
+    }
+  }
+}
+```
+
+在主程序中使用 `log_config` 参数指向该 json 即可
+
+```python
+uvicorn.run("test:app", port=8001, debug=True, log_config="uvicorn_config.json")
+```
+
+![image-20240424173343145](http://cdn.ayusummer233.top/DailyNotes/image-20240424173343145.png)
+
+> 需要注意的是 `log_config` 接收字符串, 如果用 pathlib 构造路径的话记得加一层 `str()` 转成字符串传入
