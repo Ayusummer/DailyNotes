@@ -6,13 +6,15 @@
   - [网络](#网络)
     - [代理](#代理)
     - [域名解析](#域名解析)
+    - [进程端口占用](#进程端口占用)
   - [主题](#主题)
     - [Oh My Posh](#oh-my-posh)
-        - [Quick Start For Windows](#quick-start-for-windows)
+      - [Quick Start For Windows](#quick-start-for-windows)
     - [显示时间](#显示时间)
   - [基础语法](#基础语法)
     - [杂项](#杂项)
     - [循环结构](#循环结构)
+  - [日志](#日志)
   - [文件操作](#文件操作)
     - [清除文件中的空行](#清除文件中的空行)
   - [目标目录文件变动监控备份](#目标目录文件变动监控备份)
@@ -361,7 +363,13 @@ while ($true) {
 }
 ```
 
+---
 
+## 日志
+
+日志存储在 `C:\Users\[Username]\AppData\Roaming\Microsoft\Windows\PowerShell\PSReadLine`
+
+![image-20240425161035905](http://cdn.ayusummer233.top/DailyNotes/image-20240425161035905.png)
 
 ---
 
@@ -927,6 +935,8 @@ Get-ExecutionPolicy -List
 ```
 
 ![image-20240129140244993](http://cdn.ayusummer233.top/DailyNotes/202401291402131.png)
+
+---
 
 
 
