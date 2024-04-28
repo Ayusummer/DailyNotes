@@ -7,12 +7,14 @@
           - [镜像测速](#镜像测速)
     - [PC网页端用户头像加载不出来](#pc网页端用户头像加载不出来)
   - [Git配置](#git配置)
+    - [SSH Key](#ssh-key)
+    - [本地仓库切换 https 到 ssh](#本地仓库切换-https-到-ssh)
+    - [SSH 代理](#ssh-代理)
   - [简介](#简介)
     - [Commit](#commit)
       - [规范](#规范)
     - [Issues](#issues)
     - [Pull Request](#pull-request)
-  - [SSH Key](#ssh-key)
   - [Actions](#actions)
     - [基本概念](#基本概念)
     - [workflow](#workflow)
@@ -21,6 +23,8 @@
   - [webhooks](#webhooks)
     - [借助钉钉的Github机器人将仓库变动通知到钉钉群里](#借助钉钉的github机器人将仓库变动通知到钉钉群里)
   - [开源许可证选择](#开源许可证选择)
+  - [Copilot](#copilot)
+    - [Copilot+ChatNextWeb](#copilotchatnextweb)
   - [常见问题](#常见问题)
     - [.git过大](#git过大)
     - [腾讯云 github 连接超时问题](#腾讯云-github-连接超时问题)
@@ -637,6 +641,43 @@ workflow 文件的配置字段非常多，详见[官方文档](https://help.gith
 ## 开源许可证选择
 ![开源许可证选择](http://cdn.ayusummer233.top/DailyNotes/202302191539879.png "屏幕截图.png")
 > [from 阮一峰-2011.5.2](http://www.ruanyifeng.com/blog/2011/05/how_to_choose_free_software_licenses.html)
+
+---
+
+## Copilot
+
+### Copilot+ChatNextWeb
+
+> [有GitHub Copilot？那就可以搭建你的ChatGPT4服务 - Jiajun的技术笔记 (jiajunhuang.com)](https://jiajunhuang.com/articles/2024_03_03-copilot_as_gpt4.md.html)
+>
+> [github/copilot.vim: Neovim plugin for GitHub Copilot](https://github.com/github/copilot.vim)
+
+用 neovim/vim 加上 github CLI 为 vim 添加 Copilot 支持, 然后找 `~/.config/github-copilot/hosts.json`中可以看到 Copilot token
+
+然后两步 docker 即可
+
+```bash
+docker run -d \
+    -e COPILOT_TOKEN=<刚才找到的Copilot里的token，ghu_ 开头的那个> \
+    -e SUPER_TOKEN=<自定义的token，等会儿给 ChatGPT-Next-Web使用> \
+    -e ENABLE_SUPER_TOKEN=true \
+    --name copilot-gpt4-service \
+    --restart always \
+    -p 8080:8080 \
+    aaamoon/copilot-gpt4-service:latest
+```
+
+```bash
+docker run -d -p 3000:3000 \
+    -e BASE_URL=<你配置的域名> \
+    -e OPENAI_API_KEY=<刚才设置的 SUPER_TOKEN，也就是自定义的token> \
+    -e CODE=<等于一个登录密码，防止 ChatGPT-Next-Web 被他人滥用> \
+    yidadaa/chatgpt-next-web
+```
+
+> 域名那里可以不用设置, 改成 `http://docker能访问到的主机的ip:8080`
+
+然后登录 `3000` 端口的 web 服务, 设置登录密码以及 `GPT4` 即可开始使用
 
 ---
 
