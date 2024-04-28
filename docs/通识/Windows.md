@@ -1,6 +1,7 @@
 # Windows
 
 - [Windows](#windows)
+  - [关闭 WIndows 自动更新](#关闭-windows-自动更新)
   - [软链接与硬链接](#软链接与硬链接)
   - [Robocopy](#robocopy)
     - [结合定时任务使用](#结合定时任务使用)
@@ -8,6 +9,22 @@
     - [WinRM](#winrm)
       - [WinRS](#winrs)
       - [PSRP](#psrp)
+
+---
+
+## 关闭 WIndows 自动更新
+
+> [WIN10系统手动更新和关闭自动更新方法-山东大学（威海）信息化工作办公室 (sdu.edu.cn)](https://net.wh.sdu.edu.cn/info/1129/1573.htm)
+
+`Win+R -> services.msc`
+
+找到 `Windows Update` 将启动类型改为 `禁用` 即可
+
+![image-20240429011123400](http://cdn.ayusummer233.top/DailyNotes/202404290111807.png)
+
+![image-20240429011339442](http://cdn.ayusummer233.top/DailyNotes/202404290113486.png)
+
+![image-20240429011429757](http://cdn.ayusummer233.top/DailyNotes/202404290114807.png)
 
 ---
 
