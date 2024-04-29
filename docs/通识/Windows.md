@@ -9,6 +9,8 @@
     - [WinRM](#winrm)
       - [WinRS](#winrs)
       - [PSRP](#psrp)
+  - [问题收集](#问题收集)
+    - [异常端口占用](#异常端口占用)
 
 ---
 
@@ -180,4 +182,67 @@ PyPSRP 是 [Jordan Borean](https://www.bloggingforlogging.com/sample-page/) 编�
 关于 PyPSRP 部分的内容可在[此处](../Language/Python/libs/PyPSRP/PyPSRP.md)继续阅读
 
 ---
+
+## 问题收集
+
+### 异常端口占用
+
+> [SocketException: Failed to create server socket (OS Error: 以一种访问权限不允许的方式做了一个访问套接字的尝试 , eerrno = 10013), address = 0.0.0.0, port = 53317 · localsend/localsend · Discussion #935 · GitHub](https://github.com/localsend/localsend/discussions/935)
+
+今天用 Localsend 发现了报错, 服务器无法启动, 端口连不上
+
+![image-20240429225929701](http://cdn.ayusummer233.top/DailyNotes/202404292301802.png)
+
+很常见的报错, 第一时间想到是端口占用了, 尝试查找占用端口的程序
+
+```bash
+netstat -ano | findstr 53317
+```
+
+![image-20240429230036991](http://cdn.ayusummer233.top/DailyNotes/202404292301045.png)
+
+找到 PID 后根据 PID 从 tasklist 里找进程名称:
+
+```bash
+tasklist | findstr 17828
+```
+
+![image-20240429230213037](http://cdn.ayusummer233.top/DailyNotes/202404292302062.png)
+
+发现居然是 localsend 自己, 发觉这个普通的端口占用不一样, 便开始查下有没有其他朋友遇到了这个问题
+
+在 github 中找到了这样一条 discussion: [SocketException: Failed to create server socket (OS Error: 以一种访问权限不允许的方式做了一个访问套接字的尝试 , eerrno = 10013), address = 0.0.0.0, port = 53317 · localsend/localsend · Discussion #935 (github.com)](https://github.com/localsend/localsend/discussions/935)
+
+提到了这个帖子:  [(Windows)以一种访问权限不允许的方式做了一个访问套接字的尝试处理 - 玖亖伍 (gsw945.com)](https://gsw945.com/index.php/archives/33/)
+
+Windows 有时会出现需要排除某些端口不被使用的情况，比如防火墙或其他网络配置需求, 上文中提到了如下命令可以查看当前系统中那些端口是被排除在 TCP 协议下的
+
+```powershell
+netsh interface ipv4 show excludedportrange protocol=tcp
+```
+
+![image-20240429230726811](http://cdn.ayusummer233.top/DailyNotes/202404292307843.png)
+
+果不其然, `53317` 在这个端口范围内
+
+解决方法倒是简单, 重启 winnat 即可:
+
+```powershell
+net stop winnat
+net start winnat
+```
+
+然后重新查看TCP协议端口排除:
+
+```powershell
+netsh interface ipv4 show excludedportrange protocol=tcp
+```
+
+![image-20240429230911121](http://cdn.ayusummer233.top/DailyNotes/202404292309184.png)
+
+可以看到此时 53317 已经不在范围内了
+
+LocalSend 服务器也成功起来了:
+
+![image-20240429230941076](http://cdn.ayusummer233.top/DailyNotes/202404292309112.png)
 
