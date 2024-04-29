@@ -1,5 +1,15 @@
 # 信息收集
 
+## 信息订阅
+
+> [我是如何走进黑客世界的？ - FreeBuf网络安全行业门户](https://www.freebuf.com/articles/neopoints/190895.html)
+
+- 黑客工具
+
+  - [KitPloit - PenTest & Hacking Tools](https://www.kitploit.com/)
+
+    [KitPloit-RSS](https://feeds.feedburner.com/PentestTools)
+
 ## Findsomething
 
 > [陌陌安全应急响应中心 (immomo.com)](https://security.immomo.com/blog/145)
