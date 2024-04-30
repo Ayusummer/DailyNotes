@@ -1,5 +1,196 @@
 import { sidebar } from "vuepress-theme-hope";
 
+/** 后端-数据库 */
+let backend_database = [
+  {
+    text: "数据库",
+    link: "/后端/数据库/数据库.md",
+  },
+  {
+    text: "PostgreSQL",
+    link: "/后端/数据库/PostgreSQL.md",
+  },
+  {
+    text: "MySQL",
+    link: "/后端/数据库/MySQL.md",
+  },
+  {
+    text: "SQLite",
+    link: "/后端/数据库/SQLite.md",
+  },
+  {
+    text: "Redis",
+    link: "/后端/数据库/Redis.md",
+  },
+  {
+    text: "SQLAlchemy",
+    link: "/后端/数据库/SQLAlchemy.md",
+  },
+];
+
+/** 后端-FastAPI */
+let backend_fastapi = [
+  {
+    text: "FastAPI",
+    link: "/后端/FastAPI/",
+  },
+  {
+    text: "请求模型",
+    link: "/后端/FastAPI/请求模型.md",
+  },
+  {
+    text: "响应模型",
+    link: "/后端/FastAPI/响应模型.md",
+  },
+  {
+    text: "依赖注入",
+    link: "/后端/FastAPI/依赖注入.md",
+  },
+  {
+    text: "JSON兼容",
+    link: "/后端/FastAPI/JSON兼容.md",
+  },
+  {
+    text: "OAuth2.0授权模式",
+    link: "/后端/FastAPI/OAuth2.0授权模式.md",
+  },
+  {
+    text: "数据库操作",
+    link: "/后端/FastAPI/数据库操作.md",
+  },
+  {
+    text: "中间件",
+    link: "/后端/FastAPI/中间件.md",
+  },
+  {
+    text: "跨域资源共享",
+    link: "/后端/FastAPI/跨域资源共享.md",
+  },
+  {
+    text: "后台任务",
+    link: "/后端/FastAPI/后台任务.md",
+  },
+
+  {
+    text: "Pydantic",
+    link: "/后端/FastAPI/Pydantic.md",
+  },
+  {
+    text: "测试用例",
+    link: "/后端/FastAPI/测试用例.md",
+  },
+  {
+    text: "高级用户指南",
+    link: "/后端/FastAPI/高级用户指南.md",
+  },
+];
+
+/** 前端-Vue */
+let frontend_vue = [
+  {
+    text: "Vben",
+    link: "/前端/VUE/Vben.md",
+  },
+  {
+    text: "vue-admin-template",
+    link: "/前端/VUE/vue-admin-template.md",
+  },
+  {
+    text: "Vue",
+    children: [
+      {
+        text: "简介",
+        link: "/前端/VUE/Vue3/简介.md",
+      },
+      {
+        text: "安装",
+        link: "/前端/VUE/Vue3/安装.md",
+      },
+      {
+        text: "MicrosoftLearn",
+        link: "/前端/VUE/Vue3/MicrosoftLearn.md",
+      },
+      {
+        text: "工具",
+        link: "/前端/VUE/Vue3/工具.md",
+      },
+      {
+        text: "Vite",
+        link: "/前端/VUE/Vue3/Vite.md",
+      },
+      {
+        text: "ESLint",
+        link: "/前端/VUE/Vue3/ESLint.md",
+      },
+      {
+        text: "Router",
+        link: "/前端/VUE/Vue3/Router.md",
+      },
+      {
+        text: "Vuex",
+        link: "/前端/VUE/Vue3/Vuex.md",
+      },
+      {
+        text: "Pinia",
+        link: "/前端/VUE/Vue3/Pinia.md",
+      },
+      {
+        text: "Less",
+        link: "/前端/VUE/Vue3/Less.md",
+      },
+      {
+        text: "AnimateCSS",
+        link: "/前端/VUE/Vue3/AnimateCSS.md",
+      },
+      {
+        text: "GreenSock",
+        link: "/前端/VUE/Vue3/GreenSock.md",
+      },
+      {
+        text: "Lodash",
+        link: "/前端/VUE/Vue3/Lodash.md",
+      },
+      {
+        text: "VueUse",
+        link: "/前端/VUE/Vue3/VueUse.md",
+      },
+      {
+        text: "TSX",
+        link: "/前端/VUE/Vue3/TSX.md",
+      },
+      {
+        text: "auto-import",
+        link: "/前端/VUE/Vue3/auto-import.md",
+      },
+      {
+        text: "ElementPlus",
+        link: "/前端/VUE/Vue3/ElementPlus.md",
+      },
+      {
+        text: "Scoped与样式穿透",
+        link: "/前端/VUE/Vue3/Scoped与样式穿透.md",
+      },
+      {
+        text: "自定义全局插件",
+        link: "/前端/VUE/Vue3/自定义全局插件.md",
+      },
+      {
+        text: "组件系统",
+        link: "/前端/VUE/Vue3/组件系统.md",
+      },
+      {
+        text: "可复用组合",
+        link: "/前端/VUE/Vue3/可复用组合.md",
+      },
+      {
+        text: "API",
+        link: "/前端/VUE/Vue3/API.md",
+      },
+    ],
+  },
+];
+
+/** 笔记工具 */
 let NoteTools = [
   {
     text: "VuePress",
@@ -27,6 +218,7 @@ let NoteTools = [
   },
 ];
 
+/** 通识-Docker */
 let Docker = [
   {
     text: "Docker",
@@ -302,139 +494,6 @@ let language_shell = [
   },
 ];
 
-/** 后端-数据库 */
-let backend_database = [
-  {
-    text: "数据库",
-    link: "/后端/数据库/数据库.md",
-  },
-  {
-    text: "PostgreSQL",
-    link: "/后端/数据库/PostgreSQL.md",
-  },
-  {
-    text: "MySQL",
-    link: "/后端/数据库/MySQL.md",
-  },
-  {
-    text: "SQLite",
-    link: "/后端/数据库/SQLite.md",
-  },
-  {
-    text: "Redis",
-    link: "/后端/数据库/Redis.md",
-  },
-  {
-    text: "SQLAlchemy",
-    link: "/后端/数据库/SQLAlchemy.md",
-  },
-];
-
-/** 前端-Vue */
-let frontend_vue = [
-  {
-    text: "Vue",
-    children: [
-      {
-        text: "简介",
-        link: "/前端/VUE/Vue3/简介.md",
-      },
-      {
-        text: "安装",
-        link: "/前端/VUE/Vue3/安装.md",
-      },
-      {
-        text: "MicrosoftLearn",
-        link: "/前端/VUE/Vue3/MicrosoftLearn.md",
-      },
-      {
-        text: "工具",
-        link: "/前端/VUE/Vue3/工具.md",
-      },
-      {
-        text: "Vite",
-        link: "/前端/VUE/Vue3/Vite.md",
-      },
-      {
-        text: "ESLint",
-        link: "/前端/VUE/Vue3/ESLint.md",
-      },
-      {
-        text: "Router",
-        link: "/前端/VUE/Vue3/Router.md",
-      },
-      {
-        text: "Vuex",
-        link: "/前端/VUE/Vue3/Vuex.md",
-      },
-      {
-        text: "Pinia",
-        link: "/前端/VUE/Vue3/Pinia.md",
-      },
-      {
-        text: "Less",
-        link: "/前端/VUE/Vue3/Less.md",
-      },
-      {
-        text: "AnimateCSS",
-        link: "/前端/VUE/Vue3/AnimateCSS.md",
-      },
-      {
-        text: "GreenSock",
-        link: "/前端/VUE/Vue3/GreenSock.md",
-      },
-      {
-        text: "Lodash",
-        link: "/前端/VUE/Vue3/Lodash.md",
-      },
-      {
-        text: "VueUse",
-        link: "/前端/VUE/Vue3/VueUse.md",
-      },
-      {
-        text: "TSX",
-        link: "/前端/VUE/Vue3/TSX.md",
-      },
-      {
-        text: "auto-import",
-        link: "/前端/VUE/Vue3/auto-import.md",
-      },
-      {
-        text: "ElementPlus",
-        link: "/前端/VUE/Vue3/ElementPlus.md",
-      },
-      {
-        text: "Scoped与样式穿透",
-        link: "/前端/VUE/Vue3/Scoped与样式穿透.md",
-      },
-      {
-        text: "自定义全局插件",
-        link: "/前端/VUE/Vue3/自定义全局插件.md",
-      },
-      {
-        text: "组件系统",
-        link: "/前端/VUE/Vue3/组件系统.md",
-      },
-      {
-        text: "可复用组合",
-        link: "/前端/VUE/Vue3/可复用组合.md",
-      },
-      {
-        text: "API",
-        link: "/前端/VUE/Vue3/API.md",
-      },
-    ],
-  },
-  {
-    text: "Vben",
-    link: "/前端/VUE/Vben.md",
-  },
-  {
-    text: "vue-admin-template",
-    link: "/前端/VUE/vue-admin-template.md",
-  },
-];
-
 /** Bot */
 let Bot = [
   {
@@ -563,16 +622,23 @@ let Go = [
 ];
 
 export const Sidebar = sidebar({
+  "/后端/数据库/": backend_database,
+  "/后端/FastAPI/": backend_fastapi,
+
+  "/前端/VUE/": frontend_vue,
+
   "/NoteTools/": NoteTools,
+
   "/通识/Docker/": Docker,
+
   "/Language/Python/": language_python,
   "/Language/Java/": language_java,
   "/Language/Shell/": language_shell,
   "/Language/Go/": Go,
-  "/后端/数据库/": backend_database,
-  "/前端/VUE/": frontend_vue,
+
   "/娱乐/Bot/": Bot,
   "/娱乐/sovits/": sovits,
+
   "/网络安全/加密算法/": security_encrypt,
   "/网络安全/ATTCK/": security_ATTCK,
   "/网络安全/Web安全/": security_web,

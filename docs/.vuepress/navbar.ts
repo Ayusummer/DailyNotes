@@ -189,7 +189,7 @@ let backend = {
     },
     {
       text: "FastAPI",
-      link: "/后端/FastAPI/FastAPI.md",
+      link: "/后端/FastAPI/",
     },
     {
       text: "Flask",
