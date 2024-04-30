@@ -18,7 +18,7 @@ let NoteTools = {
     },
     {
       text: "LaTeX",
-      link: "/NoteTools/LaTex/LateX.md",
+      link: "/NoteTools/LaTex/",
     },
     {
       text: "PlantUML",
