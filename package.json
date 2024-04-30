@@ -13,7 +13,7 @@
   },
   "scripts": {
     "docs:clean-dev": "vuepress dev docs --clean-cache",
-    "docs:dev": "vuepress dev docs",
+    "docs:dev": "vuepress dev docs --port 9222",
     "docs:build": "vuepress build docs"
   },
   "devDependencies": {
