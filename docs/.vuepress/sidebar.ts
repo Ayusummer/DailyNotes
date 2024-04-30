@@ -38,6 +38,83 @@ let Docker = [
   },
 ];
 
+/** 网络安全-钓鱼 */
+let security_phishing = [
+  {
+    text: "钓鱼",
+    children: [
+      {
+        text:"钓鱼",
+        link:"/网络安全/钓鱼/"
+      },
+      {
+        text: "GoPhish",
+        link: "/网络安全/钓鱼/GoPhish/",
+      },
+      {
+        text: "Postfix",
+        link: "/网络安全/钓鱼/Postfix/",
+      },
+      {
+        text:"钓鱼附件",
+        link:"/网络安全/钓鱼/钓鱼附件/"
+      }
+    ],
+  },
+]
+
+/** 网络安全-钓鱼-钓鱼附件 */
+let security_phishing_attachments = [
+  {
+    text:"钓鱼",
+    link:"/网络安全/钓鱼/"
+  },
+  {
+    text:"钓鱼附件",
+    link:"/网络安全/钓鱼/钓鱼附件/"
+  },
+  {
+    text:"Office",
+    children:[
+      {
+        text:"Office宏",
+        link:"/网络安全/钓鱼/钓鱼附件/Office/Office宏/Excel4.0宏.md"
+      }
+    ]
+  },
+  {
+    text:"winrar",
+    children:[
+      {
+        text:"利用Winrar捆绑恶意程序与合法程序",
+        link:"/网络安全/钓鱼/钓鱼附件/winrar/利用Winrar捆绑恶意程序与合法程序.md"
+      }
+    ]
+    
+  }
+]
+
+/** 网络安全-钓鱼-钓鱼附件-Office */
+let security_phishing_attachments_Office = [
+  {
+    text:"钓鱼附件",
+    link:"/网络安全/钓鱼/钓鱼附件/"
+  },
+  {
+    text:"Office",
+    link:"/网络安全/钓鱼/钓鱼附件/Office/"
+  },
+  {
+    text:"Office宏",
+    children:[
+      {
+        text:"Excel4.0宏",
+        link:"/网络安全/钓鱼/钓鱼附件/Office/Office宏/Excel4.0宏.md"
+      }
+    ]
+  }
+]
+
 /** 加密算法侧边栏 */
 let security_encrypt = [
   {
@@ -70,19 +147,6 @@ let security_web = [
       {
         text: "蚁剑",
         link: "/网络安全/Web安全/Webshell/蚁剑.md",
-      },
-    ],
-  },
-  {
-    text: "钓鱼",
-    children: [
-      {
-        text: "GoPhish",
-        link: "/网络安全/钓鱼/GoPhish/",
-      },
-      {
-        text: "Postfix",
-        link: "/网络安全/钓鱼/Postfix/",
       },
     ],
   },
@@ -356,12 +420,25 @@ let penetration = [
   },
   {
     text: "代理转发",
-    link: "/网络安全/内网渗透/代理转发.md",
+    children:[
+      {
+        text:"代理转发",
+        link:"/网络安全/内网渗透/代理转发/"
+      },
+      {
+        text: "NATBypass",
+        link:"/网络安全/内网渗透/代理转发/NATBypass.md"
+      }
+    ]
   },
   {
     text: "PowershellEmpire",
-    link: "/网络安全/内网渗透/Powershell-Empire.md",
+    link: "/网络安全/内网渗透/C2/Powershell-Empire.md",
   },
+  {
+    text:"横向移动",
+    link:"/网络安全/内网渗透/横向移动/SSH横向移动.md"
+  }
 ];
 
 /** 信息收集 */
@@ -414,4 +491,7 @@ export const Sidebar = sidebar({
   "/网络安全/端点安全/": endpoint_security,
   "/网络安全/内网渗透/": penetration,
   "/网络安全/信息收集/": information_collection,
+  "/网络安全/钓鱼/": security_phishing,
+  "/网络安全/钓鱼/钓鱼附件": security_phishing_attachments,
+  "/网络安全/钓鱼/钓鱼附件/Office": security_phishing_attachments_Office,
 });

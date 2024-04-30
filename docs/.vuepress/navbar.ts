@@ -99,7 +99,7 @@ let security = {
     },
     {
       text: "钓鱼",
-      link: "/网络安全/钓鱼/",
+      link: "/网络安全/钓鱼/index.md",
     },
     {
       text: "kali",
