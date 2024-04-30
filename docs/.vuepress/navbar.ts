@@ -174,7 +174,7 @@ let language = {
     },
     {
       text: "Shell",
-      link: "/Language/Shell/",
+      link: "/Language/Shell/Shell/",
     },
   ],
 };
@@ -220,7 +220,7 @@ let frontend = {
     },
     {
       text: "Vue",
-      link: "/前端/Vue/Vue.md",
+      link: "/前端/VUE/Vue3/简介.md",
     },
     {
       text: "CSS",

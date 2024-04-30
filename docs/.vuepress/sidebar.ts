@@ -44,8 +44,8 @@ let security_phishing = [
     text: "钓鱼",
     children: [
       {
-        text:"钓鱼",
-        link:"/网络安全/钓鱼/"
+        text: "钓鱼",
+        link: "/网络安全/钓鱼/",
       },
       {
         text: "GoPhish",
@@ -56,64 +56,63 @@ let security_phishing = [
         link: "/网络安全/钓鱼/Postfix/",
       },
       {
-        text:"钓鱼附件",
-        link:"/网络安全/钓鱼/钓鱼附件/"
-      }
+        text: "钓鱼附件",
+        link: "/网络安全/钓鱼/钓鱼附件/",
+      },
     ],
   },
-]
+];
 
 /** 网络安全-钓鱼-钓鱼附件 */
 let security_phishing_attachments = [
   {
-    text:"钓鱼",
-    link:"/网络安全/钓鱼/"
+    text: "钓鱼",
+    link: "/网络安全/钓鱼/",
   },
   {
-    text:"钓鱼附件",
-    link:"/网络安全/钓鱼/钓鱼附件/"
+    text: "钓鱼附件",
+    link: "/网络安全/钓鱼/钓鱼附件/",
   },
   {
-    text:"Office",
-    children:[
+    text: "Office",
+    children: [
       {
-        text:"Office宏",
-        link:"/网络安全/钓鱼/钓鱼附件/Office/Office宏/Excel4.0宏.md"
-      }
-    ]
+        text: "Office宏",
+        link: "/网络安全/钓鱼/钓鱼附件/Office/Office宏/Excel4.0宏.md",
+      },
+    ],
   },
   {
-    text:"winrar",
-    children:[
+    text: "winrar",
+    children: [
       {
-        text:"利用Winrar捆绑恶意程序与合法程序",
-        link:"/网络安全/钓鱼/钓鱼附件/winrar/利用Winrar捆绑恶意程序与合法程序.md"
-      }
-    ]
-    
-  }
-]
+        text: "利用Winrar捆绑恶意程序与合法程序",
+        link: "/网络安全/钓鱼/钓鱼附件/winrar/利用Winrar捆绑恶意程序与合法程序.md",
+      },
+    ],
+  },
+];
 
 /** 网络安全-钓鱼-钓鱼附件-Office */
 let security_phishing_attachments_Office = [
   {
-    text:"钓鱼附件",
-    link:"/网络安全/钓鱼/钓鱼附件/"
+    text: "钓鱼附件",
+    link: "/网络安全/钓鱼/钓鱼附件/",
   },
   {
-    text:"Office",
-    link:"/网络安全/钓鱼/钓鱼附件/Office/"
+    text: "Office",
+    link: "/网络安全/钓鱼/钓鱼附件/Office/",
   },
   {
-    text:"Office宏",
-    children:[
+    text: "Office宏",
+    children: [
       {
-        text:"Excel4.0宏",
-        link:"/网络安全/钓鱼/钓鱼附件/Office/Office宏/Excel4.0宏.md"
-      }
-    ]
-  }
-]
+        text: "Excel4.0宏",
+        link: "/网络安全/钓鱼/钓鱼附件/Office/Office宏/Excel4.0宏.md",
+      },
+    ],
+  },
+];
 
 /** 加密算法侧边栏 */
 let security_encrypt = [
@@ -291,7 +290,7 @@ let language_java = [
 let language_shell = [
   {
     text: "Shell",
-    link: "/Language/Shell/Shell",
+    link: "/Language/Shell/Shell/",
   },
   {
     text: "Powershell",
@@ -335,7 +334,96 @@ let backend_database = [
 let frontend_vue = [
   {
     text: "Vue",
-    link: "/前端/VUE/Vue.md",
+    children: [
+      {
+        text: "简介",
+        link: "/前端/VUE/Vue3/简介.md",
+      },
+      {
+        text: "安装",
+        link: "/前端/VUE/Vue3/安装.md",
+      },
+      {
+        text: "MicrosoftLearn",
+        link: "/前端/VUE/Vue3/MicrosoftLearn.md",
+      },
+      {
+        text: "工具",
+        link: "/前端/VUE/Vue3/工具.md",
+      },
+      {
+        text: "Vite",
+        link: "/前端/VUE/Vue3/Vite.md",
+      },
+      {
+        text: "ESLint",
+        link: "/前端/VUE/Vue3/ESLint.md",
+      },
+      {
+        text: "Router",
+        link: "/前端/VUE/Vue3/Router.md",
+      },
+      {
+        text: "Vuex",
+        link: "/前端/VUE/Vue3/Vuex.md",
+      },
+      {
+        text: "Pinia",
+        link: "/前端/VUE/Vue3/Pinia.md",
+      },
+      {
+        text: "Less",
+        link: "/前端/VUE/Vue3/Less.md",
+      },
+      {
+        text: "AnimateCSS",
+        link: "/前端/VUE/Vue3/AnimateCSS.md",
+      },
+      {
+        text: "GreenSock",
+        link: "/前端/VUE/Vue3/GreenSock.md",
+      },
+      {
+        text: "Lodash",
+        link: "/前端/VUE/Vue3/Lodash.md",
+      },
+      {
+        text: "VueUse",
+        link: "/前端/VUE/Vue3/VueUse.md",
+      },
+      {
+        text: "TSX",
+        link: "/前端/VUE/Vue3/TSX.md",
+      },
+      {
+        text: "auto-import",
+        link: "/前端/VUE/Vue3/auto-import.md",
+      },
+      {
+        text: "ElementPlus",
+        link: "/前端/VUE/Vue3/ElementPlus.md",
+      },
+      {
+        text: "Scoped与样式穿透",
+        link: "/前端/VUE/Vue3/Scoped与样式穿透.md",
+      },
+      {
+        text: "自定义全局插件",
+        link: "/前端/VUE/Vue3/自定义全局插件.md",
+      },
+      {
+        text: "组件系统",
+        link: "/前端/VUE/Vue3/组件系统.md",
+      },
+      {
+        text: "可复用组合",
+        link: "/前端/VUE/Vue3/可复用组合.md",
+      },
+      {
+        text: "API",
+        link: "/前端/VUE/Vue3/API.md",
+      },
+    ],
   },
   {
     text: "Vben",
@@ -420,25 +508,25 @@ let penetration = [
   },
   {
     text: "代理转发",
-    children:[
+    children: [
       {
-        text:"代理转发",
-        link:"/网络安全/内网渗透/代理转发/"
+        text: "代理转发",
+        link: "/网络安全/内网渗透/代理转发/",
       },
       {
         text: "NATBypass",
-        link:"/网络安全/内网渗透/代理转发/NATBypass.md"
-      }
-    ]
+        link: "/网络安全/内网渗透/代理转发/NATBypass.md",
+      },
+    ],
   },
   {
     text: "PowershellEmpire",
     link: "/网络安全/内网渗透/C2/Powershell-Empire.md",
   },
   {
-    text:"横向移动",
-    link:"/网络安全/内网渗透/横向移动/SSH横向移动.md"
-  }
+    text: "横向移动",
+    link: "/网络安全/内网渗透/横向移动/SSH横向移动.md",
+  },
 ];
 
 /** 信息收集 */
