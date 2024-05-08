@@ -1,6 +1,10 @@
 # FantasticAdmin
 
 > 看Vben源码看的眼花, 准备试试这个~
+>
+> ---
+>
+> 后续PS: 官方的 basic 群只有零星几十人而且几乎没人说话, 项目 issue 也没太有, 感觉后面如果遇到问题几乎无法通过社区解决, 暂且观望, 再回去看看 vben
 
 > [文档-Fantastic-admin | 一款 Vue 中后台管理系统框架](https://fantastic-admin.github.io/)
 >
