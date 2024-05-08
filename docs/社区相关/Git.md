@@ -9,6 +9,8 @@
       - [Linux](#linux)
           - [PPA](#ppa)
     - [配置](#配置)
+  - [场景](#场景)
+    - [同步框架开发](#同步框架开发)
   - [仓库相关](#仓库相关)
     - [常规操作](#常规操作)
       - [撤销提交](#撤销提交)
@@ -136,6 +138,55 @@ sudo apt-get install lighttable-installer
 git config --global user.email "GitHub绑定邮箱"
 git config --global user.name "GitHub用户名"
 ```
+
+---
+
+## 场景
+
+### 同步框架开发
+
+`需求`: 使用了一个前端框架项目作为我的项目的初始框架, 在保持框架能够通过git更新的同时维护我当前项目的git
+
+`解决方案`: 在一个分支上保持与原始框架的同步，然后在另一个分支上进行开发。当框架有更新时，将更新合并到开发分支。
+
+`具体流程`:
+
+1. clone 自己的远程仓库并 cd 到仓库根目录
+
+2. 添加框架的远程仓库：
+
+   ```bash
+   git remote add upstream <框架的仓库URL>
+   ```
+
+   这将在当前 Git 仓库中添加一个名为 "upstream" 的远程仓库，该仓库的 URL 是框架的仓库 URL。
+
+3. 从框架的远程仓库拉取代码：
+
+   ```bash
+   git pull upstream master
+   ```
+
+    这将从 "upstream" 远程仓库的 "master" 分支拉取最新的代码
+
+4. 后续要合并框架更新的划也可以用如下命令
+
+   ```bash
+   git fetch upstream
+   git merge upstream/master
+   ```
+
+   > 首次合并会因为没有共同 commit 报错 `fatal: refusing to merge unrelated histories`
+   >
+   > 此时可以
+   >
+   > ```bash
+   > git merge upstream/master --allow-unrelated-histories
+   > ```
+
+---
+
+
 
 ---
 
