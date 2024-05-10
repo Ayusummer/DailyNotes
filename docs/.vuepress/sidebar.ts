@@ -275,6 +275,15 @@ let security_phishing_attachments = [
     ],
   },
   {
+    text: "PDF",
+    children: [
+      {
+        text: "PDF 嵌入 JavaScript",
+        link: "/网络安全/钓鱼/钓鱼附件/PDF/PDF嵌入JavaScript/",
+      },
+    ],
+  },
+  {
     text: "winrar",
     children: [
       {
@@ -306,6 +315,43 @@ let security_phishing_attachments_Office = [
   },
 ];
 
+/** 端点安全 */
+let endpoint_security = [
+  {
+    text: "端点安全",
+    link: "/网络安全/端点安全/",
+  },
+  {
+    text: "Windows",
+    link: "/网络安全/端点安全/Windows/",
+  },
+  {
+    text: "Linux",
+    children: [
+      {
+        text: "Linux安全通识",
+        link: "/网络安全/端点安全/Linux/",
+      },
+      {
+        text: "Linux日志分析",
+        link: "/网络安全/端点安全/Linux/日志分析/",
+      },
+    ],
+  },
+  {
+    text: "Docker",
+    link: "/网络安全/端点安全/Docker/",
+  },
+  {
+    text: "AtomicRedTeam",
+    link: "/网络安全/端点安全/AtomicRedTeam/",
+  },
+  {
+    text: "Vectr",
+    link: "/网络安全/端点安全/AtomicRedTeam/Vectr.md",
+  },
+];
+
 /** 加密算法侧边栏 */
 let security_encrypt = [
   {
@@ -319,6 +365,67 @@ let security_encrypt = [
   {
     text: "HMAC",
     link: "/网络安全/加密算法/HMAC.md",
+  },
+];
+
+/** 内网渗透 */
+let penetration = [
+  {
+    text: "内网渗透",
+    link: "/网络安全/内网渗透/",
+  },
+  {
+    text: "代理转发",
+    children: [
+      {
+        text: "代理转发",
+        link: "/网络安全/内网渗透/代理转发/",
+      },
+      {
+        text: "NATBypass",
+        link: "/网络安全/内网渗透/代理转发/NATBypass.md",
+      },
+    ],
+  },
+  {
+    text: "PowershellEmpire",
+    link: "/网络安全/内网渗透/C2/Powershell-Empire.md",
+  },
+  {
+    text: "横向移动",
+    link: "/网络安全/内网渗透/横向移动/SSH横向移动.md",
+  },
+];
+
+/** 信息收集 */
+let information_collection = [
+  {
+    text: "端口扫描",
+    link: "/网络安全/信息收集/端口扫描/nmap.md",
+  },
+  {
+    text: "漏扫工具",
+    link: "/网络安全/信息收集/漏扫工具/AWVS.md",
+  },
+];
+
+/** 网络安全-ATTCK 侧边栏 */
+let security_ATTCK = [
+  // {
+  //   text: "ATTCK",
+  //   link: "/网络安全/ATTCK/",
+  // },
+  {
+    text: "TA0001-InitialAccess",
+    link: "/网络安全/ATTCK/TA0001-InitialAccess.md",
+  },
+  {
+    text: "TA0005-DefenseEvasion",
+    link: "/网络安全/ATTCK/TA0005-DefenseEvasion(下).md",
+  },
+  {
+    text: "TA0040-Impact",
+    link: "/网络安全/ATTCK/TA0040-Impact.md",
   },
 ];
 
@@ -366,26 +473,6 @@ let security_web = [
   {
     text: "Web漏洞通用型Python复现脚本编写指南",
     link: "/网络安全/Web安全/Web漏洞通用型Python复现脚本编写指南/",
-  },
-];
-
-/** 网络安全-ATTCK 侧边栏 */
-let security_ATTCK = [
-  // {
-  //   text: "ATTCK",
-  //   link: "/网络安全/ATTCK/",
-  // },
-  {
-    text: "TA0001-InitialAccess",
-    link: "/网络安全/ATTCK/TA0001-InitialAccess.md",
-  },
-  {
-    text: "TA0005-DefenseEvasion",
-    link: "/网络安全/ATTCK/TA0005-DefenseEvasion(下).md",
-  },
-  {
-    text: "TA0040-Impact",
-    link: "/网络安全/ATTCK/TA0040-Impact.md",
   },
 ];
 
@@ -523,80 +610,6 @@ let sovits = [
   {
     text: "sovits_4",
     link: "/娱乐/sovits/sovits_4.md",
-  },
-];
-
-/** 端点安全 */
-let endpoint_security = [
-  {
-    text: "端点安全",
-    link: "/网络安全/端点安全/",
-  },
-  {
-    text: "Windows",
-    link: "/网络安全/端点安全/Windows/",
-  },
-  {
-    text: "Linux",
-    children: [
-      {
-        text: "Linux安全通识",
-        link: "/网络安全/端点安全/Linux/",
-      },
-      {
-        text: "Linux日志分析",
-        link: "/网络安全/端点安全/Linux/日志分析/",
-      },
-    ],
-  },
-  {
-    text: "AtomicRedTeam",
-    link: "/网络安全/端点安全/AtomicRedTeam/",
-  },
-  {
-    text: "Vectr",
-    link: "/网络安全/端点安全/AtomicRedTeam/Vectr.md",
-  },
-];
-
-/** 内网渗透 */
-let penetration = [
-  {
-    text: "内网渗透",
-    link: "/网络安全/内网渗透/",
-  },
-  {
-    text: "代理转发",
-    children: [
-      {
-        text: "代理转发",
-        link: "/网络安全/内网渗透/代理转发/",
-      },
-      {
-        text: "NATBypass",
-        link: "/网络安全/内网渗透/代理转发/NATBypass.md",
-      },
-    ],
-  },
-  {
-    text: "PowershellEmpire",
-    link: "/网络安全/内网渗透/C2/Powershell-Empire.md",
-  },
-  {
-    text: "横向移动",
-    link: "/网络安全/内网渗透/横向移动/SSH横向移动.md",
-  },
-];
-
-/** 信息收集 */
-let information_collection = [
-  {
-    text: "端口扫描",
-    link: "/网络安全/信息收集/端口扫描/nmap.md",
-  },
-  {
-    text: "漏扫工具",
-    link: "/网络安全/信息收集/漏扫工具/AWVS.md",
   },
 ];
 
