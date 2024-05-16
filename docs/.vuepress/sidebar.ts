@@ -316,10 +316,27 @@ let security_phishing_attachments_Office = [
 ];
 
 /** 端点安全 */
-let endpoint_security = [
+let endpointSecurity = [
   {
     text: "端点安全",
     link: "/网络安全/端点安全/",
+  },
+  {
+    text: "Malware",
+    children: [
+      {
+        text: "Malware",
+        link: "/网络安全/端点安全/Malware/",
+      },
+      {
+        text: "从基础的RAT出发梳理一些常见的查杀与免杀技术",
+        link: "/网络安全/端点安全/Malware/从基础的RAT出发梳理一些常见的查杀与免杀技术.md"
+      },
+      {
+        text: "查杀技术",
+        link: "/网络安全/端点安全/Malware/查杀技术/",
+      }
+    ]
   },
   {
     text: "Windows",
@@ -351,6 +368,19 @@ let endpoint_security = [
     link: "/网络安全/端点安全/AtomicRedTeam/Vectr.md",
   },
 ];
+
+/** 端点安全-Malware-查杀技术 */
+let endpointSecurity_malware_scan = [
+  {
+    text: "查杀技术",
+    link: "/网络安全/端点安全/Malware/查杀技术/",
+  },
+  {
+    text: "AMSI",
+    link: "/网络安全/端点安全/Malware/查杀技术/AMSI.md",
+  }
+];
+
 
 /** 加密算法侧边栏 */
 let security_encrypt = [
@@ -655,7 +685,7 @@ export const Sidebar = sidebar({
   "/网络安全/加密算法/": security_encrypt,
   "/网络安全/ATTCK/": security_ATTCK,
   "/网络安全/Web安全/": security_web,
-  "/网络安全/端点安全/": endpoint_security,
+  "/网络安全/端点安全/": endpointSecurity,
   "/网络安全/内网渗透/": penetration,
   "/网络安全/信息收集/": information_collection,
   "/网络安全/钓鱼/": security_phishing,
