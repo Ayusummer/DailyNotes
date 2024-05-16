@@ -284,6 +284,14 @@ docker run --restart=always -d -p 9221:80 -p 9222:3306 area39/pikachu
 
 ---
 
+## WAF 对抗
+
+- 分块传输
+  - [github.com/c0ny1/chunked-coding-converter](https://github.com/c0ny1/chunked-coding-converter)
+  - [Burpsuit分块传输插件绕WAF原理和技巧（转） - 渗透测试中心 - 博客园 (cnblogs.com)](https://www.cnblogs.com/backlion/p/10569976.html)
+
+---
+
 ## 工具整理
 
 ### 资源库知识库类
