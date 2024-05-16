@@ -269,6 +269,20 @@ Repeater 是 Burp Suite 中一款手工验证 HTTP 消息的测试工具，通�
 
 ---
 
+## 加载与使用插件
+
+导入下载或编译好的插件 jar :
+
+![image-20240516111430258](http://cdn.ayusummer233.top/DailyNotes/202405161114547.png)
+
+![image-20240516111642929](http://cdn.ayusummer233.top/DailyNotes/202405161116043.png)
+
+使用:
+
+![image-20240516111715041](http://cdn.ayusummer233.top/DailyNotes/202405161117166.png)
+
+
+
 
 
 
